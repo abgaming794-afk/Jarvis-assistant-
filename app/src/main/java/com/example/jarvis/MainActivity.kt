@@ -142,18 +142,14 @@ class MainActivity : AppCompatActivity() {
                 runOnUiThread {
                     orbView.setState(JarvisOrbView.OrbState.SPEAKING)
                     tvTranscript.append("\nJarvis: $reply")
-                    ttsManager.speak(reply, lang) {
-                        runOnUiThread { orbView.setState(JarvisOrbView.OrbState.IDLE) }
-                    }
+                    ttsManager.speak(reply, lang)
                 }
             }
         } else {
             val reply = actionExecutor.execute(intent)
             orbView.setState(JarvisOrbView.OrbState.SPEAKING)
             tvTranscript.append("\nJarvis: $reply")
-            ttsManager.speak(reply, lang) {
-                runOnUiThread { orbView.setState(JarvisOrbView.OrbState.IDLE) }
-            }
+            ttsManager.speak(reply, lang)
         }
         etCommand.text.clear()
     }
