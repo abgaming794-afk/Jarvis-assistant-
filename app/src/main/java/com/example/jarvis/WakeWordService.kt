@@ -103,7 +103,7 @@ class WakeWordService : Service() {
         val lang = CommandParser.detectLanguage(command)
         val intent = CommandParser.parse(command)
         if (intent is com.example.jarvis.Intent.Unknown) {
-            GeminiClient.ask(command, lang) { reply -> ttsManager.speak(reply, lang) }
+            GeminiClient.ask(this, command, lang) { reply -> ttsManager.speak(reply, lang) }
         } else {
             val reply = actionExecutor.execute(intent)
             ttsManager.speak(reply, lang)
