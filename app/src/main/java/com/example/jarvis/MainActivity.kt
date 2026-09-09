@@ -19,6 +19,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var btnMic: Button
     private lateinit var btnSend: Button
     private lateinit var toggleWakeWord: ToggleButton
+    private lateinit var btnSettings: Button
 
     private lateinit var ttsManager: TTSManager
     private lateinit var actionExecutor: ActionExecutor
@@ -40,6 +41,7 @@ class MainActivity : AppCompatActivity() {
         btnMic = findViewById(R.id.btnMic)
         btnSend = findViewById(R.id.btnSend)
         toggleWakeWord = findViewById(R.id.toggleWakeWord)
+        btnSettings = findViewById(R.id.btnSettings)
 
         actionExecutor = ActionExecutor(this)
         ttsManager = TTSManager(this) {
@@ -48,6 +50,8 @@ class MainActivity : AppCompatActivity() {
 
         requestNeededPermissions()
 
+        toggleWakeWord.isChecked = PreferencesManager.isWakeWordEnabled(this)
+
         btnSend.setOnClickListener {
             val text = etCommand.text.toString()
             if (text.isNotBlank()) handleUserInput(text)
@@ -55,7 +59,12 @@ class MainActivity : AppCompatActivity() {
 
         btnMic.setOnClickListener { startVoiceInput() }
 
+        btnSettings.setOnClickListener {
+            startActivity(Intent(this, SettingsActivity::class.java))
+        }
+
         toggleWakeWord.setOnCheckedChangeListener { _, isChecked ->
+            PreferencesManager.setWakeWordEnabled(this, isChecked)
             if (isChecked) {
                 if (ContextCompat.checkSelfPermission(this, Manifest.permission.RECORD_AUDIO)
                     == PackageManager.PERMISSION_GRANTED) {
@@ -113,7 +122,7 @@ class MainActivity : AppCompatActivity() {
 
         if (intent is com.example.jarvis.Intent.Unknown) {
             tvTranscript.append("\nJarvis: (sochte hue...)")
-            GeminiClient.ask(text, lang) { reply ->
+            GeminiClient.ask(this, text, lang) { reply ->
                 runOnUiThread {
                     tvTranscript.append("\nJarvis: $reply")
                     ttsManager.speak(reply, lang)
