@@ -1,5 +1,6 @@
 package com.example.jarvis
 
+import android.content.Context
 import com.example.jarvis.BuildConfig
 import okhttp3.*
 import okhttp3.MediaType.Companion.toMediaType
@@ -12,10 +13,7 @@ object GeminiClient {
 
     private const val API_KEY = BuildConfig.GEMINI_API_KEY
 
-    // Primary model
-    private const val PRIMARY_MODEL = "gemini-3.8-flash"
-
-    // Backup/Fallback model
+    // Backup/Fallback model — hamesha fixed
     private const val FALLBACK_MODEL = "gemini-3.7-flash"
 
     // Retry settings
@@ -27,8 +25,12 @@ object GeminiClient {
 
     private val client = OkHttpClient()
 
+    // Primary model — user ki settings se aata hai (default gemini-3.8-flash)
+    private fun primaryModel(context: Context) = PreferencesManager.getAiModel(context)
+
     @Suppress("DEPRECATION")
     fun ask(
+        context: Context,
         userText: String,
         lang: String,
         callback: (String) -> Unit
@@ -79,7 +81,7 @@ object GeminiClient {
         }.toString()
 
         // Pehle primary model try karo (retries ke saath)
-        callModelWithRetry(PRIMARY_MODEL, bodyJson, attempt = 1) { primaryResult, primarySuccess ->
+        callModelWithRetry(primaryModel(context), bodyJson, attempt = 1) { primaryResult, primarySuccess ->
 
             if (primarySuccess) {
                 callback(primaryResult)
