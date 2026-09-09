@@ -10,11 +10,18 @@
         android:id="@+id/tvStatus"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="20dp"
         android:text="Boss, main ready hoon."
         android:textColor="#06b6d4"
         android:textSize="20sp"
         android:gravity="center" />
+
+    <com.example.jarvis.JarvisOrbView
+        android:id="@+id/orbView"
+        android:layout_width="180dp"
+        android:layout_height="180dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="16dp" />
 
     <TextView
         android:id="@+id/tvTranscript"
