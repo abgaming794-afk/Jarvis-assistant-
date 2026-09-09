@@ -15,7 +15,7 @@ object GeminiClient {
 
     private val client = OkHttpClient()
 
-    fun ask(userText: String, lang: String, callback: (String) -> Unit) {
+    fun ask(userText: String, lang: String, callback: (String) -> Unit) {@Suppress("DEPRECATION_ERROR")
         if (API_KEY == "YOUR_GEMINI_API_KEY_HERE") {
             callback("Boss, AI chat ke liye pehle Gemini API key GeminiClient.kt mein daalni hogi.")
             return
@@ -37,7 +37,7 @@ object GeminiClient {
 
         val request = Request.Builder()
             .url(URL)
-            .post(body.toString().toRequestBody("application/json".toMediaType()))
+            .post(RequestBody.create(MediaType.parse("application/json"), body.toString()))
             .build()
 
         client.newCall(request).enqueue(object : Callback {
