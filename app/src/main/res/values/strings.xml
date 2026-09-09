@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">Jarvis Assistant</string>
+    <string name="accessibility_service_description">Jarvis ko WhatsApp/Instagram/Telegram par messages auto-send karne dene ke liye ye service zaroori hai.</string>
+</resources>
