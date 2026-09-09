@@ -14,8 +14,8 @@ object GeminiClient {
         "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=$API_KEY"
 
     private val client = OkHttpClient()
-
-    fun ask(userText: String, lang: String, callback: (String) -> Unit) {@Suppress("DEPRECATION_ERROR")
+@Suppress("DEPRECATION_ERROR")
+    fun ask(userText: String, lang: String, callback: (String) -> Unit) {
         if (API_KEY == "YOUR_GEMINI_API_KEY_HERE") {
             callback("Boss, AI chat ke liye pehle Gemini API key GeminiClient.kt mein daalni hogi.")
             return
