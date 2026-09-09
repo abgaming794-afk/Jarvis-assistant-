@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#0a0a12">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="24dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Jarvis Settings"
+            android:textColor="#06b6d4"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:layout_marginBottom="24dp" />
+
+        <!-- Wake word -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Wake Word"
+            android:textColor="#9ca3af"
+            android:textSize="14sp" />
+
+        <ToggleButton
+            android:id="@+id/toggleWakeWordSetting"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="20dp"
+            android:textOn="Wake-word: ON"
+            android:textOff="Wake-word: OFF"
+            android:background="#1a1a2e"
+            android:textColor="#e5e7eb" />
+
+        <!-- AI Model -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="AI Model (Primary)"
+            android:textColor="#9ca3af"
+            android:textSize="14sp" />
+
+        <Spinner
+            android:id="@+id/spinnerAiModel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="20dp"
+            android:background="#1a1a2e"
+            android:padding="12dp" />
+
+        <!-- Voice Engine -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Voice Engine"
+            android:textColor="#9ca3af"
+            android:textSize="14sp" />
+
+        <Spinner
+            android:id="@+id/spinnerVoiceEngine"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="20dp"
+            android:background="#1a1a2e"
+            android:padding="12dp" />
+
+        <!-- ElevenLabs API key -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="ElevenLabs API Key"
+            android:textColor="#9ca3af"
+            android:textSize="14sp" />
+
+        <EditText
+            android:id="@+id/etElevenLabsKey"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="20dp"
+            android:hint="ElevenLabs API key yahan paste karein"
+            android:textColorHint="#6b7280"
+            android:textColor="#e5e7eb"
+            android:background="#1a1a2e"
+            android:padding="12dp"
+            android:inputType="textPassword" />
+
+        <!-- Tone -->
+        <TextView
+            android:id="@+id/tvToneLabel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Voice Tone"
+            android:textColor="#9ca3af"
+            android:textSize="14sp" />
+
+        <SeekBar
+            android:id="@+id/seekTone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:max="100" />
+
+        <!-- Speed -->
+        <TextView
+            android:id="@+id/tvSpeedLabel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:text="Voice Speed"
+            android:textColor="#9ca3af"
+            android:textSize="14sp" />
+
+        <SeekBar
+            android:id="@+id/seekSpeed"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:max="100" />
+
+        <!-- Pitch -->
+        <TextView
+            android:id="@+id/tvPitchLabel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:text="Voice Pitch"
+            android:textColor="#9ca3af"
+            android:textSize="14sp" />
+
+        <SeekBar
+            android:id="@+id/seekPitch"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:max="100"
+            android:layout_marginBottom="20dp" />
+
+        <!-- Theme -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Theme"
+            android:textColor="#9ca3af"
+            android:textSize="14sp" />
+
+        <Spinner
+            android:id="@+id/spinnerTheme"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="28dp"
+            android:background="#1a1a2e"
+            android:padding="12dp" />
+
+        <Button
+            android:id="@+id/btnSaveSettings"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Save Settings"
+            android:backgroundTint="#06b6d4"
+            android:textColor="#ffffff" />
+
+    </LinearLayout>
+</ScrollView>
