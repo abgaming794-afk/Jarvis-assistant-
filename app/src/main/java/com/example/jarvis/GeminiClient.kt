@@ -14,17 +14,17 @@ object GeminiClient {
         "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=$API_KEY"
 
     private val client = OkHttpClient()
-@Suppress("DEPRECATION_ERROR")
+    @Suppress("DEPRECATION_ERROR")
     fun ask(userText: String, lang: String, callback: (String) -> Unit) {
-        if (API_KEY == "YOUR_GEMINI_API_KEY_HERE") {
+        if (API_KEY.isBlank()) {
             callback("Boss, AI chat ke liye pehle Gemini API key GeminiClient.kt mein daalni hogi.")
             return
         }
 
         val systemPrompt = when (lang) {
-            "hi" -> "Tum Jarvis ho, ek helpful Hindi-speaking voice assistant. User ko 'Boss' bol kar address karo. Reply short aur natural rakho (2-3 sentences)."
+            "hi" -> "Tum Jarvis ho, ek helpful Hindi-speaking voice assistant. User ko 'Boss' bol kar address karo. Reply short aur helpful rakho."
             "as" -> "Tumi Jarvis, ejon sohayok Assamese voice assistant. User ke 'Boss' buli mati kotha koba. Uttar chuti rakhiba."
-            else -> "You are Jarvis, a helpful voice assistant. Always address the user as 'Boss'. Keep replies short and natural (2-3 sentences)."
+            else -> "You are Jarvis, a helpful voice assistant. Always address the user as 'Boss'. Keep replies short and natural."
         }
 
         val body = JSONObject().apply {
@@ -46,8 +46,9 @@ object GeminiClient {
             }
 
             override fun onResponse(call: Call, response: Response) {
+                val bodyStr = response.body?.string() ?: "{}"
                 try {
-                    val json = JSONObject(response.body?.string() ?: "{}")
+                    val json = JSONObject(bodyStr)
                     val text = json.getJSONArray("candidates")
                         .getJSONObject(0)
                         .getJSONObject("content")
@@ -56,7 +57,7 @@ object GeminiClient {
                         .getString("text")
                     callback(text.trim())
                 } catch (e: Exception) {
-                    callback("Boss, jawab process karne mein error aa gaya.")
+                    callback("Boss, API se ye jawab aaya: $bodyStr")
                 }
             }
         })
