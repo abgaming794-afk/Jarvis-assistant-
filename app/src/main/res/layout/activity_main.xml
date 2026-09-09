@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#0a0a12"
+    android:padding="24dp">
+
+    <TextView
+        android:id="@+id/tvStatus"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:text="Boss, main ready hoon."
+        android:textColor="#06b6d4"
+        android:textSize="20sp"
+        android:gravity="center" />
+
+    <TextView
+        android:id="@+id/tvTranscript"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:layout_marginTop="24dp"
+        android:text=""
+        android:textColor="#e5e7eb"
+        android:textSize="16sp"
+        android:gravity="top" />
+
+    <EditText
+        android:id="@+id/etCommand"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Type a command ya mic dabao..."
+        android:textColorHint="#6b7280"
+        android:textColor="#e5e7eb"
+        android:background="#1a1a2e"
+        android:padding="12dp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="16dp"
+        android:gravity="center">
+
+        <Button
+            android:id="@+id/btnMic"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginEnd="8dp"
+            android:text="🎤 Mic"
+            android:backgroundTint="#4f46e5"
+            android:textColor="#ffffff" />
+
+        <Button
+            android:id="@+id/btnSend"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginStart="8dp"
+            android:text="Send"
+            android:backgroundTint="#06b6d4"
+            android:textColor="#ffffff" />
+    </LinearLayout>
+
+    <ToggleButton
+        android:id="@+id/toggleWakeWord"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:textOn="Wake-word: ON (always listening)"
+        android:textOff="Wake-word: OFF"
+        android:background="#1a1a2e"
+        android:textColor="#e5e7eb" />
+
+</LinearLayout>
