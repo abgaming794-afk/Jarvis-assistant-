@@ -20,6 +20,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var btnSend: Button
     private lateinit var toggleWakeWord: ToggleButton
     private lateinit var btnSettings: Button
+    private lateinit var orbView: JarvisOrbView
 
     private lateinit var ttsManager: TTSManager
     private lateinit var actionExecutor: ActionExecutor
@@ -42,10 +43,14 @@ class MainActivity : AppCompatActivity() {
         btnSend = findViewById(R.id.btnSend)
         toggleWakeWord = findViewById(R.id.toggleWakeWord)
         btnSettings = findViewById(R.id.btnSettings)
+        orbView = findViewById(R.id.orbView)
 
         actionExecutor = ActionExecutor(this)
         ttsManager = TTSManager(this) {
-            runOnUiThread { tvStatus.text = "Boss, main ready hoon." }
+            runOnUiThread {
+                tvStatus.text = "Boss, main ready hoon."
+                orbView.setState(JarvisOrbView.OrbState.IDLE)
+            }
         }
 
         requestNeededPermissions()
@@ -57,7 +62,10 @@ class MainActivity : AppCompatActivity() {
             if (text.isNotBlank()) handleUserInput(text)
         }
 
-        btnMic.setOnClickListener { startVoiceInput() }
+        btnMic.setOnClickListener {
+            orbView.setState(JarvisOrbView.OrbState.LISTENING)
+            startVoiceInput()
+        }
 
         btnSettings.setOnClickListener {
             startActivity(Intent(this, SettingsActivity::class.java))
@@ -70,6 +78,7 @@ class MainActivity : AppCompatActivity() {
                     == PackageManager.PERMISSION_GRANTED) {
                     ContextCompat.startForegroundService(this, Intent(this, WakeWordService::class.java))
                     tvStatus.text = "Wake-word ON — 'Hey Sia' bolo."
+                    orbView.setState(JarvisOrbView.OrbState.LISTENING)
                 } else {
                     toggleWakeWord.isChecked = false
                     Toast.makeText(this, "Mic permission chahiye", Toast.LENGTH_SHORT).show()
@@ -77,6 +86,7 @@ class MainActivity : AppCompatActivity() {
             } else {
                 stopService(Intent(this, WakeWordService::class.java))
                 tvStatus.text = "Boss, main ready hoon."
+                orbView.setState(JarvisOrbView.OrbState.IDLE)
             }
         }
     }
@@ -99,6 +109,7 @@ class MainActivity : AppCompatActivity() {
         try {
             startActivityForResult(intent, 200)
         } catch (e: Exception) {
+            orbView.setState(JarvisOrbView.OrbState.IDLE)
             Toast.makeText(this, "Voice recognition available nahi hai", Toast.LENGTH_SHORT).show()
         }
     }
@@ -111,7 +122,11 @@ class MainActivity : AppCompatActivity() {
             if (!spokenText.isNullOrBlank()) {
                 etCommand.setText(spokenText)
                 handleUserInput(spokenText)
+            } else {
+                orbView.setState(JarvisOrbView.OrbState.IDLE)
             }
+        } else {
+            orbView.setState(JarvisOrbView.OrbState.IDLE)
         }
     }
 
@@ -121,17 +136,24 @@ class MainActivity : AppCompatActivity() {
         val intent = CommandParser.parse(text)
 
         if (intent is com.example.jarvis.Intent.Unknown) {
+            orbView.setState(JarvisOrbView.OrbState.THINKING)
             tvTranscript.append("\nJarvis: (sochte hue...)")
             GeminiClient.ask(this, text, lang) { reply ->
                 runOnUiThread {
+                    orbView.setState(JarvisOrbView.OrbState.SPEAKING)
                     tvTranscript.append("\nJarvis: $reply")
-                    ttsManager.speak(reply, lang)
+                    ttsManager.speak(reply, lang) {
+                        runOnUiThread { orbView.setState(JarvisOrbView.OrbState.IDLE) }
+                    }
                 }
             }
         } else {
             val reply = actionExecutor.execute(intent)
+            orbView.setState(JarvisOrbView.OrbState.SPEAKING)
             tvTranscript.append("\nJarvis: $reply")
-            ttsManager.speak(reply, lang)
+            ttsManager.speak(reply, lang) {
+                runOnUiThread { orbView.setState(JarvisOrbView.OrbState.IDLE) }
+            }
         }
         etCommand.text.clear()
     }
