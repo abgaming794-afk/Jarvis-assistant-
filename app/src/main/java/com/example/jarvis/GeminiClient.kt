@@ -16,7 +16,7 @@ object GeminiClient {
     private const val PRIMARY_MODEL = "gemini-3.8-flash"
 
     // Backup/Fallback model
-    private const val FALLBACK_MODEL = "gemini-2.5-flash"
+    private const val FALLBACK_MODEL = "gemini-3.7-flash"
 
     private val client = OkHttpClient()
 
