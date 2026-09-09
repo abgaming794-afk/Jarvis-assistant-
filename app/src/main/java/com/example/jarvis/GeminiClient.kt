@@ -37,7 +37,7 @@ object GeminiClient {
 
         val request = Request.Builder()
             .url(URL)
-            .post(RequestBody.create(MediaType.parse("application/json"), body.toString()))
+            .post(body.toString().toRequestBody("application/json".toMediaType()))
             .build()
 
         client.newCall(request).enqueue(object : Callback {
