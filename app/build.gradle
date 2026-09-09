@@ -7,12 +7,17 @@ android {
     namespace 'com.example.jarvis'
     compileSdk 34
 
+    buildFeatures {
+        buildConfig true
+    }
+
     defaultConfig {
         applicationId "com.example.jarvis"
         minSdk 26
         targetSdk 34
         versionCode 1
         versionName "1.0"
+        buildConfigField "String", "GEMINI_API_KEY", "\"${System.getenv('GEMINI_API_KEY') ?: ''}\""
     }
 
     buildTypes {
