@@ -111,7 +111,7 @@ class MainActivity : AppCompatActivity() {
         val lang = CommandParser.detectLanguage(text)
         val intent = CommandParser.parse(text)
 
-        if (intent is Intent.Unknown) {
+        if (intent is com.example.jarvis.Intent.Unknown) {
             tvTranscript.append("\nJarvis: (sochte hue...)")
             GeminiClient.ask(text, lang) { reply ->
                 runOnUiThread {
