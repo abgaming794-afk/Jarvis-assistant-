@@ -117,8 +117,8 @@ def dim(c, a): c.drawRect(skia.Rect(0, 0, DW, DH), paint(NAVY, int(a)))
 # labelled PRATIK/andaazan; Umayyad white and Abbasid black banners are documented)
 BANNER = {"iberia": ("#8B1E2D", "cross", "#E9C46A", "VISIGOTH SPAIN"), "sindh": ("#D9822B", "sun", "#FFE8A3", "SINDH · CHACH VANSH"),
           "india": ("TIRANGA", None, None, "HINDUSTAN"), "arabia": ("#FFFFFF", None, None, "ARAB"),
-          "syria": ("#FFFFFF", None, None, "UMAYYAD · SAFED JHANDA"), "iraq": ("#FFFFFF", None, None, "UMAYYAD · SAFED JHANDA"),
-          "centralasia": ("#FFFFFF", None, None, "UMAYYAD · SAFED JHANDA"), "c_asia": None, "c_africa": None, "c_europe": None,
+          "syria": ("#FFFFFF", None, None, "DAMASCUS (SHAM)"), "iraq": ("#FFFFFF", None, None, "IRAQ"),
+          "centralasia": ("#FFFFFF", None, None, "CENTRAL ASIA"), "c_asia": None, "c_africa": None, "c_europe": None,
           "umayyad": ("#FFFFFF", None, None, "UMAYYAD · SAFED JHANDA"), "abbasid": ("#111111", None, None, "ABBASI · KAALA JHANDA"),
           "kabul": ("#B23A48", "sun", "#F1FAEE", "TURK SHAHI"), "zabul": ("#2A9D8F", "sun", "#F1FAEE", "ZUNBIL"),
           "gujarat": ("#C2185B", "star", "#FFD166", "CHALUKYA"), "rajasthan": ("#D35400", "sun", "#FFE8A3", "MORI / GURJARA"),
@@ -126,10 +126,13 @@ BANNER = {"iberia": ("#8B1E2D", "cross", "#E9C46A", "VISIGOTH SPAIN"), "sindh": 
           "desert": None, "caliph": ("#FFFFFF", None, None, "UMAYYAD KHILAFAT · SAFED JHANDA"), "raidzone": None, "c_west": None}
 _BTEX = {}
 def banner_tex(key):
-    """user: flags of that era are not recorded -> every banner is plain white (region colour carries the identity)"""
-    key = "_white"
-    if key in _BTEX: return _BTEX[key]
-    sf = skia.Surface(600, 400); sf.getCanvas().clear(hexc("#FFFFFF")); _BTEX[key] = sf.makeImageSnapshot(); return _BTEX[key]
+    """plain flag in the region's own colour (user: "har jhande ko uska colour do"); the Umayyad/khilafat banner is
+    white and the Abbasid banner black - those two colours are documented"""
+    col = {"umayyad": "#FFFFFF", "caliph": "#FFFFFF", "abbasid": "#111111"}.get(key) or REGCOL.get(key, "#FFFFFF")
+    if col in _BTEX: return _BTEX[col]
+    sf = skia.Surface(600, 400); cc = sf.getCanvas(); cc.clear(hexc(col))
+    if col not in ("#FFFFFF", "#111111"): cc.drawRect(skia.Rect(0, 340, 600, 400), paint(lighten(col, 0.35)))
+    _BTEX[col] = sf.makeImageSnapshot(); return _BTEX[col]
     bgc, emb, ec, _ = BANNER[key]
     if bgc == "TIRANGA": _BTEX[key] = flag_img("in"); return _BTEX[key]
     W_, H_ = 600, 400; sf = skia.Surface(W_, H_); cc = sf.getCanvas(); cc.clear(hexc(bgc))
@@ -608,7 +611,7 @@ u_632 = U("Saal 632")
 @shot(0.0, vin(u_wahi), "cut")
 def s01(c, t):
     tv = vt_now(t)                                    # video time: keeps running through the hold after this line
-    HP = vin(u_wahi) - 0.02                           # hold point (flag planting happens in the silent beat)
+    HP = ue(u_spain) - 0.2                            # flag planting lands right as the line ends (no pause)
     cam = fly((-4.0, 39.5, 26.0), IB_CAM, ease_io(seg(t, 0, 3.0)))
     bg(c, cam)
     k_conq = ease_io(seg(tv, vo_to_video(kw(u_spain, "paanch") - 0.1), HP + 0.5))           # south -> north conquest sweep
@@ -858,7 +861,7 @@ def s10(c, t):
     timeline(c, t, 661, 1.0, span=(620, 780))
     photo_card(c, "umayyad_coin", 120, 300, 300, 300, t, seg(t, kw(u_661, "Umayyad") - 0.2, kw(u_661, "Umayyad") + 0.5), "Umayyad sone ka dinar (695)",
                "Khalifa Abd al-Malik · Public domain · Wikimedia Commons", t0=kw(u_661, "Umayyad"))
-    hl(c, cam, "syria", t, kw(u_raj, "Rajdhani") + 0.3)
+    hl(c, cam, "syria", t, kw(u_raj, "Rajdhani") + 0.3, flag_label=False)
     photo_card(c, "umayyad_mosque", 1280, 420, 540, 310, t, seg(t, kw(U("Damascus."), "Damascus") - 0.1, kw(U("Damascus."), "Damascus") + 0.5), "Umayyad Masjid, Damascus",
                "Photo: Bernard Gagnon · CC BY-SA 3.0 · Wikimedia Commons", t0=us(U("Damascus.")))
     float_map(c, t, kw(U("Damascus."), "Damascus"), "syria", "DAMASCUS · 661", "Sham (Syria), andaazan", 1400, 520, 420, 320, fill=GREEN, pad=0.6)
@@ -889,8 +892,25 @@ def s13(c, t):
     timeline(c, t, lerp(632, 711, ease_io(k)), 1.0, span=(620, 780))
     stat_card(c, 1380, 140, 400, 220, "79 SAAL", "632 se 711", seg(t, kw(u_sirf, "79") - 0.1, kw(u_sirf, "79") + 0.4), YEL)
     src = S(W_CAM, "damascus")
-    arrow(c, src, S(W_CAM, "spain"), seg(t, kw(u_ek, "Spain") - 0.3, kw(u_ek, "Spain") + 0.5), YEL, 8, 0.2)
-    arrow(c, src, S(W_CAM, "sindh"), seg(t, kw(u_doo, "Sindh") - 0.3, kw(u_doo, "Sindh") + 0.5), YEL, 8, -0.2)
+    for j_, (dst, bend, uu, word, nm) in enumerate(((S(W_CAM, "spain"), 0.2, u_ek, "Spain", "HAMLA 1 · SPAIN"), (S(W_CAM, "sindh"), -0.2, u_doo, "Sindh", "HAMLA 2 · SINDH"))):
+        kk = seg(t, kw(u_sirf, "do hamle") - 0.2 + j_ * 0.15, kw(uu, word) + 0.3)
+        if kk <= 0: continue
+        mx, my = (src[0] + dst[0]) / 2 - (dst[1] - src[1]) * bend, (src[1] + dst[1]) / 2 + (dst[0] - src[0]) * bend
+        r_ = route(c, [src, (mx, my), dst], ease_io(kk), RED, 9, dash=False)
+        if r_ and kk < 1:
+            for q in range(5):
+                f_ = ease_io(kk) - q * 0.05
+                if f_ > 0: sx, sy, _ = along(*r_, f_); ic_soldier(c, sx, sy - 12, 40, t + q * 0.3, "#F1FAEE", 255)
+        kb = seg(t, kw(uu, word) + 0.25, kw(uu, word) + 0.9)
+        if 0 < kb < 1:                                          # clash burst on arrival
+            for r in range(10):
+                an = r / 10 * math.tau; d0 = 20 + 70 * ease_out(kb)
+                c.drawLine(dst[0] + d0 * math.cos(an), dst[1] + d0 * math.sin(an), dst[0] + (d0 + 26) * math.cos(an), dst[1] + (d0 + 26) * math.sin(an), paint(YEL, int(255 * (1 - kb)), stroke=5, cap_round=True))
+            c.drawCircle(dst[0], dst[1], 30 + 40 * kb, paint("#FFFFFF", int(160 * (1 - kb)), blur=12))
+        if kb > 0: swords(c, dst[0], dst[1] - 70, 46, seg(t, kw(uu, word) + 0.25, kw(uu, word) + 0.6), "#F1FAEE")
+        label(c, nm, dst[0] + (-60 if j_ == 0 else 60), dst[1] + 70, seg(t, kw(uu, word) + 0.2, kw(uu, word) + 0.5), 26, border=RED)
+        SFX_MARK(kw(uu, word) + 0.25, "boom", -20)
+    title(c, "EK SAAL · DO HAMLE", 960, 170, 56, seg(t, kw(u_sirf, "do hamle") - 0.2, kw(u_sirf, "do hamle") + 0.5), "#F1FAEE") if t < kw(u_ek, "Spain") + 2 else None
     if t > kw(u_ek, "Spain"): draw_region(c, W_CAM, "iberia", GREEN, int(240 * seg(t, kw(u_ek, "Spain"), kw(u_ek, "Spain") + 0.5)), stroke="#FFFFFF")
     if t > kw(u_doo, "Sindh"): draw_region(c, W_CAM, "sindh", GREEN, int(240 * seg(t, kw(u_doo, "Sindh"), kw(u_doo, "Sindh") + 0.5)), stroke="#FFFFFF")
     label(c, "SPAIN", *[a + b for a, b in zip(S(W_CAM, "spain"), (0, -40))], seg(t, kw(u_ek, "Spain"), kw(u_ek, "Spain") + 0.3), 30)
@@ -2019,12 +2039,7 @@ HOSTS.append((HOSTSEG["H4"][0], UN[-1]["end"] + 3.0))
 VIDEO_END_VO = UN[-1]["end"] + 3.0
 
 
-# ---- silent beats after the big animations (VO pauses, visuals keep moving on video time)
-hold(vin(u_wahi) - 0.02, 1.4)                                        # Spain: army plants the white banner
-hold(vin(u_jo) - 0.02, 0.6)                                          # AL-MAHFUZA = SURAKSHIT lands
-hold(vin(u_wo) - 0.02, 0.8)                                          # Baladhuri writing / zoom-out finishes
-hold(min(ue(u_chautha) + 0.05, HOSTSEG["H1"][0] - 0.05), 0.7)        # "galat samajhte hain" + crossed circle
-hold(vin(u_isliye) - 0.02, 0.8)                                      # Baladhuri quote fully written
+# (user: "hook mein mat ruko" - pauses only at chapter cards; hold() kept for later use)
 
 # ------------------------------------------------------------------ captions
 CAPS = []
