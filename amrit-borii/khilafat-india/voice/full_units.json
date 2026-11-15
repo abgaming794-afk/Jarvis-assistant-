@@ -1,1313 +1,1967 @@
 {
+ "duration": 633.156,
  "units": [
   {
    "i": 0,
    "text": "Ek fauj ne sirf paanch saal mein lagbhag poora Spain jeet liya.",
-   "start": 0.6,
-   "end": 3.25
+   "start": 0.0,
+   "end": 3.82,
+   "syl_text": 14,
+   "syl_audio": 13,
+   "ratio": 1.03
   },
   {
    "i": 1,
    "text": "Wahi khilafat, usi daur mein, Atlantic se Central Asia tak raaj kar rahi thi.",
-   "start": 3.8,
-   "end": 8.06
+   "start": 4.31,
+   "end": 8.82,
+   "syl_text": 23,
+   "syl_audio": 20,
+   "ratio": 0.97
   },
   {
    "i": 2,
    "text": "Lekin Hindustan ke darwaze par, iske governor ko apne hi logon ke liye ek naya shehar banana pada.",
-   "start": 8.61,
-   "end": 14.47
+   "start": 9.36,
+   "end": 15.16,
+   "syl_text": 29,
+   "syl_audio": 29,
+   "ratio": 1.11
   },
   {
    "i": 3,
    "text": "Naam rakha:",
-   "start": 15.02,
-   "end": 15.71
+   "start": 15.69,
+   "end": 16.34,
+   "syl_text": 3,
+   "syl_audio": 3,
+   "ratio": 1.11
   },
   {
    "i": 4,
    "text": "Al-Mahfuza.",
-   "start": 16.01,
-   "end": 16.87
+   "start": 16.69,
+   "end": 17.44,
+   "syl_text": 4,
+   "syl_audio": 4,
+   "ratio": 1.11
   },
   {
    "i": 5,
    "text": "Matlab, \"surakshit\".",
-   "start": 17.42,
-   "end": 18.46
+   "start": 17.92,
+   "end": 19.14,
+   "syl_text": 5,
+   "syl_audio": 3,
+   "ratio": 0.67
   },
   {
    "i": 6,
    "text": "Jo fauj Spain jeet chuki thi, wo yahan sar chhupane ki surakshit jagah dhoondh rahi thi.",
-   "start": 19.01,
-   "end": 23.45
+   "start": 19.69,
+   "end": 24.61,
+   "syl_text": 23,
+   "syl_audio": 21,
+   "ratio": 1.01
   },
   {
    "i": 7,
    "text": "Aur ye main nahi keh raha.",
-   "start": 24.0,
-   "end": 25.58
+   "start": 25.16,
+   "end": 26.24,
+   "syl_text": 8,
+   "syl_audio": 7,
+   "ratio": 0.97
   },
   {
    "i": 8,
    "text": "Ye ek Arab itihaskar ne khud likha hai.",
-   "start": 26.13,
-   "end": 28.6
+   "start": 26.68,
+   "end": 28.93,
+   "syl_text": 13,
+   "syl_audio": 11,
+   "ratio": 0.94
   },
   {
    "i": 9,
    "text": "Wo line main aapko isi video mein dikhaunga.",
-   "start": 29.15,
-   "end": 31.8
+   "start": 29.42,
+   "end": 31.48,
+   "syl_text": 13,
+   "syl_audio": 10,
+   "ratio": 0.86
   },
   {
    "i": 10,
    "text": "Lekin pehle samajhna padega ki ye naubat aayi kyun.",
-   "start": 32.35,
-   "end": 35.36
+   "start": 31.92,
+   "end": 34.7,
+   "syl_text": 15,
+   "syl_audio": 13,
+   "ratio": 0.96
   },
   {
    "i": 11,
    "text": "Iske peeche chaar raaz hain.",
-   "start": 35.91,
-   "end": 37.31
+   "start": 35.21,
+   "end": 36.71,
+   "syl_text": 5,
+   "syl_audio": 6,
+   "ratio": 1.33
   },
   {
    "i": 12,
    "text": "Aur chautha raaz wo hai jo aaj bhi zyadatar log galat samajhte hain.",
-   "start": 37.86,
-   "end": 41.4
+   "start": 37.12,
+   "end": 41.27,
+   "syl_text": 18,
+   "syl_audio": 15,
+   "ratio": 0.93
   },
   {
    "i": 13,
    "text": "Namaste doston, main hoon Amrit, aur aap dekh rahe ho AMRIT BORI.",
-   "start": 41.95,
-   "end": 45.49
+   "start": 41.86,
+   "end": 45.8,
+   "syl_text": 17,
+   "syl_audio": 16,
+   "ratio": 1.05
   },
   {
    "i": 14,
    "text": "Yahan wo itihaas milta hai jo textbook mein nahi milta.",
-   "start": 46.04,
-   "end": 49.23
+   "start": 46.2,
+   "end": 49.18,
+   "syl_text": 17,
+   "syl_audio": 14,
+   "ratio": 0.92
   },
   {
    "i": 15,
    "text": "Naye ho toh subscribe kar lo.",
-   "start": 49.78,
-   "end": 51.36
+   "start": 49.55,
+   "end": 51.06,
+   "syl_text": 7,
+   "syl_audio": 6,
+   "ratio": 0.95
   },
   {
    "i": 16,
    "text": "Chalo, waqt mein peeche chalte hain.",
-   "start": 51.91,
-   "end": 53.66
+   "start": 51.52,
+   "end": 53.44,
+   "syl_text": 7,
+   "syl_audio": 6,
+   "ratio": 0.95
   },
   {
    "i": 17,
    "text": "Saal 632.",
-   "start": 54.21,
-   "end": 55.79
+   "start": 53.84,
+   "end": 55.27,
+   "syl_text": 5,
+   "syl_audio": 5,
+   "ratio": 1.11
   },
   {
    "i": 18,
    "text": "Paigambar Muhammad ka inteqaal hota hai.",
-   "start": 56.34,
-   "end": 58.81
+   "start": 55.63,
+   "end": 57.67,
+   "syl_text": 13,
+   "syl_audio": 12,
+   "ratio": 1.03
   },
   {
    "i": 19,
    "text": "Aur uske baad Arab registaan se ek toofan uthta hai.",
-   "start": 59.36,
-   "end": 62.37
+   "start": 58.09,
+   "end": 61.53,
+   "syl_text": 15,
+   "syl_audio": 12,
+   "ratio": 0.89
   },
   {
    "i": 20,
    "text": "661 mein Umayyad khilafat banti hai.",
-   "start": 62.92,
-   "end": 65.93
+   "start": 61.96,
+   "end": 64.56,
+   "syl_text": 13,
+   "syl_audio": 11,
+   "ratio": 0.94
   },
   {
    "i": 21,
    "text": "Rajdhani:",
-   "start": 66.48,
-   "end": 67.16
+   "start": 64.93,
+   "end": 65.53,
+   "syl_text": 3,
+   "syl_audio": 3,
+   "ratio": 1.11
   },
   {
    "i": 22,
    "text": "Damascus.",
-   "start": 67.46,
-   "end": 68.15
+   "start": 65.7,
+   "end": 66.41,
+   "syl_text": 3,
+   "syl_audio": 2,
+   "ratio": 0.74
   },
   {
    "i": 23,
    "text": "Apne charam par ye saamrajya ek crore das lakh varg kilometre se bhi bada tha.",
-   "start": 68.7,
-   "end": 73.14
+   "start": 66.81,
+   "end": 71.79,
+   "syl_text": 21,
+   "syl_audio": 20,
+   "ratio": 1.06
   },
   {
    "i": 24,
    "text": "Teen mahadweep:",
-   "start": 73.69,
-   "end": 74.55
+   "start": 72.22,
+   "end": 72.88,
+   "syl_text": 4,
+   "syl_audio": 3,
+   "ratio": 0.83
   },
   {
    "i": 25,
    "text": "Asia, Africa aur Europe.",
-   "start": 74.85,
-   "end": 76.61
+   "start": 73.34,
+   "end": 75.27,
+   "syl_text": 8,
+   "syl_audio": 8,
+   "ratio": 1.11
   },
   {
    "i": 26,
    "text": "Aur saal 711.",
-   "start": 77.16,
-   "end": 78.74
+   "start": 75.83,
+   "end": 77.32,
+   "syl_text": 6,
+   "syl_audio": 6,
+   "ratio": 1.11
   },
   {
    "i": 27,
    "text": "Sirf 79 saal baad, ek hi saal mein do hamle.",
-   "start": 79.29,
-   "end": 81.94
+   "start": 77.68,
+   "end": 80.77,
+   "syl_text": 12,
+   "syl_audio": 13,
+   "ratio": 1.2
   },
   {
    "i": 28,
    "text": "Ek taraf Spain.",
-   "start": 82.49,
-   "end": 83.35
+   "start": 81.18,
+   "end": 82.13,
+   "syl_text": 4,
+   "syl_audio": 3,
+   "ratio": 0.83
   },
   {
    "i": 29,
    "text": "Doosri taraf Sindh.",
-   "start": 83.9,
-   "end": 84.94
+   "start": 82.42,
+   "end": 83.55,
+   "syl_text": 5,
+   "syl_audio": 4,
+   "ratio": 0.89
   },
   {
    "i": 30,
    "text": "Spain gir gaya.",
-   "start": 85.49,
-   "end": 86.18
+   "start": 83.93,
+   "end": 84.8,
+   "syl_text": 3,
+   "syl_audio": 3,
+   "ratio": 1.11
   },
   {
    "i": 31,
    "text": "Ab nazar thi Sindh ke aage, Hindustan par.",
-   "start": 86.73,
-   "end": 89.02
+   "start": 85.25,
+   "end": 87.79,
+   "syl_text": 11,
+   "syl_audio": 11,
+   "ratio": 1.11
   },
   {
    "i": 32,
    "text": "Lekin ek minute.",
-   "start": 89.57,
-   "end": 90.79
+   "start": 88.29,
+   "end": 89.21,
+   "syl_text": 5,
+   "syl_audio": 3,
+   "ratio": 0.67
   },
   {
    "i": 33,
    "text": "India par pehli nazar toh isse 75 saal pehle hi pad chuki thi.",
-   "start": 91.34,
-   "end": 95.42
+   "start": 89.58,
+   "end": 92.92,
+   "syl_text": 19,
+   "syl_audio": 16,
+   "ratio": 0.94
   },
   {
    "i": 34,
    "text": "Saal 636 ke aaspaas, samundar se teen hamle:",
-   "start": 95.97,
-   "end": 99.34
+   "start": 93.3,
+   "end": 96.78,
+   "syl_text": 14,
+   "syl_audio": 13,
+   "ratio": 1.03
   },
   {
    "i": 35,
    "text": "Thane, Bharuch aur Debal.",
-   "start": 99.64,
-   "end": 101.04
+   "start": 97.16,
+   "end": 99.0,
+   "syl_text": 6,
+   "syl_audio": 6,
+   "ratio": 1.11
   },
   {
    "i": 36,
    "text": "Aur twist ye, ki Khalifa Umar ne in hamlon ki ijaazat hi nahi di thi.",
-   "start": 101.59,
-   "end": 105.66
+   "start": 99.34,
+   "end": 103.58,
+   "syl_text": 22,
+   "syl_audio": 20,
+   "ratio": 1.01
   },
   {
    "i": 37,
    "text": "644 mein Arab fauj Sindhu nadi tak pahunchi, aur Umar ka hukum aaya: nadi paar nahi karni.",
-   "start": 106.21,
-   "end": 112.26
+   "start": 103.96,
+   "end": 109.96,
+   "syl_text": 31,
+   "syl_audio": 28,
+   "ratio": 1.0
   },
   {
    "i": 38,
    "text": "Kyun?",
-   "start": 112.81,
-   "end": 113.14
+   "start": 110.37,
+   "end": 110.62,
+   "syl_text": 1,
+   "syl_audio": 1,
+   "ratio": 1.11
   },
   {
    "i": 39,
    "text": "Unki nazar mein ye kharaab aur gareeb zameen thi.",
-   "start": 113.69,
-   "end": 116.34
+   "start": 111.03,
+   "end": 113.63,
+   "syl_text": 14,
+   "syl_audio": 11,
+   "ratio": 0.87
   },
   {
    "i": 40,
    "text": "Ye baat yaad rakhna, aage bahut kaam aayegi.",
-   "start": 116.89,
-   "end": 119.18
+   "start": 114.04,
+   "end": 116.53,
+   "syl_text": 11,
+   "syl_audio": 9,
+   "ratio": 0.91
   },
   {
    "i": 41,
    "text": "711.",
-   "start": 119.73,
-   "end": 120.95
+   "start": 117.0,
+   "end": 117.88,
+   "syl_text": 4,
+   "syl_audio": 4,
+   "ratio": 1.11
   },
   {
    "i": 42,
    "text": "Iraq ka sakht governor Hajjaj bin Yusuf ek faisla leta hai.",
-   "start": 121.5,
-   "end": 124.86
+   "start": 118.31,
+   "end": 122.1,
+   "syl_text": 18,
+   "syl_audio": 17,
+   "ratio": 1.05
   },
   {
    "i": 43,
    "text": "Sindh par hamle ki kamaan jaati hai uske ek rishtedaar ko:",
-   "start": 125.41,
-   "end": 128.6
+   "start": 122.48,
+   "end": 125.67,
+   "syl_text": 15,
+   "syl_audio": 16,
+   "ratio": 1.19
   },
   {
    "i": 44,
    "text": "Muhammad bin Qasim.",
-   "start": 128.9,
-   "end": 130.12
+   "start": 126.03,
+   "end": 127.17,
+   "syl_text": 6,
+   "syl_audio": 5,
+   "ratio": 0.93
   },
   {
    "i": 45,
    "text": "Umar?",
-   "start": 130.67,
-   "end": 131.18
+   "start": 127.56,
+   "end": 127.89,
+   "syl_text": 2,
+   "syl_audio": 1,
+   "ratio": 0.56
   },
   {
    "i": 46,
    "text": "Sirf pandrah se satrah saal.",
-   "start": 131.73,
-   "end": 133.13
+   "start": 128.23,
+   "end": 129.76,
+   "syl_text": 7,
+   "syl_audio": 6,
+   "ratio": 0.95
   },
   {
    "i": 47,
    "text": "Saath mein chhe hazaar Syrian ghudsawaar, chhe hazaar oont-sawaar, aur teen hazaar oont sirf saamaan ke liye.",
-   "start": 133.68,
-   "end": 138.47
+   "start": 130.1,
+   "end": 136.65,
+   "syl_text": 26,
+   "syl_audio": 26,
+   "ratio": 1.11
   },
   {
    "i": 48,
    "text": "Aur samundar ke raaste paanch manjaniq, yaani patthar phenkne wali badi mashinein.",
-   "start": 139.02,
-   "end": 143.46
+   "start": 137.01,
+   "end": 141.52,
+   "syl_text": 22,
+   "syl_audio": 20,
+   "ratio": 1.01
   },
   {
    "i": 49,
    "text": "Pehla nishaana:",
-   "start": 144.01,
-   "end": 145.05
+   "start": 141.91,
+   "end": 142.69,
+   "syl_text": 5,
+   "syl_audio": 5,
+   "ratio": 1.11
   },
   {
    "i": 50,
    "text": "Debal, aaj ke Karachi ke paas.",
-   "start": 145.35,
-   "end": 147.11
+   "start": 142.91,
+   "end": 144.98,
+   "syl_text": 9,
+   "syl_audio": 7,
+   "ratio": 0.86
   },
   {
    "i": 51,
    "text": "Debal girta hai.",
-   "start": 147.66,
-   "end": 148.7
+   "start": 145.32,
+   "end": 146.29,
+   "syl_text": 5,
+   "syl_audio": 4,
+   "ratio": 0.89
   },
   {
    "i": 52,
    "text": "Mandir toda jaata hai, masjid banti hai.",
-   "start": 149.25,
-   "end": 151.54
+   "start": 146.61,
+   "end": 148.91,
+   "syl_text": 12,
+   "syl_audio": 9,
+   "ratio": 0.83
   },
   {
    "i": 53,
    "text": "712, Aror.",
-   "start": 152.09,
-   "end": 153.67
+   "start": 149.38,
+   "end": 150.88,
+   "syl_text": 6,
+   "syl_audio": 6,
+   "ratio": 1.11
   },
   {
    "i": 54,
    "text": "Raja Dahir haathi par chadh rahe the, tabhi ek teer aaya.",
-   "start": 154.22,
-   "end": 157.23
+   "start": 151.31,
+   "end": 154.47,
+   "syl_text": 15,
+   "syl_audio": 15,
+   "ratio": 1.11
   },
   {
    "i": 55,
    "text": "Sindh ka raja khatam.",
-   "start": 157.78,
-   "end": 159.0
+   "start": 154.83,
+   "end": 156.0,
+   "syl_text": 6,
+   "syl_audio": 6,
+   "ratio": 1.11
   },
   {
    "i": 56,
    "text": "Phir Multan.",
-   "start": 159.55,
-   "end": 160.24
+   "start": 156.36,
+   "end": 157.06,
+   "syl_text": 3,
+   "syl_audio": 3,
+   "ratio": 1.11
   },
   {
    "i": 57,
    "text": "Do mahine tak lada, aur aakhir mein dhokhe se gira.",
-   "start": 160.79,
-   "end": 163.79
+   "start": 157.39,
+   "end": 160.32,
+   "syl_text": 14,
+   "syl_audio": 13,
+   "ratio": 1.03
   },
   {
    "i": 58,
    "text": "Par is jeet ka ek doosra paksh bhi tha.",
-   "start": 164.34,
-   "end": 166.28
+   "start": 160.74,
+   "end": 162.8,
+   "syl_text": 10,
+   "syl_audio": 8,
+   "ratio": 0.89
   },
   {
    "i": 59,
    "text": "Hajjaj ka hukum tha: jo ladein unhe maaro, jo na ladein unhe aman do.",
-   "start": 166.83,
-   "end": 170.91
+   "start": 163.22,
+   "end": 168.0,
+   "syl_text": 20,
+   "syl_audio": 20,
+   "ratio": 1.11
   },
   {
    "i": 60,
    "text": "Ab lag raha tha, agla nishaana poora Hindustan hai.",
-   "start": 171.46,
-   "end": 174.46
+   "start": 168.37,
+   "end": 171.33,
+   "syl_text": 16,
+   "syl_audio": 14,
+   "ratio": 0.97
   },
   {
    "i": 61,
    "text": "Aur yahin kahani palat-ti hai.",
-   "start": 175.01,
-   "end": 176.95
+   "start": 171.74,
+   "end": 173.35,
+   "syl_text": 10,
+   "syl_audio": 7,
+   "ratio": 0.78
   },
   {
    "i": 62,
    "text": "715 mein Damascus mein naya khalifa aata hai, Sulayman.",
-   "start": 177.5,
-   "end": 181.4
+   "start": 173.54,
+   "end": 177.5,
+   "syl_text": 19,
+   "syl_audio": 13,
+   "ratio": 0.76
   },
   {
    "i": 63,
    "text": "Aur Muhammad bin Qasim ko wapas bulaya jaata hai.",
-   "start": 181.95,
-   "end": 184.78
+   "start": 177.9,
+   "end": 180.46,
+   "syl_text": 15,
+   "syl_audio": 13,
+   "ratio": 0.96
   },
   {
    "i": 64,
    "text": "Usi saal, 18 July 715 ko, Mosul mein unki maut ho jaati hai.",
-   "start": 185.33,
-   "end": 189.94
+   "start": 180.78,
+   "end": 185.46,
+   "syl_text": 23,
+   "syl_audio": 21,
+   "ratio": 1.01
   },
   {
    "i": 65,
    "text": "Aur Indian raja Aror samet kaafi ilaaka wapas cheen lete hain.",
-   "start": 190.49,
-   "end": 194.21
+   "start": 185.74,
+   "end": 189.5,
+   "syl_text": 19,
+   "syl_audio": 15,
+   "ratio": 0.88
   },
   {
    "i": 66,
    "text": "Phir Khalifa Umar doosre ne talwar ki jagah ek offer bheja:",
-   "start": 194.76,
-   "end": 198.31
+   "start": 189.83,
+   "end": 193.35,
+   "syl_text": 18,
+   "syl_audio": 15,
+   "ratio": 0.93
   },
   {
    "i": 67,
    "text": "Islam qubool karo, aur apni gaddi par bane raho.",
-   "start": 198.61,
-   "end": 201.61
+   "start": 193.73,
+   "end": 196.44,
+   "syl_text": 15,
+   "syl_audio": 13,
+   "ratio": 0.96
   },
   {
    "i": 68,
    "text": "Sindh ke raja Hullishah samet kuch rajaon ne ye maana bhi.",
-   "start": 202.16,
-   "end": 205.35
+   "start": 196.75,
+   "end": 200.01,
+   "syl_text": 17,
+   "syl_audio": 16,
+   "ratio": 1.05
   },
   {
    "i": 69,
    "text": "Lekin Sindh se aage pakka qabza?",
-   "start": 205.9,
-   "end": 207.84
+   "start": 200.36,
+   "end": 202.24,
+   "syl_text": 9,
+   "syl_audio": 10,
+   "ratio": 1.24
   },
   {
    "i": 70,
    "text": "Ab tak nahi.",
-   "start": 208.39,
-   "end": 209.25
+   "start": 202.61,
+   "end": 203.21,
+   "syl_text": 4,
+   "syl_audio": 2,
+   "ratio": 0.56
   },
   {
    "i": 71,
    "text": "Aur iski pehli wajah thi, north mein.",
-   "start": 209.8,
-   "end": 211.74
+   "start": 203.52,
+   "end": 205.7,
+   "syl_text": 10,
+   "syl_audio": 8,
+   "ratio": 0.89
   },
   {
    "i": 72,
    "text": "India mein ghusne ka sabse aasaan raasta kaunsa tha?",
-   "start": 212.29,
-   "end": 215.11
+   "start": 206.17,
+   "end": 209.1,
+   "syl_text": 13,
+   "syl_audio": 15,
+   "ratio": 1.28
   },
   {
    "i": 73,
    "text": "Kabul, phir Khyber.",
-   "start": 215.66,
-   "end": 216.71
+   "start": 209.43,
+   "end": 210.66,
+   "syl_text": 5,
+   "syl_audio": 5,
+   "ratio": 1.11
   },
   {
    "i": 74,
    "text": "Baad ke zyadatar bade hamlawar isi north-west raaste se aaye.",
-   "start": 217.26,
-   "end": 220.62
+   "start": 210.97,
+   "end": 214.74,
+   "syl_text": 16,
+   "syl_audio": 16,
+   "ratio": 1.11
   },
   {
    "i": 75,
    "text": "Lekin Arabon ke liye ye darwaza band tha.",
-   "start": 221.17,
-   "end": 223.64
+   "start": 215.02,
+   "end": 217.35,
+   "syl_text": 13,
+   "syl_audio": 11,
+   "ratio": 0.94
   },
   {
    "i": 76,
    "text": "Aur yaad rakhna, ye darwaza baad mein kisi aur ke liye khulega.",
-   "start": 224.19,
-   "end": 227.56
+   "start": 217.69,
+   "end": 221.32,
+   "syl_text": 18,
+   "syl_audio": 13,
+   "ratio": 0.8
   },
   {
    "i": 77,
    "text": "Wahan the do raaj:",
-   "start": 228.11,
-   "end": 229.15
+   "start": 221.72,
+   "end": 222.9,
+   "syl_text": 5,
+   "syl_audio": 5,
+   "ratio": 1.11
   },
   {
    "i": 78,
    "text": "Kabul mein Turk Shahi, aur Zabul mein Zunbil.",
-   "start": 229.45,
-   "end": 231.74
+   "start": 223.16,
+   "end": 225.94,
+   "syl_text": 12,
+   "syl_audio": 12,
+   "ratio": 1.11
   },
   {
    "i": 79,
    "text": "665 mein Arabon ne Kabul le liya.",
-   "start": 232.29,
-   "end": 234.23
+   "start": 226.26,
+   "end": 228.69,
+   "syl_text": 13,
+   "syl_audio": 11,
+   "ratio": 0.94
   },
   {
    "i": 80,
    "text": "Aur shehar ne jaldi hi baghaawat kar di.",
-   "start": 234.78,
-   "end": 237.07
+   "start": 229.01,
+   "end": 231.07,
+   "syl_text": 12,
+   "syl_audio": 11,
+   "ratio": 1.02
   },
   {
    "i": 81,
    "text": "698.",
-   "start": 237.62,
-   "end": 237.95
+   "start": 231.46,
+   "end": 232.43,
+   "syl_text": 5,
+   "syl_audio": 5,
+   "ratio": 1.11
   },
   {
    "i": 82,
    "text": "Hajjaj ne ek fauj bheji.",
-   "start": 238.5,
-   "end": 239.9
+   "start": 232.75,
+   "end": 234.35,
+   "syl_text": 7,
+   "syl_audio": 7,
+   "ratio": 1.11
   },
   {
    "i": 83,
    "text": "Naam tha:",
-   "start": 240.45,
-   "end": 240.96
+   "start": 234.63,
+   "end": 235.23,
+   "syl_text": 2,
+   "syl_audio": 2,
+   "ratio": 1.11
   },
   {
    "i": 84,
    "text": "\"Army of Destruction\".",
-   "start": 241.26,
-   "end": 242.48
+   "start": 235.48,
+   "end": 236.74,
+   "syl_text": 6,
+   "syl_audio": 5,
+   "ratio": 0.93
   },
   {
    "i": 85,
    "text": "Tabaahi ki fauj.",
-   "start": 243.03,
-   "end": 244.07
+   "start": 237.09,
+   "end": 238.88,
+   "syl_text": 5,
+   "syl_audio": 6,
+   "ratio": 1.33
   },
   {
    "i": 86,
    "text": "Hukum tha: qile tod do, ladne waalon ko maar do.",
-   "start": 244.62,
-   "end": 247.27
+   "start": 239.11,
+   "end": 241.24,
+   "syl_text": 12,
+   "syl_audio": 10,
+   "ratio": 0.93
   },
   {
    "i": 87,
    "text": "Nateeja?",
-   "start": 247.82,
-   "end": 248.51
+   "start": 241.54,
+   "end": 242.03,
+   "syl_text": 3,
+   "syl_audio": 3,
+   "ratio": 1.11
   },
   {
    "i": 88,
    "text": "Sirf paanch hazaar sainik zinda wapas laute.",
-   "start": 249.06,
-   "end": 251.35
+   "start": 242.28,
+   "end": 244.8,
+   "syl_text": 11,
+   "syl_audio": 11,
+   "ratio": 1.11
   },
   {
    "i": 89,
    "text": "Agle saal chaalis hazaar ki \"Army of Peacocks\" aayi.",
-   "start": 251.9,
-   "end": 254.55
+   "start": 245.1,
+   "end": 248.19,
+   "syl_text": 13,
+   "syl_audio": 14,
+   "ratio": 1.2
   },
   {
    "i": 90,
    "text": "Aur wo ulta Hajjaj ke khilaaf baaghi ho gayi.",
-   "start": 255.1,
-   "end": 257.57
+   "start": 248.47,
+   "end": 251.04,
+   "syl_text": 13,
+   "syl_audio": 13,
+   "ratio": 1.11
   },
   {
    "i": 91,
    "text": "Kabul aur Zabul ne do sau saal se zyada ye deewar khadi rakhi.",
-   "start": 258.12,
-   "end": 261.66
+   "start": 251.33,
+   "end": 255.16,
+   "syl_text": 19,
+   "syl_audio": 20,
+   "ratio": 1.17
   },
   {
    "i": 92,
    "text": "Zunbilon ki aakhri haar 870 mein hui, wo bhi khilafat se nahi, Saffarid raja se.",
-   "start": 262.21,
-   "end": 266.65
+   "start": 255.47,
+   "end": 260.96,
+   "syl_text": 27,
+   "syl_audio": 25,
+   "ratio": 1.03
   },
   {
    "i": 93,
    "text": "Raaz number ek:",
-   "start": 267.2,
-   "end": 268.06
+   "start": 261.43,
+   "end": 262.42,
+   "syl_text": 4,
+   "syl_audio": 4,
+   "ratio": 1.11
   },
   {
    "i": 94,
    "text": "Kabul-Zabul ki deewar.",
-   "start": 268.36,
-   "end": 269.76
+   "start": 262.7,
+   "end": 264.08,
+   "syl_text": 7,
+   "syl_audio": 6,
+   "ratio": 0.95
   },
   {
    "i": 95,
    "text": "Toh Arabon ke paas bacha sabse mushkil raasta:",
-   "start": 270.31,
-   "end": 272.96
+   "start": 264.44,
+   "end": 267.08,
+   "syl_text": 13,
+   "syl_audio": 12,
+   "ratio": 1.03
   },
   {
    "i": 96,
    "text": "Makran ka registaan, Sindh, aur phir Thar.",
-   "start": 273.26,
-   "end": 275.2
+   "start": 267.39,
+   "end": 268.66,
+   "syl_text": 10,
+   "syl_audio": 7,
+   "ratio": 0.78
   },
   {
    "i": 97,
    "text": "Yaad hai Umar ki baat?",
-   "start": 275.75,
-   "end": 276.97
+   "start": 268.87,
+   "end": 270.31,
+   "syl_text": 6,
+   "syl_audio": 5,
+   "ratio": 0.93
   },
   {
    "i": 98,
    "text": "Kharaab, gareeb zameen.",
-   "start": 277.52,
-   "end": 278.74
+   "start": 270.62,
+   "end": 272.42,
+   "syl_text": 6,
+   "syl_audio": 7,
+   "ratio": 1.3
   },
   {
    "i": 99,
    "text": "Raaz number do: registaan ka raasta.",
-   "start": 279.29,
-   "end": 281.23
+   "start": 272.64,
+   "end": 276.22,
+   "syl_text": 10,
+   "syl_audio": 11,
+   "ratio": 1.22
   },
   {
    "i": 100,
    "text": "Lekin sirf registaan se fauj nahi rukti.",
-   "start": 281.78,
-   "end": 284.07
+   "start": 276.53,
+   "end": 278.72,
+   "syl_text": 12,
+   "syl_audio": 10,
+   "ratio": 0.93
   },
   {
    "i": 101,
    "text": "Asli jawab abhi aana baaki hai.",
-   "start": 284.62,
-   "end": 286.74
+   "start": 279.0,
+   "end": 282.08,
+   "syl_text": 11,
+   "syl_audio": 11,
+   "ratio": 1.11
   },
   {
    "i": 102,
    "text": "Ek sawaal aapse.",
-   "start": 287.29,
-   "end": 288.33
+   "start": 282.38,
+   "end": 283.38,
+   "syl_text": 4,
+   "syl_audio": 4,
+   "ratio": 1.11
   },
   {
    "i": 103,
    "text": "Aap kis state se ho?",
-   "start": 288.88,
-   "end": 290.1
+   "start": 283.64,
+   "end": 284.21,
+   "syl_text": 5,
+   "syl_audio": 3,
+   "ratio": 0.67
   },
   {
    "i": 104,
    "text": "Gujarat, Rajasthan, MP ya Kashmir?",
-   "start": 290.65,
-   "end": 292.59
+   "start": 284.44,
+   "end": 286.42,
+   "syl_text": 10,
+   "syl_audio": 8,
+   "ratio": 0.89
   },
   {
    "i": 105,
    "text": "Comment mein likho, kyunki agle chapter mein shayad aapke hi ilaake ke raja aane wale hain.",
-   "start": 293.14,
-   "end": 298.11
+   "start": 286.76,
+   "end": 291.44,
+   "syl_text": 22,
+   "syl_audio": 19,
+   "ratio": 0.96
   },
   {
    "i": 106,
    "text": "723.",
-   "start": 298.66,
-   "end": 298.99
+   "start": 291.88,
+   "end": 292.95,
+   "syl_text": 3,
+   "syl_audio": 3,
+   "ratio": 1.11
   },
   {
    "i": 107,
    "text": "Sindh ka naya governor:",
-   "start": 299.54,
-   "end": 300.76
+   "start": 293.12,
+   "end": 294.44,
+   "syl_text": 6,
+   "syl_audio": 5,
+   "ratio": 0.93
   },
   {
    "i": 108,
    "text": "Junayd.",
-   "start": 301.06,
-   "end": 301.56
+   "start": 294.71,
+   "end": 295.26,
+   "syl_text": 2,
+   "syl_audio": 1,
+   "ratio": 0.56
   },
   {
    "i": 109,
    "text": "Aur wo sabse aage tak gaya.",
-   "start": 302.11,
-   "end": 303.69
+   "start": 295.54,
+   "end": 297.26,
+   "syl_text": 6,
+   "syl_audio": 8,
+   "ratio": 1.48
   },
   {
    "i": 110,
    "text": "Kutch.",
-   "start": 304.24,
-   "end": 304.57
+   "start": 297.54,
+   "end": 297.93,
+   "syl_text": 1,
+   "syl_audio": 1,
+   "ratio": 1.11
   },
   {
    "i": 111,
    "text": "Saurashtra.",
-   "start": 305.12,
-   "end": 305.81
+   "start": 298.13,
+   "end": 298.81,
+   "syl_text": 3,
+   "syl_audio": 2,
+   "ratio": 0.74
   },
   {
    "i": 112,
    "text": "Bharuch.",
-   "start": 306.36,
-   "end": 306.86
+   "start": 299.01,
+   "end": 299.56,
+   "syl_text": 2,
+   "syl_audio": 1,
+   "ratio": 0.56
   },
   {
    "i": 113,
    "text": "Bhinmal.",
-   "start": 307.41,
-   "end": 307.92
+   "start": 299.74,
+   "end": 300.26,
+   "syl_text": 2,
+   "syl_audio": 2,
+   "ratio": 1.11
   },
   {
    "i": 114,
    "text": "Malwa.",
-   "start": 308.47,
-   "end": 308.98
+   "start": 300.43,
+   "end": 300.9,
+   "syl_text": 2,
+   "syl_audio": 2,
+   "ratio": 1.11
   },
   {
    "i": 115,
    "text": "Teen saal mein ek ke baad ek hamle.",
-   "start": 309.53,
-   "end": 311.29
+   "start": 301.17,
+   "end": 303.28,
+   "syl_text": 8,
+   "syl_audio": 8,
+   "ratio": 1.11
   },
   {
    "i": 116,
    "text": "Ujjain tak pahunch gaya, lekin shehar haath nahi aaya.",
-   "start": 311.84,
-   "end": 314.49
+   "start": 303.55,
+   "end": 306.26,
+   "syl_text": 14,
+   "syl_audio": 13,
+   "ratio": 1.03
   },
   {
    "i": 117,
    "text": "Pratihara vansh ke baad ke ek shilalekh mein likha hai ki unke raja Nagabhata pehle ne \"taaqatwar Mlechha raja ki badi fauj ko kuchal diya\".",
-   "start": 315.04,
-   "end": 322.86
+   "start": 306.58,
+   "end": 314.93,
+   "syl_text": 41,
+   "syl_audio": 39,
+   "ratio": 1.06
   },
   {
    "i": 118,
    "text": "Ye ladai kab aur kahan hui, ispar historians mein behes hai.",
-   "start": 323.41,
-   "end": 326.6
+   "start": 315.25,
+   "end": 318.69,
+   "syl_text": 17,
+   "syl_audio": 16,
+   "ratio": 1.05
   },
   {
    "i": 119,
    "text": "Lekin aage jo hua, wo Arab sources mein darj hai.",
-   "start": 327.15,
-   "end": 329.8
+   "start": 318.97,
+   "end": 321.81,
+   "syl_text": 13,
+   "syl_audio": 12,
+   "ratio": 1.03
   },
   {
    "i": 120,
    "text": "Agle governor Tamim ke waqt Junayd ki saari jeet haath se nikal gayi.",
-   "start": 330.35,
-   "end": 334.07
+   "start": 322.11,
+   "end": 326.13,
+   "syl_text": 19,
+   "syl_audio": 18,
+   "ratio": 1.05
   },
   {
    "i": 121,
    "text": "Syria aur Yemen se aaye sainik chaukiyan chhodkar chale gaye, aur wapas aane se mana kar diya.",
-   "start": 334.62,
-   "end": 339.41
+   "start": 326.42,
+   "end": 331.58,
+   "syl_text": 24,
+   "syl_audio": 23,
+   "ratio": 1.07
   },
   {
    "i": 122,
    "text": "Aur ab wo line, jiska wada maine shuru mein kiya tha.",
-   "start": 339.96,
-   "end": 342.97
+   "start": 331.86,
+   "end": 334.77,
+   "syl_text": 14,
+   "syl_audio": 10,
+   "ratio": 0.79
   },
   {
    "i": 123,
    "text": "731.",
-   "start": 343.52,
-   "end": 343.85
+   "start": 335.15,
+   "end": 336.39,
+   "syl_text": 4,
+   "syl_audio": 4,
+   "ratio": 1.11
   },
   {
    "i": 124,
    "text": "Naya governor Al-Hakam Sindh pahunchta hai.",
-   "start": 344.4,
-   "end": 346.69
+   "start": 336.57,
+   "end": 339.01,
+   "syl_text": 12,
+   "syl_audio": 10,
+   "ratio": 0.93
   },
   {
    "i": 125,
    "text": "Arab itihaskar Baladhuri likhta hai:",
-   "start": 347.24,
-   "end": 349.71
+   "start": 339.25,
+   "end": 342.57,
+   "syl_text": 13,
+   "syl_audio": 13,
+   "ratio": 1.11
   },
   {
    "i": 126,
    "text": "Hind ke log, Kassa ko chhodkar, apne purane dharm par laut chuke the.",
-   "start": 350.01,
-   "end": 353.56
+   "start": 342.73,
+   "end": 346.02,
+   "syl_text": 16,
+   "syl_audio": 17,
+   "ratio": 1.18
   },
   {
    "i": 127,
    "text": "Aur Musalmanon ke paas sar chhupane ki koi surakshit jagah nahi bachi thi.",
-   "start": 354.11,
-   "end": 358.36
+   "start": 346.37,
+   "end": 351.3,
+   "syl_text": 22,
+   "syl_audio": 24,
+   "ratio": 1.21
   },
   {
    "i": 128,
    "text": "Isliye Al-Hakam ne jheel ke us paar ek naya shehar basaya:",
-   "start": 358.91,
-   "end": 361.92
+   "start": 351.43,
+   "end": 354.71,
+   "syl_text": 16,
+   "syl_audio": 16,
+   "ratio": 1.11
   },
   {
    "i": 129,
    "text": "Al-Mahfuza.",
-   "start": 362.22,
-   "end": 363.09
+   "start": 355.09,
+   "end": 355.91,
+   "syl_text": 4,
+   "syl_audio": 4,
+   "ratio": 1.11
   },
   {
    "i": 130,
    "text": "Surakshit.",
-   "start": 363.64,
-   "end": 364.32
+   "start": 356.31,
+   "end": 356.96,
+   "syl_text": 3,
+   "syl_audio": 1,
+   "ratio": 0.37
   },
   {
    "i": 131,
    "text": "Paas mein hi Muhammad bin Qasim ke bete Amr ne doosra shehar basaya:",
-   "start": 364.87,
-   "end": 368.59
+   "start": 357.32,
+   "end": 361.33,
+   "syl_text": 19,
+   "syl_audio": 20,
+   "ratio": 1.17
   },
   {
    "i": 132,
    "text": "Al-Mansura, yaani \"vijayi\".",
-   "start": 368.89,
-   "end": 370.47
+   "start": 361.64,
+   "end": 363.71,
+   "syl_text": 8,
+   "syl_audio": 8,
+   "ratio": 1.11
   },
   {
    "i": 133,
    "text": "Yahi aage Arab Sindh ki rajdhani bana.",
-   "start": 371.02,
-   "end": 373.49
+   "start": 364.03,
+   "end": 366.39,
+   "syl_text": 12,
+   "syl_audio": 8,
+   "ratio": 0.74
   },
   {
    "i": 134,
    "text": "Socho.",
-   "start": 374.04,
-   "end": 374.55
+   "start": 366.73,
+   "end": 367.12,
+   "syl_text": 2,
+   "syl_audio": 1,
+   "ratio": 0.56
   },
   {
    "i": 135,
    "text": "Ek shehar ka naam \"surakshit\", doosre ka \"vijayi\".",
-   "start": 375.1,
-   "end": 377.57
+   "start": 367.42,
+   "end": 370.43,
+   "syl_text": 12,
+   "syl_audio": 12,
+   "ratio": 1.11
   },
   {
    "i": 136,
    "text": "Ek mein dar tha, doosre mein ummeed.",
-   "start": 378.12,
-   "end": 379.88
+   "start": 370.74,
+   "end": 373.21,
+   "syl_text": 8,
+   "syl_audio": 9,
+   "ratio": 1.25
   },
   {
    "i": 137,
    "text": "Aur Al-Hakam haar maanne waala nahi tha.",
-   "start": 380.43,
-   "end": 382.72
+   "start": 373.55,
+   "end": 375.81,
+   "syl_text": 11,
+   "syl_audio": 10,
+   "ratio": 1.01
   },
   {
    "i": 138,
    "text": "Usne phir Gujarat ki taraf koshish ki.",
-   "start": 383.27,
-   "end": 385.56
+   "start": 376.12,
+   "end": 378.08,
+   "syl_text": 11,
+   "syl_audio": 8,
+   "ratio": 0.81
   },
   {
    "i": 139,
    "text": "Lekin 736 ke ek shilalekh ke mutabik Bharuch ke raja Jayabhata chauthe ne Vallabhi ki madad karte hue Arab fauj ko haraya.",
-   "start": 386.11,
-   "end": 393.05
+   "start": 378.4,
+   "end": 386.54,
+   "syl_text": 39,
+   "syl_audio": 36,
+   "ratio": 1.03
   },
   {
    "i": 140,
    "text": "737.",
-   "start": 393.6,
-   "end": 393.93
+   "start": 386.88,
+   "end": 387.99,
+   "syl_text": 4,
+   "syl_audio": 3,
+   "ratio": 0.83
   },
   {
    "i": 141,
    "text": "Al-Hakam ne Damascus se aur sainik maange.",
-   "start": 394.48,
-   "end": 396.95
+   "start": 388.29,
+   "end": 390.87,
+   "syl_text": 12,
+   "syl_audio": 11,
+   "ratio": 1.02
   },
   {
    "i": 142,
    "text": "Teen hazaar bheje bhi gaye, lekin wo kabhi Sindh pahunche hi nahi.",
-   "start": 397.5,
-   "end": 401.04
+   "start": 391.16,
+   "end": 394.49,
+   "syl_text": 17,
+   "syl_audio": 16,
+   "ratio": 1.05
   },
   {
    "i": 143,
    "text": "Kahan gaye?",
-   "start": 401.59,
-   "end": 402.28
+   "start": 394.82,
+   "end": 395.27,
+   "syl_text": 3,
+   "syl_audio": 3,
+   "ratio": 1.11
   },
   {
    "i": 144,
    "text": "Ye raaz chapter paanch mein khulega.",
-   "start": 402.83,
-   "end": 404.59
+   "start": 395.6,
+   "end": 397.47,
+   "syl_text": 9,
+   "syl_audio": 6,
+   "ratio": 0.74
   },
   {
    "i": 145,
    "text": "Aur phir aaya Navsari.",
-   "start": 405.14,
-   "end": 406.36
+   "start": 397.8,
+   "end": 399.21,
+   "syl_text": 6,
+   "syl_audio": 5,
+   "ratio": 0.93
   },
   {
    "i": 146,
    "text": "Navsari mein mila ek taambe ka patra, saal 739 ka.",
-   "start": 406.91,
-   "end": 409.74
+   "start": 399.55,
+   "end": 403.67,
+   "syl_text": 18,
+   "syl_audio": 15,
+   "ratio": 0.93
   },
   {
    "i": 147,
    "text": "Ye is poori kahani ka sabse pakka saboot hai.",
-   "start": 410.29,
-   "end": 413.11
+   "start": 404.0,
+   "end": 406.96,
+   "syl_text": 14,
+   "syl_audio": 13,
+   "ratio": 1.03
   },
   {
    "i": 148,
    "text": "Isme likha hai ki Tajik, yaani Arab, Sindh, Kutch aur Saurashtra jaise kai rajyon ko raundte hue Navsari tak aaye.",
-   "start": 413.66,
-   "end": 419.53
+   "start": 407.29,
+   "end": 414.62,
+   "syl_text": 29,
+   "syl_audio": 31,
+   "ratio": 1.19
   },
   {
    "i": 149,
    "text": "Aur yahan Chalukya raja Avanijanashraya Pulakeshin ne unhe haraaya.",
-   "start": 420.08,
-   "end": 424.34
+   "start": 414.94,
+   "end": 419.04,
+   "syl_text": 22,
+   "syl_audio": 19,
+   "ratio": 0.96
   },
   {
    "i": 150,
    "text": "Ek saal baad, 740.",
-   "start": 424.89,
-   "end": 425.75
+   "start": 419.37,
+   "end": 421.41,
+   "syl_text": 7,
+   "syl_audio": 6,
+   "ratio": 0.95
   },
   {
    "i": 151,
    "text": "Al-Hakam khud Saurashtra mein ladte hue maara gaya.",
-   "start": 426.3,
-   "end": 428.95
+   "start": 421.7,
+   "end": 424.36,
+   "syl_text": 13,
+   "syl_audio": 12,
+   "ratio": 1.03
   },
   {
    "i": 152,
    "text": "Usi saal Chittor ke Mori rajaon ne Arab gheraabandi naakaam kar di.",
-   "start": 429.5,
-   "end": 433.4
+   "start": 424.67,
+   "end": 428.84,
+   "syl_text": 21,
+   "syl_audio": 19,
+   "ratio": 1.01
   },
   {
    "i": 153,
    "text": "Mewar ki parampara kehti hai ki Bappa Rawal ne bhi Arabon ko khadeda.",
-   "start": 433.95,
-   "end": 438.39
+   "start": 429.17,
+   "end": 433.04,
+   "syl_text": 24,
+   "syl_audio": 19,
+   "ratio": 0.88
   },
   {
    "i": 154,
    "text": "Haalaanki unki pehchaan par historians ek raay nahi hain.",
-   "start": 438.94,
-   "end": 441.94
+   "start": 433.32,
+   "end": 436.43,
+   "syl_text": 16,
+   "syl_audio": 13,
+   "ratio": 0.9
   },
   {
    "i": 155,
    "text": "Aur 743 tak?",
-   "start": 442.49,
-   "end": 443.18
+   "start": 436.73,
+   "end": 438.02,
+   "syl_text": 7,
+   "syl_audio": 7,
+   "ratio": 1.11
   },
   {
    "i": 156,
    "text": "Rajasthan aur Gujarat ki saari Arab jeet khatam.",
-   "start": 443.73,
-   "end": 446.56
+   "start": 438.33,
+   "end": 441.48,
+   "syl_text": 15,
+   "syl_audio": 12,
+   "ratio": 0.89
   },
   {
    "i": 157,
    "text": "Raaz number teen:",
-   "start": 447.11,
-   "end": 447.97
+   "start": 441.82,
+   "end": 442.99,
+   "syl_text": 4,
+   "syl_audio": 4,
+   "ratio": 1.11
   },
   {
    "i": 158,
    "text": "Indian rajya ek baar nahi, baar baar lade.",
-   "start": 448.27,
-   "end": 450.56
+   "start": 443.3,
+   "end": 445.01,
+   "syl_text": 11,
+   "syl_audio": 8,
+   "ratio": 0.81
   },
   {
    "i": 159,
    "text": "Alag alag raja, alag alag morche.",
-   "start": 451.11,
-   "end": 453.41
+   "start": 445.16,
+   "end": 448.34,
+   "syl_text": 11,
+   "syl_audio": 10,
+   "ratio": 1.01
   },
   {
    "i": 160,
    "text": "Aur historian Blankinship ka ek dilchasp point: in hamlon ne hi Indian rajyon ko bada aur mazboot banne par majboor kiya.",
-   "start": 453.96,
-   "end": 460.0
+   "start": 448.65,
+   "end": 456.04,
+   "syl_text": 32,
+   "syl_audio": 30,
+   "ratio": 1.04
   },
   {
    "i": 161,
    "text": "Yahi Pratihara aage chalkar ek bada saamrajya bane, Sindh ki seema se Bengal tak.",
-   "start": 460.55,
-   "end": 465.34
+   "start": 456.35,
+   "end": 461.65,
+   "syl_text": 24,
+   "syl_audio": 23,
+   "ratio": 1.07
   },
   {
    "i": 162,
    "text": "Sau saal se zyada baad, 851 mein, Arab vyapari Sulaiman ne likha ki Gurjara raja jaisa ghudsawaar dasta kisi aur Indian raja ke paas nahi.",
-   "start": 465.89,
-   "end": 473.72
+   "start": 461.96,
+   "end": 471.42,
+   "syl_text": 47,
+   "syl_audio": 42,
+   "ratio": 0.99
   },
   {
    "i": 163,
    "text": "Ab yaad karo wo teen hazaar sainik.",
-   "start": 474.27,
-   "end": 476.21
+   "start": 471.73,
+   "end": 473.6,
+   "syl_text": 10,
+   "syl_audio": 8,
+   "ratio": 0.89
   },
   {
    "i": 164,
    "text": "Wo kahan gaye?",
-   "start": 476.76,
-   "end": 477.62
+   "start": 473.88,
+   "end": 474.5,
+   "syl_text": 4,
+   "syl_audio": 4,
+   "ratio": 1.11
   },
   {
    "i": 165,
    "text": "Iske liye India se nazar hatao, aur poora naksha dekho.",
-   "start": 478.17,
-   "end": 481.36
+   "start": 474.8,
+   "end": 478.12,
+   "syl_text": 16,
+   "syl_audio": 15,
+   "ratio": 1.04
   },
   {
    "i": 166,
    "text": "Kyunki usi waqt khilafat har taraf ek saath jal rahi thi.",
-   "start": 481.91,
-   "end": 485.09
+   "start": 478.37,
+   "end": 481.82,
+   "syl_text": 17,
+   "syl_audio": 13,
+   "ratio": 0.85
   },
   {
    "i": 167,
    "text": "724, Central Asia:",
-   "start": 485.64,
-   "end": 486.69
+   "start": 482.16,
+   "end": 484.31,
+   "syl_text": 8,
+   "syl_audio": 5,
+   "ratio": 0.69
   },
   {
    "i": 168,
    "text": "\"Day of Thirst\".",
-   "start": 486.99,
-   "end": 487.67
+   "start": 484.62,
+   "end": 485.81,
+   "syl_text": 3,
+   "syl_audio": 3,
+   "ratio": 1.11
   },
   {
    "i": 169,
    "text": "Fauj pyaas mein phans gayi.",
-   "start": 488.22,
-   "end": 489.26
+   "start": 486.11,
+   "end": 487.48,
+   "syl_text": 5,
+   "syl_audio": 3,
+   "ratio": 0.67
   },
   {
    "i": 170,
    "text": "730:",
-   "start": 489.81,
-   "end": 490.14
+   "start": 487.8,
+   "end": 488.77,
+   "syl_text": 3,
+   "syl_audio": 3,
+   "ratio": 1.11
   },
   {
    "i": 171,
    "text": "Khazaron ne ek poori Arab fauj khatam kar di.",
-   "start": 490.44,
-   "end": 493.09
+   "start": 489.06,
+   "end": 491.76,
+   "syl_text": 14,
+   "syl_audio": 11,
+   "ratio": 0.87
   },
   {
    "i": 172,
    "text": "731:",
-   "start": 493.64,
-   "end": 493.97
+   "start": 492.08,
+   "end": 493.22,
+   "syl_text": 4,
+   "syl_audio": 4,
+   "ratio": 1.11
   },
   {
    "i": 173,
    "text": "Samarkand ke paas \"Battle of the Defile\".",
-   "start": 494.27,
-   "end": 496.56
+   "start": 493.52,
+   "end": 496.06,
+   "syl_text": 10,
+   "syl_audio": 11,
+   "ratio": 1.22
   },
   {
    "i": 174,
    "text": "732:",
-   "start": 497.11,
-   "end": 497.44
+   "start": 496.4,
+   "end": 497.45,
+   "syl_text": 4,
+   "syl_audio": 4,
+   "ratio": 1.11
   },
   {
    "i": 175,
    "text": "France mein Tours, jahan Charles Martel ne rasta roka.",
    "start": 497.74,
-   "end": 500.57
+   "end": 501.2,
+   "syl_text": 14,
+   "syl_audio": 12,
+   "ratio": 0.95
   },
   {
    "i": 176,
    "text": "739:",
-   "start": 501.12,
-   "end": 501.45
+   "start": 501.41,
+   "end": 502.5,
+   "syl_text": 5,
+   "syl_audio": 4,
+   "ratio": 0.89
   },
   {
    "i": 177,
    "text": "Byzantine sena se Akroinon mein haar.",
-   "start": 501.75,
-   "end": 504.04
+   "start": 502.73,
+   "end": 505.11,
+   "syl_text": 11,
+   "syl_audio": 12,
+   "ratio": 1.21
   },
   {
    "i": 178,
    "text": "740:",
-   "start": 504.59,
-   "end": 504.92
+   "start": 505.47,
+   "end": 506.44,
+   "syl_text": 4,
+   "syl_audio": 4,
+   "ratio": 1.11
   },
   {
    "i": 179,
    "text": "North Africa mein Berber baghaawat.",
-   "start": 505.22,
-   "end": 507.16
+   "start": 506.67,
+   "end": 508.59,
+   "syl_text": 10,
+   "syl_audio": 9,
+   "ratio": 1.0
   },
   {
    "i": 180,
    "text": "Sattaais hazaar Syrian sainikon ki fauj saaf.",
-   "start": 507.71,
-   "end": 510.0
+   "start": 508.87,
+   "end": 511.86,
+   "syl_text": 12,
+   "syl_audio": 13,
+   "ratio": 1.2
   },
   {
    "i": 181,
    "text": "Aur wo teen hazaar sainik jo Sindh aa rahe the?",
-   "start": 510.55,
-   "end": 513.02
+   "start": 512.21,
+   "end": 514.38,
+   "syl_text": 12,
+   "syl_audio": 12,
+   "ratio": 1.11
   },
   {
    "i": 182,
    "text": "Unhe raaste mein hi Iraq ki ek baghaawat dabane bhej diya gaya.",
-   "start": 513.57,
-   "end": 517.11
+   "start": 514.69,
+   "end": 518.03,
+   "syl_text": 16,
+   "syl_audio": 14,
+   "ratio": 0.97
   },
   {
    "i": 183,
    "text": "Jab ghar mein hi aag lagi ho, toh Sindh ki kaun sune?",
-   "start": 517.66,
-   "end": 520.31
+   "start": 518.36,
+   "end": 521.12,
+   "syl_text": 13,
+   "syl_audio": 11,
+   "ratio": 0.94
   },
   {
    "i": 184,
    "text": "Historian Khalid Blankinship ke mutabik, inhi haaron ne Umayyad vansh ko khatam kar diya.",
-   "start": 520.86,
-   "end": 525.48
+   "start": 521.53,
+   "end": 526.56,
+   "syl_text": 25,
+   "syl_audio": 23,
+   "ratio": 1.02
   },
   {
    "i": 185,
    "text": "Aur 750 mein wahi hua.",
-   "start": 526.03,
-   "end": 527.25
+   "start": 526.87,
+   "end": 528.7,
+   "syl_text": 9,
+   "syl_audio": 8,
+   "ratio": 0.99
   },
   {
    "i": 186,
    "text": "Abbasi kranti, aur Umayyad khilafat khatam.",
-   "start": 527.8,
-   "end": 530.27
+   "start": 529.02,
+   "end": 531.85,
+   "syl_text": 13,
+   "syl_audio": 11,
+   "ratio": 0.94
   },
   {
    "i": 187,
    "text": "Naye Abbasi khalifaon ne bhi koshish ki, is baar samundar se.",
-   "start": 530.82,
-   "end": 534.19
+   "start": 532.19,
+   "end": 535.61,
+   "syl_text": 18,
+   "syl_audio": 12,
+   "ratio": 0.74
   },
   {
    "i": 188,
    "text": "Lekin 776 mein Saindhava raja Agguka ki navy ne unka bedha haraya.",
-   "start": 534.74,
-   "end": 538.81
+   "start": 535.98,
+   "end": 540.48,
+   "syl_text": 26,
+   "syl_audio": 21,
+   "ratio": 0.9
   },
   {
    "i": 189,
    "text": "Aur Khalifa al-Mahdi ne India par samundari hamle ka iraada hi chhod diya.",
-   "start": 539.36,
-   "end": 543.8
+   "start": 540.79,
+   "end": 544.97,
+   "syl_text": 23,
+   "syl_audio": 20,
+   "ratio": 0.97
   },
   {
    "i": 190,
    "text": "Raaz number chaar: khilafat bahut phail chuki thi, aur andar se toot rahi thi.",
-   "start": 544.35,
-   "end": 548.25
+   "start": 545.5,
+   "end": 550.33,
+   "syl_text": 21,
+   "syl_audio": 15,
+   "ratio": 0.79
   },
   {
    "i": 191,
    "text": "Toh ek baar jod ke dekho.",
-   "start": 548.8,
-   "end": 550.2
+   "start": 550.68,
+   "end": 551.97,
+   "syl_text": 7,
+   "syl_audio": 5,
+   "ratio": 0.79
   },
   {
    "i": 192,
    "text": "Kabul ki deewar.",
-   "start": 550.75,
-   "end": 551.79
+   "start": 552.27,
+   "end": 553.26,
+   "syl_text": 5,
+   "syl_audio": 5,
+   "ratio": 1.11
   },
   {
    "i": 193,
    "text": "Registaan.",
-   "start": 552.34,
-   "end": 553.03
+   "start": 553.48,
+   "end": 554.26,
+   "syl_text": 3,
+   "syl_audio": 3,
+   "ratio": 1.11
   },
   {
    "i": 194,
    "text": "Indian rajyon ka baar baar jawab.",
-   "start": 553.58,
-   "end": 555.34
+   "start": 554.53,
+   "end": 556.59,
+   "syl_text": 9,
+   "syl_audio": 9,
+   "ratio": 1.11
   },
   {
    "i": 195,
    "text": "Aur khilafat ka andar se tootna.",
-   "start": 555.89,
-   "end": 557.82
+   "start": 556.89,
+   "end": 558.77,
+   "syl_text": 10,
+   "syl_audio": 8,
+   "ratio": 0.89
   },
   {
    "i": 196,
    "text": "Arab raaj Sindh aur Multan se aage nahi badha.",
-   "start": 558.37,
-   "end": 561.02
+   "start": 559.08,
+   "end": 561.81,
+   "syl_text": 13,
+   "syl_audio": 13,
+   "ratio": 1.11
   },
   {
    "i": 197,
    "text": "Aur 854 ke aaspaas wo bhi chhote chhote emiraton mein bant gaya.",
-   "start": 561.57,
-   "end": 564.94
+   "start": 562.12,
+   "end": 566.2,
+   "syl_text": 19,
+   "syl_audio": 18,
+   "ratio": 1.05
   },
   {
    "i": 198,
    "text": "Lekin ab wo baat, jiske liye zyadatar log yahan tak aate hi nahi.",
-   "start": 565.49,
-   "end": 569.21
+   "start": 566.62,
+   "end": 570.55,
+   "syl_text": 18,
+   "syl_audio": 18,
+   "ratio": 1.11
   },
   {
    "i": 199,
    "text": "Bahut log sochte hain ki India mein baad mein jo Muslim saltanat aayi, wo Arab khilafat ki thi.",
-   "start": 569.76,
-   "end": 574.73
+   "start": 570.89,
+   "end": 576.1,
+   "syl_text": 26,
+   "syl_audio": 22,
+   "ratio": 0.94
   },
   {
    "i": 200,
    "text": "Ye galat hai.",
-   "start": 575.28,
-   "end": 576.14
+   "start": 576.46,
+   "end": 577.19,
+   "syl_text": 4,
+   "syl_audio": 2,
+   "ratio": 0.56
   },
   {
    "i": 201,
    "text": "North India jeetne wale Mahmud Ghazni aur Muhammad Ghori, Arab khilafat ke log nahi the.",
-   "start": 576.69,
-   "end": 581.66
+   "start": 577.52,
+   "end": 582.4,
+   "syl_text": 25,
+   "syl_audio": 24,
+   "ratio": 1.07
   },
   {
    "i": 202,
    "text": "Mahmud ek Turk tha, aur khalifa ko bas naam ka salaam karta tha.",
-   "start": 582.21,
-   "end": 585.58
+   "start": 582.75,
+   "end": 586.8,
+   "syl_text": 18,
+   "syl_audio": 13,
+   "ratio": 0.8
   },
   {
    "i": 203,
    "text": "Aur sabse bada twist?",
-   "start": 586.13,
-   "end": 587.35
+   "start": 587.17,
+   "end": 588.34,
+   "syl_text": 5,
+   "syl_audio": 5,
+   "ratio": 1.11
   },
   {
    "i": 204,
    "text": "Wo aaye north-west se.",
-   "start": 587.9,
-   "end": 588.94
+   "start": 588.63,
+   "end": 590.09,
+   "syl_text": 5,
+   "syl_audio": 4,
+   "ratio": 0.89
   },
   {
    "i": 205,
    "text": "Yaani wahi darwaza, jo Arabon ke liye kabhi nahi khula.",
-   "start": 589.49,
-   "end": 593.04
+   "start": 590.42,
+   "end": 593.57,
+   "syl_text": 19,
+   "syl_audio": 14,
+   "ratio": 0.82
   },
   {
    "i": 206,
    "text": "Aur ek aakhri sach: jang ke saath vyapar bhi chalta raha.",
-   "start": 593.59,
-   "end": 596.41
+   "start": 594.06,
+   "end": 597.49,
+   "syl_text": 15,
+   "syl_audio": 12,
+   "ratio": 0.89
   },
   {
    "i": 207,
    "text": "Rashtrakuta raja Arab vyapariyon ko izzat dete the, aur Konkan ke bandargaahon mein masjidein bhi bani.",
-   "start": 596.96,
-   "end": 602.83
+   "start": 597.81,
+   "end": 603.65,
+   "syl_text": 31,
+   "syl_audio": 28,
+   "ratio": 1.0
   },
   {
    "i": 208,
    "text": "Toh ye kahani Hindu banaam Musalmaan ki nahi.",
-   "start": 603.38,
-   "end": 606.21
+   "start": 603.99,
+   "end": 606.45,
+   "syl_text": 15,
+   "syl_audio": 14,
+   "ratio": 1.04
   },
   {
    "i": 209,
    "text": "Ye ek bade saamrajya banaam kai mazboot Indian rajyon ki kahani hai.",
-   "start": 606.76,
-   "end": 610.66
+   "start": 606.74,
+   "end": 611.03,
+   "syl_text": 20,
+   "syl_audio": 16,
+   "ratio": 0.89
   },
   {
    "i": 210,
    "text": "Ab aapki baari.",
-   "start": 611.21,
-   "end": 612.25
+   "start": 611.5,
+   "end": 612.41,
+   "syl_text": 5,
+   "syl_audio": 4,
+   "ratio": 0.89
   },
   {
    "i": 211,
    "text": "In chaar raazon mein sabse bada kaun sa tha?",
-   "start": 612.8,
-   "end": 615.09
+   "start": 612.75,
+   "end": 615.22,
+   "syl_text": 11,
+   "syl_audio": 11,
+   "ratio": 1.11
   },
   {
    "i": 212,
    "text": "Comment mein number likho: ek, do, teen ya chaar.",
-   "start": 615.64,
-   "end": 617.94
+   "start": 615.55,
+   "end": 619.24,
+   "syl_text": 12,
+   "syl_audio": 11,
+   "ratio": 1.02
   },
   {
    "i": 213,
    "text": "Aur agli video mein: jo darwaza Arabon ke liye band raha, wo Mahmud Ghazni ke liye kaise khula?",
-   "start": 618.49,
-   "end": 623.81
+   "start": 619.59,
+   "end": 625.18,
+   "syl_text": 28,
+   "syl_audio": 26,
+   "ratio": 1.03
   },
   {
    "i": 214,
    "text": "Wo kahani miss mat karna.",
-   "start": 624.36,
-   "end": 625.94
+   "start": 625.48,
+   "end": 626.93,
+   "syl_text": 8,
+   "syl_audio": 7,
+   "ratio": 0.97
   },
   {
    "i": 215,
    "text": "Abhi subscribe karo, aur bell daba do.",
-   "start": 626.49,
-   "end": 628.79
+   "start": 627.25,
+   "end": 629.25,
+   "syl_text": 11,
+   "syl_audio": 10,
+   "ratio": 1.01
   },
   {
    "i": 216,
    "text": "Main hoon Amrit, aap dekh rahe the AMRIT BORI.",
-   "start": 629.34,
-   "end": 631.81
+   "start": 629.54,
+   "end": 632.1,
+   "syl_text": 12,
+   "syl_audio": 11,
+   "ratio": 1.02
   },
   {
    "i": 217,
    "text": "Jai Hind.",
-   "start": 632.36,
-   "end": 632.86
+   "start": 632.38,
+   "end": 632.96,
+   "syl_text": 2,
+   "syl_audio": 1,
+   "ratio": 0.56
   }
- ],
- "placeholder": true
+ ]
 }

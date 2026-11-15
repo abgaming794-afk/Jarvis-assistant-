@@ -32,6 +32,7 @@ def kw(i, word, occ=0):
         if us(i) < b < ue(i) and abs(b - est) < 0.35 and (best is None or abs(b - est) < abs(best - est)): best = b
     return (best if best else est) - 0.05
 
+HOSTSEG = {"H1": (41.6, 53.9), "H2": (282.1, 291.7), "H3": (611.3, 619.45), "H4": (627.0, 633.6)}   # = host/prep_host.py
 GREEN = "#2FA36B"; GREEN_D = "#1F7A4F"; SAFF = "#FF9933"; RED = PAL["axis"]; YEL = PAL["yel"]; NAVY = PAL["ocean"]
 
 # ------------------------------------------------------------------ geography
@@ -65,13 +66,20 @@ def load_geo():
     CALIPH = unary_union(parts).buffer(0)
     SINDH = G["PAK"].intersection(sindh_poly.buffer(0.15))
     IBERIA = unary_union([G["ESP"], G["PRT"]])
+    U_ = lambda ks: unary_union([G[k] for k in ks if k in G])
+    REG.update({"caliph": CALIPH, "sindh": SINDH, "iberia": IBERIA, "india": G["IND"],
+                "arabia": U_(["SAU", "YEM", "OMN", "ARE", "QAT", "KWT", "BHR"]), "syria": U_(["SYR", "LBN", "JOR", "ISR", "PSX"]),
+                "iraq": G["IRQ"], "centralasia": U_(["UZB", "TKM", "TJK"]),
+                "c_asia": CALIPH.intersection(box(34, 0, 80, 50)), "c_africa": CALIPH.intersection(box(-20, 0, 33.5, 31.6)),
+                "c_europe": CALIPH.intersection(box(-20, 35.8, 10, 50))})
+REG = {}
 
 PATHS = {}
 def gpath(name, scale):
     lvl = 0 if scale < 12 else (1 if scale < 60 else 2)
     key = (name, lvl)
     if key not in PATHS:
-        g = {"caliph": CALIPH, "sindh": SINDH, "iberia": IBERIA}[name]
+        g = REG[name]
         PATHS[key] = geo_path(g, (0.08, 0.02, 0.004)[lvl])
     return PATHS[key]
 
@@ -81,7 +89,7 @@ def draw_region(c, cam, name, col, a=255, stroke=None, glow=0):
     p = gpath(name, s)
     if glow: c.drawPath(p, paint(col, int(a * 0.6), blur=glow / s * 0 + 0.0001) if False else paint(col, int(a * 0.35), stroke=glow / s))
     c.drawPath(p, paint(col, a))
-    if stroke: c.drawPath(p, paint(stroke, a, stroke=2.2 / s))
+    if stroke: c.drawPath(p, paint(stroke, int(a * 0.7), stroke=1.0 / s))
     c.restore()
 
 def fly(c0, c1, k):
@@ -103,6 +111,52 @@ def bg(c, cam=None, fills=None, alpha=255):
     if cam: draw_map(c, WM, cam, fills or {}, alpha)
 
 def dim(c, a): c.drawRect(skia.Rect(0, 0, DW, DH), paint(NAVY, int(a)))
+
+# every highlighted place gets its own colour (user: "alag colour joro"); outlines are thin, no yellow glow
+REGCOL = {"iberia": "#3A86FF", "centralasia": "#9B5DE5", "india": "#FF9933", "arabia": "#00BBF9", "syria": "#F15BB5",
+          "sindh": "#FF6B6B", "iraq": "#F8961E", "c_asia": "#00BBF9", "c_africa": "#F8961E", "c_europe": "#3A86FF", "caliph": GREEN}
+def lighten(h, f=0.45):
+    h = h.lstrip("#"); r, g, b = (int(h[i:i + 2], 16) for i in (0, 2, 4))
+    return "#%02X%02X%02X" % tuple(int(v + (255 - v) * f) for v in (r, g, b))
+def hl(c, cam, name, t, t0, col=None, fill=None, dur=99.0):
+    """highlight a region when its name is spoken: own-colour fill fades in (soft breathing) + thin light outline"""
+    k = seg(t, t0 - 0.1, t0 + 0.35) * (1 - seg(t, t0 + dur, t0 + dur + 0.4))
+    if k <= 0: return
+    fc = REGCOL.get(name, SAFF); pulse = 0.5 + 0.5 * math.sin((t - t0) * 4)
+    cx, cy = cam_xy(cam[0], cam[1]); s = cam[2]
+    c.save(); c.translate(DW / 2, DH / 2); c.scale(s, s); c.translate(-cx, -cy)
+    pth = gpath(name, s)
+    c.drawPath(pth, paint(fc, int((190 + 40 * pulse) * k)))
+    c.drawPath(pth, paint(lighten(fc), int(230 * k), stroke=1.2 / s))
+    c.restore()
+
+_BOUNDS = {}
+def float_map(c, t, t0, name, ttl, sub, x, y, w=440, h=330, t1=None, fill=SAFF, pad=0.9, ctx=None):
+    """floating 'map of that time' card: slides in on the spoken name, bobs gently, shows the region highlighted
+    inside its wider context (ctx: extra degrees of context; default from region size)"""
+    k = back(seg(t, t0 - 0.15, t0 + 0.45)); kout = seg(t, t1, t1 + 0.4) if t1 else 0
+    if k <= 0 or kout >= 1: return
+    al = int(255 * clamp(seg(t, t0 - 0.15, t0 + 0.2) * 1.4) * (1 - kout))
+    if name not in _BOUNDS: _BOUNDS[name] = REG[name].bounds
+    b0, b1, b2, b3 = _BOUNDS[name]; cl, ca = (b0 + b2) / 2, (b1 + b3) / 2
+    span = max(b2 - b0, (b3 - b1) * 1.3) * (1 + 2 * pad) + (ctx or 0)
+    cam = (cl, ca, (w - 20) / span)
+    bob = math.sin((t - t0) * 2.2) * 6; ang = math.sin((t - t0) * 1.3) * 1.2 - 2 * (1 - clamp(k))
+    c.save(); c.translate(x + w / 2, y + h / 2 + bob + (1 - clamp(k)) * 120 + kout * 60); c.rotate(ang); c.scale(clamp(k, 0, 1.2), clamp(k, 0, 1.2))
+    c.drawRoundRect(skia.Rect(-w / 2 + 10, -h / 2 + 22, w / 2 + 10, h / 2 + 22), 20, 20, paint("#000000", int(al * 0.55), blur=22))
+    rrect(c, -w / 2, -h / 2, w / 2, h / 2, 20, "#0B1424", al)
+    c.save(); p = skia.Path(); p.addRoundRect(skia.Rect(-w / 2 + 10, -h / 2 + 56, w / 2 - 10, h / 2 - 10), 14, 14); c.clipPath(p, doAntiAlias=True)
+    c.translate(-DW / 2 * 0 - w / 2 + 10 - (DW / 2 - (w - 20) / 2) + DW / 2 - (w - 20) / 2, 0) if False else None
+    c.translate(-(DW / 2), -(DH / 2) + 23)
+    c.saveLayerAlpha(None, al)
+    draw_map(c, WM, cam, {}, 255)
+    hl(c, cam, name, t, t0 + 0.25, YEL, fill)
+    c.restore(); c.restore()
+    c.drawRoundRect(skia.Rect(-w / 2, -h / 2, w / 2, h / 2), 20, 20, paint("#3E5068", al, stroke=1.5))
+    c.drawCircle(-w / 2 + 28, -h / 2 + 30, 9, paint(REGCOL.get(name, SAFF), al))
+    text(c, ttl, -w / 2 + 46, -h / 2 + 40, 28, "#F1FAEE", FT_BLACK, "l", al)
+    if sub: text(c, sub, w / 2 - 18, h / 2 - 20, 18, "#C9D1DC", FT_SEMI, "r", al)
+    c.restore()
 
 # ------------------------------------------------------------------ small widgets
 def title(c, s, x, y, size, k, col="#F1FAEE", a=255):
@@ -126,18 +180,27 @@ def arrow(c, p0, p1, k, col=YEL, w=7, bend=0.18):
     nx, ny = -(p1[1] - p0[1]), (p1[0] - p0[0])
     route(c, [p0, (mx + nx * bend, my + ny * bend), p1], ease_out(k), col, w, dash=False)
 
-def timeline(c, t, year, k=1.0, y0=None, span=(600, 800), label_s=None):
-    """bottom timeline: ticks every 10 years, a chip on the current year"""
+def timeline(c, t, year, k=1.0, y0=None, span=(600, 800), label_s=None, step=10, big_every=50, start=None, bracket=None):
+    """bottom timeline: ticks every `step` years (labels every `big_every`), red progress from `start` (default: left end)
+    to the current year with a chip; bracket=(y_from, y_to, text, k) draws a span marker above the line"""
     if k <= 0: return
     al = int(255 * clamp(k * 1.5)); y = y0 or 930
     x0, x1 = 300, 1620; a0, a1 = span
+    X = lambda yr: lerp(x0, x1, (clamp(yr, a0, a1) - a0) / (a1 - a0))
     c.drawLine(x0, y, x1, y, paint("#5B6E8C", al, stroke=3))
-    for yr in range(a0, a1 + 1, 10):
-        x = lerp(x0, x1, (yr - a0) / (a1 - a0)); big = yr % 50 == 0
+    for yr in range(a0, a1 + 1, step):
+        x = X(yr); big = yr % big_every == 0
         c.drawLine(x, y - (12 if big else 6), x, y + (12 if big else 6), paint("#8A9BB0", al, stroke=2))
         if big: text(c, str(yr), x, y + 38, 20, "#8A9BB0", FT_SEMI, "c", al)
-    x = lerp(x0, x1, (clamp(year, a0, a1) - a0) / (a1 - a0))
-    c.drawLine(x0, y, x, y, paint(RED, al, stroke=5))
+    xs = X(start) if start is not None else x0; x = X(year)
+    if start is not None: c.drawCircle(xs, y, 8, paint(RED, al))
+    c.drawLine(xs, y, x, y, paint(RED, al, stroke=6))
+    if bracket and bracket[3] > 0:
+        bk = ease_out(bracket[3]); ba = int(al * clamp(bracket[3] * 1.5)); bx0, bx1 = X(bracket[0]), X(bracket[1])
+        bx1 = lerp(bx0, bx1, bk)
+        bp = paint(YEL, ba, stroke=4, cap_round=True)
+        c.drawLine(bx0, y - 78, bx1, y - 78, bp); c.drawLine(bx0, y - 90, bx0, y - 66, bp); c.drawLine(bx1, y - 90, bx1, y - 66, bp)
+        text(c, bracket[2], (bx0 + bx1) / 2, y - 92, 28, YEL, FT_BLACK, "c", ba)
     pill(c, label_s or f"{int(round(year))}", x, y - 40, 30, RED, a=al, shadow=6)
 
 def fort(c, x, y, s, k, col="#C9B48A", a=255):
@@ -272,6 +335,7 @@ u_spain = U("Ek fauj ne"); u_wahi = U("Wahi khilafat"); u_lekin = U("Lekin Hindu
 u_naam = U("Naam rakha"); u_mah = U("Al-Mahfuza."); u_mat = U("Matlab"); u_jo = U("Jo fauj Spain")
 u_aur = U("Aur ye main nahi"); u_ye = U("Ye ek Arab itihaskar"); u_wo = U("Wo line main"); u_pehle = U("Lekin pehle samajhna")
 u_iske = U("Iske peeche"); u_chautha = U("Aur chautha raaz"); u_namaste = U("Namaste doston"); u_chalo = U("Chalo, waqt")
+u_632 = U("Saal 632")
 
 @shot(0.0, vin(u_wahi), "cut")
 def s01(c, t):
@@ -280,6 +344,11 @@ def s01(c, t):
     bg(c, cam)
     draw_region(c, cam, "iberia", GREEN, int(230 * k), stroke="#7CE0A8")
     stat_card(c, 1180, 300, 520, 300, "~5 SAAL", "lagbhag poora Spain", seg(t, kw(u_spain, "paanch") - 0.1, kw(u_spain, "paanch") + 0.5), YEL)
+    ky = ease_io(seg(t, kw(u_spain, "paanch") - 0.1, ue(u_spain) + 0.3))          # 711 -> 716 while "paanch saal" is said
+    timeline(c, t, lerp(711, 716, ky), seg(t, 0.2, 0.7), span=(708, 720), step=1, big_every=1, start=711,
+             bracket=(711, 716, "5 SAAL", seg(t, ue(u_spain) + 0.1, ue(u_spain) + 0.7)))
+    hl(c, cam, "iberia", t, kw(u_spain, "Spain"))
+    float_map(c, t, kw(u_spain, "Spain"), "iberia", "SPAIN · 711", "Visigoth rajya, andaazan", 110, 150, 420, 320, fill=GREEN, ctx=4)
     footnote(c, "Map: Natural Earth · andaazan seema")
     SFX_MARK(0.3, "hit", -16)
 
@@ -294,6 +363,8 @@ def s02(c, t):
     for key, word, side in (("atlantic", "Atlantic", -1), ("samarkand", "Central Asia", 1)):
         kk = seg(t, kw(u_wahi, word), kw(u_wahi, word) + 0.4)
         x, y = S(cam, key); label(c, word.upper(), x, y - 30, kk, 28)
+    hl(c, cam, "centralasia", t, kw(u_wahi, "Central Asia"))
+    float_map(c, t, kw(u_wahi, "Central Asia"), "centralasia", "CENTRAL ASIA", "Transoxiana, c. 740 (andaazan)", 1400, 560, 420, 320, fill=GREEN)
 
 @shot(vin(u_lekin), vin(u_naam))
 def s03(c, t):
@@ -305,6 +376,8 @@ def s03(c, t):
     x, y = S(cam, "mahfuza")
     fort(c, x, y, 210 * cam[2] / SI_CAM[2], seg(t, kw(u_lekin, "naya shehar") - 0.6, kw(u_lekin, "naya shehar") + 1.2))
     label(c, "SINDH", *S(cam, "sindh"), seg(t, vin(u_lekin) + 2.0, vin(u_lekin) + 2.4), 30)
+    hl(c, cam, "india", t, kw(u_lekin, "Hindustan"), SAFF, dur=1.6)
+    float_map(c, t, kw(u_lekin, "Hindustan"), "india", "HINDUSTAN · 8vi SADI", "kai alag rajya (andaazan)", 1400, 140, 420, 330, fill=SAFF, pad=0.25)
     SFX_MARK(kw(u_lekin, "naya shehar"), "build", -20)
 
 @shot(vin(u_naam), vin(u_jo))
@@ -354,7 +427,7 @@ def s06(c, t):
         title(c, "PEHLE: YE NAUBAT AAYI KYUN?", 960, 150, 56, seg(t, vin(u_pehle), vin(u_pehle) + 0.5), YEL)
     SFX_MARK(us(u_aur), "paper", -20); SFX_MARK(kw(u_wo, "dikhaunga"), "lock", -18)
 
-@shot(vin(u_iske), vin(u_namaste))
+@shot(vin(u_iske), HOSTSEG["H1"][0])
 def s07(c, t):
     c.clear(hexc(NAVY))
     slots(c, t, 0, seg(t, vin(u_iske), vin(u_iske) + 1.2), 520, red4=seg(t, kw(u_chautha, "chautha") - 0.1, kw(u_chautha, "chautha") + 0.4))
@@ -363,9 +436,48 @@ def s07(c, t):
     if fade > 0: c.drawRect(skia.Rect(0, 0, DW, DH), paint("#000000", int(255 * fade)))
     SFX_MARK(kw(u_chautha, "chautha"), "riser", -20)
 
-@shot(vin(u_namaste), vin(u_chalo) + (ue(u_chalo) - us(u_chalo)) + 0.4)
+_HF = {}
+def host_frame(c, key, t):
+    d = AB_ROOT + f"render_tmp/host_{key}/"
+    f = int(round(t * 60)); a, b = HOSTSEG[key]
+    f = max(int(round(a * 60)), min(int(round(b * 60)) - 1, f))
+    for ff in (f, f - 1, f + 1, f - 2):
+        p = d + f"f{ff:06d}.jpg"
+        if os.path.exists(p):
+            if p not in _HF:
+                if len(_HF) > 8: _HF.clear()
+                _HF[p] = sk_image(Image.open(p))
+            draw_img(c, _HF[p], 0, 0, DW, DH); return True
+    host_placeholder(c, t, t - a); return False
+
+def subscribe_btn(c, t, t0, x=1500, y=880):
+    """red SUBSCRIBE button pops, cursor clicks it, turns grey 'SUBSCRIBED' + bell"""
+    lt = t - t0
+    if lt < 0 or lt > 4.2: return
+    k = back(seg(lt, 0, 0.35)) * (1 - ease_in(seg(lt, 3.7, 4.2)))
+    if k <= 0: return
+    clicked = lt > 1.3
+    c.save(); c.translate(x, y); c.scale(k, k)
+    w = 330
+    rrect(c, -w / 2, -42, w / 2, 42, 42, "#5B6472" if clicked else "#E62117", 255, shadow=16)
+    text(c, "SUBSCRIBED" if clicked else "SUBSCRIBE", 0 - 20, 13, 36, "#FFFFFF", FT_BLACK, "c")
+    bx = w / 2 + 60; ring = math.sin(lt * 25) * 14 * seg(lt, 1.5, 1.6) * (1 - seg(lt, 2.4, 2.6))
+    c.save(); c.translate(bx, 0); c.rotate(ring)
+    rrect(c, -46, -42, 46, 42, 42, "#F1FAEE", 255, shadow=12)
+    bp = skia.Path(); bp.moveTo(-16, 14); bp.lineTo(-16, -4); bp.cubicTo(-16, -22, 16, -22, 16, -4); bp.lineTo(16, 14); bp.close()
+    c.drawPath(bp, paint("#0F1B2D")); c.drawRect(skia.Rect(-20, 12, 20, 18), paint("#0F1B2D")); c.drawCircle(0, 22, 5, paint("#0F1B2D"))
+    c.restore()
+    cx = lerp(260, 40, ease_io(seg(lt, 0.4, 1.2))); cy = lerp(160, 20, ease_io(seg(lt, 0.4, 1.2)))
+    if lt > 1.6: cx = lerp(40, bx, ease_io(seg(lt, 1.6, 2.0))); cy = 20
+    cp = skia.Path(); cp.moveTo(cx, cy); cp.lineTo(cx, cy + 44); cp.lineTo(cx + 12, cy + 33); cp.lineTo(cx + 30, cy + 33); cp.close()
+    c.drawPath(cp, paint("#FFFFFF")); c.drawPath(cp, paint("#000000", 255, stroke=3))
+    c.restore()
+
+@shot(HOSTSEG["H1"][0], vin(u_632), "cut")
 def h1(c, t):
-    host_placeholder(c, t, t - vin(u_namaste))
+    host_frame(c, "H1", t)
+    subscribe_btn(c, t, kw(U("Naye ho toh"), "subscribe") - 0.4)
+    SFX_MARK(kw(U("Naye ho toh"), "subscribe") + 0.9, "pop", -20)
 
 # ---- CHAPTER 1 -------------------------------------------------------------------------------------
 CH_GAP = 1.4
@@ -381,7 +493,7 @@ CHAPTERS = [(1, "79 SAAL KA TOOFAN", u_632)]
 for n_, ttl_, u_ in CHAPTERS: chapter(n_, ttl_, u_)
 
 AR_CAM = (42.0, 25.0, 22.0)
-@shot(vin(u_632), vin(u_toof))
+@shot(vin(u_632), vin(u_toof), "cut")
 def s08(c, t):
     cam = fly((42.0, 25.0, 14.0), AR_CAM, ease_io(seg(t, vin(u_632), vin(u_632) + 2.0)))
     bg(c, cam)
@@ -401,6 +513,8 @@ def s09(c, t):
         x, y = S(cam, "arabia"); c.drawCircle(x, y, 40 + 900 * rr, paint("#7CE0A8", int(120 * (1 - rr)), stroke=4))
     timeline(c, t, lerp(632, 700, ease_io(k)), 1.0, span=(620, 780))
     tag_note(c, "andaazan, aadhunik seemaon par", 960, 880, 1)
+    hl(c, cam, "arabia", t, kw(u_toof, "Arab"))
+    float_map(c, t, kw(u_toof, "Arab"), "arabia", "ARAB · 632", "Arab prayadweep", 1420, 130, 400, 300, fill=GREEN, pad=0.4)
     SFX_MARK(kw(u_toof, "toofan"), "wind", -22)
 
 @shot(vin(u_661), vin(u_charam))
@@ -409,7 +523,9 @@ def s10(c, t):
     bg(c, cam); draw_region(c, cam, "caliph", GREEN, 170, stroke="#7CE0A8")
     x, y = S(cam, "damascus"); pin(c, x, y, "DAMASCUS", seg(t, kw(u_raj, "Rajdhani"), kw(u_raj, "Rajdhani") + 0.5) if True else 0, YEL, size=34, t=t)
     pill(c, "UMAYYAD KHILAFAT", 960, 170, 46, GREEN_D, a=int(255 * clamp(seg(t, kw(u_661, "Umayyad") - 0.1, kw(u_661, "Umayyad") + 0.4) * 1.5))) if t > kw(u_661, "Umayyad") - 0.1 else None
-    timeline(c, t, lerp(700, 661, 0) if False else 661, 1.0, span=(620, 780))
+    timeline(c, t, 661, 1.0, span=(620, 780))
+    hl(c, cam, "syria", t, kw(u_raj, "Rajdhani") + 0.3)
+    float_map(c, t, kw(U("Damascus."), "Damascus"), "syria", "DAMASCUS · 661", "Sham (Syria), andaazan", 1400, 520, 420, 320, fill=GREEN, pad=0.6)
 
 @shot(vin(u_charam), vin(u_teen))
 def s11(c, t):
@@ -425,6 +541,7 @@ CONT = [("ASIA", (62.0, 42.0), "Asia"), ("AFRICA", (10.0, 24.0), "Africa"), ("EU
 def s12(c, t):
     bg(c, W_CAM); draw_region(c, W_CAM, "caliph", GREEN, 200, stroke="#7CE0A8")
     for nm, ll, word in CONT:
+        hl(c, W_CAM, {"ASIA": "c_asia", "AFRICA": "c_africa", "EUROPE": "c_europe"}[nm], t, kw(u_teen, word), YEL, "#5FD39A")
         x, y = to_screen(W_CAM, *ll); label(c, nm, x, y, seg(t, kw(u_teen, word) - 0.1, kw(u_teen, word) + 0.3), 40, border=GREEN)
     title(c, "TEEN MAHADWEEP", 960, 170, 60, seg(t, vin(u_teen), vin(u_teen) + 0.5), YEL)
 
@@ -441,6 +558,8 @@ def s13(c, t):
     if t > kw(u_doo, "Sindh"): draw_region(c, W_CAM, "sindh", GREEN, int(240 * seg(t, kw(u_doo, "Sindh"), kw(u_doo, "Sindh") + 0.5)), stroke="#FFFFFF")
     label(c, "SPAIN", *[a + b for a, b in zip(S(W_CAM, "spain"), (0, -40))], seg(t, kw(u_ek, "Spain"), kw(u_ek, "Spain") + 0.3), 30)
     label(c, "SINDH", *[a + b for a, b in zip(S(W_CAM, "sindh"), (0, -40))], seg(t, kw(u_doo, "Sindh"), kw(u_doo, "Sindh") + 0.3), 30)
+    float_map(c, t, kw(u_ek, "Spain"), "iberia", "SPAIN · 711", "Visigoth rajya (andaazan)", 90, 140, 380, 290, fill=GREEN, ctx=4)
+    float_map(c, t, kw(u_doo, "Sindh"), "sindh", "SINDH · 711", "Raja Dahir ka rajya (andaazan)", 90, 470, 380, 290, fill=GREEN, ctx=3)
     SFX_MARK(kw(u_ek, "Spain"), "whoosh", -20); SFX_MARK(kw(u_doo, "Sindh"), "whoosh", -20)
 
 IN_CAM = (72.0, 24.0, 22.0)
@@ -450,7 +569,10 @@ def s14(c, t):
     glow = 0.5 + 0.5 * math.sin(t * 3)
     bg(c, cam, {"IND": (SAFF, int(140 + 60 * glow * seg(t, kw(u_ab, "Hindustan") - 0.3, kw(u_ab, "Hindustan") + 0.3)))})
     draw_region(c, cam, "caliph", GREEN, 150); draw_region(c, cam, "iberia", GREEN, 230)
+    hl(c, cam, "sindh", t, kw(u_ab, "Sindh"), YEL)
+    hl(c, cam, "india", t, kw(u_ab, "Hindustan"), SAFF)
     label(c, "HINDUSTAN", *S(cam, "india"), seg(t, kw(u_ab, "Hindustan") - 0.1, kw(u_ab, "Hindustan") + 0.4), 40, border=SAFF)
+    float_map(c, t, kw(u_ab, "Hindustan"), "india", "HINDUSTAN · 711", "kai alag rajya (andaazan)", 1420, 150, 400, 320, fill=SAFF, pad=0.25)
     tag_note(c, "India boundary as per Survey of India", 960, 1060 - 120, seg(t, kw(u_ab, "Hindustan"), kw(u_ab, "Hindustan") + 0.5))
 
 @shot(vin(u_min), ue(u_india75) + 0.6, "cut")
@@ -488,7 +610,7 @@ def captions(c, t):
             rrect(c, 960 - w / 2 - 26, 990, 960 + w / 2 + 26, 1050, 14, "#000000", int(150 * k))
             text(c, s, 960, 1033, 40, "#FFFFFF", FT_BLACK, "c", int(255 * k)); return
 
-HOSTS = [(vin(u_namaste), vin(u_chalo) + (ue(u_chalo) - us(u_chalo)) + 0.4)]
+HOSTS = [(HOSTSEG["H1"][0], vin(u_632))]
 def in_host(t): return any(a <= t < b for a, b in HOSTS)
 
 # ------------------------------------------------------------------ frame
@@ -555,6 +677,9 @@ if __name__ == "__main__":
         encode_chunk(int(sys.argv[2]), int(sys.argv[3]), sys.argv[4], preview=len(sys.argv) > 5 and sys.argv[5] == "preview")
     elif cmd == "demo_end":
         print(round(vo_to_video(DEMO_END), 2))
+    elif cmd == "timeline":
+        json.dump({"gaps": GAPS, "ch_gap": CH_GAP, "hosts": [[a, b] for a, b in HOSTS], "demo_end": DEMO_END,
+                   "vo_end": UN[-1]["end"]}, open(ROOT + "audio/timeline.json", "w")); print("ok")
     elif cmd == "sfx":
         load_assets(); surf = skia.Surface(DW, DH); cc = surf.getCanvas()
         for a, b, fn, tr in SHOTS:

@@ -23,6 +23,12 @@ NUM = {"32": "battees", "87": "sattaasi", "2300": "teis sau", "34": "chauntees",
        "148": "one forty eight", "620": "six sau bees", "170": "ek sau sattar", "40": "chaalees", "60": "saath", "70": "sattar",
        "90": "nabbe", "65": "painsath", "21": "ikkees", "18": "atthaarah", "28": "atthaais", "3": "teen", "4": "chaar", "20": "bees",
        "25": "pachchees", "1": "one", "2": "two", "5": "paanch", "S-400": "S four hundred"}
+NUM.update({"632": "chhe sau battees", "661": "chhe sau iksath", "711": "saat sau gyaarah", "79": "unaasi", "75": "pachattar",
+    "636": "chhe sau chhattees", "644": "chhe sau chauvalees", "712": "saat sau baarah", "715": "saat sau pandrah", "18": "atthaarah",
+    "665": "chhe sau painsath", "698": "chhe sau atthaanave", "870": "aath sau sattar", "723": "saat sau teis", "731": "saat sau iktees",
+    "736": "saat sau chhattees", "737": "saat sau saintees", "739": "saat sau untaalees", "740": "saat sau chaalees", "743": "saat sau taintaalees",
+    "851": "aath sau ikyaavan", "724": "saat sau chaubees", "730": "saat sau tees", "732": "saat sau battees", "750": "saat sau pachaas",
+    "776": "saat sau chhihattar", "854": "aath sau chauvan"})
 def spoken(u):
     w = re.findall(r"[A-Za-z0-9\.\-]+", u)
     out = []
