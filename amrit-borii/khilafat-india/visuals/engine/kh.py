@@ -905,13 +905,33 @@ def s08(c, t):
     bg(c, cam)
     for key, nm, i in (("medina", "MEDINA", 0), ("mecca", "MECCA", 1)):
         x, y = S(cam, key); pin(c, x, y, nm, seg(t, vin(u_pai) + i * 0.3, vin(u_pai) + 0.6 + i * 0.3), YEL, size=30, side="r", t=t)
-    kl = seg(t, kw(u_pai, "inteqaal") - 0.4, kw(u_pai, "inteqaal") + 0.6)                     # soft light over Medina
-    if kl > 0:
-        x, y = S(cam, "medina"); br = 0.7 + 0.3 * math.sin(t * 2.4)
-        c.drawCircle(x, y, 160 * kl, paint("#FFF1C1", int(70 * kl * br), blur=40)); c.drawCircle(x, y, 60 * kl, paint("#FFF1C1", int(90 * kl * br), blur=18))
+    # "inteqaal" (passing away) shown symbolically, no human figure: a lamp over Medina slowly goes out, smoke rises, light fades
+    ti = kw(u_pai, "inteqaal"); kin = seg(t, vin(u_pai), vin(u_pai) + 0.5); kout = ease_io(seg(t, ti - 0.2, ti + 0.9))
+    if kin > 0:
+        x, y = S(cam, "medina"); lx, ly = x + 230, y - 40
+        glow = (1 - kout) * (0.85 + 0.15 * math.sin(t * 9) * math.sin(t * 3.1))
+        c.drawCircle(lx, ly - 40, 220, paint("#FFC870", int(80 * kin * glow), blur=70))
+        c.drawCircle(x, y, 120, paint("#FFF1C1", int(60 * kin * glow), blur=40))
+        c.drawOval(skia.Rect(lx - 70, ly + 10, lx + 70, ly + 48), paint("#B8862B", int(255 * kin))); c.drawOval(skia.Rect(lx - 46, ly + 2, lx + 46, ly + 22), paint("#8A6420", int(255 * kin)))
+        fh = 70 * (1 - kout) * (0.9 + 0.1 * math.sin(t * 13))
+        if fh > 2:
+            fp = skia.Path(); fp.moveTo(lx, ly + 4 - fh); fp.quadTo(lx + 22, ly - fh * 0.3, lx, ly + 6); fp.quadTo(lx - 22, ly - fh * 0.3, lx, ly + 4 - fh)
+            c.drawPath(fp, paint("#FFD27A", int(255 * kin))); c.drawCircle(lx, ly - fh * 0.25, fh * 0.18, paint("#FFF6D8", int(220 * kin)))
+        ks = seg(t, ti + 0.5, ti + 2.0)                                                              # smoke after the flame goes out
+        for j in range(4):
+            u = (ks * 1.3 - j * 0.18)
+            if 0 < u < 1:
+                sp = skia.Path(); sx0 = lx; sy0 = ly
+                sp.moveTo(sx0, sy0)
+                for q in range(1, 9):
+                    v = q / 8 * u; sp.lineTo(sx0 + math.sin(v * 9 + j + t * 1.5) * 18 * v, sy0 - 170 * v)
+                c.drawPath(sp, paint("#C9D1DC", int(150 * (1 - u)), stroke=5, cap_round=True, blur=2))
+        dim(c, 90 * kout)
+        kt = seg(t, ti + 0.4, ti + 1.0)
+        if kt > 0: title(c, "INTEQAAL = DUNIYA SE RUKHSAT", 960, 860 - 140, 46, kt, "#FFF1C1")
     photo_card(c, "nabawi", 1260, 170, 560, 330, t, seg(t, kw(u_pai, "Paigambar") - 0.2, kw(u_pai, "Paigambar") + 0.5), "Masjid-e-Nabawi, Madina",
                "Wikimedia Commons (credit: PHOTO_CREDITS)", t0=us(u_pai))
-    title(c, "MADINA · 632", 600, 860 - 60, 44, seg(t, kw(u_pai, "inteqaal") - 0.2, kw(u_pai, "inteqaal") + 0.5), "#FFF1C1")
+    title(c, "MADINA · 632", 960, 790, 36, seg(t, kw(u_pai, "inteqaal") - 0.2, kw(u_pai, "inteqaal") + 0.5), "#FFF1C1")
     timeline(c, t, 632, seg(t, vin(u_632), vin(u_632) + 0.5), span=(620, 780))
 
 WAVES = [("SAU", 0), ("YEM", 0), ("OMN", 0), ("ARE", 0.1), ("SYR", 0.25), ("JOR", 0.25), ("IRQ", 0.35), ("EGY", 0.45), ("LBY", 0.6), ("IRN", 0.6), ("TUN", 0.75), ("DZA", 0.85), ("MAR", 0.95), ("TKM", 0.85), ("UZB", 0.95)]
