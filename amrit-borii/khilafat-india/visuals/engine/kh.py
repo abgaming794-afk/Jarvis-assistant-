@@ -123,7 +123,10 @@ BANNER = {"iberia": ("#8B1E2D", "cross", "#E9C46A", "VISIGOTH SPAIN"), "sindh": 
           "kabul": ("#B23A48", "sun", "#F1FAEE", "TURK SHAHI"), "zabul": ("#2A9D8F", "sun", "#F1FAEE", "ZUNBIL"),
           "gujarat": ("#C2185B", "star", "#FFD166", "CHALUKYA"), "rajasthan": ("#D35400", "sun", "#FFE8A3", "MORI / GURJARA"),
           "mp": ("#6A4C93", "star", "#FFD166", "MALWA"), "pratihara": ("#C0392B", "sun", "#FFE8A3", "PRATIHARA"),
-          "desert": None, "caliph": ("#FFFFFF", None, None, "UMAYYAD KHILAFAT"), "raidzone": None, "c_west": None}
+          "desert": None, "caliph": ("#FFFFFF", None, None, "UMAYYAD KHILAFAT"), "raidzone": None, "c_west": None,
+          "kashmir": ("#B5179E", None, None, "KASHMIR · KARKOTA"), "kannauj": ("#4CC9F0", None, None, "KANNAUJ"),
+          "deccan": ("#43AA8B", None, None, "CHALUKYA (BADAMI)"), "east": ("#F9C74F", None, None, "GAUDA · MAGADHA"),
+          "south": ("#F94144", None, None, "PALLAVA"), "kamarupa": ("#4D908E", None, None, "KAMARUPA")}
 _BTEX = {}
 def banner_tex(key):
     """plain flag in the region's own colour (user: "har jhande ko uska colour do"); the Umayyad/khilafat banner is
@@ -195,6 +198,7 @@ REGCOL = {"iberia": "#3A86FF", "centralasia": "#9B5DE5", "india": "#FF9933", "ar
 def hl(c, cam, name, t, t0, col=None, fill=None, dur=99.0, flag=None, flag_at=None, flag_label=True, pole=True):
     """highlight a region when its name is spoken: own-colour fill + the region's banner waving inside its border
     (cloth), thin light outline, and a floating pole flag above it"""
+    if t0 <= 0: dur = 1e9                                   # t0 = 0 means "lit for the whole shot"
     k = seg(t, t0 - 0.1, t0 + 0.45) * (1 - seg(t, t0 + dur, t0 + dur + 0.4))
     if k <= 0: return
     fc = REGCOL.get(name, SAFF); fk = flag or name; ban = BANNER.get(fk)
@@ -1506,39 +1510,159 @@ def s30(c, t):
     stamp(c, "WAPAS!", 1400, 300, 80, SAFF, seg(t, kw(u_cheen, "wapas") - 0.1, kw(u_cheen, "wapas") + 0.3))
     SFX_MARK(kw(u_cheen, "wapas"), "stamp", -18)
 
+# ---------------------------------------------------------------- helpers for chapter 2 end / chapter 3 (user list, points 1-9)
+def throne(c, x, y, s, col="#E9C46A", a=255):
+    """raj-gaddi: gold high-backed seat with a red cushion (feet of the seat at y)"""
+    k = s / 100
+    c.drawRoundRect(skia.Rect(x - 34 * k, y - 120 * k, x + 34 * k, y - 40 * k), 26 * k, 26 * k, paint(col, a))
+    c.drawRoundRect(skia.Rect(x - 24 * k, y - 110 * k, x + 24 * k, y - 48 * k), 18 * k, 18 * k, paint("#9B2226", a))
+    c.drawCircle(x, y - 128 * k, 9 * k, paint(col, a))
+    rrect(c, x - 46 * k, y - 46 * k, x + 46 * k, y - 26 * k, 6 * k, col, a)
+    rrect(c, x - 40 * k, y - 58 * k, x + 40 * k, y - 44 * k, 6 * k, "#C1121F", a)
+    for dx in (-38, 38): c.drawLine(x + dx * k, y - 28 * k, x + dx * k, y, paint(col, a, stroke=9 * k, cap_round=True))
+    for dx in (-50, 50): c.drawCircle(x + dx * k, y - 52 * k, 8 * k, paint(col, a))
+
+def king_fig(c, x, y, s, bow, t, robe="#9B2226", a=255, face=1):
+    """2D king in side view (faces `face`), feet at y; bow 0..1 = bends forward from the hip, head down, hand on chest"""
+    k = s / 100; b = ease_io(clamp(bow)); breathe = math.sin(t * 2.2 + x * 0.01) * 1.5 * k
+    hip = (x, y - 78 * k)
+    rp = skia.Path(); rp.moveTo(x - 24 * k, hip[1]); rp.lineTo(x + 24 * k, hip[1]); rp.lineTo(x + 38 * k, y); rp.lineTo(x - 38 * k, y); rp.close()
+    c.drawPath(rp, paint(robe, a)); c.drawPath(rp, paint("#000000", int(a * 0.25), stroke=2 * k))
+    c.drawRect(skia.Rect(x - 38 * k, y - 8 * k, x + 38 * k, y), paint("#E9C46A", a))
+    c.save(); c.translate(*hip); c.rotate(face * 34 * b)
+    c.drawRoundRect(skia.Rect(-22 * k, -66 * k + breathe, 22 * k, 6 * k), 16 * k, 16 * k, paint(robe, a))
+    c.drawLine(-16 * k, -60 * k, 16 * k, -4 * k, paint("#E9C46A", a, stroke=6 * k))                     # sash
+    hx, hy = face * 6 * k, -86 * k + breathe
+    c.save(); c.translate(hx, hy + 10 * k); c.rotate(face * 16 * b); c.translate(-hx, -(hy + 10 * k))
+    c.drawCircle(hx, hy, 17 * k, paint("#C99A6B", a))
+    c.drawArc(skia.Rect(hx - 6 * k + face * 4 * k, hy - 2 * k, hx + 16 * k * face + face * 4 * k, hy + 20 * k), 0, 180, True, paint("#3A2A1E", a))  # beard
+    crown(c, hx, hy - 22 * k, 30 * k, "#E9C46A", a)
+    c.restore()
+    # arm: hangs, then folds to the chest while bowing
+    sx_, sy_ = face * 4 * k, -56 * k
+    ex, ey = sx_ + face * lerp(6, 18, b) * k, sy_ + lerp(30, 22, b) * k
+    hx2, hy2 = lerp(sx_ + face * 8 * k, sx_ - face * 4 * k, b), lerp(sy_ + 60 * k, sy_ + 12 * k, b)
+    c.drawLine(sx_, sy_, ex, ey, paint(robe, a, stroke=13 * k, cap_round=True)); c.drawLine(ex, ey, hx2, hy2, paint(robe, a, stroke=12 * k, cap_round=True))
+    c.drawCircle(hx2, hy2, 7 * k, paint("#C99A6B", a))
+    c.restore()
+
+def march(c, pts, k, t, col="#F1FAEE", w=6, n=6, size=46, a=255, dash=False, face=1, line=True):
+    """route drawn up to k with a column of 2D soldiers walking at its tip (face -1 = walking leftwards)"""
+    if k <= 0: return None
+    r_ = route(c, pts, ease_io(k), col if line else "#000000", w, dash=dash, a=a if line else 0, head=line)
+    if not r_ or k >= 0.999: return r_
+    for q in range(n):
+        f_ = ease_io(k) - q * 0.035
+        if f_ <= 0.01: continue
+        sx, sy, _ = along(*r_, f_)
+        c.save(); c.translate(sx, 0)
+        if face < 0: c.scale(-1, 1)
+        ic_soldier(c, 0, sy - size * 0.25 + (q % 2) * 6, size, t * 1.3 + q * 0.4, "#F1FAEE", a); c.restore()
+    return r_
+
+def army_block(c, x0, y0, rows, cols, s, t, k, flag_col="#1F9D5C", a=255):
+    """a big formation marching to the right: rows recede (smaller, higher), whole block slides in, banners in front"""
+    if k <= 0: return
+    ke = ease_out(clamp(k)); al = int(a * clamp(k * 1.6)); slide = (1 - ke) * -700 + (t % 1000) * 0
+    for r in range(rows - 1, -1, -1):
+        sc = s * (0.72 + 0.28 * (r / max(1, rows - 1))); yy = y0 + r * s * 0.55; dx = (rows - 1 - r) * s * 0.18
+        for q in range(cols):
+            xx = x0 + slide + dx + q * sc * 0.62 + math.sin(t * 9 + q + r) * 1.5
+            ic_soldier(c, xx, yy, sc, t * 1.4 + q * 0.3 + r * 0.5, "#F1FAEE", al)
+        if r in (0, rows - 1):
+            fx = x0 + slide + dx + cols * sc * 0.62 + 10; fy = yy - sc * 0.4
+            c.drawLine(fx, fy, fx, fy - sc * 1.3, paint("#D9D9D9", al, stroke=4, cap_round=True))
+            img = banner_tex("umayyad"); fw = sc * 0.8
+            cloth(c, img, fx + 2, fy - sc * 1.3, fw, fw * img.height() / img.width(), t, al, 20, 0.08)
+    for j in range(16):                                                                    # dust behind the march
+        ph = (t * 0.6 + j * 0.13) % 1; dx_ = x0 + slide - 40 - ph * 160; dy_ = y0 + rows * s * 0.55 - 10 - (j % 4) * 14
+        c.drawCircle(dx_, dy_, 10 + ph * 26, paint("#C8A26A", int(al * 0.18 * (1 - ph)), blur=8))
+
+def fallen(c, x, y, s, t, fk, col_f="#8A94A3", face=1, a=255):
+    """soldier who drops (rotates down and greys out) as fk goes 0 -> 1"""
+    fe = ease_in(clamp(fk)); c.save(); c.translate(x, y); c.rotate(face * 86 * fe); c.translate(-x, -y)
+    ic_soldier(c, x, y, s, t if fk <= 0 else 0, "#F1FAEE" if fk < 0.4 else col_f, int(a * (1 - 0.45 * clamp(fk))), walk=fk <= 0)
+    c.restore()
+
+# =================================================================== s31: khalifa's letters to the kings of Hind
+OF_CAM0 = (57.0, 28.5, 15.0); OF_CAM1 = (75.0, 27.5, 40.0)
+OFFER_K = ["sindh", "kashmir", "rajasthan", "kannauj", "gujarat", "mp"]
 @shot(vin(u_offer), vin(u_pakka))
 def s31(c, t):
-    bg(c, (55.0, 29.0, 14.0))
-    cam = (55.0, 29.0, 14.0); src = S(cam, "damascus"); dst = S(cam, "sindh")
-    for j in range(3):
-        kk = seg(t, kw(u_offer, "offer") + j * 0.3, kw(u_offer, "offer") + 1.4 + j * 0.3)
-        if 0 < kk < 1:
-            x = lerp(src[0], dst[0], ease_io(kk)); y = lerp(src[1], dst[1], ease_io(kk)) - math.sin(kk * math.pi) * 120
-            scroll(c, x, y, 50)
-    name_card(c, "KHALIFA UMAR II", "717-720", 420, 220, seg(t, vin(u_offer), vin(u_offer) + 0.5))
-    k2 = seg(t, us(u_islam) - 0.1, us(u_islam) + 0.4)
-    if k2 > 0:
-        rrect(c, 560, 600, 1360, 860, 26, "#16223A", int(255 * k2), shadow=18)
-        crown(c, 720, 720, 90, YEL, int(255 * k2)); text(c, "GADDI BANI RAHEGI", 1090, 745, 44, "#F1FAEE", FT_BLACK, "c", int(255 * k2))
-    kh_ = seg(t, kw(u_hulli, "Hullishah") - 0.1, kw(u_hulli, "Hullishah") + 0.4)
-    if kh_ > 0: label(c, "HULLISHAH (JAISIAH)", 960, 560, kh_, 32, border=GREEN)
+    _state_regions()
+    t0 = kw(u_offer, "offer"); cam = fly(OF_CAM0, OF_CAM1, ease_io(seg(t, t0 + 0.2, t0 + 1.7))); bg(c, cam)
+    draw_region(c, cam, "caliph", GREEN, 120)
+    xd, yd = S(cam, "damascus"); pin(c, xd, yd, "DAMASCUS", seg(t, vin(u_offer), vin(u_offer) + 0.4), YEL, size=30, t=t)
+    gk = seg(t, kw(u_islam, "gaddi") - 0.1, kw(u_islam, "gaddi") + 0.5)
+    kb = seg(t, us(u_hulli) - 0.2, us(u_hulli) + 0.4)
+    for j, rg in enumerate(OFFER_K):
+        ta = t0 + 0.15 + j * 0.22 + 1.25                                                    # letter lands
+        hl(c, cam, rg, t, ta, pole=False)
+        if rg == "sindh":
+            ka = seg(t, kw(u_hulli, "maana") - 0.3, kw(u_hulli, "maana") + 0.3)
+            if ka > 0: draw_region(c, cam, "sindh", GREEN, int(215 * ka))
+    for j, rg in enumerate(OFFER_K):
+        ta = t0 + 0.15 + j * 0.22 + 1.25; lo, la = rep_point(rg); x, y = to_screen(cam, lo, la)
+        kk = seg(t, ta - 1.25, ta)
+        if 0 < kk < 1:                                                                      # the farmaan flies from Damascus
+            sx, sy = S(cam, "damascus")
+            scroll(c, lerp(sx, x, ease_io(kk)), lerp(sy, y, ease_io(kk)) - math.sin(kk * math.pi) * 160, 46)
+        ki = seg(t, ta, ta + 0.4)
+        if 0 < ki < 1: c.drawCircle(x, y, 20 + 90 * ki, paint("#FFFFFF", int(200 * (1 - ki)), stroke=4))
+        if gk > 0: throne(c, x - 52, y + 34, 44 * back(seg(gk, j * 0.08, 0.6 + j * 0.08)), a=int(255 * clamp(gk * 2)))
+        if gk > 0: crown(c, x - 52, y - 46 + math.sin(t * 2.5 + j) * 4, 26 * back(seg(gk, 0.1 + j * 0.08, 0.7 + j * 0.08)), YEL, int(255 * clamp(gk * 2)))
+        pole_flag(c, x + 4, y + 30, "umayyad" if rg == "sindh" and t > kw(u_hulli, "maana") else rg, t, seg(t, ta + 0.1, ta + 0.6), 0.72, False)
+        if t > ta: text(c, BANNER[rg][3], x + 48, y + 56, 17, "#F1FAEE", FT_BLACK, "c", int(230 * seg(t, ta, ta + 0.4) * (1 - 0.6 * kb)), shadow=True)
+    name_card(c, "KHALIFA UMAR II", "717-720", 420, 220, seg(t, vin(u_offer), vin(u_offer) + 0.5) * (1 - seg(t, t0 + 1.4, t0 + 1.8)))
+    title(c, "SHART: ISLAM QUBOOL KARO", 960, 112, 44, seg(t, us(u_islam) - 0.1, us(u_islam) + 0.4) * (1 - kb), "#F1FAEE")
+    title(c, "BADLE MEIN: GADDI BANI RAHEGI", 960, 168, 40, gk * (1 - kb), YEL)
+    tag_note(c, "Baladhuri: Hind ke rajaon ko patra · rajya aur seemayein andaazan", 960, 1010, seg(t, t0 + 1.0, t0 + 1.5) * (1 - kb))
+    if kb > 0:                                                                              # the kings accept: bow together
+        dim(c, 215 * kb)
+        floor = 900; rrect(c, 120, floor - 6, 1800, floor + 8, 6, "#E9C46A", int(120 * kb))
+        tb = kw(u_hulli, "maana") - 0.7
+        kings = [(330, 100, "#F8961E", 0.18), (560, 100, "#F15BB5", 0.09), (830, 128, "#FF6B6B", 0.0)]
+        for i, (kx, ks, col, dl) in enumerate(kings):
+            kin = seg(t, us(u_hulli) - 0.2 + i * 0.1, us(u_hulli) + 0.4 + i * 0.1)
+            king_fig(c, kx + (1 - ease_out(kin)) * -120, floor, ks * 1.15, seg(t, tb + dl, tb + dl + 0.8), t, col, int(255 * clamp(kin * 1.6)))
+        kp = seg(t, us(u_hulli), us(u_hulli) + 0.5)                                          # the farmaan they accept
+        if kp > 0:
+            for r in range(10):
+                an = r / 10 * math.tau + t * 0.3
+                c.drawLine(1320 + 60 * math.cos(an), 640 + 60 * math.sin(an), 1320 + 150 * math.cos(an), 640 + 150 * math.sin(an), paint(YEL, int(70 * kp), stroke=6, cap_round=True))
+            scroll(c, 1320, 640, 170 * back(kp), int(255 * clamp(kp * 1.5)), "FARMAAN")
+        label(c, "HULLISHAH (JAISIAH) · SINDH", 830, 960, seg(t, kw(u_hulli, "Hullishah") - 0.1, kw(u_hulli, "Hullishah") + 0.4), 30, border=GREEN)
+        label(c, "KUCH AUR RAJA", 445, 960, seg(t, kw(u_hulli, "kuch") - 0.1, kw(u_hulli, "kuch") + 0.4), 26, border="#9FB0C6")
+        title(c, "MAAN LIYA", 1320, 860, 54, seg(t, kw(u_hulli, "maana") - 0.1, kw(u_hulli, "maana") + 0.4), GREEN)
+    SFX_MARK(t0 + 0.2, "whoosh_long", -20); SFX_MARK(kw(u_islam, "gaddi"), "ding", -20); SFX_MARK(kw(u_hulli, "maana"), "stamp", -20)
 
+# =================================================================== s32: every free kingdom beyond Sindh
+IND_ALL = (80.5, 23.0, 25.0)
+AZAD = ["rajasthan", "gujarat", "mp", "kannauj", "kashmir", "deccan", "east", "south", "kamarupa"]
 KB_CAM0 = (69.0, 27.5, 26.0); KB_CAM1 = (68.5, 33.5, 30.0)
 @shot(vin(u_pakka), vin(U("India mein ghusne")))
 def s32(c, t):
-    cam = fly(KB_CAM0, KB_CAM1, ease_io(seg(t, kw(u_north, "north") - 0.4, ue(u_north) + 0.6)))
-    bg(c, cam); draw_region(c, cam, "caliph", GREEN, 140)
-    title(c, "SINDH SE AAGE PAKKA QABZA?", 960, 170, 54, seg(t, vin(u_pakka), vin(u_pakka) + 0.5), "#F1FAEE")
-    stamp(c, "AB TAK NAHI", 960, 300, 60, RED, seg(t, us(u_abtak) - 0.1, us(u_abtak) + 0.3))
+    _state_regions()
+    cam = fly(IND_ALL, KB_CAM1, ease_io(seg(t, kw(u_north, "north") - 0.5, ue(u_north) + 0.5)))
+    bg(c, cam); draw_region(c, cam, "caliph", GREEN, 140); draw_region(c, cam, "sindh", GREEN, 215)
+    ta = kw(u_pakka, "aage")
+    for j, rg in enumerate(AZAD): hl(c, cam, rg, t, ta + j * 0.1, pole=False)
+    for j, rg in enumerate(AZAD):
+        lo, la = rep_point(rg); x, y = to_screen(cam, lo, la); kf = seg(t, ta + j * 0.1 + 0.1, ta + j * 0.1 + 0.6)
+        pole_flag(c, x, y + 26, rg, t, kf, 0.62, False)
+        text(c, BANNER[rg][3], x + 36, y + 50, 16, "#F1FAEE", FT_BLACK, "c", int(230 * kf), shadow=True)
+    xs, ys = S(cam, "sindh"); pole_flag(c, xs - 10, ys + 20, "umayyad", t, 1.0, 0.62, False)
+    title(c, "SINDH SE AAGE PAKKA QABZA?", 960, 110, 50, seg(t, vin(u_pakka), vin(u_pakka) + 0.5), "#F1FAEE")
+    pill(c, "AZAD RAJYA · c. 720", 1600, 980, 26, "#0B1424", a=int(255 * seg(t, ta + 0.6, ta + 1.0) * (1 - seg(t, kw(u_north, "north") - 0.5, kw(u_north, "north")))))
+    stamp(c, "AB TAK NAHI", 1420, 300, 60, RED, seg(t, us(u_abtak) - 0.1, us(u_abtak) + 0.3))
     kg = seg(t, kw(u_north, "north"), ue(u_north) + 0.4)
     if kg > 0:
         x, y = S(cam, "kabul"); dim(c, 90 * kg); gate(c, x, y - 40, 120 * ease_out(kg), 0, int(255 * kg))
+    SFX_MARK(ta, "whoosh_long", -20)
 
-
-
-# ======================================================================= CHAPTER 3: KABUL KA BAND DARWAZA
+# =================================================================== CHAPTER 3: KABUL KA BAND DARWAZA
 PL.update(dict(khyber=(71.1, 34.1), punjab=(73.6, 31.2), ghazni=(68.42, 33.55), bust=(64.36, 31.58), sistan=(61.6, 31.0),
-               thar=(71.4, 27.2), zabul=(66.5, 32.2)))
+               thar=(71.4, 27.2), zabul=(66.5, 32.2), herat=(62.2, 34.35), iran_c=(55.5, 32.5)))
 def _extra_regions():
     if "kabul" in REG: return
     G = WM.geoms; afg = G["AFG"].difference(CALIPH)
@@ -1554,82 +1678,138 @@ u_yumar = U("Yaad hai Umar"); u_kg = U("Kharaab, gareeb"); u_r2 = U("Raaz number
 CHAPTERS.append((3, "KABUL KA BAND DARWAZA", u_ghus)); chapter(3, "KABUL KA BAND DARWAZA", u_ghus)
 RAAZ = ["KABUL-ZABUL KI DEEWAR", "REGISTAAN KA RAASTA", "BAAR-BAAR KA JAWAB", "KHILAFAT KHUD TOOT RAHI THI"]
 def raaz_labels(n_open): return [RAAZ[i] if i < n_open else f"RAAZ {i + 1}" for i in range(4)]
+IND_FLAG = (76.3, 30.4)
 NW_CAM = (68.5, 32.0, 46.0)
 @shot(vin(u_ghus), vin(u_do_raaj), "cut")
 def s33(c, t):
     _extra_regions()
     bg(c, NW_CAM)
+    hl(c, NW_CAM, "india", t, kw(u_ghus, "India"), flag_at=IND_FLAG)                       # India stays lit while the road is explained
     title(c, "SABSE AASAAN RAASTA?", 960, 150, 56, seg(t, vin(u_ghus), vin(u_ghus) + 0.5), YEL)
     pts = [S(NW_CAM, "kabul"), S(NW_CAM, "khyber"), S(NW_CAM, "punjab")]
     route(c, pts, seg(t, kw(u_kk, "Kabul") - 0.1, kw(u_kk, "Khyber") + 0.6), YEL, 8, dash=False)
     pin_at(c, NW_CAM, "kabul", "KABUL", t, kw(u_kk, "Kabul"), YEL, 30, "l")
     pin_at(c, NW_CAM, "khyber", "KHYBER", t, kw(u_kk, "Khyber"), YEL, 28)
+    km = seg(t, kw(u_kk, "Khyber") + 0.2, ue(u_baad) + 0.2)                                # an army walks the road into India
+    if 0 < km < 1:
+        march(c, [(pts[0][0] - 140, pts[0][1] - 40)] + pts + [(pts[2][0] + 160, pts[2][1] + 120)], km, t, n=7, size=44, line=False)
+    if 0 < km < 1: pill(c, "BAAD KE HAMLAWAR · ISI RAASTE SE", 1180, 980, 26, "#0B1424", a=int(255 * seg(km, 0.15, 0.3) * (1 - seg(km, 0.9, 1.0))))
     for j in range(4):                                   # ghost arrows: later invaders on the same road
         kj = seg(t, vin(u_baad) + j * 0.35, vin(u_baad) + 1.2 + j * 0.35)
         if 0 < kj < 1:
             o = (j - 1.5) * 18; route(c, [(p[0] + o, p[1] + o) for p in pts], kj, "#9FB0C6", 4, dash=True, a=int(200 * (1 - kj)))
     kg = seg(t, kw(u_band, "band") - 0.2, kw(u_band, "band") + 0.2)
+    x, y = S(NW_CAM, "kabul")
+    ka = seg(t, vin(u_band), kw(u_band, "band"))                                            # Arab column runs into the shut gate
+    if ka > 0:
+        gx = x + 0; ex = lerp(x - 420, gx - 70, ease_out(ka)) - 30 * seg(t, kw(u_band, "band"), kw(u_band, "band") + 0.4)
+        for q in range(5): ic_soldier(c, ex - q * 40, y + 60 + (q % 2) * 10, 46, t * 1.3 + q, "#F1FAEE", int(255 * (1 - seg(t, ue(u_band), ue(u_band) + 0.4))))
+        if t < ue(u_band) + 0.4: pole_flag(c, ex - 210, y + 80, "umayyad", t, ka * (1 - seg(t, ue(u_band), ue(u_band) + 0.4)), 0.55, False)
     if kg > 0:
-        x, y = S(NW_CAM, "kabul"); gate(c, x + 150, y - 60, 100 * back(kg), 0); SFX_MARK(kw(u_band, "band"), "stamp", -16)
+        gate(c, x, y - 30, 110 * back(kg), 0); SFX_MARK(kw(u_band, "band"), "stamp", -16)
+        xmark(c, x - 110, y + 10, 34, seg(t, kw(u_band, "band") + 0.1, kw(u_band, "band") + 0.5))
     kk_ = seg(t, kw(u_yaad2, "darwaza"), kw(u_yaad2, "darwaza") + 0.8)
     if kk_ > 0:
-        kx = lerp(S(NW_CAM, "kabul")[0], 1840, ease_io(kk_)); ky = lerp(S(NW_CAM, "kabul")[1] - 70, 90, ease_io(kk_))
+        kx = lerp(x, 1840, ease_io(kk_)); ky = lerp(y - 70, 90, ease_io(kk_))
         c.drawCircle(kx - 14, ky, 14, paint(YEL, 255, stroke=6)); c.drawLine(kx, ky, kx + 34, ky, paint(YEL, 255, stroke=6)); c.drawLine(kx + 26, ky, kx + 26, ky + 12, paint(YEL, 255, stroke=6))
 
 @shot(vin(u_do_raaj), vin(u_665))
 def s34(c, t):
     _extra_regions(); bg(c, NW_CAM)
+    hl(c, NW_CAM, "india", t, 0, flag_at=IND_FLAG)
     hl(c, NW_CAM, "kabul", t, kw(u_ts, "Turk Shahi")); hl(c, NW_CAM, "zabul", t, kw(u_ts, "Zunbil"))
+    title(c, "DO RAAJ · INDIA KA DARWAZA", 960, 150, 50, seg(t, vin(u_do_raaj), vin(u_do_raaj) + 0.5), "#F1FAEE")
     label(c, "TURK SHAHI", *to_screen(NW_CAM, 69.8, 35.2), seg(t, kw(u_ts, "Turk Shahi"), kw(u_ts, "Turk Shahi") + 0.3), 30, border=REGCOL["kabul"])
     label(c, "ZUNBIL", *to_screen(NW_CAM, 65.6, 31.6), seg(t, kw(u_ts, "Zunbil"), kw(u_ts, "Zunbil") + 0.3), 30, border=REGCOL["zabul"])
-    tag_note(c, "seemayein andaazan", 960, 880, seg(t, kw(u_ts, "Zunbil"), kw(u_ts, "Zunbil") + 0.4))
-    float_map(c, t, kw(u_ts, "Turk Shahi"), "kabul", "KABUL · TURK SHAHI", "c. 700 (andaazan)", 1440, 130, 400, 300, pad=0.5)
-    float_map(c, t, kw(u_ts, "Zunbil"), "zabul", "ZABUL · ZUNBIL", "c. 700 (andaazan)", 1440, 470, 400, 300, pad=0.4)
+    for j, (lo, la) in enumerate(((68.9, 34.0), (67.8, 33.2), (66.9, 32.4), (66.2, 31.6))):    # shields: the wall in front of India
+        x, y = to_screen(NW_CAM, lo, la); shield(c, x - 70, y, 46, SAFF if j < 2 else REGCOL["zabul"], 255, seg(t, kw(u_ts, "Zunbil") + 0.3 + j * 0.1, kw(u_ts, "Zunbil") + 0.8 + j * 0.1))
+    tag_note(c, "seemayein andaazan", 960, 1010, seg(t, kw(u_ts, "Zunbil"), kw(u_ts, "Zunbil") + 0.4))
 
 @shot(vin(u_665), vin(u_698))
 def s35(c, t):
     _extra_regions(); bg(c, NW_CAM)
     timeline(c, t, 665, 1.0, span=(620, 900), step=10, big_every=50)
-    hl(c, NW_CAM, "zabul", t, 0)
-    kgreen = seg(t, kw(u_665, "Kabul"), kw(u_665, "Kabul") + 0.4) * (1 - seg(t, kw(u_bagh, "baghaawat") - 0.2, kw(u_bagh, "baghaawat") + 0.2))
+    hl(c, NW_CAM, "caliph", t, vin(u_665) + 0.1, flag_at=(56.0, 36.4), flag="umayyad")      # the Arab side lights up first
+    hl(c, NW_CAM, "india", t, 0, flag_at=IND_FLAG); hl(c, NW_CAM, "zabul", t, 0)
+    tb = kw(u_665, "le liya"); kgreen = seg(t, tb, tb + 0.4) * (1 - seg(t, kw(u_bagh, "baghaawat") - 0.2, kw(u_bagh, "baghaawat") + 0.2))
     hl(c, NW_CAM, "kabul", t, 0)
     if kgreen > 0:
         cx_, cy_ = cam_xy(NW_CAM[0], NW_CAM[1]); s_ = NW_CAM[2]
         c.save(); c.translate(DW / 2, DH / 2); c.scale(s_, s_); c.translate(-cx_, -cy_); c.drawPath(gpath("kabul", s_), paint(GREEN, int(230 * kgreen))); c.restore()
-    arrow(c, S(NW_CAM, "sistan"), S(NW_CAM, "kabul"), seg(t, vin(u_665) + 0.2, kw(u_665, "le liya") + 0.2), GREEN, 10, 0.15)
-    clash(c, *S(NW_CAM, "kabul"), seg(t, kw(u_665, "le liya"), kw(u_665, "le liya") + 0.7))
+    pts = [S(NW_CAM, "iran_c"), S(NW_CAM, "herat"), (S(NW_CAM, "ghazni")[0] - 40, S(NW_CAM, "ghazni")[1] - 30), S(NW_CAM, "kabul")]
+    km = seg(t, vin(u_665) + 0.4, tb + 0.15)
+    march(c, pts, km, t, GREEN, 9, n=7, size=50)
+    if km >= 1 and t < kw(u_bagh, "baghaawat") + 0.2: route(c, pts, 1.0, GREEN, 9, dash=False, a=int(255 * (1 - seg(t, kw(u_bagh, "baghaawat"), kw(u_bagh, "baghaawat") + 0.3))))
+    clash(c, *S(NW_CAM, "kabul"), seg(t, tb - 0.1, tb + 0.6), 1.2)
+    x, y = S(NW_CAM, "kabul"); kf = seg(t, tb + 0.2, tb + 0.7); kd = seg(t, kw(u_bagh, "baghaawat") - 0.1, kw(u_bagh, "baghaawat") + 0.5)
+    if kf > 0 and kd < 1:                                                                  # Arab flag planted ... then thrown down by the revolt
+        c.save(); c.translate(x + 30, y + 10); c.rotate(-80 * ease_in(kd)); c.translate(-(x + 30), -(y + 10))
+        pole_flag(c, x + 30, y + 10, "umayyad", t, kf, 0.8, False); c.restore()
     pin_at(c, NW_CAM, "kabul", "KABUL", t, vin(u_665), YEL, 30, "l")
     stamp(c, "BAGHAAWAT!", 1350, 300, 72, REGCOL["kabul"], seg(t, kw(u_bagh, "baghaawat") - 0.1, kw(u_bagh, "baghaawat") + 0.3))
-    SFX_MARK(kw(u_bagh, "baghaawat"), "stamp", -18)
+    if kd > 0: skirmish(c, x + 10, y + 200, t, seg(t, kw(u_bagh, "baghaawat"), kw(u_bagh, "baghaawat") + 1.0), 3)
+    SFX_MARK(kw(u_bagh, "baghaawat"), "stamp", -18); SFX_MARK(vin(u_665) + 0.4, "whoosh_long", -22)
 
+AOD_CAM = (56.5, 31.5, 30.0)
+ZB_CAM = (67.6, 32.1, 105.0)
 @shot(vin(u_698), vin(u_nat))
 def s36(c, t):
-    _extra_regions(); bg(c, NW_CAM); hl(c, NW_CAM, "zabul", t, 0); hl(c, NW_CAM, "kabul", t, 0)
-    timeline(c, t, 698, 1.0, span=(620, 900), step=10, big_every=50)
-    arrow(c, S(NW_CAM, "sistan"), S(NW_CAM, "zabul"), seg(t, vin(u_bheji), ue(u_bheji) + 0.6), RED, 16, 0.12)
+    _extra_regions(); bg(c, AOD_CAM)
+    hl(c, AOD_CAM, "india", t, 0, flag_at=IND_FLAG, flag_label=False); hl(c, AOD_CAM, "zabul", t, 0, pole=False); hl(c, AOD_CAM, "kabul", t, 0, pole=False)
+    hl(c, AOD_CAM, "iraq", t, vin(u_698) + 0.2, flag_at=(44.0, 32.6))                         # Hajjaj's base: Iraq (Kufa)
+    pin_at(c, AOD_CAM, "kufa", "KUFA · HAJJAJ", t, vin(u_698) + 0.5, YEL, 26, "l")
+    kfb = seg(t, us(u_aod) - 0.3, us(u_aod) + 0.2)
+    timeline(c, t, 698, 1.0 - kfb, span=(620, 900), step=10, big_every=50)
+    pts = [S(AOD_CAM, "kufa"), S(AOD_CAM, "iran_c"), S(AOD_CAM, "sistan"), S(AOD_CAM, "zabul")]
+    km = seg(t, kw(u_bheji, "fauj") - 0.3, ue(u_aod))
+    march(c, pts, km, t, RED, 10, n=8, size=44)
+    if km >= 1: route(c, pts, 1.0, RED, 10, dash=False)
     title(c, "ARMY OF DESTRUCTION", 960, 170, 74, seg(t, us(u_aod) - 0.1, us(u_aod) + 0.4), RED)
-    tag_note(c, '"tabaahi ki fauj"', 960, 215, seg(t, us(u_tab), us(u_tab) + 0.4), "#F1FAEE")
+    tag_note(c, '"tabaahi ki fauj"', 960, 222, seg(t, us(u_tab), us(u_tab) + 0.4), "#F1FAEE")
+    army_block(c, 60, 720, 4, 10, 92, t, kfb)                                              # the formation itself
     kq = seg(t, us(u_hukm2) - 0.1, us(u_hukm2) + 0.4)
     if kq > 0:
-        quote_card(c, 360, 560, 1200, ["destroy his strongholds,", "kill all his fighting men"], "Hajjaj ka hukum · Wikipedia: Zunbils", kq, t, [0, 1], seg(t, us(u_hukm2) + 0.3, ue(u_hukm2)))
-    SFX_MARK(us(u_aod), "boom", -18)
+        quote_card(c, 1040, 560, 800, ["destroy his strongholds,", "kill all his fighting men"], "Hajjaj ka hukum · Wikipedia: Zunbils", kq, t, [0, 1], seg(t, us(u_hukm2) + 0.3, ue(u_hukm2)))
+    SFX_MARK(us(u_aod), "boom", -18); SFX_MARK(kw(u_bheji, "fauj"), "whoosh_long", -20)
 
+# battle at Zabul: who falls, who turns back to Bust (sources give only the 5,000 survivors, no death count)
+_AR = [(-150 + (i % 4) * 46 - (i // 4) * 14, -70 + (i // 4) * 44) for i in range(16)]
+_SURV = (1, 6, 11, 14)
 @shot(vin(u_nat), vin(u_peac))
 def s37(c, t):
-    _extra_regions(); bg(c, NW_CAM); hl(c, NW_CAM, "zabul", t, 0); hl(c, NW_CAM, "kabul", t, 0)
-    title(c, "NATEEJA?", 960, 170, 70, seg(t, us(u_nat), us(u_nat) + 0.3), YEL)
-    kb = seg(t, us(u_5000) - 0.3, us(u_5000) + 0.4)
-    p0, p1 = S(NW_CAM, "sistan"), S(NW_CAM, "zabul")
-    if kb < 1:
-        arrow(c, p0, p1, 1.0, RED, 16, 0.12)
-    for j in range(14):
-        if kb <= 0: break
-        ang = j / 14 * math.tau; d = 40 + 260 * ease_out(kb)
-        c.drawRect(skia.Rect(p1[0] + d * math.cos(ang) - 10, p1[1] + d * math.sin(ang) - 4, p1[0] + d * math.cos(ang) + 10, p1[1] + d * math.sin(ang) + 4), paint(RED, int(255 * (1 - kb))))
-    clash(c, p1[0], p1[1], seg(t, us(u_5000) - 0.4, us(u_5000) + 0.4), 1.3)
-    stat_card(c, 1220, 330, 520, 300, "SIRF 5,000", "zinda wapas laute (Bust)", seg(t, kw(u_5000, "paanch") - 0.1, kw(u_5000, "paanch") + 0.4), RED)
-    pin_at(c, NW_CAM, "bust", "BUST", t, kw(u_5000, "wapas"), "#C9D1DC", 26, "l")
-    SFX_MARK(us(u_5000) - 0.2, "boom", -16)
+    _extra_regions()
+    cam = fly(AOD_CAM, ZB_CAM, ease_io(seg(t, vin(u_nat), us(u_5000) - 0.2))); bg(c, cam)
+    hl(c, cam, "india", t, 0, pole=False); hl(c, cam, "zabul", t, 0, pole=False); hl(c, cam, "kabul", t, 0, pole=False)
+    title(c, "NATEEJA?", 960, 150, 70, seg(t, us(u_nat), us(u_nat) + 0.3), YEL)
+    zx, zy = S(cam, "zabul"); bx, by = S(cam, "bust")
+    kz = seg(t, us(u_nat) + 0.2, us(u_5000) + 0.1)
+    if kz > 0:
+        label(c, "JUNG: ZABUL · ZUNBIL KA ILAAKA", zx + 40, zy - 210, seg(kz, 0, 0.3), 28, border=REGCOL["zabul"])
+        mt = seg(t, us(u_nat) + 0.3, us(u_nat) + 1.6)                                       # Zunbil fighters pour down from the hills
+        for q in range(10):
+            dx = lerp(320, 70, ease_out(mt)) + (q % 3) * 36; dy = -60 + (q // 3) * 40
+            ic_soldier(c, zx + dx, zy + dy, 46, t * 1.3 + q, "#2A9D8F", int(255 * clamp(mt * 3)))
+    ret = seg(t, kw(u_5000, "zinda") - 0.4, ue(u_5000) + 0.4)
+    for i, (ox, oy) in enumerate(_AR):
+        x, y = zx + ox, zy + oy
+        if i in _SURV:
+            if ret <= 0: ic_soldier(c, x, y, 44, t * 1.3 + i, "#F1FAEE", 255)
+            continue
+        fk = seg(t, us(u_nat) + 0.6 + (i * 7 % 16) * 0.09, us(u_nat) + 1.0 + (i * 7 % 16) * 0.09)
+        fallen(c, x, y, 44, t + i, fk, face=-1 if i % 3 else 1)
+    kc = seg(t, us(u_nat) + 0.4, us(u_5000) + 0.4)
+    if 0 < kc < 1:
+        for j in range(3): clash(c, zx - 30 + j * 50, zy - 40 + j * 30, (kc * 3 + j * 0.33) % 1, 0.7)
+    if ret > 0:                                                                             # survivors turn round and walk back to Bust
+        pr = route(c, [(zx - 60, zy - 10), ((zx + bx) / 2, min(zy, by) + 70), (bx, by)], ease_io(ret), "#C9D1DC", 5, dash=True)
+        if pr and ret < 1:
+            for q in range(4):
+                f_ = clamp(ease_io(ret) - q * 0.05); sx, sy, _ = along(*pr, f_)
+                c.save(); c.translate(sx, 0); c.scale(-1, 1); ic_soldier(c, 0, sy - 14 + (q % 2) * 8, 44, t * 1.3 + q, "#F1FAEE", 255); c.restore()
+            sx, sy, _ = along(*pr, clamp(ease_io(ret))); pill(c, "5,000", sx, sy - 80, 26, RED)
+    pin_at(c, cam, "bust", "BUST", t, kw(u_5000, "wapas") - 0.3, "#C9D1DC", 26, "l")
+    stat_card(c, 1250, 300, 520, 300, "SIRF 5,000", "zinda wapas laute (Bust)", seg(t, kw(u_5000, "paanch") - 0.1, kw(u_5000, "paanch") + 0.4), RED)
+    SFX_MARK(us(u_nat) + 0.4, "boom", -18); SFX_MARK(us(u_5000) - 0.2, "boom", -16)
 
 @shot(vin(u_peac), vin(u_200))
 def s38(c, t):
@@ -1715,6 +1895,14 @@ def _state_regions():
     REG["pratihara"] = unary_union([st[k] for k in ("Rajasthan", "Gujarat", "Madhya Pradesh", "Uttar Pradesh", "Haryana", "Delhi", "Bihar")]).buffer(0.05)
     REG["raidzone"] = unary_union([st["Gujarat"], st["Rajasthan"].intersection(box(68, 23, 75.5, 27.5)), st["Madhya Pradesh"].intersection(box(74, 21.5, 77.5, 24.5))]).buffer(0.05)
     REGCOL.update({"gujarat": "#F15BB5", "rajasthan": "#F8961E", "mp": "#9B5DE5", "pratihara": "#E76F51", "raidzone": GREEN})
+    IN_ = WM.geoms["IND"]; U2 = lambda ks: unary_union([st[k] for k in ks]).buffer(0.02).intersection(IN_)
+    REG["kashmir"] = IN_.intersection(box(72.4, 32.0, 80.6, 37.2)).difference(unary_union([st["Himachal Pradesh"], st["Punjab"]]).buffer(0.02)).buffer(0)
+    REG["kannauj"] = U2(["Uttar Pradesh", "Uttarakhand", "Haryana", "Delhi", "Punjab", "Himachal Pradesh", "Chandigarh"]).difference(REG["kashmir"])
+    REG["deccan"] = U2(["Maharashtra", "Karnataka", "Telangana", "Goa"])
+    REG["east"] = U2(["Bihar", "Jharkhand", "West Bengal", "Odisha", "Chhattisgarh"])
+    REG["south"] = U2(["Tamil Nadu", "Kerala", "Andhra Pradesh", "Puducherry"])
+    REG["kamarupa"] = U2(["Assam", "Meghalaya", "Arunachal Pradesh", "Nagaland", "Manipur", "Mizoram", "Tripura", "Sikkim"])
+    REGCOL.update({"kashmir": "#B5179E", "kannauj": "#4CC9F0", "deccan": "#43AA8B", "east": "#F9C74F", "south": "#F94144", "kamarupa": "#4D908E"})
 def sindh_base(c, cam, t, extra=0.0):
     bg(c, cam); draw_region(c, cam, "sindh", GREEN, 200)
     if extra > 0: draw_region(c, cam, "raidzone", GREEN, int(150 * extra))
