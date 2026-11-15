@@ -32,3 +32,6 @@ google-services.json
 
 # Android Profiling
 *.hprof
+amrit-borii/render_tmp/
+amrit-borii/**/stills/
+amrit-borii/host/node_modules/
