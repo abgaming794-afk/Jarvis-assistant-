@@ -5,8 +5,9 @@ import os, sys, json, subprocess, wave, numpy as np
 PROJ = os.path.join(os.environ.get("AB_ROOT", "/home/user/amrit-borii/"), os.environ.get("AB_PROJECT", "khilafat-india"), "")
 SR = 48000
 TL = json.load(open(PROJ + "audio/timeline.json"))
-GAPS, G = TL["gaps"], TL["ch_gap"]
-def vt(t, strict=True): return t + G * sum(1 for P in GAPS if (P < t if strict else P <= t))
+GL = sorted(TL["gaps"])                       # [P, dur, kind]
+GAPS = [g[0] for g in GL if g[2] == "ch"]; G = TL["ch_gap"]
+def vt(t, strict=True): return t + sum(d for P, d, k in GL if (P < t if strict else P <= t))
 def load(p):
     raw = subprocess.run(["ffmpeg", "-loglevel", "error", "-i", p, "-f", "f32le", "-ac", "1", "-ar", str(SR), "-"], capture_output=True, check=True).stdout
     return np.frombuffer(raw, np.float32).copy()
@@ -18,9 +19,10 @@ def put(sig, t, db, pan=0.0):
     if i >= n or i < 0: return
     e = min(n, i + len(sig)); g = 10 ** (db / 20)
     L[i:e] += sig[:e - i] * g * (1 - max(0, pan)); R[i:e] += sig[:e - i] * g * (1 + min(0, pan))
-edges = [0.0] + sorted(GAPS) + [len(vo) / SR]
+edges = [0.0] + [g[0] for g in GL] + [len(vo) / SR]; offs = [0.0]
+for g in GL: offs.append(offs[-1] + g[1])
 for k in range(len(edges) - 1):
-    a_, b_ = int(edges[k] * SR), int(edges[k + 1] * SR); put(vo[a_:b_], edges[k] + G * k, 0.0)
+    a_, b_ = int(edges[k] * SR), int(edges[k + 1] * SR); put(vo[a_:b_], edges[k] + offs[k], 0.0)
 # SFX: storyboard names -> generated files; user asked for half loudness (-6 dB)
 ALIAS = {"hit": "stamp", "build": "drag", "boom_low": "boom", "paper": "whoosh_long", "lock": "ding", "wind": "whoosh_long",
          "count": "grow", "scratch": "glitch", "whoosh": "whoosh_long"}

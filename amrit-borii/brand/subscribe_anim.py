@@ -80,7 +80,7 @@ def frame(t, W, H, logo):
     lay.alpha_composite(lg, (int(cx0 + 26 * u), int(y + (ch - ls) / 2)))
     # names
     d.text((cx0 + 190 * u, y + 52 * u), "AMRIT BORI", font=ImageFont.truetype(FB, int(54 * u)), fill=TXT)
-    d.text((cx0 + 192 * u, y + 118 * u), "@AMRITBORII", font=ImageFont.truetype(FS, int(28 * u)), fill=MUTED)
+    d.text((cx0 + 192 * u, y + 118 * u), "@ITSAMRITBORII", font=ImageFont.truetype(FS, int(28 * u)), fill=MUTED)
     # subscribe button
     clicked = t >= 1.40
     bx0, bw, bh = cx0 + 650 * u, 300 * u, 92 * u
