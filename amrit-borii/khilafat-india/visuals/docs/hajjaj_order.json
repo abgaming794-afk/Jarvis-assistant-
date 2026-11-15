@@ -1,0 +1,32 @@
+{
+ "url": "https://en.wikipedia.org/wiki/Muhammad_ibn_al-Qasim",
+ "title": "Muhammad ibn al-Qasim - Wikipedia",
+ "lines": [
+  [
+   {
+    "x0": 559.453125,
+    "y": 348.9375,
+    "x1": 1658.8125,
+    "h": 51
+   }
+  ],
+  [
+   {
+    "x0": 1947.046875,
+    "y": 426.9375,
+    "x1": 2056.453125,
+    "h": 51
+   },
+   {
+    "x0": 162,
+    "y": 504.9375,
+    "x1": 813.046875,
+    "h": 51
+   }
+  ]
+ ],
+ "hl": [
+  "Kill anyone belonging to the ahl-i-harb (combatants)",
+  "grant them aman (peace and safety)"
+ ]
+}
