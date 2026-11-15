@@ -1274,6 +1274,7 @@ def s17(c, t):
     stamp(c, "IJAAZAT NAHI", 960, 840, 72, RED, seg(t, kw(u_twist, "ijaazat") - 0.1, kw(u_twist, "ijaazat") + 0.35))
     SFX_MARK(kw(u_twist, "ijaazat"), "stamp", -18)
 
+IND_CAM = (66.5, 27.5, 30.0)
 @shot(vin(u_644), vin(u_kyun))
 def s18(c, t):
     bg(c, IND_CAM)
