@@ -1599,7 +1599,8 @@ u_naye = U("Naye Abbasi"); u_776 = U("Lekin 776"); u_mahdi = U("Aur Khalifa al-M
 CHAPTERS.append((5, "DAMASCUS MEIN AAG", u_yk)); chapter(5, "DAMASCUS MEIN AAG", u_yk)
 FRONTS = [("ferghana", "DAY OF THIRST · 724", u_724, "#00BBF9"), ("ardabil", "KHAZAR · 730", u_khaz, "#9B5DE5"), ("samarkand", "DEFILE · 731", u_sam, "#F15BB5"),
           ("tours", "TOURS · 10 OCT 732", u_tours, "#3A86FF"), ("akroinon", "AKROINON · 739", u_akr, "#F8961E"), ("kairouan", "BERBER BAGHAAWAT · 740", u_berb, "#E76F51")]
-FR_CAM = (30.0, 36.0, 10.5)
+FR_CAM = (36.0, 40.0, 19.0)
+FR_OFF = {"ferghana": (20, -95), "ardabil": (-40, -120), "samarkand": (120, 60), "tours": (150, -50), "akroinon": (-60, 90), "kairouan": (-40, 80)}
 def fronts(c, t, cam, upto=None, all_red=0.0):
     for i, (key, lab, uu, col) in enumerate(FRONTS):
         t0 = us(uu)
@@ -1609,8 +1610,9 @@ def fronts(c, t, cam, upto=None, all_red=0.0):
         rp = ((t - t0) * 0.9) % 1
         c.drawCircle(x, y, 14 + 50 * rp, paint(RED, int(200 * (1 - rp) * k), stroke=4))
         ic_flame(c, x, y - 8, 46 * back(k), t, int(255 * clamp(k * 1.5)))
-        side = 1 if x < 1500 else -1
-        label(c, lab, x + side * 140, y - 46, k, 24, border=col)
+        ox, oy = FR_OFF.get(key, (140, -46))
+        c.drawLine(x, y, x + ox * 0.7, y + oy * 0.7, paint("#E5E7EB", int(160 * k), stroke=1.5))
+        label(c, lab, x + ox, y + oy, k, 24, border=col)
 
 @shot(vin(u_yk), vin(u_jal), "cut")
 def s64(c, t):
@@ -1643,7 +1645,7 @@ def s66(c, t):
     pill(c, "3,000", p0[0], p0[1] - 60, 30, YEL, fg=NAVY, shadow=6)
     kq = seg(t, kw(u_iraqb, "baghaawat") - 0.1, kw(u_iraqb, "baghaawat") + 0.3)
     if kq > 0: stamp(c, "IRAQ BAGHAAWAT", p2[0] + 40, p2[1] + 90, 40, RED, kq)
-    hl(c, FR_CAM, "iraq", t, kw(u_iraqb, "Iraq"))
+    hl(c, FR_CAM, "iraq", t, kw(u_iraqb, "Iraq"), pole=False)
     kg = seg(t, us(u_ghar), us(u_ghar) + 0.5)
     if kg > 0:
         dim(c, 120 * kg); x, y = S(FR_CAM, "sindh"); pill(c, "SINDH?", x, y - 40, 34, "#5B6472", a=int(255 * clamp(kg * 1.5)))
@@ -1737,8 +1739,8 @@ def s73(c, t):
     kn = seg(t, kw(u_turk, "naam") - 0.1, kw(u_turk, "naam") + 0.3)
     if kn > 0: pill(c, "KHALIFA KO SIRF NAAM KA SALAAM", 560, 720, 26, "#5B6472", a=int(255 * clamp(kn * 1.5)))
     kg = seg(t, us(u_wahi2), us(u_wahi2) + 1.2)
-    if k > 0:
-        x, y = S(cam, "kabul"); gate(c, x + 150, y - 60, 100, kg)
+    if k > 0.6:
+        x, y = S(cam, "kabul"); gate(c, x + 150, y - 60, 100 * ease_out(seg(k, 0.6, 1.0)), kg)
         route(c, [S(cam, "ghazni2"), S(cam, "khyber"), S(cam, "punjab")], seg(t, us(u_wahi2) + 0.5, ue(u_wahi2) + 0.5), "#9B5DE5", 10, False)
     tw = seg(t, us(u_twist2) - 0.1, us(u_twist2) + 0.3) * (1 - seg(t, us(u_nw), us(u_nw) + 0.3))
     if tw > 0: title(c, "SABSE BADA TWIST?", 960, 160, 64, tw, YEL)
