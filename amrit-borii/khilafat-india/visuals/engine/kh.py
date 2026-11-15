@@ -391,6 +391,28 @@ def chapter_card(c, lt, t0, num, ttl, dur=2.0):
     fade = seg(lt, dur - 0.25, dur); c.restore()
     if fade > 0: c.drawRect(skia.Rect(0, 0, DW, DH), paint("#0B1220", int(255 * fade)))
 
+
+def conquer(c, cam, name, t, t0, dur=1.1, flag_at=None, flag_size=0.9):
+    """same conquest look as the opening scene: region fills south -> north in khilafat green with a waving cloth,
+    then the army plants the khilafat flag (drop + dust ring)"""
+    k = ease_io(seg(t, t0, t0 + dur))
+    if k > 0:
+        b_ = REG[name].bounds; ys = to_screen(cam, 0, b_[1] - 0.3)[1]; ye = to_screen(cam, 0, b_[3] + 0.3)[1]; yc = lerp(ys, ye, k)
+        c.save(); c.clipRect(skia.Rect(0, yc, DW, DH))
+        cx_, cy_ = cam_xy(cam[0], cam[1]); s_ = cam[2]
+        c.save(); c.translate(DW / 2, DH / 2); c.scale(s_, s_); c.translate(-cx_, -cy_)
+        pth = gpath(name, s_); c.drawPath(pth, paint(GREEN, 235)); c.drawPath(pth, paint("#BFF0D4", 230, stroke=1.2 / s_)); c.restore()
+        if k < 1:
+            xl = to_screen(cam, b_[0] - 0.5, 0)[0]; xr = to_screen(cam, b_[2] + 0.5, 0)[0]
+            c.drawLine(xl, yc, xr, yc, paint("#BFF0D4", int(160 * (1 - k)), stroke=2))
+        c.restore()
+    kf = seg(t, t0 + dur * 0.7, t0 + dur + 0.6)
+    if kf > 0:
+        lo, la = flag_at or rep_point(name); x, y = to_screen(cam, lo, la)
+        rp = seg(t, t0 + dur + 0.1, t0 + dur + 0.8)
+        if 0 < rp < 1: c.drawOval(skia.Rect(x - 70 * rp, y - 18 * rp, x + 70 * rp, y + 18 * rp), paint("#E9DCC0", int(180 * (1 - rp)), stroke=3))
+        c.save(); c.translate(0, (1 - ease_out(kf)) * -120); pole_flag(c, x, y, "umayyad", t, clamp(kf * 1.5), flag_size, False); c.restore()
+
 # ---------------------------------------------------------------- premium text animation
 def title(c, s, x, y, size, k, col="#F1FAEE", a=255):
     """per-letter reveal: each glyph fades in and glides up with a soft stagger; tracking settles from wide to normal"""
@@ -911,8 +933,9 @@ def s13(c, t):
         label(c, nm, dst[0] + (-60 if j_ == 0 else 60), dst[1] + 70, seg(t, kw(uu, word) + 0.2, kw(uu, word) + 0.5), 26, border=RED)
         SFX_MARK(kw(uu, word) + 0.25, "boom", -20)
     title(c, "EK SAAL · DO HAMLE", 960, 170, 56, seg(t, kw(u_sirf, "do hamle") - 0.2, kw(u_sirf, "do hamle") + 0.5), "#F1FAEE") if t < kw(u_ek, "Spain") + 2 else None
-    if t > kw(u_ek, "Spain"): draw_region(c, W_CAM, "iberia", GREEN, int(240 * seg(t, kw(u_ek, "Spain"), kw(u_ek, "Spain") + 0.5)), stroke="#FFFFFF")
-    if t > kw(u_doo, "Sindh"): draw_region(c, W_CAM, "sindh", GREEN, int(240 * seg(t, kw(u_doo, "Sindh"), kw(u_doo, "Sindh") + 0.5)), stroke="#FFFFFF")
+    conquer(c, W_CAM, "iberia", t, kw(u_ek, "Spain") + 0.2, 0.9, flag_at=(-4.02, 39.86), flag_size=0.75)
+    conquer(c, W_CAM, "sindh", t, kw(u_doo, "Sindh") - 0.05, 0.6, flag_at=(68.6, 26.4), flag_size=0.75)
+    SFX_MARK(kw(u_ek, "Spain") + 1.2, "stamp", -18); SFX_MARK(kw(u_doo, "Sindh") + 1.2, "stamp", -18)
     label(c, "SPAIN", *[a + b for a, b in zip(S(W_CAM, "spain"), (0, -40))], seg(t, kw(u_ek, "Spain"), kw(u_ek, "Spain") + 0.3), 30)
     label(c, "SINDH", *[a + b for a, b in zip(S(W_CAM, "sindh"), (0, -40))], seg(t, kw(u_doo, "Sindh"), kw(u_doo, "Sindh") + 0.3), 30)
     float_map(c, t, kw(u_ek, "Spain"), "iberia", "SPAIN · 711", "Visigoth rajya (andaazan)", 90, 140, 380, 290, fill=GREEN, ctx=4)
@@ -925,8 +948,10 @@ def s14(c, t):
     cam = fly(W_CAM, IN_CAM, ease_io(seg(t, kw(u_ab, "Sindh") - 0.6, ue(u_ab) + 0.4)))
     glow = 0.5 + 0.5 * math.sin(t * 3)
     bg(c, cam, {"IND": (SAFF, int(140 + 60 * glow * seg(t, kw(u_ab, "Hindustan") - 0.3, kw(u_ab, "Hindustan") + 0.3)))})
-    draw_region(c, cam, "caliph", GREEN, 150); draw_region(c, cam, "iberia", GREEN, 230)
-    hl(c, cam, "sindh", t, kw(u_ab, "Sindh"), YEL)
+    draw_region(c, cam, "caliph", GREEN, 150)
+    conquer(c, cam, "iberia", t, kw(u_ek, "Spain") + 0.2, 0.9, flag_at=(-4.02, 39.86), flag_size=0.75)      # planted flags stay up
+    conquer(c, cam, "sindh", t, kw(u_doo, "Sindh") - 0.05, 0.6, flag_at=(68.6, 26.4), flag_size=0.75)
+    hl(c, cam, "sindh", t, kw(u_ab, "Sindh"), YEL, pole=False)
     hl(c, cam, "india", t, kw(u_ab, "Hindustan"), SAFF)
     label(c, "HINDUSTAN", *S(cam, "india"), seg(t, kw(u_ab, "Hindustan") - 0.1, kw(u_ab, "Hindustan") + 0.4), 40, border=SAFF)
     float_map(c, t, kw(u_ab, "Hindustan"), "india", "HINDUSTAN · 711", "kai alag rajya (andaazan)", 1420, 150, 400, 320, fill=SAFF, pad=0.25)
