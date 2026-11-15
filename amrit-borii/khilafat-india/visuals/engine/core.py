@@ -11,6 +11,7 @@ from shapely.geometry import shape, Polygon, MultiPolygon
 
 VERTICAL = _os.environ.get("AB_ORIENT", "landscape") == "vertical"   # AB_ORIENT=vertical -> Shorts (9:16)
 W4, H4 = (2160, 3840) if VERTICAL else (3840, 2160)
+if _os.environ.get("AB_PREVIEW") == "720": W4, H4 = (720, 1280) if VERTICAL else (1280, 720)   # fast review renders
 DW, DH = (1080, 1920) if VERTICAL else (1920, 1080)
 SC = W4 / DW
 

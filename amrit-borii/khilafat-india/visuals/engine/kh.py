@@ -1372,7 +1372,11 @@ def s25(c, t):
 @shot(vin(u_multan), vin(u_par))
 def s26(c, t):
     bg(c, AR_CAM2); hl(c, AR_CAM2, "sindh", t, 0, flag="umayyad")
-    x, y = S(AR_CAM2, "multan"); pin(c, x, y, "MULTAN", seg(t, kw(u_multan, "Multan"), kw(u_multan, "Multan") + 0.4), YEL, size=30, t=t)
+    x, y = S(AR_CAM2, "multan"); fort(c, x, y - 10, 90, seg(t, vin(u_multan), vin(u_multan) + 0.8))
+    for j in range(8):                                                                 # besieging soldiers close in
+        an = j / 8 * math.tau; d0 = lerp(220, 120, ease_io(seg(t, us(u_do), kw(u_do, "dhokhe"))))
+        ic_soldier(c, x + d0 * math.cos(an), y + 0.6 * d0 * math.sin(an), 34, t + j, "#F1FAEE", int(255 * seg(t, vin(u_multan) + 0.3, vin(u_multan) + 0.8)))
+    pin(c, x, y, "MULTAN", seg(t, kw(u_multan, "Multan"), kw(u_multan, "Multan") + 0.4), YEL, size=30, t=t)
     k = seg(t, us(u_do), kw(u_do, "dhokhe"))
     rrect(c, 1250, 300, 1700, 560, 24, "#16223A", int(255 * clamp(seg(t, us(u_do) - 0.2, us(u_do)) * 1.5)), shadow=16)
     if t > us(u_do) - 0.2:
@@ -1521,6 +1525,8 @@ def s35(c, t):
     if kgreen > 0:
         cx_, cy_ = cam_xy(NW_CAM[0], NW_CAM[1]); s_ = NW_CAM[2]
         c.save(); c.translate(DW / 2, DH / 2); c.scale(s_, s_); c.translate(-cx_, -cy_); c.drawPath(gpath("kabul", s_), paint(GREEN, int(230 * kgreen))); c.restore()
+    arrow(c, S(NW_CAM, "sistan"), S(NW_CAM, "kabul"), seg(t, vin(u_665) + 0.2, kw(u_665, "le liya") + 0.2), GREEN, 10, 0.15)
+    clash(c, *S(NW_CAM, "kabul"), seg(t, kw(u_665, "le liya"), kw(u_665, "le liya") + 0.7))
     pin_at(c, NW_CAM, "kabul", "KABUL", t, vin(u_665), YEL, 30, "l")
     stamp(c, "BAGHAAWAT!", 1350, 300, 72, REGCOL["kabul"], seg(t, kw(u_bagh, "baghaawat") - 0.1, kw(u_bagh, "baghaawat") + 0.3))
     SFX_MARK(kw(u_bagh, "baghaawat"), "stamp", -18)
@@ -1724,6 +1730,7 @@ def s48(c, t):
 def s49(c, t):
     _state_regions(); sindh_base(c, GJ_CAM, t)
     timeline(c, t, 731, 1.0, span=(700, 800), step=5, big_every=10)
+    arrow(c, to_screen(GJ_CAM, 63.5, 26.0), S(GJ_CAM, "sindh"), seg(t, vin(u_731) + 0.2, ue(u_hakam)), GREEN, 10, 0.1)
     portrait(c, "AL-HAKAM", 1500, 430, seg(t, kw(u_hakam, "Al-Hakam") - 0.2, kw(u_hakam, "Al-Hakam") + 0.3), col="#3D6B4F", hat="helmet")
 
 @shot(vin(u_bal), vin(u_isliye))
@@ -1888,6 +1895,8 @@ def s59(c, t):
     sindh_base(c, GJ_CAM, t, 1 - k)
     timeline(c, t, 743, 1.0, span=(700, 800), step=5, big_every=10)
     title(c, "743 TAK?", 960, 180, 70, seg(t, us(u_743), us(u_743) + 0.3), YEL)
+    for j, key in enumerate(("bhinmal", "saurashtra", "bharuch", "malwa")):
+        arrow(c, S(GJ_CAM, key), S(GJ_CAM, "sindh"), seg(t, us(u_khatam2) + j * 0.15, ue(u_khatam2) + j * 0.1), RED, 7, -0.12)
     stamp(c, "SAARI JEET KHATAM", 1300, 420, 50, SAFF, seg(t, kw(u_khatam2, "khatam") - 0.1, kw(u_khatam2, "khatam") + 0.3))
 
 @shot(vin(u_r3), vin(u_blank))
@@ -2076,8 +2085,12 @@ def s72(c, t):
     slots(c, t, 4, 1.0, 520, labels=RAAZ, red4=seg(t, vin(u_lab), vin(u_lab) + 0.5)) if t < us(u_bahut) else None
     kb = seg(t, us(u_bahut) - 0.1, us(u_bahut) + 0.4)
     if kb > 0:
-        dim(c, 200); title(c, "ARAB KHILAFAT NE INDIA JEETA?", 960, 500, 70, kb, "#F1FAEE")
-        xmark(c, 960, 500, 220, seg(t, us(u_galat) - 0.1, us(u_galat) + 0.4))
+        cam = (60.0, 28.0, 12.0); c.save(); lp = skia.Paint(); lp.setAlphaf(kb); c.saveLayer(None, lp)
+        bg(c, cam, {"IND": (SAFF, 170)}); draw_region(c, cam, "caliph", GREEN, 200)
+        arrow(c, S(cam, "damascus"), S(cam, "india"), seg(t, us(u_bahut), us(u_bahut) + 1.5), GREEN, 12, 0.1)
+        c.restore(); c.restore()
+        dim(c, 120 * kb); title(c, "ARAB KHILAFAT NE INDIA JEETA?", 960, 200, 64, kb, "#F1FAEE")
+        circle_x(c, 960, 560, 200, seg(t, us(u_galat) - 0.1, us(u_galat) + 0.7))
     SFX_MARK(us(u_galat), "stamp", -14)
 
 @shot(vin(u_ghz), vin(u_vyap))
