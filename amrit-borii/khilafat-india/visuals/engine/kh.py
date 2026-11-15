@@ -447,6 +447,25 @@ def duck_soldier(c, x, y, s, duck, t, a=255, face=1):
     c.drawOval(skia.Rect(sx - 26 * k, sy - 22 * k, sx + 26 * k, sy + 22 * k), paint(SAFF, al)); c.drawOval(skia.Rect(sx - 26 * k, sy - 22 * k, sx + 26 * k, sy + 22 * k), paint("#7A4A1E", al, stroke=3 * k))
     c.drawCircle(sx, sy, 5 * k, paint("#7A4A1E", al))
 
+
+def civilian(c, x, y, s, col, a=255, t=0.0):
+    k = s / 100; bob = math.sin(t * 3 + x) * 2 * k
+    c.drawRoundRect(skia.Rect(x - 16 * k, y - 50 * k + bob, x + 16 * k, y + 6 * k + bob), 12 * k, 12 * k, paint(col, a))
+    c.drawCircle(x, y - 64 * k + bob, 14 * k, paint("#D9A877", a))
+    for sgn in (-1, 1): c.drawLine(x + sgn * 7 * k, y + 4 * k, x + sgn * 9 * k, y + 40 * k, paint("#5B4636", a, stroke=8 * k, cap_round=True))
+
+def skirmish(c, cx, cy, t, k, n=4):
+    """two lines of 2D soldiers charge and collide; sparks fly where they meet (no sword icons)"""
+    if k <= 0: return
+    meet = ease_out(clamp(k * 1.6))
+    for j in range(n):
+        y = cy + (j - (n - 1) / 2) * 62
+        ic_soldier(c, cx - 260 + 205 * meet - (j % 2) * 26, y, 60, t * 9 + j, "#F1FAEE", 255)            # Arab side
+        ic_soldier(c, cx + 260 - 205 * meet + (j % 2) * 26, y, 60, t * 9 + j + 1, "#E8B4A0", 255)        # defenders
+        if meet > 0.85:
+            ph = (t * 3 + j * 0.37) % 1
+            clash(c, cx, y - 20, ph, 0.45)
+
 # ---------------------------------------------------------------- premium text animation
 def title(c, s, x, y, size, k, col="#F1FAEE", a=255):
     """per-letter reveal: each glyph fades in and glides up with a soft stagger; tracking settles from wide to normal"""
@@ -512,7 +531,6 @@ def clash(c, x, y, k, s=1.0):
         an = r / 10 * math.tau; d0 = (18 + 70 * ease_out(k)) * s
         c.drawLine(x + d0 * math.cos(an), y + d0 * math.sin(an), x + (d0 + 24 * s) * math.cos(an), y + (d0 + 24 * s) * math.sin(an), paint(YEL, int(255 * (1 - k)), stroke=5 * s, cap_round=True))
     c.drawCircle(x, y, (28 + 40 * k) * s, paint("#FFFFFF", int(160 * (1 - k)), blur=12))
-    swords(c, x, y - 60 * s, 42 * s, clamp(k * 3), "#F1FAEE")
 
 def timeline(c, t, year, k=1.0, y0=None, span=(600, 800), label_s=None, step=10, big_every=50, start=None, bracket=None):
     """bottom timeline: ticks every `step` years (labels every `big_every`), red progress from `start` (default: left end)
@@ -1370,7 +1388,10 @@ def s25(c, t):
     doc(c, "raja_dahir", 1080, 150, 790, 330, t, seg(t, us(u_dahir) - 0.3, us(u_dahir) + 0.3), us(u_khatam) - 0.2, 1.6)
     th = kw(u_dahir, "teer") + 0.25                                       # arrow hits
     fall = ease_in(seg(t, th + 0.1, th + 0.9)); dimk = seg(t, us(u_khatam), us(u_khatam) + 0.4)
-    ex, ey = 560, 700; elephant(c, ex, ey, 170, int(255 * (1 - 0.5 * dimk)))
+    ex, ey = 860, 690; elephant(c, ex, ey, 170, int(255 * (1 - 0.5 * dimk)))
+    for j in range(6):                                                    # Arab army (archers) facing Dahir from the west
+        ic_soldier(c, 250 + (j % 3) * 85, 650 + (j // 3) * 90, 78, t * 0.5 + j, "#F1FAEE", int(255 * seg(t, vin(u_712), vin(u_712) + 0.6)), walk=False)
+    label(c, "ARAB FAUJ", 335, 560, seg(t, vin(u_712), vin(u_712) + 0.6), 24, border=GREEN)
     rx, ry = ex - 10, ey - 118                                            # 2D Raja Dahir (Aadhunik chitran) on the howdah
     c.save(); c.translate(rx, ry + fall * 120); c.rotate(-fall * 70)
     c.drawRoundRect(skia.Rect(-20, -10, 20, 50), 14, 14, paint("#B23A48")); c.drawCircle(0, -26, 18, paint("#D9A877"))
@@ -1379,7 +1400,7 @@ def s25(c, t):
     label(c, "RAJA DAHIR · Aadhunik chitran", ex, ey + 140, seg(t, us(u_dahir) - 0.2, us(u_dahir) + 0.3), 24, border="#B23A48")
     ka = seg(t, th - 0.55, th)                                            # the arrow flies in from the left
     if 0 < ka < 1:
-        ax, ay = lerp(80, rx - 16, ease_in(ka)), lerp(380, ry - 6, ease_in(ka))
+        ax, ay = lerp(470, rx - 16, ease_in(ka)), lerp(610, ry - 6, ease_in(ka)) - math.sin(ka * math.pi) * 90
         c.drawLine(ax - 60, ay - 18, ax, ay, paint("#F1FAEE", 255, stroke=5, cap_round=True))
         hp = skia.Path(); hp.moveTo(ax + 12, ay + 4); hp.lineTo(ax - 8, ay - 10); hp.lineTo(ax - 4, ay + 10); hp.close(); c.drawPath(hp, paint("#C9D1DC"))
     if t >= th and t < th + 0.9:
@@ -1412,25 +1433,37 @@ def s26(c, t):
 @shot(vin(u_par), vin(u_ablag))
 def s27(c, t):
     c.clear(hexc("#1A1F2E"))
-    title(c, "HAJJAJ KA HUKUM", 480, 150, 56, seg(t, vin(u_par), vin(u_par) + 0.5), YEL)
-    doc(c, "hajjaj_order", 960, 210, 900, 360, t, seg(t, vin(u_par) + 0.2, vin(u_par) + 0.8), kw(u_hukum, "ladein") - 0.3, 3.6)
-    # 2D Hajjaj (Aadhunik chitran) points and gives the order; soldiers salute, then march out
-    hx, hy = 300, 640; pk = ease_out(seg(t, us(u_hukum) - 0.2, us(u_hukum) + 0.4))
-    rb = skia.Path(); rb.moveTo(hx - 70, hy + 230); rb.lineTo(hx - 50, hy + 20); rb.quadTo(hx, hy - 10, hx + 50, hy + 20); rb.lineTo(hx + 70, hy + 230); rb.close()
-    c.drawPath(rb, paint("#3D6B4F")); c.drawCircle(hx, hy - 34, 40, paint("#C99A6B"))
-    bd = skia.Path(); bd.moveTo(hx - 34, hy - 30); bd.quadTo(hx, hy + 40, hx + 34, hy - 30); bd.quadTo(hx, hy - 6, hx - 34, hy - 30); c.drawPath(bd, paint("#3B2F2A"))
-    c.drawOval(skia.Rect(hx - 44, hy - 92, hx + 44, hy - 52), paint("#F1EBDD"))
-    ang = lerp(70, -10, pk); ax2 = hx + 40 + 110 * math.cos(math.radians(ang)); ay2 = hy + 30 + 110 * math.sin(math.radians(ang))
-    c.drawLine(hx + 36, hy + 30, ax2, ay2, paint("#3D6B4F", 255, stroke=26, cap_round=True)); c.drawCircle(ax2, ay2, 13, paint("#C99A6B"))
-    label(c, "HAJJAJ · Aadhunik chitran", hx, hy + 290, seg(t, vin(u_par), vin(u_par) + 0.5), 24, border="#3D6B4F")
-    march_k = seg(t, kw(u_hukum, "na ladein") + 0.6, ue(u_hukum) + 0.8)
-    for j in range(6):
-        sx = 520 + (j % 3) * 120 + ease_in(march_k) * 700; sy = 700 + (j // 3) * 120
-        sal = seg(t, kw(u_hukum, "ladein") - 0.2 + j * 0.05, kw(u_hukum, "ladein") + 0.2 + j * 0.05)
-        ic_soldier(c, sx, sy - sal * 6, 105, t * (1 if march_k > 0 else 0) + j, "#F1FAEE", 255, walk=march_k > 0)
-    kl = seg(t, kw(u_hukum, "ladein") - 0.1, kw(u_hukum, "ladein") + 0.3); kr = seg(t, kw(u_hukum, "na ladein") - 0.1, kw(u_hukum, "na ladein") + 0.3)
-    if kl > 0: pill(c, "JO LADEIN: MAARO", 1180, 700, 34, RED, a=int(255 * clamp(kl * 1.5)))
-    if kr > 0: pill(c, "JO NA LADEIN: AMAN", 1600, 700, 34, GREEN, a=int(255 * clamp(kr * 1.5)))
+    if t < vin(u_hukum) + 0.2:                                               # "jeet ka ek doosra paksh bhi tha"
+        doc(c, "mbq_protection", 330, 140, 1260, 600, t, seg(t, vin(u_par), vin(u_par) + 0.6), kw(u_par, "doosra") - 0.2, 2.2)
+        title(c, "JEET KA DOOSRA PAKSH", 960, 830, 56, seg(t, kw(u_par, "doosra") - 0.2, kw(u_par, "doosra") + 0.5), YEL)
+        return
+    kd = seg(t, vin(u_hukum), vin(u_hukum) + 0.5)
+    doc(c, "hajjaj_order", 260, 90, 1400, 400, t, kd, kw(u_hukum, "ladein") - 0.3, 3.4)
+    title(c, "HAJJAJ KA HUKUM", 960, 540, 44, kd, YEL)
+    # 2D Hajjaj (Aadhunik chitran) gives the order
+    hx, hy = 190, 760; pk = ease_out(seg(t, us(u_hukum) - 0.2, us(u_hukum) + 0.4))
+    rb = skia.Path(); rb.moveTo(hx - 55, hy + 180); rb.lineTo(hx - 40, hy + 16); rb.quadTo(hx, hy - 8, hx + 40, hy + 16); rb.lineTo(hx + 55, hy + 180); rb.close()
+    c.drawPath(rb, paint("#3D6B4F")); c.drawCircle(hx, hy - 26, 32, paint("#C99A6B"))
+    bd = skia.Path(); bd.moveTo(hx - 27, hy - 22); bd.quadTo(hx, hy + 32, hx + 27, hy - 22); bd.quadTo(hx, hy - 4, hx - 27, hy - 22); c.drawPath(bd, paint("#3B2F2A"))
+    c.drawOval(skia.Rect(hx - 35, hy - 72, hx + 35, hy - 40), paint("#F1EBDD"))
+    ang = lerp(70, -15, pk); ax2 = hx + 30 + 90 * math.cos(math.radians(ang)); ay2 = hy + 24 + 90 * math.sin(math.radians(ang))
+    c.drawLine(hx + 28, hy + 24, ax2, ay2, paint("#3D6B4F", 255, stroke=20, cap_round=True)); c.drawCircle(ax2, ay2, 10, paint("#C99A6B"))
+    tag_note(c, "Hajjaj · Aadhunik chitran", hx, hy + 210, kd, "#E5E7EB")
+    # "jo ladein unhe maaro": a real skirmish
+    kl = seg(t, kw(u_hukum, "ladein") - 0.1, kw(u_hukum, "ladein") + 0.9)
+    skirmish(c, 720, 780, t, kl)
+    if kl > 0: pill(c, "JO LADEIN: MAARO", 720, 640, 30, RED, a=int(255 * clamp(kl * 2)))
+    # "jo na ladein unhe aman do": civilians under a protecting dome
+    ka = seg(t, kw(u_hukum, "na ladein") - 0.1, kw(u_hukum, "na ladein") + 0.6)
+    if ka > 0:
+        for j, col in enumerate(("#E76F51", "#2A9D8F", "#F4A261", "#9B5DE5", "#E9C46A")):
+            civilian(c, 1310 + j * 70, 860, 90, col, int(255 * clamp(ka * 1.5)), t)
+        R = 210 * ease_out(seg(t, kw(u_hukum, "aman") - 0.2, kw(u_hukum, "aman") + 0.5))
+        if R > 2:
+            dp = skia.Path(); dp.addArc(skia.Rect(1450 - R, 870 - R, 1450 + R, 870 + R), 180, 180)
+            c.drawPath(dp, paint(GREEN, 70)); c.drawPath(dp, paint("#BFF0D4", 220, stroke=4))
+        pill(c, "JO NA LADEIN: AMAN", 1450, 640, 30, GREEN, a=int(255 * clamp(ka * 2)))
+    SFX_MARK(kw(u_hukum, "ladein"), "boom", -20); SFX_MARK(kw(u_hukum, "aman"), "ding", -20)
 
 @shot(vin(u_ablag), vin(u_715))
 def s28(c, t):
@@ -1444,16 +1477,25 @@ def s28(c, t):
 
 @shot(vin(u_715), vin(u_cheen))
 def s29(c, t):
-    cam = fly((40.0, 33.0, 18.0), (40.0, 34.5, 26.0), ease_io(seg(t, vin(u_715), vin(u_715) + 1.0)))
-    bg(c, cam); hl(c, cam, "syria", t, kw(u_715, "Damascus"))
+    cam = fly((40.0, 33.0, 18.0), (53.0, 31.0, 12.5), ease_io(seg(t, vin(u_715), vin(u_715) + 1.2)))
+    bg(c, cam); hl(c, cam, "syria", t, kw(u_715, "Damascus"), flag_label=False); draw_region(c, cam, "sindh", GREEN, 160)
     timeline(c, t, 715, 1.0, span=(620, 780))
     pin_at(c, cam, "damascus", "DAMASCUS", t, kw(u_715, "Damascus"), YEL, 28)
-    name_card(c, "KHALIFA SULAYMAN", "naya khalifa, 715", 1450, 260, seg(t, kw(u_715, "Sulayman") - 0.1, kw(u_715, "Sulayman") + 0.4))
-    ks = seg(t, kw(u_wapas, "wapas") - 0.2, kw(u_wapas, "wapas") + 0.3)
-    if ks > 0: scroll(c, 1450, 520, 160 * back(ks), int(255 * clamp(ks * 1.5)), "WAPAS BULAAO")
-    portrait(c, "MUHAMMAD BIN QASIM", 420, 520, seg(t, us(u_wapas) - 0.2, us(u_wapas) + 0.3), grey=seg(t, kw(u_usi, "maut"), kw(u_usi, "maut") + 0.5), col="#7A4E2D", hat="helmet")
+    doc(c, "sulayman_recall", 1080, 110, 800, 360, t, seg(t, kw(u_715, "Sulayman") - 0.2, kw(u_715, "Sulayman") + 0.4) * (1 - seg(t, us(u_usi), us(u_usi) + 0.4)), kw(u_715, "Sulayman") + 0.3, 1.6)
+    label(c, "KHALIFA SULAYMAN · 715", 1480, 500, seg(t, kw(u_715, "Sulayman"), kw(u_715, "Sulayman") + 0.4) * (1 - seg(t, us(u_usi), us(u_usi) + 0.4)), 26, border=GREEN)
+    # the caliph's order rides out: a messenger gallops from Damascus to Sindh with the scroll
+    p0, p1 = S(cam, "damascus"), S(cam, "sindh"); km = ease_io(seg(t, us(u_wapas) - 0.2, kw(u_wapas, "wapas") + 0.5))
+    if km > 0:
+        mid = ((p0[0] + p1[0]) / 2, min(p0[1], p1[1]) - 120)
+        r_ = route(c, [p0, mid, p1], km, YEL, 5, dash=True, head=False)
+        if r_ and km < 1:
+            mx, my, _ = along(*r_, km); horse(c, mx, my - 6, 64); scroll(c, mx + 14, my - 62, 34)
+    ks = seg(t, kw(u_wapas, "wapas") + 0.4, kw(u_wapas, "wapas") + 0.9)
+    if ks > 0: scroll(c, p1[0], p1[1] - 120, 150 * back(ks), int(255 * clamp(ks * 1.5)), "WAPAS BULAAO")
+    portrait(c, "MUHAMMAD BIN QASIM", 330, 560, seg(t, us(u_wapas) - 0.2, us(u_wapas) + 0.3), grey=seg(t, kw(u_usi, "maut"), kw(u_usi, "maut") + 0.5), col="#7A4E2D", hat="helmet")
     pin_at(c, cam, "mosul", "MOSUL", t, kw(u_usi, "Mosul"), RED, 26)
-    if t > kw(u_usi, "18"): pill(c, "18 JULY 715 · MOSUL", 420, 760, 30, RED, a=int(255 * clamp(seg(t, kw(u_usi, "18"), kw(u_usi, "18") + 0.4) * 1.5)))
+    if t > kw(u_usi, "18"): pill(c, "18 JULY 715 · MOSUL", 330, 800, 30, RED, a=int(255 * clamp(seg(t, kw(u_usi, "18"), kw(u_usi, "18") + 0.4) * 1.5)))
+    SFX_MARK(us(u_wapas), "whoosh_long", -18)
 
 @shot(vin(u_cheen), vin(u_offer))
 def s30(c, t):

@@ -1,0 +1,38 @@
+{
+ "url": "https://en.wikipedia.org/wiki/Muhammad_ibn_al-Qasim",
+ "title": "Muhammad ibn al-Qasim - Wikipedia",
+ "lines": [
+  [
+   {
+    "x0": 490.171875,
+    "y": 468,
+    "x1": 1189.265625,
+    "h": 51
+   },
+   {
+    "x0": 66,
+    "y": 546,
+    "x1": 234.09375,
+    "h": 51
+   }
+  ],
+  [
+   {
+    "x0": 684.984375,
+    "y": 624,
+    "x1": 1256.0625,
+    "h": 51
+   },
+   {
+    "x0": 66,
+    "y": 702,
+    "x1": 218.015625,
+    "h": 51
+   }
+  ]
+ ],
+ "hl": [
+  "non-interference in their religious practice",
+  "provided protection to non-Muslim"
+ ]
+}
