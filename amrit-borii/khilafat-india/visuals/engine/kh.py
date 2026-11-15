@@ -429,6 +429,24 @@ def army_into_spain(c, cam, t, t0, dur=1.6):
         r2 = route(c, [land[-1], to_screen(cam, lo, la)], ease_io(kk), RED, 6, dash=False)
         if r2 and kk < 1: sx, sy, _ = along(*r2, ease_io(kk)); ic_soldier(c, sx, sy - 12, 44, t, "#F1FAEE", 255)
 
+
+def duck_soldier(c, x, y, s, duck, t, a=255, face=1):
+    """2D soldier who ducks his head and raises a round shield over it (duck 0 = upright, 1 = crouched, head down)"""
+    k = s / 100; d = ease_io(clamp(duck)); al = a
+    body_h = lerp(70, 44, d) * k; hip_y = y - lerp(40, 26, d) * k
+    lean = lerp(0, 18, d) * k * face
+    for sgn in (-1, 1):                                                                         # legs (bent when crouched)
+        kx = x + sgn * 12 * k; knee = (kx + sgn * 6 * k + d * 14 * k * face, y - lerp(20, 12, d) * k)
+        c.drawLine(kx, hip_y, knee[0], knee[1], paint("#5B4636", al, stroke=12 * k, cap_round=True))
+        c.drawLine(knee[0], knee[1], kx + sgn * 4 * k, y, paint("#5B4636", al, stroke=12 * k, cap_round=True))
+    top = (x + lean, hip_y - body_h)
+    c.drawLine(x, hip_y, top[0], top[1], paint("#8B2E2E", al, stroke=30 * k, cap_round=True))      # torso / tunic
+    hx, hy = top[0] + lerp(0, 16, d) * k * face, top[1] - lerp(22, 6, d) * k                    # head drops forward
+    c.drawCircle(hx, hy, 15 * k, paint("#C99A6B", al)); c.drawArc(skia.Rect(hx - 16 * k, hy - 19 * k, hx + 16 * k, hy + 6 * k), 180, 180, True, paint("#7A8BA3", al))
+    sx, sy = hx + lerp(26, 6, d) * k * face, hy - lerp(-10, 22, d) * k                         # shield goes up over the head
+    c.drawOval(skia.Rect(sx - 26 * k, sy - 22 * k, sx + 26 * k, sy + 22 * k), paint(SAFF, al)); c.drawOval(skia.Rect(sx - 26 * k, sy - 22 * k, sx + 26 * k, sy + 22 * k), paint("#7A4A1E", al, stroke=3 * k))
+    c.drawCircle(sx, sy, 5 * k, paint("#7A4A1E", al))
+
 # ---------------------------------------------------------------- premium text animation
 def title(c, s, x, y, size, k, col="#F1FAEE", a=255):
     """per-letter reveal: each glyph fades in and glides up with a soft stagger; tracking settles from wide to normal"""
@@ -770,12 +788,21 @@ def s05(c, t):
         SFX_MARK(t0, "whoosh_long", -20); SFX_MARK(t0 + 1.7, "stamp", -18)
         text(c, "SPAIN: JEET", 520, 790 + (1 - kL) * 60, 46, "#F1FAEE", FT_BLACK, "c", int(255 * kL))
     if kR > 0:
-        fort(c, 1400, 500, 170, 1.0, a=int(255 * kR))
-        for j in range(10):
-            ang = j / 10 * math.tau + t * 0.15
-            shield(c, 1400 + 250 * math.cos(ang), 520 + 190 * math.sin(ang), 46, SAFF, int(255 * kR), back(seg(t, kw(u_jo, "yahan") + j * 0.05, kw(u_jo, "yahan") + 0.4 + j * 0.05)))
+        fort(c, 1400, 470, 170, 1.0, a=int(255 * kR))
+        # "sar chhupane ki surakshit jagah": soldiers duck their heads under shields and hurry into the fort
+        t1 = kw(u_jo, "sar"); gate = (1400, 560)
+        for j in range(6):
+            side = -1 if j % 2 == 0 else 1; row = j // 2
+            x_start = 1400 + side * (330 - row * 40); y_ = 700 - row * 18
+            kk = seg(t, t1 - 0.3 + j * 0.12, t1 + 1.6 + j * 0.12)
+            x = lerp(x_start, gate[0] + side * 30, ease_in_out(kk) if False else ease_io(kk)); yy = lerp(y_, gate[1] + 70, ease_io(kk))
+            duck = seg(t, t1 - 0.2 + j * 0.08, t1 + 0.3 + j * 0.08)
+            al = int(255 * kR * (1 - seg(kk, 0.88, 1.0)))
+            if al > 0: duck_soldier(c, x, yy, 100, duck, t, al, face=-side)
+        kq = seg(t, kw(u_jo, "surakshit") - 0.1, kw(u_jo, "surakshit") + 0.4)
+        if kq > 0: ic_question(c, 1640, 290, 80 * back(kq), int(255 * clamp(kq * 1.5)), YEL)
         text(c, "SINDH: SURAKSHIT JAGAH?", 1400, 790, 42, "#F1FAEE", FT_BLACK, "c", int(255 * kR))
-    SFX_MARK(kw(u_jo, "yahan"), "pop", -22)
+    SFX_MARK(kw(u_jo, "yahan"), "pop", -22); SFX_MARK(kw(u_jo, "sar") - 0.2, "drag", -20)
 
 @shot(vin(u_aur), vin(u_iske))
 def s06(c, t):
