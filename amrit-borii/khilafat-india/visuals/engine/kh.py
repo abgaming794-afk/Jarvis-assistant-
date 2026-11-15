@@ -72,7 +72,7 @@ def load_geo():
                 "arabia": U_(["SAU", "YEM", "OMN", "ARE", "QAT", "KWT", "BHR"]), "syria": U_(["SYR", "LBN", "JOR", "ISR", "PSX"]),
                 "iraq": G["IRQ"], "centralasia": U_(["UZB", "TKM", "TJK"]),
                 "c_asia": CALIPH.intersection(box(34, 0, 80, 50)), "c_africa": CALIPH.intersection(box(-20, 0, 33.5, 31.6)),
-                "c_europe": CALIPH.intersection(box(-20, 35.8, 10, 50)), "desert": CALIPH.intersection(box(61.2, 23, 72.5, 31))})
+                "c_europe": CALIPH.intersection(box(-20, 35.8, 10, 50)), "desert": CALIPH.intersection(box(61.2, 23, 72.5, 31)), "c_west": CALIPH.intersection(box(-20, 20, -1.0, 44))})
 REG = {}
 
 PATHS = {}
@@ -113,63 +113,170 @@ def bg(c, cam=None, fills=None, alpha=255):
 
 def dim(c, a): c.drawRect(skia.Rect(0, 0, DW, DH), paint(NAVY, int(a)))
 
-# every highlighted place gets its own colour (user: "alag colour joro"); outlines are thin, no yellow glow
-REGCOL = {"iberia": "#3A86FF", "centralasia": "#9B5DE5", "india": "#FF9933", "arabia": "#00BBF9", "syria": "#F15BB5",
-          "sindh": "#FF6B6B", "iraq": "#F8961E", "c_asia": "#00BBF9", "c_africa": "#F8961E", "c_europe": "#3A86FF", "caliph": GREEN}
+# ---------------------------------------------------------------- symbolic banners (8th-century flags are not recorded:
+# labelled PRATIK/andaazan; Umayyad white and Abbasid black banners are documented)
+BANNER = {"iberia": ("#8B1E2D", "cross", "#E9C46A", "VISIGOTH SPAIN · PRATIK"), "sindh": ("#D9822B", "sun", "#FFE8A3", "SINDH (CHACH VANSH) · PRATIK"),
+          "india": ("TIRANGA", None, None, "BHARAT"), "arabia": ("#F4F1EA", None, None, "ARAB · SAFED JHANDA"),
+          "syria": ("#F4F1EA", None, None, "UMAYYAD · SAFED JHANDA"), "iraq": ("#F4F1EA", None, None, "UMAYYAD · SAFED JHANDA"),
+          "centralasia": ("#F4F1EA", None, None, "UMAYYAD · SAFED JHANDA"), "c_asia": None, "c_africa": None, "c_europe": None,
+          "umayyad": ("#F4F1EA", None, None, "UMAYYAD · SAFED JHANDA"), "abbasid": ("#111111", None, None, "ABBASI · KAALA JHANDA"),
+          "kabul": ("#B23A48", "sun", "#F1FAEE", "TURK SHAHI · PRATIK"), "zabul": ("#2A9D8F", "sun", "#F1FAEE", "ZUNBIL · PRATIK"),
+          "gujarat": ("#C2185B", "star", "#FFD166", "CHALUKYA · PRATIK"), "rajasthan": ("#D35400", "sun", "#FFE8A3", "MORI / GURJARA · PRATIK"),
+          "mp": ("#6A4C93", "star", "#FFD166", "MALWA · PRATIK"), "pratihara": ("#C0392B", "sun", "#FFE8A3", "PRATIHARA · PRATIK"),
+          "desert": None, "caliph": ("#F4F1EA", None, None, "UMAYYAD KHILAFAT · SAFED JHANDA"), "raidzone": None, "c_west": None}
+_BTEX = {}
+def banner_tex(key):
+    if key in _BTEX: return _BTEX[key]
+    bgc, emb, ec, _ = BANNER[key]
+    if bgc == "TIRANGA": _BTEX[key] = flag_img("in"); return _BTEX[key]
+    W_, H_ = 600, 400; sf = skia.Surface(W_, H_); cc = sf.getCanvas(); cc.clear(hexc(bgc))
+    if bgc in ("#F4F1EA",): cc.drawRect(skia.Rect(0, 0, 40, H_), paint("#D8D2C4"))
+    if emb == "cross":
+        cc.drawRect(skia.Rect(270, 70, 330, 330), paint(ec)); cc.drawRect(skia.Rect(170, 150, 430, 210), paint(ec))
+    elif emb == "sun":
+        cc.drawCircle(300, 200, 70, paint(ec))
+        for i in range(12):
+            an = i / 12 * math.tau; cc.drawLine(300 + 90 * math.cos(an), 200 + 90 * math.sin(an), 300 + 130 * math.cos(an), 200 + 130 * math.sin(an), paint(ec, 255, stroke=14, cap_round=True))
+    elif emb == "star":
+        pth = skia.Path()
+        for i in range(16):
+            r_ = 120 if i % 2 == 0 else 55; an = i / 16 * math.tau - math.pi / 2
+            (pth.moveTo if i == 0 else pth.lineTo)(300 + r_ * math.cos(an), 200 + r_ * math.sin(an))
+        pth.close(); cc.drawPath(pth, paint(ec))
+    _BTEX[key] = sf.makeImageSnapshot(); return _BTEX[key]
+
+def cloth(c, img, x0, y0, w, h, t, a=255, n=48, amp_k=0.05):
+    """draw img waving like cloth into the box (vertical strips with a travelling sine + light/dark shading)"""
+    iw, ih = img.width(), img.height(); amp = h * amp_k; pw = w / n
+    lp = skia.Paint(); lp.setAlphaf(clamp(a / 255)); c.saveLayer(skia.Rect(x0 - 4, y0 - amp * 2, x0 + w + 4, y0 + h + amp * 2), lp)
+    for i in range(n):
+        u0, u1 = i / n, (i + 1) / n; dy = math.sin(2 * math.pi * (u0 * 1.4 - t * 0.8)) * amp * u0
+        c.drawImageRect(img, skia.Rect(u0 * iw, 0, min(iw, u1 * iw + 1), ih), skia.Rect(x0 + u0 * w, y0 + dy, x0 + u1 * w + pw * 0.5, y0 + h + dy), SAMP, skia.Paint())
+    cols, pos = [], []
+    for i in range(n + 1):
+        u = i / n; sh = math.cos(2 * math.pi * (u * 1.4 - t * 0.8)) * u
+        cols.append(skia.ColorSetARGB(int(abs(sh) * 60), 255, 255, 255) if sh > 0 else skia.ColorSetARGB(int(abs(sh) * 80), 0, 0, 0)); pos.append(u)
+    gp = skia.Paint(); gp.setShader(skia.GradientShader.MakeLinear([skia.Point(x0, 0), skia.Point(x0 + w, 0)], cols, pos))
+    gp.setBlendMode(skia.BlendMode.kSrcATop); c.drawRect(skia.Rect(x0, y0 - amp * 2, x0 + w, y0 + h + amp * 2), gp)
+    c.restore()
+
+_RP = {}
+def rep_point(name):
+    if name not in _RP: p_ = REG[name].representative_point(); _RP[name] = (p_.x, p_.y)
+    return _RP[name]
+
+def pole_flag(c, x, y, key, t, k, size=1.0, show_label=True):
+    """floating flag on a pole that rises in, bobs gently and waves"""
+    if k <= 0 or not BANNER.get(key): return
+    kk = ease_out(clamp(k)); al = int(255 * clamp(k * 1.6)); bob = math.sin(t * 2.0 + x * 0.01) * 5
+    sw = math.sin(t * 1.3 + y * 0.01) * 1.5
+    c.save(); c.translate(x, y + bob + (1 - kk) * 40); c.rotate(sw); c.scale(size, size)
+    c.drawCircle(0, 0, 7, paint("#000000", int(al * 0.4), blur=4))
+    c.drawLine(0, 0, 0, -150, paint("#E5E7EB", al, stroke=4, cap_round=True)); c.drawCircle(0, -152, 6, paint("#E9C46A", al))
+    img = banner_tex(key); fw = 120; fh = fw * img.height() / img.width()
+    c.drawRect(skia.Rect(4, -146 + 6, 4 + fw, -146 + fh + 10), paint("#000000", int(al * 0.25), blur=6))
+    cloth(c, img, 2, -146, fw, fh, t, al, 30, 0.08)
+    if show_label:
+        lab = BANNER[key][3]; fs = 17; tw = text_w(lab, fs, FT_SEMI)
+        rrect(c, -tw / 2 - 12 + 60, 14, tw / 2 + 12 + 60, 42, 14, "#0B1424", int(al * 0.85))
+        text(c, lab, 60, 34, fs, "#E5E7EB", FT_SEMI, "c", al)
+    c.restore()
+
 def lighten(h, f=0.45):
     h = h.lstrip("#"); r, g, b = (int(h[i:i + 2], 16) for i in (0, 2, 4))
     return "#%02X%02X%02X" % tuple(int(v + (255 - v) * f) for v in (r, g, b))
-def hl(c, cam, name, t, t0, col=None, fill=None, dur=99.0):
-    """highlight a region when its name is spoken: own-colour fill fades in (soft breathing) + thin light outline"""
-    k = seg(t, t0 - 0.1, t0 + 0.35) * (1 - seg(t, t0 + dur, t0 + dur + 0.4))
+REGCOL = {"iberia": "#3A86FF", "centralasia": "#9B5DE5", "india": "#FF9933", "arabia": "#00BBF9", "syria": "#F15BB5",
+          "sindh": "#FF6B6B", "iraq": "#F8961E", "c_asia": "#00BBF9", "c_africa": "#F8961E", "c_europe": "#3A86FF", "caliph": GREEN, "c_west": "#3A86FF"}
+def hl(c, cam, name, t, t0, col=None, fill=None, dur=99.0, flag=None, flag_at=None, flag_label=True, pole=True):
+    """highlight a region when its name is spoken: own-colour fill + the region's banner waving inside its border
+    (cloth), thin light outline, and a floating pole flag above it"""
+    k = seg(t, t0 - 0.1, t0 + 0.45) * (1 - seg(t, t0 + dur, t0 + dur + 0.4))
     if k <= 0: return
-    fc = REGCOL.get(name, SAFF); pulse = 0.5 + 0.5 * math.sin((t - t0) * 4)
+    fc = REGCOL.get(name, SAFF); fk = flag or name; ban = BANNER.get(fk)
     cx, cy = cam_xy(cam[0], cam[1]); s = cam[2]
     c.save(); c.translate(DW / 2, DH / 2); c.scale(s, s); c.translate(-cx, -cy)
     pth = gpath(name, s)
-    c.drawPath(pth, paint(fc, int((190 + 40 * pulse) * k)))
+    c.drawPath(pth, paint(fc, int(205 * k)))
+    if ban:
+        b_ = pth.getBounds(); img = banner_tex(fk); w_ = b_.width() * 1.04; h_ = max(b_.height() * 1.06, w_ * img.height() / img.width())
+        c.save(); c.clipPath(pth, doAntiAlias=True)
+        cloth(c, img, b_.centerX() - w_ / 2, b_.centerY() - h_ / 2, w_, h_, t, int(120 * k), 60, 0.03)
+        c.restore()
     c.drawPath(pth, paint(lighten(fc), int(230 * k), stroke=1.2 / s))
     c.restore()
+    if ban and pole:
+        lo, la = flag_at or rep_point(name); x, y = to_screen(cam, lo, la)
+        if -100 < x < DW + 100 and -100 < y < DH + 200:
+            pole_flag(c, x, y, fk, t, seg(t, t0 + 0.1, t0 + 0.7) * (1 - seg(t, t0 + dur, t0 + dur + 0.4)), 1.0, flag_label)
 
-_BOUNDS = {}
-def float_map(c, t, t0, name, ttl, sub, x, y, w=440, h=330, t1=None, fill=SAFF, pad=0.9, ctx=None):
-    """floating 'map of that time' card: slides in on the spoken name, bobs gently, shows the region highlighted
-    inside its wider context (ctx: extra degrees of context; default from region size)"""
-    k = back(seg(t, t0 - 0.15, t0 + 0.45)); kout = seg(t, t1, t1 + 0.4) if t1 else 0
-    if k <= 0 or kout >= 1: return
-    al = int(255 * clamp(seg(t, t0 - 0.15, t0 + 0.2) * 1.4) * (1 - kout))
-    if name not in _BOUNDS: _BOUNDS[name] = REG[name].bounds
-    b0, b1, b2, b3 = _BOUNDS[name]; cl, ca = (b0 + b2) / 2, (b1 + b3) / 2
-    span = max(b2 - b0, (b3 - b1) * 1.3) * (1 + 2 * pad) + (ctx or 0)
-    cam = (cl, ca, (w - 20) / span)
-    bob = math.sin((t - t0) * 2.2) * 6; ang = math.sin((t - t0) * 1.3) * 1.2 - 2 * (1 - clamp(k))
-    c.save(); c.translate(x + w / 2, y + h / 2 + bob + (1 - clamp(k)) * 120 + kout * 60); c.rotate(ang); c.scale(clamp(k, 0, 1.2), clamp(k, 0, 1.2))
-    c.drawRoundRect(skia.Rect(-w / 2 + 10, -h / 2 + 22, w / 2 + 10, h / 2 + 22), 20, 20, paint("#000000", int(al * 0.55), blur=22))
-    rrect(c, -w / 2, -h / 2, w / 2, h / 2, 20, "#0B1424", al)
-    c.save(); p = skia.Path(); p.addRoundRect(skia.Rect(-w / 2 + 10, -h / 2 + 56, w / 2 - 10, h / 2 - 10), 14, 14); c.clipPath(p, doAntiAlias=True)
-    c.translate(-DW / 2 * 0 - w / 2 + 10 - (DW / 2 - (w - 20) / 2) + DW / 2 - (w - 20) / 2, 0) if False else None
-    c.translate(-(DW / 2), -(DH / 2) + 23)
-    c.saveLayerAlpha(None, al)
-    draw_map(c, WM, cam, {}, 255)
-    hl(c, cam, name, t, t0 + 0.25, YEL, fill)
-    c.restore(); c.restore()
-    c.drawRoundRect(skia.Rect(-w / 2, -h / 2, w / 2, h / 2), 20, 20, paint("#3E5068", al, stroke=1.5))
-    c.drawCircle(-w / 2 + 28, -h / 2 + 30, 9, paint(REGCOL.get(name, SAFF), al))
-    text(c, ttl, -w / 2 + 46, -h / 2 + 40, 28, "#F1FAEE", FT_BLACK, "l", al)
-    if sub: text(c, sub, w / 2 - 18, h / 2 - 20, 18, "#C9D1DC", FT_SEMI, "r", al)
-    c.restore()
+def float_map(*a, **kw_):
+    """map cards removed on user feedback ('map card nahi chahiye') - floating flags (hl) replace them"""
+    return
 
-# ------------------------------------------------------------------ small widgets
+
+_PH = {}
+def photo(key):
+    if key not in _PH:
+        pth = ROOT + f"visuals/photos/{key}.jpg"
+        _PH[key] = sk_image(Image.open(pth).convert("RGB")) if os.path.exists(pth) else None
+    return _PH[key]
+def photo_card(c, key, x, y, w, h, t, k, cap="", credit="", t0=0.0, kout=0.0):
+    """real photo in a thin frame: glides up + fades in, slow Ken Burns zoom, caption + credit strip"""
+    img = photo(key)
+    if img is None or k <= 0 or kout >= 1: return
+    ke = ease_out(clamp(k)); al = int(255 * clamp(k * 1.4) * (1 - kout)); dy = (1 - ke) * 40 + kout * 30
+    y += dy
+    c.drawRoundRect(skia.Rect(x + 6, y + 16, x + w + 6, y + h + 16), 18, 18, paint("#000000", int(al * 0.5), blur=24))
+    rrect(c, x - 8, y - 8, x + w + 8, y + h + 60, 18, "#0B1424", al)
+    iw, ih = img.width(), img.height(); z = 1.0 + 0.08 * clamp((t - t0) / 8.0)
+    sc = max(w / iw, h / ih) * z; sw, sh = w / sc, h / sc; sx, sy = (iw - sw) / 2, (ih - sh) / 2
+    c.save(); pp = skia.Path(); pp.addRoundRect(skia.Rect(x, y, x + w, y + h), 12, 12); c.clipPath(pp, doAntiAlias=True)
+    draw_img(c, img, x, y, x + w, y + h, al, src=skia.Rect(sx, sy, sx + sw, sy + sh)); c.restore()
+    c.drawRoundRect(skia.Rect(x, y, x + w, y + h), 12, 12, paint("#FFFFFF", int(al * 0.18), stroke=1.2))
+    if cap: text(c, cap, x + 6, y + h + 34, min(24, 24 * (w - 10) / max(1, text_w(cap, 24, FT_SEMI))), "#E5E7EB", FT_SEMI, "l", al)
+    if credit: text(c, credit, x + w - 2, y + h + 54, 14, "#8A9BB0", FT_SEMI, "r", al)
+
+# ---------------------------------------------------------------- premium text animation
 def title(c, s, x, y, size, k, col="#F1FAEE", a=255):
+    """per-letter reveal: each glyph fades in and glides up with a soft stagger; tracking settles from wide to normal"""
     if k <= 0: return
-    kk = back(k); c.save(); c.translate(x, y); c.scale(kk, kk); text(c, s, 0, 0, size, col, FT_BLACK, "c", int(a * clamp(k * 1.5)), shadow=True); c.restore()
+    f = font(FT_BLACK, size); n = max(1, len(s)); trk = size * 0.06 * (1 - ease_out(clamp(k * 1.3)))
+    ws = [f.measureText(ch) for ch in s]; total = sum(ws) + trk * (n - 1); xx = x - total / 2
+    sh = paint("#000000", int(a * 0.45 * clamp(k * 1.5)), blur=size * 0.08)
+    for i, ch in enumerate(s):
+        kk = ease_out(seg(k, i / n * 0.45, i / n * 0.45 + 0.55))
+        if kk > 0 and ch != " ":
+            dy = (1 - kk) * size * 0.35
+            c.drawString(ch, xx + size * 0.03, y + dy + size * 0.06, f, sh)
+            c.drawString(ch, xx, y + dy, f, paint(col, int(a * kk)))
+        xx += ws[i] + trk
 
-def label(c, s, x, y, k, size=30, col="#F1FAEE", bgc=NAVY, border=YEL):
+def label(c, s, x, y, k, size=30, col="#F1FAEE", bgc="#0B1424", border=None):
+    """glass pill: fades + glides up, accent dot in the region colour (no heavy yellow border)"""
     if k <= 0: return
-    al = int(255 * clamp(k * 1.6)); w = text_w(s, size, FT_BLACK) + 30; dy = (1 - ease_out(k)) * 14
-    rrect(c, x - w / 2, y - size * 0.95 + dy, x + w / 2, y + size * 0.5 + dy, 10, bgc, al, shadow=8)
-    c.drawRoundRect(skia.Rect(x - w / 2, y - size * 0.95 + dy, x + w / 2, y + size * 0.5 + dy), 10, 10, paint(border, al, stroke=2.5))
-    text(c, s, x, y + size * 0.12 + dy, size, col, FT_BLACK, "c", al)
+    ke = ease_out(clamp(k)); al = int(255 * clamp(k * 1.6)); w = text_w(s, size, FT_BLACK) + 44; dy = (1 - ke) * 16
+    h0, h1 = y - size * 0.95 + dy, y + size * 0.5 + dy
+    c.drawRoundRect(skia.Rect(x - w / 2 + 2, h0 + 6, x + w / 2 + 2, h1 + 6), 12, 12, paint("#000000", int(al * 0.35), blur=10))
+    rrect(c, x - w / 2, h0, x + w / 2, h1, 12, bgc, int(al * 0.88))
+    c.drawRoundRect(skia.Rect(x - w / 2, h0, x + w / 2, h1), 12, 12, paint("#FFFFFF", int(al * 0.12), stroke=1.2))
+    c.drawCircle(x - w / 2 + 16, (h0 + h1) / 2, 5, paint(border or YEL, al))
+    text(c, s, x + 8, y + size * 0.12 + dy, size, col, FT_BLACK, "c", al)
+
+def stat_card(c, x, y, w, h, big, lab, k, col=YEL, tag=None, sub=None, a=255):
+    """smooth premium stat card: glides up + fades, thin border, number tracks in"""
+    if k <= 0: return
+    ke = ease_out(clamp(k)); al = int(a * clamp(k * 1.4)); dy = (1 - ke) * 30
+    c.save(); c.translate(0, dy)
+    c.drawRoundRect(skia.Rect(x + 4, y + 12, x + w + 4, y + h + 12), 22, 22, paint("#000000", int(al * 0.45), blur=22))
+    rrect(c, x, y, x + w, y + h, 22, "#111B2E", al)
+    c.drawRoundRect(skia.Rect(x, y, x + w, y + h), 22, 22, paint("#FFFFFF", int(al * 0.10), stroke=1.2))
+    c.drawRect(skia.Rect(x + 28, y + h * 0.18, x + 34, y + h * 0.82), paint(col, al))
+    fit = lambda s_, size, fp: min(size, size * (w - 70) / max(1, text_w(s_, size, fp)))
+    bs = fit(big, h * 0.36, FT_BLACK); c.save(); c.clipRect(skia.Rect(x, y, x + w, y + h * 0.6))
+    text(c, big, x + w / 2 + 6, y + h * 0.52 + (1 - ease_out(seg(k, 0.1, 0.8))) * h * 0.25, bs, col, FT_BLACK, "c", al); c.restore()
+    text(c, lab, x + w / 2 + 6, y + h * 0.77, fit(lab, h * 0.11, FT_SEMI), "#E5E7EB", FT_SEMI, "c", int(al * ease_out(seg(k, 0.3, 1.0))))
+    if sub: text(c, sub, x + w / 2 + 6, y + h * 0.91, fit(sub, h * 0.08, FT_SEMI), PAL["muted"], FT_SEMI, "c", int(al * ease_out(seg(k, 0.4, 1.0))))
+    c.restore()
 
 def tag_note(c, s, x, y, k, col="#9FB0C6"):
     if k <= 0: return
@@ -352,10 +459,28 @@ def s01(c, t):
     cam = fly((-4.0, 39.5, 26.0), IB_CAM, ease_io(seg(t, 0, 3.0)))
     bg(c, cam)
     draw_region(c, cam, "iberia", GREEN, int(230 * k), stroke="#7CE0A8")
-    stat_card(c, 1180, 300, 520, 300, "~5 SAAL", "lagbhag poora Spain", seg(t, kw(u_spain, "paanch") - 0.1, kw(u_spain, "paanch") + 0.5), YEL)
+    kp = seg(t, kw(u_spain, "paanch") - 0.15, kw(u_spain, "paanch") + 0.7)
+    title(c, "5 SAAL", 330, 470, 120, kp, YEL)
+    photo_card(c, "guarrazar", 1440, 150, 300, 430, t, seg(t, kw(u_spain, "Spain") - 0.4, kw(u_spain, "Spain") + 0.3), "Visigoth Spain ka shahi khazana",
+               "Guarrazar, 7vi sadi · Public domain, Wikimedia Commons", t0=kw(u_spain, "Spain"))
+    title(c, "lagbhag poora Spain", 330, 530, 34, seg(t, kw(u_spain, "Spain") - 0.3, kw(u_spain, "Spain") + 0.5), "#E5E7EB")
     ky = ease_io(seg(t, kw(u_spain, "paanch") - 0.1, ue(u_spain) + 0.3))          # 711 -> 716 while "paanch saal" is said
     timeline(c, t, lerp(711, 716, ky), seg(t, 0.2, 0.7), span=(708, 720), step=1, big_every=1, start=711,
              bracket=(711, 716, "5 SAAL", seg(t, ue(u_spain) + 0.1, ue(u_spain) + 0.7)))
+    # "Ek fauj ne...": Umayyad army (Tariq ibn Ziyad, 711) crosses from North Africa at Gibraltar into Spain
+    ka = seg(t, kw(u_spain, "fauj") - 0.3, kw(u_spain, "jeet") + 0.2)
+    if ka > 0:
+        pts = [to_screen(cam, -5.9, 35.2), to_screen(cam, -5.4, 36.4), to_screen(cam, -4.4, 38.4), to_screen(cam, -4.0, 39.86)]
+        r_ = route(c, pts, ease_io(ka), RED, 9, dash=False)
+        if r_:
+            pm, L = r_
+            for j in range(9):
+                f_ = ease_io(ka) - j * 0.06
+                if f_ <= 0: continue
+                sx, sy, _ = along(pm, L, f_); ic_soldier(c, sx + (j % 2) * 22 - 11, sy - 14, 62, t + j * 0.2, "#F1FAEE", 255)
+        label(c, "UMAYYAD FAUJ · TARIQ IBN ZIYAD", *to_screen(cam, -9.6, 35.6), seg(t, kw(u_spain, "fauj") - 0.1, kw(u_spain, "fauj") + 0.4), 26, border=RED)
+        tag_note(c, "711 CE", *to_screen(cam, -9.6, 34.9), seg(t, kw(u_spain, "fauj"), kw(u_spain, "fauj") + 0.4), "#E5E7EB")
+    SFX_MARK(kw(u_spain, "fauj") - 0.2, "whoosh_long", -18)
     hl(c, cam, "iberia", t, kw(u_spain, "Spain"))
     float_map(c, t, kw(u_spain, "Spain"), "iberia", "SPAIN · 711", "Visigoth rajya, andaazan", 110, 150, 420, 320, fill=GREEN, ctx=4)
     footnote(c, "Map: Natural Earth · andaazan seema")
@@ -367,12 +492,16 @@ def s02(c, t):
     cam = fly(IB_CAM, W_CAM, ease_io(k))
     bg(c, cam)
     draw_region(c, cam, "caliph", GREEN, int(215 * ease_out(seg(t, vin(u_wahi) + 0.4, vin(u_wahi) + 2.2))), stroke="#7CE0A8")
+    hl(c, cam, "caliph", t, kw(u_wahi, "khilafat"), flag_at=(28.0, 28.5))           # the rulers' banner over their whole realm
+    hl(c, cam, "c_west", t, kw(u_wahi, "Atlantic"))
     title(c, "UMAYYAD KHILAFAT", 960, 170, 64, seg(t, vin(u_wahi) + 1.0, vin(u_wahi) + 1.6), "#F1FAEE")
     tag_note(c, "andaazan naksha, c. 740 CE", 960, 210, seg(t, vin(u_wahi) + 1.4, vin(u_wahi) + 2.0))
-    for key, word, side in (("atlantic", "Atlantic", -1), ("samarkand", "Central Asia", 1)):
+    for key, word, side in (("atlantic", "Atlantic", -1),):
         kk = seg(t, kw(u_wahi, word), kw(u_wahi, word) + 0.4)
         x, y = S(cam, key); label(c, word.upper(), x, y - 30, kk, 28)
-    hl(c, cam, "centralasia", t, kw(u_wahi, "Central Asia"))
+    hl(c, cam, "centralasia", t, kw(u_wahi, "Central Asia"), pole=False)
+    photo_card(c, "umayyad_mosque", 1300, 560, 520, 300, t, seg(t, vin(u_wahi) + 0.3, vin(u_wahi) + 1.0), "Umayyad Masjid, Damascus (khilafat ki rajdhani)",
+               "Photo: Bernard Gagnon · CC BY-SA 3.0 · Wikimedia Commons", t0=vin(u_wahi))
     float_map(c, t, kw(u_wahi, "Central Asia"), "centralasia", "CENTRAL ASIA", "Transoxiana, c. 740 (andaazan)", 1400, 560, 420, 320, fill=GREEN)
 
 @shot(vin(u_lekin), vin(u_naam))
@@ -387,6 +516,8 @@ def s03(c, t):
     label(c, "SINDH", *S(cam, "sindh"), seg(t, vin(u_lekin) + 2.0, vin(u_lekin) + 2.4), 30)
     hl(c, cam, "india", t, kw(u_lekin, "Hindustan"), SAFF, dur=1.6)
     float_map(c, t, kw(u_lekin, "Hindustan"), "india", "HINDUSTAN · 8vi SADI", "kai alag rajya (andaazan)", 1400, 140, 420, 330, fill=SAFF, pad=0.25)
+    photo_card(c, "banbhore", 90, 560, 520, 290, t, seg(t, kw(u_lekin, "Hindustan") - 0.2, kw(u_lekin, "Hindustan") + 0.5), "Banbhore, Sindh: jise Debal maana jaata hai",
+               "Photo: Engr.aly · CC BY-SA 4.0 · Wikimedia Commons", t0=kw(u_lekin, "Hindustan"), kout=seg(t, kw(u_lekin, "naya shehar") - 0.5, kw(u_lekin, "naya shehar")))
     SFX_MARK(kw(u_lekin, "naya shehar"), "build", -20)
 
 @shot(vin(u_naam), vin(u_jo))
@@ -535,6 +666,8 @@ def s10(c, t):
     pill(c, "UMAYYAD KHILAFAT", 960, 170, 46, GREEN_D, a=int(255 * clamp(seg(t, kw(u_661, "Umayyad") - 0.1, kw(u_661, "Umayyad") + 0.4) * 1.5))) if t > kw(u_661, "Umayyad") - 0.1 else None
     timeline(c, t, 661, 1.0, span=(620, 780))
     hl(c, cam, "syria", t, kw(u_raj, "Rajdhani") + 0.3)
+    photo_card(c, "umayyad_mosque", 1280, 420, 540, 310, t, seg(t, kw(U("Damascus."), "Damascus") - 0.1, kw(U("Damascus."), "Damascus") + 0.5), "Umayyad Masjid, Damascus",
+               "Photo: Bernard Gagnon · CC BY-SA 3.0 · Wikimedia Commons", t0=us(U("Damascus.")))
     float_map(c, t, kw(U("Damascus."), "Damascus"), "syria", "DAMASCUS · 661", "Sham (Syria), andaazan", 1400, 520, 420, 320, fill=GREEN, pad=0.6)
 
 @shot(vin(u_charam), vin(u_teen))
@@ -551,8 +684,9 @@ CONT = [("ASIA", (62.0, 42.0), "Asia"), ("AFRICA", (10.0, 24.0), "Africa"), ("EU
 def s12(c, t):
     bg(c, W_CAM); draw_region(c, W_CAM, "caliph", GREEN, 200, stroke="#7CE0A8")
     for nm, ll, word in CONT:
-        hl(c, W_CAM, {"ASIA": "c_asia", "AFRICA": "c_africa", "EUROPE": "c_europe"}[nm], t, kw(u_teen, word), YEL, "#5FD39A")
-        x, y = to_screen(W_CAM, *ll); label(c, nm, x, y, seg(t, kw(u_teen, word) - 0.1, kw(u_teen, word) + 0.3), 40, border=GREEN)
+        u_aae = U("Asia, Africa")
+        hl(c, W_CAM, {"ASIA": "c_asia", "AFRICA": "c_africa", "EUROPE": "c_europe"}[nm], t, kw(u_aae, word), YEL, "#5FD39A", pole=False)
+        x, y = to_screen(W_CAM, *ll); label(c, nm, x, y, seg(t, kw(u_aae, word) - 0.1, kw(u_aae, word) + 0.3), 40, border=REGCOL[{"ASIA": "c_asia", "AFRICA": "c_africa", "EUROPE": "c_europe"}[nm]])
     title(c, "TEEN MAHADWEEP", 960, 170, 60, seg(t, vin(u_teen), vin(u_teen) + 0.5), YEL)
 
 @shot(vin(u_711), vin(u_gir))
@@ -667,6 +801,12 @@ def name_card(c, name, sub, x, y, k, col=GREEN):
     rrect(c, -w / 2, -70, w / 2, 70, 20, "#16223A", al, shadow=18); c.drawRoundRect(skia.Rect(-w / 2, -70, w / 2, 70), 20, 20, paint(col, al, stroke=2))
     text(c, name, 0, 4, 44, "#F1FAEE", FT_BLACK, "c", al); text(c, sub, 0, 46, 22, "#9FB0C6", FT_SEMI, "c", al)
     c.restore()
+
+def xmark(c, x, y, s, k, col=RED):
+    if k <= 0: return
+    for i, (dx, dy) in enumerate(((1, 1), (1, -1))):
+        kk = ease_out(seg(k, i * 0.3, 0.6 + i * 0.3))
+        c.drawLine(x - s * dx, y - s * dy, x - s * dx + 2 * s * dx * kk, y - s * dy + 2 * s * dy * kk, paint(col, 255, stroke=s * 0.22, cap_round=True))
 
 def swords(c, x, y, s, k, col="#F1FAEE"):
     if k <= 0: return
@@ -873,7 +1013,10 @@ def s24(c, t):
     x, y = S(cam, "debal2"); pin(c, x, y, "DEBAL (andaazan sthaan)", seg(t, kw(u_debal, "Debal"), kw(u_debal, "Debal") + 0.4), YEL, size=30, t=t)
     kc = seg(t, kw(u_debal, "Karachi") - 0.1, kw(u_debal, "Karachi") + 0.4)
     if kc > 0: tag_note(c, "aaj ka Karachi paas mein", x, y + 60, kc, "#C9D1DC")
-    fort(c, 700, 520, 200, 1.0, a=int(255 * seg(t, us(u_debgir) - 0.2, us(u_debgir))) * (1 - seg(t, us(u_debgir) + 0.4, us(u_debgir) + 1.0)))
+    photo_card(c, "banbhore", 120, 420, 600, 340, t, seg(t, kw(u_debal, "Karachi") - 0.2, kw(u_debal, "Karachi") + 0.4), "Banbhore: Debal ki sambhavit jagah",
+               "Photo: Engr.aly · CC BY-SA 4.0 · Wikimedia Commons", t0=us(u_debal), kout=seg(t, us(u_mandir) - 0.3, us(u_mandir)))
+    stamp(c, "DEBAL GIRA", 1430, 220, 56, RED, seg(t, us(u_debgir) - 0.1, us(u_debgir) + 0.3) * (1 - seg(t, us(u_mandir), us(u_mandir) + 0.3)))
+    SFX_MARK(us(u_debgir), "stamp", -18)
     doc(c, "mbq_debal", 1020, 300, 820, 420, t, seg(t, us(u_mandir) - 0.2, us(u_mandir) + 0.3), us(u_mandir) + 0.3, 1.4)
 
 AR_CAM2 = (69.0, 27.0, 70.0)
@@ -892,7 +1035,7 @@ def s25(c, t):
 
 @shot(vin(u_multan), vin(u_par))
 def s26(c, t):
-    bg(c, AR_CAM2); hl(c, AR_CAM2, "sindh", t, 0)
+    bg(c, AR_CAM2); hl(c, AR_CAM2, "sindh", t, 0, flag="umayyad")
     x, y = S(AR_CAM2, "multan"); pin(c, x, y, "MULTAN", seg(t, kw(u_multan, "Multan"), kw(u_multan, "Multan") + 0.4), YEL, size=30, t=t)
     k = seg(t, us(u_do), kw(u_do, "dhokhe"))
     rrect(c, 1250, 300, 1700, 560, 24, "#16223A", int(255 * clamp(seg(t, us(u_do) - 0.2, us(u_do)) * 1.5)), shadow=16)
@@ -919,7 +1062,7 @@ def s27(c, t):
 
 @shot(vin(u_ablag), vin(u_715))
 def s28(c, t):
-    bg(c, IN_CAM); hl(c, IN_CAM, "sindh", t, 0); hl(c, IN_CAM, "india", t, kw(u_ablag, "Hindustan"))
+    bg(c, IN_CAM); hl(c, IN_CAM, "sindh", t, 0, flag="umayyad"); hl(c, IN_CAM, "india", t, kw(u_ablag, "Hindustan"))
     src = S(IN_CAM, "sindh")
     for i, key in enumerate(("gujarat", "rajasthan", "kannauj")):
         arrow(c, src, S(IN_CAM, key), seg(t, vin(u_ablag) + 0.2 + i * 0.3, vin(u_ablag) + 1.2 + i * 0.3), GREEN, 7, 0.15 - i * 0.1)
@@ -1180,6 +1323,8 @@ def s44(c, t):
     _state_regions(); sindh_base(c, GJ_CAM, t)
     timeline(c, t, 723, 1.0, span=(700, 800), step=5, big_every=10)
     portrait(c, "JUNAYD", 1520, 430, seg(t, us(u_jun) - 0.2, us(u_jun) + 0.3), col="#3D6B4F", hat="helmet")
+    arrow(c, S(GJ_CAM, "sindh"), S(GJ_CAM, "malwa"), seg(t, us(u_aage), ue(u_aage)), GREEN, 12, 0.15)
+    if t > us(u_aage): label(c, "SABSE AAGE", *S(GJ_CAM, "malwa"), seg(t, ue(u_aage) - 0.2, ue(u_aage) + 0.2), 30, border=GREEN)
     label(c, "SINDH KA GOVERNOR", *S(GJ_CAM, "sindh"), seg(t, vin(U("Sindh ka naya governor")), vin(U("Sindh ka naya governor")) + 0.4), 28, border=GREEN)
 
 RAIDS = [("kutch", "KUTCH", u_kutch, "gujarat"), ("saurashtra", "SAURASHTRA", u_saur, None), ("bharuch", "BHARUCH", u_bhar, None),
@@ -1266,6 +1411,7 @@ def s51(c, t):
     kt = seg(t, us(u_sur2) - 0.1, us(u_sur2) + 0.3)
     if kt > 0: title(c, "= SURAKSHIT", x - 330, y + 120, 50, kt, YEL)
     x2, y2 = S(cam, "mansura")
+    name_card(c, "AMR", "Muhammad bin Qasim ka beta", 1500, 860, seg(t, kw(u_paas, "Amr") - 0.2, kw(u_paas, "Amr") + 0.3) * (1 - seg(t, us(u_rajd), us(u_rajd) + 0.3)))
     km = seg(t, kw(u_mans, "Al-Mansura") - 0.1, kw(u_mans, "Al-Mansura") + 0.4)
     if km > 0: crown(c, x2, y2 - 40, 90 * back(km), YEL, int(255 * clamp(km * 1.5))); label(c, "AL-MANSURA = VIJAYI", x2 + 330, y2 - 150, km, 30, border=YEL)
     kr = seg(t, kw(u_rajd, "rajdhani") - 0.1, kw(u_rajd, "rajdhani") + 0.4)
@@ -1544,7 +1690,7 @@ def s69(c, t):
 # ======================================================================= VERDICT + OUTRO
 u_jod = U("Toh ek baar jod"); u_kd = U("Kabul ki deewar."); u_reg = U("Registaan."); u_ibj = U("Indian rajyon ka baar"); u_aat = U("Aur khilafat ka andar")
 u_sm = U("Arab raaj Sindh aur Multan"); u_854 = U("Aur 854"); u_lab = U("Lekin ab wo baat"); u_bahut = U("Bahut log sochte"); u_galat = U("Ye galat hai")
-u_ghz = U("North India jeetne"); u_turk = U("Mahmud ek Turk"); u_twist2 = U("Aur sabse bada twist"); u_nw = U("Wo aaye north-west"); u_wahi = U("Yaani wahi darwaza")
+u_ghz = U("North India jeetne"); u_turk = U("Mahmud ek Turk"); u_twist2 = U("Aur sabse bada twist"); u_nw = U("Wo aaye north-west"); u_wahi2 = U("Yaani wahi darwaza")
 u_vyap = U("Aur ek aakhri sach"); u_rash = U("Rashtrakuta raja"); u_hm = U("Toh ye kahani Hindu"); u_saam = U("Ye ek bade saamrajya")
 u_agli = U("Aur agli video")
 @shot(vin(u_jod), vin(u_sm))
@@ -1590,13 +1736,13 @@ def s73(c, t):
     if kt > 0: pill(c, "TURK · GHAZNAVID (1001 se)", 400, 640, 24, "#5B4B8A", a=int(255 * clamp(kt * 1.5))); pill(c, "GHURID (1192)", 720, 640, 24, "#8A5B3D", a=int(255 * clamp(kt * 1.5)))
     kn = seg(t, kw(u_turk, "naam") - 0.1, kw(u_turk, "naam") + 0.3)
     if kn > 0: pill(c, "KHALIFA KO SIRF NAAM KA SALAAM", 560, 720, 26, "#5B6472", a=int(255 * clamp(kn * 1.5)))
-    kg = seg(t, us(u_wahi), us(u_wahi) + 1.2)
+    kg = seg(t, us(u_wahi2), us(u_wahi2) + 1.2)
     if k > 0:
         x, y = S(cam, "kabul"); gate(c, x + 150, y - 60, 100, kg)
-        route(c, [S(cam, "ghazni2"), S(cam, "khyber"), S(cam, "punjab")], seg(t, us(u_wahi) + 0.5, ue(u_wahi) + 0.5), "#9B5DE5", 10, False)
+        route(c, [S(cam, "ghazni2"), S(cam, "khyber"), S(cam, "punjab")], seg(t, us(u_wahi2) + 0.5, ue(u_wahi2) + 0.5), "#9B5DE5", 10, False)
     tw = seg(t, us(u_twist2) - 0.1, us(u_twist2) + 0.3) * (1 - seg(t, us(u_nw), us(u_nw) + 0.3))
     if tw > 0: title(c, "SABSE BADA TWIST?", 960, 160, 64, tw, YEL)
-    SFX_MARK(us(u_wahi) + 0.3, "drag", -16); SFX_MARK(ue(u_wahi), "boom", -18)
+    SFX_MARK(us(u_wahi2) + 0.3, "drag", -16); SFX_MARK(ue(u_wahi2), "boom", -18)
 
 @shot(vin(u_vyap), vin(u_hm))
 def s74(c, t):
@@ -1648,6 +1794,8 @@ def s76(c, t):
     title(c, "AGLI VIDEO", 960, 180, 70, seg(t, vin(u_agli), vin(u_agli) + 0.4), RED)
     kq = seg(t, kw(u_agli, "darwaza") - 0.1, kw(u_agli, "darwaza") + 0.4)
     if kq > 0: text(c, "Kabul ka darwaza Mahmud Ghazni ke liye kaise khula?", 960, 900, 44, "#F1FAEE", FT_BLACK, "c", int(255 * clamp(kq * 1.5)), shadow=True)
+    km_ = seg(t, us(U("Wo kahani miss")) - 0.1, us(U("Wo kahani miss")) + 0.4)
+    if km_ > 0: title(c, "MISS MAT KARNA!", 960, 330, 64, km_, YEL)
     SFX_MARK(kw(u_agli, "Ghazni") - 0.6, "drag", -16)
 
 @shot(HOSTSEG["H4"][0], UN[-1]["end"] + 3.0, "cut")
