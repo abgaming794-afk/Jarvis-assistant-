@@ -413,6 +413,22 @@ def conquer(c, cam, name, t, t0, dur=1.1, flag_at=None, flag_size=0.9):
         if 0 < rp < 1: c.drawOval(skia.Rect(x - 70 * rp, y - 18 * rp, x + 70 * rp, y + 18 * rp), paint("#E9DCC0", int(180 * (1 - rp)), stroke=3))
         c.save(); c.translate(0, (1 - ease_out(kf)) * -120); pole_flag(c, x, y, "umayyad", t, clamp(kf * 1.5), flag_size, False); c.restore()
 
+
+def army_into_spain(c, cam, t, t0, dur=1.6):
+    """the opening scene's army, replayed: crosses at Gibraltar, fans out across Spain (marching soldiers)"""
+    ka = seg(t, t0, t0 + dur * 0.45)
+    land = [to_screen(cam, -5.9, 35.2), to_screen(cam, -5.4, 36.4), to_screen(cam, -5.0, 37.4)]
+    r_ = route(c, land, ease_io(ka), RED, 8, dash=False) if ka > 0 else None
+    if r_ and ka < 1:
+        for j in range(5):
+            f_ = ease_io(ka) - j * 0.08
+            if f_ > 0: sx, sy, _ = along(*r_, f_); ic_soldier(c, sx, sy - 12, 48, t + j * 0.2, "#F1FAEE", 255)
+    for i, (lo, la) in enumerate(((-4.02, 39.86), (-9.14, 38.72), (-5.57, 42.6), (-0.88, 41.65))):
+        kk = seg(t, t0 + dur * 0.4 + i * 0.12, t0 + dur + i * 0.1)
+        if kk <= 0: continue
+        r2 = route(c, [land[-1], to_screen(cam, lo, la)], ease_io(kk), RED, 6, dash=False)
+        if r2 and kk < 1: sx, sy, _ = along(*r2, ease_io(kk)); ic_soldier(c, sx, sy - 12, 44, t, "#F1FAEE", 255)
+
 # ---------------------------------------------------------------- premium text animation
 def title(c, s, x, y, size, k, col="#F1FAEE", a=255):
     """per-letter reveal: each glyph fades in and glides up with a soft stagger; tracking settles from wide to normal"""
@@ -746,8 +762,12 @@ def s05(c, t):
     if kL > 0:
         cam = (-4.0, 40.0, 36.0)
         c.save(); c.clipRect(skia.Rect(120, 190, 920, 820)); c.translate(-440 + 100, (1 - kL) * 60)
-        draw_map(c, WM, cam, {}, int(255 * kL)); draw_region(c, cam, "iberia", GREEN, int(230 * kL), stroke="#7CE0A8"); c.restore()
-        crown(c, 520, 330 + (1 - kL) * 60, 90, YEL, int(255 * kL))
+        draw_map(c, WM, cam, {}, int(255 * kL)); draw_region(c, cam, "iberia", REGCOL["iberia"], int(220 * kL))      # Visigoth Spain
+        t0 = vin(u_jo) + 0.15                                                                                        # the conquest, replayed
+        conquer(c, cam, "iberia", t, t0 + 0.6, 1.0, flag_at=(-4.02, 39.86), flag_size=0.9)
+        army_into_spain(c, cam, t, t0, 1.4)
+        c.restore()
+        SFX_MARK(t0, "whoosh_long", -20); SFX_MARK(t0 + 1.7, "stamp", -18)
         text(c, "SPAIN: JEET", 520, 790 + (1 - kL) * 60, 46, "#F1FAEE", FT_BLACK, "c", int(255 * kL))
     if kR > 0:
         fort(c, 1400, 500, 170, 1.0, a=int(255 * kR))
