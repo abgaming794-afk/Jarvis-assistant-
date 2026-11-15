@@ -908,7 +908,7 @@ def s08(c, t):
     # "inteqaal" (passing away) shown symbolically, no human figure: a lamp over Medina slowly goes out, smoke rises, light fades
     ti = kw(u_pai, "inteqaal"); kin = seg(t, vin(u_pai), vin(u_pai) + 0.5); kout = ease_io(seg(t, ti - 0.2, ti + 0.9))
     if kin > 0:
-        x, y = S(cam, "medina"); lx, ly = x + 230, y - 40
+        x, y = S(cam, "medina"); lx, ly = x + 330, y - 110
         glow = (1 - kout) * (0.85 + 0.15 * math.sin(t * 9) * math.sin(t * 3.1))
         c.drawCircle(lx, ly - 40, 220, paint("#FFC870", int(80 * kin * glow), blur=70))
         c.drawCircle(x, y, 120, paint("#FFF1C1", int(60 * kin * glow), blur=40))
@@ -930,6 +930,8 @@ def s08(c, t):
         # the real place: the Green Dome over his grave in Masjid-e-Nabawi (photo, no depiction of any person)
         photo_card(c, "green_dome", 640, 250, 640, 400, t, seg(t, ti - 0.1, ti + 0.6), "Hara Gumbad, Masjid-e-Nabawi, Madina",
                    "Wikimedia Commons (credit: PHOTO_CREDITS)", t0=ti)
+    photo_card(c, "prophet_ai", 90, 190, 520, 416, t, seg(t, kw(u_pai, "Paigambar") - 0.2, kw(u_pai, "Paigambar") + 0.5),
+               "AI CHITRAN · PRATIK (asli tasveer nahi)", "Channel dwara di gayi AI image", t0=us(u_pai))
     photo_card(c, "nabawi", 1260, 170, 560, 330, t, seg(t, kw(u_pai, "Paigambar") - 0.2, kw(u_pai, "Paigambar") + 0.5), "Masjid-e-Nabawi, Madina",
                "Wikimedia Commons (credit: PHOTO_CREDITS)", t0=us(u_pai), kout=seg(t, kw(u_pai, "inteqaal") - 0.3, kw(u_pai, "inteqaal")))
     timeline(c, t, 632, seg(t, vin(u_632), vin(u_632) + 0.5), span=(620, 780))
