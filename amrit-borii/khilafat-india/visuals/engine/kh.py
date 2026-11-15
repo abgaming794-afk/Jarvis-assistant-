@@ -493,11 +493,26 @@ def tag_note(c, s, x, y, k, col="#9FB0C6"):
     if k <= 0: return
     text(c, s, x, y, 20, col, FT_SEMI, "c", int(220 * clamp(k * 1.5)))
 
-def arrow(c, p0, p1, k, col=YEL, w=7, bend=0.18):
+def arrow(c, p0, p1, k, col=YEL, w=7, bend=0.18, army=None):
+    """curved arrow; army arrows (any colour but yellow) carry a column of marching 2D soldiers while advancing"""
     if k <= 0: return
     mx, my = (p0[0] + p1[0]) / 2, (p0[1] + p1[1]) / 2
     nx, ny = -(p1[1] - p0[1]), (p1[0] - p0[0])
-    route(c, [p0, (mx + nx * bend, my + ny * bend), p1], ease_out(k), col, w, dash=False)
+    r_ = route(c, [p0, (mx + nx * bend, my + ny * bend), p1], ease_out(k), col, w, dash=False)
+    if (army if army is not None else col != YEL) and r_ and k < 0.999:
+        L = r_[1]; n = max(2, min(6, int(L / 60))); size = 30 + w * 3
+        for q in range(n):
+            f_ = ease_out(k) - q * 0.06
+            if f_ > 0.02: sx, sy, _ = along(*r_, f_); ic_soldier(c, sx, sy - size * 0.25, size, k * 9 + q * 0.4, "#F1FAEE", 255)
+
+def clash(c, x, y, k, s=1.0):
+    """battle impact: white flash, yellow sparks, crossed swords"""
+    if k <= 0 or k >= 1: return
+    for r in range(10):
+        an = r / 10 * math.tau; d0 = (18 + 70 * ease_out(k)) * s
+        c.drawLine(x + d0 * math.cos(an), y + d0 * math.sin(an), x + (d0 + 24 * s) * math.cos(an), y + (d0 + 24 * s) * math.sin(an), paint(YEL, int(255 * (1 - k)), stroke=5 * s, cap_round=True))
+    c.drawCircle(x, y, (28 + 40 * k) * s, paint("#FFFFFF", int(160 * (1 - k)), blur=12))
+    swords(c, x, y - 60 * s, 42 * s, clamp(k * 3), "#F1FAEE")
 
 def timeline(c, t, year, k=1.0, y0=None, span=(600, 800), label_s=None, step=10, big_every=50, start=None, bracket=None):
     """bottom timeline: ticks every `step` years (labels every `big_every`), red progress from `start` (default: left end)
@@ -1350,6 +1365,8 @@ def s25(c, t):
     if 0 < ka < 1: c.drawLine(lerp(100, ex - 40, ka), lerp(300, ey - 90, ka), lerp(160, ex, ka), lerp(330, ey - 70, ka), paint("#F1FAEE", 255, stroke=4, cap_round=True))
     date_k = seg(t, us(u_khatam), us(u_khatam) + 0.4)
     if date_k > 0: pill(c, "RAJA DAHIR · 712", 1560, 680, 30, RED, a=int(255 * clamp(date_k * 1.5)))
+    xa, ya = S(AR_CAM2, "aror"); clash(c, xa, ya, seg(t, kw(u_dahir, "teer"), kw(u_dahir, "teer") + 0.8))
+    conquer(c, AR_CAM2, "sindh", t, us(u_khatam), 0.9, flag_at=(68.95, 27.7), flag_size=0.9)
     SFX_MARK(kw(u_dahir, "teer"), "whoosh_fast", -18); SFX_MARK(us(u_khatam), "boom", -20)
 
 @shot(vin(u_multan), vin(u_par))
@@ -1362,6 +1379,9 @@ def s26(c, t):
         c.drawArc(skia.Rect(1300, 340, 1480, 520), -90, 360 * ease_out(k), False, paint(YEL, 255, stroke=14, cap_round=True))
         text(c, "2", 1390, 455, 70, YEL, FT_BLACK, "c"); text(c, "MAHINE", 1590, 445, 40, "#F1FAEE", FT_BLACK, "c")
     ic_chain(c, 1260, 640, 1690, 640, seg(t, kw(u_do, "dhokhe") - 0.2, kw(u_do, "dhokhe") + 0.3), "#C9D1DC", 255, broken=t > kw(u_do, "dhokhe"))
+    clash(c, x, y, seg(t, kw(u_do, "dhokhe"), kw(u_do, "dhokhe") + 0.8))
+    kf = seg(t, kw(u_do, "dhokhe") + 0.4, kw(u_do, "dhokhe") + 1.0)
+    if kf > 0: c.save(); c.translate(0, (1 - ease_out(kf)) * -100); pole_flag(c, x, y, "umayyad", t, clamp(kf * 1.5), 0.8, False); c.restore()
     SFX_MARK(kw(u_do, "dhokhe"), "glitch", -20)
 
 @shot(vin(u_par), vin(u_ablag))
@@ -1529,6 +1549,7 @@ def s37(c, t):
         if kb <= 0: break
         ang = j / 14 * math.tau; d = 40 + 260 * ease_out(kb)
         c.drawRect(skia.Rect(p1[0] + d * math.cos(ang) - 10, p1[1] + d * math.sin(ang) - 4, p1[0] + d * math.cos(ang) + 10, p1[1] + d * math.sin(ang) + 4), paint(RED, int(255 * (1 - kb))))
+    clash(c, p1[0], p1[1], seg(t, us(u_5000) - 0.4, us(u_5000) + 0.4), 1.3)
     stat_card(c, 1220, 330, 520, 300, "SIRF 5,000", "zinda wapas laute (Bust)", seg(t, kw(u_5000, "paanch") - 0.1, kw(u_5000, "paanch") + 0.4), RED)
     pin_at(c, NW_CAM, "bust", "BUST", t, kw(u_5000, "wapas"), "#C9D1DC", 26, "l")
     SFX_MARK(us(u_5000) - 0.2, "boom", -16)
@@ -1663,6 +1684,7 @@ def s45(c, t):
     ku = seg(t, kw(u_ujj, "Ujjain") - 0.3, kw(u_ujj, "Ujjain") + 0.3)
     arrow(c, src, S(GJ_CAM, "ujjain"), ku, GREEN, 8, 0.1)
     x, y = S(GJ_CAM, "ujjain"); shield(c, x, y, 80, SAFF, 255, seg(t, kw(u_ujj, "lekin") - 0.2, kw(u_ujj, "lekin") + 0.3))
+    clash(c, x, y, seg(t, kw(u_ujj, "lekin") - 0.3, kw(u_ujj, "lekin") + 0.5))
     label(c, "UJJAIN", x, y - 70, ku, 28, border=SAFF)
     stamp(c, "QABZA NAHI", x - 40, y + 110, 44, SAFF, seg(t, kw(u_ujj, "haath") - 0.1, kw(u_ujj, "haath") + 0.3))
 
@@ -1773,6 +1795,7 @@ def s53(c, t):
     x, y = S(GJ_CAM, "bharuch"); pin_at(c, GJ_CAM, "bharuch", "BHARUCH", t, kw(u_736, "Bharuch"), SAFF, 26)
     pin_at(c, GJ_CAM, "vallabhi", "VALLABHI", t, kw(u_736, "Vallabhi"), SAFF, 26, "l")
     shield(c, x - 90, y - 10, 90, SAFF, 255, kb)
+    clash(c, x - 60, y, seg(t, kw(u_736, "haraya") - 0.2, kw(u_736, "haraya") + 0.6))
     if kb > 0: label(c, "JAYABHATA IV (736 ka shilalekh)", 960, 200, kb, 32, border=SAFF)
     SFX_MARK(kw(u_736, "haraya"), "stamp", -18)
 
@@ -1831,6 +1854,7 @@ def s56(c, t):
             ang = j / 12 * math.tau; d = 20 + 200 * ease_out(kx)
             c.drawRect(skia.Rect(x + d * math.cos(ang) - 9, y + d * math.sin(ang) - 4, x + d * math.cos(ang) + 9, y + d * math.sin(ang) + 4), paint(RED, int(255 * (1 - kx))))
         shield(c, x, y, 110, SAFF, 255, kx)
+    xn, yn = S(GJ_CAM, "navsari"); clash(c, xn, yn, seg(t, kw(u_pulak, "haraaya") - 0.3, kw(u_pulak, "haraaya") + 0.6), 1.3)
     SFX_MARK(kw(u_pulak, "haraaya"), "boom", -16)
 
 @shot(vin(u_740), vin(u_bappa))
@@ -1844,7 +1868,7 @@ def s57(c, t):
     if kc > 0:
         hl(c, GJ_CAM, "rajasthan", t, kw(u_chit, "Chittor"))
         fort(c, x, y, 110, 1.0); label(c, "CHITTOR (MORI)", x, y - 90, kc, 28, border=REGCOL["rajasthan"])
-        kr = seg(t, kw(u_chit, "naakaam") - 0.3, kw(u_chit, "naakaam") + 0.6)
+        kr = seg(t, kw(u_chit, "naakaam") - 0.3, kw(u_chit, "naakaam") + 0.6); clash(c, x, y, kr)
         for j in range(10):
             ang = j / 10 * math.tau; d = 120 + 180 * ease_in(kr)
             c.drawLine(x + d * math.cos(ang), y + d * math.sin(ang), x + (d - 30) * math.cos(ang), y + (d - 30) * math.sin(ang), paint(GREEN, int(255 * (1 - kr)), stroke=5, cap_round=True))
@@ -1937,7 +1961,7 @@ def fronts(c, t, cam, upto=None, all_red=0.0):
         if k <= 0: continue
         rp = ((t - t0) * 0.9) % 1
         c.drawCircle(x, y, 14 + 50 * rp, paint(RED, int(200 * (1 - rp) * k), stroke=4))
-        ic_flame(c, x, y - 8, 46 * back(k), t, int(255 * clamp(k * 1.5)))
+        ic_flame(c, x, y - 8, 46 * back(k), t, int(255 * clamp(k * 1.5))); clash(c, x, y, seg(t, t0 - 0.1, t0 + 0.7), 0.8)
         ox, oy = FR_OFF.get(key, (140, -46))
         c.drawLine(x, y, x + ox * 0.7, y + oy * 0.7, paint("#E5E7EB", int(160 * k), stroke=1.5))
         label(c, lab, x + ox, y + oy, k, 24, border=col)
@@ -2009,6 +2033,7 @@ def s68(c, t):
     if ks > 0: label(c, "SAINDHAVA NAVY · AGGUKA I", dst[0] + 120, dst[1] - 70, ks, 28, border=SAFF)
     stamp(c, "IRAADA CHHODA", 1350, 260, 56, RED, seg(t, kw(u_mahdi, "chhod") - 0.1, kw(u_mahdi, "chhod") + 0.3))
     if t > us(u_mahdi) - 0.2: name_card(c, "KHALIFA AL-MAHDI", "Abbasi khalifa", 500, 240, seg(t, us(u_mahdi) - 0.2, us(u_mahdi) + 0.3), "#2A9D8F")
+    clash(c, dst[0] - 60, dst[1] + 60, seg(t, kw(u_776, "haraya") - 0.3, kw(u_776, "haraya") + 0.6), 1.2)
     SFX_MARK(kw(u_776, "haraya"), "boom", -18)
 
 @shot(vin(u_r4), vin(U("Toh ek baar jod")))
@@ -2069,7 +2094,7 @@ def s73(c, t):
     kg = seg(t, us(u_wahi2), us(u_wahi2) + 1.2)
     if k > 0.6:
         x, y = S(cam, "kabul"); gate(c, x + 150, y - 60, 100 * ease_out(seg(k, 0.6, 1.0)), kg)
-        route(c, [S(cam, "ghazni2"), S(cam, "khyber"), S(cam, "punjab")], seg(t, us(u_wahi2) + 0.5, ue(u_wahi2) + 0.5), "#9B5DE5", 10, False)
+        arrow(c, S(cam, "ghazni2"), S(cam, "punjab"), seg(t, us(u_wahi2) + 0.5, ue(u_wahi2) + 0.5), "#9B5DE5", 10, 0.12)
     tw = seg(t, us(u_twist2) - 0.1, us(u_twist2) + 0.3) * (1 - seg(t, us(u_nw), us(u_nw) + 0.3))
     if tw > 0: title(c, "SABSE BADA TWIST?", 960, 160, 64, tw, YEL)
     SFX_MARK(us(u_wahi2) + 0.3, "drag", -16); SFX_MARK(ue(u_wahi2), "boom", -18)

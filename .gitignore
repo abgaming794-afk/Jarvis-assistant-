@@ -37,3 +37,4 @@ amrit-borii/**/stills/
 amrit-borii/host/node_modules/
 amrit-borii/**/__pycache__/
 amrit-borii/khilafat-india/render/
+amrit-borii/**/*.wav
