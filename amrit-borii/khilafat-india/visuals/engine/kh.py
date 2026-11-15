@@ -816,7 +816,9 @@ def s06(c, t):
         label(c, "AL-BALADHURI · 9vi SADI", 330, 210, kl, 30, border="#E9C46A")
         tag_note(c, "Aadhunik chitran · 'Futuh al-Buldan' ka lekhak", 330, 250, kl, "#E5E7EB")
     if t > vin(u_pehle):
-        title(c, "PEHLE: YE NAUBAT AAYI KYUN?", 960, 150, 56, seg(t, vin(u_pehle), vin(u_pehle) + 0.6), YEL)
+        title(c, "PEHLE:", 330, 430, 54, seg(t, vin(u_pehle), vin(u_pehle) + 0.5), YEL)
+        title(c, "YE NAUBAT", 330, 500, 54, seg(t, vin(u_pehle) + 0.15, vin(u_pehle) + 0.65), YEL)
+        title(c, "AAYI KYUN?", 330, 570, 54, seg(t, vin(u_pehle) + 0.3, vin(u_pehle) + 0.8), YEL)
     SFX_MARK(us(u_aur), "paper", -20); SFX_MARK(kw(u_wo, "dikhaunga"), "lock", -18); SFX_MARK(kw(u_ye, "itihaskar") - 0.3, "whoosh_long", -20)
 
 @shot(vin(u_iske), HOSTSEG["H1"][0])
@@ -903,6 +905,13 @@ def s08(c, t):
     bg(c, cam)
     for key, nm, i in (("medina", "MEDINA", 0), ("mecca", "MECCA", 1)):
         x, y = S(cam, key); pin(c, x, y, nm, seg(t, vin(u_pai) + i * 0.3, vin(u_pai) + 0.6 + i * 0.3), YEL, size=30, side="r", t=t)
+    kl = seg(t, kw(u_pai, "inteqaal") - 0.4, kw(u_pai, "inteqaal") + 0.6)                     # soft light over Medina
+    if kl > 0:
+        x, y = S(cam, "medina"); br = 0.7 + 0.3 * math.sin(t * 2.4)
+        c.drawCircle(x, y, 160 * kl, paint("#FFF1C1", int(70 * kl * br), blur=40)); c.drawCircle(x, y, 60 * kl, paint("#FFF1C1", int(90 * kl * br), blur=18))
+    photo_card(c, "nabawi", 1260, 170, 560, 330, t, seg(t, kw(u_pai, "Paigambar") - 0.2, kw(u_pai, "Paigambar") + 0.5), "Masjid-e-Nabawi, Madina",
+               "Wikimedia Commons (credit: PHOTO_CREDITS)", t0=us(u_pai))
+    title(c, "MADINA · 632", 600, 860 - 60, 44, seg(t, kw(u_pai, "inteqaal") - 0.2, kw(u_pai, "inteqaal") + 0.5), "#FFF1C1")
     timeline(c, t, 632, seg(t, vin(u_632), vin(u_632) + 0.5), span=(620, 780))
 
 WAVES = [("SAU", 0), ("YEM", 0), ("OMN", 0), ("ARE", 0.1), ("SYR", 0.25), ("JOR", 0.25), ("IRQ", 0.35), ("EGY", 0.45), ("LBY", 0.6), ("IRN", 0.6), ("TUN", 0.75), ("DZA", 0.85), ("MAR", 0.95), ("TKM", 0.85), ("UZB", 0.95)]
@@ -938,10 +947,13 @@ def s10(c, t):
 @shot(vin(u_charam), vin(u_teen))
 def s11(c, t):
     bg(c, W_CAM); draw_region(c, W_CAM, "caliph", GREEN, 200, stroke="#7CE0A8")
-    dim(c, 90)
+    hl(c, W_CAM, "caliph", t, kw(u_charam, "saamrajya"), flag_at=(28.0, 28.5))
     k = seg(t, kw(u_charam, "ek crore") - 0.2, kw(u_charam, "ek crore") + 1.2)
     v = lerp(0, 1.1, ease_out(k))
-    stat_card(c, 620, 280, 680, 330, f"{v:.1f} CRORE+ km²", "Umayyad khilafat, charam par", seg(t, kw(u_charam, "ek crore") - 0.3, kw(u_charam, "ek crore") + 0.2), YEL, sub="Wikipedia: 1.1-1.5 crore km²")
+    if k > 0:
+        title(c, f"{v:.1f} CRORE+ km²", 400, 790, 78, seg(t, kw(u_charam, "ek crore") - 0.3, kw(u_charam, "ek crore") + 0.4), YEL)
+        title(c, "Umayyad khilafat, charam par", 400, 840, 30, seg(t, kw(u_charam, "ek crore"), kw(u_charam, "ek crore") + 0.6), "#E5E7EB")
+        tag_note(c, "Wikipedia: 1.1-1.5 crore km²", 400, 875, seg(t, kw(u_charam, "ek crore") + 0.3, kw(u_charam, "ek crore") + 0.9))
     SFX_MARK(kw(u_charam, "ek crore"), "count", -22)
 
 CONT = [("ASIA", (62.0, 42.0), "Asia"), ("AFRICA", (10.0, 24.0), "Africa"), ("EUROPE", (-4.0, 44.0), "Europe")]
@@ -2176,7 +2188,11 @@ def render(T):
                 k = ease_io(seg(t, a, a + TR)); s = lerp(1.04, 1.0, k)
                 c.save(); c.translate(960, 540); c.scale(s, s); c.translate(-960, -540); c.saveLayerAlpha(None, int(255 * k)); fn(c, t); c.restore(); c.restore()
             else:
-                c.save(); fn(c, t); c.restore()
+                c.save()
+                if not in_host(t):
+                    u_ = clamp((t - a) / max(0.5, b - a)); zz = 1.0 + 0.035 * ease_io(u_); dx = (1 if i % 2 else -1) * 14 * ease_io(u_)
+                    c.translate(960 + dx, 540); c.scale(zz, zz); c.translate(-960, -540)
+                fn(c, t); c.restore()
         captions(c, t)
         if not in_host(t) and t > 0.4: watermark(c, LOGO, 140)
     vignette(c, 100); grain(c, T, 12)
