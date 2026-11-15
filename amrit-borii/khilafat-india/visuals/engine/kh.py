@@ -927,11 +927,11 @@ def s08(c, t):
                     v = q / 8 * u; sp.lineTo(sx0 + math.sin(v * 9 + j + t * 1.5) * 18 * v, sy0 - 170 * v)
                 c.drawPath(sp, paint("#C9D1DC", int(150 * (1 - u)), stroke=5, cap_round=True, blur=2))
         dim(c, 90 * kout)
-        kt = seg(t, ti + 0.4, ti + 1.0)
-        if kt > 0: title(c, "INTEQAAL = DUNIYA SE RUKHSAT", 960, 860 - 140, 46, kt, "#FFF1C1")
+        # the real place: the Green Dome over his grave in Masjid-e-Nabawi (photo, no depiction of any person)
+        photo_card(c, "green_dome", 640, 250, 640, 400, t, seg(t, ti - 0.1, ti + 0.6), "Hara Gumbad, Masjid-e-Nabawi, Madina",
+                   "Wikimedia Commons (credit: PHOTO_CREDITS)", t0=ti)
     photo_card(c, "nabawi", 1260, 170, 560, 330, t, seg(t, kw(u_pai, "Paigambar") - 0.2, kw(u_pai, "Paigambar") + 0.5), "Masjid-e-Nabawi, Madina",
-               "Wikimedia Commons (credit: PHOTO_CREDITS)", t0=us(u_pai))
-    title(c, "MADINA · 632", 960, 790, 36, seg(t, kw(u_pai, "inteqaal") - 0.2, kw(u_pai, "inteqaal") + 0.5), "#FFF1C1")
+               "Wikimedia Commons (credit: PHOTO_CREDITS)", t0=us(u_pai), kout=seg(t, kw(u_pai, "inteqaal") - 0.3, kw(u_pai, "inteqaal")))
     timeline(c, t, 632, seg(t, vin(u_632), vin(u_632) + 0.5), span=(620, 780))
 
 WAVES = [("SAU", 0), ("YEM", 0), ("OMN", 0), ("ARE", 0.1), ("SYR", 0.25), ("JOR", 0.25), ("IRQ", 0.35), ("EGY", 0.45), ("LBY", 0.6), ("IRN", 0.6), ("TUN", 0.75), ("DZA", 0.85), ("MAR", 0.95), ("TKM", 0.85), ("UZB", 0.95)]
