@@ -119,16 +119,16 @@ BANNER = {"iberia": ("#8B1E2D", "cross", "#E9C46A", "VISIGOTH SPAIN"), "sindh": 
           "india": ("TIRANGA", None, None, "HINDUSTAN"), "arabia": ("#FFFFFF", None, None, "ARAB"),
           "syria": ("#FFFFFF", None, None, "DAMASCUS (SHAM)"), "iraq": ("#FFFFFF", None, None, "IRAQ"),
           "centralasia": ("#FFFFFF", None, None, "CENTRAL ASIA"), "c_asia": None, "c_africa": None, "c_europe": None,
-          "umayyad": ("#FFFFFF", None, None, "UMAYYAD · SAFED JHANDA"), "abbasid": ("#111111", None, None, "ABBASI · KAALA JHANDA"),
+          "umayyad": ("#FFFFFF", None, None, "UMAYYAD KHILAFAT"), "abbasid": ("#111111", None, None, "ABBASI KHILAFAT"),
           "kabul": ("#B23A48", "sun", "#F1FAEE", "TURK SHAHI"), "zabul": ("#2A9D8F", "sun", "#F1FAEE", "ZUNBIL"),
           "gujarat": ("#C2185B", "star", "#FFD166", "CHALUKYA"), "rajasthan": ("#D35400", "sun", "#FFE8A3", "MORI / GURJARA"),
           "mp": ("#6A4C93", "star", "#FFD166", "MALWA"), "pratihara": ("#C0392B", "sun", "#FFE8A3", "PRATIHARA"),
-          "desert": None, "caliph": ("#FFFFFF", None, None, "UMAYYAD KHILAFAT · SAFED JHANDA"), "raidzone": None, "c_west": None}
+          "desert": None, "caliph": ("#FFFFFF", None, None, "UMAYYAD KHILAFAT"), "raidzone": None, "c_west": None}
 _BTEX = {}
 def banner_tex(key):
     """plain flag in the region's own colour (user: "har jhande ko uska colour do"); the Umayyad/khilafat banner is
     white and the Abbasid banner black - those two colours are documented"""
-    col = {"umayyad": "#FFFFFF", "caliph": "#FFFFFF", "abbasid": "#111111"}.get(key) or REGCOL.get(key, "#FFFFFF")
+    col = {"umayyad": "#1F9D5C", "caliph": "#1F9D5C", "abbasid": "#111111"}.get(key) or REGCOL.get(key, "#FFFFFF")
     if col in _BTEX: return _BTEX[col]
     sf = skia.Surface(600, 400); cc = sf.getCanvas(); cc.clear(hexc(col))
     if col not in ("#FFFFFF", "#111111"): cc.drawRect(skia.Rect(0, 340, 600, 400), paint(lighten(col, 0.35)))
@@ -661,7 +661,7 @@ def s01(c, t):
         rp = seg(tv, HP + 0.05, HP + 0.8)
         if 0 < rp < 1: c.drawOval(skia.Rect(x - 90 * rp, y - 22 * rp, x + 90 * rp, y + 22 * rp), paint("#E9DCC0", int(180 * (1 - rp)), stroke=4))
         c.save(); c.translate(0, (1 - ease_out(kf)) * -160); pole_flag(c, x, y, "umayyad", tv, clamp(kf * 1.5), 1.25, False); c.restore()
-        label(c, "UMAYYAD JHANDA GADA", x + 40, y + 70, seg(tv, HP + 0.2, HP + 0.6), 26, border="#F4F1EA")
+        label(c, "UMAYYAD KA JHANDA GADA", x + 40, y + 70, seg(tv, HP + 0.2, HP + 0.6), 26, border="#F4F1EA")
     SFX_MARK(kw(u_spain, "fauj") - 0.2, "whoosh_long", -18); SFX_MARK(HP + 0.05, "stamp", -14); SFX_MARK(HP + 0.05, "boom", -20)
     footnote(c, "Map: Natural Earth · andaazan seema")
     SFX_MARK(0.3, "hit", -16)
