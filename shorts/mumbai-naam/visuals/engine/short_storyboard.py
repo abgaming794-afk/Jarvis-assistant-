@@ -505,7 +505,7 @@ def poll(c, k, t):
 SA = (78.5, 21.5, 22); MUM = (72.86, 19.0, 170); ISL = (72.826, 18.968, 4000); WIN = (74.0, 20.5, 38)
 WIN2 = (70.5, 20.8, 36); EU = (31.0, 36.0, 9.5); MUM2 = (72.9, 19.05, 190); MAH = (76.0, 20.0, 34)
 CAM_KEYS = [(0.0, (78, 22, 6)), (1.9, SA), (us(1), SA), (us(2) + 0.6, MUM), (T("islands")[0], MUM),
-            (T("islands")[0] + 1.5, ISL), (T("ptolemy")[0], ISL), (T("ptolemy")[0] + 1.2, WIN), (T("portugal")[0], WIN),
+            (T("islands")[0] + 1.1, ISL), (T("ptolemy")[0], ISL), (T("ptolemy")[0] + 1.2, WIN), (T("portugal")[0], WIN),
             (T("portugal")[0] + 0.9, WIN2), (T("dowry")[0], WIN2), (T("dowry")[0] + 1.4, EU), (T("company")[0], EU),
             (T("company")[0] + 1.3, MUM2), (T("merge")[0], MUM2), (T("merge")[0] + 1.1, ISL), (T("rename")[0], ISL),
             (T("rename")[0] + 1.3, MAH)]
@@ -734,7 +734,7 @@ def frame(c, t):
     isl_a = seg(t, i0 + 0.5, i0 + 1.3) * (1 - seg(t, T("ptolemy")[0], T("ptolemy")[0] + 0.6)) + \
             seg(t, m0 + 0.3, m0 + 1.0) * (1 - seg(t, r0, r0 + 0.7))
     if isl_a > 0:
-        rise = [at(i0 + 1.0 + 0.13 * j, 0.45) if t < T("ptolemy")[0] + 1 else 1.0 for j in range(7)]
+        rise = [at(i0 + 0.6 + 0.12 * j, 0.45) if t < T("ptolemy")[0] + 1 else 1.0 for j in range(7)]
         hl = {}
         for nm, w_ in (("COLABA", "Colaba"), ("MAHIM", "Mahim"), ("WORLI", "Worli"), ("PAREL", "Parel")):
             hl[nm] = at(kw(4, w_) - 0.1, 0.3) * (1 - seg(t, ue(4) + 0.6, ue(4) + 0.9))
@@ -779,8 +779,8 @@ def frame(c, t):
                 rp = (t % 1.0); c.drawCircle(x, y - 40, 60 + 90 * rp, paint("#FFD166", int(180 * dk * (1 - rp)), stroke=4))
     if act("islands"):                                   # ---- SAAT DWEEP
         headline(c, "KABHI SAAT DWEEP THE", kin("islands", 0.5, 0.2), col=Y, sub="Aaj ke Mumbai ki jagah")
-        n7 = sum(1 for j in range(7) if t > i0 + 1.0 + 0.13 * j + 0.2)
-        if n7: chip(c, f"{n7} DWEEP", 905, 1110, at(i0 + 1.1) * out("islands"), bg=Y, fg="#0F1B2D", size=34)
+        n7 = sum(1 for j in range(7) if t > i0 + 0.6 + 0.12 * j + 0.2)
+        if n7: chip(c, f"{n7} DWEEP", 905, 1110, at(i0 + 0.7) * out("islands"), bg=Y, fg="#0F1B2D", size=34)
         for nm, w_, key, dx, dy in (("COLABA", "Colaba", "colaba", -170, 30), ("MAHIM", "Mahim", "mahim", 150, -20),
                                     ("WORLI", "Worli", "worli", -150, -60), ("PAREL", "Parel", "parel", 170, 10)):
             x, y = S(key); label(c, nm, x + dx, y + dy, at(kw(4, w_) - 0.05) * out("islands"), size=32)
@@ -853,7 +853,7 @@ def frame(c, t):
         chip(c, "BOM = ACHHA", DW / 2 - 220, 545, at(kw(12, "achhi") - 0.15) * out("myth", 0.25), bg="#22304A", size=32)
         chip(c, "BAIM = KHAADI?", DW / 2 + 220, 545, at(kw(12, "khaadi") - 0.15) * out("myth", 0.25), bg="#22304A", size=32)
         wiki_card2(c, at(us(13) - 0.1, 0.6) * out("myth", 0.25), t, 620, kw(13, "jaankaar") - 0.1)
-        stamp(c, "MYTH", 800, 1060, 70, PAL["axis"], at(kw(13, "galat") - 0.1, 0.35) * out("myth", 0.25))
+        stamp(c, "MYTH", 800, 1060, 70, PAL["axis"], at(kw(13, "ise") - 0.1, 0.35) * out("myth", 0.25))
     if act("dowry"):                                     # ---- 1661 DOWRY
         e = out("dowry")
         lk = at(dw0 + 1.2, 0.4) * e
@@ -888,14 +888,16 @@ def frame(c, t):
         ek = at(kw(16, "Company") - 0.2) * (1 - seg(t, us(17) - 0.25, us(17)))
         sym_flag(c, "EIC", 700, 760, 150, ek, t)
         if ek > 0: text(c, "EAST INDIA COMPANY", 810, 1000, 28, "#F1FAEE", FT_BLACK, "c", int(255 * ek), shadow=True)
-        if t > us(17) - 0.3:
-            a_ = 255 * at(us(17) - 0.3, 0.4) * out("company", 0.25)
+    if act("company", 0, 0.8) and t > us(17) - 0.3:
+        if True:
+            hold = 1 - seg(t, T("company")[1] + 0.5, T("company")[1] + 0.8)
+            a_ = 255 * at(us(17) - 0.3, 0.4) * hold
             yk = seg(t, kw(17, "Bombay") - 0.1, kw(17, "Bombay") + 0.5)
             L = [Lw(ch, "#9CC3FF") for ch in "BOMBA"] + \
                 [Lw("I", "#FF4D5E" if yk > 0.05 else "#9CC3FF", w=1 - seg(yk, 0.5, 1), al=1 - seg(yk, 0.4, 1), dy=ease_in(yk) * 120, rot=yk * 35, strike=seg(yk, 0, 0.35)),
                  flip("M", "Y", seg(yk, 0.3, 1), "#9CC3FF", Y)]
             word_row(c, L, DW / 2, 600, 140, a_, glow="#FF8A92")
-            chip(c, "ANGREZI ROOP: BOMBAY", DW / 2, 730, at(kw(17, "Bombay") + 0.2) * out("company", 0.25), bg=Y, fg="#0F1B2D", size=34)
+            chip(c, "ANGREZI ROOP: BOMBAY", DW / 2, 730, at(kw(17, "Bombay") + 0.2) * hold, bg=Y, fg="#0F1B2D", size=34)
     if act("merge"):                                     # ---- SAAT DWEEP, EK SHEHAR
         headline(c, "SAAT DWEEP, EK SHEHAR", kin("merge", 0.5, 0.2), col=Y, sub="Samundar bhar ke zameen banayi")
         x, y = S("vellard")
@@ -978,14 +980,14 @@ def sfx_events():
     for k_ in ("islands", "devi", "ptolemy", "portugal", "myth", "dowry", "company", "merge", "local", "rename", "cta"):
         E.append(("whoosh_fast", T(k_)[0], -19))
     E += [("riser", T("islands")[0] + 0.1, -16)]
-    for j in range(7): E.append(("pop", T("islands")[0] + 1.0 + 0.13 * j, -20))
+    for j in range(7): E.append(("pop", T("islands")[0] + 0.6 + 0.12 * j, -20))
     for w in ("Colaba", "Mahim", "Worli", "Parel"): E.append(("pop", kw(4, w) - 0.1, -16))
     E += [("pop", kw(5, "Koli") - 0.2, -16), ("pop", kw(6, "Mumba") - 0.3, -14), ("pop", kw(7, "Maha") - 0.15, -15),
           ("pop", kw(7, "Aai") - 0.15, -15), ("ding", kw(8, "bana") - 0.05, -13),
           ("pop", kw(9, "Ptolemy") - 0.4, -14), ("pop", kw(9, "Heptanesia") - 0.15, -15), ("ding", kw(9, "saat") - 0.1, -15),
           ("pop", kw(10, "Gujarat") - 0.15, -15), ("pop", kw(10, "Bahadur") - 0.35, -13), ("drag", kw(10, "Portugal") - 0.25, -16),
           ("pop", kw(11, "Bombaim") - 0.25, -15), ("pop", kw(12, "achhi") - 0.15, -15), ("pop", kw(12, "khaadi") - 0.15, -15),
-          ("drag", kw(13, "jaankaar") - 0.1, -17), ("stamp", kw(13, "galat") - 0.1, -11),
+          ("drag", kw(13, "jaankaar") - 0.1, -17), ("stamp", kw(13, "ise") - 0.1, -11),
           ("riser", T("dowry")[0], -16), ("whoosh_long", kw(14, "dahej") - 0.3, -15), ("pop", kw(15, "Catherine") - 0.4, -13),
           ("pop", kw(15, "Charles") - 0.45, -13), ("ding", kw(15, "shaadi") - 0.1, -15),
           ("pop", kw(16, "East") - 0.3, -14), ("pop", kw(16, "10") - 0.2, -13), ("glitch", kw(17, "Bombay") - 0.1, -14),
