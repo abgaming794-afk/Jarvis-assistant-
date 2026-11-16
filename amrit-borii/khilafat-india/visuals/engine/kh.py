@@ -84,7 +84,9 @@ def gpath(name, scale):
         PATHS[key] = geo_path(g, (0.08, 0.02, 0.004)[lvl])
     return PATHS[key]
 
-def draw_region(c, cam, name, col, a=255, stroke=None, glow=0):
+FRAME = {"req": [], "drawn": []}
+NO_AUTO = {"india", "c_asia", "c_africa", "c_europe", "desert", "raidzone", "c_west"}
+def draw_region(c, cam, name, col, a=255, stroke=None, glow=0, flag=True, rule=None):
     cx, cy = cam_xy(cam[0], cam[1]); s = cam[2]
     c.save(); c.translate(DW / 2, DH / 2); c.scale(s, s); c.translate(-cx, -cy)
     p = gpath(name, s)
@@ -92,6 +94,10 @@ def draw_region(c, cam, name, col, a=255, stroke=None, glow=0):
     c.drawPath(p, paint(col, a))
     if stroke: c.drawPath(p, paint(stroke, int(a * 0.7), stroke=1.0 / s))
     c.restore()
+    if flag and a >= 110 and name not in NO_AUTO and BANNER.get(name):
+        key = rule or ("umayyad" if col in (GREEN, GREEN_D) else name)
+        if PROBE["on"]: FRAME["req"].append((name, cam, key, a)); return
+        ruler_flag(c, cam, name, key, a)
 
 def fly(c0, c1, k):
     """smooth camera move; zooms out a little in the middle for long moves (Google-Maps style)"""
@@ -173,9 +179,11 @@ def rep_point(name):
     if name not in _RP: p_ = REG[name].representative_point(); _RP[name] = (p_.x, p_.y)
     return _RP[name]
 
-def pole_flag(c, x, y, key, t, k, size=1.0, show_label=True):
+KHIL_HELD = {"iraq": "umayyad", "syria": "umayyad", "arabia": "umayyad", "centralasia": "umayyad"}
+def pole_flag(c, x, y, key, t, k, size=1.0, show_label=True, lab_over=None):
     """floating flag on a pole that rises in, bobs gently and waves"""
     if k <= 0 or not BANNER.get(key): return
+    FRAME["drawn"].append(("umayyad" if key == "caliph" else key, x, y))
     kk = ease_out(clamp(k)); al = int(255 * clamp(k * 1.6)); bob = math.sin(t * 2.0 + x * 0.01) * 5
     sw = math.sin(t * 1.3 + y * 0.01) * 1.5
     c.save(); c.translate(x, y + bob + (1 - kk) * 40); c.rotate(sw); c.scale(size, size)
@@ -185,7 +193,7 @@ def pole_flag(c, x, y, key, t, k, size=1.0, show_label=True):
     c.drawRect(skia.Rect(4, -146 + 6, 4 + fw, -146 + fh + 10), paint("#000000", int(al * 0.25), blur=6))
     cloth(c, img, 2, -146, fw, fh, t, al, 30, 0.08)
     if show_label:
-        lab = BANNER[key][3]; fs = 17; tw = text_w(lab, fs, FT_SEMI)
+        lab = lab_over or BANNER[key][3]; fs = 17; tw = text_w(lab, fs, FT_SEMI)
         rrect(c, -tw / 2 - 12 + 60, 14, tw / 2 + 12 + 60, 42, 14, "#0B1424", int(al * 0.85))
         text(c, lab, 60, 34, fs, "#E5E7EB", FT_SEMI, "c", al)
     c.restore()
@@ -201,22 +209,89 @@ def hl(c, cam, name, t, t0, col=None, fill=None, dur=99.0, flag=None, flag_at=No
     if t0 <= 0: dur = 1e9                                   # t0 = 0 means "lit for the whole shot"
     k = seg(t, t0 - 0.1, t0 + 0.45) * (1 - seg(t, t0 + dur, t0 + dur + 0.4))
     if k <= 0: return
-    fc = REGCOL.get(name, SAFF); fk = flag or name; ban = BANNER.get(fk)
+    fc = col or REGCOL.get(name, SAFF); fk = flag or KHIL_HELD.get(name, name); ban = BANNER.get(fk)
     cx, cy = cam_xy(cam[0], cam[1]); s = cam[2]
     c.save(); c.translate(DW / 2, DH / 2); c.scale(s, s); c.translate(-cx, -cy)
     pth = gpath(name, s)
     c.drawPath(pth, paint(fc, int(205 * k)))
     if ban:
-        b_ = pth.getBounds(); img = banner_tex(fk); w_ = b_.width() * 1.04; h_ = max(b_.height() * 1.06, w_ * img.height() / img.width())
+        b_ = pth.getBounds(); img = banner_tex(name if (flag is None and name in KHIL_HELD) else fk); w_ = b_.width() * 1.04; h_ = max(b_.height() * 1.06, w_ * img.height() / img.width())
         c.save(); c.clipPath(pth, doAntiAlias=True)
         cloth(c, img, b_.centerX() - w_ / 2, b_.centerY() - h_ / 2, w_, h_, t, int(120 * k), 60, 0.03)
         c.restore()
     c.drawPath(pth, paint(lighten(fc), int(230 * k), stroke=1.2 / s))
     c.restore()
+    if ban and not pole:
+        lo, la = flag_at or rep_point(name); FRAME["drawn"].append(("umayyad" if fk == "caliph" else fk, *to_screen(cam, lo, la)))
     if ban and pole:
         lo, la = flag_at or rep_point(name); x, y = to_screen(cam, lo, la)
         if -100 < x < DW + 100 and -100 < y < DH + 200:
-            pole_flag(c, x, y, fk, t, seg(t, t0 + 0.1, t0 + 0.7) * (1 - seg(t, t0 + dur, t0 + dur + 0.4)), 1.0, flag_label)
+            pole_flag(c, x, y, fk, t, seg(t, t0 + 0.1, t0 + 0.7) * (1 - seg(t, t0 + dur, t0 + dur + 0.4)), 1.0, flag_label, BANNER[name][3] if BANNER.get(name) else None)
+
+def _inv_lat(my):
+    lo, hi = -85.0, 85.0
+    for _ in range(40):
+        m = (lo + hi) / 2
+        if merc_y(m) < my: lo = m
+        else: hi = m
+    return (lo + hi) / 2
+def screen_geo(cam, x, y):
+    cx, cy = cam_xy(cam[0], cam[1]); gx = cx + (x - DW / 2) / cam[2]; gy = cy + (y - DH / 2) / cam[2]
+    return gx + ORIGIN[0], _inv_lat(ORIGIN[1] - gy)
+_ANCH = {}
+def flag_anchor(name, cam):
+    """a point of the region that is on screen with room for a pole flag (None if the region is off screen)"""
+    key = (name, round(cam[0], 1), round(cam[1], 1), round(cam[2]))
+    if key not in _ANCH:
+        lo0, la1 = screen_geo(cam, 170, 260); lo1, la0 = screen_geo(cam, DW - 260, DH - 150)
+        g = REG[name].intersection(box(lo0, la0, lo1, la1))
+        if g.is_empty or g.area < (40.0 / cam[2]) ** 2: _ANCH[key] = None
+        else: p_ = g.representative_point(); _ANCH[key] = (p_.x, p_.y)
+    return _ANCH[key]
+PROBE = {"on": False, "skip": {}, "shot": None}
+def _probe_shot(i):
+    """run the shot a few times on a tiny canvas to learn which regions it already flags itself"""
+    a, b, fn, _ = SHOTS[i]; skip = set(); PROBE["on"] = True
+    sf = skia.Surface(64, 36); cc = sf.getCanvas(); cc.scale(64 / DW, 64 / DW)
+    keep = dict(FRAME); sfx_n = len(SFX)
+    try:
+        for q in range(7):
+            FRAME["req"] = []; FRAME["drawn"] = []
+            fn(cc, a + (b - a) * (q + 0.5) / 7)
+            for name, cam, key, a_ in FRAME["req"]:
+                g = REG[name]; b0 = to_screen(cam, g.bounds[0], g.bounds[3]); b1 = to_screen(cam, g.bounds[2], g.bounds[1])
+                if any(k_ == key and b0[0] - 40 <= fx <= b1[0] + 40 and b0[1] - 40 <= fy <= b1[1] + 40 for k_, fx, fy in FRAME["drawn"]):
+                    skip.add((name, key))
+    finally:
+        PROBE["on"] = False; FRAME.update(keep); del SFX[sfx_n:]
+    PROBE["skip"][i] = skip
+def ruler_flag(c, cam, name, key, a):
+    i = PROBE["shot"]
+    if i is not None:
+        if i not in PROBE["skip"]: _probe_shot(i)
+        if (name, key) in PROBE["skip"][i]: return
+    an = flag_anchor(name, cam)
+    if an is None: return
+    x, y = to_screen(cam, *an)
+    if any(k_ == key and math.hypot(fx - x, fy - y) < 260 for k_, fx, fy in FRAME["drawn"]): return
+    pole_flag(c, x, y, key, CUR_VO, clamp((a - 90) / 110), 0.8, name == "caliph")
+CUR_VO = 0.0
+def ruler_flags(c, t):
+    """user: 'jitni der jo jahan raj karta hai, wahan wahi flag' - every region shown in a ruler's colour carries that
+    ruler's flag, unless the scene already put one there"""
+    FRAME["req"] = []; return
+    done = set()
+    for name, cam, key, a in req:
+        if (name, key) in done: continue
+        done.add((name, key))
+        an = flag_anchor(name, cam)
+        if an is None: continue
+        x, y = to_screen(cam, *an)
+        g = REG[name]; b0 = to_screen(cam, g.bounds[0], g.bounds[3]); b1 = to_screen(cam, g.bounds[2], g.bounds[1])
+        if any(k_ == key and (b0[0] - 40 <= fx <= b1[0] + 40 and b0[1] - 40 <= fy <= b1[1] + 40 or math.hypot(fx - x, fy - y) < 260)
+               for k_, fx, fy in FRAME["drawn"]):
+            continue
+        pole_flag(c, x, y, key, t, clamp((a - 90) / 110), 0.8, name == "caliph")
 
 def float_map(*a, **kw_):
     """map cards removed on user feedback ('map card nahi chahiye') - floating flags (hl) replace them"""
@@ -1614,7 +1689,8 @@ def s31(c, t):
         if gk > 0: crown(c, x - 52, y - 46 + math.sin(t * 2.5 + j) * 4, 26 * back(seg(gk, 0.1 + j * 0.08, 0.7 + j * 0.08)), YEL, int(255 * clamp(gk * 2)))
         pole_flag(c, x + 4, y + 30, "umayyad" if rg == "sindh" and t > kw(u_hulli, "maana") else rg, t, seg(t, ta + 0.1, ta + 0.6), 0.72, False)
         if t > ta: text(c, BANNER[rg][3], x + 48, y + 56, 17, "#F1FAEE", FT_BLACK, "c", int(230 * seg(t, ta, ta + 0.4) * (1 - 0.6 * kb)), shadow=True)
-    name_card(c, "KHALIFA UMAR II", "717-720", 420, 220, seg(t, vin(u_offer), vin(u_offer) + 0.5) * (1 - seg(t, t0 + 1.4, t0 + 1.8)))
+    doc(c, "umar2_offer", 760, 60, 1120, 380, t, seg(t, vin(u_offer), vin(u_offer) + 0.6) * (1 - seg(t, t0 + 1.3, t0 + 1.7)), vin(u_offer) + 0.9, 1.6, focus=0)
+    pill(c, "KHALIFA UMAR II · 717-720", 1320, 480, 26, GREEN_D, a=int(255 * seg(t, vin(u_offer) + 0.3, vin(u_offer) + 0.7) * (1 - seg(t, t0 + 1.3, t0 + 1.7))))
     title(c, "SHART: ISLAM QUBOOL KARO", 960, 112, 44, seg(t, us(u_islam) - 0.1, us(u_islam) + 0.4) * (1 - kb), "#F1FAEE")
     title(c, "BADLE MEIN: GADDI BANI RAHEGI", 960, 168, 40, gk * (1 - kb), YEL)
     tag_note(c, "Baladhuri: Hind ke rajaon ko patra · rajya aur seemayein andaazan", 960, 1010, seg(t, t0 + 1.0, t0 + 1.5) * (1 - kb))
@@ -1632,6 +1708,7 @@ def s31(c, t):
                 an = r / 10 * math.tau + t * 0.3
                 c.drawLine(1320 + 60 * math.cos(an), 640 + 60 * math.sin(an), 1320 + 150 * math.cos(an), 640 + 150 * math.sin(an), paint(YEL, int(70 * kp), stroke=6, cap_round=True))
             scroll(c, 1320, 640, 170 * back(kp), int(255 * clamp(kp * 1.5)), "FARMAAN")
+        doc(c, "umar2_offer", 420, 60, 1080, 300, t, seg(t, us(u_hulli) + 0.1, us(u_hulli) + 0.6), kw(u_hulli, "Hullishah") - 0.2, 1.4, focus=1)
         label(c, "HULLISHAH (JAISIAH) · SINDH", 830, 960, seg(t, kw(u_hulli, "Hullishah") - 0.1, kw(u_hulli, "Hullishah") + 0.4), 30, border=GREEN)
         label(c, "KUCH AUR RAJA", 445, 960, seg(t, kw(u_hulli, "kuch") - 0.1, kw(u_hulli, "kuch") + 0.4), 26, border="#9FB0C6")
         title(c, "MAAN LIYA", 1320, 860, 54, seg(t, kw(u_hulli, "maana") - 0.1, kw(u_hulli, "maana") + 0.4), GREEN)
@@ -1733,10 +1810,17 @@ def s35(c, t):
     hl(c, NW_CAM, "caliph", t, vin(u_665) + 0.1, flag_at=(56.0, 36.4), flag="umayyad")      # the Arab side lights up first
     hl(c, NW_CAM, "india", t, 0, flag_at=IND_FLAG); hl(c, NW_CAM, "zabul", t, 0)
     tb = kw(u_665, "le liya"); kgreen = seg(t, tb, tb + 0.4) * (1 - seg(t, kw(u_bagh, "baghaawat") - 0.2, kw(u_bagh, "baghaawat") + 0.2))
-    hl(c, NW_CAM, "kabul", t, 0)
-    if kgreen > 0:
-        cx_, cy_ = cam_xy(NW_CAM[0], NW_CAM[1]); s_ = NW_CAM[2]
-        c.save(); c.translate(DW / 2, DH / 2); c.scale(s_, s_); c.translate(-cx_, -cy_); c.drawPath(gpath("kabul", s_), paint(GREEN, int(230 * kgreen))); c.restore()
+    tbg = kw(u_bagh, "baghaawat")
+    hl(c, NW_CAM, "kabul", t, 0, pole=not (tb - 0.1 < t < tbg + 0.2))                    # Turk Shahi flag goes while Kabul is Arab-held
+    hl(c, NW_CAM, "kabul", t, tb + 0.05, col=GREEN, flag="umayyad", dur=tbg - tb - 0.2, pole=False)   # Kabul joins the Arab map ...
+    if tb - 0.1 < t < tbg + 0.3:
+        cx_, cy_ = cam_xy(NW_CAM[0], NW_CAM[1]); s_ = NW_CAM[2]; kq = seg(t, tb, tb + 0.5)
+        c.save(); c.translate(DW / 2, DH / 2); c.scale(s_, s_); c.translate(-cx_, -cy_)
+        c.drawPath(gpath("caliph", s_), paint("#7CE0A8", int(200 * kgreen), stroke=2.4 / s_)); c.drawPath(gpath("kabul", s_), paint("#7CE0A8", int(220 * kgreen), stroke=2.4 / s_))
+        c.restore()
+        if 0 < kq < 1:                                                                       # ... with a sweep from the west
+            x0_, y0_ = S(NW_CAM, "kabul"); c.drawCircle(x0_, y0_, 30 + 160 * kq, paint("#FFFFFF", int(160 * (1 - kq)), stroke=5))
+    label(c, "665 · KABUL ARAB NAKSHE MEIN", *to_screen(NW_CAM, 69.6, 36.6), kgreen, 28, border=GREEN)
     pts = [S(NW_CAM, "iran_c"), S(NW_CAM, "herat"), (S(NW_CAM, "ghazni")[0] - 40, S(NW_CAM, "ghazni")[1] - 30), S(NW_CAM, "kabul")]
     km = seg(t, vin(u_665) + 0.4, tb + 0.15)
     march(c, pts, km, t, GREEN, 9, n=7, size=50)
@@ -1814,27 +1898,68 @@ def s37(c, t):
 
 @shot(vin(u_peac), vin(u_200))
 def s38(c, t):
-    _extra_regions(); bg(c, NW_CAM); hl(c, NW_CAM, "zabul", t, 0); hl(c, NW_CAM, "kabul", t, 0)
-    timeline(c, t, 699, 1.0, span=(620, 900), step=10, big_every=50)
-    title(c, "ARMY OF PEACOCKS", 960, 170, 70, seg(t, kw(u_peac, "Army") - 0.1, kw(u_peac, "Army") + 0.4), "#00BBF9")
-    stat_card(c, 1300, 260, 420, 240, "40,000", "sainik", seg(t, kw(u_peac, "chaalis") - 0.1, kw(u_peac, "chaalis") + 0.4), "#00BBF9")
-    p0, p1 = S(NW_CAM, "sistan"), S(NW_CAM, "zabul"); ku = seg(t, kw(u_ulta, "ulta") - 0.2, kw(u_ulta, "baaghi") + 0.3)
-    if ku <= 0: arrow(c, p0, p1, seg(t, vin(u_peac), vin(u_peac) + 1.0), "#00BBF9", 14, 0.12)
-    else: arrow(c, p1, to_screen(NW_CAM, 52.0, 32.0), ku, "#00BBF9", 14, -0.25)
-    stamp(c, "BAAGHI!", 640, 300, 80, RED, seg(t, kw(u_ulta, "baaghi") - 0.1, kw(u_ulta, "baaghi") + 0.3))
-    tag_note(c, "Hajjaj (Iraq) ki taraf", 520, 400, ku)
-    SFX_MARK(kw(u_ulta, "baaghi"), "stamp", -18)
+    _extra_regions(); bg(c, AOD_CAM)
+    hl(c, AOD_CAM, "india", t, 0, flag_at=IND_FLAG, flag_label=False); hl(c, AOD_CAM, "zabul", t, 0); hl(c, AOD_CAM, "kabul", t, 0, pole=False)
+    hl(c, AOD_CAM, "iraq", t, 0, flag_at=(44.0, 32.6))
+    pin_at(c, AOD_CAM, "kufa", "KUFA · HAJJAJ", t, vin(u_peac), YEL, 26, "l")
+    tu = kw(u_ulta, "ulta") - 0.2; kfb = seg(t, kw(u_peac, "Army") - 0.3, kw(u_peac, "Army") + 0.3) * (1 - seg(t, tu, tu + 0.5))
+    timeline(c, t, 699, 1.0 - kfb, span=(620, 900), step=10, big_every=50)
+    pts = [S(AOD_CAM, "kufa"), S(AOD_CAM, "iran_c"), S(AOD_CAM, "sistan"), (S(AOD_CAM, "zabul")[0] - 40, S(AOD_CAM, "zabul")[1] + 10)]
+    BL = "#00BBF9"; km = seg(t, vin(u_peac) + 0.1, tu)                                       # first it marches out to fight the Zunbil
+    if t < tu + 0.3: march(c, pts, km, t, BL, 10, n=8, size=44, a=int(255 * (1 - seg(t, tu, tu + 0.3))))
+    if km >= 1 and t < tu + 0.3: clash(c, *pts[-1], (t * 1.6) % 1, 0.8)
+    ku = seg(t, tu, ue(u_ulta) + 0.3)                                                      # ... then turns round against Hajjaj
+    if ku > 0:
+        march(c, pts[::-1], ku, t, BL, 10, n=8, size=44, face=-1)
+        x, y = S(AOD_CAM, "kufa"); clash(c, x, y, seg(t, ue(u_ulta) - 0.2, ue(u_ulta) + 0.5), 1.3)
+    title(c, "ARMY OF PEACOCKS", 960, 170, 70, seg(t, kw(u_peac, "Army") - 0.1, kw(u_peac, "Army") + 0.4), BL)
+    army_block(c, 60, 720, 4, 9, 88, t, kfb)
+    stat_card(c, 1380, 640, 420, 240, "40,000", "sainik", seg(t, kw(u_peac, "chaalis") - 0.1, kw(u_peac, "chaalis") + 0.4) * (1 - seg(t, tu + 0.6, tu + 1.0)), BL)
+    stamp(c, "BAAGHI!", 700, 330, 80, RED, seg(t, kw(u_ulta, "baaghi") - 0.1, kw(u_ulta, "baaghi") + 0.3))
+    tag_note(c, "wapas Hajjaj (Iraq) ki taraf", 700, 420, ku, "#F1FAEE")
+    SFX_MARK(kw(u_ulta, "baaghi"), "stamp", -18); SFX_MARK(vin(u_peac) + 0.1, "whoosh_long", -20)
+
+WALL = [(68.9, 36.2), (68.0, 35.0), (67.4, 33.9), (66.0, 33.5), (64.6, 32.6), (63.9, 31.2), (64.3, 29.7)]
+def wall(c, cam, t, k, a=255):
+    """brick wall rising segment by segment along the west edge of Kabul-Zabul (north to south)"""
+    if k <= 0: return
+    pts = [to_screen(cam, lo, la) for lo, la in WALL]
+    path = skia.Path(); path.moveTo(*pts[0])
+    for p_ in pts[1:]: path.lineTo(*p_)
+    pm = skia.PathMeasure(path, False); L = pm.getLength(); n = int(L / 30)
+    for i in range(n):
+        f_ = (i + 0.5) / n; kk = ease_out(seg(k, f_ * 0.7, f_ * 0.7 + 0.3))
+        if kk <= 0: continue
+        pos, _ = pm.getPosTan(L * f_); x, y = pos.x(), pos.y(); h = 52 * kk
+        c.drawRect(skia.Rect(x - 16, y - h + 4, x + 16, y + 6), paint("#000000", int(a * 0.3), blur=4))
+        c.drawRect(skia.Rect(x - 15, y - h, x + 15, y + 2), paint("#C9A66B", a))
+        for r in range(int(h // 13)):
+            yy = y - r * 13; c.drawLine(x - 15, yy, x + 15, yy, paint("#7A5C34", int(a * 0.8), stroke=1.6))
+            ox = -6 if r % 2 else 6; c.drawLine(x + ox, yy, x + ox, yy - 13, paint("#7A5C34", int(a * 0.6), stroke=1.4))
+        if i % 2 == 0 and kk > 0.9: c.drawRect(skia.Rect(x - 15, y - h - 10, x - 3, y - h), paint("#C9A66B", a))
+        c.drawRect(skia.Rect(x - 15, y - h, x + 15, y + 2), paint("#5B4329", a, stroke=2))
 
 @shot(vin(u_200), vin(u_r1))
 def s39(c, t):
-    _extra_regions(); bg(c, NW_CAM); hl(c, NW_CAM, "zabul", t, 0); hl(c, NW_CAM, "kabul", t, 0); dim(c, 80)
+    _extra_regions(); bg(c, NW_CAM)
+    hl(c, NW_CAM, "india", t, 0, flag_at=IND_FLAG, flag_label=False)
+    hl(c, NW_CAM, "kabul", t, kw(u_200, "Kabul")); hl(c, NW_CAM, "zabul", t, kw(u_200, "Zabul"))
+    draw_region(c, NW_CAM, "caliph", GREEN, 120)
     k = ease_io(seg(t, vin(u_200) + 0.3, ue(u_200)))
     timeline(c, t, lerp(665, 870, k) if t < us(u_870) else 870, 1.0, span=(650, 900), step=10, big_every=50, start=665,
              bracket=(665, 870, "200+ SAAL", seg(t, kw(u_200, "do sau") - 0.1, kw(u_200, "do sau") + 0.6)))
+    wall(c, NW_CAM, t, seg(t, kw(u_200, "deewar") - 0.9, kw(u_200, "deewar") + 0.7))
+    for j in range(3):                                                                     # Arab pushes bounce off the wall
+        kj = seg(t, ue(u_200) - 0.4 + j * 0.5, ue(u_200) + 0.5 + j * 0.5)
+        if 0 < kj < 1:
+            lo, la = WALL[2 + j * 2]; x1, y1 = to_screen(NW_CAM, lo, la); x0 = x1 - 260
+            xx = lerp(x0, x1 - 30, ease_out(min(1, kj * 1.6))) - 120 * ease_in(seg(kj, 0.62, 1.0))
+            arrow(c, (x0, y1 + 20), (xx, y1 + 20), 1.0, GREEN, 9, 0.0, army=False); clash(c, x1 - 25, y1 - 10, seg(kj, 0.55, 0.85), 0.7)
     x, y = S(NW_CAM, "kabul"); gate(c, x + 150, y - 60, 100, 0)
-    stat_card(c, 1240, 240, 500, 260, "200+ SAAL", "Kabul-Zabul ki deewar", seg(t, kw(u_200, "do sau") - 0.1, kw(u_200, "do sau") + 0.4), YEL)
+    stat_card(c, 1340, 600, 480, 250, "200+ SAAL", "Kabul-Zabul ki deewar", seg(t, kw(u_200, "do sau") - 0.1, kw(u_200, "do sau") + 0.4), YEL)
     kc = seg(t, kw(u_870, "870") - 0.1, kw(u_870, "870") + 0.4)
-    if kc > 0: pill(c, "870 · SAFFARID RAJA (khilafat nahi)", 1490, 590, 26, "#5B6472", a=int(255 * clamp(kc * 1.5)))
+    if kc > 0: pill(c, "870 · SAFFARID RAJA (khilafat nahi)", 1580, 900, 26, "#5B6472", a=int(255 * clamp(kc * 1.5)))
+    SFX_MARK(kw(u_200, "deewar") - 0.6, "build", -18)
 
 @shot(vin(u_r1), vin(u_bacha))
 def s40(c, t):
@@ -2289,7 +2414,7 @@ def s67(c, t):
 SH_CAM = (68.0, 21.5, 40.0)
 @shot(vin(u_naye), vin(u_r4))
 def s68(c, t):
-    _state_regions(); bg(c, SH_CAM); draw_region(c, SH_CAM, "sindh", "#2A9D8F", 160)
+    _state_regions(); bg(c, SH_CAM); draw_region(c, SH_CAM, "sindh", "#2A9D8F", 160, rule="abbasid")
     timeline(c, t, 776 if t > us(u_776) else 770, 1.0, span=(740, 800), step=5, big_every=10)
     src = to_screen(SH_CAM, 63.0, 23.0); dst = S(SH_CAM, "saurashtra")
     k = seg(t, vin(u_naye) + 0.3, us(u_776) + 1.0); sink = seg(t, kw(u_776, "haraya") - 0.3, kw(u_776, "haraya") + 0.8)
@@ -2332,7 +2457,7 @@ def s70(c, t):
 def s71(c, t):
     cam = (68.5, 27.5, 60.0); bg(c, cam)
     k = seg(t, us(u_854) - 0.2, us(u_854) + 0.6)
-    draw_region(c, cam, "sindh", GREEN, 200)
+    draw_region(c, cam, "sindh", GREEN, 200, rule="abbasid")
     x, y = S(cam, "multan"); pin(c, x, y, "MULTAN EMIRAT" if k > 0.5 else "MULTAN", 1.0, GREEN, size=28, t=t)
     x2, y2 = S(cam, "mansura"); pin(c, x2, y2, "MANSURA EMIRAT" if k > 0.5 else "MANSURA", 1.0, GREEN, size=28, t=t)
     if k > 0: c.drawLine(lerp(x, x2, 0.5) - 160, lerp(y, y2, 0.5), lerp(x, x2, 0.5) + 160, lerp(y, y2, 0.5), paint(RED, int(255 * k), stroke=4))
@@ -2356,7 +2481,7 @@ def s72(c, t):
 @shot(vin(u_ghz), vin(u_vyap))
 def s73(c, t):
     k = seg(t, vin(u_nw) - 0.3, vin(u_nw) + 1.0)
-    cam = fly((72.0, 28.0, 22.0), NW_CAM, ease_io(k)); bg(c, cam); draw_region(c, cam, "sindh", GREEN, 130)
+    cam = fly((72.0, 28.0, 22.0), NW_CAM, ease_io(k)); bg(c, cam); draw_region(c, cam, "sindh", GREEN, 130, flag=False)
     timeline(c, t, 1192 if t > kw(u_ghz, "Ghori") else 1001, seg(t, kw(u_ghz, "Ghazni") - 0.2, kw(u_ghz, "Ghazni") + 0.3), span=(950, 1250), step=25, big_every=50)
     portrait(c, "MAHMUD GHAZNI", 400, 420, seg(t, kw(u_ghz, "Ghazni") - 0.2, kw(u_ghz, "Ghazni") + 0.3), col="#5B4B8A", hat="helmet", w=280, h=330)
     portrait(c, "MUHAMMAD GHORI", 720, 420, seg(t, kw(u_ghz, "Ghori") - 0.2, kw(u_ghz, "Ghori") + 0.3), col="#8A5B3D", hat="turban", w=280, h=330)
@@ -2487,32 +2612,32 @@ def remap(T):
     return T - off, None
 
 def render(T):
-    global GAPINFO, CUR_T
-    t, GAPINFO = remap(T); CUR_T = T
-    load_assets()
+    global GAPINFO, CUR_T, CUR_VO
+    t, GAPINFO = remap(T); CUR_T = T; CUR_VO = t
+    load_assets(); FRAME["req"] = []; FRAME["drawn"] = []
     surf = skia.Surface(W4, H4); c = surf.getCanvas(); c.scale(SC, SC)
     if GAPINFO is not None and GAPINFO[0] == "ch":
         n, ttl, _ = CHAPTERS[GAPINFO[1]]
         chapter_card(c, GAPINFO[2], 0, n, ttl, CH_GAP)
     elif GAPINFO is not None:                      # hold beat: same shot, VO frozen, video time runs on
         i = find(t)
-        if i is not None: c.save(); SHOTS[i][2](c, t); c.restore()
+        if i is not None: PROBE["shot"] = i; c.save(); SHOTS[i][2](c, t); ruler_flags(c, t); c.restore()
         if t > 0.4: watermark(c, LOGO, 140)
     else:
         i = find(t)
         if i is None: c.clear(hexc(NAVY))
         else:
-            a, b, fn, tr = SHOTS[i]; TR = 0.35
+            a, b, fn, tr = SHOTS[i]; TR = 0.35; PROBE["shot"] = i
             if tr == "fade" and t < a + TR and i > 0 and SHOTS[i - 1][1] >= a - 0.01:
-                SHOTS[i - 1][2](c, t)
+                PROBE["shot"] = i - 1; SHOTS[i - 1][2](c, t); ruler_flags(c, t); FRAME["drawn"] = []; PROBE["shot"] = i
                 k = ease_io(seg(t, a, a + TR)); s = lerp(1.04, 1.0, k)
-                c.save(); c.translate(960, 540); c.scale(s, s); c.translate(-960, -540); c.saveLayerAlpha(None, int(255 * k)); fn(c, t); c.restore(); c.restore()
+                c.save(); c.translate(960, 540); c.scale(s, s); c.translate(-960, -540); c.saveLayerAlpha(None, int(255 * k)); fn(c, t); ruler_flags(c, t); c.restore(); c.restore()
             else:
                 c.save()
                 if not in_host(t):
                     u_ = clamp((t - a) / max(0.5, b - a)); zz = 1.0 + 0.035 * ease_io(u_); dx = (1 if i % 2 else -1) * 14 * ease_io(u_)
                     c.translate(960 + dx, 540); c.scale(zz, zz); c.translate(-960, -540)
-                fn(c, t); c.restore()
+                fn(c, t); ruler_flags(c, t); c.restore()
         captions(c, t)
         if not in_host(t) and t > 0.4: watermark(c, LOGO, 140)
     vignette(c, 100); grain(c, T, 12)
