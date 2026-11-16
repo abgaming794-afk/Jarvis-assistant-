@@ -1,0 +1,18 @@
+# Script + visual cues - "Bombay ya Mumbai - Naam Kahan Se Aaya?"  (~204 words, ~65-70 s after 1.2x, 2160x3840, 60 fps)
+
+| # | VO | Visual (9:16) |
+|---|---|---|
+| 1 | Kya Bombay ka matlab tha Good Bay? Nahi! Asli jawab ek devi ke mandir mein chhupa hai. | Globe -> India (waving tiranga, present day) -> zoom to Mumbai spotlight. Hook: "BOMBAY" glides in letter by letter, shine sweep; "= GOOD BAY?" pops, "?" drops on "Good Bay"; on "Nahi!" a red stamp crosses it; on "devi" a small temple icon + golden glow |
+| 2 | Kabhi yahan saat dweep the. Colaba, Mahim, Worli, Parel. Aur yahan rehte the Koli machhuare. | Timeline rewinds 2026 -> c. 150 CE; today's coast fades, the 7 islands (approx. outlines) rise from the sea with a counter 1-7; each island lights on its name (Colaba, Mahim, Worli, Parel); chip "Saat dweep (andaazan)"; on "Koli" small fishing-boat icons + net, label "KOLI MACHHUARE" |
+| 3 | Koliyon ki kuldevi thi Mumba Devi. Mumba yaani Maha Amba ... Aai yaani maa. Mumba aur Aai, bana Mumbai. | Golden manuscript-style card "MUMBA DEVI - Koli kuldevi"; word morph: MAHA AMBA -> MUMBA; chip AAI = MAA; MUMBA + AAI -> MUMBAI (letters join in yellow) |
+| 4 | 2nd century mein Greek bhugolvetta Ptolemy ne inhe kaha Heptanesia, yaani saat dweep. | Manuscript card: real public-domain Ptolemy Geography manuscript map of India (15th c. copy) with caption "Ptolemy, Geographia (baad ki prati)"; word card HEPTA = 7, NESOS = dweep -> HEPTANESIA; Ptolemy badge labelled "Aadhunik chitran - asli portrait nahi" |
+| 5 | 1534 mein Gujarat ke Sultan Bahadur Shah ne ye dweep Portugal ko de diye. Portuguese likhte the Bombaim. | Timeline 1534; c. 1530 ka naksha (bhagwa polities, Gujarat Sultanate highlighted); symbol "PRATIK (andaazan)"; name card Bahadur Shah (no contemporary portrait -> labelled); ship route Portugal -> Bombay; Portuguese royal banner PRATIK; word "BOMBAIM" written in quill style |
+| 6 | Bom Baim yaani achhi khaadi? Ye kahani mashhoor hai, par jaankaar ise galat maante hain. | Word split BOM + BAIM = "GOOD BAY?"; Wikipedia browser card with highlighter on "with no scientific basis"; stamp "MYTH" |
+| 7 | 1661 mein ye dweep dahej mein chale gaye! Portugal ki Catherine ki shaadi England ke Raja Charles II se hui. | Timeline 1661; c. 1650 ka naksha; Catherine of Braganza portrait card (Lely, public domain) + Charles II portrait card; heart/ring icon; islands fly from Portugal box to England box labelled "DAHEJ"; St George's cross PRATIK |
+| 8 | 1668 mein England ne inhe East India Company ko sirf 10 pound saalana kiraye pe de diya. Naam pada Bombay. | Document card: Royal Charter 1668 (real page if available) + counter "£10 / saal"; EIC striped ensign PRATIK; word morph BOMBAIM -> BOMBAY (I crossed out, Y added in yellow) |
+| 9 | Phir samundar bhar ke saaton dweep jode gaye, aur 1845 tak ek shehar ban gaya. | Islands map: land reclamation fills gaps (sand-colour wipe), Hornby Vellard line 1782-84; chip "1838-1845 (behes)"; result = one landmass |
+| 10 | Lekin Marathi aur Gujarati mein ye Mumbai ya Mambai hi raha. | Chips "मुंबई (Marathi)", "મુંબઈ (Gujarati)", "MAMBAI"; old-record subs "1516 Maiambu, 1762 Manbai" |
+| 11 | 1995 mein Shiv Sena ki maang par, sarkar ne English naam bhi Mumbai kar diya. | Timeline 1995; present-day India with waving tiranga; signboard flip BOMBAY -> MUMBAI; Maharashtra highlight |
+| 12 | Toh Mumbai naam ek devi se ... Bombay ya Mumbai? Comment karo aur subscribe karo. | Recap chain MUMBA AAI -> MUMBAI / BOMBAIM -> BOMBAY; poll card "A) BOMBAY  B) MUMBAI  C) DONO"; COMMENT KARO; subscribe button + cursor click |
+
+Footer credit on map scenes: "Approx. historical borders: historical-basemaps (A. Ourednik). Natural Earth; India boundary as per Survey of India."
