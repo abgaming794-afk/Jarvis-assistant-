@@ -1,3 +1,4 @@
-shorts/mumbai-naam/render/
-shorts/**/__pycache__/
+mumbai-naam/render/
+mumbai-naam/audio/*.wav
+**/__pycache__/
 *.pyc
