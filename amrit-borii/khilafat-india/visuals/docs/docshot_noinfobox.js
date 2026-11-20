@@ -8,7 +8,7 @@ const OUT = process.argv[3];
   for (const j of jobs) {
     try {
       await page.goto(j.url, { waitUntil: 'networkidle', timeout: 90000 });
-      await page.addStyleTag({ content: '.vector-sticky-header,#siteNotice,.mw-cookie-banner,.infobox{display:none!important} sup.reference{font-size:70%}' });
+      await page.addStyleTag({ content: '.vector-sticky-header,#siteNotice,.mw-cookie-banner,.infobox,.ambox,.hatnote,.box-More_citations_needed,.sidebar,.navbox,.vertical-navbox,.campaignbox,figure,.thumb{display:none!important} sup.reference{font-size:70%}' });
       const res = await page.evaluate((j) => {
         const root = document.querySelector('#mw-content-text');
         const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT);
