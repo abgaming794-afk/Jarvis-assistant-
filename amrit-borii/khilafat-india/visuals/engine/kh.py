@@ -293,6 +293,102 @@ def ruler_flags(c, t):
             continue
         pole_flag(c, x, y, key, t, clamp((a - 90) / 110), 0.8, name == "caliph")
 
+# ---------------------------------------------------------------- user list: textbook, floating states, 2D man on static stretches
+def textbook(c, x, y, w, t, k_in, k_open, k_stamp, k_out=0.0):
+    """2D school history book: slides in closed, cover swings open, pages flip, the page has an empty box - 'textbook mein nahi'"""
+    if k_in <= 0 or k_out >= 1: return
+    h = w * 0.68; al = int(255 * clamp(k_in * 1.6) * (1 - k_out)); dy = (1 - ease_out(k_in)) * 80 + ease_in(k_out) * 60
+    c.save(); c.translate(x, y + dy); c.rotate(-4 + 4 * ease_io(k_open))
+    o = ease_io(clamp(k_open)); hw = w / 2
+    c.drawRoundRect(skia.Rect(-hw * o - 10, -h / 2 + 18, hw + 10, h / 2 + 26), 14, 14, paint("#000000", int(al * 0.45), blur=22))
+    if o > 0.02:                                                                            # open spread (left + right pages)
+        rrect(c, -hw * o, -h / 2, 0, h / 2, 8, "#F4EEDC", al); rrect(c, 0, -h / 2, hw, h / 2, 8, "#FBF6E8", al)
+        c.drawLine(0, -h / 2 + 6, 0, h / 2 - 6, paint("#C9BFA3", al, stroke=3))
+        if o > 0.6:
+            pa = int(al * seg(o, 0.6, 1.0))
+            text(c, "ADHYAY 4", -hw * 0.5, -h / 2 + 46, 22, "#7A5C34", FT_BLACK, "c", pa)
+            for r in range(7): c.drawLine(-hw + 30, -h / 2 + 76 + r * 26, -30 - (60 if r == 6 else 0), -h / 2 + 76 + r * 26, paint("#A99C80", pa, stroke=5, cap_round=True))
+            for r in range(2): c.drawLine(30, -h / 2 + 40 + r * 26, hw - 30, -h / 2 + 40 + r * 26, paint("#A99C80", pa, stroke=5, cap_round=True))
+            bx0, by0, bx1, by1 = 34, -h / 2 + 92, hw - 34, h / 2 - 60                        # the empty box
+            pth = skia.Path(); pth.addRoundRect(skia.Rect(bx0, by0, bx1, by1), 10, 10)
+            pt = paint("#B23A48", pa, stroke=4); pt.setPathEffect(skia.DashPathEffect.Make([14, 9], t * 30)); c.drawPath(pth, pt)
+            text(c, "?", (bx0 + bx1) / 2, (by0 + by1) / 2 + 30, 90, "#B23A48", FT_BLACK, "c", int(pa * (0.6 + 0.4 * math.sin(t * 4))))
+            for r in range(2): c.drawLine(30, h / 2 - 40 + r * 22 - 10, hw - 30 - r * 80, h / 2 - 40 + r * 22 - 10, paint("#A99C80", pa, stroke=5, cap_round=True))
+        fl = seg(o, 0.55, 1.0)                                                               # two pages flipping over
+        for j in range(2):
+            fj = ease_io(seg(fl, j * 0.3, 0.6 + j * 0.3))
+            if 0 < fj < 1:
+                px = hw * math.cos(math.pi * fj); c.drawRoundRect(skia.Rect(min(0, px), -h / 2 + 4, max(0, px), h / 2 - 4), 6, 6, paint("#FFFDF5", int(al * 0.95)))
+    cov = math.cos(math.pi * o)                                                             # cover: swings from right to left
+    if cov > -0.98:
+        cx0, cx1 = (0, hw * cov) if cov > 0 else (hw * cov, 0)
+        c.drawRoundRect(skia.Rect(min(cx0, cx1) - 6, -h / 2 - 6, max(cx0, cx1) + 6, h / 2 + 6), 10, 10, paint("#1D4E89" if cov > 0 else "#173F70", al))
+        if cov > 0.35:
+            ca = int(al * seg(cov, 0.35, 0.8)); mx = hw * cov / 2
+            c.save(); c.translate(mx, 0); c.scale(cov, 1)
+            text(c, "ITIHAS", 0, -20, 54, "#F1FAEE", FT_BLACK, "c", ca); text(c, "School textbook", 0, 26, 22, "#BFD7F2", FT_SEMI, "c", ca)
+            c.drawRoundRect(skia.Rect(-hw * 0.38, -h / 2 + 30, hw * 0.38, -h / 2 + 40), 4, 4, paint("#E9C46A", ca))
+            c.restore()
+    c.restore()
+    if k_stamp > 0: stamp(c, "TEXTBOOK MEIN NAHI", x + w * 0.2, y + h * 0.5 + 40, 40, RED, k_stamp)
+
+def state_float(c, name, cx, cy, size, t, k, col=None, lab=None):
+    """a single state's outline floating in the air: pops in, bobs, tilts a little in 3D, soft glow underneath"""
+    if k <= 0: return
+    load_geo(); _state_regions()
+    pth = gpath(name, 1.0); b = pth.getBounds(); sc = size / max(b.width(), b.height())
+    kk = back(clamp(k)); al = int(255 * clamp(k * 1.6)); bob = math.sin(t * 2.2 + cx * 0.01) * 10; tilt = math.sin(t * 1.4 + cx) * 0.12
+    fc = col or REGCOL.get(name, SAFF)
+    c.drawOval(skia.Rect(cx - size * 0.42, cy + size * 0.55, cx + size * 0.42, cy + size * 0.7), paint("#000000", int(al * 0.35), blur=14))
+    c.save(); c.translate(cx, cy + bob); c.scale(kk * (1 - abs(tilt) * 0.3), kk); c.skew(tilt, 0); c.scale(sc, sc); c.translate(-b.centerX(), -b.centerY())
+    c.drawPath(pth, paint(fc, int(al * 0.45), blur=10 / sc))
+    c.drawPath(pth, paint(fc, al)); c.drawPath(pth, paint(lighten(fc, 0.6), al, stroke=2.5 / sc))
+    c.restore()
+    if lab: label(c, lab, cx, cy + size * 0.5 + 18, k, 26, border=fc)
+
+def man2d(c, x, y, s, t, k, pose="think", face=1):
+    """flat 2D man (blue shirt) for quiet stretches: pose think (hand on chin), point (arm towards face side), wow (hands up)"""
+    if k <= 0: return
+    al = int(255 * clamp(k * 1.6)); kk = s / 100; br = math.sin(t * 2.6) * 2 * kk
+    c.save(); c.translate(x, y); c.scale(face, 1)
+    c.drawOval(skia.Rect(-60 * kk, 168 * kk, 60 * kk, 186 * kk), paint("#000000", int(al * 0.3), blur=6))
+    for sx in (-20, 20): c.drawLine(sx * kk, 120 * kk, sx * kk, 172 * kk, paint("#2B2F3A", al, stroke=20 * kk, cap_round=True))
+    c.drawRoundRect(skia.Rect(-50 * kk, 10 * kk + br, 50 * kk, 140 * kk), 36 * kk, 36 * kk, paint("#4C6EF5", al))
+    hy = -40 * kk + br; c.drawCircle(0, hy, 46 * kk, paint("#E0B084", al))
+    c.drawArc(skia.Rect(-46 * kk, hy - 54 * kk, 46 * kk, hy + 26 * kk), 180, 180, True, paint("#2B2B2B", al))
+    blink = 0.15 if (t * 0.7) % 3 < 0.08 else 1.0
+    for ex in (-15, 17): c.drawOval(skia.Rect((ex - 5) * kk, hy - 5 * kk * blink, (ex + 5) * kk, hy + 5 * kk * blink), paint("#1A1A1A", al))
+    if pose == "wow": c.drawOval(skia.Rect(-8 * kk, hy + 16 * kk, 8 * kk, hy + 32 * kk), paint("#5A1F1F", al))
+    else: c.drawLine(-10 * kk, hy + 22 * kk, 12 * kk, hy + 20 * kk, paint("#1A1A1A", al, stroke=4 * kk, cap_round=True))
+    arm = paint("#4C6EF5", al, stroke=22 * kk, cap_round=True); sk = "#E0B084"
+    if pose == "think":
+        w_ = math.sin(t * 3) * 3 * kk
+        c.drawLine(36 * kk, 34 * kk, 46 * kk, 70 * kk, arm); c.drawLine(46 * kk, 70 * kk, 18 * kk + w_, hy + 34 * kk, arm); c.drawCircle(16 * kk + w_, hy + 34 * kk, 13 * kk, paint(sk, al))
+        c.drawLine(-38 * kk, 34 * kk, -10 * kk, 76 * kk, arm); c.drawLine(-10 * kk, 76 * kk, 30 * kk, 70 * kk, arm)
+        for i, (bx, by, r) in enumerate(((-58, -100, 8), (-82, -132, 12))): c.drawCircle(bx * kk, by * kk + br, r * kk, paint("#F1FAEE", al))
+        c.drawOval(skia.Rect(-190 * kk, -235 * kk + br, -70 * kk, -150 * kk + br), paint("#F1FAEE", al))
+        c.save(); c.scale(face, 1); text(c, "?", -130 * kk * face, -172 * kk + br, 60 * kk, "#0F1B2D", FT_BLACK, "c", al); c.restore()
+    elif pose == "point":
+        p_ = math.sin(t * 5) * 6 * kk
+        c.drawLine(38 * kk, 34 * kk, 110 * kk + p_, -6 * kk, arm); c.drawCircle(118 * kk + p_, -10 * kk, 13 * kk, paint(sk, al))
+        c.drawLine(-38 * kk, 34 * kk, -48 * kk, 120 * kk, arm)
+    else:
+        w_ = math.sin(t * 7) * 8 * kk
+        for sg in (-1, 1):
+            c.drawLine(sg * 40 * kk, 34 * kk, sg * 84 * kk, -20 * kk, arm); c.drawLine(sg * 84 * kk, -20 * kk, sg * 74 * kk + w_, -78 * kk, arm)
+            c.drawCircle(sg * 74 * kk + w_, -84 * kk, 13 * kk, paint(sk, al))
+    c.restore()
+
+# quiet stretches found by measuring motion in the 720p review (video seconds): (t0, t1, x, y, size, pose, face)
+QUIET = [(347.5, 350.6, 300, 800, 80, "think", 1), (381.8, 384.4, 1520, 560, 95, "think", 1), (427.6, 430.2, 1500, 600, 95, "point", -1),
+         (470.2, 472.8, 760, 520, 120, "wow", 1), (547.2, 549.6, 1560, 560, 95, "point", -1), (590.6, 593.3, 1480, 560, 95, "think", 1)]
+def quiet_man(c, T):
+    for t0, t1, x, y, s_, pose, face in QUIET:
+        if t0 - 0.4 < T < t1 + 0.5:
+            kin = seg(T, t0 - 0.4, t0 + 0.1); kout = seg(T, t1, t1 + 0.45)
+            off = (1 - ease_out(kin)) * 260 + ease_in(kout) * 260; sgn = 1 if x > 960 else -1
+            man2d(c, x + sgn * off, y, s_, T, clamp(kin * 2) * (1 - kout), pose, face)
+
 def float_map(*a, **kw_):
     """map cards removed on user feedback ('map card nahi chahiye') - floating flags (hl) replace them"""
     return
@@ -669,14 +765,29 @@ def crown(c, x, y, s, col=YEL, a=255):
     for dx in (-50, 0, 50): c.drawCircle(x + dx * k, y - (25 if dx else 35) * k - 6 * k, 7 * k, paint(col, a))
 
 def lock(c, x, y, s, open_k=0.0, col=YEL, a=255):
-    k = s / 100
-    rrect(c, x - 36 * k, y - 6 * k, x + 36 * k, y + 46 * k, 8 * k, col, a)
-    sh = skia.Path(); lift = 22 * k * ease_out(open_k)
-    sh.addArc(skia.Rect(x - 24 * k, y - 48 * k - lift, x + 24 * k, y + 0 * k - lift), 180, 180)
+    """padlock; open_k 0->1: a key slides in and turns (0-0.5), then the shackle pops up and swings open (0.5-1)"""
+    k = s / 100; o = clamp(open_k)
+    kin = ease_out(seg(o, 0.0, 0.3)); kturn = ease_io(seg(o, 0.3, 0.5)); pop = back(seg(o, 0.5, 0.8)); sw = ease_out(seg(o, 0.6, 1.0))
+    lift = 34 * k * pop; piv = (x - 24 * k, y - 4 * k - lift)
+    c.save(); c.translate(*piv); c.rotate(-38 * sw); c.translate(-piv[0], -piv[1])
+    sh = skia.Path(); sh.addArc(skia.Rect(x - 24 * k, y - 48 * k - lift, x + 24 * k, y + 0 * k - lift), 180, 180)
     c.drawPath(sh, paint(col, a, stroke=9 * k))
-    c.drawLine(x - 24 * k, y - 24 * k - lift, x - 24 * k, y - 4 * k - (lift if open_k < 0.5 else 0), paint(col, a, stroke=9 * k))
-    c.drawLine(x + 24 * k, y - 24 * k - lift, x + 24 * k, y - 4 * k, paint(col, a, stroke=9 * k))
+    c.drawLine(x - 24 * k, y - 24 * k - lift, x - 24 * k, y - 4 * k - lift, paint(col, a, stroke=9 * k))
+    c.drawLine(x + 24 * k, y - 24 * k - lift, x + 24 * k, y - 4 * k - lift * (1 if o > 0.5 else 0), paint(col, a, stroke=9 * k))
+    c.restore()
+    rrect(c, x - 36 * k, y - 6 * k, x + 36 * k, y + 46 * k, 8 * k, col, a)
     c.drawCircle(x, y + 16 * k, 7 * k, paint(NAVY, a)); c.drawRect(skia.Rect(x - 3 * k, y + 18 * k, x + 3 * k, y + 32 * k), paint(NAVY, a))
+    if 0 < o < 1:                                                                            # the key
+        ka = int(a * (1 - seg(o, 0.8, 1.0))); kx = x + (1 - kin) * 70 * k; ky = y + 22 * k + (1 - kin) * 70 * k
+        c.save(); c.translate(kx, ky); c.rotate(90 * kturn)
+        c.drawLine(0, 0, 0, 34 * k, paint("#E9C46A", ka, stroke=6 * k, cap_round=True))
+        c.drawCircle(0, 44 * k, 11 * k, paint("#E9C46A", ka, stroke=5 * k)); c.drawLine(0, 8 * k, 7 * k, 8 * k, paint("#E9C46A", ka, stroke=5 * k))
+        c.restore()
+    if 0.5 < o < 1:                                                                          # click burst
+        q = seg(o, 0.5, 0.9)
+        for r in range(10):
+            an = r / 10 * math.tau; r0 = 50 * k + 60 * k * ease_out(q)
+            c.drawLine(x + r0 * math.cos(an), y + 10 * k + r0 * math.sin(an), x + (r0 + 22 * k) * math.cos(an), y + 10 * k + (r0 + 22 * k) * math.sin(an), paint("#B7F5CF", int(a * (1 - q)), stroke=4 * k, cap_round=True))
 
 MANU = None
 def manuscript_img():
@@ -991,8 +1102,11 @@ def h1(c, t):
     u_y = U("Yahan wo itihaas"); u_n = U("Naye ho toh")
     phone_page(c, t, 1560, 540, 900, seg(t, kw(u_namaste, "AMRIT") - 0.6, kw(u_namaste, "AMRIT") + 0.2), seg(t, us(u_y) + 0.2, ue(u_y) - 0.1),
                seg(t, kw(u_n, "subscribe") - 0.5, kw(u_n, "subscribe") - 0.1))
+    tb_ = kw(u_y, "textbook")
+    textbook(c, 400, 470, 500, t, seg(t, tb_ - 0.9, tb_ - 0.4), seg(t, tb_ - 0.4, tb_ + 0.5), seg(t, tb_ + 0.6, tb_ + 0.95),
+             seg(t, us(u_n) + 0.2, us(u_n) + 0.6))
     sub_overlay(c, t, kw(u_n, "subscribe") - 0.6)
-    SFX_MARK(kw(U("Naye ho toh"), "subscribe") + 0.9, "pop", -20)
+    SFX_MARK(kw(U("Naye ho toh"), "subscribe") + 0.9, "pop", -20); SFX_MARK(tb_ - 0.4, "paper", -20); SFX_MARK(tb_ + 0.65, "stamp", -20)
 
 # ---- CHAPTER 1 -------------------------------------------------------------------------------------
 CH_GAP = 2.0                     # silent chapter card (user: "animation hone ke baad thoda ruk ke bolna")
@@ -1964,8 +2078,8 @@ def s39(c, t):
 @shot(vin(u_r1), vin(u_bacha))
 def s40(c, t):
     c.clear(hexc(NAVY))
-    slots(c, t, seg(t, us(u_r1b) - 0.3, us(u_r1b) + 0.4), 1.0, 520, labels=raaz_labels(1 if t > us(u_r1b) - 0.1 else 0))
-    SFX_MARK(us(u_r1b) - 0.2, "lock", -16)
+    slots(c, t, seg(t, us(u_r1b) - 0.5, us(u_r1b) + 0.9), 1.0, 520, labels=raaz_labels(1 if t > us(u_r1b) - 0.1 else 0))
+    SFX_MARK(us(u_r1b) + 0.15, "lock", -16)
 
 @shot(vin(u_bacha), vin(u_r2))
 def s41(c, t):
@@ -1985,8 +2099,8 @@ def s41(c, t):
 @shot(vin(u_r2), vin(u_sirf_r))
 def s42(c, t):
     c.clear(hexc(NAVY))
-    slots(c, t, 1 + seg(t, kw(u_r2, "registaan") - 0.3, kw(u_r2, "registaan") + 0.4), 1.0, 520, labels=raaz_labels(2 if t > kw(u_r2, "registaan") - 0.1 else 1))
-    SFX_MARK(kw(u_r2, "registaan") - 0.2, "lock", -16)
+    slots(c, t, 1 + seg(t, kw(u_r2, "registaan") - 0.5, kw(u_r2, "registaan") + 0.9), 1.0, 520, labels=raaz_labels(2 if t > kw(u_r2, "registaan") - 0.1 else 1))
+    SFX_MARK(kw(u_r2, "registaan") + 0.15, "lock", -16)
 
 @shot(vin(u_sirf_r), HOSTSEG["H2"][0])
 def s43(c, t):
@@ -2000,7 +2114,9 @@ def h2(c, t):
     host_frame(c, "H2", t)
     for i, st_ in enumerate(("GUJARAT", "RAJASTHAN", "MP", "KASHMIR")):
         k = seg(t, kw(U("Gujarat, Rajasthan"), st_.title() if st_ != "MP" else "MP") - 0.1, kw(U("Gujarat, Rajasthan"), st_.title() if st_ != "MP" else "MP") + 0.3)
-        if k > 0: pill(c, st_, 360 + i * 400, 960, 34, "#16223A", a=int(255 * clamp(k * 1.5)))
+        sx_ = (250, 620, 1300, 1670)[i]
+        state_float(c, ("gujarat", "rajasthan", "mp", "kashmir")[i], sx_, 560, 220, t, k)
+        if k > 0: pill(c, st_, sx_, 760, 34, "#16223A", a=int(255 * clamp(k * 1.5)))
     kc = seg(t, us(U("Comment mein likho, kyunki")) - 0.1, us(U("Comment mein likho, kyunki")) + 0.3)
     if kc > 0: pill(c, "COMMENT KARO: AAPKA STATE?", 960, 880, 40, RED, a=int(255 * clamp(kc * 1.5)))
 HOSTS.append((HOSTSEG["H2"][0], vin(U("723."))))
@@ -2287,12 +2403,12 @@ def s59(c, t):
 @shot(vin(u_r3), vin(u_blank))
 def s60(c, t):
     c.clear(hexc(NAVY))
-    slots(c, t, 2 + seg(t, us(u_baar) - 0.3, us(u_baar) + 0.4), 1.0, 440, labels=raaz_labels(3 if t > us(u_baar) - 0.1 else 2))
+    slots(c, t, 2 + seg(t, us(u_baar) - 0.5, us(u_baar) + 0.9), 1.0, 440, labels=raaz_labels(3 if t > us(u_baar) - 0.1 else 2))
     for i, (nm, col) in enumerate((("PRATIHARA", "#E76F51"), ("CHALUKYA", "#F15BB5"), ("GURJARA (BHARUCH)", "#9B5DE5"), ("MORI (CHITTOR)", "#F8961E"))):
         k = seg(t, us(u_alag) + i * 0.3, us(u_alag) + 0.3 + i * 0.3)
         if k > 0:
             x = 960 + (i - 1.5) * 380; shield(c, x, 760, 70, col, 255, k); text(c, nm, x, 850, 24, "#F1FAEE", FT_BLACK, "c", int(255 * clamp(k * 1.5)))
-    SFX_MARK(us(u_baar) - 0.2, "lock", -16)
+    SFX_MARK(us(u_baar) + 0.15, "lock", -16)
 
 @shot(vin(u_blank), vin(u_yahi))
 def s61(c, t):
@@ -2433,8 +2549,8 @@ def s68(c, t):
 @shot(vin(u_r4), vin(U("Toh ek baar jod")))
 def s69(c, t):
     c.clear(hexc(NAVY))
-    slots(c, t, 3 + seg(t, kw(u_r4, "khilafat") - 0.3, kw(u_r4, "khilafat") + 0.4), 1.0, 520, labels=raaz_labels(4 if t > kw(u_r4, "khilafat") - 0.1 else 3))
-    SFX_MARK(kw(u_r4, "khilafat") - 0.2, "lock", -16)
+    slots(c, t, 3 + seg(t, kw(u_r4, "khilafat") - 0.5, kw(u_r4, "khilafat") + 0.9), 1.0, 520, labels=raaz_labels(4 if t > kw(u_r4, "khilafat") - 0.1 else 3))
+    SFX_MARK(kw(u_r4, "khilafat") + 0.15, "lock", -16)
 
 # ======================================================================= VERDICT + OUTRO
 u_jod = U("Toh ek baar jod"); u_kd = U("Kabul ki deewar."); u_reg = U("Registaan."); u_ibj = U("Indian rajyon ka baar"); u_aat = U("Aur khilafat ka andar")
@@ -2638,6 +2754,7 @@ def render(T):
                     u_ = clamp((t - a) / max(0.5, b - a)); zz = 1.0 + 0.035 * ease_io(u_); dx = (1 if i % 2 else -1) * 14 * ease_io(u_)
                     c.translate(960 + dx, 540); c.scale(zz, zz); c.translate(-960, -540)
                 fn(c, t); ruler_flags(c, t); c.restore()
+        if not in_host(t): quiet_man(c, T)
         captions(c, t)
         if not in_host(t) and t > 0.4: watermark(c, LOGO, 140)
     vignette(c, 100); grain(c, T, 12)
