@@ -13,6 +13,7 @@ VERTICAL = _os.environ.get("AB_ORIENT", "landscape") == "vertical"   # AB_ORIENT
 W4, H4 = (2160, 3840) if VERTICAL else (3840, 2160)
 if _os.environ.get("AB_PREVIEW") == "720": W4, H4 = (720, 1280) if VERTICAL else (1280, 720)   # fast review renders
 if _os.environ.get("AB_PREVIEW") == "480": W4, H4 = (480, 854) if VERTICAL else (854, 480)
+if _os.environ.get("AB_PREVIEW") == "360": W4, H4 = (360, 640) if VERTICAL else (640, 360)
 DW, DH = (1080, 1920) if VERTICAL else (1920, 1080)
 SC = W4 / DW
 

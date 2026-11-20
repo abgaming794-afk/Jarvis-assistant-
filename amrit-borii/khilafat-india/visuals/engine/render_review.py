@@ -1,6 +1,6 @@
 """Fast whole-video review: 1280x720 (or AB_PREVIEW=480 -> 854x480) 30 fps, 4 parallel chunks -> render/REVIEW_<res>p.mp4"""
 import os, sys, subprocess
-os.environ["AB_PREVIEW"] = os.environ.get("AB_PREVIEW") if os.environ.get("AB_PREVIEW") in ("720", "480") else "720"; os.environ.setdefault("AB_PROJECT", "khilafat-india")
+os.environ["AB_PREVIEW"] = os.environ.get("AB_PREVIEW") if os.environ.get("AB_PREVIEW") in ("720", "480", "360") else "720"; os.environ.setdefault("AB_PROJECT", "khilafat-india")
 RES = os.environ["AB_PREVIEW"]
 import kh
 FPS = 30; END = kh.vo_to_video(kh.VIDEO_END_VO); N = int(END * FPS); P = 4
