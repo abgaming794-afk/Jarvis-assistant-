@@ -1337,7 +1337,8 @@ REAL = {"HAJJAJ BIN YUSUF": ("hajjaj_coin", "Hajjaj ke naam ka sikka · 695"),
         "BAPPA RAWAL": ("bappa_scroll", "Mewar vanshavali chitra (baad ka)"),
         "MAHMUD GHAZNI": ("ghazni_mini", "Jami al-Tawarikh, c. 1306 (baad ki painting)"),
         "MUHAMMAD GHORI": ("ghori_coin", "Ghori ka sikka · Lakshmi ke saath")}
-REAL_DOC = {"JUNAYD": "junayd", "TAMIM": "tamim", "AVANIJANASHRAYA PULAKESHIN": "navsari"}
+REAL_DOC = {"JUNAYD": "junayd", "TAMIM": "tamim", "AVANIJANASHRAYA PULAKESHIN": "navsari",
+            "MUHAMMAD BIN QASIM": "mbq", "AL-HAKAM": "hakam", "NAGABHATA I": "nagabhata", "MUHAMMAD GHORI": "ghori"}
 def real_card(c, key, name, cap, x, y, k, grey=0.0, w=300, h=360, t=0.0):
     """real image (coin / inscription / old painting) in the portrait frame: coins are shown whole, paintings fill"""
     img = photo(key); kk = back(k); al = int(255 * clamp(k * 1.5))
@@ -1369,7 +1370,7 @@ def portrait(c, name, x, y, k, grey=0.0, col="#C9A46A", hat="turban", w=300, h=3
     if name in REAL_DOC:
         load_docs()
         if REAL_DOC[name] in DOCS:
-            dw, dh = 560, 300; x0 = min(DW - dw - 40, max(40, x - dw / 2)); y0 = min(DH - dh - 120, max(60, y - dh / 2))
+            dw, dh = (560, 300) if w >= 300 else (500, 268); x0 = min(DW - dw - 40, max(40, x - dw / 2)); y0 = min(DH - dh - 120, max(60, y - dh / 2))
             doc(c, REAL_DOC[name], x0, y0, dw, dh, CUR_VO, k, 0.0, 1.0)
             pill(c, name, x0 + dw / 2, y0 + dh + 30, 26, "#16223A", a=int(255 * clamp(k * 1.5)))
             return
@@ -1647,6 +1648,7 @@ def s25(c, t):
     c.drawRoundRect(skia.Rect(-20, -10, 20, 50), 14, 14, paint("#B23A48")); c.drawCircle(0, -26, 18, paint("#D9A877"))
     crown(c, 0, -48, 30, YEL, 255); c.drawLine(18, 6, 44, -14 + fall * 30, paint("#B23A48", 255, stroke=10, cap_round=True))
     c.restore()
+    photo_card(c, "dahir_paint", 90, 110, 300, 340, t, seg(t, us(u_dahir) - 0.1, us(u_dahir) + 0.5) * (1 - seg(t, us(u_khatam) - 0.4, us(u_khatam))), "Raja Dahir · aadhunik chitran", "Wikimedia Commons · CC BY-SA 4.0", us(u_dahir))
     label(c, "RAJA DAHIR · Aadhunik chitran", ex, ey + 140, seg(t, us(u_dahir) - 0.2, us(u_dahir) + 0.3), 24, border="#B23A48")
     ka = seg(t, th - 0.55, th)                                            # the arrow flies in from the left
     if 0 < ka < 1:
@@ -2696,7 +2698,7 @@ def s73(c, t):
     cam = fly((72.0, 28.0, 22.0), NW_CAM, ease_io(k)); bg(c, cam); draw_region(c, cam, "sindh", GREEN, 130, flag=False)
     timeline(c, t, 1192 if t > kw(u_ghz, "Ghori") else 1001, seg(t, kw(u_ghz, "Ghazni") - 0.2, kw(u_ghz, "Ghazni") + 0.3), span=(950, 1250), step=25, big_every=50)
     portrait(c, "MAHMUD GHAZNI", 400, 420, seg(t, kw(u_ghz, "Ghazni") - 0.2, kw(u_ghz, "Ghazni") + 0.3), col="#5B4B8A", hat="helmet", w=280, h=330)
-    portrait(c, "MUHAMMAD GHORI", 720, 420, seg(t, kw(u_ghz, "Ghori") - 0.2, kw(u_ghz, "Ghori") + 0.3), col="#8A5B3D", hat="turban", w=280, h=330)
+    portrait(c, "MUHAMMAD GHORI", 900, 420, seg(t, kw(u_ghz, "Ghori") - 0.2, kw(u_ghz, "Ghori") + 0.3), col="#8A5B3D", hat="turban", w=280, h=330)
     kt = seg(t, kw(u_turk, "Turk") - 0.1, kw(u_turk, "Turk") + 0.3)
     if kt > 0: pill(c, "TURK · GHAZNAVID (1001 se)", 400, 640, 24, "#5B4B8A", a=int(255 * clamp(kt * 1.5))); pill(c, "GHURID (1192)", 720, 640, 24, "#8A5B3D", a=int(255 * clamp(kt * 1.5)))
     kn = seg(t, kw(u_turk, "naam") - 0.1, kw(u_turk, "naam") + 0.3)

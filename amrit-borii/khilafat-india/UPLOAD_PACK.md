@@ -37,6 +37,15 @@ Credits
 - Banbhore site, Sindh — Engr.aly, CC BY-SA 4.0 (Wikimedia Commons)
 - Treasure of Guarrazar — Public domain (Wikimedia Commons)
 - First Umayyad gold dinar, Abd al-Malik, 695 — PHGCOM, Public domain (Wikimedia Commons)
+- Hajjaj bin Yusuf drahm, 695 — sailko, CC BY-SA 3.0 (Wikimedia Commons)
+- Gold dinar of Sulayman, 715-716 — CC0 (Wikimedia Commons)
+- Umayyad dirham of Caliph Hisham — CC BY-SA 3.0 (Wikimedia Commons)
+- King Dahir of Aror (modern painting) — Mb1010, CC BY-SA 4.0 (Wikimedia Commons)
+- Turk Shahi coin, Sri Ranasrikari — CNG Coins, CC BY-SA 3.0 (Wikimedia Commons)
+- Sahi Tigin coin, c. 710-720 — CNG Coins, CC BY-SA 3.0 (Wikimedia Commons)
+- Bappa Rawal, Mewar genealogical scroll, c. 1730-40 — Public domain (Wikimedia Commons)
+- Teli ka Mandir, Gwalior — Varun Shiv Kapur, CC BY 2.0 (Wikimedia Commons)
+- Mahmud of Ghazni miniatures, Jami al-Tawarikh (c. 1306-14) — Public domain (Wikimedia Commons)
 - Wikipedia page excerpts — CC BY-SA
 - Portraits marked "Aadhunik chitran" and the card marked "AI chitran" are modern illustrations, not historical images. Flags are illustrative colours, not historical flags (the Umayyad banner was historically white).
 - Music and sound effects: original, made for this video. Voice: ElevenLabs.
