@@ -394,7 +394,7 @@ def man2d(c, x, y, s, t, k, pose="think", face=1):
     c.restore()
 
 # quiet stretches found by measuring motion in the 720p review (video seconds): (t0, t1, x, y, size, pose, face)
-QUIET = [(347.5, 350.6, 300, 800, 80, "think", 1), (381.8, 384.4, 1520, 560, 95, "think", 1), (427.6, 430.2, 1500, 600, 95, "point", -1),
+QUIET = [(381.8, 384.4, 1520, 560, 95, "think", 1), (427.6, 430.2, 1500, 600, 95, "point", -1),
          (470.2, 472.8, 760, 520, 120, "wow", 1), (547.2, 549.6, 1560, 560, 95, "point", -1), (590.6, 593.3, 1480, 560, 95, "think", 1)]
 def quiet_man(c, T):
     for t0, t1, x, y, s_, pose, face in QUIET:
@@ -1337,9 +1337,12 @@ REAL = {"HAJJAJ BIN YUSUF": ("hajjaj_coin", "Hajjaj ke naam ka sikka · 695"),
         "BAPPA RAWAL": ("bappa_scroll", "Mewar vanshavali chitra (baad ka)"),
         "MAHMUD GHAZNI": ("ghazni_mini", "Jami al-Tawarikh, c. 1306 (baad ki painting)"),
         "MUHAMMAD GHORI": ("ghori_coin", "Ghori ka sikka · Lakshmi ke saath")}
+AI_IMG = {"MUHAMMAD BIN QASIM": "mbq_ai", "JUNAYD": "junayd_ai", "AL-HAKAM": "hakam_ai", "TAMIM": "tamim_ai", "NAGABHATA I": "nagabhata_ai",
+          "AVANIJANASHRAYA PULAKESHIN": "pulakeshin_ai", "MUHAMMAD GHORI": "ghori_ai"}
+AI_CAP = "AI chitran · asli tasveer nahi"; AI_FOOT = "AI se bani tasveer (kalpanik)"
 REAL_DOC = {"JUNAYD": "junayd", "TAMIM": "tamim", "AVANIJANASHRAYA PULAKESHIN": "navsari",
             "MUHAMMAD BIN QASIM": "mbq", "AL-HAKAM": "hakam", "NAGABHATA I": "nagabhata", "MUHAMMAD GHORI": "ghori"}
-def real_card(c, key, name, cap, x, y, k, grey=0.0, w=300, h=360, t=0.0):
+def real_card(c, key, name, cap, x, y, k, grey=0.0, w=300, h=360, t=0.0, foot="Wikimedia Commons"):
     """real image (coin / inscription / old painting) in the portrait frame: coins are shown whole, paintings fill"""
     img = photo(key); kk = back(k); al = int(255 * clamp(k * 1.5))
     c.save(); c.translate(x, y + math.sin(t * 1.5 + x) * 4); c.scale(kk, kk)
@@ -1359,7 +1362,7 @@ def real_card(c, key, name, cap, x, y, k, grey=0.0, w=300, h=360, t=0.0):
     text(c, name, 0, h / 2 - 40, fs, "#F1FAEE", FT_BLACK, "c", al)
     cs = min(15, 15 * (w - 24) / max(1, text_w(cap, 15)))
     text(c, cap, 0, h / 2 - 14, cs, "#E9C46A", FT_SEMI, "c", al)
-    text(c, "Wikimedia Commons", 0, h / 2 + 14, 12, "#8A9BB0", FT_SEMI, "c", al)
+    text(c, foot, 0, h / 2 + 14, 12, "#8A9BB0", FT_SEMI, "c", al)
     c.restore()
 
 def portrait(c, name, x, y, k, grey=0.0, col="#C9A46A", hat="turban", w=300, h=360):
@@ -1367,6 +1370,8 @@ def portrait(c, name, x, y, k, grey=0.0, col="#C9A46A", hat="turban", w=300, h=3
     if k <= 0: return
     if name in REAL and photo(REAL[name][0]) is not None:
         return real_card(c, REAL[name][0], name, REAL[name][1], x, y, k, grey, w, h, CUR_VO)
+    if name in AI_IMG and photo(AI_IMG[name]) is not None:                                  # AI painting, 4:5, clearly labelled
+        return real_card(c, AI_IMG[name], name, AI_CAP, x, y, k, grey, w, max(h, int((w - 20) * 1.25) + 86), CUR_VO, AI_FOOT)
     if name in REAL_DOC:
         load_docs()
         if REAL_DOC[name] in DOCS:
@@ -1882,6 +1887,7 @@ def s31(c, t):
                 c.drawLine(1320 + 60 * math.cos(an), 640 + 60 * math.sin(an), 1320 + 150 * math.cos(an), 640 + 150 * math.sin(an), paint(YEL, int(70 * kp), stroke=6, cap_round=True))
             scroll(c, 1320, 640, 170 * back(kp), int(255 * clamp(kp * 1.5)), "FARMAAN")
         doc(c, "umar2_offer", 420, 60, 1080, 300, t, seg(t, us(u_hulli) + 0.1, us(u_hulli) + 0.6), kw(u_hulli, "Hullishah") - 0.2, 1.4, focus=1)
+        photo_card(c, "jaisiah_ai", 1570, 300, 270, 338, t, seg(t, kw(u_hulli, "Hullishah") - 0.1, kw(u_hulli, "Hullishah") + 0.5), "Hullishah (Jaisiah)", AI_CAP, kw(u_hulli, "Hullishah"))
         label(c, "HULLISHAH (JAISIAH) · SINDH", 830, 960, seg(t, kw(u_hulli, "Hullishah") - 0.1, kw(u_hulli, "Hullishah") + 0.4), 30, border=GREEN)
         label(c, "KUCH AUR RAJA", 445, 960, seg(t, kw(u_hulli, "kuch") - 0.1, kw(u_hulli, "kuch") + 0.4), 26, border="#9FB0C6")
         title(c, "MAAN LIYA", 1320, 860, 54, seg(t, kw(u_hulli, "maana") - 0.1, kw(u_hulli, "maana") + 0.4), GREEN)
@@ -2305,7 +2311,9 @@ def s49(c, t):
 @shot(vin(u_bal), vin(u_isliye))
 def s50(c, t):
     c.clear(hexc("#141019"))
-    manuscript(c, 330, 540, 380, 1.0, hl_k=seg(t, us(u_musal), ue(u_musal)), ang=-4)
+    if photo("baladhuri_ai") is not None:
+        photo_card(c, "baladhuri_ai", 130, 200, 400, 500, t, seg(t, vin(u_bal), vin(u_bal) + 0.6), "al-Baladhuri · 9vi sadi", AI_CAP, vin(u_bal))
+    else: manuscript(c, 330, 540, 380, 1.0, hl_k=seg(t, us(u_musal), ue(u_musal)), ang=-4)
     lines = ["The people of India had returned to idolatry", "excepting those of Kassa, and the Musulmans", "had no place of security in which they", "could take refuge..."]
     kq = seg(t, vin(u_bal), vin(u_bal) + 0.6)
     if kq > 0:
@@ -2638,7 +2646,7 @@ def s68(c, t):
     for j in range(3):
         if ks > 0: boat(c, dst[0] - 40 + j * 10, dst[1] + 40 + j * 60, 70 * back(ks), int(255 * clamp(ks * 1.5)), sail=SAFF)
     if ks > 0: label(c, "SAINDHAVA NAVY · AGGUKA I", dst[0] + 120, dst[1] - 70, ks, 28, border=SAFF)
-    photo_card(c, "saindhava_coin", 90, 600, 420, 210, t, seg(t, kw(u_776, "Saindhava"), kw(u_776, "Saindhava") + 0.5) * (1 - seg(t, us(u_mahdi) - 0.4, us(u_mahdi))), "Saindhava vansh ka sikka", "Wikimedia Commons · CC BY 2.0", kw(u_776, "Saindhava"))
+    photo_card(c, "agguka_ai", 110, 330, 290, 362, t, seg(t, kw(u_776, "Saindhava"), kw(u_776, "Saindhava") + 0.5) * (1 - seg(t, us(u_mahdi) - 0.4, us(u_mahdi))), "Saindhava raja Agguka", AI_CAP, kw(u_776, "Saindhava"))
     stamp(c, "IRAADA CHHODA", 1350, 260, 56, RED, seg(t, kw(u_mahdi, "chhod") - 0.1, kw(u_mahdi, "chhod") + 0.3))
     if t > us(u_mahdi) - 0.2: name_card(c, "KHALIFA AL-MAHDI", "Abbasi khalifa", 500, 240, seg(t, us(u_mahdi) - 0.2, us(u_mahdi) + 0.3), "#2A9D8F")
     clash(c, dst[0] - 60, dst[1] + 60, seg(t, kw(u_776, "haraya") - 0.3, kw(u_776, "haraya") + 0.6), 1.2)
