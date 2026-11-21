@@ -1117,8 +1117,13 @@ def h1(c, t):
     phone_page(c, t, 1560, 540, 900, seg(t, kw(u_namaste, "AMRIT") - 0.6, kw(u_namaste, "AMRIT") + 0.2), seg(t, us(u_y) + 0.2, ue(u_y) - 0.1),
                seg(t, kw(u_n, "subscribe") - 0.5, kw(u_n, "subscribe") - 0.1))
     tb_ = kw(u_y, "textbook")
-    textbook(c, 400, 470, 500, t, seg(t, tb_ - 0.9, tb_ - 0.4), seg(t, tb_ - 0.4, tb_ + 0.5), seg(t, tb_ + 0.6, tb_ + 0.95),
-             seg(t, us(u_n) + 0.2, us(u_n) + 0.6))
+    if photo("textbook_ai") is not None:
+        ko = seg(t, us(u_n) + 0.2, us(u_n) + 0.6); bx, by, bw, bh = 110, 250, 560, 315
+        photo_card(c, "textbook_ai", bx, by, bw, bh, t, seg(t, tb_ - 0.9, tb_ - 0.4), "School textbook", AI_CAP, tb_ - 0.9, ko)
+        if ko < 1: stamp(c, "TEXTBOOK MEIN NAHI", bx + bw * 0.64, by + bh * 0.46, 26, RED, seg(t, tb_ + 0.6, tb_ + 0.95) * (1 - ko))
+    else:
+        textbook(c, 400, 470, 500, t, seg(t, tb_ - 0.9, tb_ - 0.4), seg(t, tb_ - 0.4, tb_ + 0.5), seg(t, tb_ + 0.6, tb_ + 0.95),
+                 seg(t, us(u_n) + 0.2, us(u_n) + 0.6))
     sub_overlay(c, t, kw(u_n, "subscribe") - 0.6)
     SFX_MARK(kw(U("Naye ho toh"), "subscribe") + 0.9, "pop", -20); SFX_MARK(tb_ - 0.4, "paper", -20); SFX_MARK(tb_ + 0.65, "stamp", -20)
 
@@ -2034,6 +2039,7 @@ def s36(c, t):
     tag_note(c, '"tabaahi ki fauj"', 960, 222, seg(t, us(u_tab), us(u_tab) + 0.4), "#F1FAEE")
     army_block(c, 60, 720, 4, 10, 92, t, kfb)                                              # the formation itself
     kq = seg(t, us(u_hukm2) - 0.1, us(u_hukm2) + 0.4)
+    photo_card(c, "army_destruction_ai", 600, 250, 720, 405, t, seg(t, us(u_aod) + 0.1, us(u_aod) + 0.6), "Army of Destruction · 698", AI_CAP, us(u_aod), seg(t, us(u_hukm2) - 0.7, us(u_hukm2) - 0.2))
     if kq > 0:
         quote_card(c, 1040, 560, 800, ["destroy his strongholds,", "kill all his fighting men"], "Hajjaj ka hukum · Wikipedia: Zunbils", kq, t, [0, 1], seg(t, us(u_hukm2) + 0.3, ue(u_hukm2)))
     SFX_MARK(us(u_aod), "boom", -18); SFX_MARK(kw(u_bheji, "fauj"), "whoosh_long", -20)
@@ -2096,6 +2102,7 @@ def s38(c, t):
     title(c, "ARMY OF PEACOCKS", 960, 170, 70, seg(t, kw(u_peac, "Army") - 0.1, kw(u_peac, "Army") + 0.4), BL)
     army_block(c, 60, 720, 4, 9, 88, t, kfb)
     stat_card(c, 1380, 640, 420, 240, "40,000", "sainik", seg(t, kw(u_peac, "chaalis") - 0.1, kw(u_peac, "chaalis") + 0.4) * (1 - seg(t, tu + 0.6, tu + 1.0)), BL)
+    photo_card(c, "army_peacocks_ai", 1040, 230, 640, 360, t, seg(t, kw(u_ulta, "baaghi") - 0.4, kw(u_ulta, "baaghi") + 0.2), "Army of Peacocks · baghawat · 700", AI_CAP, kw(u_ulta, "baaghi") - 0.4)
     stamp(c, "BAAGHI!", 700, 330, 80, RED, seg(t, kw(u_ulta, "baaghi") - 0.1, kw(u_ulta, "baaghi") + 0.3))
     tag_note(c, "wapas Hajjaj (Iraq) ki taraf", 700, 420, ku, "#F1FAEE")
     SFX_MARK(kw(u_ulta, "baaghi"), "stamp", -18); SFX_MARK(vin(u_peac) + 0.1, "whoosh_long", -20)
@@ -2130,6 +2137,7 @@ def s39(c, t):
     timeline(c, t, lerp(665, 870, k) if t < us(u_870) else 870, 1.0, span=(650, 900), step=10, big_every=50, start=665,
              bracket=(665, 870, "200+ SAAL", seg(t, kw(u_200, "do sau") - 0.1, kw(u_200, "do sau") + 0.6)))
     wall(c, NW_CAM, t, seg(t, kw(u_200, "deewar") - 0.9, kw(u_200, "deewar") + 0.7))
+    photo_card(c, "kabul_zabul_wall_ai", 1320, 50, 560, 315, t, seg(t, kw(u_200, "deewar") + 0.4, kw(u_200, "deewar") + 0.9), "Kabul-Zabul ke pahadi darre", AI_CAP, kw(u_200, "deewar") + 0.4)
     for j in range(3):                                                                     # Arab pushes bounce off the wall
         kj = seg(t, ue(u_200) - 0.4 + j * 0.5, ue(u_200) + 0.5 + j * 0.5)
         if 0 < kj < 1:
@@ -2268,6 +2276,7 @@ def s46(c, t):
     x, y = S(GJ_CAM, "ujjain"); pin(c, x, y, "AVANTI / UJJAIN", seg(t, vin(u_prat), vin(u_prat) + 0.4), SAFF, size=26, t=t)
     portrait(c, "NAGABHATA I", 300, 470, seg(t, kw(u_prat, "Nagabhata") - 0.2, kw(u_prat, "Nagabhata") + 0.3), col="#E76F51", hat="crown", w=260, h=320)
     doc(c, "pratihara_mlechcha", 560, 220, 900, 380, t, seg(t, vin(u_prat) + 0.3, vin(u_prat) + 0.9), kw(u_prat, "taaqatwar") - 0.1, 2.2)
+    photo_card(c, "pratihara_army_ai", 1490, 240, 400, 225, t, seg(t, kw(u_prat, "taaqatwar") + 0.2, kw(u_prat, "taaqatwar") + 0.7) * (1 - seg(t, us(u_lekin_a) - 0.3, us(u_lekin_a))), "Pratihara ghudsawar", AI_CAP, kw(u_prat, "taaqatwar") + 0.2)
     pill(c, "Gwalior shilalekh (baad ka, 9vi sadi)", 1010, 660, 24, "#5B4636", a=int(255 * clamp(seg(t, vin(u_prat) + 0.8, vin(u_prat) + 1.3) * 1.5)))
     kb = seg(t, us(u_behes) - 0.1, us(u_behes) + 0.3)
     if kb > 0: pill(c, "HISTORIANS MEIN BEHES", 1010, 740, 32, RED, a=int(255 * clamp(kb * 1.5)))

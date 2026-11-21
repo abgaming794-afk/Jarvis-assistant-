@@ -15,4 +15,4 @@ dahir_paint: King Dahir of Aror.jpg — Mb1010 — CC BY-SA 4.0 (Wikimedia Commo
 turkshahi_coin: Turk Shahi portrait. King Sri Ranasrikari. Late 7th to early 8th century CE.jpg — CNG Coins — CC BY-SA 3.0 (Wikimedia Commons)
 zunbil_coin: Sahi Tigin. Circa 710-720 CE.jpg — CNG Coins — CC BY-SA 3.0 (Wikimedia Commons)
 teli_mandir: Teli ka Mandir (15702266503).jpg — Varun Shiv Kapur from New Delhi, India — CC BY 2.0 (Wikimedia Commons)
-mbq_ai, junayd_ai, hakam_ai, tamim_ai, nagabhata_ai, pulakeshin_ai, jaisiah_ai, agguka_ai, baladhuri_ai, ghori_ai (.jpg): AI-generated illustrations made by the channel owner with ChatGPT from the prompts in AI_IMAGE_PROMPTS.md; shown labelled 'AI chitran · asli tasveer nahi'. Not historical images.
+mbq_ai, junayd_ai, hakam_ai, tamim_ai, nagabhata_ai, pulakeshin_ai, jaisiah_ai, agguka_ai, baladhuri_ai, ghori_ai, army_destruction_ai, army_peacocks_ai, kabul_zabul_wall_ai, pratihara_army_ai, textbook_ai (.jpg): AI-generated illustrations made by the channel owner with ChatGPT from the prompts in AI_IMAGE_PROMPTS.md; shown labelled 'AI chitran · asli tasveer nahi'. Not historical images.

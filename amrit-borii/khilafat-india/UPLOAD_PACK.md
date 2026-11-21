@@ -47,7 +47,7 @@ Credits
 - Teli ka Mandir, Gwalior — Varun Shiv Kapur, CC BY 2.0 (Wikimedia Commons)
 - Mahmud of Ghazni miniatures, Jami al-Tawarikh (c. 1306-14) — Public domain (Wikimedia Commons)
 - Wikipedia page excerpts — CC BY-SA
-- Portraits marked "Aadhunik chitran" and the cards marked "AI chitran" (Muhammad bin Qasim, Junayd, Tamim, Al-Hakam, Nagabhata I, Avanijanashraya Pulakeshin, Hullishah, Agguka, al-Baladhuri, Muhammad Ghori and the symbolic card) are modern / AI-generated illustrations, not historical images. Flags are illustrative colours, not historical flags (the Umayyad banner was historically white).
+- Portraits marked "Aadhunik chitran" and the cards marked "AI chitran" (Muhammad bin Qasim, Junayd, Tamim, Al-Hakam, Nagabhata I, Avanijanashraya Pulakeshin, Hullishah, Agguka, al-Baladhuri, Muhammad Ghori, the Army of Destruction / Army of Peacocks / Kabul-Zabul / Pratihara cavalry scenes, the school textbook and the symbolic card) are modern / AI-generated illustrations, not historical images. Flags are illustrative colours, not historical flags (the Umayyad banner was historically white).
 - Music and sound effects: original, made for this video. Voice: ElevenLabs.
 
 #History #ArabKhilafat #AmritBori
