@@ -17,13 +17,13 @@ Jis Arab fauj ne sirf 5 saal mein lagbhag poora Spain jeet liya, wahi Hindustan 
 Chapters
 0:00 Hook: Al-Mahfuza ka raaz
 0:53 Chapter 1: 79 Saal Ka Toofan
-1:58 Chapter 2: 15 Saal Ka General
+1:59 Chapter 2: 15 Saal Ka General
 3:30 Chapter 3: Kabul Ka Band Darwaza
 4:57 Chapter 4: Al-Mahfuza Ka Raaz
 7:59 Chapter 5: Damascus Mein Aag
-9:20 Verdict: 4 Raaz
-9:36 Sabse badi galatfehmi
-10:29 Agli video
+9:10 Verdict: 4 Raaz
+9:26 Sabse badi galatfehmi
+10:19 Agli video
 
 Sources
 - al-Baladhuri, Futuh al-Buldan (9th c.), tr. Elliot & Dowson, The History of India as Told by Its Own Historians, Vol. 1 (1867)
