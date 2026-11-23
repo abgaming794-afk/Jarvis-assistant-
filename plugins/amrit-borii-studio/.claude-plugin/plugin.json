@@ -1,0 +1,21 @@
+{
+  "name": "amrit-borii-studio",
+  "version": "0.9.0",
+  "description": "End-to-end pipeline for the AMRIT BORI YouTube channel: long-form Hinglish geopolitics documentaries (16:9) and YouTube Shorts (9:16) - topic, research, script, voice-over alignment, 2D map animation with waving flags inside empire borders, ruler portrait cards, real documents and photos, 3D stickman host, 4K 60fps 10-bit render, high-CTR thumbnail and YouTube upload via vidIQ. v0.9: every named thing lit on its word, sizes shown with measurement lines, realistic code-drawn objects with honest labels, safe chunked render.",
+  "author": {
+    "name": "AMRIT BORII"
+  },
+  "keywords": [
+    "4k",
+    "documentary",
+    "elevenlabs",
+    "flag-map",
+    "geopolitics",
+    "hinglish",
+    "map-animation",
+    "shorts",
+    "thumbnail",
+    "vertical",
+    "youtube"
+  ]
+}

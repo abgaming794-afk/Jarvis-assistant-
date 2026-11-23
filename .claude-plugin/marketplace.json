@@ -1,0 +1,18 @@
+{
+  "name": "amrit-borii",
+  "owner": {
+    "name": "AMRIT BORII"
+  },
+  "metadata": {
+    "description": "AMRIT BORII YouTube studio plugins (Hinglish documentaries and Shorts).",
+    "version": "0.9.0"
+  },
+  "plugins": [
+    {
+      "name": "amrit-borii-studio",
+      "source": "./plugins/amrit-borii-studio",
+      "description": "AMRIT BORII long documentaries and YouTube Shorts, topic to upload (v0.9.0).",
+      "version": "0.9.0"
+    }
+  ]
+}
