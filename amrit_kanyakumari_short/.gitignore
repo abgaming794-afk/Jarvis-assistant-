@@ -1,0 +1,2 @@
+# rendered videos are sent as attachments, not stored in git
+*.mp4
