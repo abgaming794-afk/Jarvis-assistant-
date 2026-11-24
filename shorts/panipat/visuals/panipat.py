@@ -353,29 +353,42 @@ class Sc1526:
     def sfx(self):
         return [("cannon", f, -9) for f in self.fires[:8]] + [("elephant", self.tp, -6), ("crowd_panic", self.tp + 0.2, -8), ("gallop_many", self.t0, -9)]
 
+HEMU = {}
+def _hemu_rider(c, x, y, s_, t, robe="#9B2226", a=255, face=1, sword_up=0.0):
+    """Hemu on his elephant Hawai = the same cartoon as on his VS card; the arrow flies to his eye in this canvas space."""
+    H = s_ * 2.6; kn = HEMU.get("knock", 0.0)
+    toon(c, x, y + s_ * 0.15, H, t, "hemu", face=face, k=1.0, point=sword_up * (1 - kn) * 0.6, seed=7, knocked=kn, arrow=1.0 if HEMU.get("hit") else 0.0)
+    sc = H / 600; ex, ey = x + face * 42 * sc, y + s_ * 0.15 - 422 * sc
+    m = c.getTotalMatrix(); q = m.mapXY(ex, ey); HEMU["eye"] = (q.x(), q.y())
+    fk = HEMU.get("fly", 0.0)
+    if 0 < fk < 1:
+        sx, sy = ex + face * 240, ey - 80; px, py = lerp(sx, ex, fk), lerp(sy, ey, fk) - 140 * 4 * fk * (1 - fk) * (1 - fk)
+        ang = math.degrees(math.atan2(ey - sy, ex - sx))
+        for j in range(5): c.drawCircle(px - (ex - sx) * 0.02 * j, py - (ey - sy) * 0.02 * j, 5 - j * 0.8, paint("#FFF3B0", 120 - j * 20, blur=3))
+        c.save(); c.translate(px, py); c.rotate(ang); c.scale(1.0, 1.0); c.drawLine(-170, 0, 10, 0, paint("#FFFFFF", 200, stroke=11))
+        c.drawLine(-160, 0, 0, 0, paint("#3A2A1E", 255, stroke=6)); c.drawPath(skia.Path().addPoly([skia.Point(0, -9), skia.Point(22, 0), skia.Point(0, 9)], True), paint("#9CA3AF"))
+        for fy in (-1, 1): c.drawPath(skia.Path().addPoly([skia.Point(-160, 0), skia.Point(-185, fy * 14), skia.Point(-140, 0)], True), paint("#ECF0F1" if fy < 0 else "#C0392B"))
+        c.restore()
+battle2d.king_bust = _hemu_rider
+
 class Sc1556:
-    """Hemu leads from his elephant Hawai; evenly matched; one arrow; he falls unconscious; his army scatters."""
+    """Hemu leads from his elephant Hawai; evenly matched; slow motion: one Mughal arrow into his eye; he slumps unconscious; army scatters."""
+    SLOW = 0.3
     def __init__(self, t0, dur, t_arrow, t_rout):
         self.t0, self.dur, self.ta, self.tr = t0, dur, t_arrow, t_rout
-        self.B = Battle(dict(fac="mughal", cav=7, inf=4), dict(fac="sur", inf=8, cav=3, eleph=3, king=True), "left", t0=t0, dur=dur, t_clash=1.5, t_rout=t_rout - t0,
-                        clash_x=900, seed=21, base=112)
-    def draw(self, c, t):
-        bt_begin(c); self.B.draw(c, t)
-        kx = self.B.king_xy(t)
-        if kx:
-            z, dx, dy = self.B.cam(t); x = self.B.cx + (kx[0] - self.B.cx) * z + dx; y = self.B.g[1] + (kx[1] - self.B.g[1]) * z + dy - 330 * z
-            k = seg(t, self.ta - 0.55, self.ta)                       # the single arrow
-            if 0 < k < 1:
-                sx, sy = x - 900, y - 300; px, py = lerp(sx, x, k), lerp(sy, y, k) - 120 * 4 * k * (1 - k)
-                c.drawLine(px - 46, py - 6, px, py, paint("#3A2A1E", 255, stroke=5)); c.drawCircle(px, py, 5, paint("#9CA3AF"))
-                c.drawRect(skia.Rect(0, 0, 0, 0), paint("#000000"))
-            hk = seg(t, self.ta, self.ta + 0.35)
-            if hk > 0:
-                c.drawCircle(x, y, 70 * (1 + hk), paint("#E63946", int(220 * (1 - hk)), stroke=10))
-            nk = seg(t, self.t0 + 0.4, self.t0 + 0.9) * (1 - seg(t, self.ta + 1.2, self.ta + 1.6))
-            if nk > 0: pill(c, "Hemu (haathi 'Hawai')", x, y - 150, 34, "#7C2D12", "#FFFFFF", int(255 * nk), fpath=FT_SEMI)
-        c.restore()
-    def sfx(self): return [("gallop_many", self.t0, -9), ("arrow_whiz", self.ta - 0.5, -4), ("arrow_hit", self.ta, -4), ("crowd_panic", self.tr + 0.1, -8)]
+        self.s0, self.s1 = t_arrow - 0.55, t_arrow + 0.6; self.lag = (self.s1 - self.s0) * (1 - self.SLOW)
+        self.B = Battle(dict(fac="mughal", cav=7, inf=4), dict(fac="sur", inf=8, cav=3, eleph=3, king=True), "left", t0=t0, dur=dur, t_clash=1.5, t_rout=t_rout - t0 - self.lag,
+                        clash_x=860, seed=21, base=118)
+    def warp(self, t):
+        if t < self.s0: return t
+        if t < self.s1: return self.s0 + (t - self.s0) * self.SLOW
+        return t - self.lag
+    def zoom(self, t): return ease_io(seg(t, self.ta - 0.75, self.ta - 0.3)) * (1 - ease_io(seg(t, self.ta + 1.0, self.ta + 1.5)))
+    def battle(self, c, t):
+        HEMU["fly"] = seg(t, self.ta - 0.5, self.ta); HEMU["hit"] = t >= self.ta; HEMU["knock"] = seg(t, self.ta + 0.1, self.ta + 0.9)
+        bt_begin(c); self.B.draw(c, self.warp(t)); c.restore()
+    def draw(self, c, t): self.battle(c, t)
+    def sfx(self): return [("arrow_whiz", self.ta - 0.5, -4), ("arrow_hit", self.ta, -4), ("crowd_panic", self.tr + 0.1, -8), ("gallop_many", self.t0, -9)]
 
 class Sc1761:
     """Maratha gun line (Ibrahim Khan Gardi) + cavalry vs Durrani cavalry; massive clash; Marathas routed."""
@@ -390,7 +403,7 @@ class Sc1761:
         c.restore()
     def sfx(self): return [("cannon", f, -10) for f in self.fires[:6]] + [("gallop_many", self.t0, -8), ("clash_bed", self.t0 + 1.7, -8), ("crowd_panic", self.tr, -8)]
 
-POP_RISE, POP_FILL, POP_OUT, POP_FOLD = 0.75, 0.35, 0.35, 0.45
+POP_RISE, POP_FILL, POP_OUT, POP_FOLD = 0.45, 0.4, 0.35, 0.35       # zoom-in 0.85 s, zoom-out 0.7 s
 SC = {
     "p1": (Sc1526(us(u_bhadak) - 1.5, ue(u_mughal) - us(u_bhadak) + 1.5, kw(u_bhadak, "bhadak"), kw(u_mughal, "Lodi")), us(u_bhadak) - 0.2, kw(u_mughal, "Mughal") - 0.25,
            "Panipat ka pehla yudh", "21 April 1526"),
@@ -406,8 +419,24 @@ def active_scene(t):
 
 def scene_draw(c, key, t):
     sc, a, b, title, date = SC[key]
-    draw_field(c, t, a - 1.2, b - a + 2.4)
-    sc.draw(c, t)
+    if key == "p2":
+        rec = skia.PictureRecorder(); rc = rec.beginRecording(skia.Rect(0, 0, DW, DH))
+        draw_field(rc, t, a - 1.2, b - a + 2.4); sc.battle(rc, t); pic = rec.finishRecordingAsPicture()
+        z = sc.zoom(t); ex, ey = HEMU.get("eye", (DW / 2, 800))
+        c.save(); c.translate(lerp(ex, DW / 2, z), lerp(ey, 760, z)); c.scale(1 + 1.6 * z, 1 + 1.6 * z); c.translate(-ex, -ey); c.drawPicture(pic); c.restore()
+        if z > 0.02:
+            g = skia.GradientShader.MakeRadial((DW / 2, 760), 900, [hexc("#000000", 0), hexc("#000000", int(190 * z))]); c.drawRect(skia.Rect(0, 0, DW, DH), skia.Paint(Shader=g))
+            for yy in (0, DH - 120): c.drawRect(skia.Rect(0, yy, DW, yy + 120), paint("#000000", int(230 * z)))
+            if t < sc.ta: speed_lines(c, t, 0.5 * z, "#FFF3B0")
+            text(c, "SLOW MOTION", 60, 90, 30, "#FFFFFF", FT_BLACK, "l", int(200 * z))
+        hk = seg(t, sc.ta, sc.ta + 0.45)
+        if 0 < hk < 1:
+            c.drawRect(skia.Rect(0, 0, DW, DH), paint("#FFFFFF", int(170 * (1 - hk) ** 2)))
+            c.drawCircle(DW / 2, 760, 60 + 300 * ease_out(hk), paint("#E63946", int(230 * (1 - hk)), stroke=12))
+        chip(c, "Teer seedha aankh mein", DW / 2, 1235, seg(t, sc.ta + 0.2, sc.ta + 0.6) * (1 - seg(t, sc.ta + 1.4, sc.ta + 1.7)), "#7A1F1F", "#FFFFFF", 36)
+    else:
+        draw_field(c, t, a - 1.2, b - a + 2.4)
+        sc.draw(c, t)
     headline(c, title, seg(t, a - 0.5, a + 0.6), date, y=230, size=72)
     if key == "p1":
         ck = 1 - seg(t, kw(u_bhadak, "bhadak") - 0.4, kw(u_bhadak, "bhadak") - 0.1)
@@ -419,7 +448,6 @@ def scene_draw(c, key, t):
     if key == "p2":
         chip(c, "Ladaai barabar", DW / 2, 470, seg(t, us(u_teer), us(u_teer) + 0.4) * (1 - seg(t, kw(u_teer, "teer") - 0.1, kw(u_teer, "teer") + 0.2)), "#14213D")
         sx, sy = shake(t, kw(u_teer, "teer"), 14); c.save(); c.translate(sx, sy)
-        stamp_slam(c, "EK TEER", DW / 2, 500, 80, seg(t, kw(u_teer, "teer"), kw(u_teer, "teer") + 0.3) * (1 - seg(t, kw(u_bikhar, "bikhar") - 0.3, kw(u_bikhar, "bikhar"))), "#C1121F", -7)
         stamp_slam(c, "FAUJ BIKHAR GAYI", DW / 2, 500, 64, seg(t, kw(u_bikhar, "bikhar"), kw(u_bikhar, "bikhar") + 0.35), "#C1121F", -6); c.restore()
     if key == "p3":
         mk = seg(t, kw(u_maut, "30"), kw(u_maut, "30") + 0.9)
@@ -436,8 +464,10 @@ def scene_image(key, t, width):
 # ================================================================== the one continuous camera path (time, lon, lat, dist, pitch, yaw)
 PNP = PL["panipat"]
 def dive(key):
-    sc, a, b, *_ = SC[key]
-    return [(a - POP_FILL - POP_RISE - 0.2, PNP[0], PNP[1] - 0.5, 7.5, 52, 0), (a, PNP[0], PNP[1] - 0.35, 6.0, 56, 0), (b + POP_OUT, PNP[0], PNP[1] - 0.35, 6.0, 56, 0)]
+    """camera dives straight down into Panipat; the ground there turns into the battlefield (zoom-through), then rises again."""
+    sc, a, b, *_ = SC[key]; ZI, ZO = POP_RISE + POP_FILL, POP_OUT + POP_FOLD
+    return [(a - ZI - 0.7, PNP[0], PNP[1] - 0.5, 7.5, 50, 0), (a, PNP[0], PNP[1] - 0.02, 0.9, 30, 0), (b, PNP[0], PNP[1] - 0.02, 0.9, 30, 0),
+            (b + ZO, PNP[0], PNP[1] - 0.25, 3.2, 44, 0)]
 KF = [(0.0, 78, 24, 70, 6, 0), (2.4, 78.5, 23.5, 34, 30, -6), (ue(u_hook), 77.8, 26.0, 22, 40, 2), (ue(u_kyun), 77.2, 28.4, 11, 50, 4),
       (us(u_1526) + 0.6, 73.5, 31.0, 22, 42, -6), (ue(u_babur), 72.8, 31.6, 20, 46, -2), (us(u_lodi) + 0.6, 76.5, 28.5, 22, 44, 6), (ue(u_lodi2) - 0.3, 76.8, 28.0, 21, 46, 2)]
 KF += dive("p1")
@@ -448,6 +478,9 @@ KF += dive("p3")
 KF += [(us(u_uttar) + 0.3, 73.6, 31.0, 22, 40, -6), (ue(u_uttar), 74.2, 30.6, 20, 44, 2), (kw(u_yamuna, "Yamuna") - 0.1, 76.4, 28.6, 10, 46, -6),
        (kw(u_yamuna, "Thar") + 0.3, 74.2, 28.3, 17, 44, 4), (ue(u_sapaat), 76.4, 28.8, 9, 50, 0), (us(u_95) + 0.3, 77.1, 28.9, 5.0, 52, -4), (us(u_tarain) + 0.2, 77.0, 29.35, 3.6, 50, 0),
        (kw(u_tarain, "Karnal") + 0.4, 77.0, 29.4, 3.6, 50, 4), (ue(u_matlab), 77.0, 29.1, 7.5, 50, 0), (us(u_poll) + 1.2, 79.5, 23.0, 44, 30, 0), (END, 79.5, 22.5, 46, 28, 3)]
+_DW = [(min(k[0] for k in dive(x_)), max(k[0] for k in dive(x_))) for x_ in SC]
+_DK = {k for x_ in SC for k in dive(x_)}
+KF = [k for k in KF if k in _DK or not any(w0 - 0.05 <= k[0] <= w1 + 0.05 for w0, w1 in _DW)]   # nothing may fight a dive
 KF.sort(key=lambda k: k[0])
 def camera(t):
     if t <= KF[0][0]: return Cam(*KF[0][1:])
@@ -740,9 +773,16 @@ def frame(c, t, width):
         if a <= t <= b: scene_draw(c, key, t)
         else:
             map_layer(c, cam, t); overlays(c, t, cam)
-            if t < a: rise, fill = seg(t, a - POP_FILL - POP_RISE, a - POP_FILL), seg(t, a - POP_FILL, a)
-            else: fill, rise = 1 - seg(t, b, b + POP_OUT), 1 - seg(t, b + POP_OUT, b + POP_OUT + POP_FOLD)
-            popup(c, cam, *PNP, scene_image(key, min(max(t, a - 0.6), b + 0.6), width), cam.dist * 0.32, rise, fill)
+            ZI, ZO = POP_RISE + POP_FILL, POP_OUT + POP_FOLD
+            k = seg(t, a - ZI, a) if t < a else 1 - seg(t, b, b + ZO)
+            q = cam.ll(*PNP); px, py = (q[0], q[1]) if q else (DW / 2, DH / 2)
+            R_ = math.hypot(DW, DH) * 1.02 * ease_in(k) + 1; scl = lerp(0.45, 1.0, ease_out(k))
+            img_ = scene_image(key, min(max(t, a), b), width)
+            c.save(); cp = skia.Path(); cp.addCircle(px, py, R_); c.clipPath(cp, doAntiAlias=True)
+            c.translate(px, py); c.scale(scl, scl); c.translate(-px, -py)
+            pp = skia.Paint(AntiAlias=True); pp.setAlphaf(clamp(k * 2.5)); c.drawImageRect(img_, skia.Rect(0, 0, img_.width(), img_.height()), skia.Rect(0, 0, DW, DH), SAMP, pp)
+            c.restore()
+            c.drawCircle(px, py, R_, paint("#FFF1C2", int(220 * (1 - k)), stroke=10, blur=6)); c.drawCircle(px, py, R_, paint("#FFFFFF", int(255 * (1 - k)), stroke=3))
     else:
         map_layer(c, cam, t); overlays(c, t, cam)
     for d in DOCS_ON: doc_show(c, t, d)

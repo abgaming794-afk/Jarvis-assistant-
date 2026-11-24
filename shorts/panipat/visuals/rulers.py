@@ -32,14 +32,14 @@ def _fill(c, path, col, a=255, ink=True, w=3.2):
     c.drawPath(path, paint(col, a))
     if ink: c.drawPath(path, paint(INK, a, stroke=w))
 
-def toon(c, cx, base, H, t, key, face=1, k=1.0, point=0.0, a=255, seed=0):
+def toon(c, cx, base, H, t, key, face=1, k=1.0, point=0.0, a=255, seed=0, knocked=0.0, arrow=0.0):
     """half-body cartoon ruler. base = bottom of the torso, H = full height. face = +1 looks right.
     k = entry (pops up from below), point = 0..1 raises the pointing arm toward the opponent."""
     if k <= 0: return
     S = TOON[key]; s = H / 600.0
     rise = (1 - back(clamp(k))) * 260 * s
     br = 1 + 0.012 * math.sin(t * 2.4 + seed)                                # breathing
-    c.save(); c.translate(cx, base + rise); c.scale(face * s, s * br)
+    c.save(); c.translate(cx, base + rise); c.scale(face * s, s * br); c.rotate(-7 * ease_out(knocked))
     al = int(a * clamp(k * 2))
     # ---- torso (robe) with shoulders
     torso = skia.Path(); torso.moveTo(-170, 0); torso.cubicTo(-175, -150, -150, -250, -80, -270); torso.lineTo(80, -270)
@@ -78,7 +78,7 @@ def toon(c, cx, base, H, t, key, face=1, k=1.0, point=0.0, a=255, seed=0):
         fx, fy = hx + (hx - ex) * 0.45, hy + (hy - ey) * 0.45
         c.drawLine(hx, hy, fx, fy, paint(INK, al, stroke=15, cap_round=True)); c.drawLine(hx, hy, fx, fy, paint(S["skin"], al, stroke=10, cap_round=True))
     # ---- neck + head (slight nod)
-    nod = math.sin(t * 1.7 + seed) * 2.5
+    nod = math.sin(t * 1.7 + seed) * 2.5 * (1 - knocked) - 28 * ease_out(knocked)
     c.save(); c.rotate(nod)
     _fill(c, skia.Path().addRect(skia.Rect(-32, -320, 32, -262)), S["skin"], al)
     hy0 = -400; head = skia.Path().addOval(skia.Rect(-82, hy0 - 95, 82, hy0 + 92)); _fill(c, head, S["skin"], al)
@@ -88,20 +88,32 @@ def toon(c, cx, base, H, t, key, face=1, k=1.0, point=0.0, a=255, seed=0):
         bd = skia.Path(); bd.moveTo(-80, hy0 + 5); bd.cubicTo(-80, hy0 + 120, 40, hy0 + 150, 84, hy0 + 30); bd.lineTo(84, hy0 + 10); bd.cubicTo(50, hy0 + 40, -30, hy0 + 55, -80, hy0 + 5); bd.close()
         _fill(c, bd, S["bcol"], al)
     elif S["beard"] == "goatee":
-        bd = skia.Path(); bd.moveTo(10, hy0 + 62); bd.cubicTo(14, hy0 + 120, 42, hy0 + 122, 46, hy0 + 64); bd.close(); _fill(c, bd, S["bcol"], al)
-    ms = skia.Path(); ms.moveTo(8, hy0 + 40); ms.cubicTo(30, hy0 + 26, 60, hy0 + 30, 80, hy0 + 52); ms.cubicTo(58, hy0 + 40, 34, hy0 + 44, 8, hy0 + 48); ms.close()
+        bd = skia.Path(); bd.moveTo(2, hy0 + 76); bd.cubicTo(6, hy0 + 130, 34, hy0 + 132, 38, hy0 + 76); bd.close(); _fill(c, bd, S["bcol"], al)
+    # 3/4 face: two eyes, nose, moustache, mouth (features turned toward `face`)
+    ms = skia.Path(); ms.moveTo(18, hy0 + 38); ms.cubicTo(-4, hy0 + 30, -24, hy0 + 36, -30, hy0 + 52); ms.cubicTo(-10, hy0 + 44, 6, hy0 + 46, 18, hy0 + 48)
+    ms.cubicTo(30, hy0 + 46, 50, hy0 + 44, 66, hy0 + 52); ms.cubicTo(60, hy0 + 36, 40, hy0 + 30, 18, hy0 + 38); ms.close()
     _fill(c, ms, S["bcol"], al, w=2)
-    # mouth + nose
-    c.drawLine(30, hy0 + 66, 56, hy0 + 64, paint(INK, al, stroke=3.5, cap_round=True))
-    nose = _p([(60, hy0 - 15), (82, hy0 + 22), (62, hy0 + 26)], False); c.drawPath(nose, paint(INK, al, stroke=3.5, cap_round=True))
-    # eye with blink + brow
+    if knocked > 0.5:
+        c.drawOval(skia.Rect(6, hy0 + 60, 32, hy0 + 80), paint("#5A1A12", al)); c.drawOval(skia.Rect(6, hy0 + 60, 32, hy0 + 80), paint(INK, al, stroke=2.5))
+    else: c.drawLine(6, hy0 + 66, 34, hy0 + 66, paint(INK, al, stroke=3.5, cap_round=True))
+    nose = _p([(22, hy0 - 12), (36, hy0 + 20), (20, hy0 + 26)], False); c.drawPath(nose, paint(INK, al, stroke=3.5, cap_round=True))
     bl = 1.0
     ph = (t + seed * 1.3) % 3.2
     if ph < 0.13: bl = abs(ph - 0.065) / 0.065
-    eh = (9 if S["eyes"] == "narrow" else 15) * max(0.08, bl)
-    c.drawOval(skia.Rect(22, hy0 - 22 - eh, 52, hy0 - 22 + eh), paint("#FFFFFF", al)); c.drawOval(skia.Rect(22, hy0 - 22 - eh, 52, hy0 - 22 + eh), paint(INK, al, stroke=2.5))
-    if bl > 0.3: c.drawCircle(42, hy0 - 21, 7 * min(1, eh / 9), paint(INK, al))
-    c.drawLine(16, hy0 - 50, 56, hy0 - 46, paint(S["bcol"], al, stroke=7, cap_round=True))
+    if knocked > 0.3: bl = 0.0
+    ehf = (9 if S["eyes"] == "narrow" else 14)
+    for ex, ew in ((-18, 13), (42, 16)):                                      # back eye (smaller) + front eye
+        eh = ehf * max(0.08, bl) * (0.9 if ew == 13 else 1.0)
+        if bl > 0.05:
+            c.drawOval(skia.Rect(ex - ew, hy0 - 22 - eh, ex + ew, hy0 - 22 + eh), paint("#FFFFFF", al)); c.drawOval(skia.Rect(ex - ew, hy0 - 22 - eh, ex + ew, hy0 - 22 + eh), paint(INK, al, stroke=2.5))
+            if bl > 0.3: c.drawCircle(ex + ew * 0.35, hy0 - 21, 6.5 * min(1, eh / 9), paint(INK, al)); c.drawCircle(ex + ew * 0.35 + 2, hy0 - 24, 2, paint("#FFFFFF", al))
+        else:
+            c.drawLine(ex - ew, hy0 - 20, ex + ew, hy0 - 22, paint(INK, al, stroke=3.5, cap_round=True))
+        c.drawLine(ex - ew - 2, hy0 - 48, ex + ew + 2, hy0 - 46 - (4 if knocked > 0.3 else 0), paint(S["bcol"], al, stroke=7, cap_round=True))
+    if arrow > 0:                                                              # the arrow stuck at the front eye
+        c.save(); c.translate(42, hy0 - 22); c.rotate(-18 + 6 * math.sin(t * 9) * (1 - knocked))
+        c.drawLine(0, 0, 150, 0, paint("#3A2A1E", al, stroke=6)); c.drawPath(_p([(150, 0), (176, -12), (170, 0), (176, 12)]), paint("#C0392B", al))
+        c.drawPath(_p([(132, 0), (156, -14), (150, 0), (156, 14)]), paint("#ECF0F1", al)); c.restore()
     # headgear
     hd = S["head"]
     if hd in ("turban", "striped", "pagdi_dark"):
