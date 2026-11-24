@@ -1,0 +1,17 @@
+{
+  "name": "amrit-bori-studio",
+  "owner": { "name": "Amrit Bori" },
+  "metadata": { "description": "AMRIT BORI channel studio plugins (history / geopolitics long videos and Shorts)." },
+  "plugins": [
+    {
+      "name": "goeglobetales-copy-edt-style-long-and-short-form",
+      "source": "./plugins/goeglobetales-copy-edt-style-long-and-short-form",
+      "description": "Seamless 3D one-shot style: 3D map camera, ruler flags on territories, pop-up period cartoon battles, VO-synced document flips."
+    },
+    {
+      "name": "unexplored-truth-by-amrit",
+      "source": "./plugins/unexplored-truth-by-amrit",
+      "description": "Unexplored Truth by Amrit 1.2.0: story-then-proof style, cartoon battles, 3D maps, photoreal thumbnails, vidIQ upload."
+    }
+  ]
+}
