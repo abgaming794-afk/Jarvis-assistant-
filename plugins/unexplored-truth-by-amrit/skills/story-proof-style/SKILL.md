@@ -41,6 +41,10 @@ Pacing: a new visual every 1-2 s, a new scene every 3-6 s, the camera always dri
 
 ## Sound pairing (recommendations - the reference's audio was not analysed)
 
+Ready-made, synthesised SFX library + VO-word-timed event list: `engine/examples/storyproof-demo/one-minute/`
+(`demo60.py sfx` -> `mix60.py`). The user approved this approach: VO from the project, SFX made by Claude.
+
+
 whoosh: camera flight, doc fly-in, whip; paper rustle: parchment, doc pan; thud + short low hit: stamp; pop: icons,
 pins, eyes; sparkle crackle: fireworks; swish: style wipe; low boom: iris close; marker squeak: highlight. Keep SFX at
 the channel's half loudness under the VO.
