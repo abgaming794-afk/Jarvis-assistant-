@@ -7,6 +7,7 @@ Uses the plugin kit storyproof.py, the channel's own 2D man (man2d / king_fig fr
 import os, sys, json, math, ast, subprocess
 PLUG = os.environ.get("UTA_PLUGIN", "/home/user/Jarvis-assistant-/plugins/unexplored-truth-by-amrit")
 sys.path.insert(0, os.path.join(PLUG, "engine", "visuals"))
+sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "engine_wip"))   # work in progress (not in the plugin yet)
 import numpy as np, skia
 from PIL import Image
 from shapely.geometry import shape

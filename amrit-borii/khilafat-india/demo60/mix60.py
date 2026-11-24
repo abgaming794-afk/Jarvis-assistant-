@@ -82,6 +82,10 @@ def battle(s=5.0):
     return norm(x * np.clip(t / 0.6, 0, 1) * np.clip((s - t) / 1.2, 0, 1), 0.85)
 LIB = dict(whoosh=whoosh(), swish=swish(), pop=pop(), pin=pin(), chime=chime(), tick=tick(), paper=paper(), stamp=stamp(),
            marker=marker(), drum=drum(), drum_big=drum_big(), boom=boom(), riser=riser(), firework=firework(), battle=battle())
+import sys as _sys
+_sys.path.insert(0, os.path.join(HERE, "engine_wip"))
+import battle_sfx
+LIB.update(battle_sfx.build(SR))
 os.makedirs(os.path.join(HERE, "sfx"), exist_ok=True)
 for k, v in LIB.items():
     with wave.open(os.path.join(HERE, "sfx", k + ".wav"), "wb") as w:
@@ -100,8 +104,19 @@ raw = subprocess.run(["ffmpeg", "-loglevel", "error", "-ss", str(T0), "-t", str(
 vo = np.frombuffer(raw, np.float32).copy(); fade = int(0.04 * SR); vo[:fade] *= np.linspace(0, 1, fade); vo[-fade * 4:] *= np.linspace(1, 0, fade * 4)
 put(vo, 0.0, 0.0)
 # ---------------------------------------------------------------- SFX (channel rule: half loudness under VO)
+SL = np.zeros(n, np.float32); SRR = np.zeros(n, np.float32)
+def put_sfx(sig, t, db, pan):
+    i = int(t * SR)
+    if i >= n or i + len(sig) <= 0: return
+    if i < 0: sig = sig[-i:]; i = 0
+    e = min(n, i + len(sig)); g = 10 ** (db / 20)
+    SL[i:e] += sig[:e - i] * g * (1 - max(0, pan)); SRR[i:e] += sig[:e - i] * g * (1 + min(0, pan))
 for name, t, g in J["events"]:
-    put(LIB[name], t, g - 6, pan=RNG.uniform(-0.25, 0.25))
+    put_sfx(LIB[name], t, g - 4, RNG.uniform(-0.3, 0.3))
+ve = np.abs(L).astype(np.float64); k_ = int(0.25 * SR); cs = np.concatenate([[0.0], np.cumsum(ve)])
+lo = np.clip(np.arange(n) - k_ // 2, 0, n); hi = np.clip(np.arange(n) + k_ // 2, 0, n); vel = (cs[hi] - cs[lo]) / np.maximum(1, hi - lo)
+duck = 10 ** (-6 * np.clip(vel / (np.percentile(vel, 90) + 1e-9), 0, 1) / 20)          # up to -6 dB while the VO speaks
+L += (SL * duck).astype(np.float32); R += (SRR * duck).astype(np.float32)
 # ---------------------------------------------------------------- music bed: slow minor pads (Dm - Bb - F - A) + soft pulse
 T = np.arange(n) / SR; mus = np.zeros(n)
 note = lambda m: 440 * 2 ** ((m - 69) / 12)

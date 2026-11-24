@@ -10,6 +10,7 @@ HERE = os.path.dirname(os.path.abspath(__file__)); sys.path.insert(0, HERE)
 import demo60 as d6
 from demo60 import *                       # core, storyproof, assets, U/us/kw, man2d/king_fig
 from battle2d import *
+from battle_scenes import *
 from PIL import Image
 D120 = os.path.dirname(os.path.abspath(__file__))
 
@@ -63,22 +64,25 @@ def march3d(c, t):
     M = map3d(c, lambda cc: d6.parch(cc, t), 0.5 * seg(t, us(u_isme), us(u_isme) + 1.2), rot=4 * seg(t, us(u_isme), us(u_haraa)))
 
 # ---------------------------------------------------------------- cartoon battles (photoreal blurred background)
-NAV = Battle(dict(fac="arab", cav=7, inf=8), dict(fac="chalukya", inf=12, arch=6, eleph=1, king=True), "right", t0=us(u_haraa) - 1.8, dur=6.3, t_clash=1.7, t_rout=kw(u_haraa, "haraaya") - (us(u_haraa) - 1.8) - 0.4, volley="R", seed=5)
-HAK = Battle(dict(fac="arab", inf=6, cav=3), dict(fac="chalukya", inf=8, cav=3), "right", t0=us(u_hakam) - 0.2, dur=3.0, t_clash=0.9, t_rout=kw(u_hakam, "maara") - us(u_hakam) + 0.1, seed=11)
-BAP = Battle(dict(fac="arab", cav=6), dict(fac="rajput", cav=7, banner=True), "right", t0=us(u_mewar) - 0.1, dur=4.0, t_clash=0.7, t_rout=1.0, clash_x=DW * 0.62, seed=13)
-CAV = Battle(dict(fac="pratihara", cav=14, inf=3), dict(fac="pratihara", inf=0), "left", t0=us(u_851) - 0.5, dur=8.0, t_clash=8.5, t_rout=99, clash_x=DW * 1.15, seed=17, linear=True)
-COL = Battle(dict(fac="syrian", inf=16, cav=3), dict(fac="syrian", inf=0), "left", t0=us(u_3000) - 1.0, dur=4.0, t_clash=4.5, t_rout=99, clash_x=DW * 1.05, seed=19, linear=True)
-VIG = {   # key: (start_unit, end_time, battle, bg, title, date)
-    "thirst": (u_724, us(u_730) - 0.1, Battle(dict(fac="arab", inf=10, cav=2), dict(fac="turk", cav=8, arch=5), "right", t0=us(u_724) + 1.1, dur=4.4, t_clash=1.1, t_rout=2.8, volley="R", seed=21), BG_DESERT, "Day of Thirst", "724 · Central Asia"),
-    "khazar": (u_730, us(u_731) - 0.1, Battle(dict(fac="arab", inf=9, cav=3), dict(fac="khazar", cav=9, arch=4), "right", t0=us(u_730) + 1.0, dur=3.4, t_clash=0.9, t_rout=2.1, volley="R", seed=23), BG_COLD, "Khazar", "730 · Caucasus"),
-    "defile": (u_731, us(u_732) - 0.1, Battle(dict(fac="arab", inf=10, cav=3), dict(fac="turk", cav=7, inf=4, arch=4), None, t0=us(u_731) + 1.0, dur=3.3, t_clash=0.9, t_rout=2.1, volley="R", seed=25), BG_GREY, "Battle of the Defile", "731 · Samarkand"),
-    "tours": (u_732, us(u_739b) - 0.1, Battle(dict(fac="arab", cav=9, inf=3), dict(fac="frank", inf=14), "right", t0=us(u_732) + 1.0, dur=4.1, t_clash=1.0, t_rout=2.7, seed=27), BG_GREEN, "Tours", "732 · France"),
-    "akroinon": (u_739b, us(u_740b) - 0.1, Battle(dict(fac="arab", inf=9, cav=3), dict(fac="byzantine", inf=10, cav=3), "right", t0=us(u_739b) + 1.0, dur=3.1, t_clash=0.9, t_rout=2.0, seed=29), BG_GOLD, "Akroinon", "739 · Byzantine"),
-    "berber": (u_740b, us(u_wo3k) - 0.1, Battle(dict(fac="syrian", inf=10, cav=4), dict(fac="berber", inf=12, cav=3), "right", t0=us(u_740b) + 1.0, dur=5.6, t_clash=1.1, t_rout=3.6, seed=31), BG_RED, "Berber baghaawat", "740 · North Africa"),
+NAV = NavsariElephants(us(u_haraa) - 1.8, 6.3, kw(u_haraa, "haraaya") - 0.4)
+HAK = Duel(us(u_hakam) - 0.2, 3.0, kw(u_hakam, "maara") - 0.15, "arab_gen", "chalukya", "right",
+           bg_battle=Battle(dict(fac="arab", inf=6), dict(fac="chalukya", inf=6), "right", t0=us(u_hakam) - 0.2, dur=3.0, t_clash=0.8, t_rout=9, seed=11, base=80),
+           names=("Al-Hakam", "Chalukya senapati"))
+SIE = Siege(us(u_chittor) - 0.2, 4.5, kw(u_chittor, "naakaam"), "arab", "rajput")
+BAP = Chase(us(u_mewar) - 0.1, 4.0, "arab", "rajput", "Bappa Rawal (parampara)")
+CAV = Parade(us(u_851) - 0.5, 8.0, "pratihara")
+COL = Column(us(u_3000) - 1.0, 4.0, "syrian")
+VIG = {   # key: (start_unit, end_time, scene, bg, title, date) - every war has its own choreography and period armies
+    "thirst": (u_724, us(u_730) - 0.1, Encircled(us(u_724) + 1.1, 4.4, "arab", "turk"), BG_DESERT, "Day of Thirst", "724 · Central Asia"),
+    "khazar": (u_730, us(u_731) - 0.1, CampSweep(us(u_730) + 1.0, 3.4, "arab", "khazar"), BG_COLD, "Khazar", "730 · Ardabil"),
+    "defile": (u_731, us(u_732) - 0.1, Ambush(us(u_731) + 1.0, 3.3, "arab", "turk"), BG_GREY, "Battle of the Defile", "731 · Samarkand"),
+    "tours": (u_732, us(u_739b) - 0.1, ShieldWall(us(u_732) + 1.0, 4.1, "frank", "frank_lead", "arab", leader_name="Charles Martel"), BG_GREEN, "Tours", "732 · France"),
+    "akroinon": (u_739b, us(u_740b) - 0.1, Wedge(us(u_739b) + 1.0, 3.1, "byzantine", "arab", leader_name="Leo III"), BG_GOLD, "Akroinon", "739-740 · Byzantine"),
+    "berber": (u_740b, us(u_wo3k) - 0.1, DuneAmbush(us(u_740b) + 1.0, 5.6, "berber", "syrian", t_pop_abs=us(u_berb) + 0.6), BG_RED, "Berber baghaawat", "740 · North Africa"),
 }
 
 def king_label(c, t, B, k):
-    xy = B.king_xy(t)
+    B = getattr(B, "B", B); xy = B.king_xy(t)
     if xy and k > 0:
         z, dx, dy = B.cam(t); x = B.cx + (xy[0] - B.cx) * z + dx; y = B.g[1] + (xy[1] - B.g[1]) * z + dy
         pill(c, "Avanijanashraya Pulakeshin", x - 330, y - 470 * z, 30, "#14213D", "#FFFFFF", int(255 * k), fpath=SERIF_TEXT)
@@ -99,45 +103,15 @@ def hakam_battle(c, t):
     timeline_ribbon(c, [739, 740, 741], 1.0, y=60, spacing=180, a=200); d6.ai_tag(c)
 
 def siege(c, t):
-    t0 = us(u_chittor) - 0.2; lt = t - t0; fail = kw(u_chittor, "naakaam")
-    battle_bg(c, BG_GOLD, t, t0, 4.5, push=(1.04, 1.1))
-    WX, WT = 1180, 420                                                     # cartoon fort wall (foreground right)
-    c.drawRect(skia.Rect(WX, WT, DW + 20, 1070), paint("#B9925E"))
-    for r in range(9):
-        for q in range(8):
-            off = 40 if r % 2 else 0; x0 = WX + q * 100 - off; y0 = WT + r * 72
-            c.drawRect(skia.Rect(x0 + 3, y0 + 3, x0 + 97, y0 + 69), paint("#C9A46E")); c.drawRect(skia.Rect(x0 + 3, y0 + 3, x0 + 97, y0 + 69), paint("#7A5A33", 255, stroke=3))
-    for q in range(8): c.drawRect(skia.Rect(WX + q * 100, WT - 60, WX + q * 100 + 60, WT), paint("#B9925E"))
-    c.drawRect(skia.Rect(WX - 8, WT, WX + 8, 1070), paint("#6B4A26"))
-    for i in range(4):                                                     # Mori defenders on the wall
-        x = WX + 60 + i * 150; soldier(c, x, WT, 92, t, "rajput", "attack" if lt > 0.8 else "idle", t * 1.2 + i * 0.3, -1, banner=(i == 0))
-        st = t0 + 1.0 + i * 0.5
-        for j in range(3):
-            kf = (t - st - j * 1.1) / 0.8
-            if 0 < kf < 1:
-                sx, sy = x - 40, WT - 160; ex, ey = WX - 120 - i * 60, 900; px = lerp(sx, ex, kf); py = lerp(sy, ey, kf) - 160 * 4 * kf * (1 - kf)
-                c.drawCircle(px, py, 18, paint("#6E6259")); c.drawCircle(px - 5, py - 5, 6, paint("#9A8F86"))
-    for i in range(3):                                                     # ladders + climbers, they fall back at "naakaam"
-        bx = WX - 260 + i * 70; fk = ease_in(seg(t, fail - 0.2 + i * 0.12, fail + 0.5 + i * 0.12)); ang = -math.degrees(math.atan2(WT + 40 - 1040, WX - bx)) - 90
-        c.save(); c.translate(bx, 1040); c.rotate(-(90 + ang) * 0 + fk * -55)
-        L = math.hypot(WX - bx, 1040 - WT - 40); dxn = (WX - bx) / L; dyn = (WT + 40 - 1040) / L
-        up = ease_out(seg(lt, 0.4 + i * 0.2, 1.0 + i * 0.2))
-        for side in (-14, 14): c.drawLine(side * -dyn, side * dxn, (WX - bx) * up + side * -dyn, (WT + 40 - 1040) * up + side * dxn, paint("#7A5230", 255, stroke=7))
-        for r in range(1, 12):
-            f = r / 12 * up; c.drawLine(-14 * -dyn + (WX - bx) * f, -14 * dxn + (WT + 40 - 1040) * f, 14 * -dyn + (WX - bx) * f, 14 * dxn + (WT + 40 - 1040) * f, paint("#7A5230", 255, stroke=5))
-        cf = clamp(seg(lt, 1.2 + i * 0.3, 3.4) * 0.8) * up
-        soldier(c, (WX - bx) * cf, (WT + 40 - 1040) * cf, 80, t, "arab", "attack", t * 2 + i, 1)
-        c.restore()
-    for i in range(6):                                                     # attackers at the base, flee after the failure
-        x = 300 + i * 120 - (520 * max(0, t - fail - 0.4) if t > fail + 0.4 else 0)
-        soldier(c, x, 980 + (i % 2) * 50, 100, t, "arab", "flee" if t > fail + 0.4 else "attack", t * 1.8 + i * 0.37, -1 if t > fail + 0.4 else 1, banner=(i == 2 and t < fail + 0.4))
+    t0 = SIE.t0; fail = SIE.tf
+    battle_bg(c, BG_GOLD, t, t0, 4.5, push=(1.04, 1.1)); SIE.draw(c, t)
     ttl(c, "Chittor", "740 CE · Mori raja", seg(t, t0 + 0.1, t0 + 1.0) * (1 - seg(t, t0 + 2.6, t0 + 3.0)))
     dx, dy = shake(t, fail + 0.05, 14); c.save(); c.translate(dx, dy)
     stamp_slam(c, "GHERAABANDI NAAKAAM", 640, 330, 62, seg(t, fail - 0.1, fail + 0.3), "#C1121F", -6); c.restore()
     d6.ai_tag(c)
 
 def bappa(c, t):
-    battle_bg(c, BG_GOLD, t, BAP.t0, 4.5); BAP.draw(c, t)
+    BAP.ground_scroll(c, BG_GOLD, t); BAP.draw(c, t)
     ttl(c, "Bappa Rawal", "Mewar ki parampara", seg(t, BAP.t0 + 0.2, BAP.t0 + 1.0) * (1 - seg(t, kw(u_mewar, "Bappa") + 0.1, kw(u_mewar, "Bappa") + 0.4)))
     bk = seg(t, kw(u_mewar, "Bappa") + 0.1, kw(u_mewar, "Bappa") + 0.9)
     if bk > 0:
@@ -164,13 +138,13 @@ def pratihara3d(c, t):
 def cavalry(c, t):
     a0 = us(u_851); pk = kw(u_851, "ghudsawaar") + 0.6
     if t < pk:
-        battle_bg(c, BG_GOLD, t, a0, 7); CAV.draw(c, t, camera=False)
+        battle_bg(c, BG_GOLD, t, a0, 7); CAV.draw(c, t)
         ttl(c, "Sulaiman ki gawahi", "851 CE · Arab vyapari", seg(t, a0 + 0.2, a0 + 1.2))
         d6.ai_tag(c)
     else:
         hl = d6.hl_box("pratihara_cavalry", DOC_CAV)
         if t < pk + 1.0:
-            battle_bg(c, BG_GOLD, t, a0, 7); CAV.draw(c, t, camera=False)
+            battle_bg(c, BG_GOLD, t, a0, 7); CAV.draw(c, t)
             c.drawRect(skia.Rect(0, 0, DW, DH), paint("#000000", int(120 * seg(t, pk, pk + 0.4))))
             doc_fly(c, DOC_CAV, seg(t, pk, pk + 0.9), (DW / 2 - 720, DH / 2 - 240, DW / 2 + 720, DH / 2 + 240))
         else:
@@ -179,7 +153,7 @@ def cavalry(c, t):
 
 def column(c, t):
     a0 = us(u_3000) - 0.2; ka = 1 - seg(t, us(u_kahan) + 0.1, us(u_kahan) + 0.6)
-    battle_bg(c, BG_GOLD, t, a0, 4); COL.draw(c, t, camera=False, a=int(255 * ka))
+    battle_bg(c, BG_GOLD, t, a0, 4); COL.draw(c, t, a=int(255 * ka))
     serif_title(c, "3,000 sainik", DW / 2, 190, 110, seg(t, a0 + 0.2, a0 + 1.0), date="Syria se Sindh ki taraf", align="c")
     qk = seg(t, us(u_kahan), us(u_kahan) + 0.4)
     if qk > 0: text(c, "?", DW / 2, 760, 420 * back(qk), "#FFD23F", SERIF_DISPLAY, "c", 255, shadow=True)
@@ -279,22 +253,18 @@ def frame(c, t):
 
 def sfx_events():
     E = [e for e in d6.sfx_events() if e[1] < us(u_bigsam) - 0.2 and not (us(u_haraa) - 2 < e[1] < us(u_740)) and not (us(u_hakam) - 0.5 < e[1] < us(u_halaanki))]
-    E += [("riser", NAV.t0 - 1.2, -14), ("boom", NAV.t0 - 0.4, -8), ("battle", NAV.t0 + 0.2, -7), ("whoosh", NAV.t0 + NAV.tc * 0.35, -10), ("whoosh", NAV.t0 + NAV.tc * 0.35 + 0.7, -12),
-          ("drum_big", NAV.t0 + NAV.tc, -5), ("stamp", kw(u_haraa, "haraaya"), -3), ("firework", kw(u_haraa, "haraaya") + 0.3, -10), ("firework", kw(u_haraa, "haraaya") + 0.7, -12),
-          ("boom", us(u_740) - 0.5, -10), ("tick", kw(u_740, "740") - 0.2, -8), ("pin", us(u_740), -8),
-          ("battle", HAK.t0, -10), ("drum_big", HAK.t0 + HAK.tc, -8), ("stamp", kw(u_hakam, "maara"), -4),
-          ("battle", us(u_chittor) - 0.2, -11), ("drum", us(u_chittor) + 0.8, -10), ("drum", us(u_chittor) + 1.3, -10), ("stamp", kw(u_chittor, "naakaam"), -4), ("boom", kw(u_chittor, "naakaam") + 0.1, -12),
-          ("battle", BAP.t0, -11), ("whoosh", BAP.t0 + 0.3, -9), ("paper", kw(u_mewar, "Bappa") + 0.1, -6), ("pop", us(u_halaanki), -10)]
+    E += [("riser", NAV.t0 - 1.2, -14), ("boom", NAV.t0 - 0.4, -8), ("stamp", kw(u_haraa, "haraaya"), -3), ("firework", kw(u_haraa, "haraaya") + 0.3, -10),
+          ("boom", us(u_740) - 0.5, -10), ("tick", kw(u_740, "740") - 0.2, -8), ("pin", us(u_740), -8), ("stamp", kw(u_hakam, "maara") + 0.1, -5),
+          ("stamp", kw(u_chittor, "naakaam"), -4), ("paper", kw(u_mewar, "Bappa") + 0.1, -6), ("pop", us(u_halaanki), -10)]
+    for sc in (NAV, HAK, SIE, BAP, CAV, COL): E += sc.sfx()
     E += [("riser", us(u_bigsam) - 1.0, -16), ("drum_big", us(u_bigsam) + 0.6, -10)] + [("pop", us(u_bigsam) + 0.6 + i * 0.32, -12) for i in range(10)]
     pk = kw(u_851, "ghudsawaar") + 0.6
-    E += [("battle", us(u_851), -12)] + [("drum", us(u_851) + i * 0.38, -14) for i in range(14)] + [("paper", pk, -6), ("marker", pk + 1.5, -10)]
-    E += [("drum", us(u_3000) + i * 0.4, -12) for i in range(6)] + [("pop", us(u_kahan), -6), ("whoosh", us(u_nazar), -8), ("riser", us(u_nazar) + 0.4, -14)]
+    E += [("paper", pk, -6), ("marker", pk + 1.5, -10), ("pop", us(u_kahan), -6), ("whoosh", us(u_nazar), -8), ("riser", us(u_nazar) + 0.4, -14)]
     E += [("firework", us(u_jal) + 0.3 + i * 0.42, -16) for i in range(6)] + [("boom", us(u_jal), -10)]
     for key in VIG:
         u0, _, B, *_ = VIG[key]; a0 = us(u0) - 0.1
-        E += [("whoosh", a0, -9), ("pin", a0 + 0.3, -8), ("tick", a0, -10), ("boom", a0 + 0.85, -10), ("battle", a0 + 1.1, -8), ("drum_big", B.t0 + B.tc, -7)]
-        if B.volley: E += [("whoosh", B.t0 + B.tc * 0.35, -11)]
-    E += [("stamp", kw(u_27k, "saaf"), -4), ("pin", us(u_wo3k), -8)] + [("drum", us(u_wo3k) + 0.6 + i * 0.45, -13) for i in range(5)]
+        E += [("whoosh", a0, -9), ("pin", a0 + 0.3, -8), ("tick", a0, -10), ("boom", a0 + 0.85, -10)] + B.sfx()
+    E += [("stamp", kw(u_27k, "saaf"), -4), ("pin", us(u_wo3k), -8), ("march_drum", us(u_wo3k) + 0.6, -10)]
     E += [("swish", kw(u_iraq, "Iraq"), -8), ("stamp", kw(u_iraq, "Iraq") + 0.3, -4), ("boom", us(u_ghar), -12), ("pop", us(u_ghar) + 0.4, -10), ("chime", VO_END2 - T0 + 0.1, -12)]
     return sorted(E, key=lambda e: e[1])
 
