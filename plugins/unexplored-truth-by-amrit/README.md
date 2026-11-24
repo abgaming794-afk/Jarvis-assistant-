@@ -1,4 +1,4 @@
-# Unexplored Truth by Amrit (v1.0.0)
+# Unexplored Truth by Amrit (v1.1.0)
 
 Studio plugin for the AMRIT BORI YouTube channel (@itsamritbori): long-form Hinglish history and geopolitics
 documentaries and YouTube Shorts, from topic to unlisted upload. Successor of `amrit-borii-studio` (0.8.0), which
@@ -9,6 +9,7 @@ can stay installed side by side.
 - `/unexplored-truth-by-amrit:long [topic]` - a new long-form documentary (16:9, 4K), stage by stage.
 - `/unexplored-truth-by-amrit:short [topic]` - a new Short (9:16, 4K vertical), topic to YouTube upload.
 - `/unexplored-truth-by-amrit:thumbnail [title]` - premium photoreal thumbnail (Nitish Rajput / Dhruv Rathee style).
+- `/unexplored-truth-by-amrit:story-style [event/topic]` - a scene in the story-then-proof style (map -> story -> real document).
 - `/unexplored-truth-by-amrit:ai-images [project]` - ChatGPT prompts for everything with no real image, then place
   the images with the "AI chitran" label.
 - Plain words work too: "naya short banao", "long video banao", "thumbnail banao", "prompt do".
@@ -20,6 +21,8 @@ can stay installed side by side.
 - `shorts-pipeline`: the Short pipeline (vertical engine, flag maps, ruler cards, captions, mix, render, thumbnail, upload).
 - `ai-image-workflow` (new): real image -> ChatGPT image -> Wikipedia card -> silhouette, prompt writing in the
   "purani painting" or photoreal style, labels, respect and no-fake-artefact rules, placing the images.
+- `story-proof-style` (new in 1.1.0): "pehle animated story, phir document mein saboot" - the editing grammar from the
+  reference the user sent, with code in `engine/visuals/storyproof.py`.
 - `documentary-effects`: the channel look - map zooms, document highlights, timeline, arrows, chapter cards, stamps.
 - `stickman-host`: the 3D toon stickman host in the studio with the AMRIT BORI logo, lip sync, gestures.
 - `thumbnail-maker`: photoreal news-documentary thumbnails (new default) plus the older map / real-face styles.
@@ -30,6 +33,21 @@ can stay installed side by side.
 alignment, Wikipedia capture, three.js host, logo, subscribe animation), the Shorts engines, and since 1.0.0 the
 complete Khilafat long-video example (`engine/examples/khilafat-india/`) and the photoreal thumbnail tools
 (`engine/thumbnail/cutout.py`, `thumb_photoreal.py`). Start with `engine/README.md`.
+
+## What changed in 1.1.0 (style of the reference "How Did America Become Independent")
+
+- New skill `story-proof-style` + `references/reference-breakdown.md` (second-by-second analysis of the reference).
+- New module `engine/visuals/storyproof.py`: Blue Marble satellite basemap (Mercator crop), parchment map with paper
+  grain, hard style wipe, region glow, flag fill sweep, flag peel with rolled edge, world alliance colouring,
+  timeline ribbon with scroll blur, googly eyes / mouth / glove hands for map mascots, prop drop and icon pop,
+  stamp slam + camera shake, pin drop with label + date, neon badges, white and hand-drawn arrows, ink iris,
+  whip blur, serif title and quote reveals, real-document fly-in (3D tilt, motion ghosts) and doc pan with depth
+  of field + marker highlights, parchment list (strike / stamp / circle), fireworks, marching units, flag markers,
+  story scene with Ken Burns + parallax, crowd silhouettes.
+- Fonts (OFL): Abril Fatface (serif titles), Playfair Display (serif labels).
+- Demo: `engine/examples/storyproof-demo/demo.py` (16 s, Khilafat topic, ends on the real Wikipedia line).
+- `core.py` falls back to the bundled India boundary when the project has none.
+- Rule: the channel keeps its own 2D man; never copy another channel's characters, footage or music.
 
 ## What changed in 1.0.0 (from "Arab Khilafat India Kyun Nahi Jeet Paayi?", Nov 2026)
 

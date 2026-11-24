@@ -123,3 +123,10 @@ Worked example with all code: `${CLAUDE_PLUGIN_ROOT}/engine/examples/khilafat-in
 - **Thumbnail**: default to the photoreal style (`thumbnail-maker`, "Photoreal style").
 - **Progress messages**: short Hinglish, always "% done, ~time left"; after each background batch finishes, start the
   next one immediately and report.
+
+## New in 1.1.0 - story-then-proof style (default editing style)
+
+Use the `story-proof-style` skill for every event: locate (satellite + glow + pin) -> owner (flag fill) -> when
+(timeline) -> explain (parchment map, mascots, props, stamps) -> story scene (photoreal background + the channel's own
+2D man) -> PROOF (real document flies in, camera pans, marker highlight). Code: `engine/visuals/storyproof.py`,
+demo `engine/examples/storyproof-demo/`. Never copy another channel's characters; keep the channel's 2D man.

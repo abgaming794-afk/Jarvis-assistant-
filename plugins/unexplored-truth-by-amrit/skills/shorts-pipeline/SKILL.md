@@ -156,3 +156,10 @@ Helpers: `engine/voice/make_placeholder.py` (placeholder timing before the VO ar
 
 1080p preview (render) -> 4K master + upload pack (attach) -> thumbnail -> upload. Report the YouTube link.
 Files live in an ephemeral container: always send the 4K master, thumbnail and upload pack as attachments.
+
+## New in 1.1.0 - story-then-proof style (default editing style)
+
+Use the `story-proof-style` skill for every event: locate (satellite + glow + pin) -> owner (flag fill) -> when
+(timeline) -> explain (parchment map, mascots, props, stamps) -> story scene (photoreal background + the channel's own
+2D man) -> PROOF (real document flies in, camera pans, marker highlight). Code: `engine/visuals/storyproof.py`,
+demo `engine/examples/storyproof-demo/`. Never copy another channel's characters; keep the channel's 2D man.

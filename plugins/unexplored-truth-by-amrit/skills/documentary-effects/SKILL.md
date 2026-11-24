@@ -55,3 +55,7 @@ Apply a consistent set of motion and effect styles to scenes of a long-form geop
 - Thin soft-blue country borders; thin highlight outlines.
 - Hook text letter by letter, headlines word by word; rivers drawn with a dark casing; real manuscript/document cards.
   Details and helper names: `documentary-pipeline` skill, section "New in 0.6.0 / 0.7.0".
+
+> 1.1.0: the full story-then-proof kit (satellite/parchment maps, flag fill/peel, timeline ribbon, map mascots,
+> stamps, pins, neon badges, iris, doc fly-in and doc pan with highlights) lives in `engine/visuals/storyproof.py`;
+> see the `story-proof-style` skill.

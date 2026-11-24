@@ -16,6 +16,7 @@ SC = W4 / DW
 
 GEO = MAPDATA + "countries10m.geojson"
 OFFICIAL = PROJ + "visuals/engine/india_official.geojson.json"
+if not _os.path.exists(OFFICIAL): OFFICIAL = _os.path.join(_os.path.dirname(_os.path.abspath(__file__)), "india_official.geojson.json")
 FT_BLACK = "/usr/share/fonts/opentype/inter/InterDisplay-Black.otf"
 FT_SEMI = "/usr/share/fonts/opentype/inter/Inter-SemiBold.otf"
 
