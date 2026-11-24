@@ -3,3 +3,4 @@ render/
 *.wav
 audio/sfx/
 __pycache__/
+*.mp3

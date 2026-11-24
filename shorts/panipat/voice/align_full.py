@@ -17,14 +17,14 @@ for para in raw:
     parts = re.split(r'(?<=[\.\?\!:…])\s+(?=[A-Z0-9"“])', para)
     units += [p.strip() for p in parts if p.strip()]
 
-NUM = {"32": "battees", "87": "sattaasi", "2300": "teis sau", "34": "chauntees", "50": "pachaas", "1690": "solah sau nabbe", "1937": "unnees sau saintees", "1961": "unnees sau iksath", "2002": "two thousand two", "2021": "two thousand twenty one", "2022": "two thousand twenty two",
+NUM = {"1526": "pandrah sau chhabbees", "12,000": "baarah hazaar", "12": "baarah", "15": "pandrah", "1,000": "ek hazaar", "30": "tees", "1556": "pandrah sau chhappan", "14": "chaudah", "1761": "satrah sau iksath", "95": "pachaanave", "1192": "gyarah sau baanave", "1739": "satrah sau untaalees", "32": "battees", "87": "sattaasi", "2300": "teis sau", "34": "chauntees", "50": "pachaas", "1690": "solah sau nabbe", "1937": "unnees sau saintees", "1961": "unnees sau iksath", "2002": "two thousand two", "2021": "two thousand twenty one", "2022": "two thousand twenty two",
        "2023": "two thousand twenty three", "2024": "two thousand twenty four", "2025": "two thousand twenty five",
        "2026": "two thousand twenty six", "2026-27": "two thousand twenty six twenty seven", "1.75": "one point seven five",
        "148": "one forty eight", "620": "six sau bees", "170": "ek sau sattar", "40": "chaalees", "60": "saath", "70": "sattar",
        "90": "nabbe", "65": "painsath", "21": "ikkees", "18": "atthaarah", "28": "atthaais", "3": "teen", "4": "chaar", "20": "bees",
        "25": "pachchees", "1": "one", "2": "two", "5": "paanch", "S-400": "S four hundred", "7": "saat", "2000": "do hazaar", "1400": "chaudah sau", "1515": "pandrah sau pandrah"}
 def spoken(u):
-    w = re.findall(r"[A-Za-z0-9\.\-]+", u)
+    w = re.findall(r"[A-Za-z0-9\.\-,]+", u)
     out = []
     for x in w:
         x2 = x.strip(".-")

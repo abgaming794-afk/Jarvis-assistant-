@@ -392,7 +392,7 @@ SC = {
            "Panipat ka pehla yudh", "21 April 1526"),
     "p2": (Sc1556(kw(u_hemu, "Hawai") - 1.4, ue(u_bikhar) - kw(u_hemu, "Hawai") + 1.4, kw(u_teer, "teer"), kw(u_bikhar, "bikhar")), kw(u_hemu, "haathi"), ue(u_bikhar) - 0.2,
            "Panipat ka doosra yudh", "5 November 1556"),
-    "p3": (Sc1761(us(u_badi) - 1.2, ue(u_maut) - us(u_badi) + 1.2, kw(u_maut, "maut") - 0.6), us(u_badi), ue(u_maut) - 0.1,
+    "p3": (Sc1761(kw(u_badi, "sabse") - 1.2, ue(u_maut) - kw(u_badi, "sabse") + 1.2, kw(u_maut, "maut") - 0.6), kw(u_badi, "sabse"), ue(u_maut) - 0.1,
            "Panipat ka teesra yudh", "14 January 1761"),
 }
 def active_scene(t):
@@ -406,6 +406,9 @@ def scene_draw(c, key, t):
     sc.draw(c, t)
     headline(c, title, seg(t, a - 0.5, a + 0.6), date, y=230, size=72)
     if key == "p1":
+        ck = 1 - seg(t, kw(u_bhadak, "bhadak") - 0.4, kw(u_bhadak, "bhadak") - 0.1)
+        if ck > 0:
+            chip(c, "Babur: 12,000 + topein", 300, 440, ck, "#2F6B3A", "#FFFFFF", 34); chip(c, "Lodi: 50-70k + 1,000 haathi", 760, 520, ck, "#1E3A8A", "#FFFFFF", 34)
         sx, sy = shake(t, kw(u_bhadak, "dhamaakon"), 18); c.save(); c.translate(sx, sy)
         stamp_slam(c, "HAATHI BHADAK GAYE", DW / 2, 520, 62, seg(t, kw(u_bhadak, "bhadak"), kw(u_bhadak, "bhadak") + 0.35) * (1 - seg(t, kw(u_mughal, "Lodi") - 0.2, kw(u_mughal, "Lodi"))), "#C1121F", -6)
         stamp_slam(c, "LODI MAARA GAYA", DW / 2, 520, 66, seg(t, kw(u_mughal, "maara"), kw(u_mughal, "maara") + 0.35), "#C1121F", -6); c.restore()
@@ -465,10 +468,10 @@ DOCS_ON = [
          credit="Print, c. 1910s · public domain"),
     dict(img=img(DOCS + "akbarnama_hemu.jpg"), t_in=kw(u_bikhar, "bikhar") + 0.35, t_out=us(u_1761) + 0.25, focus=(0.5, 0.4), zoom=1.3, rest_w=0.6,
          boxes=[(0.25, 0.22, 0.75, 0.55, kw(u_bikhar, "bikhar") + 0.8)], cap="Akbarnama: Hemu ki haar", credit="Kankar, Akbarnama c. 1590s · public domain"),
-    dict(img=img(DOCS + "abdali.jpg"), t_in=kw(u_abdali, "Ahmad") - 0.1, t_out=us(u_badi) - POP_FILL - POP_RISE - 0.35, focus=(0.5, 0.35), zoom=1.2, rest_w=0.56,
+    dict(img=img(DOCS + "abdali.jpg"), t_in=kw(u_abdali, "Ahmad") - 0.1, t_out=kw(u_badi, "sabse") - POP_FILL - POP_RISE - 0.35, focus=(0.5, 0.35), zoom=1.2, rest_w=0.56,
          cap="Ahmad Shah Abdali (Durrani)", credit="Mughal miniature c. 1757, BnF Paris · public domain"),
-    dict(img=img(DOCS + "faizabad_1761.jpg"), t_in=kw(u_badi, "sabse") + 0.2, t_out=us(u_maut) - 0.1, focus=(0.42, 0.5), zoom=1.4, rest_w=0.92,
-         boxes=[(0.25, 0.15, 0.62, 0.85, kw(u_badi, "ladaai") + 0.1)], cap="Panipat 1761: topon ki do qataarein", credit="Faizabad-style painting c. 1770 · public domain"),
+    dict(img=img(DOCS + "faizabad_1761.jpg"), t_in=kw(u_badi, "ladaaiyon") + 0.1, t_out=us(u_maut) - 0.05, focus=(0.42, 0.5), zoom=1.4, rest_w=0.92,
+         boxes=[(0.25, 0.15, 0.62, 0.85, kw(u_badi, "ladaaiyon") + 0.6)], cap="Panipat 1761: topon ki do qataarein", credit="Faizabad-style painting c. 1770 · public domain"),
 ]
 
 # ================================================================== what is on the map at time t
@@ -524,7 +527,7 @@ def map_layer(c, cam, t):
             for j in range(1, 6):
                 f = j / 6
                 if f < dk: x_, y_ = lerp(a_[0], b_[0], f), lerp(a_[1], b_[1], f); c.drawCircle(x_, y_, 6, paint("#FFFFFF"))
-            mx, my = (a_[0] + b_[0]) / 2, (a_[1] + b_[1]) / 2; chip(c, "95 km", mx + 120, my, dk, "#C1121F", "#FFFFFF", 44)
+            mx, my = (a_[0] + b_[0]) / 2, (a_[1] + b_[1]) / 2; chip(c, "95 km", mx + 190, my - 70, dk, "#C1121F", "#FFFFFF", 44)
     # ---- pins
     pk = 1 - seg(t, us(u_poll) - 0.2, us(u_poll) + 0.3)
     pin(c, cam, *PNP, "Panipat", seg(t, 1.0, 1.6) * pk * (1 - seg(t, kw(u_kyun, "Panipat") - 0.3, kw(u_kyun, "Panipat")) * (1 - seg(t, us(u_1526) - 0.2, us(u_1526) + 0.3))), t, sub="Haryana", col="#E63946")
@@ -640,12 +643,12 @@ def overlays(c, t, cam):
     if b_k > 0:
         counter(c, 12000, lambda v: f"{int(v):,}", 300, 470, b_k, 86, "#9BE59B", "sainik")
         chip(c, "15-20 topein", 780, 445, seg(t, kw(u_babur, "topein") - 0.2, kw(u_babur, "topein") + 0.3) * (1 - seg(t, us(u_lodi) - 0.3, us(u_lodi))), "#2F6B3A", "#FFFFFF", 40)
-    headline(c, "Ibrahim Lodi", seg(t, kw(u_lodi, "Lodi") - 0.3, kw(u_lodi, "Lodi") + 0.7) * (1 - seg(t, SC["p1"][1] - 1.2, SC["p1"][1] - 0.9)), "Delhi Sultanat")
-    l_k = seg(t, us(u_lodi2), us(u_lodi2) + 0.9) * (1 - seg(t, SC["p1"][1] - 1.2, SC["p1"][1] - 0.9))
+    headline(c, "Ibrahim Lodi", seg(t, kw(u_lodi, "Lodi") - 0.3, kw(u_lodi, "Lodi") + 0.7) * (1 - seg(t, SC["p1"][1] - POP_FILL - 0.3, SC["p1"][1] - POP_FILL)), "Delhi Sultanat")
+    l_k = seg(t, us(u_lodi2), us(u_lodi2) + 0.9) * (1 - seg(t, SC["p1"][1] - POP_FILL - 0.3, SC["p1"][1] - POP_FILL))
     if l_k > 0:
-        chip(c, "50-70 hazaar", 300, 450, l_k, "#1E3A8A", "#FFFFFF", 48); text(c, "sainik (andaaze alag, behes)", 300, 525, 24, "#FFFFFF", FT_SEMI, "c", int(255 * clamp(l_k * 2)), shadow=True)
-        k2 = seg(t, kw(u_lodi2, "1,000") - 0.2, kw(u_lodi2, "1,000") + 0.5) * (1 - seg(t, SC["p1"][1] - 1.2, SC["p1"][1] - 0.9))
-        counter(c, 1000, lambda v: f"{int(v):,}", 790, 470, k2, 72, "#9CC3FF", "haathi")
+        chip(c, "50-70 hazaar", 300, 1010, l_k, "#1E3A8A", "#FFFFFF", 48); text(c, "sainik (andaaze alag, behes)", 300, 1085, 24, "#FFFFFF", FT_SEMI, "c", int(255 * clamp(l_k * 2)), shadow=True)
+        k2 = seg(t, kw(u_lodi2, "1,000") - 0.2, kw(u_lodi2, "1,000") + 0.5) * (1 - seg(t, SC["p1"][1] - POP_FILL - 0.3, SC["p1"][1] - POP_FILL))
+        counter(c, 1000, lambda v: f"{int(v):,}", 790, 1040, k2, 72, "#9CC3FF", "haathi")
     # ---- after 1526
     headline(c, "Mughal raaj shuru", seg(t, SC["p1"][2] + POP_OUT, SC["p1"][2] + POP_OUT + 0.6) * (1 - seg(t, us(u_1556) - 0.3, us(u_1556))), "1526 ke baad (naksha c. 1530, andaazan)")
     headline(c, "30 saal baad", seg(t, us(u_1556), us(u_1556) + 0.6) * (1 - seg(t, kw(u_hemu, "Hemu") - 0.3, kw(u_hemu, "Hemu"))), "1556")
