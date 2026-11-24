@@ -1,0 +1,95 @@
+{{short description|1192 battle between Ghurids and Rajput confederation}}
+{{protection padlock|reason=Persistent [[WP:Disruptive editing|disruptive editing]] Lots of socking and WP:DE.; requested at [[WP:RfPP]]|small=yes}}
+{{Use dmy dates|date=January 2016}}
+{{Use Indian English|date=January 2016}}
+{{Infobox military conflict
+| conflict          = Second Battle of Tarain
+| part_of           = [[Indian campaigns of Muhammad of Ghor]]
+| image             = The last stand of Rajputs against Muhammadans.jpg
+| image_size        = 300px
+| caption           = ''The last stand of Rajputs'', painted by [[Allan Stewart (artist)|Allan Stewart]] for Hutchinson & co.
+| date              = 1192
+| location          = [[Taraori]], [[Haryana]]
+| coordinates       = {{coord|29.78|N|76.94|E|display=inline}}
+| pushpin_map       = South Asia
+| pushpin_relief    = 
+| pushpin_map_size  = 270px
+| pushpin_mark_size = 
+| pushpin_caption   = Location of the Second Battle of Tarain
+| pushpin_label     = Tarain
+| pushpin_mark      = Big battle symbol.svg
+| territory         = Muhammad Ghuri conquers much of northwestern India including Delhi
+| result            = Ghurid victory
+| combatant1        = [[Ghurid Empire]]
+| combatant2        = [[Rajput|Rajput Confederacy]]
+| commander1        = [[Mu'izz al-Din|Muhammad Ghuri]]<br/>[[Qutb al-Din Aibak|Qutubuddin Aibak]]<br>Malik Mahmud Lodhi<ref>{{harvnb|Yaqubi|2014|page=238}}: "The Afghans also formed a significant contingent in the army of Muhammad Ghori, himself an Afghan. About twelve thousand Afghans fought under their leader Malik Mahmud Lodhi on the side of Muhammad Ghori against Prithvi Raj Chauhan."</ref><br>[[Bahauddin Tughril]]<br>[[Husain ibn Kharmil|Husain Kharmil]]<br>[[Taj al-Din Yildiz]]<br>[[Nasir ad-Din Qabacha]]<br>[[Khalaj people|Muhammad bin Mahmud Khalji]]<br>Malak Shahu Lodhi<ref name="Yaqubi238">{{harvnb|Yaqubi|2014|page=238}}: "The Afghans also formed a significant contingent in the army of Muhammad Ghori, himself an Afghan. About twelve thousand Afghans fought under their leader Malik Mahmud Lodhi on the side of Muhammad Ghori against Prithvi Raj Chauhan. Malak Shahu, brother of Mahmud Lodhi, was also a leading figure in the court of Muhammad Ghori."</ref><br>Mukalba<br>Kharbak<ref>{{harvnb|Nizami|1992|page=162, 172}}: "Muizzuddin's army had four veteran war-lords of Ghazni-experienced, determined and desterous--Kharbak, Kharmil, Ilah, Mukalba. Each had under his command a huge army, Besides them there were--Tajuddin Yalduz, Qubacha and Aibek. The Sultan started from Ghazni in 587/1191, reached Tarain in 588/1191-92 and pitched his tent at the same place where he had suffered a serious defeat a year before. According to Ferishta, 150
+Rajput rais had come to the feld with Rai Pithora, determined to crush or be crushed :-Bakhtiyar did not belong to an obscure family. His uncle, Muhammad bin Mahmud, had fought against Prithvi Rai at the
+second battle of Tarain"</ref>
+| commander2        = [[Prithviraj Chauhan]]{{Executed}}<br/> Govind Rai{{KIA}}<br/>[[Samantasimha (Guhila)|Samantsingh]]{{KIA}}{{sfn|Hooja|2006|page=349}}<br>Badamsa Rawal<br>Bhola<br>Vijayraj{{KIA}}<ref>{{harvnb|Nizami|1992|p=164}}: "The details supplied by Isami about the actual disposition of the armies are more interesting. According to him Govìnd Rai was the mugaddam of the Rajput forces. He fought in advance of Pithoras army; Pithora fought in the centre. The left wing of Pithora's army was under Bhola, who was the wazir; the right wing was led by Badamsa Rawal"</ref><br/>Harapal Parmar{{KIA}}<br/>Rajpal Parmar{{KIA}}<br/>Rana Motishvara{{KIA}}<ref>{{harvnb|Somani|1981|page=62}}: "The Paramara Rajputs held Badlu, Phalodi etc. under them. Parmar Harpapal and Rajpal of Badlu gave away their lives in the battlefield of Tarain in 1192 A.D...Rana Motishvara and his son Vijayraj gave their lives in the second battle of Tarain"</ref>
+| strength1         = Numerically inferior<ref>{{harvnb|Roy|2014|page=23}}:"We can speculate that the Rajput Army was numerically superior to the Ghorid army"</ref><br>120,000 (according to [[Minhaj-i-Siraj|Minhaj]]){{sfn|Chandra|2006|p=25}}{{sfn|Roy|2014|pp=22-23}}
+| strength2         = Numerically superior<ref>{{harvnb|Roy|2014|p=23}}:"We can speculate that the Rajput Army was numerically superior to the Ghorid army"</ref><br>300,000 (likely exaggeration){{efn| considered a gross exaggeration by modern historians, this was probably the theoretical strength that could be engaged by all the Rajput polities in India rather than the forces actually deployed on the battlefield.{{sfn|Chandra|2006|pp=25-26}}}}<ref>{{harvnb|Roy|2014|page=23}}:"We can speculate that the Rajput Army was numerically superior to the Ghorid army"</ref>{{efn|According to the historically unreliable Prithviraj Raso, Prithviraja's army numbered only eighty three thousands for the final battle. Historian Kaushik Roy estimated that the Rajput army was numerically superior to the Ghurid army}}
+| casualties1       = Unknown
+| casualties2       = 100,000 according to [[Hasan Nizami]]<ref>{{harvnb|Sharma|1959|page=86}}: "Prithviraja was asleep, the Rajput soldiers were just moving out for their daily ablutions and other morning duties. Having thus taken by surprise, the Rajputs could not have escaped considerable losses, but they could still have drawn themselves into fighting order, if the well thought out strategy of Muhammad Ghori had not lured and drawn them out into an unsystematic and ill-advised pursuit. The Rajputs were completely routed, losing about 100,000 men according to Hasan Nizami.</ref>
+}}
+
+The '''Second Battle of Tarain''' or '''Second Battle of Tararoi'''<ref>{{Harvard citation no brackets|Mishra|1972|p=216}} So far as I am aware, it is only Sir [[Jadunath Sarkar]] who has brought forth and emphasised this point of the Hindus' fighting on empty stomachs in the morning with reference to the second battle of Taraori ([[Karnal district]]) fought between [[Prithviraj Chauhan|Prithviraja III Chauhan]] and [[Muhammad of Ghor|Shihabuddin Ghori]] in A. D. 1192.</ref> was fought in 1192 between the [[Ghurid dynasty|Ghurid forces]] of [[Muhammad of Ghor|Muhammad Ghuri]] and the [[Rajput|Rajput Confederacy]] of [[Prithviraj Chauhan]]. It took place near Tarain (modern [[Taraori]]), which is {{Convert|110|km|mi}}, north of [[Delhi]]. The battle ended in a decisive victory for the invading Ghurids and their successful penetration into the north Indian plain.
+
+The battle is regarded as a watershed event in Medieval India history as it led to the destruction of Rajput powers for a while and laid the foundation of Muslim rule in North India, which led to the establishment of [[Delhi Sultanate]].<ref>{{cite book |author1=Bose |first=Sugata |author1-link=Sugata Bose |url=https://books.google.com/books?id=6ihNtzxy5GEC&q=Rajput |title=Modern South Asia: History, Culture, Political Economy |author2=Jalal |first2=Ayesha |author2-link=Ayesha Jalal |date=2004 |publisher=Psychology Press |isbn=978-0-415-30786-4 |page=21 |language=en |quote=It was a similar combination of political and economic imperatives which led Muhmmad Ghuri, a Turk, to invade India a century and half later in 1192. His defeat of Prithviraj Chauhan, a Rajput chieftain, in the strategic battle of Tarain in northern India paved the way for the establishment of the first Muslim sultanate}}</ref><ref>{{harvnb|Hooja|2006|page=458}}: "..Nevertheless, the battle, as far as the Rajput powers were concerned, was not so destructive as the battle of Tarain between Prithviraja III and Muizuddin Ghori. Though it weakened the power of the kingdom of Mewar and lowered its general prestige, it did not destroy the grip of the Sisodias over their kingdom, nor did it affect the social and economic conditions of life in the state"</ref>
+
+== Background ==
+Prithviraj Chauhan's forces had defeated the Ghurids at the [[First Battle of Tarain]] in 1191. The Ghurid king Mu'izz al-Din, who was seriously injured in the battle, returned to Ghazni, and made preparations to avenge his defeat.{{Citation needed|date=September 2025}}
+
+==Size of the forces==
+
+According to the 16th-17th century writer [[Firishta]], in the battle, "the Chauhan army consisted of 3,000 elephants, 300,000 cavalry and infantry", which is considered an exaggeration by modern historians. According to Satish Chandra, the figures were exaggerated in order to "emphasise the challenge faced by Muizzuddin and the scale of his victory".{{sfn|Chandra|2006|pp=25-26}} Kaushik Roy similarly notes that Muslim chroniclers regularly exaggerated Hindu military strength to glorify the Muslim kings, and 300,000 was probably the theoretical number that could potentially be mobilized by all the Rajput kingdoms at the time.{{sfn|Roy|2014|pp=22-23}}
+
+According to Indian sources like Hammir Mahakavya and Prithviraj Raso, the Chahamana army was simultaneously engaged on multiple fronts and Prithviraj had only a part of his army at the battlefield. The rest of his army was about to reach Prithviraj but the fate was already decided in favour of Muizuddin.<ref>{{Cite book|last=Singh|first=R. B.|url=https://books.google.com/books?id=NeX0xX0_2rkC|title=History of the Chāhamānas|publisher=N. Kishore|year=1964|location=Varanasi|pages=199–200|language=en}}</ref>
+
+According to [[Minhaj-i-Siraj]], Mu'izz al-Din brought 120,000 fully armored men to battle.{{sfn|Chandra|2006|p=25}} He personally commanded an elite cavalry force of 40,000 men. According to historian Kaushik Roy, while the real strength of the armies is not certain, it can be speculated that Prithviraj's army was numerically superior.{{sfn|Roy|2014|pp=22-23}}
+
+==Battle==
+The battle occurred on the same field as the [[First Battle of Tarain|first one]]. Knowing the Chahamana forces were well-disciplined, the Ghurids did not want to engage them in [[melee]] combat.{{sfn|Tucker|2009|p=263}} Instead of fighting upfront like they did in the [[First Battle of Tarain|First battle of Tarain]], Ghurids used treachery and diplomacy to defeat the Rajputs.{{sfn|Singh|1964|pp=199-202,461}} The Taj-ul ma asir by [[Hasan Nizami]] states that as soon as Ghori arrived on the battlefield Prithviraj sent him a formal note saying, "It would be prudent for you to return to your homeland, and we have no intention of pursuing you".{{sfn|Singh|1964|pp=199-202}}
+Ghori sent back a reply to him saying, "Upon the directive of my sibling, the reigning authority, I have arrived here to face adversity. Grant me the opportunity to dispatch a knowledgeable envoy to my brother, conveying the extent of your might. I seek his approval to initiate peace negotiations, suggesting the acquisition of Tarhind, Punjab, and Multan for us, while the remaining regions fall under your jurisdiction.".{{sfn|Singh|1964|pp=199-202}}
+
+From the accounts of [[Hasan Nizami]], [[Muhammad Aufi|Muhammad ufi]] as well as [[Firishta]], it is quite clear that Ghori deceived his opponent who accepted it as a genuine truce.{{sfn|Singh|1964|pp=199-202}} The Ghurids army was formed into five units, and four units were sent to attack the enemy flanks and rear.{{sfn|Tucker|2009|p=263}} They attacked the Chahamana army before sunrise who passed the night in slumber and merry-making.{{sfn|Singh|1964|pp=199-202}}
+
+According to [[Minhaj-i-Siraj|Minhaj]], Mu'izz ad-Din directed a [[light cavalry]] force of 10,000 [[mounted archery|mounted archers]], divided into four divisions, to surround the Chahamana forces on the four sides.{{sfn|Talbot|2015|p=47}} He instructed these soldiers not to engage in combat when the enemy advanced to attack, and instead feign retreat in order to exhaust the Chahamana elephants, horses, and infantry.{{sfn|Talbot|2015|p=48}}
+
+In hopes of causing a break in the enemy lines, Mu'izz al-Din ordered his fifth unit to feign retreat. The Chahamana forces charged the fleeing Ghurid unit, as the Ghurids expected. The Ghurids then sent a fresh cavalry unit of 12,000 and repelled the enemy advance. The remaining Ghurid forces then attacked and the Chahamana troops fled in panic.{{sfn|Tucker|2009|p=263}} According to Minhaj, Mu'izz ad-Din's strategy "exhausted and wearied the unbelievers", ultimately resulting in a "victory to Islam".{{sfn|Talbot|2015|p=48}}
+
+== Aftermath ==
+
+Minhaj states that Prithviraj ("Rae Pithora") dismounted from his elephant, and fled from the battlefield on a horse. He was, however, captured in the neighbourhood of Sursuti, and later "dispatched to hell".{{sfn|Talbot|2015|p=48}} Most medieval sources state that Prithviraj was taken to the Chahamana capital [[Ajmer]], where Muhammad planned to reinstate him as a Ghurid [[vassal]]. Sometime later, Prithviraj rebelled against Muhammad, and was killed for treason.{{sfn|Sharma|1959|p=87}}
+
+The Ghurid forces subjugated the entire Chahamana territory of "Siwalikh"{{sfn|Talbot|2015|p=48}} (or Sawalakh, that is, [[Sapadalaksha]]).{{sfn|Talbot|2015|p=33}} The Ghurids then appointed his son [[Govindaraja IV]] on the throne of Ajmer as their vassal. In 1192 CE, Prithviraj's younger brother [[Hariraja]] dethroned Govindaraja, and recaptured a part of his ancestral kingdom, but was later defeated by the Ghurid general [[Qutb al-Din Aibak]].{{sfn|Sharma|1959|pp=100–01}} The Ghurids subsequently defeated another powerful king - [[Jayachandra]] of [[Gahadavala]] dynasty - at the [[Battle of Chandawar]], and conquered parts of northern India as far as [[Bengal]].{{sfn|Tucker|2009|p=263}}
+
+==Notes==
+{{notelist}}
+
+==References==
+{{reflist}}
+
+=== Bibliography ===
+{{refbegin}}
+* {{cite book |author=Talbot |first=Cynthia |title=The Last Hindu Emperor: Prithviraj Cauhan and the Indian Past, 1200–2000 |url=https://books.google.com/books?id=m3DjCgAAQBAJ |publisher=Cambridge University Press |year=2015 |isbn=9781107118560}}
+* {{cite book |author=Sharma |first=Dasharatha |author-link=Dasharatha Sharma |title=Early Chauhān Dynasties |publisher=S. Chand / Motilal Banarsidass |year=1959 |isbn=9780842606189 |url=https://books.google.com/books?id=n4gcAAAAMAAJ}}
+* {{cite book |author=Roy |first=Kaushik |title=India's Historic Battles: From Alexander the Great to Kargil |publisher=Orient Longman |year=2004}}
+* {{Cite book |author=Nizami |first=K. A. |author-link=K. A. Nizami |chapter=Foundation of the Delhi Sultanat |editor1=Habib |editor-first=Mohammad |editor2=Nizami |editor-first2=Khaliq Ahmad |title=A Comprehensive History of India: The Delhi Sultanat (A.D. 1206-1526) |volume=5 |edition=Second |year=1992 |orig-year=1970 |publisher=The Indian History Congress / People's Publishing House |url=https://books.google.com/books?id=_9cmAQAAMAAJ |oclc=31870180}}
+* {{cite book |author=Roy |first=Kaushik |title=Military Transition in Early Modern Asia, 1400-1750: Cavalry, Guns, Government and Ships |url=https://books.google.com/books?id=KyVnAwAAQBAJ&pg=PA23 |year=2014 |publisher=Bloomsbury |isbn=978-1-78093-800-4}}
+* {{Cite book |author=Hooja |first=Rima |url=https://books.google.com/books?id=tosMAQAAMAAJ&q=THE+GUHILOTS+OF+VAGAR%2FDUNGARPUR+ |title=A History of Rajasthan |year=2006 |location=Rajasthan |language=English |isbn=9788129115010}}
+* {{cite book |author=Somani |first=R. V. |url=https://books.google.com/books?id=pTYhAAAAMAAJ |title=Prithviraj Chauhan and his times |publisher=Publication Scheme |year=1981 |isbn=9788185263021}}
+* {{cite book |author=Chandra |first=Satish |author-link=Satish Chandra (historian) |title=Medieval India: From Sultanat to the Mughals-Delhi Sultanat (1206-1526) |url=https://books.google.com/books?id=L5eFzeyjBTQC |year=2006 |publisher=Har-Anand |isbn=978-81-241-1064-5}}
+* {{cite book |author=Tucker |first=Spencer C. |title=A Global Chronology of Conflict: From the Ancient World to the Modern Middle East |url=https://books.google.com/books?id=h5_tSnygvbIC |year=2009 |publisher=ABC-CLIO |isbn=978-1-85109-672-5}}
+* {{Cite book |last=Mishra |first=Yogendra |url=https://books.google.com/books/about/The_Hindu_Sahis_of_Afghanistan_and_the_P.html?id=ux6wQ25mO0cC |title=The Hindu Sahis of Afghanistan and the Punjab, A.D. 865-1026: A Phase of Islamic Advance Into India |date=1972 |publisher=Vaishali Bhavan |language=en}}
+{{refend}}
+
+{{DEFAULTSORT:Tarain}}
+[[Category:12th century in India]]
+[[Category:Battles involving the Ghurid dynasty]]
+[[Category:Battles involving the Rajputs]]
+[[Category:1191 conflicts]]
+[[Category:1192 conflicts]]
+[[Category:1191 in Asia]]
+[[Category:1192 in Asia]]
+[[Category:Karnal district]]
+[[Category:Battles involving the Tajiks]]

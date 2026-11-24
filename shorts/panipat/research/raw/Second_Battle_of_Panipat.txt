@@ -1,0 +1,108 @@
+{{Short description|1556 battle during the Mughal conquest of the Sur Empire}}
+{{pp-extended|small=yes}}
+{{Use dmy dates|date=January 2016}}
+{{Use Indian English|date=February 2019}}
+{{Infobox military conflict
+| image          = The defeat of Hemu, Akbarnama.jpg
+| caption        = ''The defeat of Hemu'', Second Battle of Panipat painting by Kankar from the [[Akbarnama]] {{circa|1590s}}
+| date           = 5 November 1556
+| location       = [[Panipat]] (in present-day [[Haryana]], India)
+| coordinates    = {{Coord|29|23|41|N|76|55|34|E}}
+| pushpin_map    = India
+| pushpin_relief = 1
+| result         = [[Mughal Empire]]  victory
+
+| combatant1     = {{flagicon image|Alam of the Mughal Empire.svg|border=}} [[Mughal Empire]]
+| combatant2     = [[Sur Empire]]{{sfn|Richards|1995}}
+| commander1     = {{plainlist|
+*{{flagicon image|Alam of the Mughal Empire.svg|border=}} '''[[Akbar]]'''
+*{{flagicon image|Alam of the Mughal Empire.svg|border=}} [[Bairam Khan]]
+*{{flagicon image|Alam of the Mughal Empire.svg|border=}} [[Sayyed Mahmud Khan|Mahmud Khan]]
+*{{flagicon image|Alam of the Mughal Empire.svg|border=}} Ali Shaibani
+*{{flagicon image|Alam of the Mughal Empire.svg|border=}} Sikandar Uzbak
+*{{flagicon image|Alam of the Mughal Empire.svg|border=}} Abdullah Uzbak
+*{{flagicon image|Alam of the Mughal Empire.svg|border=}} Quli Mahram}}
+| commander2     = {{ubl
+ |'''[[Hemu|Hemchandra Vikramaditya]]'''{{WIA}}{{Executed}}
+ |Raamya
+ |Shadi Khan Kakar{{KIA}}}}
+| strength1      = 30,000 [[cavalry]]<br>200 [[war elephants]]{{sfn|Sarkar|1960|p=68}}
+| strength2      = 30,000 [[cavalry]]<br>500 [[war elephants]]{{sfn|Sarkar|1960|p=68}}
+| casualties1    = 10,000
+| casualties2    = 5,000
+| conflict       = Second Battle of Panipat
+| territory      = [[Delhi]] and [[Agra]] captured by Akbar
+}}
+The '''Second Battle of Panipat''' was fought on 5 November 1556, between the [[Mughal Empire|Mughals]] under [[Akbar]] and king [[Hemu]], titularly known as [[Hemu|Hemchandra Vikramaditya]]. Hemchandra had conquered [[Delhi]] and [[Agra]] a few weeks earlier by defeating Mughal forces under [[Tardi Beg Khan]] in the [[Battle of Tughlaqabad|Battle of Delhi]]. He crowned himself [[Vikramaditya]] at [[Purana Quila]] in Delhi.
+
+On learning of the loss, [[Akbar]] and his guardian [[Bairam Khan]] marched to reclaim those territories. The two armies clashed at [[Panipat]], not far from the site of the [[First Battle of Panipat]] of 1526.
+
+During the battle, Hemchandra was wounded by an arrow and fell unconscious. Seeing their leader going down, his army panicked and dispersed. Unconscious and almost dead, Hemu was captured and subsequently beheaded by Akbar who assumed the title of [[Ghazi (warrior)| Ghazi]].
+
+==Background==
+[[File:Maharaja Hemu Bhargava - Victor of Twenty Two Pitched Battles, 1910s.jpg|thumb|Portrayal of Hemu {{circa|1910s}}]]
+[[Humayun]], the successor of [[Babur]], the founder of the Mughal Empire, had lost his inheritance when he was chased out of [[Indian subcontinent|India]] by [[Sher Shah Suri]], who established the [[Sur Empire]] in 1540. [[Delhi]] and [[Agra]] fell into Sher Shah's hands, but he died soon after in 1545 at [[Kalinjar]]. He was succeeded by his younger son, [[Islam Shah Suri]], who was a capable ruler. However, upon his death in 1554, the Sur Empire was caught up in a succession battle and was plagued by rebellion and the secession of provinces. Humayun made use of this discord to recapture what was lost and on 23 July 1555, the Mughals defeated [[Sikandar Shah Suri]] and finally regained control over Delhi and Agra.{{sfn|Sarkar|1960|p=66}}
+
+Islam Shah's rightful successor, his 12-year-old son, [[Firuz Shah Suri|Firoz Khan]], had been murdered by his maternal uncle, who had taken the throne as Adil Shah Suri. The new ruler was, however, more interested in the pursuit of pleasure than in the affairs of his state. Those were left mainly to Hemchandra, an old Hindu associate of Sher Shah Suri from [[Rewari]], who had risen from humble circumstances to become both Adil Shah's Chief Minister as well as the general of the Suri army.{{sfn|Qanungo|1965|p=448}} He was in Bengal when Humayun died on 27 January 1556. The Mughal emperor's death provided an ideal opportunity for Hemu to defeat the Mughals and reclaim lost territory.{{sfn|Chandra|2004|p=91}}
+
+Hemchandra started a rapid march from Bengal and drove the Mughals out of Bayana, Etawah, Bharthana, Bidhuna, Lakhna, Sambhal, Kalpi, and Narnaul.{{sfn|Chandra|2004|p=91}} In Agra, the governor evacuated the city and fled without a fight upon hearing of Hemchandra's impending invasion.{{sfn|Sarkar|1960|p=67}} In pursuit of the governor, Hemchandra reached [[Tughlaqabad]], a village just outside Delhi where he ran into the forces of the Mughal governor of Delhi, Tardi Beg Khan, and defeated them in the [[Battle of Tughlaqabad]].{{sfn|Chandra|2004|p=91}} He took possession of Delhi after a day's battle on 7 October 1556{{sfn|Sarkar|1960|p=67}} and claimed royal status assuming the title of [[Vikramaditya]] (or ''Bikramjit'').{{sfn|Richards|1995}}
+
+==Prelude==
+On hearing the disastrous news from Tughlaqabad, Humayun's successor, the 13-year-old Akbar and his guardian, Bairam Khan, soon set off for Delhi. In a stroke of luck, Ali Quli Khan Shaibani (later ''Khan-i-Zaman''), who had been sent ahead with a 10,000-strong cavalry force, chanced upon Hemchandra's artillery, which was being transported under a weak guard. He could easily capture the entire train of artillery from the Afghans, who abandoned the guns and fled without making a stand. That proved to be a costly loss for Hemu.{{sfn|Sarkar|1960|p=68}}{{sfn|Tripathi|1960|p=175}}
+
+On 5 November 1556, the Mughal army met Hemu's army at the historic battlefield of Panipat. Akbar and Bairam Khan stayed in the rear, eight miles from the battleground.{{sfn|Sarkar|1960|p=69}}
+
+==Formation==
+The Mughal army was led by Ali Quli Khan Shaibani, with his 10,000 cavalry in the centre, Sikandar Khan Uzbak on the right, and Abdulla Khan Uzbak towards the left. The vanguard was led by Husain Quli Beg and Shah Quli Mahram and included Bairam Khan's detachment of Turks.{{sfn|Sarkar|1960|p=68}}
+
+Hemu's army was numerically superior, counting among its ranks a 30,000-strong cavalry force consisting of Afghan horse riders and an elephant contingent numbering 500. Each war elephant was protected by plate armour and mounted by [[musketeer]]s and [[crossbowmen]]. Hemchandra led his army himself into battle atop an elephant named ''Hawai''.{{sfn|Roy|2004|p=76}} His left was led by his sister's son, Ramya, and the right by Shadi Khan [[Kakar]]. His army was an experienced and confident lot and Hemu had, by this time, been victorious in 22 battles from Bengal to Punjab. In this battle, however, Hemchandra had no artillery.{{sfn|Sarkar|1960|loc=p. 68|ps=: Chandra names Hemu's nephew as Ramaiyya.{{sfn|Chandra|2004|p=92}}}}
+
+==Battle==
+{{Quote box|quote=
+<poem>
+Two armies so collided
+That they struck fire out of water;
+You'd say the air was all crimsoned daggers,
+Their steel had all become solid rubies.
+</poem>
+|author=[[Abu'l-Fazl ibn Mubarak|Abu'l-Fazl]]|source=[[Akbarnama]]<ref>{{cite book|author1=Abu'l-Fazl|author-link1=Abu'l-Fazl ibn Mubarak|title=Akbarnama|url=http://persian.packhum.org/persian/main?url=pf%3Ffile%3D00701022%26ct%3D16|access-date=8 July 2016|chapter=Vol II, Chapter XI}}</ref>}}
+
+Hemchandra began the attack himself and loosed his elephants among the right and left wings of the Mughals. Those soldiers who were able to escape the rampage, rather than retreating, chose to veer to the sides and attack the flanks of Hemu's cavalry, pelting them with their superior archery. The Mughal centre also advanced and took up a defensive position before a deep ravine. Neither Hemchandra's elephant nor his horse units were able to cross the chasm to reach their opponents and were vulnerable to the projectile weapons being fired from the other side. Meanwhile, the Mughal cavalry, on their swift mounts, had made inroads into the Afghan ranks from the flanks and the rear and began targeting the elephants, either slashing at the legs of the great beasts or taking out their riders. Hemchandra pulled back his elephants, and the Afghan attack relented.{{sfn|Sarkar|1960|pp=68–69}}
+
+Seeing the Afghan attack slackening, Ali Quli Khan led his cavalry out, circling around and falling upon the Afghan centre from the rear. Hemu, monitoring the battlefield from his [[howdah]] atop Hawai, immediately hurried to counter this charge. Even after seeing Shadi Khan Kakar and another of his able lieutenants, Bhagwan Das, go down, he continued to lead counterattacks against the Mughals, running down any who challenged his elephants. It was a desperately contested battle, but the advantage seemed to have tilted in favour of Hemu.{{sfn|Sarkar|1960|loc=p. 69|ps=: According to Sarkar, the battle was still evenly matched when the random arrow found Hemu.}} Both the wings of the Mughal army had been driven back, and Hemu moved his contingent of war elephants and cavalry forward to crush their centre. It was at this point that Hemchandra, possibly on the cusp of victory, was wounded when he was struck in the eye by a chance Mughal arrow and collapsed unconscious. Seeing him going down triggered a panic in his army which broke formation and fled.{{sfn|Tripathi|1960|p=176}}{{sfn|Chandra|2004|p=93}} The battle was lost; 5,000 dead lay on the field of battle and many more were killed while fleeing.{{sfn|Sarkar|1960|p=69}}
+
+==Aftermath==
+The elephant carrying the unconscious and almost dead Hemchandra was captured after several hours of finishing the battle and led to the Mughal camp. Bairam Khan asked the 13-year-old Akbar to behead Hemchandra. According to Akbar's later courtier [[Abu'l-Fazl ibn Mubarak]], he refused to take the sword to a dead man. However, this is not attested by contemporary writer Muhammad Arif Qandhari (composed Tarikh e Akbari), who mentioned that Akbar followed Bairam Khan's advice and himself beheaded Hemchandra and took the title of [[Ghazi (warrior)| Ghazi]]. The account of Akbar's refusal to kill Hemu is probably a later invention of his courtiers.<ref>{{Cite book |author=Ashirbadi Lal Srivastava|title=Akbar the Great. |date=1962 |publisher=Shiva Lal Agarwala|page=10|quote=Bairam Khan asked his royal ward to earn the title of Ghazi by slaying the infidel Hemu, with his own hands. We are told by a contemporary writer, Muhammad Arif Qandh, that he complied with the request and severed Hemu's head from his body. Abul Fazl's statement that he refused to kill a dying man is obviously wrong|language=English |oclc=837892}}</ref><ref>{{Cite book|author=Kishori Saran Lal|author-link=K. S. Lal|url=https://books.google.com/books?id=HmBuAAAAMAAJ|title=Theory and Practice of Muslim State in India |date=1999|publisher=Aditya Prakashan|page=67|quote=It may be recalled that as an adolescent, Akbar had earned the title of Ghazi by beheading the defenseless infidel Himu|isbn=978-81-86471-72-2|language=en}}</ref><ref>{{Cite book|author=S. Roy|chapter=AKBAR|editor=R.C. Majumdar|url=https://books.google.com/books?id=kHpDAAAAYAAJ |title=The History and Culture of the Indian People: The Mughal Empire |date=1974 |publisher=Bharatiya Vidya Bhavan|page=106|quote=Bairam Khan begged him to slay Himu with his own hands in order to gain the reward of Jihad (crusade against infidels) and the title of Ghazi (hero combating infiedels). Akbar accordingly struck Himu with his sword. The story of Akbar's magnanimity and refusal to kill a fallen foe seems to be a later courtly invention|language=en}}</ref>{{sfn|Chandra|2004|p=93}} Hemchandra's head was sent to [[Kabul]] to be hanged outside Delhi Darwaja, while his body was [[gibbet]]ed on a gate in Purana Quila, Delhi, where he had his coronation on 6 October.{{sfn|Tripathi|1960|p=176}} Several supporters and relatives of Hemchandra were beheaded, and a minaret {{sfn|Chandra|2004|p=93}}
+was later erected. The painting of this minarette is one of the popular 56 paintings of Akbar's life in his copy of the ''[[Akbarnama]]''. A memorial for Hemchandra was erected at the spot in Panipat where he was beheaded. It is now known as ''Hemu's Samadhi Sthal''.<ref>{{cite web|title=Hemu's Samadhi Sthal|url=http://haryanatourism.gov.in/showpage.aspx?contentid=5380|website=Haryana Tourism|access-date=13 July 2016}}</ref><ref>{{cite web|title=Places Of Interest / Hemu's Samadhi Sthal|url=http://panipat.gov.in/tourism.html|website=panipat.gov.in|access-date=13 July 2016}}</ref>
+
+With the passing of Hemchandra, Adil Shah's fortunes also took a turn for the worse. He was defeated and killed by [[Ghiyasuddin Bahadur Shah II|Khizr Khan]], son of [[Muhammad Khan Sur]] of Bengal, in April 1557.{{sfn|Chandra|2004|p=93}}{{sfn|Tripathi|1960|p=177}} The spoils from the battle at Panipat included 120 of Hemu's war elephants, whose destructive rampages so impressed the Mughals that the animals soon became an integral part of their military strategies.{{sfn|Roy|2013|p=47}}
+
+==See also==
+* [[First Battle of Panipat]]
+* [[Third Battle of Panipat]]
+
+==Notes==
+{{Reflist}}
+
+==References==
+{{refbegin}}
+* {{cite book | url=https://books.google.com/books?id=qoRDAAAAYAAJ | title=Military History of India | publisher=Orient Longmans | last=Sarkar | first=Jadunath | author-link=Jadunath Sarkar | year=1960 | pages=66–69 | isbn=9780861251551 }}
+* {{cite book|last=Tripathi|first=Ram Prasad|title=Rise and Fall of the Mughal Empire|year=1960|edition=2nd|pages=158–77|url=https://books.google.com/books?id=uK8qAAAAYAAJ }}
+* {{cite book|last=Chandra|first=Satish|author-link=Satish Chandra (historian)|title=Medieval India: From Sultanate To The Mughals, Part II: Mughal Empire (1526–1748)|date=2004|edition=3rd|publisher=Har-Anand Publications|isbn=9788124110669|pages=91–93|url=https://books.google.com/books?id=0Rm9MC4DDrcC|access-date=17 November 2014 }}
+* {{cite book | url=https://books.google.com/books?id=qrY9AAAAIAAJ | title=Sher Shah and his Times | publisher=Orient Longmans | last=Qanungo | first=Kalika Ranjan | year=1965 | pages=448–49 }}
+* {{cite book | url=https://books.google.com/books?id=HHyVh29gy4QC | title=The Mughal Empire (The New Cambridge History of India)| publisher=Cambridge University Press | last=Richards | first=John F. | author-link=John F. Richards | year=1995 | page=13 | isbn=9780521566032 }}
+* {{cite book|last1=Roy|first1=Kaushik|title=India's historic battles : from Alexander the Great to Kargil|date=2004|publisher=Permanent Black|location=Delhi|isbn=9788178241098|pages=68–79|url=https://books.google.com/books?id=jpXijlqeRpIC|access-date=17 July 2016 }}
+* {{cite book|last1=Roy|first1=Kaushik|editor1-last=Coetzee|editor1-first=Daniel|editor2-last=Eysturlid|editor2-first=Lee W.|title=Philosophers of war: the evolution of history's greatest military thinkers|date=2013|publisher=Praeger|location=Santa Barbara|isbn=978-0-313-07033-4|pages=43–47|url=https://books.google.com/books?id=DW2jAQAAQBAJ|access-date=20 July 2016|chapter=Fazl, Abul (1551–1602)}}
+{{refend}}
+
+{{Mughal Empire|state=collapsed}}
+{{Authority control}}
+
+{{DEFAULTSORT:Panipat (1556)}}
+[[Category:1556 in India]]
+[[Category:Battles involving the Mughal Empire]]
+[[Category:Panipat|Battle]]
+[[Category:History of Haryana]]
+[[Category:1556 conflicts]]
+[[Category:Sur Empire]]
+[[Category:16th century in the Mughal Empire]]

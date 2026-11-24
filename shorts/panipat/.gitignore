@@ -1,0 +1,5 @@
+render/
+*.mp4
+*.wav
+audio/sfx/
+__pycache__/

@@ -1,0 +1,84 @@
+{{Short description|1526 battle during the Mughal conquest of the Delhi Sultanate}}
+{{pp-extended|small=yes}}
+{{Use dmy dates|date=July 2021}}
+{{About|First Battle of Panipat (1526)|other battles|Battle of Panipat (disambiguation){{!}}Battle of Panipat}}
+{{Infobox military conflict
+| conflict          = First Battle of Panipat
+| part_of           = [[Mughal Empire|Mughal conquests]]
+| image             = The battle of Panipat and the death of Sultan Ibrāhīm, the last of the Lōdī Sultans of Delhi.jpg
+| caption           = The battle of Panipat and <br /> the death of Sultan Ibrāhīm
+| date              = 21 April 1526
+| location          = [[Panipat]]<br />(present-day [[Haryana]], India)
+| coordinates       = {{Coord|29|24|6|N|76|58|22|E|display=inline,title}}
+| result            = [[Mughal dynasty|Mughal]] victory
+| territory         = [[Delhi Sultanate]] annexed by the [[Mughal dynasty]]
+| combatant1        = [[Mughal Empire|Emirate of Kabul]]
+| combatant2        = [[Delhi Sultanate]]
+| commander1        = [[Babur]]
+| commander2        = [[Ibrahim Khan Lodi]]{{KIA}}
+| strength1         = 12,000<br>15–20 [[cannon]]
+| strength2         = 50,000–70,000<br>1,000 [[war elephant]]s
+| casualties2       = 20,000 killed
+| pushpin_map       = South Asia#India Haryana
+| pushpin_relief    = yes
+| pushpin_map_size  = 300px
+| pushpin_mark_size = 
+| pushpin_caption   = 
+| pushpin_label     = Battle of Panipat
+| pushpin_mark      = Big battle symbol.svg
+}}
+{{Campaignbox Babur}}
+
+The '''First Battle of Panipat''', on 21 April 1526<ref>{{Cite book |author=Zahir-ud-din Muhammad Babur |title=بابرنامه (Baburnama) [Original Chagatai Turkic] |publisher=The Baburnama Project |year=2023 |url=https://art.thewalters.org/detail/1759/memoirs-of-babur-2/ |archive-date=6 January 2024 |access-date=6 January 2024 |archive-url=https://web.archive.org/web/20240106191904/https://art.thewalters.org/detail/1759/memoirs-of-babur-2/ |url-status=live }}</ref> was fought between the invading forces of [[Babur]] against [[Ibrahim Khan Lodi]], the [[List of sultans of Delhi|Sultan of Delhi]], in [[North India]]. Babur's forces, employing [[gunpowder warfare|gunpowder firearms]] and [[cannon]]s, defeated Ibrahim. This was one of the earliest battles involving gunpowder arms on the [[Indian subcontinent]]. The victory marked the beginning of Mughal rule in India.
+
+== Background ==
+[[File:Vaki'at-i Baburi - The Battle of Panipat (1526) by Deo Gujarati.jpg|thumb|right|The battle of Panipat between the armies of Babur and Ibrahim Lodi (1526). Babur was invited by Daulat Khan Lodi to enter India and defeat Ibrahim Lodi.{{sfn|Chandra|2009|pp=27–31}} An illustration to the Vaqi 'at-i Baburi, by Deo Gujarati, c. 1590.]]
+
+In 1504, Babur succeeded his late uncle [[Ulugh Beg II]] by force of arms, taking control of the latter's kingdom based around [[Kabul]] and [[Ghazni]]. Opposed by [[Muhammad Shaybani]] to the northwest, Babur sought to expand his kingdom to the southeast, into [[Punjab]], the land of the five rivers. By 1519, he had reached the [[Chenab River]].{{sfn|Mahajan|1980|p=429}}
+
+At that time, most of [[North India]] was part of the [[Delhi Sultanate]], under the rule of [[Ibrahim Lodi]] of the [[Lodi dynasty]]. However, Ibrahim was locked in a power struggle with his relatives and ministers. [[Daulat Khan Lodi]], Governor of [[Punjab]], offered to defect to Babur.{{sfn|Chaurasia|2002|pp=89–90}} Babur started for [[Lahore]], in 1524 but found that Daulat had been driven out by forces sent by Ibrahim.{{sfn|Chandra|2009|p=27}} The Lodi army marched out to engage Babur and was routed.{{sfn|Chandra|2009|p=27}} Babur also took control of [[Jhelum]], [[Sialkot]], [[Kalanaur, Gurdaspur|Kalanaur]] and [[Dipalpur]] before returning to Kabul. He placed Dipalpur under control of Alam Khan, a rebel uncle of Ibrahim.{{sfn|Chandra|2009|pp=27–28}}
+
+At the end of 1525, Babur was to return to northern India, crossing the [[Indus River|Indus]] in December. After securing his conquest of [[Punjab]], Babur advanced towards Delhi. It was at [[Panipat]] he was to meet and engage a much larger army assembled by Ibrahim.{{sfn|Chandra|2009|pp=28–29}}
+
+==Battle==
+
+Ibrahim's army is reported to have had an effective strength of between 50,000 and 70,000 with 1,000 [[war elephant]]s but lacked gunpowder arms.{{sfn|Chandra|2009|p=30}}<ref name=DO>[[Jadunath Sarkar]], ''Military history of India'', p. 50.</ref>{{refn|The army has been reported to have consisted of 30,000 infantry and 40,000 cavalry, of which half the cavalry were irregular troops.<ref name=DO/>}} Babur's army was 12,000 strong. At least part of the force were equipped with [[matchlock]] muskets. His cavalry fought as [[horse archers]]. He also had between 15 and 20 [[cannon]]s.{{sfn|Watts|2011|p=707}}
+
+Babur defended his position with 700 wagons tied together in a line. Between every second wagon was a [[Breastwork (fortification)|breastwork]] for his musketeers to fire from. At several places in the line, he left sally points 150 riders wide for his cavalry to advance through. Babur secured his right flank against the city of [[Panipat]]. On the left, he dug a trench filled with branches as an obstacle against cavalry.{{sfn|Chandra|2009|p=29}}
+
+When Ibrahim attacked, the frontage presented by Babur was too narrow for him to effectively employ his force. Musket and cannon pinned Ibrahim's centre while horse archers harried the flanks and rear. The noise of cannon panicked the elephants, adding to the casualties. Ibrahim and 20,000 of his men were killed in the battle. Thousands more died as the army retreated.{{sfn|Chandra|2009|p=30}}
+
+==Aftermath==
+The battle of Panipat was militarily a decisive victory for Babur. However, to secure his position, Babur was still to fight the [[Kingdom of Mewar|Mewar]] ruler [[Rana Sanga]] at [[Battle of Khanwa|Khanwa]] in 1527, and the eastern Afghans at the [[Battle of Ghaghra|Ghaghra River]] in 1529. Politically it gained Babur new lands and initiated a new phase of his establishment of the [[Mughal Empire]] in the heart of the [[Indian subcontinent]] – an empire that lasted for over 300 years.{{sfn|Chandra|2009|pp=30–31}}
+
+==References==
+{{Reflist}}
+
+==Sources==
+{{refbegin}}
+* {{cite book |last=Butalia |first=Romesh C. |title=The Evolution of the Artillery in India: From the Battle of Plassey to the Revolt of 1857 |publisher=Allied Publishing Limited |year=1998 }}
+* {{cite book |title=Medieval India: From Sultanat to the Mughals, Part II |isbn=9788124110669 |url=https://books.google.com/books?id=0Rm9MC4DDrcC |first=Satish |last=Chandra |author-link=Satish Chandra (historian) |publisher=Har-Anand Publications |year=2009 }}
+* {{cite book |last=Chaurasia |first=Radhey Shyam |year=2002 |title=History of medieval India : from 1000 A.D. to 1707 A.D. |publisher=Atlantic Publisher }}
+* {{cite book |first=Paul K. |last=Davis |year=1999 |title=100 Decisive Battles: From Ancient Times to the Present |publisher=[[Oxford University Press]] |isbn=1-57607-075-1 }}
+* {{cite book |first=Abraham |last=Eraly |author-link=Abraham Eraly |title=Emperors Of The Peacock Throne: The Saga of the Great Moghuls |url=https://books.google.com/books?id=h7kPQs8llvkC |year=2007 |publisher=Penguin Books Limited |isbn=978-93-5118-093-7 }}
+* {{cite book |first=V.D. |last=Mahajan |title=History of medieval India |edition=10th |publisher=S. Chand. |year=1980 }}
+* {{cite encyclopedia |last=Watts |first=Tim J. |title=Battles of Panipat |editor-last=Mikaberidze |editor-first=Alexander |encyclopedia=Conflict and Conquest in the Islamic World: A Historical Encyclopedia |publisher=ABC-CLIO |year=2011 }}
+* {{cite web |url=https://panipat.gov.in/first-battle/ |title=First Battle of Panipat (1526) {{!}} Panipat, Haryana |author=Government of Haryana |date=11 June 2010 |website=Government of Haryana |access-date=28 November 2018 |archive-date=13 April 2024 |archive-url=https://web.archive.org/web/20240413003058/https://panipat.gov.in/first-battle/ |url-status=live }}
+{{refend}}
+
+{{Mughal Empire}}
+{{Pashtun nationalism}}
+{{Authority control}}
+
+{{DEFAULTSORT:Panipat (1526)}}
+[[Category:Afghan–Mughal Wars]]
+[[Category:1526 conflicts]]
+[[Category:Battles involving the Mughal Empire|Panipat]]
+[[Category:Lodi dynasty]]
+[[Category:Panipat|Battle]]
+[[Category:History of Haryana]]
+[[Category:1526 in India]]
+[[Category:Battles involving the Delhi Sultanate]]
+[[Category:16th century in Delhi]]
+[[category:Babur|Panipat]]
+[[Category:16th century in the Mughal Empire]]
