@@ -4,7 +4,7 @@
 Kanyakumari Ko 'CAPE COMORIN' Kyun Kehte The? #shorts
 
 ## Upload settings
-- Privacy: aap khud upload karoge (mera default suggestion: Unlisted)
+- Privacy: Unlisted - uploaded via vidIQ on 24 Nov 2026: https://www.youtube.com/watch?v=VcTWosi-jSI
 - Category: Education (27)
 - Thumbnail: short_thumb_2160x3840.jpg
 - Made for kids: No
