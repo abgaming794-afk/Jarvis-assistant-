@@ -56,6 +56,7 @@ def music(kind, length):
         "epic": [(50, 53, 57), (46, 50, 53), (53, 57, 60), (48, 52, 55)],      # Dm Bb F C
         "sad": [(57, 60, 64), (52, 55, 59), (53, 57, 60), (52, 56, 59)],       # Am Em F E
         "tension": [(50, 53, 57), (51, 54, 58), (50, 53, 57), (49, 52, 56)],
+        "investigate": [(52, 55, 59), (48, 52, 55), (53, 57, 60), (50, 53, 57)],
     }
     prog = progs.get(kind, progs["mystery"])
     bar = 4.0 if kind != "tension" else 3.0
@@ -75,6 +76,11 @@ def music(kind, length):
                 pad += 0.05 * np.sin(2 * np.pi * f * tt + rng.random() * 6)
                 pad += 0.015 * np.sin(2 * np.pi * 2 * f * tt)
         bass = 0.09 * np.sin(2 * np.pi * note(ch[0] - 24) * tt)
+        if kind == "investigate":  # pulsing 8th-note synth bass
+            gate = (np.sin(2 * np.pi * 4.0 * tt) > -0.2).astype(np.float32)
+            gate = _lp(gate, 400)
+            saw = 2 * ((note(ch[0] - 24) * tt) % 1) - 1
+            bass = 0.07 * _lp(saw.astype(np.float32), 30) * gate + 0.06 * np.sin(2 * np.pi * note(ch[0] - 24) * tt)
         e = _env(seg, 0.8, 1.0)
         out[s0:s0 + seg] += (pad + bass) * e
         # soft plucked arpeggio
@@ -141,6 +147,33 @@ def sfx(name):
         tt = np.arange(ln) / SR
         y = sum(np.sin(2 * np.pi * f * tt) for f in (110, 116.5, 220.3)) * np.linspace(0, 1, ln) ** 2
         return (y / (np.abs(y).max() + 1e-6) * 0.3).astype(np.float32)
+    if name == "stamp":
+        ln = int(0.35 * SR)
+        tt = np.arange(ln) / SR
+        y = np.sin(2 * np.pi * (140 - 80 * tt) * tt) * np.exp(-tt * 22) + rng.normal(0, 1, ln) * np.exp(-tt * 60) * .6
+        return (y / (np.abs(y).max() + 1e-6) * 0.7).astype(np.float32)
+    if name in ("type", "typing"):
+        ln = int(1.2 * SR)
+        y = np.zeros(ln, np.float32)
+        t0 = 0
+        while t0 < ln - 2000:
+            k = int(0.012 * SR)
+            y[t0:t0 + k] += (rng.normal(0, 1, k) * np.exp(-np.arange(k) / SR * 400)).astype(np.float32)
+            t0 += int(rng.uniform(0.06, 0.13) * SR)
+        return y / (np.abs(y).max() + 1e-6) * 0.22
+    if name in ("page", "paper"):
+        ln = int(0.45 * SR)
+        y = _lp(rng.normal(0, 1, ln).astype(np.float32), 3) * np.sin(np.linspace(0, np.pi, ln)) ** 3
+        return y / (np.abs(y).max() + 1e-6) * 0.25
+    if name == "click":
+        ln = int(0.03 * SR)
+        y = rng.normal(0, 1, ln) * np.exp(-np.arange(ln) / SR * 300)
+        return (y * 0.4).astype(np.float32)
+    if name == "riser":
+        ln = int(1.5 * SR)
+        tt = np.arange(ln) / SR
+        y = np.sin(2 * np.pi * (200 + 500 * tt ** 2) * tt) * (tt / tt[-1]) ** 2
+        return (y * 0.18).astype(np.float32)
     if name == "crowd":
         ln = int(1.6 * SR)
         y = _lp(rng.normal(0, 1, ln).astype(np.float32), 20) * _env(ln, 0.3, 0.6)
@@ -174,15 +207,27 @@ def main():
         names = b.get("sfx", [])
         if isinstance(names, str):
             names = [names]
-        typ = b.get("scene", {}).get("type", "chars")
-        if not names and prev_type is not None and typ != prev_type:
-            names = ["whoosh"]
         sc = b.get("scene", {})
-        if sc.get("text") or typ in ("title", "number"):
-            names = list(names) + ["pop"]
-        for nm in names:
+        typ = sc.get("type", "set" if story.get("style", "toon") == "toon" else "chars")
+        timed = [(nm, 0.0) for nm in names]
+        if story.get("auto_sfx", True):
+            if (b.get("transition") or sc.get("transition")) == "whip":
+                timed.append(("whoosh", 0.0))
+            if typ == "black":
+                timed.append(("type", 0.05))
+            if typ in ("memo", "newspaper"):
+                timed.append(("page", 0.0))
+            if typ == "memo" and sc.get("stamp"):
+                timed.append(("stamp", d * 0.6))
+            if sc.get("big") or sc.get("text") or typ in ("title", "number"):
+                timed.append(("pop", 0.2))
+            if sc.get("lower"):
+                timed.append(("swoosh", 0.3))
+            if typ == "map":
+                timed.append(("click", 0.3))
+        for nm, off in timed:
             y = sfx(nm)
-            s2 = int(max(0, t0 - (0.25 if nm in ("whoosh", "swoosh") else 0)) * SR)
+            s2 = int(max(0, t0 + off - (0.25 if nm in ("whoosh",) and off == 0 else 0)) * SR)
             fx[s2:s2 + len(y)] += y[: max(0, n - s2)]
         prev_type = typ
     mk = story.get("music", "mystery")

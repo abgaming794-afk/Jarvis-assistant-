@@ -12,7 +12,7 @@ import numpy as np
 from PIL import Image, ImageDraw
 from common import load_json, ffmpeg_bin, font
 
-ENGINE_VERSION = "1.0.0"
+ENGINE_VERSION = "2.0.0"
 RES = {"360": (640, 360), "480": (854, 480), "720": (1280, 720), "1080": (1920, 1080)}
 
 
@@ -39,10 +39,17 @@ def _durations(proj, story, fps):
     return out
 
 
-def render_beat(job):
+def make_shot(b, story, W, H, dur, env, fps):
+    if story.get("style", "toon") == "toon":
+        import toonshot
+        return toonshot.ToonShot(b, story, W, H, dur, env, fps)
     import scenes
+    return scenes.Shot(b, story, W, H, dur, env, fps)
+
+
+def render_beat(job):
     proj, story, b, nframes, W, H, fps, out = job
-    shot = scenes.Shot(b, story, W, H, nframes / fps, _env(proj, b["id"]), fps)
+    shot = make_shot(b, story, W, H, nframes / fps, _env(proj, b["id"]), fps)
     tmp = out + ".tmp.mp4"
     cmd = [ffmpeg_bin(), "-y", "-loglevel", "error", "-f", "rawvideo", "-pix_fmt", "rgb24", "-s", f"{W}x{H}",
            "-r", str(fps), "-i", "-", "-c:v", "libx264", "-preset", "veryfast" if H <= 720 else "medium",
@@ -69,7 +76,6 @@ def main():
     os.makedirs(outdir, exist_ok=True)
 
     if "--preview" in sys.argv:
-        import scenes
         pw, ph = 480, 270
         cols, rows = 4, 4
         beats = story["beats"]
@@ -81,7 +87,7 @@ def main():
             d = ImageDraw.Draw(sheet)
             for k, b in enumerate(beats[s:s + cols * rows]):
                 n = frames[b["id"]]
-                shot = scenes.Shot(b, story, pw * 2, ph * 2, n / fps, _env(proj, b["id"]), fps)
+                shot = make_shot(b, story, pw * 2, ph * 2, n / fps, _env(proj, b["id"]), fps)
                 fr = shot.frame(n / fps * float(arg("--at", 0.7))).resize((pw, ph), Image.LANCZOS)
                 x, y = (k % cols) * pw, (k // cols) * (ph + 26)
                 sheet.paste(fr, (x, y))
@@ -98,7 +104,7 @@ def main():
     jobs, segs = [], []
     only = set(arg("--only", "").split(",")) - {""}
     for b in story["beats"]:
-        h = hashlib.md5(json.dumps([ENGINE_VERSION, b.get("scene"), b.get("chapter"), cast, frames[b["id"]],
+        h = hashlib.md5(json.dumps([ENGINE_VERSION, story.get("style", "toon"), b.get("scene"), b.get("transition"), cast, frames[b["id"]],
                                     b["id"], res], sort_keys=True, default=str).encode()).hexdigest()[:10]
         out = os.path.join(seg_dir, f"{b['id']}_{h}.mp4")
         segs.append(out)

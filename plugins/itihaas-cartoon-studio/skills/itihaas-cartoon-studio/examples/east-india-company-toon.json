@@ -1,0 +1,711 @@
+{
+ "title": "Ek Company Ne Poora India Kaise Khareed Liya?",
+ "style": "toon",
+ "voice": {
+  "engine": "edge",
+  "voice": "hi-IN-MadhurNeural",
+  "rate": "+4%",
+  "pitch": "-6Hz"
+ },
+ "music": "investigate",
+ "music_volume": 0.12,
+ "pause": 0.18,
+ "res": "360",
+ "cast": {
+  "queen": {
+   "preset": "queen_elizabeth"
+  },
+  "merchant": {
+   "preset": "company_merchant"
+  },
+  "merchant2": {
+   "preset": "fat_merchant",
+   "hat": "wide_hat",
+   "hat_color": "#1f1d22"
+  },
+  "jahangir": {
+   "preset": "mughal_emperor"
+  },
+  "siraj": {
+   "preset": "nawab"
+  },
+  "clive": {
+   "preset": "british_officer"
+  },
+  "mirjafar": {
+   "preset": "minister",
+   "hat_color": "#2f5d3a",
+   "color": "#3f7d4e"
+  },
+  "farmer": {
+   "preset": "farmer"
+  },
+  "farmer_woman": {
+   "preset": "farmer_woman"
+  },
+  "sepoy": {
+   "preset": "sepoy"
+  },
+  "taxman": {
+   "preset": "company_merchant",
+   "hat": "tricorn",
+   "facial": null,
+   "color": "#3a2a22"
+  }
+ },
+ "beats": [
+  {
+   "id": "s01",
+   "chapter": "Cold open",
+   "text": "इकत्तीस दिसंबर, सोलह सौ. लंदन की एक ठंडी रात.",
+   "scene": {
+    "type": "set",
+    "bg": "london_street",
+    "cam": "right",
+    "caption": "LONDON, 1600",
+    "chars": [
+     {
+      "who": "merchant",
+      "x": 0.15,
+      "to": 0.45,
+      "face": "right"
+     }
+    ]
+   }
+  },
+  {
+   "id": "s02",
+   "text": "कुछ व्यापारी, महारानी के एक दस्तख़त का इंतज़ार कर रहे थे.",
+   "scene": {
+    "type": "set",
+    "bg": "palace_room",
+    "cam": "in",
+    "chars": [
+     {
+      "who": "merchant",
+      "x": 0.26,
+      "expr": "worried",
+      "face": "right"
+     },
+     {
+      "who": "merchant2",
+      "x": 0.4,
+      "expr": "worried",
+      "face": "right"
+     },
+     {
+      "who": "queen",
+      "x": 0.72,
+      "expr": "smug",
+      "pose": "hold",
+      "hold": "scroll",
+      "label": "QUEEN ELIZABETH I"
+     }
+    ]
+   }
+  },
+  {
+   "id": "s03",
+   "text": "उन्हें अंदाज़ा भी नहीं था...",
+   "scene": {
+    "type": "black",
+    "t": "उन्हें अंदाज़ा भी नहीं था..."
+   }
+  },
+  {
+   "id": "s04",
+   "text": "कि ये एक कागज़, एक दिन पूरे भारत की किस्मत लिख देगा.",
+   "scene": {
+    "type": "memo",
+    "bg": "desk_top",
+    "title": "ROYAL CHARTER",
+    "lines": [
+     "Elizabeth, by the grace of God...",
+     "to the Governor and Company",
+     "of Merchants of London,",
+     "trading into the East Indies:",
+     "sole right of trade, 15 years."
+    ],
+    "highlight": 4,
+    "stamp": "31 DEC 1600"
+   }
+  },
+  {
+   "id": "s05",
+   "transition": "fade",
+   "text": "भाग एक. मसालों का लालच.",
+   "scene": {
+    "type": "black",
+    "t": "भाग 1 : मसालों का लालच",
+    "size": 96
+   }
+  },
+  {
+   "id": "s06",
+   "text": "उस दौर में यूरोप के लिए, मसाले सबसे बड़ा business थे.",
+   "scene": {
+    "type": "set",
+    "bg": "bazaar",
+    "cam": "left",
+    "props": [
+     {
+      "name": "spice_sack",
+      "x": 0.3,
+      "y": 0.8,
+      "h": 0.16,
+      "label": "PEPPER"
+     },
+     {
+      "name": "spice_sack",
+      "x": 0.7,
+      "y": 0.8,
+      "h": 0.16,
+      "color": "#b3202a",
+      "label": "MASALE"
+     }
+    ],
+    "chars": [
+     {
+      "who": "merchant2",
+      "x": 0.5,
+      "expr": "happy",
+      "pose": "cheer"
+     }
+    ]
+   }
+  },
+  {
+   "id": "s07",
+   "text": "और लंदन के व्यापारियों ने सोचा, क्यों न खुद भारत चलें?",
+   "scene": {
+    "type": "set",
+    "bg": "company_hall",
+    "cam": "in",
+    "chars": [
+     {
+      "who": "merchant",
+      "x": 0.35,
+      "expr": "scheming",
+      "pose": "point",
+      "face": "right"
+     },
+     {
+      "who": "merchant2",
+      "x": 0.65,
+      "expr": "happy",
+      "face": "left"
+     }
+    ]
+   }
+  },
+  {
+   "id": "s08",
+   "text": "दो सौ अठारह लोगों ने पैसा लगाया, और East India Company बन गई.",
+   "scene": {
+    "type": "set",
+    "bg": "company_hall",
+    "cam": "out",
+    "big": {
+     "t": "{n} NIVESHAK",
+     "count": 218,
+     "y": 0.2
+    },
+    "chars": [
+     {
+      "who": "merchant",
+      "x": 0.2,
+      "h": 0.36,
+      "expr": "happy"
+     },
+     {
+      "who": "merchant2",
+      "x": 0.4,
+      "h": 0.36,
+      "expr": "happy",
+      "pose": "hold",
+      "hold": "money_bag"
+     },
+     {
+      "who": "taxman",
+      "x": 0.6,
+      "h": 0.36,
+      "expr": "smug"
+     },
+     {
+      "who": "merchant",
+      "x": 0.8,
+      "h": 0.36,
+      "expr": "proud",
+      "pose": "hold",
+      "hold": "coins"
+     }
+    ]
+   }
+  },
+  {
+   "id": "s09",
+   "transition": "whip",
+   "text": "सोलह सौ आठ में, कंपनी का जहाज़ पहली बार भारत के सूरत बंदरगाह पहुँचा.",
+   "scene": {
+    "type": "map",
+    "view": [
+     -20,
+     -42,
+     85,
+     62
+    ],
+    "highlight": {
+     "GBR": "#c0322b",
+     "IND": "#e8a33a"
+    },
+    "routes": [
+     {
+      "from": [
+       -1,
+       50
+      ],
+      "via": [
+       [
+        -20,
+        15
+       ],
+       [
+        18,
+        -36
+       ],
+       [
+        50,
+        -10
+       ]
+      ],
+      "to": [
+       72.8,
+       21.2
+      ],
+      "bend": 0.08,
+      "delay": 0.3,
+      "mover": "ship"
+     }
+    ],
+    "pins": [
+     {
+      "lon": -0.1,
+      "lat": 51.5,
+      "label": "LONDON",
+      "delay": 0.1
+     },
+     {
+      "lon": 72.8,
+      "lat": 21.2,
+      "label": "SURAT",
+      "delay": 3.6
+     }
+    ]
+   }
+  },
+  {
+   "id": "s10",
+   "text": "लेकिन यहाँ उनका सामना हुआ, दुनिया के सबसे अमीर बादशाहों में से एक से.",
+   "scene": {
+    "type": "set",
+    "bg": "mughal_court",
+    "cam": "in",
+    "lower": {
+     "name": "JAHANGIR",
+     "role": "Mughal Badshah",
+     "at": 0.6
+    },
+    "chars": [
+     {
+      "who": "merchant",
+      "x": 0.2,
+      "h": 0.36,
+      "expr": "worried",
+      "pose": "bow",
+      "face": "right"
+     },
+     {
+      "who": "jahangir",
+      "x": 0.55,
+      "h": 0.5,
+      "expr": "smug",
+      "face": "left"
+     }
+    ]
+   }
+  },
+  {
+   "id": "s11",
+   "text": "सत्रह सौ तक, दुनिया की करीब एक चौथाई GDP, अकेले भारत में बनती थी.",
+   "scene": {
+    "type": "chart",
+    "bars": [
+     {
+      "label": "BHARAT",
+      "value": 24,
+      "text": "~24%",
+      "color": "#e8a33a"
+     },
+     {
+      "label": "BRITAIN",
+      "value": 3,
+      "text": "~3%",
+      "color": "#c0322b"
+     }
+    ]
+   }
+  },
+  {
+   "id": "s12",
+   "text": "और इन अंग्रेज़ों की नज़र, इसी दौलत पर थी.",
+   "scene": {
+    "type": "set",
+    "bg": "study_night",
+    "cam": "in",
+    "chars": [
+     {
+      "who": "merchant2",
+      "close": true,
+      "x": 0.5,
+      "expr": "scheming"
+     }
+    ]
+   }
+  },
+  {
+   "id": "s13",
+   "transition": "fade",
+   "text": "भाग दो. प्लासी का सौदा.",
+   "scene": {
+    "type": "black",
+    "t": "भाग 2 : प्लासी का सौदा",
+    "size": 96
+   }
+  },
+  {
+   "id": "s14",
+   "text": "सत्रह सौ सत्तावन. बंगाल.",
+   "scene": {
+    "type": "set",
+    "bg": "fort",
+    "cam": "right",
+    "caption": "BENGAL, 1757",
+    "chars": [
+     {
+      "who": "siraj",
+      "x": 0.5,
+      "expr": "angry",
+      "pose": "hips",
+      "label": "SIRAJ-UD-DAULAH"
+     }
+    ]
+   }
+  },
+  {
+   "id": "s15",
+   "text": "नवाब सिराजुद्दौला, कंपनी की बढ़ती ताक़त से बेहद नाराज़ थे.",
+   "scene": {
+    "type": "set",
+    "bg": "palace_room",
+    "cam": "shake",
+    "chars": [
+     {
+      "who": "siraj",
+      "close": true,
+      "x": 0.5,
+      "expr": "shout",
+      "pose": "fist"
+     }
+    ]
+   }
+  },
+  {
+   "id": "s16",
+   "text": "दूसरी तरफ़ था, कंपनी का एक चालाक अफ़सर.",
+   "scene": {
+    "type": "set",
+    "bg": "war_tent",
+    "cam": "in",
+    "lower": {
+     "name": "ROBERT CLIVE",
+     "role": "East India Company",
+     "at": 0.4
+    },
+    "chars": [
+     {
+      "who": "clive",
+      "x": 0.5,
+      "h": 0.5,
+      "expr": "smug",
+      "pose": "think"
+     }
+    ]
+   }
+  },
+  {
+   "id": "s17",
+   "text": "क्लाइव की फ़ौज छोटी थी. इसलिए उसने लड़ाई से पहले ही एक सौदा कर लिया.",
+   "scene": {
+    "type": "set",
+    "bg": "war_tent",
+    "cam": "in",
+    "chars": [
+     {
+      "who": "clive",
+      "x": 0.35,
+      "expr": "scheming",
+      "pose": "give",
+      "hold": "money_bag",
+      "face": "right"
+     },
+     {
+      "who": "mirjafar",
+      "x": 0.9,
+      "to": 0.66,
+      "walk_time": 1.6,
+      "expr": "smug",
+      "face": "left",
+      "label": "MIR JAFAR",
+      "label_at": 1.6
+     }
+    ]
+   }
+  },
+  {
+   "id": "s18",
+   "text": "नवाब के अपने सेनापति, मीर जाफ़र से.",
+   "scene": {
+    "type": "set",
+    "bg": "war_tent",
+    "cam": "in",
+    "chars": [
+     {
+      "who": "mirjafar",
+      "close": true,
+      "x": 0.5,
+      "expr": "scheming"
+     }
+    ]
+   }
+  },
+  {
+   "id": "s19",
+   "text": "शर्त सीधी थी. जंग में साथ मत देना, और बंगाल की गद्दी तुम्हारी.",
+   "scene": {
+    "type": "memo",
+    "bg": "desk_top",
+    "title": "गुप्त समझौता",
+    "lines": [
+     "जंग के दिन मीर जाफ़र की फ़ौज",
+     "लड़ाई में हिस्सा नहीं लेगी.",
+     "बदले में :",
+     "बंगाल की गद्दी मीर जाफ़र की."
+    ],
+    "highlight": 3,
+    "stamp": "SECRET"
+   }
+  },
+  {
+   "id": "s20",
+   "transition": "whip",
+   "text": "तेईस जून को प्लासी के मैदान में, मीर जाफ़र की बड़ी फ़ौज बस खड़ी देखती रही.",
+   "scene": {
+    "type": "set",
+    "bg": "battlefield",
+    "cam": "shake",
+    "caption": "PLASSEY, 23 JUNE 1757",
+    "chars": [
+     {
+      "who": "siraj",
+      "x": 0.3,
+      "expr": "shocked",
+      "pose": "head",
+      "face": "right"
+     },
+     {
+      "who": "mirjafar",
+      "x": 0.72,
+      "expr": "smug",
+      "pose": "cross",
+      "face": "left"
+     }
+    ]
+   }
+  },
+  {
+   "id": "s21",
+   "text": "कुछ ही घंटों में, जंग ख़त्म हो चुकी थी.",
+   "scene": {
+    "type": "black",
+    "t": "कुछ ही घंटों में... जंग ख़त्म."
+   }
+  },
+  {
+   "id": "s22",
+   "transition": "fade",
+   "text": "भाग तीन. कंपनी राज.",
+   "scene": {
+    "type": "black",
+    "t": "भाग 3 : कंपनी राज",
+    "size": 96
+   }
+  },
+  {
+   "id": "s23",
+   "text": "सत्रह सौ पैंसठ में, मुग़ल बादशाह ने कंपनी को बंगाल की दीवानी दे दी.",
+   "scene": {
+    "type": "memo",
+    "bg": "desk_top",
+    "title": "DIWANI - 1765",
+    "lines": [
+     "Emperor Shah Alam II grants",
+     "to the English Company",
+     "the Diwani of Bengal,",
+     "Bihar and Orissa:",
+     "the right to collect revenue."
+    ],
+    "highlight": 4,
+    "stamp": "1765"
+   }
+  },
+  {
+   "id": "s24",
+   "text": "मतलब, करोड़ों लोगों से टैक्स वसूलने का हक़.",
+   "scene": {
+    "type": "set",
+    "bg": "village",
+    "cam": "in",
+    "chars": [
+     {
+      "who": "farmer",
+      "x": 0.25,
+      "expr": "sad",
+      "face": "right"
+     },
+     {
+      "who": "farmer_woman",
+      "x": 0.4,
+      "expr": "worried",
+      "face": "right"
+     },
+     {
+      "who": "taxman",
+      "x": 0.72,
+      "expr": "smug",
+      "pose": "hold",
+      "hold": "money_bag",
+      "face": "left",
+      "label": "TAX"
+     }
+    ]
+   }
+  },
+  {
+   "id": "s25",
+   "text": "अपने चरम पर, कंपनी के पास करीब दो लाख साठ हज़ार सिपाही थे.",
+   "scene": {
+    "type": "set",
+    "bg": "fort",
+    "cam": "out",
+    "big": {
+     "t": "{n} SIPAHI",
+     "count": 260000,
+     "y": 0.2
+    },
+    "chars": [
+     {
+      "who": "sepoy",
+      "x": 0.14,
+      "h": 0.34
+     },
+     {
+      "who": "sepoy",
+      "x": 0.32,
+      "h": 0.34
+     },
+     {
+      "who": "sepoy",
+      "x": 0.5,
+      "h": 0.34
+     },
+     {
+      "who": "sepoy",
+      "x": 0.68,
+      "h": 0.34
+     },
+     {
+      "who": "sepoy",
+      "x": 0.86,
+      "h": 0.34
+     }
+    ]
+   }
+  },
+  {
+   "id": "s26",
+   "text": "ब्रिटेन की अपनी सरकारी सेना से भी, लगभग दुगुने.",
+   "scene": {
+    "type": "chart",
+    "bars": [
+     {
+      "label": "COMPANY",
+      "value": 2,
+      "text": "2x",
+      "color": "#c0322b"
+     },
+     {
+      "label": "BRITISH ARMY",
+      "value": 1,
+      "text": "1x",
+      "color": "#3a5f8a"
+     }
+    ]
+   }
+  },
+  {
+   "id": "s27",
+   "text": "एक कंपनी, जो कभी सिर्फ़ मसाले खरीदने आई थी...",
+   "scene": {
+    "type": "black",
+    "t": "जो कभी सिर्फ़ मसाले खरीदने आई थी..."
+   }
+  },
+  {
+   "id": "s28",
+   "text": "अब एक पूरे देश पर राज कर रही थी.",
+   "scene": {
+    "type": "newspaper",
+    "name": "THE DAILY TRADER",
+    "date": "1765",
+    "headline": "COMPANY NOW RULES BENGAL",
+    "who": "clive",
+    "expr": "smug"
+   }
+  },
+  {
+   "id": "s29",
+   "text": "लेकिन यही ताक़त, आख़िर में कंपनी को ही ले डूबी.",
+   "scene": {
+    "type": "set",
+    "bg": "study_night",
+    "cam": "in",
+    "chars": [
+     {
+      "who": "clive",
+      "close": true,
+      "x": 0.5,
+      "expr": "worried"
+     }
+    ]
+   }
+  },
+  {
+   "id": "s30",
+   "text": "वो कहानी, अगली video में.",
+   "scene": {
+    "type": "black",
+    "t": "वो कहानी... अगली video में."
+   }
+  }
+ ]
+}
