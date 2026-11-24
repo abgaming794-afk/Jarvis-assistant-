@@ -13,7 +13,8 @@ import math, random, re, json, os, functools
 import numpy as np
 from PIL import Image, ImageDraw, ImageFilter, ImageFont, ImageOps
 from common import hexc, shade, font, serif, clamp, ease_out, ease_in_out, back_out, lerp, FONTS
-import toon, props, rooms
+import toon, props, rooms, motion
+from common import SKILL
 from scenes import MapProj, _quad, _paste_center, _paste, _mirror, _world, _indian
 
 OS = 1.10
@@ -184,31 +185,9 @@ class ToonShot:
 
     # ---------------- camera
     def camera(self, t):
-        sc = self.sc
-        cam = sc.get("cam", "static" if self.type == "black" else "in")
-        p = ease_in_out(t / self.dur)
-        z, ox, oy = 1.0, 0.0, 0.0
-        if cam == "in":
-            z = lerp(1.0, 1.07, p)
-        elif cam == "out":
-            z = lerp(1.07, 1.0, p)
-        elif cam == "left":
-            z, ox = 1.07, lerp(0.03, -0.03, p)
-        elif cam == "right":
-            z, ox = 1.07, lerp(-0.03, 0.03, p)
-        elif cam == "up":
-            z, oy = 1.07, lerp(0.03, -0.03, p)
-        elif cam == "down":
-            z, oy = 1.07, lerp(-0.03, 0.03, p)
-        elif cam == "punch":
-            z = 1.0 + 0.09 * ease_out(t / 0.3)
-        elif cam == "shake":
-            z = 1.05
-            k = 1 - clamp(t / 0.7)
-            ox, oy = (self.rnd.random() - .5) * .014 * k, (self.rnd.random() - .5) * .014 * k
-        fx, fy = sc.get("focus", [0.5, 0.5])
-        z *= sc.get("zoom", 1.0)
-        return z, ox + (fx - .5) * (z - 1) * 1.6, oy + (fy - .5) * (z - 1) * 1.6
+        default = {"set": "auto", "black": "static", "map": "dolly_in", "memo": "dolly_in", "chart": "static",
+                   "newspaper": "dolly_in"}.get(self.type, "dolly_in")
+        return motion.camera(self.sc.get("cam", default), t, self.dur, self.b.get("id", ""))
 
     def _spec(self, who):
         if isinstance(who, dict):
@@ -228,6 +207,9 @@ class ToonShot:
             h = int(self.CH * ch.get("h", 1.45 if close else 0.46))
             expr = ch.get("expr2") if ch.get("expr2") and t > self.dur * ch.get("at2", .55) else ch.get("expr", "neutral")
             pose = ch.get("pose2") if ch.get("pose2") and t > self.dur * ch.get("at2", .55) else ch.get("pose", "idle")
+            if ch.get("gesture"):
+                seq = ch["gesture"] if isinstance(ch["gesture"], list) else [pose, "point", pose, "shrug"]
+                pose = seq[int((t + i * .37) / ch.get("gesture_rate", .75)) % len(seq)]
             per = 3.3 + i * .8
             blink = ((t + i * 1.1) % per) > per - .12
             mouth = 0
@@ -543,25 +525,51 @@ class ToonShot:
             spr = tag(cap, int(40 * u), bg="#1c1f2a", fg="#ffffff", pointer=False)
             _paste(fr, spr, 50 * u, 46 * u)
 
-    def frame(self, t):
-        can = self.base().copy()
-        self.draw_props(can, t, "back")
-        self.draw_type(can, t)
-        self.draw_chars(can, t)
-        self.draw_props(can, t, "front")
-        z, ox, oy = self.camera(t)
-        cw, ch = self.CW / z, self.CH / z
-        x0 = clamp(self.CW / 2 + ox * self.CW - cw / 2, 0, self.CW - cw)
-        y0 = clamp(self.CH / 2 + oy * self.CH - ch / 2, 0, self.CH - ch)
-        fr = can.resize((self.W, self.H), Image.BILINEAR, box=(x0, y0, x0 + cw, y0 + ch))
-        # whip-pan transition in
-        tr = self.sc.get("transition", self.b.get("transition"))
-        if tr == "whip" and t < .22:
-            k = 1 - ease_out(t / .22)
-            shift = int(self.W * .35 * k)
-            fr = fr.transform(fr.size, Image.AFFINE, (1, 0, -shift, 0, 1, 0), fillcolor=(0, 0, 0, 255))
-            fr = fr.filter(ImageFilter.BoxBlur(max(1, int(30 * k * self.W / 1920))))
+    def _fg_items(self):
+        if self.type != "set":
+            return []
+        fg = self.sc.get("fg")
+        if fg is None:
+            fg = motion.AUTO_FG.get(self.sc.get("bg", "study_night"), [])
+        return [{"kind": f} if isinstance(f, str) else f for f in fg]
+
+    def frame_core(self, t):
+        z, ox, oy, roll = self.camera(t)
+        focus = tuple(self.sc.get("focus", [.5, .5]))
+        if self.type == "set":
+            mid = Image.new("RGBA", (self.CW, self.CH), (0, 0, 0, 0))
+            self.draw_props(mid, t, "back")
+            self.draw_chars(mid, t)
+            self.draw_props(mid, t, "front")
+            fr = motion.layer_view(self.base(), self.CW, self.CH, self.W, self.H, z, ox, oy, motion.LAYER_K["bg"], focus)
+            fr.alpha_composite(motion.layer_view(mid, self.CW, self.CH, self.W, self.H, z, ox, oy, 1.0, focus))
+            items = self._fg_items()
+            if items:
+                fg = motion.fg_layer(json.dumps(items, sort_keys=True), self.CW, self.CH)
+                fr.alpha_composite(motion.layer_view(fg, self.CW, self.CH, self.W, self.H, z, ox, oy, motion.LAYER_K["fg"], focus))
+        else:
+            can = self.base().copy()
+            self.draw_props(can, t, "back")
+            self.draw_type(can, t)
+            self.draw_chars(can, t)
+            self.draw_props(can, t, "front")
+            fr = motion.layer_view(can, self.CW, self.CH, self.W, self.H, z, ox, oy, 1.0, focus)
+        fr = motion.roll_img(fr, roll)
         self.draw_overlay(fr, t)
-        if tr == "fade" and t < .3:
-            fr = Image.blend(Image.new("RGBA", fr.size, (0, 0, 0, 255)), fr, t / .3)
+        if self.sc.get("stickers"):
+            motion.draw_stickers(fr, self.sc["stickers"], t, self.dur, SKILL)
+        return fr
+
+    def frame(self, t):
+        fr = self.frame_core(t)
+        tr = self.b.get("transition", self.sc.get("transition"))
+        if tr and tr != "cut":
+            T = self.b.get("transition_time", motion.TR_DUR.get(tr, .4))
+            if t < T:
+                prev = getattr(self, "prev", None)
+                if prev is not None:
+                    pf = prev.frame_core(prev.dur + t * .5)
+                else:
+                    pf = Image.new("RGBA", fr.size, (0, 0, 0, 255))
+                fr = motion.transition(tr, pf, fr, t / T, tuple(self.b.get("into", [.5, .5])))
         return fr.convert("RGB")

@@ -61,7 +61,7 @@
    "scene": {
     "type": "set",
     "bg": "london_street",
-    "cam": "right",
+    "cam": "auto",
     "caption": "LONDON, 1600",
     "chars": [
      {
@@ -70,8 +70,17 @@
       "to": 0.45,
       "face": "right"
      }
+    ],
+    "stickers": [
+     {
+      "name": "union_jack",
+      "side": "top_right",
+      "anim": "slide",
+      "h": 0.16
+     }
     ]
-   }
+   },
+   "transition": "fade"
   },
   {
    "id": "s02",
@@ -79,7 +88,7 @@
    "scene": {
     "type": "set",
     "bg": "palace_room",
-    "cam": "in",
+    "cam": "auto",
     "chars": [
      {
       "who": "merchant",
@@ -102,7 +111,8 @@
       "label": "QUEEN ELIZABETH I"
      }
     ]
-   }
+   },
+   "transition": "whip_right"
   },
   {
    "id": "s03",
@@ -128,7 +138,12 @@
     ],
     "highlight": 4,
     "stamp": "31 DEC 1600"
-   }
+   },
+   "transition": "zoom_through",
+   "into": [
+    0.5,
+    0.5
+   ]
   },
   {
    "id": "s05",
@@ -146,7 +161,7 @@
    "scene": {
     "type": "set",
     "bg": "bazaar",
-    "cam": "left",
+    "cam": "auto",
     "props": [
      {
       "name": "spice_sack",
@@ -171,8 +186,23 @@
       "expr": "happy",
       "pose": "cheer"
      }
+    ],
+    "stickers": [
+     {
+      "name": "coin",
+      "side": "left",
+      "anim": "pop"
+     },
+     {
+      "name": "arrow_up",
+      "side": "right",
+      "anim": "pop",
+      "pulse": true,
+      "label": "DAAM"
+     }
     ]
-   }
+   },
+   "transition": "whip_left"
   },
   {
    "id": "s07",
@@ -180,23 +210,36 @@
    "scene": {
     "type": "set",
     "bg": "company_hall",
-    "cam": "in",
+    "cam": "auto",
     "chars": [
      {
       "who": "merchant",
       "x": 0.35,
       "expr": "scheming",
       "pose": "point",
-      "face": "right"
+      "face": "right",
+      "gesture": [
+       "point",
+       "point",
+       "point",
+       "shrug"
+      ]
      },
      {
       "who": "merchant2",
       "x": 0.65,
       "expr": "happy",
-      "face": "left"
+      "face": "left",
+      "gesture": [
+       "idle",
+       "point",
+       "idle",
+       "shrug"
+      ]
      }
     ]
-   }
+   },
+   "transition": "push_left"
   },
   {
    "id": "s08",
@@ -204,7 +247,7 @@
    "scene": {
     "type": "set",
     "bg": "company_hall",
-    "cam": "out",
+    "cam": "auto",
     "big": {
      "t": "{n} NIVESHAK",
      "count": 218,
@@ -215,7 +258,13 @@
       "who": "merchant",
       "x": 0.2,
       "h": 0.36,
-      "expr": "happy"
+      "expr": "happy",
+      "gesture": [
+       "idle",
+       "point",
+       "idle",
+       "shrug"
+      ]
      },
      {
       "who": "merchant2",
@@ -229,7 +278,13 @@
       "who": "taxman",
       "x": 0.6,
       "h": 0.36,
-      "expr": "smug"
+      "expr": "smug",
+      "gesture": [
+       "idle",
+       "point",
+       "idle",
+       "shrug"
+      ]
      },
      {
       "who": "merchant",
@@ -239,12 +294,25 @@
       "pose": "hold",
       "hold": "coins"
      }
+    ],
+    "stickers": [
+     {
+      "name": "cash_stack",
+      "side": "bottom_left",
+      "anim": "slide"
+     },
+     {
+      "name": "money_bag",
+      "side": "bottom_right",
+      "anim": "slide"
+     }
     ]
-   }
+   },
+   "transition": "flash"
   },
   {
    "id": "s09",
-   "transition": "whip",
+   "transition": "whip_right",
    "text": "सोलह सौ आठ में, कंपनी का जहाज़ पहली बार भारत के सूरत बंदरगाह पहुँचा.",
    "scene": {
     "type": "map",
@@ -300,6 +368,14 @@
       "label": "SURAT",
       "delay": 3.6
      }
+    ],
+    "stickers": [
+     {
+      "name": "eic_flag",
+      "side": "top_left",
+      "anim": "slide",
+      "h": 0.15
+     }
     ]
    }
   },
@@ -309,7 +385,7 @@
    "scene": {
     "type": "set",
     "bg": "mughal_court",
-    "cam": "in",
+    "cam": "auto",
     "lower": {
      "name": "JAHANGIR",
      "role": "Mughal Badshah",
@@ -329,10 +405,35 @@
       "x": 0.55,
       "h": 0.5,
       "expr": "smug",
-      "face": "left"
+      "face": "left",
+      "gesture": [
+       "idle",
+       "point",
+       "idle",
+       "shrug"
+      ]
+     }
+    ],
+    "stickers": [
+     {
+      "name": "mughal_flag",
+      "side": "top_left",
+      "anim": "slide",
+      "h": 0.15
+     },
+     {
+      "name": "crown",
+      "side": "top_right",
+      "anim": "pop",
+      "h": 0.15
      }
     ]
-   }
+   },
+   "transition": "zoom_through",
+   "into": [
+    0.5,
+    0.62
+   ]
   },
   {
    "id": "s11",
@@ -352,8 +453,17 @@
       "text": "~3%",
       "color": "#c0322b"
      }
+    ],
+    "stickers": [
+     {
+      "name": "rupee",
+      "side": "top_left",
+      "anim": "pop",
+      "h": 0.15
+     }
     ]
-   }
+   },
+   "transition": "push_right"
   },
   {
    "id": "s12",
@@ -361,7 +471,7 @@
    "scene": {
     "type": "set",
     "bg": "study_night",
-    "cam": "in",
+    "cam": "auto",
     "chars": [
      {
       "who": "merchant2",
@@ -369,8 +479,17 @@
       "x": 0.5,
       "expr": "scheming"
      }
+    ],
+    "stickers": [
+     {
+      "name": "coin",
+      "anim": "rain",
+      "h": 0.12,
+      "at": 0.2
+     }
     ]
-   }
+   },
+   "transition": "blur"
   },
   {
    "id": "s13",
@@ -388,7 +507,7 @@
    "scene": {
     "type": "set",
     "bg": "fort",
-    "cam": "right",
+    "cam": "auto",
     "caption": "BENGAL, 1757",
     "chars": [
      {
@@ -396,10 +515,26 @@
       "x": 0.5,
       "expr": "angry",
       "pose": "hips",
-      "label": "SIRAJ-UD-DAULAH"
+      "label": "SIRAJ-UD-DAULAH",
+      "gesture": [
+       "hips",
+       "point",
+       "hips",
+       "shrug"
+      ]
+     }
+    ],
+    "stickers": [
+     {
+      "name": "warning",
+      "side": "top_right",
+      "anim": "pop",
+      "pulse": true,
+      "h": 0.17
      }
     ]
-   }
+   },
+   "transition": "whip_up"
   },
   {
    "id": "s15",
@@ -416,8 +551,17 @@
       "expr": "shout",
       "pose": "fist"
      }
+    ],
+    "stickers": [
+     {
+      "name": "exclaim",
+      "side": "right",
+      "anim": "spin",
+      "h": 0.17
+     }
     ]
-   }
+   },
+   "transition": "glitch"
   },
   {
    "id": "s16",
@@ -425,7 +569,7 @@
    "scene": {
     "type": "set",
     "bg": "war_tent",
-    "cam": "in",
+    "cam": "auto",
     "lower": {
      "name": "ROBERT CLIVE",
      "role": "East India Company",
@@ -437,10 +581,25 @@
       "x": 0.5,
       "h": 0.5,
       "expr": "smug",
-      "pose": "think"
+      "pose": "think",
+      "gesture": [
+       "think",
+       "point",
+       "think",
+       "shrug"
+      ]
+     }
+    ],
+    "stickers": [
+     {
+      "name": "union_jack",
+      "side": "top_left",
+      "anim": "slide",
+      "h": 0.14
      }
     ]
-   }
+   },
+   "transition": "iris"
   },
   {
    "id": "s17",
@@ -448,7 +607,7 @@
    "scene": {
     "type": "set",
     "bg": "war_tent",
-    "cam": "in",
+    "cam": "auto",
     "chars": [
      {
       "who": "clive",
@@ -468,8 +627,18 @@
       "label": "MIR JAFAR",
       "label_at": 1.6
      }
+    ],
+    "stickers": [
+     {
+      "name": "question",
+      "side": "top_right",
+      "anim": "pop",
+      "h": 0.15,
+      "at": 1.2
+     }
     ]
-   }
+   },
+   "transition": "whip_right"
   },
   {
    "id": "s18",
@@ -477,7 +646,7 @@
    "scene": {
     "type": "set",
     "bg": "war_tent",
-    "cam": "in",
+    "cam": "auto",
     "chars": [
      {
       "who": "mirjafar",
@@ -486,7 +655,12 @@
       "expr": "scheming"
      }
     ]
-   }
+   },
+   "transition": "zoom_through",
+   "into": [
+    0.66,
+    0.7
+   ]
   },
   {
    "id": "s19",
@@ -503,11 +677,12 @@
     ],
     "highlight": 3,
     "stamp": "SECRET"
-   }
+   },
+   "transition": "push_left"
   },
   {
    "id": "s20",
-   "transition": "whip",
+   "transition": "flash",
    "text": "तेईस जून को प्लासी के मैदान में, मीर जाफ़र की बड़ी फ़ौज बस खड़ी देखती रही.",
    "scene": {
     "type": "set",
@@ -528,6 +703,20 @@
       "expr": "smug",
       "pose": "cross",
       "face": "left"
+     }
+    ],
+    "stickers": [
+     {
+      "name": "fire",
+      "side": "bottom_left",
+      "anim": "pop",
+      "h": 0.2
+     },
+     {
+      "name": "fire",
+      "side": "bottom_right",
+      "anim": "pop",
+      "h": 0.2
      }
     ]
    }
@@ -566,7 +755,12 @@
     ],
     "highlight": 4,
     "stamp": "1765"
-   }
+   },
+   "transition": "zoom_through",
+   "into": [
+    0.5,
+    0.5
+   ]
   },
   {
    "id": "s24",
@@ -574,7 +768,7 @@
    "scene": {
     "type": "set",
     "bg": "village",
-    "cam": "in",
+    "cam": "auto",
     "chars": [
      {
       "who": "farmer",
@@ -597,8 +791,24 @@
       "face": "left",
       "label": "TAX"
      }
+    ],
+    "stickers": [
+     {
+      "name": "rupee",
+      "side": "top_left",
+      "anim": "slide",
+      "h": 0.14
+     },
+     {
+      "name": "arrow_down",
+      "side": "top_right",
+      "anim": "pop",
+      "pulse": true,
+      "h": 0.16
+     }
     ]
-   }
+   },
+   "transition": "whip_left"
   },
   {
    "id": "s25",
@@ -606,7 +816,7 @@
    "scene": {
     "type": "set",
     "bg": "fort",
-    "cam": "out",
+    "cam": "auto",
     "big": {
      "t": "{n} SIPAHI",
      "count": 260000,
@@ -616,30 +826,75 @@
      {
       "who": "sepoy",
       "x": 0.14,
-      "h": 0.34
+      "h": 0.34,
+      "gesture": [
+       "idle",
+       "point",
+       "idle",
+       "shrug"
+      ]
      },
      {
       "who": "sepoy",
       "x": 0.32,
-      "h": 0.34
+      "h": 0.34,
+      "gesture": [
+       "idle",
+       "point",
+       "idle",
+       "shrug"
+      ]
      },
      {
       "who": "sepoy",
       "x": 0.5,
-      "h": 0.34
+      "h": 0.34,
+      "gesture": [
+       "idle",
+       "point",
+       "idle",
+       "shrug"
+      ]
      },
      {
       "who": "sepoy",
       "x": 0.68,
-      "h": 0.34
+      "h": 0.34,
+      "gesture": [
+       "idle",
+       "point",
+       "idle",
+       "shrug"
+      ]
      },
      {
       "who": "sepoy",
       "x": 0.86,
-      "h": 0.34
+      "h": 0.34,
+      "gesture": [
+       "idle",
+       "point",
+       "idle",
+       "shrug"
+      ]
+     }
+    ],
+    "stickers": [
+     {
+      "name": "eic_flag",
+      "side": "top_left",
+      "anim": "slide",
+      "h": 0.14
+     },
+     {
+      "name": "union_jack",
+      "side": "top_right",
+      "anim": "slide",
+      "h": 0.14
      }
     ]
-   }
+   },
+   "transition": "flash"
   },
   {
    "id": "s26",
@@ -660,7 +915,8 @@
       "color": "#3a5f8a"
      }
     ]
-   }
+   },
+   "transition": "push_right"
   },
   {
    "id": "s27",
@@ -680,7 +936,12 @@
     "headline": "COMPANY NOW RULES BENGAL",
     "who": "clive",
     "expr": "smug"
-   }
+   },
+   "transition": "zoom_through",
+   "into": [
+    0.5,
+    0.5
+   ]
   },
   {
    "id": "s29",
@@ -688,7 +949,7 @@
    "scene": {
     "type": "set",
     "bg": "study_night",
-    "cam": "in",
+    "cam": "auto",
     "chars": [
      {
       "who": "clive",
@@ -696,8 +957,17 @@
       "x": 0.5,
       "expr": "worried"
      }
+    ],
+    "stickers": [
+     {
+      "name": "question",
+      "side": "top_right",
+      "anim": "pop",
+      "h": 0.15
+     }
     ]
-   }
+   },
+   "transition": "blur"
   },
   {
    "id": "s30",
@@ -705,7 +975,8 @@
    "scene": {
     "type": "black",
     "t": "वो कहानी... अगली video में."
-   }
+   },
+   "transition": "fade"
   }
  ]
 }

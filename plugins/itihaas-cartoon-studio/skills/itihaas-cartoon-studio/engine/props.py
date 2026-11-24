@@ -147,6 +147,113 @@ def stamp(p, c):
     p.d.ellipse(p.box(100, 100, 62, 62), outline=hexc(c or "#b3202a"), width=p._w(4))
 
 
+def dollar(p, c):
+    col = c or "#7fb069"
+    p.rrect(10, 55, 190, 145, 6, col)
+    p.rrect(22, 67, 178, 133, 4, shade(col, 1.15), w=3)
+    p.ell(100, 100, 26, 26, shade(col, 0.85), w=3)
+    p.d.text((p.s * 100, p.s * 101), "$" if c != "rupee" else "₹", font=font(40 * p.s, "Black"), anchor="mm",
+             fill=hexc("#24401c"))
+    for x in (38, 162):
+        p.ell(x, 100, 9, 9, shade(col, 0.8), ol=False)
+
+
+def rupee(p, c):
+    p.rrect(10, 55, 190, 145, 6, "#d9a35a")
+    p.rrect(22, 67, 178, 133, 4, "#e9c17a", w=3)
+    p.d.text((p.s * 100, p.s * 102), "₹", font=font(64 * p.s, "Black"), anchor="mm", fill=hexc("#6a3a14"))
+
+
+def cash_stack(p, c):
+    for k in range(5):
+        y = 150 - k * 22
+        p.rrect(20, y - 30, 180, y + 10, 5, "#7fb069" if c != "rupee" else "#d9a35a")
+        p.rrect(80, y - 30, 120, y + 10, 2, "#e8dcc0", w=2)
+
+
+def union_jack(p, c):
+    p.rrect(10, 40, 190, 160, 4, "#1d3a8a")
+    p.line([(14, 44), (186, 156)], "#ffffff", 26)
+    p.line([(186, 44), (14, 156)], "#ffffff", 26)
+    p.line([(14, 44), (186, 156)], "#c8102e", 9)
+    p.line([(186, 44), (14, 156)], "#c8102e", 9)
+    p.rrect(82, 42, 118, 158, 0, "#ffffff", ol=False)
+    p.rrect(12, 82, 188, 118, 0, "#ffffff", ol=False)
+    p.rrect(90, 42, 110, 158, 0, "#c8102e", ol=False)
+    p.rrect(12, 90, 188, 110, 0, "#c8102e", ol=False)
+    p.d.rectangle(p.box(100, 100, 90, 60), outline=p.ol, width=p._w(5))
+
+
+def eic_flag(p, c):
+    p.rrect(10, 40, 190, 160, 4, "#ffffff")
+    for k in range(7):
+        if k % 2 == 0:
+            p.rrect(12, 42 + k * 16.6, 188, 42 + (k + 1) * 16.6, 0, "#c8102e", ol=False)
+    p.rrect(12, 42, 90, 100, 0, "#ffffff", ol=False)
+    p.rrect(44, 42, 58, 100, 0, "#c8102e", ol=False)
+    p.rrect(12, 64, 90, 78, 0, "#c8102e", ol=False)
+    p.d.rectangle(p.box(100, 100, 90, 60), outline=p.ol, width=p._w(5))
+
+
+def mughal_flag(p, c):
+    import math
+    p.rrect(10, 40, 190, 160, 4, "#2f7d4e")
+    for k in range(12):
+        a = k * math.pi / 6
+        p.line([(100 + math.cos(a) * 30, 100 + math.sin(a) * 30), (100 + math.cos(a) * 48, 100 + math.sin(a) * 48)], "#e8c547", 6)
+    p.ell(100, 100, 28, 28, "#e8c547", w=3)
+
+
+def warning(p, c):
+    p.poly([(100, 20), (185, 170), (15, 170)], "#f1c232")
+    p.d.text((p.s * 100, p.s * 120), "!", font=font(90 * p.s, "Black"), anchor="mm", fill=hexc("#2a1a14"))
+
+
+def question(p, c):
+    p.ell(100, 100, 80, 80, c or "#e8342c")
+    p.d.text((p.s * 100, p.s * 104), "?", font=font(110 * p.s, "Black"), anchor="mm", fill=hexc("#ffffff"))
+
+
+def exclaim(p, c):
+    p.ell(100, 100, 80, 80, c or "#f1c232")
+    p.d.text((p.s * 100, p.s * 104), "!", font=font(110 * p.s, "Black"), anchor="mm", fill=hexc("#2a1a14"))
+
+
+def arrow_up(p, c):
+    col = c or "#2f9e44"
+    p.poly([(100, 15), (180, 100), (130, 100), (130, 185), (70, 185), (70, 100), (20, 100)], col)
+
+
+def arrow_down(p, c):
+    col = c or "#e8342c"
+    p.poly([(100, 185), (180, 100), (130, 100), (130, 15), (70, 15), (70, 100), (20, 100)], col)
+
+
+def pin(p, c):
+    p.poly([(100, 190), (55, 100), (145, 100)], c or "#e8342c")
+    p.ell(100, 80, 55, 55, c or "#e8342c")
+    p.ell(100, 80, 22, 22, "#ffffff")
+
+
+def fire(p, c):
+    p.poly([(100, 10), (160, 90), (170, 150), (100, 190), (30, 150), (40, 90), (70, 110)], "#f26b1d")
+    p.poly([(100, 80), (135, 130), (100, 185), (65, 130)], "#f6c343", ol=False)
+
+
+def skull(p, c):
+    p.ell(100, 85, 70, 65, "#f3efe4")
+    p.rrect(65, 120, 135, 175, 14, "#f3efe4")
+    p.ell(75, 85, 18, 20, "#2a1a14", ol=False)
+    p.ell(125, 85, 18, 20, "#2a1a14", ol=False)
+
+
+def portrait(p, c):
+    p.rrect(20, 10, 180, 190, 6, "#c9a227")
+    p.rrect(36, 26, 164, 174, 4, "#3a2a22")
+    p.ell(100, 85, 36, 38, "#e0ac7e")
+    p.rrect(56, 125, 144, 174, 20, "#7a1f2b", ol=False)
+
+
 PROPS = {k: v for k, v in globals().items() if callable(v) and not k.startswith("_") and k not in
          ("Pen", "shade", "hexc", "font", "make")}
 
