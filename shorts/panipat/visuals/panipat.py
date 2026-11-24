@@ -294,6 +294,19 @@ def doc_show(c, t, d):
 
 # ================================================================== battle scenes (cartoon, kalpanik) on a real Haryana field photo
 FARMS = PLC + "haryana_farms.jpg"
+def in_field(t):
+    """0..1: how much a battle / VS diorama is on the map right now."""
+    v = 0.0
+    for key, (sc, a, b, *_r) in SC.items(): v = max(v, seg(t, FS[key] - 0.4, FS[key]) * (1 - seg(t, b, b + 0.6)))
+    return v
+def ground(c, t):
+    """the battlefield is the 3D map at Panipat: parchment, borders, Yamuna, pins + a trampled-earth patch under the armies."""
+    cam = camera(t); map_layer(c, cam, t)
+    with on_map(c, cam) as ppd:
+        u, v = cam_xy(PNP[0], PNP[1] - 0.3)
+        g = skia.GradientShader.MakeRadial((u, v), 0.75, [hexc("#7C6A3A", 120), hexc("#8C7A45", 70), hexc("#8C7A45", 0)], [0, 0.6, 1])
+        c.drawCircle(u, v, 0.75, skia.Paint(Shader=g, AntiAlias=True))
+    g = skia.GradientShader.MakeLinear([(0, 0), (0, 520)], [hexc("#000000", 120), hexc("#000000", 0)]); c.drawRect(skia.Rect(0, 0, DW, 520), skia.Paint(Shader=g))
 _BG = {}
 def field_bg():
     if "f" not in _BG:
@@ -412,16 +425,83 @@ SC = {
     "p3": (Sc1761(kw(u_badi, "sabse") - 1.2, ue(u_maut) - kw(u_badi, "sabse") + 1.2, kw(u_maut, "maut") - 0.6), kw(u_badi, "sabse"), ue(u_maut) - 0.1,
            "Panipat ka teesra yudh", "14 January 1761"),
 }
+FS = {"p1": kw(u_babur, "Babur") - 0.1, "p2": us(u_1556) + 0.25, "p3": kw(u_abdali, "Marathe") - 0.1}     # VS on the battlefield starts here
 def active_scene(t):
     for key, (sc, a, b, *_r) in SC.items():
-        if a - POP_FILL - POP_RISE <= t <= b + POP_OUT + POP_FOLD: return key
+        if FS[key] - POP_FILL - POP_RISE <= t <= b + POP_OUT + POP_FOLD: return key
     return None
+
+# ---- the two armies line up on the field behind their rulers; each number appears on its word
+ARMY = {
+    "p1": (("mughal", [("inf", kw(u_babur, "12")), ("cannon", kw(u_babur, "topein") - 0.3)]), ("lodi", [("inf", us(u_lodi2)), ("eleph", kw(u_lodi2, "1,000") - 0.1)])),
+    "p2": (("mughal", [("inf", us(u_1556) + 0.6), ("cav", us(u_1556) + 1.0)]), ("sur", [("inf", kw(u_hemu, "Hemu") + 0.3), ("eleph", kw(u_hemu, "Delhi"))])),
+    "p3": (("maratha", [("inf", kw(u_abdali, "Marathe") + 0.3), ("cannon", kw(u_abdali, "Marathe") + 0.7)]), ("durrani", [("cav", kw(u_abdali, "Abdali") + 0.1), ("inf", kw(u_abdali, "Abdali") + 0.4)])),
+}
+def lineup(c, key, t, alpha=1.0):
+    if alpha <= 0: return
+    items = []
+    for side, (fac, groups) in zip(("L", "R"), ARMY[key]):
+        d = 1 if side == "L" else -1
+        def X(x): return x if side == "L" else DW - x
+        for kind, t0 in groups:
+            if kind == "inf":
+                for r, (y, sc_) in enumerate(((1190, 72), (1258, 86), (1335, 102))):
+                    for j in range(5):
+                        items.append((y, "inf", X(10 + j * 96 + r * 20), sc_, t0 + j * 0.07 + r * 0.12, d, fac, j == 2 and r == 0))
+            elif kind == "cav":
+                for j in range(4): items.append((1215 + (j % 2) * 50, "cav", X(50 + j * 115), 70, t0 + j * 0.1, d, fac, False))
+            elif kind == "eleph":
+                for j in range(3): items.append((1170 + j * 10, "eleph", X(80 + j * 165), 60, t0 + j * 0.15, d, fac, False))
+            elif kind == "cannon":
+                for j in range(3): items.append((1262 + j * 30, "cannon", X(455 + j * 50), 1.0, t0 + j * 0.12, d, fac, False))
+    items.sort(key=lambda it: it[0])
+    for y, kind, x, sc_, t0, d, fac, ban in items:
+        k = seg(t, t0, t0 + 1.0)
+        if k <= 0: continue
+        xx = x - d * 760 * (1 - ease_out(k)); moving = k < 1; a_ = int(255 * alpha * clamp(k * 4)); ph = t * 2.2 + x * 0.01
+        if kind == "inf": soldier(c, xx, y, sc_, t, fac, "run" if moving else "idle", ph, d, a_, banner=ban)
+        elif kind == "cav":
+            HS = FAC[fac]["horses"]; horse(c, xx, y, sc_ * 1.15, t, ph if moving else 0.25, d, HS[int(x) % len(HS)], rider_fn(fac, "attack", ph, t, d), a_, capar=FAC[fac]["capar"])
+        elif kind == "eleph": elephant(c, xx, y, sc_ * 1.55, t, (ph if moving else t * 0.4) * 0.6, d, None, a_)
+        elif kind == "cannon":
+            c.save(); pp = skia.Paint(); pp.setAlphaf(alpha * clamp(k * 4)); c.saveLayer(None, pp); cannon(c, xx, y, sc_, t, [], d); c.restore(); c.restore()
+
+VS_CHIPS = {
+    "p1": [("L", "12,000 sainik", kw(u_babur, "12"), "#2F6B3A", "#FFFFFF"), ("L", "+ 15-20 topein", kw(u_babur, "topein") - 0.2, "#2F6B3A", YEL),
+           ("R", "50-70 hazaar sainik (behes)", us(u_lodi2), "#1E3A8A", "#FFFFFF"), ("R", "+ 1,000 haathi", kw(u_lodi2, "1,000") - 0.1, "#1E3A8A", YEL)],
+    "p2": [("L", "Akbar: sirf 13 saal ka", us(u_1556) + 0.8, "#2F6B3A", "#FFFFFF"), ("R", "Delhi jeeti -> 'Vikramaditya'", kw(u_hemu, "Vikramaditya") - 0.3, "#7C2D12", "#FFFFFF")],
+    "p3": [("L", "Maratha senapati + topkhana", kw(u_abdali, "Marathe") + 0.6, "#B4530F", "#FFFFFF"), ("R", "Durrani shah + ghudsawar", kw(u_abdali, "Abdali") + 0.4, "#1F2937", "#FFFFFF")],
+}
+def vs_field(c, key, t):
+    """VS on the battlefield: field photo, both armies lining up, small real painting cards on top, cartoon rulers in front."""
+    i = list(SC).index(key); L, ta, Rk, tb, to, head = VS[i]; a = SC[key][1]
+    out = seg(t, a - 0.45, a)
+    ground(c, t)
+    lineup(c, key, t)
+    headline(c, head, seg(t, ta, ta + 0.7) * (1 - out), y=215, size=62, col="#FFF1C2")
+    for side, rk, t0 in (("L", L, ta), ("R", Rk, tb)):
+        k = seg(t, t0, t0 + 0.55) * (1 - out); im, box, name, note = RP[rk]
+        x0, x1 = (70, 400) if side == "L" else (680, 1010)
+        dx = (1 - ease_out(seg(t, t0, t0 + 0.55))) * (-160 if side == "L" else 160) + out * (-300 if side == "L" else 300)
+        c.save(); c.translate(dx, 0)
+        portrait_card(c, im, box, x0, 300, x1, 560, k, t, name, note, tilt=(-1 if side == "L" else 1))
+        other = tb if side == "L" else ta
+        toon(c, 250 if side == "L" else 830, 1365, 390, t, rk, face=1 if side == "L" else -1, k=seg(t, t0 + 0.2, t0 + 0.75) * (1 - out),
+             point=seg(t, max(t0, other) + 0.3, max(t0, other) + 0.9), seed=3 if side == "L" else 7)
+        c.restore()
+    vs_badge(c, DW / 2, 430, seg(t, tb, tb + 0.4) * (1 - out), t)
+    rows = {"L": 0, "R": 0}
+    for side, txt, t0, bg, fg in VS_CHIPS[key]:
+        y = 615 + rows[side] * 58; rows[side] += 1
+        chip(c, txt, 235 if side == "L" else 845, y, seg(t, t0, t0 + 0.4) * (1 - out), bg, fg, 26)
+    text(c, "Painting: asli (public domain) · cartoon: kalpanik chitran · naksha: andaazan", DW / 2, 1528, 18, "#FFFFFF", FT_SEMI, "c", 200, shadow=True)
 
 def scene_draw(c, key, t):
     sc, a, b, title, date = SC[key]
+    if t < a: vs_field(c, key, t); return
     if key == "p2":
         rec = skia.PictureRecorder(); rc = rec.beginRecording(skia.Rect(0, 0, DW, DH))
-        draw_field(rc, t, a - 1.2, b - a + 2.4); sc.battle(rc, t); pic = rec.finishRecordingAsPicture()
+        ground(rc, t); lineup(rc, key, t, 1 - seg(t, a, a + 0.5)); sc.battle(rc, t); pic = rec.finishRecordingAsPicture()
         z = sc.zoom(t); ex, ey = HEMU.get("eye", (DW / 2, 800))
         c.save(); c.translate(lerp(ex, DW / 2, z), lerp(ey, 760, z)); c.scale(1 + 1.6 * z, 1 + 1.6 * z); c.translate(-ex, -ey); c.drawPicture(pic); c.restore()
         if z > 0.02:
@@ -435,8 +515,9 @@ def scene_draw(c, key, t):
             c.drawCircle(DW / 2, 760, 60 + 300 * ease_out(hk), paint("#E63946", int(230 * (1 - hk)), stroke=12))
         chip(c, "Teer seedha aankh mein", DW / 2, 1235, seg(t, sc.ta + 0.2, sc.ta + 0.6) * (1 - seg(t, sc.ta + 1.4, sc.ta + 1.7)), "#7A1F1F", "#FFFFFF", 36)
     else:
-        draw_field(c, t, a - 1.2, b - a + 2.4)
-        sc.draw(c, t)
+        ground(c, t); lineup(c, key, t, 1 - seg(t, a, a + 0.5))
+        fo = 1 - seg(t, b - 0.35, b)
+        pp = skia.Paint(); pp.setAlphaf(fo); c.saveLayer(None, pp); sc.draw(c, t); c.restore()
     headline(c, title, seg(t, a - 0.5, a + 0.6), date, y=230, size=72)
     if key == "p1":
         ck = 1 - seg(t, kw(u_bhadak, "bhadak") - 0.4, kw(u_bhadak, "bhadak") - 0.1)
@@ -455,7 +536,7 @@ def scene_draw(c, key, t):
             rrect(c, 140, 380, DW - 140, 640, 30, "#000000", int(150 * clamp(mk * 3)))
             counter(c, 30000, lambda v: f"{int(v / 100) * 100:,}+", DW / 2, 520, mk, 120, YEL, "Maratha taraf maut (andaaze alag-alag)")
         else: chip(c, "18vi sadi ki sabse badi ladaaiyon mein se ek", DW / 2, 470, seg(t, kw(u_badi, "sabse"), kw(u_badi, "sabse") + 0.4), "#14213D", "#FFFFFF", 30, FT_SEMI)
-    text(c, "Background: Haryana ke khet (asli photo: Last Emperor, CC BY-SA 3.0) · cartoon: kalpanik chitran", DW / 2, 1528, 19, "#FFFFFF", FT_SEMI, "c", 200, shadow=True)
+    text(c, "Naksha: andaazan · cartoon: kalpanik chitran", DW / 2, 1528, 19, "#FFFFFF", FT_SEMI, "c", 200, shadow=True)
 
 def scene_image(key, t, width):
     h = int(width * DH / DW); s = skia.Surface(width, h); cc = s.getCanvas(); cc.scale(width / DW, width / DW); cc.clear(hexc("#000000"))
@@ -466,10 +547,11 @@ PNP = PL["panipat"]
 def dive(key):
     """camera dives straight down into Panipat; the ground there turns into the battlefield (zoom-through), then rises again."""
     sc, a, b, *_ = SC[key]; ZI, ZO = POP_RISE + POP_FILL, POP_OUT + POP_FOLD
-    return [(a - ZI - 0.7, PNP[0], PNP[1] - 0.5, 7.5, 50, 0), (a, PNP[0], PNP[1] - 0.02, 0.9, 30, 0), (b, PNP[0], PNP[1] - 0.02, 0.9, 30, 0),
-            (b + ZO, PNP[0], PNP[1] - 0.25, 3.2, 44, 0)]
+    f = FS[key]
+    return [(f - ZI, PNP[0], PNP[1] - 0.6, 7.0, 50, 0), (f, PNP[0], PNP[1] - 0.3, 2.4, 58, -5), (b, PNP[0], PNP[1] - 0.3, 2.1, 59, 6),
+            (b + ZO, PNP[0], PNP[1] - 0.35, 3.6, 48, 0)]
 KF = [(0.0, 78, 24, 70, 6, 0), (2.4, 78.5, 23.5, 34, 30, -6), (ue(u_hook), 77.8, 26.0, 22, 40, 2), (ue(u_kyun), 77.2, 28.4, 11, 50, 4),
-      (us(u_1526) + 0.6, 73.5, 31.0, 22, 42, -6), (ue(u_babur), 72.8, 31.6, 20, 46, -2), (us(u_lodi) + 0.6, 76.5, 28.5, 22, 44, 6), (ue(u_lodi2) - 0.3, 76.8, 28.0, 21, 46, 2)]
+      (us(u_1526) + 0.5, 73.5, 31.0, 22, 42, -6), (us(u_1761) + 0.2, 74.0, 27.0, 34, 40, 0), (ue(u_babur), 72.8, 31.6, 20, 46, -2), (us(u_lodi) + 0.6, 76.5, 28.5, 22, 44, 6), (ue(u_lodi2) - 0.3, 76.8, 28.0, 21, 46, 2)]
 KF += dive("p1")
 KF += [(kw(u_mughal, "Mughal") + 1.2, 76.0, 27.0, 26, 42, -4), (us(u_1556) + 0.2, 76.0, 27.5, 26, 42, 0), (kw(u_hemu, "Delhi") + 0.6, 76.8, 27.6, 18, 46, 6)]
 KF += dive("p2")
@@ -553,19 +635,22 @@ def map_layer(c, cam, t):
     # ---- territories of each moment (period, andaazan)
     t1, t2, t3 = us(u_1526), us(u_1556), us(u_1761)
     terr = [("india", "tiranga", ind_k * seg(t, 0.8, 2.2) if t < t1 else ind_k),
-            ("kabul", "mughal", seg(t, kw(u_babur, "Babur"), kw(u_babur, "Babur") + 0.8) * (1 - seg(t, kw(u_mughal, "Mughal") - 0.2, kw(u_mughal, "Mughal") + 0.2))),
+            ("kabul", "mughal", seg(t, us(u_1526), us(u_1526) + 0.7) * (1 - seg(t, kw(u_mughal, "Mughal") - 0.2, kw(u_mughal, "Mughal") + 0.2))),
             ("lodi", "lodi", 0.8 * seg(t, kw(u_lodi, "Lodi") - 0.3, kw(u_lodi, "Lodi") + 0.6) * (1 - seg(t, kw(u_mughal, "Mughal") - 0.2, kw(u_mughal, "Mughal") + 0.3))),
             ("mughal1530", "mughal", seg(t, kw(u_mughal, "Mughal"), kw(u_mughal, "Mughal") + 0.9) * (1 - seg(t, t2 - 0.1, t2 + 0.4))),
             ("akbar1556", "mughal", seg(t, t2, t2 + 0.6) * (1 - seg(t, kw(u_bikhar, "bikhar"), kw(u_bikhar, "bikhar") + 0.2))),
             ("sur1556", "sur", seg(t, kw(u_hemu, "Delhi"), kw(u_hemu, "Delhi") + 0.6) * (1 - seg(t, kw(u_bikhar, "bikhar"), kw(u_bikhar, "bikhar") + 0.2))),
-            ("maratha", "bhagwa", seg(t, kw(u_abdali, "Marathe") - 0.1, kw(u_abdali, "Marathe") + 0.7) * (1 - seg(t, us(u_naksha), us(u_naksha) + 0.5))),
-            ("afghan", "durrani", seg(t, kw(u_abdali, "Abdali") - 0.2, kw(u_abdali, "Abdali") + 0.6) * (1 - seg(t, us(u_naksha), us(u_naksha) + 0.5)))]
+            ("maratha", "bhagwa", seg(t, us(u_1761) + 0.1, us(u_1761) + 0.7) * (1 - seg(t, us(u_naksha), us(u_naksha) + 0.5))),
+            ("afghan", "durrani", seg(t, us(u_1761) + 0.4, us(u_1761) + 1.0) * (1 - seg(t, us(u_naksha), us(u_naksha) + 0.5)))]
+    fd = in_field(t)
     for rk, kind, k in terr:
+        k *= 1 - 0.75 * fd
         if k > 0: flag_region(c, cam, PP(rk), kind, t, k)
+    if fd > 0: river(c, cam, YAMUNA, fd, t)
     # ---- Babur's march Kabul -> Panipat, Abdali Kabul -> Panipat, Marathas Pune -> Delhi -> Panipat
-    mk = seg(t, kw(u_babur, "Babur") + 0.3, ue(u_babur) + 0.3)
+    mk = seg(t, us(u_1526) + 0.1, FS["p1"] - 0.6)
     if mk > 0 and t < SC["p1"][1]: route(c, cam, [PL["kabul"], PL["khyber"], PL["lahore"], PL["ambala"], PNP], mk, "#2F6B3A", 7, True, t)
-    ak = seg(t, kw(u_abdali, "Abdali") + 0.1, ue(u_abdali) + 0.4); mk2 = seg(t, kw(u_abdali, "Marathe"), ue(u_abdali) + 0.4)
+    ak = seg(t, us(u_1761) + 0.4, FS["p3"] - 0.5); mk2 = seg(t, us(u_1761) + 0.1, FS["p3"] - 0.5)
     if t < SC["p3"][1]:
         if ak > 0: route(c, cam, [PL["kandahar"], PL["kabul"], PL["khyber"], PL["lahore"], PL["ambala"], PNP], ak, "#1F2937", 7, True, t)
         if mk2 > 0: route(c, cam, [PL["pune"], PL["bhopal"], PL["gwalior"], PL["agra"], PL["delhi"], PNP], mk2, "#E8731A", 7, True, t)
@@ -615,6 +700,7 @@ def map_layer(c, cam, t):
           (66.5, 33.0, "durrani", "Ahmad Shah Abdali", seg(t, kw(u_abdali, "Abdali"), kw(u_abdali, "Abdali") + 0.5) * (1 - seg(t, SC["p3"][1] - 1.1, SC["p3"][1] - 0.8)))]
     fl.sort(key=lambda f: -((cam.ll(f[0], f[1]) or (0, 0, 1e9))[2]))
     for lo, la, kd, lb, k in fl:
+        k *= 1 - fd
         if k > 0: float_flag(c, cam, lo, la, kd, t, k, lb, size=1.25)
     # ---- crossed-sword marks of all battles on the corridor at the end of the explanation
     for j, (key, y_) in enumerate((("panipat", "3x"), ("tarain", ""), ("karnal", ""))):
@@ -701,7 +787,6 @@ def subscribe(c, t):
     c.drawPath(p, paint("#FFFFFF")); c.drawPath(p, paint("#000000", 255, stroke=3))
 
 def overlays(c, t, cam):
-    draw_vs(c, t)
     # ---- hook: "EK HI MAIDAN" -> PANIPAT glides in letter by letter, "?" drops on "kyun", three battle years pop on "teen"
     hk_out = 1 - seg(t, us(u_1526) - 0.3, us(u_1526) + 0.1)
     if hk_out > 0:
@@ -770,20 +855,20 @@ def frame(c, t, width):
     cam = camera(t); key = active_scene(t)
     if key:
         sc, a, b, *_r = SC[key]
-        if a <= t <= b: scene_draw(c, key, t)
-        else:
+        if FS[key] <= t <= b: scene_draw(c, key, t)
+        elif False:
             map_layer(c, cam, t); overlays(c, t, cam)
             ZI, ZO = POP_RISE + POP_FILL, POP_OUT + POP_FOLD
-            k = seg(t, a - ZI, a) if t < a else 1 - seg(t, b, b + ZO)
+            k = seg(t, FS[key] - ZI, FS[key]) if t < FS[key] else 1 - seg(t, b, b + ZO)
             q = cam.ll(*PNP); px, py = (q[0], q[1]) if q else (DW / 2, DH / 2)
             R_ = math.hypot(DW, DH) * 1.02 * ease_in(k) + 1; scl = lerp(0.45, 1.0, ease_out(k))
-            img_ = scene_image(key, min(max(t, a), b), width)
+            img_ = scene_image(key, min(max(t, FS[key]), b), width)
             c.save(); cp = skia.Path(); cp.addCircle(px, py, R_); c.clipPath(cp, doAntiAlias=True)
             c.translate(px, py); c.scale(scl, scl); c.translate(-px, -py)
             pp = skia.Paint(AntiAlias=True); pp.setAlphaf(clamp(k * 2.5)); c.drawImageRect(img_, skia.Rect(0, 0, img_.width(), img_.height()), skia.Rect(0, 0, DW, DH), SAMP, pp)
             c.restore()
             c.drawCircle(px, py, R_, paint("#FFF1C2", int(220 * (1 - k)), stroke=10, blur=6)); c.drawCircle(px, py, R_, paint("#FFFFFF", int(255 * (1 - k)), stroke=3))
-    else:
+    if not key or not (FS[key] <= t <= SC[key][2]):
         map_layer(c, cam, t); overlays(c, t, cam)
     for d in DOCS_ON: doc_show(c, t, d)
     captions(c, t)

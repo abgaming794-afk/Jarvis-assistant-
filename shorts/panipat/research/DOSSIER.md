@@ -18,6 +18,7 @@ All from English Wikipedia (raw wikitext fetched 24 Nov 2026), which cites the b
 | 30,000+ Maratha deaths | 30,000 killed in battle + 10,000 killed retreating + 10,000 missing (Kaushik Roy 2004 p.93) - figures vary, shown as "30,000+" | same |
 | Uttarapath | GT Road was called Uttarapatha in the Mauryan period; GT Road runs Kabul ... Panipat ... Delhi | en.wikipedia.org/wiki/Grand_Trunk_Road |
 | 95 km | Panipat is 95 km north of Delhi | en.wikipedia.org/wiki/Panipat |
+| Note | Battle background is now the 3D map itself (Haryana field photo no longer used, so no CC BY-SA credit needed) | - |
 | Yamuna / Thar | Geography: Yamuna east of Panipat; Thar desert to the south-west (map observation; "sapaat" = Indo-Gangetic plain) | Natural Earth map data |
 | Tarain 1192 | Second Battle of Tarain, 1192, Taraori, Haryana (29.78N 76.94E) | en.wikipedia.org/wiki/Second_Battle_of_Tarain |
 | Karnal 1739 | 24 Feb 1739, Karnal, Haryana (29.72N 77.07E) | en.wikipedia.org/wiki/Battle_of_Karnal |
