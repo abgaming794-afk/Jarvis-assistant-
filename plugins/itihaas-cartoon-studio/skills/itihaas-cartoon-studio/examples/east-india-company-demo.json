@@ -1,0 +1,540 @@
+{
+ "title": "Ek Company Ne Poora India Kaise Khareed Liya?",
+ "voice": {
+  "engine": "edge",
+  "voice": "hi-IN-MadhurNeural",
+  "rate": "+8%"
+ },
+ "music": "mystery",
+ "music_volume": 0.13,
+ "res": "360",
+ "cast": {
+  "queen": {
+   "preset": "queen_elizabeth"
+  },
+  "merchant": {
+   "preset": "company_merchant"
+  },
+  "merchant2": {
+   "preset": "fat_merchant",
+   "hat": "wide_hat",
+   "hat_color": "#1f1d22"
+  },
+  "jahangir": {
+   "preset": "mughal_emperor"
+  },
+  "roe": {
+   "preset": "company_merchant",
+   "facial": "mustache",
+   "color": "#3b2f4a",
+   "hair_color": "#6a4a2e"
+  },
+  "siraj": {
+   "preset": "nawab"
+  },
+  "clive": {
+   "preset": "british_officer"
+  },
+  "mirjafar": {
+   "preset": "minister",
+   "hat_color": "#2f5d3a",
+   "color": "#3f7d4e"
+  },
+  "farmer": {
+   "preset": "farmer"
+  },
+  "farmer_woman": {
+   "preset": "farmer_woman"
+  },
+  "sepoy": {
+   "preset": "sepoy"
+  }
+ },
+ "beats": [
+  {
+   "id": "b01",
+   "chapter": "Hook",
+   "text": "सोचिए... एक company, जिसकी अपनी army थी, अपने सिक्के थे, और जो करोड़ों लोगों पर राज करती थी.",
+   "sfx": "cash",
+   "scene": {
+    "type": "chars",
+    "bg": "office",
+    "cam": "punch",
+    "fx": "coin_rain",
+    "chars": [
+     {
+      "who": "clive",
+      "x": 0.5,
+      "expr": "smug",
+      "pose": "hold",
+      "hold": "money_bag",
+      "hold_size": 0.3
+     }
+    ],
+    "text": {
+     "t": "EK COMPANY KI [ARMY]",
+     "pos": "top"
+    }
+   }
+  },
+  {
+   "id": "b02",
+   "text": "ये किसी movie की कहानी नहीं है. ये है East India Company, जिसने एक पूरा देश खरीद लिया.",
+   "sfx": "boom",
+   "scene": {
+    "type": "title",
+    "bg": "studio_red",
+    "lines": [
+     "EAST INDIA",
+     "[COMPANY]"
+    ],
+    "sub": "JISNE EK DESH KHAREED LIYA"
+   }
+  },
+  {
+   "id": "b03",
+   "chapter": "London, 1600",
+   "text": "साल सोलह सौ. लंदन के कुछ व्यापारियों को एशिया के मसालों में मोटा मुनाफ़ा दिख रहा था.",
+   "scene": {
+    "type": "chars",
+    "bg": "london",
+    "cam": "right",
+    "chars": [
+     {
+      "who": "merchant",
+      "x": 0.3,
+      "expr": "happy",
+      "pose": "point",
+      "face": "right"
+     },
+     {
+      "who": "merchant2",
+      "x": 0.72,
+      "expr": "scheming",
+      "pose": "hold",
+      "hold": "spice_sack",
+      "face": "left"
+     }
+    ],
+    "text": {
+     "t": "LONDON, [1600]",
+     "pos": "top"
+    }
+   }
+  },
+  {
+   "id": "b04",
+   "text": "इकत्तीस दिसंबर को Queen Elizabeth ने उन्हें एक Royal Charter दे दिया.",
+   "scene": {
+    "type": "chars",
+    "bg": "palace",
+    "cam": "in",
+    "chars": [
+     {
+      "who": "merchant",
+      "x": 0.27,
+      "expr": "happy",
+      "pose": "bow",
+      "h": 0.68,
+      "face": "right"
+     },
+     {
+      "who": "queen",
+      "x": 0.66,
+      "expr": "proud",
+      "pose": "hold",
+      "hold": "scroll",
+      "face": "left",
+      "h": 0.9
+     }
+    ],
+    "text": {
+     "t": "ROYAL [CHARTER]",
+     "pos": "top"
+    }
+   }
+  },
+  {
+   "id": "b05",
+   "text": "यानी पूरब के देशों से व्यापार का पूरा हक़, सिर्फ़ इसी एक company के पास.",
+   "sfx": "ding",
+   "scene": {
+    "type": "document",
+    "bg": "war_room",
+    "title": "ROYAL CHARTER",
+    "lines": [
+     "Elizabeth, by the grace of God,",
+     "to the Governor and Company",
+     "of Merchants of London",
+     "trading into the East Indies:",
+     "sole right of trade, 15 years."
+    ],
+    "highlight": 4,
+    "stamp": "31 DEC 1600"
+   }
+  },
+  {
+   "id": "b06",
+   "chapter": "Sone Ki Chidiya",
+   "text": "उस दौर में भारत दुनिया के सबसे अमीर इलाकों में था. एक अनुमान के मुताबिक, सत्रह सौ में दुनिया की करीब चौबीस प्रतिशत GDP यहीं थी.",
+   "scene": {
+    "type": "number",
+    "bg": "studio_gold",
+    "value": 24,
+    "suffix": "%",
+    "label": "DUNIYA KI GDP MEIN HISSA (1700)",
+    "props": [
+     {
+      "name": "coins",
+      "x": 0.15,
+      "y": 0.8,
+      "h": 0.25
+     },
+     {
+      "name": "gold_bars",
+      "x": 0.85,
+      "y": 0.8,
+      "h": 0.25
+     }
+    ]
+   }
+  },
+  {
+   "id": "b07",
+   "text": "Company के जहाज़ अफ़्रीका का चक्कर लगाकर, महीनों के सफ़र के बाद, सूरत के बंदरगाह पहुँचे.",
+   "scene": {
+    "type": "map",
+    "view": [
+     -20,
+     -42,
+     85,
+     66
+    ],
+    "highlight": {
+     "GBR": "#c0322b",
+     "IND": "#e8a33a"
+    },
+    "arrows": [
+     {
+      "from": [
+       -1,
+       50
+      ],
+      "to": [
+       18,
+       -36
+      ],
+      "bend": 0.25,
+      "delay": 0.2,
+      "time": 2.2
+     },
+     {
+      "from": [
+       18,
+       -36
+      ],
+      "to": [
+       72.8,
+       21.2
+      ],
+      "bend": 0.2,
+      "delay": 2.4,
+      "time": 2.4,
+      "mover": "ship"
+     }
+    ],
+    "pins": [
+     {
+      "lon": -0.1,
+      "lat": 51.5,
+      "label": "LONDON",
+      "delay": 0.1
+     },
+     {
+      "lon": 72.8,
+      "lat": 21.2,
+      "label": "SURAT",
+      "delay": 4.4
+     }
+    ]
+   }
+  },
+  {
+   "id": "b08",
+   "text": "लेकिन मुग़ल बादशाह जहाँगीर के शानदार दरबार के सामने, ये अंग्रेज़ बस छोटे-मोटे व्यापारी थे.",
+   "scene": {
+    "type": "chars",
+    "bg": "court",
+    "cam": "in",
+    "props": [
+     {
+      "name": "throne",
+      "x": 0.68,
+      "y": 0.62,
+      "h": 0.75,
+      "layer": "back",
+      "anim": "none"
+     }
+    ],
+    "chars": [
+     {
+      "who": "merchant",
+      "x": 0.24,
+      "expr": "worried",
+      "pose": "bow",
+      "h": 0.55,
+      "face": "right"
+     },
+     {
+      "who": "jahangir",
+      "x": 0.68,
+      "expr": "smug",
+      "pose": "idle",
+      "h": 0.92,
+      "face": "left"
+     }
+    ],
+    "text": {
+     "t": "MUGHAL [DARBAR]",
+     "pos": "top"
+    }
+   }
+  },
+  {
+   "id": "b09",
+   "text": "सोलह सौ पंद्रह में राजदूत Thomas Roe दरबार पहुँचे. कोशिशों के बाद, company को व्यापार की इजाज़त मिल गई.",
+   "sfx": "ding",
+   "scene": {
+    "type": "chars",
+    "bg": "court",
+    "cam": "left",
+    "chars": [
+     {
+      "who": "roe",
+      "x": 0.3,
+      "expr": "happy",
+      "pose": "hold",
+      "hold": "letter",
+      "face": "right"
+     },
+     {
+      "who": "jahangir",
+      "x": 0.72,
+      "expr": "neutral",
+      "pose": "point",
+      "face": "left"
+     }
+    ],
+    "text": {
+     "t": "THOMAS ROE, [1615]",
+     "pos": "top"
+    }
+   }
+  },
+  {
+   "id": "b10",
+   "chapter": "Plassey, 1757",
+   "text": "फिर आया सत्रह सौ सत्तावन. बंगाल के नवाब सिराजुद्दौला, company की मनमानी से बेहद नाराज़ थे.",
+   "sfx": "drum",
+   "scene": {
+    "type": "chars",
+    "bg": "palace",
+    "cam": "shake",
+    "chars": [
+     {
+      "who": "siraj",
+      "x": 0.5,
+      "expr": "angry",
+      "pose": "fist",
+      "face": "right"
+     }
+    ],
+    "text": {
+     "t": "BENGAL, [1757]",
+     "pos": "top"
+    }
+   }
+  },
+  {
+   "id": "b11",
+   "text": "Company के Robert Clive की फ़ौज छोटी थी. पर उसके पास एक चाल थी.",
+   "sfx": "tension",
+   "scene": {
+    "type": "chars",
+    "bg": "war_room",
+    "cam": "in",
+    "fx": "spotlight",
+    "chars": [
+     {
+      "who": "clive",
+      "x": 0.5,
+      "expr": "scheming",
+      "pose": "think"
+     }
+    ],
+    "text": {
+     "t": "ROBERT [CLIVE]",
+     "pos": "top"
+    }
+   }
+  },
+  {
+   "id": "b12",
+   "text": "उसने चुपचाप नवाब के ही सेनापति मीर जाफ़र से सौदा कर लिया. बदले में, बंगाल की गद्दी.",
+   "sfx": "cash",
+   "scene": {
+    "type": "chars",
+    "bg": "dinner",
+    "cam": "in",
+    "chars": [
+     {
+      "who": "clive",
+      "x": 0.28,
+      "expr": "scheming",
+      "pose": "hold",
+      "hold": "money_bag",
+      "face": "right"
+     },
+     {
+      "who": "mirjafar",
+      "x": 0.72,
+      "expr": "smug",
+      "pose": "chin",
+      "face": "left"
+     }
+    ],
+    "text": {
+     "t": "GUPT [SAUDA]",
+     "pos": "top"
+    }
+   }
+  },
+  {
+   "id": "b13",
+   "text": "प्लासी की लड़ाई में मीर जाफ़र की बड़ी फ़ौज बस खड़ी देखती रही. और सिराजुद्दौला हार गए.",
+   "sfx": "boom",
+   "scene": {
+    "type": "chars",
+    "bg": "battlefield",
+    "cam": "shake",
+    "fx": "smoke",
+    "chars": [
+     {
+      "who": "siraj",
+      "x": 0.32,
+      "expr": "shocked",
+      "pose": "shrug",
+      "face": "right"
+     },
+     {
+      "who": "mirjafar",
+      "x": 0.74,
+      "expr": "smug",
+      "pose": "cross",
+      "face": "left",
+      "h": 0.7
+     }
+    ],
+    "text": {
+     "t": "[PLASSEY] KI JUNG",
+     "pos": "top"
+    }
+   }
+  },
+  {
+   "id": "b14",
+   "text": "सत्रह सौ पैंसठ में company को बंगाल की दीवानी मिल गई. यानी करोड़ों लोगों से टैक्स वसूलने का हक़.",
+   "sfx": "ding",
+   "scene": {
+    "type": "document",
+    "bg": "war_room",
+    "title": "DIWANI GRANT",
+    "lines": [
+     "Emperor Shah Alam II grants",
+     "to the English Company",
+     "the Diwani of Bengal,",
+     "Bihar and Orissa:",
+     "the right to collect revenue."
+    ],
+    "highlight": 4,
+    "stamp": "1765"
+   }
+  },
+  {
+   "id": "b15",
+   "text": "अपने चरम पर, company की army में करीब दो लाख साठ हज़ार सिपाही थे. ब्रिटेन की अपनी army से भी लगभग दुगुने.",
+   "sfx": "drum",
+   "scene": {
+    "type": "number",
+    "bg": "studio_red",
+    "value": 260000,
+    "label": "COMPANY KE SIPAHI",
+    "chars": [
+     {
+      "who": "sepoy",
+      "x": 0.14,
+      "expr": "proud",
+      "h": 0.5,
+      "face": "right"
+     },
+     {
+      "who": "sepoy",
+      "x": 0.86,
+      "expr": "proud",
+      "h": 0.5,
+      "face": "left"
+     }
+    ]
+   }
+  },
+  {
+   "id": "b16",
+   "text": "सोचिए... एक company, जो कभी सिर्फ़ मसाले खरीदने आई थी.",
+   "scene": {
+    "type": "title",
+    "bg": "studio_dark",
+    "lines": [
+     "SIRF [MASALE]",
+     "KHAREEDNE AAYI THI"
+    ],
+    "props": [
+     {
+      "name": "spice_sack",
+      "x": 0.2,
+      "y": 0.84,
+      "h": 0.22
+     },
+     {
+      "name": "spice_sack",
+      "x": 0.8,
+      "y": 0.84,
+      "h": 0.22,
+      "color": "#b3202a"
+     }
+    ],
+    "size": 125
+   }
+  },
+  {
+   "id": "b17",
+   "text": "पर असली कहानी तो अब शुरू होती है. ऐसी और कहानियों के लिए, channel को subscribe कर लीजिए.",
+   "scene": {
+    "type": "chars",
+    "bg": "night",
+    "cam": "out",
+    "chars": [
+     {
+      "who": "clive",
+      "x": 0.5,
+      "expr": "shocked",
+      "pose": "shrug"
+     }
+    ],
+    "text": {
+     "t": "TO BE [CONTINUED]...",
+     "pos": "top"
+    }
+   }
+  }
+ ]
+}
