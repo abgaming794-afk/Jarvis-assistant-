@@ -1,13 +1,16 @@
 {
   "name": "unexplored-truth-by-amrit",
-  "version": "1.1.0",
-  "description": "Unexplored Truth by Amrit - end-to-end studio for the AMRIT BORI YouTube channel (@itsamritbori): long-form Hinglish history and geopolitics documentaries (16:9) and Shorts (9:16) - topic, research, script, voice-over alignment, 2D map animation with period-correct flags, real image and Wikipedia cards, ChatGPT AI-image workflow with labels, 360p review, resumable 4K 60fps 10-bit render, story-then-proof editing (satellite + parchment maps, flag fills/peels, map mascots, stamps, real document fly-in with highlights), photoreal Nitish Rajput / Dhruv Rathee style thumbnails and unlisted YouTube upload via vidIQ.",
+  "version": "1.2.0",
+  "description": "Unexplored Truth by Amrit - end-to-end studio for the AMRIT BORI YouTube channel (@itsamritbori): long-form Hinglish history and geopolitics documentaries (16:9) and Shorts (9:16) - topic, research, script, voice-over alignment, 2D map animation with period-correct flags, real image and Wikipedia cards, ChatGPT AI-image workflow with labels, 360p review, resumable 4K 60fps 10-bit render, story-then-proof editing with 2D cartoon battles for every war and 3D map animation (satellite + parchment maps, flag fills/peels, map mascots, stamps, real document fly-in with highlights), photoreal Nitish Rajput / Dhruv Rathee style thumbnails and unlisted YouTube upload via vidIQ.",
   "author": {
     "name": "Amrit Bori"
   },
   "keywords": [
+    "2d-animation",
+    "3d-map",
     "4k",
     "ai-images",
+    "cartoon-battle",
     "document-proof",
     "documentary",
     "elevenlabs",

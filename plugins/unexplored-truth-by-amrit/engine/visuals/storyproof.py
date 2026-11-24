@@ -87,7 +87,7 @@ def paper_overlay(c, a=70, mode=skia.BlendMode.kMultiply):
 
 def parchment_map(c, wm, cam, fills=None, sea="#6F9AA4", land="#D9C9A2", coast="#9A8762", a=255, paper=80):
     """beige land / teal sea vintage map with a paper grain (the reference's 'old map' look)."""
-    c.drawRect(skia.Rect(0, 0, DW, DH), paint(sea, a))
+    c.drawRect(skia.Rect(-DW, -DH, 2 * DW, 2 * DH), paint(sea, a))
     fills = fills or {}
     with map_space(c, cam) as s:
         P = wm.paths(s)
@@ -526,3 +526,82 @@ def crowd_silhouettes(c, n, y, t, col="#1B1B1F", size=120, a=255, seed=4):
         yy = y + math.sin(t * 5 + i * 1.7) * 4 + rng.uniform(-10, 18)
         c.drawOval(skia.Rect(x - s * 0.62, yy - s * 0.15, x + s * 0.62, yy + s * 0.9), paint(col, a))
         c.drawCircle(x, yy - s * 0.42, s * 0.36, paint(col, a))
+
+# =================================================================== 13. 3D map: tilted perspective, camera orbit, extruded regions, standing pins
+def map3d_matrix(tilt=0.6, rot=0.0, pivot=None):
+    """perspective that lays the flat frame on the ground like Google Earth's tilt. tilt 0 = top-down, 1 = strong.
+    rot = camera orbit in degrees (rotates the ground around `pivot`)."""
+    pv = pivot or (DW / 2, DH * 0.62); tl = clamp(tilt)
+    top_y = DH * 0.30 * tl; top_hw = DW / 2 * (1 - 0.42 * tl); bot_y = DH * (1 + 0.30 * tl); bot_hw = DW / 2 * (1 + 0.55 * tl)
+    dst = [(DW / 2 - top_hw, top_y), (DW / 2 + top_hw, top_y), (DW / 2 + bot_hw, bot_y), (DW / 2 - bot_hw, bot_y)]
+    if rot:
+        ca, sa = math.cos(math.radians(rot)), math.sin(math.radians(rot))
+        dst = [(pv[0] + (x - pv[0]) * ca - (y - pv[1]) * sa * 0.35, pv[1] + (x - pv[0]) * sa * 0.35 + (y - pv[1]) * ca) for x, y in dst]
+    m = skia.Matrix(); m.setPolyToPoly([skia.Point(0, 0), skia.Point(DW, 0), skia.Point(DW, DH), skia.Point(0, DH)], [skia.Point(*p) for p in dst])
+    return m
+
+def map3d(c, draw_flat, tilt=0.6, rot=0.0, sky=("#0B1424", "#E9B872"), fog=True):
+    """render `draw_flat(cc)` (any flat map scene) into an offscreen layer and lay it down in 3D.
+    Returns the matrix M: use proj(M, x, y), extrude(c, M, ...), pin3d(c, M, ...) for 3D extras."""
+    sc = c.getTotalMatrix().getScaleX(); E = 1.0 + 0.7 * clamp(tilt * 1.5)        # draw a bigger flat plane so its edges stay off-screen
+    mx, my = DW * (E - 1) / 2, DH * (E - 1) / 2
+    surf = skia.Surface(max(2, int(DW * E * sc)), max(2, int(DH * E * sc))); cc = surf.getCanvas(); cc.scale(sc, sc); cc.translate(mx, my); draw_flat(cc)
+    img = surf.makeImageSnapshot(); M = map3d_matrix(tilt, rot)
+    if tilt > 0 and sky:
+        g = skia.GradientShader.MakeLinear([(0, 0), (0, DH * 0.42)], [hexc(sky[0]), hexc(sky[1])])
+        c.drawRect(skia.Rect(0, 0, DW, DH), skia.Paint(Shader=g))
+    c.save(); c.concat(M); c.drawImageRect(img, skia.Rect(0, 0, img.width(), img.height()), skia.Rect(-mx, -my, DW + mx, DH + my), SAMP); c.restore()
+    if fog and tilt > 0:
+        top = M.mapXY(DW / 2, 0).y()
+        g = skia.GradientShader.MakeLinear([(0, top - 10), (0, top + DH * 0.22)], [hexc(sky[1], int(230 * tilt)), hexc(sky[1], 0)])
+        c.drawRect(skia.Rect(0, 0, DW, DH), skia.Paint(Shader=g))
+    return M
+
+def flat_path(cam, path):
+    """a WorldMap path (map units) -> flat design-space path (what map_space draws)."""
+    cx, cy = cam_xy(cam[0], cam[1]); s = cam[2]
+    m = skia.Matrix(); m.setAll(s, 0, DW / 2 - cx * s, 0, s, DH / 2 - cy * s, 0, 0, 1)
+    p = skia.Path(path); p.transform(m); return p
+
+def proj(M, x, y):
+    q = M.mapXY(x, y); return q.x(), q.y()
+
+def extrude(c, M, fpath, height, col, k=1.0, top=None, glow=True, steps=10):
+    """region rises out of the 3D ground: side walls (darker) + lit top face + edge glow. fpath from flat_path()."""
+    if k <= 0: return
+    h = height * ease_out(k); p = skia.Path(fpath); p.transform(M)
+    for i in range(steps + 1):
+        f = i / steps; shade = int(255 * (0.55 + 0.25 * f))
+        c.save(); c.translate(0, -h * f)
+        c.drawPath(p, paint(col, int(255 * min(1, k * 2))) if i == steps else paint("#000000", 0))
+        if i < steps:
+            pp = paint(col, int(min(255, 255 * k * 2))); pp.setColorFilter(skia.ColorFilters.Blend(hexc("#000000", 255 - shade), skia.BlendMode.kSrcATop)); c.drawPath(p, pp)
+        c.restore()
+    c.save(); c.translate(0, -h)
+    if top: c.drawPath(p, paint(top, int(180 * k)))
+    if glow: c.drawPath(p, paint("#FFFFFF", int(150 * k), stroke=5, blur=4)); c.drawPath(p, paint("#FFFFFF", int(230 * k), stroke=1.6))
+    c.restore()
+
+def pin3d(c, M, x, y, label=None, k=1.0, t=0, col=RED, h=130, sub=None, a=255):
+    """a pin/flag standing UP from the tilted ground (pole in screen space -> real 3D feel)."""
+    if k <= 0: return
+    bx, by = proj(M, x, y); hh = h * back(clamp(k))
+    c.drawOval(skia.Rect(bx - 16, by - 5, bx + 16, by + 5), paint("#000000", int(a * 0.45), blur=4))
+    c.drawLine(bx, by, bx, by - hh, paint("#F4EFE4", a, stroke=4, cap_round=True))
+    c.drawCircle(bx, by - hh, 15, paint("#000000", int(a * 0.35), blur=5)); c.drawCircle(bx, by - hh, 13, paint(col, a)); c.drawCircle(bx - 4, by - hh - 4, 4, paint(WHITE, a))
+    if label:
+        lk = seg(k, 0.4, 1.0); text(c, label, bx + 22, by - hh + 12, 36, WHITE, SERIF_DISPLAY, "l", int(a * lk), shadow=True)
+        if sub: text(c, sub, bx + 22, by - hh + 40, 20, WHITE, SERIF_TEXT, "l", int(a * lk), shadow=True)
+
+def fire3d(c, M, x, y, t, k=1.0, s=1.0):
+    """a burning front on the 3D map: flickering flame + rising smoke from the ground point."""
+    if k <= 0: return
+    bx, by = proj(M, x, y); s *= back(clamp(k))
+    for i in range(4):
+        sy = by - 40 * s - ((t * 30 + i * 25) % 100) * s; c.drawCircle(bx + math.sin(t * 2 + i) * 10 * s, sy, (14 + i * 4) * s, paint("#3A3A3A", int(110 * (1 - i / 4)), blur=8))
+    for j, (colr, sz) in enumerate((("#FF4D00", 1.0), ("#FFB000", 0.7), ("#FFF3B0", 0.4))):
+        fl = skia.Path(); w = 18 * s * sz; hh = (52 + 10 * math.sin(t * 13 + j)) * s * sz
+        fl.moveTo(bx - w, by); fl.cubicTo(bx - w, by - hh * 0.5, bx - w * 0.2, by - hh * 0.8, bx + math.sin(t * 9) * 4 * s, by - hh)
+        fl.cubicTo(bx + w * 0.3, by - hh * 0.7, bx + w, by - hh * 0.45, bx + w, by); fl.close()
+        c.drawPath(fl, paint(colr, 235))
+    c.drawCircle(bx, by - 20 * s, 34 * s, paint("#FF7A00", 70, blur=18))

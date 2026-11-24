@@ -7,7 +7,9 @@ from scipy.signal import lfilter, butter
 HERE = os.path.dirname(os.path.abspath(__file__))
 KHP = os.environ.get("KH_PROJ", "/home/user/Jarvis-assistant-/amrit-borii/khilafat-india/")
 SR = 48000; RNG = np.random.default_rng(11)
-J = json.load(open(os.path.join(HERE, "sfx60.json"))); END, T0, VO_END = J["end"], J["t0"], J["vo_end"]
+import sys
+JN = sys.argv[1] if len(sys.argv) > 1 else "sfx60.json"; OUTN = sys.argv[2] if len(sys.argv) > 2 else "mix60.wav"
+J = json.load(open(os.path.join(HERE, JN))); END, T0, VO_END = J["end"], J["t0"], J["vo_end"]
 n = int(END * SR); L = np.zeros(n, np.float32); R = np.zeros(n, np.float32)
 tt = lambda s: np.arange(int(s * SR)) / SR
 def nz(s): return RNG.uniform(-1, 1, int(s * SR))
@@ -69,7 +71,7 @@ def firework():
     for _ in range(70):                                   # crackle
         i = int(RNG.uniform(0.35, s - 0.02) * SR); ln = int(0.006 * SR); x[i:i + ln] += hp(nz(0.006), 3000) * RNG.uniform(0.2, 0.7)
     return norm(x, 0.8)
-def battle(s=6.5):
+def battle(s=5.0):
     t = tt(s); rumble = lp(nz(s), 140) * 1.4; roar = bp(nz(s), 300, 1500) * (0.5 + 0.5 * np.sin(2 * np.pi * 0.4 * t) ** 2) * 0.6
     x = rumble + roar
     for _ in range(26):                                   # sword clangs
@@ -122,5 +124,5 @@ pk = max(np.abs(L).max(), np.abs(R).max()); g = 0.89 / pk if pk > 0.89 else 1.0
 tmp = os.path.join(HERE, "mix60_raw.wav")
 with wave.open(tmp, "wb") as w:
     w.setnchannels(2); w.setsampwidth(2); w.setframerate(SR); w.writeframes((np.stack([L * g, R * g], 1).clip(-1, 1) * 32767).astype(np.int16).tobytes())
-subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-i", tmp, "-af", "loudnorm=I=-14:TP=-1.5:LRA=11", "-ar", "48000", os.path.join(HERE, "mix60.wav")], check=True)
+subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-i", tmp, "-af", "loudnorm=I=-14:TP=-1.5:LRA=11", "-ar", "48000", os.path.join(HERE, OUTN)], check=True)
 print("mix ok", round(END, 2), "s, events", len(J["events"]))

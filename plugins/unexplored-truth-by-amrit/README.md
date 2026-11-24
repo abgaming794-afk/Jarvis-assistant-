@@ -1,4 +1,4 @@
-# Unexplored Truth by Amrit (v1.1.0)
+# Unexplored Truth by Amrit (v1.2.0)
 
 Studio plugin for the AMRIT BORI YouTube channel (@itsamritbori): long-form Hinglish history and geopolitics
 documentaries and YouTube Shorts, from topic to unlisted upload. Successor of `amrit-borii-studio` (0.8.0), which
@@ -33,6 +33,18 @@ can stay installed side by side.
 alignment, Wikipedia capture, three.js host, logo, subscribe animation), the Shorts engines, and since 1.0.0 the
 complete Khilafat long-video example (`engine/examples/khilafat-india/`) and the photoreal thumbnail tools
 (`engine/thumbnail/cutout.py`, `thumb_photoreal.py`). Start with `engine/README.md`.
+
+## What changed in 1.2.0
+
+- New `engine/visuals/battle2d.py`: 2D cartoon battle kit on the channel's 2D man design - 11 period factions,
+  soldiers (run / attack / block / shoot / hit / fall / flee / cheer), galloping riders, war elephant with the king and
+  royal umbrella, arrow volleys, dust, sparks, speed lines, photoreal blurred battlefield backgrounds with tints, and
+  the `Battle` choreographer (approach, volley, clash with camera zoom + shake, melee, rout, winner None, linear marches).
+- 3D map animation in `storyproof.py`: `map3d` (tilt + orbit + sky + fog, edges kept off-screen), `extrude`
+  (regions rise out of the ground), `pin3d`, `fire3d`, `flat_path`, `proj`.
+- Two-minute demo on the real Khilafat VO with 11 cartoon battles/sieges, 3D maps, 163 synthesised SFX and real proofs
+  (`engine/examples/storyproof-demo/two-minute/`). `mix60.py` now takes the event file and output name.
+- Rule: every war/event gets a cartoon animated scene; battle backgrounds photoreal; maps 3D.
 
 ## What changed in 1.1.0 (style of the reference "How Did America Become Independent")
 

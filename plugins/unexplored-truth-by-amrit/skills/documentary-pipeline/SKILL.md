@@ -130,3 +130,9 @@ Use the `story-proof-style` skill for every event: locate (satellite + glow + pi
 (timeline) -> explain (parchment map, mascots, props, stamps) -> story scene (photoreal background + the channel's own
 2D man) -> PROOF (real document flies in, camera pans, marker highlight). Code: `engine/visuals/storyproof.py`,
 demo `engine/examples/storyproof-demo/`. Never copy another channel's characters; keep the channel's 2D man.
+
+## New in 1.2.0 - cartoon battles + 3D maps (default)
+
+Every war/battle/event is shown as a 2D cartoon battle (`engine/visuals/battle2d.py`) on a blurred photoreal
+battlefield, and map scenes use the 3D map (`map3d`, `extrude`, `pin3d`, `fire3d` in `storyproof.py`). See the
+`story-proof-style` skill and `engine/examples/storyproof-demo/two-minute/`.
