@@ -86,6 +86,13 @@ import sys as _sys
 _sys.path.insert(0, os.path.join(HERE, "engine_wip"))
 import battle_sfx
 LIB.update(battle_sfx.build(SR))
+UD = os.path.join(HERE, "sfx_user")                      # user-supplied SFX override the code-made ones by name
+if os.path.isdir(UD):
+    for fn in os.listdir(UD):
+        nm, ext = os.path.splitext(fn)
+        if ext.lower() in (".wav", ".mp3", ".ogg", ".m4a", ".flac"):
+            raw_ = subprocess.run(["ffmpeg", "-loglevel", "error", "-i", os.path.join(UD, fn), "-f", "f32le", "-ac", "1", "-ar", str(SR), "-"], capture_output=True, check=True).stdout
+            a_ = np.frombuffer(raw_, np.float32).copy(); LIB[nm] = (a_ / (np.abs(a_).max() + 1e-9) * 0.9).astype(np.float32); print("user sfx:", nm)
 os.makedirs(os.path.join(HERE, "sfx"), exist_ok=True)
 for k, v in LIB.items():
     with wave.open(os.path.join(HERE, "sfx", k + ".wav"), "wb") as w:

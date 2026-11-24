@@ -64,7 +64,7 @@ CREDIT = dict(nav="Saputara, Gujarat", hak="Girnar, Saurashtra", sie="Chittorgar
 # ---------------------------------------------------------------- scenes (each its own choreography) with pop-up windows
 #  key: (scene, lon, lat, a = full frame from, b = shrink back from, title, date)
 SC = {
-    "nav": (NavsariElephants(16.0, 5.6, kw(u_haraa, "haraaya") - 0.4), 72.95, 20.95, 16.3, 21.4, "Navsari", "739 CE"),
+    "nav": (NavsariElephants(17.1, 4.8, kw(u_haraa, "haraaya") - 0.4), 72.95, 20.95, 17.4, 21.65, "Navsari", "739 CE"),
     "hak": (Duel(23.9, 3.0, kw(u_hakam, "maara") - 0.15, "arab_gen", "chalukya", "right",
                  bg_battle=Battle(dict(fac="arab", inf=6), dict(fac="chalukya", inf=6), "right", t0=23.9, dur=3.0, t_clash=0.8, t_rout=9, seed=11, base=80),
                  names=("Al-Hakam", "Chalukya senapati")), 70.8, 21.5, 24.2, 26.9, "Saurashtra", "740 CE"),
@@ -126,29 +126,57 @@ def hlboxes(key, img, which=None):
         if which is not None and gi not in which: continue
         for q in g: out.append((q["x0"] / W, (q["y"] - 3) / H, q["x1"] / W, (q["y"] + q["h"]) / H))
     return out
-DIMG = {k: sk_image(Image.open(DOCS + k + ".png")) for k in ("navsari_plate", "pratihara_mlechcha", "blankinship", "pratihara_cavalry")}
-def doc_spec(key, t_in, t_move, t_out, hl_t, which=None, zoom=2.3, source=""):
-    img = DIMG[key]; boxes = hlboxes(key, img, which); n = len(boxes)
-    hls = [b + (hl_t + i * 0.7, hl_t + 0.7 + i * 0.7) for i, b in enumerate(boxes)]
-    fx = (boxes[0][0] + boxes[0][2]) / 2 if n else 0.5; fy = (boxes[0][1] + boxes[-1][3]) / 2 if n else 0.5
-    return dict(img=img, hls=hls, t_in=t_in, t_move=t_move, t_out=t_out, focus=(fx, fy), zoom=zoom, source=source)
-DOCS_ON = [
-    doc_spec("navsari_plate", us(u_pakka) - 0.1, us(u_pakka) + 0.9, us(u_isme) + 1.9, us(u_isme) - 0.2, which=[0], zoom=2.1, source="Saboot: en.wikipedia.org - Avanijanashraya Pulakeshin (Navsari taamra patra, 739)"),
-    doc_spec("pratihara_mlechcha", us(u_alag) + 0.3, us(u_alag) + 0.9, us(u_alag) + 3.0, us(u_alag) + 1.3, zoom=2.0, source="Saboot: en.wikipedia.org - Gurjara-Pratihara dynasty (Gwalior lekh)"),
-    doc_spec("blankinship", kw(u_blank, "Blankinship") - 0.1, kw(u_blank, "Blankinship") + 0.6, kw(u_blank, "Blankinship") + 3.6, kw(u_blank, "Blankinship") + 0.9, zoom=1.8,
-             source="Khalid Y. Blankinship, The End of the Jihad State (1994)"),
-    doc_spec("pratihara_cavalry", kw(u_851, "ghudsawaar") - 0.1, kw(u_851, "ghudsawaar") + 0.5, kw(u_851, "ghudsawaar") + 2.9, kw(u_851, "ghudsawaar") + 0.9, zoom=2.0,
-             source="Saboot: en.wikipedia.org - Gurjara-Pratihara dynasty (Sulaiman, 851)"),
+DIMG = {k: sk_image(Image.open(DOCS + k + ".png")) for k in ("navsari_plate_w", "pratihara_mlechcha_w", "blankinship_w", "pratihara_cavalry_w")}
+def phrase_boxes(key):
+    img = DIMG[key]; js = json.load(open(DOCS + key + ".json")); W, H = img.width(), img.height()
+    return [[(q["x0"] / W, (q["y"] - 3) / H, q["x1"] / W, (q["y"] + q["h"]) / H) for q in (g or [])] for g in js["lines"]]
+def doc_vo(key, t_in, t_out, words, rest_w=0.72, source=""):
+    """words = [(phrase index in the capture, time the VO says it)] - each phrase is highlighted exactly on its VO word."""
+    P = phrase_boxes(key)
+    return dict(img=DIMG[key], t_in=t_in, t_out=t_out, rest_w=rest_w, source=source, ph=[(P[i], tw) for i, tw in words])
+KUTCH = kw(u_isme, "Sindh") + 0.5
+DOCS_ON = [   # the highlight follows the narration word by word (Hinglish VO -> the matching words of the source)
+    doc_vo("navsari_plate_w", us(u_pakka) - 0.1, kw(u_isme, "Navsari") + 0.55,
+           [(0, kw(u_pakka, "saboot")), (1, kw(u_isme, "Tajik")), (2, kw(u_isme, "Sindh")), (3, KUTCH), (4, kw(u_isme, "Saurashtra")), (5, kw(u_isme, "Navsari"))],
+           source="Saboot: en.wikipedia.org - Avanijanashraya Pulakeshin (Navsari taamra patra, 739)"),
+    doc_vo("pratihara_mlechcha_w", kw(u_baar, "lade") - 0.5, ue(u_alag) + 0.1, [(1, kw(u_baar, "lade")), (0, kw(u_alag, "raja"))],
+           source="Saboot: en.wikipedia.org - Gurjara-Pratihara dynasty (Gwalior lekh)"),
+    doc_vo("blankinship_w", ue(u_alag) + 0.75, kw(u_blank, "hamlon") - 0.1, [(1, kw(u_blank, "historian")), (0, kw(u_blank, "Blankinship"))],
+           source="Khalid Y. Blankinship, The End of the Jihad State (1994)"),
+    doc_vo("pratihara_cavalry_w", kw(u_851, "851") - 0.4, ue(u_851) - 0.15,
+           [(1, kw(u_851, "851")), (0, kw(u_851, "Sulaiman")), (2, kw(u_851, "Gurjara")), (3, kw(u_851, "ghudsawaar"))], rest_w=0.66,
+           source="Saboot: en.wikipedia.org - Gurjara-Pratihara dynasty (Sulaiman, 851)"),
 ]
-BAPPA_DOC = dict(t_in=kw(u_mewar, "Bappa") + 0.05, t_move=kw(u_mewar, "Bappa") + 0.6, t_out=kw(u_mewar, "Bappa") + 1.55)
-
+def doc_view(d, t):
+    """camera target on the document: the phrase being spoken, zoomed only as far as keeps it inside the frame."""
+    ph = d["ph"]
+    def target(i):
+        if i < 0: return (0.5, 0.5, 1.0)
+        bx = ph[i][0]; x0 = min(b[0] for b in bx); x1 = max(b[2] for b in bx); y0 = min(b[1] for b in bx); y1 = max(b[3] for b in bx)
+        z = min(0.97 / d["rest_w"], 1.32)                            # full line width always inside the frame (no text cut off)
+        return (0.5, (y0 + y1) / 2, z)
+    order = sorted(range(len(ph)), key=lambda i: ph[i][1]); cur, prev = -1, -1
+    for i in order:
+        if t >= ph[i][1] - 0.35: prev, cur = cur, i
+    a_, b_ = target(prev), target(cur); k = ease_io(seg(t, (ph[cur][1] - 0.35) if cur >= 0 else 0, (ph[cur][1] + 0.3) if cur >= 0 else 1))
+    fx, fy, z = (lerp(a_[j], b_[j], k) for j in range(3))
+    m = 1.0 if cur >= 0 or prev >= 0 else 0.0
+    return (fx, fy), z, m
 def draw_docs(c, t):
     for d in DOCS_ON:
         if d["t_in"] <= t <= d["t_out"] + 0.6:
-            k_in = seg(t, d["t_in"], d["t_in"] + 0.6); mv = seg(t, d["t_move"], d["t_move"] + 1.3) * (1 - seg(t, d["t_out"] - 0.5, d["t_out"]))
-            c.drawRect(skia.Rect(0, 0, DW, DH), paint("#000000", int(110 * k_in * (1 - seg(t, d["t_out"], d["t_out"] + 0.6)))))
-            doc_card(c, doc_texture(d["img"], d["hls"], t), k_in, seg(t, d["t_out"], d["t_out"] + 0.6), mv, d["focus"], d["zoom"])
+            k_in = seg(t, d["t_in"], d["t_in"] + 0.6); k_out = seg(t, d["t_out"], d["t_out"] + 0.6)
+            hls = []
+            for bx, tw in d["ph"]:
+                for j, b in enumerate(bx): hls.append(b + (tw + j * 0.35, tw + 0.45 + j * 0.35))
+            (fx, fy), z, m = doc_view(d, t)
+            c.drawRect(skia.Rect(0, 0, DW, DH), paint("#000000", int(110 * k_in * (1 - k_out))))
+            doc_card(c, doc_texture(d["img"], hls, t), k_in, k_out, 1.0, (lerp(0.5, fx, m), lerp(0.5, fy, m)), lerp(1.0, z, m) if m else 1.0, tilt=-7, yaw_end=-3, rest_w=d["rest_w"])
             if k_in > 0.9 and t < d["t_out"]: footnote(c, d["source"])
+    draw_bappa(c, t)
+BAPPA_DOC = dict(t_in=kw(u_mewar, "Bappa") + 0.05, t_move=kw(u_mewar, "Bappa") + 0.6, t_out=kw(u_mewar, "Bappa") + 1.55)
+
+def draw_bappa(c, t):
     b = BAPPA_DOC
     if b["t_in"] <= t <= b["t_out"] + 0.6:
         k_in = seg(t, b["t_in"], b["t_in"] + 0.55); mv = seg(t, b["t_move"], b["t_move"] + 0.9) * (1 - seg(t, b["t_out"] - 0.3, b["t_out"]))
@@ -246,7 +274,7 @@ def map_layer(c, cam, t):
             if rr: pm, L = rr; pos, _ = pm.getPosTan(L * (0.35 + 0.65 * k)); d6.banner_unit(c, pos.x(), pos.y(), t * 6)
             fire(c, cam, *kuf, t, seg(t, bend, bend + 0.5), 1.4)
         pin(c, cam, 68.4, 25.4, "Sindh", seg(t, us(u_wo3k), us(u_wo3k) + 0.5), t)
-    pin(c, cam, 72.95, 20.95, "Navsari", seg(t, kw(u_nav, "Navsari"), kw(u_nav, "Navsari") + 0.5) * (1 - seg(t, 15.0, 15.4)), t, sub="Gujarat")
+    pin(c, cam, 72.95, 20.95, "Navsari", seg(t, kw(u_nav, "Navsari"), kw(u_nav, "Navsari") + 0.5) * (1 - seg(t, 16.0, 16.4)), t, sub="Gujarat")
 
 def overlays(c, t):
     """screen-space titles / stamps / the channel's 2D man on top of the map."""
@@ -255,7 +283,6 @@ def overlays(c, t):
     if us(u_740) - 0.4 < t < SC["hak"][3] - 1.2:
         timeline_ribbon(c, [738, 739, 740, 741], 1 + seg(t, us(u_740) - 0.1, us(u_740) + 0.5), y=96, spacing=200, vel=1.0 if us(u_740) - 0.1 < t < us(u_740) + 0.5 else 0)
     if us(u_halaanki) - 0.3 < t < us(u_743) + 0.2:
-        man2d(c, 1500, 860, 140, t, seg(t, us(u_halaanki) - 0.3, us(u_halaanki) + 0.3) * (1 - seg(t, us(u_743) - 0.2, us(u_743) + 0.2)), "think", -1)
         pill(c, "Pehchaan par historians ek raay nahi", DW / 2 - 200, 200, 38, "#14213D", "#FFFFFF", int(255 * seg(t, us(u_halaanki) + 0.6, us(u_halaanki) + 1.0) * (1 - seg(t, us(u_743) - 0.2, us(u_743)))), fpath=SERIF_TEXT)
     if us(u_743) - 0.3 < t < us(u_raaz3):
         pos = 2 + 3 * seg(t, us(u_743) - 0.1, us(u_743) + 0.6); timeline_ribbon(c, [738, 739, 740, 741, 742, 743], pos, y=96, spacing=200, vel=1.0 if us(u_743) - 0.1 < t < us(u_743) + 0.6 else 0)
@@ -273,7 +300,6 @@ def overlays(c, t):
         if F0 - 0.2 < t < SC[k_][3] - 0.2: timeline_ribbon(c, [yr - 1, yr, yr + 1], 1.0, y=80, spacing=180, a=int(255 * seg(t, F0 - 0.2, F0 + 0.2)))
     if kw(u_iraq, "Iraq") < t < us(u_ghar): stamp_slam(c, "RAASTE MEIN HI MOD DIYA", DW / 2, 230, 60, seg(t, kw(u_iraq, "Iraq") + 0.3, kw(u_iraq, "Iraq") + 0.7), "#C1121F", -5)
     if t > us(u_ghar) - 0.2:
-        man2d(c, 1560, 870, 150, t, seg(t, us(u_ghar) + 0.4, us(u_ghar) + 0.9), "wow", -1)
         serif_title(c, "Ghar mein aag, Sindh ki kaun sune?", DW / 2, 150, 76, seg(t, us(u_ghar) + 0.2, us(u_ghar) + 1.6), align="c")
         c.drawRect(skia.Rect(0, 0, DW, DH), paint("#000000", int(255 * seg(t, VO_END2 - T0 + 0.3, END))))
 
@@ -336,16 +362,17 @@ def frame(c, t, width):
     draw_docs(c, t)
     d6.ai_tag(c) if key and SC[key][3] <= t <= SC[key][4] else None
 
+USER_SFX = {os.path.splitext(f)[0] for f in os.listdir(os.path.join(DS, "sfx_user"))} if os.path.isdir(os.path.join(DS, "sfx_user")) else set()
 def sfx_events():
     E = []
     E += [("whoosh", 0.0, -8), ("riser", 0.4, -14), ("pin", kw(u_nav, "Navsari"), -6), ("chime", kw(u_patra, "taambe"), -10), ("tick", kw(u_patra, "739") - 0.2, -10)]
-    for d in DOCS_ON: E += [("paper", d["t_in"], -5), ("whoosh", d["t_move"], -12), ("marker", d["hls"][0][4] if d["hls"] else d["t_move"], -10), ("paper", d["t_out"], -7)]
+    for d in DOCS_ON: E += [("paper", d["t_in"], -5), ("paper", d["t_out"], -7)] + [("marker", tw, -11) for _, tw in d["ph"]]
     E += [("paper", BAPPA_DOC["t_in"], -5), ("paper", BAPPA_DOC["t_out"], -7)]
     for w in ("Sindh", "Kutch", "Saurashtra"): E.append(("pin", kw(u_isme, w), -9))
     E += [("march_drum", kw(u_isme, "Sindh"), -12)]
     for key, (sc, lo, la, a, b, *_r) in SC.items():
         E += [("whoosh", a - POP_FILL - POP_RISE - 0.2, -8), ("paper", a - POP_FILL - POP_RISE, -9), ("swish", a - POP_FILL, -10), ("swish", b, -11), ("paper", b + POP_OUT, -11)]
-        E += sc.sfx()
+        E += [e for e in sc.sfx() if e[0] in USER_SFX]
     E += [("stamp", kw(u_haraa, "haraaya"), -3), ("firework", kw(u_haraa, "haraaya") + 0.3, -10), ("tick", us(u_740) - 0.1, -8), ("stamp", kw(u_hakam, "maara") + 0.1, -5),
           ("stamp", kw(u_chittor, "naakaam"), -4), ("pop", us(u_halaanki), -10), ("tick", us(u_743) - 0.1, -8), ("firework", kw(u_khatam, "khatam"), -9),
           ("firework", kw(u_khatam, "khatam") + 0.35, -11), ("drum_big", us(u_raaz3) - 0.05, -4), ("riser", us(u_baar) - 1.3, -16)]

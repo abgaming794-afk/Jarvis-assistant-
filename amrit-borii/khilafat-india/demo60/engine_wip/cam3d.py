@@ -212,9 +212,9 @@ def doc_card(c, tex, k_in, k_out, move, focus=(0.5, 0.5), zoom=2.2, tilt=-16, ya
     def P(x, y):
         p = np.array([x - w / 2, y - h / 2, 0.0])
         th = math.radians(90 * (1 - ki)); hx = -w / 2               # flip in about the left edge
-        p = np.array([hx + (p[0] - hx) * math.cos(th), p[1], -(p[0] - hx) * math.sin(th)])
+        p = np.array([hx + (p[0] - hx) * math.cos(th), p[1], (p[0] - hx) * math.sin(th)])        # swings AWAY from the camera
         th2 = math.radians(-90 * ko); hx2 = w / 2                    # flip out about the right edge
-        p = np.array([hx2 + (p[0] - hx2) * math.cos(th2), p[1], -(p[0] - hx2) * math.sin(th2) + p[2]])
+        p = np.array([hx2 + (p[0] - hx2) * math.cos(th2), p[1], -(p[0] - hx2) * math.sin(th2) + p[2]])  # (x - hx2) <= 0 -> away
         ta = math.radians(tilt * m); yw = math.radians(yaw_end * m)
         p = np.array([p[0], p[1] * math.cos(ta) - p[2] * math.sin(ta), p[1] * math.sin(ta) + p[2] * math.cos(ta)])
         p = np.array([p[0] * math.cos(yw) + p[2] * math.sin(yw), p[1], -p[0] * math.sin(yw) + p[2] * math.cos(yw)])
