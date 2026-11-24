@@ -1,0 +1,924 @@
+{{Short description|Founder of the Durrani Empire}}
+{{good article}}
+{{for|cricket umpire|Ahmed Shah Durrani (umpire)}}
+{{pp-extended|small=yes}}
+{{protection padlock|small=yes}}
+{{Use British English|date=October 2012}}
+{{Use dmy dates|date=September 2025}}
+{{Infobox royalty
+| name              = Ahmad Shah Durrani<br/>{{nobold|{{lang|ps|احمد شاه دراني}}}}
+| title             = [[Durrani dynasty|King, Pearl of the Pearls]]{{efn|{{langx|prs|شاه در دران|Shāh Durr-i Durrān|label=[[Dari|Persian]]}}}}<br>The World Conqueror{{efn|{{langx|prs|جهانگشا|Jahāngushā|label=[[Dari|Persian]]}}{{sfn|Nejatie|2017|pp=363}}}}
+| image             = Portrait of Ahmad-Shah Durrani. Mughal miniature. ca. 1757, Bibliothèque nationale de France (cropped).jpg
+| image_size        = 
+| alt               = A color portrait of a bearded man wearing a turban
+| caption           = [[Mughal miniature]] of Ahmad Shah Durrani, {{circa}} 1757
+| succession1       = [[List of heads of state of Afghanistan|Shah of the Durrani Empire]]
+| reign1            = 23 July 1747 – 17 October 1772
+| coronation1       = 23 July 1747
+| predecessor1      = ''Office established''<br>([[Nader Shah]] as the [[Shah of Iran]])
+| successor1        = {{Collapsible list|title={{nobold|[[Afghan succession crisis of 1772|''Interregnum'']] (1772)}}|
+| [[#Children and succession|Sulaiman Shah Durrani]]
+| [[Timur Shah Durrani]]
+}}
+| house             = [[Durrani dynasty|Durrani]]
+| house_type        = Dynasty
+| father            = [[Mohammad Zaman Khan]]
+| mother            = [[Zarghona Anaa]]<ref>{{Cite web |last=Goudsouzian|first=Tanya|url=https://www.aljazeera.com/news/asia/2014/09/afghan-first-lady-shadow-1920s-queen-2014930142515254965.html|title=Afghan first lady in shadow of 1920s queen?|date=1 October 2014 |website=aljazeera.com|access-date=4 June 2020|archive-date=23 October 2019|archive-url=https://web.archive.org/web/20191023020907/https://www.aljazeera.com/news/asia/2014/09/afghan-first-lady-shadow-1920s-queen-2014930142515254965.html|url-status=live}}</ref>
+| birth_name        = Ahmad Khan Abdali
+| birth_date        = 1720–1722
+| birth_place       = [[Herat]], [[Sadozai Sultanate of Herat]], ''or'' [[Multan]], [[Mughal Empire]]
+| death_date        = 17 October 1772
+| death_place       = [[Maruf, Afghanistan|Maruf]], [[Durrani Empire]]
+| burial_date       = 17 October 1772
+| burial_place      = [[Tomb of Ahmad Shah Durrani]], [[Kandahar]]
+| religion          = [[Sunni Islam]]{{efn|School of [[Fiqh|Jurisprudence]]: [[Hanafi]]}}
+| spouse            = {{plainlist|
+* {{marriage|[[Hazrat Begum]]|1757|}}
+* {{marriage|[[Iffat-un-Nissa Begum]]|1757|}}
+}}
+| issue             = [[Timur Shah]]<br>[[#Children and succession|Sulaiman Shah]]<br>[[#Children and succession|2 or 3 other sons]]
+| module            = {{Infobox military person
+| embed         = yes
+| allegiance    = [[Afsharid Iran]] (1738–1747)<br>[[Durrani Empire]] (1747–1772)
+| branch        = [[Military of Afsharid Iran|Persian Army]]<br>[[Afghan Army]]
+| service_years = 1738–1772
+| rank          = [[Ispahsalar]], [[Shah]]
+| battles       = {{tree list}} {{Collapsible list
+| [[#Military campaigns|Military campaigns]]
+* [[Nader Shah's invasion of India]]
+** [[Battle of Khyber Pass|Khyber Pass (1738)]]
+** [[Battle of Karnal|Karnal (1739)]]
+** [[Nader Shah's invasion of India#Plunder|Delhi (1739)]]
+* [[Ottoman–Persian War (1743–1746)]]
+* [[#Death of Nader Shah|Rise to power]]
+** [[#Death of Nader Shah|Quchan (1747)]]
+** [[#Return to Kandahar|Farah (1747)]]
+* [[#Campaign to Kabul (1747)|Kabul campaign]]
+** [[#Campaign to Kabul (1747)|Qalati Ghilji (1747)]]
+** [[#Campaign to Kabul (1747)|Ghazni (1747)]]
+** [[#Campaign to Kabul (1747)|Kabul (1747)]]
+* [[Indian campaign of Ahmad Shah Durrani#First Invasion (1747–1748)|First invasion of India]]
+** [[Battle of Lahore (1748)|Lahore (1748)]]
+** [[Battle of Manupur (1748)|Manupur (1748)]]
+* [[Durrani Campaign to Khorasan (1749–51)|Khorasan (1749—1751)]]
+** [[#First Khorasan campaign (1749–1751)|Herat (1749–1750)]]
+** [[#First Khorasan campaign (1749–1751)|Nun (1750)]]
+** [[#First Khorasan campaign (1749–1751)|Mashhad (1750)]]
+** [[Siege of Nishapur (1750–1751)|Nishapur (1750–1751)]]
+* [[Indian campaign of Ahmad Shah Durrani#Third Invasion (1751–1752)|Third invasion of India]]
+** [[Battle of Lahore (1752)|Lahore (1752)]]
+* [[Durrani Campaign to Khorasan (1754–55)|Khorasan (1754–1755)]]
+** [[#Second Khorasan campaign (1754–1755)|Tabas (1754)]]
+** [[#Second Khorasan campaign (1754–1755)|Mashhad (1754)]]
+** [[Siege of Nishapur (1755)|Nishapur (1755)]]
+* [[Indian campaign of Ahmad Shah Durrani#Fourth Invasion (1756–1757)|Fourth invasion of India]]
+** [[Sack of Delhi (1757)]]
+** [[#Fourth invasion of India (1756–1757)|Ballabhgarh (1757)]]
+** [[#Fourth invasion of India (1756–1757)|Gokul (1757)]]
+* [[#Kalat Rebellion (1758—1759)|Kalat Rebellion]]
+** [[#Kalat Rebellion (1758—1759)|Mastung (1758)]]
+** [[#Kalat Rebellion (1758—1759)|Kalat (1758)]]
+* [[Indian campaign of Ahmad Shah Durrani#Fifth invasion of India (1759–1761)|Fifth invasion of India]]
+** [[Battle of Taraori (1759)|Taraori (1759)]]
+** [[Battle of Barari Ghat|Barari Ghat (1760)]]
+** [[Battle of Sikandarabad|Sikandarabad (1760)]]
+** [[#Fifth invasion of India (1759–1761)|Aligarh (1760)]]
+** [[Battle of Samalkha (1760)|Samalkha (1760)]]
+** [[Battle of Meerut (1760)|Meerut (1760)]]
+** [[Third Battle of Panipat|Panipat III (1761)]]
+* [[Indian campaign of Ahmad Shah Durrani#Sixth invasion of India (1762)|Sixth invasion of India]]
+** [[Battle of Kup|Kup (1762)]]
+** [[#Sixth invasion of India (1762)|Barnala (1762)]]
+** [[#Sixth invasion of India (1762)|Amritsar (1762)]]
+** [[Battle of Pipli Sahib|Pipli Sahib (1762)]]
+** [[Battle of the Ravi Ford|Ravi (1762)]]
+* [[Indian campaign of Ahmad Shah Durrani#Seventh invasion of India (1764–1765)|Seventh invasion of India]]
+** [[Battle of Chenab (1764)|Chenab (1764)]]
+** [[Battle of Qarawal|Qarawal (1764)]]
+** [[#Seventh invasion of India (1764–1765)|Amritsar (1764)]]
+** [[#Seventh invasion of India (1764–1765)|Jalandhar Doab (1765)]]
+** [[#Seventh invasion of India (1764–1765)|Rupar Ghat (1765)]]
+** [[#Seventh invasion of India (1764–1765)|Sutlej (1765)]]
+** [[#Seventh invasion of India (1764–1765)|Nurmahal (1765)]]
+** [[#Seventh invasion of India (1764–1765)|Kapurthala (1765)]]
+** [[#Seventh invasion of India (1764–1765)|Beas (1765)]]
+* [[Indian campaign of Ahmad Shah Durrani#Eighth invasion of India (1766–1767)|Eighth invasion of India]]
+** [[#Eighth invasion of India (1766–1767)|Behgy (1766)]]
+** [[#Eighth invasion of India (1766–1767)|Jhelum (1766)]]
+** [[#Eighth invasion of India (1766–1767)|Amritsar (1767)]]
+** [[#Eighth invasion of India (1766–1767)|Mani Majra (1767)]]
+* [[#Turkestan (1751–1768)|Bukharan war (1768)]]
+* [[Indian campaign of Ahmad Shah Durrani#Ninth invasion of India (1768–1769)|Ninth invasion of India]]
+** [[#Ninth invasion of India (1768–1769)|Jhelum (1769)]]
+* [[Durrani Campaign to Khorasan (1769–70)|Khorasan (1769—1770)]]
+** [[Durrani Campaign to Khorasan (1769–70)|Mashhad (1769—1770)]]
+}}
+{{Tree list/end}}
+}}
+}}
+{{Ahmad Shah Durrani}}
+'''Ahmad Shah Durrani'''{{efn|{{ublist|{{langx|ps|احمد شاه دراني|Ahmad Šāh Durrāni}} {{IPA|ps|ʔɑ.mäd̪/ʔäh.mäd̪ ʃɑ(h) d̪u(ɾ).ɾɑ.ni|}}|{{langx|prs|احمد شاه درانی|Ahmad Shāh Durrānī|label=[[Dari|Persian]]}} {{IPA|prs|ʔɑː.mád̪/ʔäɦ.mád̪ ʃɑː(ʱ) d̪ʊɾ.ɾɑː.níː|}}}}}} (born '''Ahmad Khan Abdali'''; {{circa|1720–1722}} – 16–23 October 1772) was the first ruler and founder of the [[Durrani Empire]]. He is often regarded as the founder of modern [[Afghanistan]]. As [[Shah]], he relentlessly led military campaigns for over 25 years across [[West Asia]], [[Central Asia]], and [[South Asia]], creating one of the largest [[Islamic empires]] in the world, encompassing Afghanistan, much of [[Pakistan]], [[Iranian Khorasan]], and parts of [[Northern India]].{{sfn|Clements|Adamec|2003|p=81}}
+
+Born between 1720 and 1722, Ahmad Shah accompanied [[Nader Shah]] in his campaigns until Nader's assassination in 1747, which resulted in the [[division of the Afsharid Empire]]. Ahmad Shah took advantage and was [[Coronation|crowned]] near [[Old Kandahar|Kandahar]], establishing his rule in Afghanistan and founding the Durrani Empire.
+
+In 1748, he invaded the [[Mughal Empire]] and began a [[Indian campaign of Ahmad Shah Durrani|series of invasions into India]] that would span the next 24 years. Following his [[#Third invasion of India (1751–1752)|third invasion of India]], Ahmad Shah annexed [[Punjab]] and [[Kashmir Valley|Kashmir]] from the Mughals. His forays continued, including the [[Sack of Delhi (1757)|occupation and sacking of Delhi in 1757]] during his [[#Fourth invasion of India (1756–1757)|fourth invasion]], and the annihilation of [[Maratha Empire|Maratha]] armies at the [[Third Battle of Panipat]], the largest battle of the 18th century, during [[#Fifth invasion of India (1759–1761)|his fifth]]. Outside of India, he campaigned in Khorasan and [[Afghan Turkestan]], [[Durrani Campaign to Khorasan (1754–55)|subjugating]] the [[Afsharids]], crossed swords with the [[Khanate of Bukhara]], and had [[Durrani–Qing relations|diplomatic encounters]] with [[Qing China]]. In his later reign, he led numerous invasions against the [[Sikh Confederacy|Sikhs]] to maintain control over the Punjab. Years of nonstop campaigning took a toll on his health, and he died in 1772 in [[Maruf, Afghanistan|Maruf]]. He was buried in Kandahar, where [[Mausoleum of Ahmad Shah Durrani|his mausoleum]] is located.
+
+Throughout his reign, Ahmad Shah fought over fifteen major military campaigns. Nine of them were centered in present-day [[India]],{{efn|He attempted a total of twelve invasions of India. See his [[#Tenth, eleventh, and attempted twelfth invasions of India (1769–1771)|tenth, eleventh, and twelfth attempted invasions]].}} three in Khorasan, and three in Afghan Turkestan. Having rarely lost a battle, historians widely recognize Ahmad Shah as a brilliant military leader and tactician, typically being compared to military leaders such as [[John Churchill, 1st Duke of Marlborough|Marlborough]], [[Mahmud of Ghazni]], [[Babur]], and Nader Shah. Ahmad Shah has been described as one of the greatest military leaders of eighteenth century Asia, as well the "greatest general of Asia of his time", and as one of the greatest conquerors in Asian history. 
+
+His campaigns, however, left the [[Indian subcontinent]] in complete chaos and contributed to the decline of [[Muslim period in the Indian subcontinent|Muslim power in Northern India]], with Ahmad Shah overseeing several indiscriminate [[massacres]] throughout his campaigns as well as [[pillaging]], and [[Slavery|mass enslavement]] conducted by Afghan soldiers.
+
+==Name and title==
+His birth name was Ahmad Khan, and he was born into the [[Durrani|Abdali]] tribe of [[Pashtuns]]. After his accession to power in 1747, he became known as Ahmad Shah. His tribe also changed their name from Abdali to Durrani.{{sfn|Mehta|2005|p=246}}{{sfn|Barfield|2022|p=98}}{{sfn|Balland|1995}} Afghans often refer to him as ''Ahmad Shāh Bābā'', meaning "Ahmad Shah [[Father of the Nation#List|the Father]]".{{sfn|Singh|1959|p=459}}{{sfn|Runion|2007|p=71}}
+
+In historical sources, his tribe's name is interchangeably used between Abdali and Durrani, and he is commonly referred to by names including Ahmad Shah Abdali.{{sfn|Mehta|2005|p=246}}{{sfn|Chaurasia|2002|p=321}} Eventually, Ahmad Shah would forbid the usage of the old tribal name of Abdali, rather insisting on the usage of Durrani instead, an act likely done to ward off other rival Abdali claimants.{{sfn|Nejatie|2017|pp=363}}
+
+==Early life==
+Ahmad Shah was born between 1720 and 1722, with sources differing on whether his birthplace was in [[Herat]] in present-day [[Afghanistan]]; or [[Multan]] in present-day [[Pakistan]].{{sfn|Nejatie|2017|p=287}} Modern scholarship generally favours Multan as his birthplace. However, this is disputed by historian Sajjad Nejatie, who argues the majority of sources from Ahmad Shah's time state he was born in Herat and not in Multan, including the ''[[Tarikh-i Ahmad Shahi]]'', a primary source commissioned by Ahmad Shah himself.{{sfn|Nejatie|2017|pp=287–293}}
+
+His father, [[Mohammad Zaman Khan|Zaman Khan]], was the [[Sadozai Sultanate of Herat|Sultan of Herat]]. Zaman Khan had died in 1721, and as a result, Ahmad Shah was raised alongside his brother Zulfiqar Khan in [[Shindand]] and [[Farah, Afghanistan|Farah]]. In the mid-1720s, Zulfiqar Khan was invited to rule Herat. Ahmad Shah does not appear in historical records again until 1731–1732, when Zulfiqar Khan was defeated by the Iranian monarch [[Nader Shah]]. This forced both Zulfiqar Khan and Ahmad Shah to flee to [[Kandahar]], where they remained political prisoners of [[Hussain Hotak]], the [[Hotak dynasty|Hotak king]].{{sfn|Nejatie|2017|p=294}}{{sfn|Singh|1959|pp=15–16}}{{sfn|Lee|2022|p=87}}
+
+After Nader Shah [[Siege of Kandahar|conquered Kandahar]], Ahmad Shah and Zulfiqar Khan were freed. Ahmad Shah spent much of his early life in the service of Nader Shah. Accompanying him on his [[Nader Shah's invasion of India|invasion of India]] between 1738 and 1739. Ahmad Shah was later resettled in [[Mazandaran]] along with his brother. According to the ''[[Encyclopædia Iranica]]'', Ahmad Shah may have been appointed governor of Mazandaran.{{sfn|Balland|1995}} After the death of his brother, Ahmad Shah enlisted in the [[Military of Afsharid Iran|Afsharid military]] in 1742. Some sources suggest only Zulfiqar Khan went to Mazandaran, while Ahmad Shah remained in Nader Shah's service as an officer.{{sfn|Nejatie|2017|pp=296–298}}{{sfn|Singh|1959|p=18}}{{sfn|Lee|2022|p=91}}
+
+During Nader Shah's invasion of India, Ahmad Shah possibly commanded a [[regiment]] of [[Durrani]] tribesmen. His forces participated in the [[Nader Shah's invasion of India#Massacre of Delhi|sacking of Delhi]] and were involved in massacres during the invasion.{{sfn|Mehta|2005|p=247}} According to legend, [[Nizam-ul-Mulk, Asaf Jah I|Nizam ul-Mulk]], the [[Mughal Empire|Mughal]] governor of [[Hyderabad State|Hyderabad]], supposedly an expert in [[physiognomy]], predicted Ahmad Shah would become king. Nader Shah is said to have taken notice, clipping part of Ahmad Shah's ear as a symbolic gesture, reportedly saying: "When you become a king, this will remind you of me". Nader Shah also requested Ahmad Shah be generous with his descendants.{{sfn|Nejatie|2017|p=300}}{{sfn|Singh|1959|p=19}} Nejatie is sceptical of the account, and remarks that evidence of Ahmad Shah being fully involved in the campaign is inconclusive.{{sfn|Nejatie|2017|pp=302–304}}
+
+In 1744, Ahmad Shah was promoted to Nader Shah's personal staff. In a [[Ottoman–Persian War (1743–1746)|campaign against the Ottomans]], Ahmad Shah distinguished himself and was permitted to raise a contingent of 3–4,000 Durrani tribesmen by Nader Shah. The unit became one of Nader Shah's most trusted units, and he increasingly relied on it to suppress the influence of his other commanders, whom he suspected of plotting a rebellion or his assassination.{{sfn|Lee|2022|p=100}}{{sfn|Barfield|2022|p=98}}
+
+===Death of Nader Shah===
+[[File:Assassination of Nader Shah.png|thumb|Nader Shah's assassination in 1747|alt=A black and white painting of four armed men pushing another man towards an entrance, while another decapitated man is seen on the ground]]
+In June 1747, Nader Shah was convinced his [[royal guard|personal guard]] intended to [[assassinate]] him. As a result, he summoned Ahmad Shah and other loyal commanders. Nader Shah ordered Ahmad Shah to assemble his [[Durrani]] regiments and to arrest his personal guard. If the personal guard resisted, Ahmad Shah was given permission to kill them all. He was ordered to do this at first light. Nader Shah then chose to sleep with his favourite wife, but did so outside the royal tent, where the same guards he had accused of treachery presumed [[Patrol|night duty]]. Meanwhile, Ahmad Shah with his regiments was stationed at the defences of the camp.{{sfn|Lee|2022|p=102}}
+
+News of Nader Shah's plan leaked, with the conspirators being forced to act. Four conspirators entered the royal enclosure and Nader Shah's tent at [[Quchan]], assassinating him.{{sfn|Lee|2022|pp=102–103}}{{sfn|Singh|1959|pp=21–22}} Chaos ensued afterward, and plans to cover up the killing by the conspirators failed. They resorted to pillaging the royal enclosure while news of Nader Shah's death rapidly spread. The next morning, the royal guard attacked Ahmad Shah's forces, who drove away the Persians and [[Qizilbash]] despite being heavily outnumbered. Ahmad Shah then entered the tent of Nader Shah, taking the [[Koh-i-Noor]] diamond and a signet ring from his body.{{sfn|Lee|2022|p=103}}{{sfn|Nejatie|2017|pp=305–306}}
+
+==Return to Kandahar==
+Having driven off the Persians and Qizilbash, Ahmad Shah departed for Kandahar with his regiments, and his [[Maimana Khanate|Uzbek ally]], Hajji Bi Ming. Ahmad Shah first resolved the dispute of leadership, asserting himself as the leader of Durrani tribesmen by forcing the former leader to step down. Ahmad Shah also killed 'Abd al-Ghani Khan, his uncle and the governor of Kandahar to consolidate full control over the Durrani regiments. Following this act, his forces grew to over 6,000 men.{{sfn|Lee|2022|p=105}}
+
+Ahmad Shah then moved through [[Khabushan]], advancing to [[Kashmar]]. On the way, Ahmad Shah accumulated supplies for his army before proceeding to [[Torbat-e Heydarieh]], where he received news that [[Adel Shah]] had dispatched a force to block the Afghan advance. Ahmad Shah responded by leading his forces to [[Ferdows|Tun]] and then [[Farah, Afghanistan|Farah]], where they defeated Adel Shah's army. With Farah under his control, the Afghans continued on to [[Grishk]], and then Kandahar.{{sfn|Nejatie|2017|p=306}}{{sfn|Lee|2022|p=105}}
+
+While en route to Kandahar, Ahmad Shah recovered a military convoy carrying the annual tribute from [[Sindh]]. Estimates of the convoy's value vary widely, ranging from 3 to 260 million rupees. The convoy was escorted by [[Mohammad Taqi Khan Shirazi]], a disgruntled former officer of Nader Shah, and Nasir Khan, the governor of [[Kabul]] and [[Peshawar]]. Taqi Khan joined Ahmad Shah and divided the wealth, while Nasir Khan refused and was subsequently imprisoned. He was later released on the conditions he pay an annual tribute of 500,000 rupees and acknowledge Ahmad Shah's [[suzerainty]]. Following this, Ahmad Shah's army grew to over 18,000 men, and came to include [[war elephants]].{{sfn|Lee|2022|pp=106–107}}{{sfn|Nejatie|2017|p=307}}{{sfn|Singh|1959|p=32}} Sindh would also enter Afghan suzerainty and see tribute imposed by Ahmad Shah during this period.{{sfn|Verma|2016|pp=63–64}}{{sfn|Chahryar|Baipakov|Irfan|2003|p=322}}
+
+===Accession and coronation===
+[[File:Coronation of Ahmad Shah Durrani in 1747 by Breshna.jpg|thumb|Legendary [[coronation]] of Ahmad Shah Durrani by [[Durrani|Abdali]] chiefs at [[Kandahar]] in 1747, as envisioned by 20th-century Afghan painter [[Abdul Ghafoor Breshna|Breshna]]|alt=A color painting of a turbaned man, wearing blue clothes, being crowned by an elderly man in a garden while other people look on]]
+Upon reaching Kandahar, Ahmad Shah encamped in [[Naderabad, Kandahar|Naderabad]] and prepared to be crowned king. According to legend, Ahmad Shah declared a [[Jirga]] summoning all [[Pashtun tribes|tribal leaders]], who unanimously selected Ahmad Shah as king. A piece of wheat or barley was then placed on Ahmad Shah's turban.{{sfn|Singh|1959|p=24-27}} Historian [[Ganda Singh (historian)|Ganda Singh]] cites this account, despite no contemporary evidence suggesting this event ever occurred.{{sfn|Lee|2022|p=106}}
+
+In reality, Ahmad Shah was brought to power through a nine-man military council. Ahmad Shah's accession was disputed by [[Hajji Jamal Khan|Jamal Khan]], the leader of the [[Barakzai]] tribe. The Barakzai were the most powerful clan of the Durranis centered in the [[Kandahar Province|Kandahar]] and [[Helmand]] regions. The dispute over accession continued until an agreement was made where Jamal Khan would submit to Ahmad Shah as king, while Ahmad Shah would make Jamal Khan and his descendants [[Vizier|wazir]]. With an agreement reached, [[Sabir Shah]], Ahmad Shah's advisor, took a piece of greenery or stalk and attached it to Ahmad Shah's cap, officially crowning him. Scholars state Ahmad Shah's rise to power was effectively a military [[coup]] rather than an [[election]].{{sfn|Lee|2022|pp=107–113}}
+
+Following his accession, Ahmad Shah adopted the title of [[Padishah]],{{sfn|Rubin|2015|p=112}} and the [[epithet]] "Durr-i Durrān", meaning "Pearl of Pearls", also changing the name of his tribe from Abdali to [[Durrani]].{{sfn|Nejatie|2017|p=334}}{{sfn|Mehta|2005|p=248}}{{sfn|Barfield|2022|p=98}}
+
+==Reign as Shah (1747–1772)==
+[[File:Contemporary portrait of Nader Shah. Artist unknown, created in ca. 1740 in Iran (cropped).jpg|thumb|left|Portrait of [[Nader Shah]], who Ahmad Shah often envisioned himself as his successor.|alt=A color portrait of Nader Shah wearing his crown and royal dress]]
+
+===Administration===
+At the beginning of his rule, Ahmad Shah's [[Durrani Empire|empire]] consisted of Kandahar, Helmand, and [[Farah Province|Farah]]. The [[Hazaras]] of [[Bala Murghab]] and the [[Khanate of Kalat]] ruled by [[Nasir Khan I Ahmadzai|Nasir Khan]] also came under Afghan suzerainty.{{sfn|Lee|2022|p=115}} However, Ahmad Shah had no administrative experience, neither did most of his closest advisors. As a result, he chose to adopt a government style similar to the [[Mughals]] and [[Safavids]], with his main idea of a government based on an [[absolute monarchy]]. A tribal council ruled in hand with Ahmad Shah, serving as a type of [[Cabinet (government)|cabinet]]. However, Ahmad Shah had made the positions of his cabinet [[Hereditary monarchy|hereditary]], thus making it difficult to dismiss advisors without causing conflict. Their roles, were almost purely [[de-jure]], and tasks were delegated to subordinates.{{sfn|Lee|2022|pp=116–117}}
+
+The civil service of the empire was dominated by the [[Afghan Qizilbash|Qizilbash]], as most of the Durrani elite were [[illiterate]]. The Qizilbash also significantly formed the major part of Ahmad Shah's [[royal guard|bodyguard]],{{sfn|Noelle-Karimi|1997|p=25}} counterbalancing other Durrani leaders and tribes. These complications and effectively divided government made the administration's functioning difficult, and caused ethnic tension between the Qizilbash and the tribal council of Ahmad Shah.{{sfn|Lee|2022|p=117}}
+
+Further complications erupted in Ahmad Shah's administration after he exempted his own tribe from taxation. Other Afghan tribes and ethnicities were discontent with this, as they were also not allowed to serve in the administration of the empire. This disquiet was further exacerbated by Ahmad Shah when he gave the right of [[Tax revenue|revenue collection]] to the highest bidder. The victors of these auctions, typically members of Ahmad Shah's own tribe, were completely free in taxing as much as they wished. While members of the Durrani tribe rapidly became rich, some landholders were pushed into complete debt, forcing many to sell their lands or flee the kingdom. Their land was also likely to be bought by the Durranis who had driven them to [[bankruptcy]].{{sfn|Lee|2022|p=117}}
+
+Ahmad Shah envisioned himself as the successor of [[Nader Shah]]. Instead of establishing a capable administration, Ahmad Shah focused on wars and military campaigns to supply his treasury, with any downturns easily being covered by the treasures of war. Throughout his reign, he rarely spent his time in Kandahar, the capital of his empire,{{sfn|Balland|1995}} and instead pursued military campaigns, returning only to restore stability after conflict. By the end of his reign, Ahmad Shah had launched over fifteen military campaigns, nine of them in India, three in [[Khorasan province|Khorasan]], and three in [[Afghan Turkestan]].{{sfn|Lee|2022|pp=117–118}}
+
+===Objectives===
+[[File:Sultan Mahmud of Ghazni, Folio from a Majma al-Tavarikh (World Histories, 1425) MET AD-37.193a.jpg|thumb|Depiction of [[Mahmud of Ghazni]]. Ahmad Shah is typically compared with him,{{sfn|Lee|2022|p=141}} with Mahmud himself having launched over [[Ghaznavid campaigns in India|17 invasions of India]].{{sfn|Mishra|2024|p=154}}|alt=A cropped color painting which depicts a bearded Turkic man on horseback]]
+[[Afghanistan]] was a relatively poor country at the time. As a result, Ahmad Shah, following in the footsteps of conquerors before him such as [[Mahmud of Ghazni]],{{sfn|Sarkar|1964|p=262}} invading India to plunder and obtain wealth. Adopting the practices of [[Muhammad of Ghor]], he also invaded India to establish his own political dominance. The [[power vacuum]] following the decline of the [[Mughal Empire]] allowed him to repeat extensive campaigns, while also reviving the prominence of Afghans in India. Furthermore, by institutionalizing the [[casus belli]] of [[holy war]], Ahmad Shah was able to direct the majority of his campaigns toward India.{{sfn|Mehta|2005|pp=248–249}} He also saw invasions as the proper way to propagate his strength, as Afghan chiefs and [[nobility]] initially saw him as an upstart, and as a result, Ahmad Shah sought victories to legitimize himself.{{sfn|Gupta|1961|p=69}}
+
+==Military campaigns==
+===Campaign to Kabul (1747)===
+Weeks after Ahmad Shah's accession, Nasir Khan, the governor of Kabul, [[Ghazni]], and [[Peshawar]] revolted against him. Ahmad Shah had previously imprisoned Nasir Khan and ransomed him for an annual tribute of 500,000 rupees. While Nasir Khan was attempting to raise this amount, the [[Ghilzai]] tribes refused to pay their taxes to the [[Durrani Empire|Durranis]], and only wished to do so to their Mughal sovereign, [[Muhammad Shah]]. With a growing Ghilzai revolt, Nasir Khan declared his independence from Durrani suzerainty and began raising an army of [[Uzbeks]] and [[Hazaras]], while also frantically asking Muhammad Shah for aid.{{sfn|Lee|2022|p=118}}{{sfn|Singh|1959|pp=36–37}}
+[[File:Ghazni City during 1839-42.jpg|thumb|Lithograph depicting the city of [[Ghazni]] and its [[citadel]]|alt=A color painting which depicts a fort located in a mountainous landscape]] 
+In autumn 1747, Ahmad Shah began his campaign against Nasir Khan. Appointing his nephew Luqman Khan as the regent in Kandahar while he left on campaign, Ahmad Shah marched with his army toward Ghazni only to be halted at [[Qalati Ghilji]] by his former allies, the [[Tokhi|Tokhi Ghilzai]]. Ahmad Shah stormed the fortress of Qalati, bringing the Tokhis to submission and annexing their lands over the following decades.{{sfn|Lee|2022|p=118}} Ahmad Shah continued towards Ghazni, defeating the governor deputed there and conquering it with little opposition.{{sfn|Singh|1959|pp=36–37}}{{sfn|Jr|2015|p=261}}
+
+Before advancing on Kabul, Ahmad Shah garnered the support of the [[Suleimankhel]] tribes in the region, while Taqi Khan managed to secure the defection of the Qizilbash garrison in Kabul so they would hand over the city once the Afghan army arrived. The acceptance of these terms forced Nasir Khan to flee to Peshawar, and when Ahmad Shah arrived at Kabul in October 1747, the Qizilbash handed over the [[Bala Hissar, Kabul|Bala Hissar]] fortress. Ahmad Shah awarded the Qizilbash by giving them districts in [[Chindawol]] and [[Murad Khani]].{{sfn|Lee|2022|p=118}}{{sfn|Singh|1959|p=37}}{{sfn|Noelle-Karimi|1997|p=111}}
+
+===First invasion of India (1747–1748)===
+{{main|Battle of Lahore (1748)|Battle of Manupur}}
+
+With Kabul under his control, Ahmad Shah dispatched his [[Commander-in-chief]], [[Jahan Khan (Afghan general)|Jahan Khan]], toward Peshawar with the intention of advancing as far as [[Attock]]. Jahan Khan quickly overran [[Jalalabad]], and Nasir Khan was unable mount a defence at the [[Khyber Pass]], forcing him to flee. The Afghan armies approached Peshawar, prompting many [[Pashtun tribes]] to declare support for them, including the [[Yusufzai]], [[Afridi]], and [[Khattak]]. Overwhelmed, Nasir Khan withdrew from Peshawar and fled to [[Delhi]].{{sfn|Lee|2022|p=119}}{{sfn|Sarkar|1964|p=127}} 
+[[File:Nidha Mal Jharokha portrait of Muhammad Shah holding an emerald and the mouthpiece of a huqqa ca. 1730 The San Diego Museum of Art.jpg|thumb|left|Portrait of Mughal emperor [[Muhammad Shah]]|alt=A color portrait of a mustached turbaned man in royal dress]]
+[[Shah Nawaz Khan (Mughal Empire)|Shāh Nawāz Khān]], the [[Mughal Empire|Mughal]] governor of [[Punjab]], opened correspondence with the Afghans after they had seized Peshawar. Shah Nawaz, having toppled his brother from power to assume control over Punjab, was opposed by the [[Mughal emperor]] [[Muhammad Shah]], who refused to recognize him as governor. As a result, the Afghans promised to affirm Shah Nawaz as governor of Punjab if he accepted Durrani suzerainty. Shah Nawaz accepted this offer, but the Mughal [[Grand vizier|vizier]] promised to confirm him as governor if he opposed the Afghan invasion instead, which Shah Nawaz accepted.{{sfn|Lee|2022|pp=119–120}}{{sfn|Gupta|1978|p=83}}{{sfn|Singh|1959|pp=42–43}}
+
+The betrayal saw Ahmad Shah dispatch Sabir Shah to try and convince Shah Nawaz once again. However, after insulting Shah Nawaz, Sabir Shah was imprisoned and executed, and Shah Nawaz began marching against the Afghan army.{{sfn|Mehta|2005|p=250}}{{sfn|Lee|2022|p=120}}{{sfn|Sarkar|1964|p=128}} Ahmad Shah crossed the [[Ravi River]] on 10 January, and encamped at the [[Shalimar Gardens, Lahore|Shalimar Gardens]] outside [[Lahore]]. The armies of Shah Nawaz and Ahmad Shah fought the [[Battle of Lahore (1748)|battle of Lahore]] on 11 January. When the battle began, the Afghan regiments of Shah Nawaz's army defected. Despite commanding a much larger army then the Afghans, the Mughals were defeated, and Shah Nawaz fled to [[Delhi]].{{sfn|Lee|2022|pp=120–121}}{{sfn|Sarkar|1964|p=129}}{{sfn|Gupta|1978|p=84}}
+
+With their victory, the Afghans entered Lahore, beginning to plunder the city and massacring its inhabitants. Thousands were also conscripted, while the Mughals began mobilizing a larger army. Ahmad Shah left Lahore on 19 February with 30,000 men, beginning to advance on Delhi. He captured [[Sirhind]] and continued advancing, outmaneuvering the [[Army of the Mughal Empire|Mughal forces]] until they met at [[Manupur]], where they battled. The Afghan forces assembled 12,000 against the Mughal army of 60,000 to 70,000 combatants.{{sfn|Sarkar|1964|pp=139}} The Afghan army pressed the attack until disaster struck when the ammunition stores of the Afghan army caught fire and exploded, incinerating 1,000 men and forcing a complete withdrawal from the battlefield.{{sfn|Lee|2022|pp=121–122}}{{sfn|Sarkar|1964|pp=130–142}}{{sfn|Gupta|1978|pp=85–86}} The Mughals did not pursue the Afghan army due to the death of Mughal emperor Muhammad Shah and the ensuing turmoil in the camp.{{sfn|Singh|1959|pp=67–70}}
+
+Withdrawing to Lahore, Ahmad Shah became aware that his nephew, Luqman Khan, who had been left as regent in Kandahar, had revolted. Ahmad Shah immediately returned to Afghanistan and marched on Kandahar, quickly quelling the revolt. He spent the summer of 1748 preparing for his second invasion of India.{{sfn|Lee|2022|p=122}}{{sfn|Singh|1959|pp=68–72}}{{sfn|Sarkar|1964|p=143}} The timing was significant for Ahmad Shah, as [[Itimad-ad-Daula, Qamar-ud-Din Khan|Qamar-ud-Din]], a significant commander for the Mughals at Manupur, had been killed, while Muhammad Shah's death saw him succeeded by [[Ahmad Shah Bahadur|Bahadur Shah]], who largely focused on pleasure-seeking. Ahmad Shah also wished to avenge his defeat.{{sfn|Gupta|1961|p=74}}
+
+===Second invasion of India (1748)===
+[[File:Mir-Mannu-by-Aftab-Mussawar.jpg|thumb|Portrait of [[Moin-ul-Mulk]], the Mughal governor of the Lahore Subah (r. 1748–1753)|alt=A color portrait of a turbaned man smoking a pipe]]
+In November 1748, Ahmad Shah began his second invasion of India.{{sfn|Noelle-Karimi|1997|p=111}} [[Moin-ul-Mulk]], the new governor of Punjab, urgently requested reinforcement from the Mughals in Delhi. Moin-ul-Mulk, who wanted to avoid fighting the Afghans on open plains, remained on the defensive at [[Sodhra]], as an ongoing power struggle with Nasir Khan, the former Mughal governor of Kabul, threatened his position. As a result, Jahan Khan was able to raid the countryside, including the [[Chaj Doab]], whilst a party of [[Sikh Confederacy|Sikhs]] raided Lahore.{{sfn|Lee|2022|p=122}}{{sfn|Mehta|2005|p=251}}
+
+Ahmad Shah advanced to Kopra and engaged in skirmishes with Moin-ul-Mulk's army. Overwhelmed with the rising power of the Sikhs and the Afghan invasion, Moin-ul-Mulk opened negotiations, ceding the revenues of [[Gujrat, Pakistan|Gujrat]], Aurangabad, [[Sialkot]], and [[Pasrur]]. These districts generated yearly revenues of 1.4 million rupees ({{Inflation|index=IN|value=1,400,000|start_year=1748|end_year=2023|r=0|fmt=eq|cursign=₹}}). Ahmad Shah returned to Afghanistan following the treaty, crossing through Peshawar, [[Dera Ismail Khan]], and [[Dera Ghazi Khan]].{{sfn|Lee|2022|p=123}}{{sfn|Mehta|2005|p=251}}{{sfn|Noelle-Karimi|2014|p=111}} The regions of Dera Ismail Khan and Dera Ghazi Khan fell as he returned to Afghanistan, confirming the former tribal chiefs as governors in the region under his suzerainty.{{sfn|Singh|1959|p=80}}
+
+===First Khorasan campaign (1749–1751)===
+{{main|Durrani Campaign to Khorasan (1749–51)}}
+
+[[File:Nader Shah Afshar and his court, India or Iran, 18th century (cropped).jpg|thumb|Detail of [[Shahrokh Shah]], ruler of the Afsharids, in court|alt=A cropped color painting depicting a clean-shaven man wearing a crown and royal robes]]
+Between 1749 and 1750, after his second invasion of India, Ahmad Shah launched his first campaign into [[Khorasan province|Khorasan]]. Intent on conquering [[Herat]], Ahmad Shah besieged the city for a long period of time until it finally fell in late 1750.{{sfn|Noelle-Karimi|2014|p=110}}{{sfn|Lee|2022|p=131}}{{sfn|Perry|1985}} With the fall of Herat, Ahmad Shah continued his campaign into Khorasan, besieging the fortress of Nun in the viscinity of [[Mashhad]] where its governor subsequently surrendered after a short siege.{{sfn|Singh|1959|pp=88}}
+
+Ahmad Shah proceeded into [[Afsharid]] territory and initiated the [[Siege of Mashhad (1750)|siege of Mashhad]], where he remained until November 1750. Attempts to storm the city by the Afghans were unsuccessful. Historians Jonathan Lee and [[Hari Ram Gupta]] state Iranian monarch [[Shahrokh Shah]] surrendered to Ahmad Shah personally so he could raise the siege. Shahrokh Shah accepted Afghan suzerainty, paying large tribute and releasing members of Ahmad Shah's family.{{sfn|Lee|2022|p=132}}{{sfn|Singh|1959|pp=88}} However, historian Christine Noelle-Karimi states Ahmad Shah lifted the siege on 10 November, and was intent on returning years later. Shahrokh Shah had released a son of Ahmad Shah, possibly being [[Timur Shah Durrani]], or Ahmad Shah's youngest son, Sanjar Mirza.{{sfn|Noelle-Karimi|2014|p=110}}
+
+Nonetheless, after the siege of Mashhad, Ahmad Shah advanced to [[Nishapur]], which was ruled by the [[Qara Bayat Amirdom]]. He besieged the city and demanded its surrender, its governor Jafar Khan refused despite only having a few thousand soldiers in the garrison. Ahmad Shah ordered the walls to be breached utilizing [[cannons]], and the Afghans broke through. However, the defenders of the city had established defences and a trap, which the Afghans fell into. Close-quarters combat began after, in which Jafar Khan was killed. His nephew, Abbas Quli, took command of the garrison and repulsed the Afghan forces, inflicting horrific casualties on them, including some 12,000 dead, and thousands more wounded.{{sfn|Lee|2022|pp=132–133}}{{sfn|Noelle-Karimi|2014|p=110}}{{sfn|Singh|1959|pp=90–92}}
+
+With his army seriously weakened, Ahmad Shah ordered a retreat to Herat. The harsh winter weather killed thousands while the Afghans retreated,{{sfn|Noelle-Karimi|2014|p=110}} and Ahmad Shah was forced to leave behind much of his baggage, including his artillery and food supplies. When the Afghans reached the [[Hari Rud]] river, it was completely frozen. Attempting to cross it caused much of the ice to break, killing even more men and sweeping away [[pack animals]] for the army.{{sfn|Lee|2022|p=133}}{{sfn|Singh|1959|pp=90–92}} Upon the armies' return to Herat, Ahmad Shah faced an assassination conspiracy from Darwish Ali Khan Hazara, the Durrani governor of Herat. The conspiracy was quickly quelled, Darwish Ali was imprisoned, and Ahmad Shah appointed Timur Shah as the new governor.{{sfn|Lee|2022|pp=132–133}}{{sfn|Singh|1959|pp=90–92}}
+
+===Third invasion of India (1751–1752)===
+{{main|Battle of Lahore (1752)}}
+
+Possibly due to Ahmad Shah's struggle in Khorasan,{{sfn|Singh|1959|p=101}} [[Moin-ul-Mulk]] failed to pay the agreed tribute to Ahmad Shah from the revenues of Gujrat, Aurangabad, Sialkot, and Pasrur. This induced Ahmad Shah to invade India again in November 1751, leading his forces to invade [[Punjab]]. Moin-ul-Mulk immediately sent 900,000 rupees forward as tribute, which Ahmad Shah seized and continued his march. With the [[advance guard]] under Jahan Khan, Ahmad Shah led his forces through [[Rohtas Fort|Rohtas]], Gujrat, and [[Shahdara Bagh|Shahdara]]. Jahan Khan's forces pillaged the countryside while skirmishes began with Moin-ul-Mulk, who raised his own force to meet the Afghans in battle.{{sfn|Singh|1959|pp=101–106}} The advance of Ahmad Shah triggered mass panic in Lahore, with many fleeing to Delhi or [[Jammu]] for safety.{{sfn|Gupta|1978|p=109}}
+
+In January 1752, Ahmad Shah forded the [[Ravi River|Ravi]] in secrecy at Ghazipur, before advancing on Lahore. Jahan Khan began advancing on Lahore as well, initially being driven out of Faiz Bagh and instead encamping at the Shalimar gardens. Moin-ul-Mulk immediately dashed back to Lahore, which the Afghans besieged for over four months. Receiving no aid from the Mughals or any other nobles, Moin-ul-Mulk settled for a [[pitched battle]] with the Afghans outside of Lahore.{{sfn|Singh|1959|pp=106–110}}{{sfn|Sarkar|1964|pp=269–270}}
+
+On 6 March, after a [[Battle of Lahore (1752)|fierce battle]], Moin-ul-Mulk was defeated and surrendered to Ahmad Shah, who received him in person. Impressed by the efforts of Moin-ul-Mulk in his resistance, Ahmad Shah instated him as the governor of Lahore under Durrani suzerainty. However, Lahore was plundered and many people massacred. Ahmad Shah drafted a peace treaty with Moin-ul-Mulk, officiating the annexation of [[Punjab]] including Multan, Lahore and areas up to Sirhind to the Durrani Empire. The Mughal emperor Bahadur Shah signed the treaty on 3 April 1752, ending Mughal rule in Punjab.{{sfn|Mehta|2005|pp=252–253}}{{sfn|Singh|1959|pp=119–123}}{{sfn|Lee|2022|p=123}} 
+
+Having conquered Punjab, Ahmad Shah also dispatched his general, Shah Pasand Khan, with 15,000 men to [[Mughal Kashmir|Kashmir]], which was embroiled in civil war. In support of the deposed governor Mir Muqim, Afghan forces quickly occupied [[Srinagar]] and established complete control in the province.{{sfn|Lee|2022|p=123}}{{sfn|Parmu|1969|pp=348–349}}
+
+===Turkestan (1751–1768)===
+{{main|Afghan Turkestan}}
+
+[[File:Afghan Turkestan in 1751.jpg|thumb|Map of Afghan Turkestan in January 1751. [[Balkh Province|Balkh]] is still under the rule of the [[Kunduz Khanate]].|alt=A color map centred on Afghanistan, which marks the areas held by different polities]]
+At the start of Ahmad Shah's reign, he had friendly relations with Hajji Bi, the ruler of the [[Maimana Khanate]], who had assumed control over the [[Chahar Wilayat]]. Coming into conflict against Hazara Bi, the ruler of [[Qataghan]], Hajji Bi lost control over [[Balkh]] to the Qataghanids. In 1751, Hajji Bi travelled to Herat with a delegation of amirs, seeking Ahmad Shah's aid to reclaim Balkh. Ahmad Shah accepted the call to arms, forging an alliance with Hajji Bi, and sent thousands of Afghan and [[Qizilbash]] men under Allah Khan Turkman. Hajji Bi was also bestowed by Ahmad Shah with the titles of governor of Balkh and tax collector.{{sfn|Lee|2022|p=134}}{{sfn|Lee|1996|p=85}}
+
+Not much information is given about the campaign against the Qataghanids. However, by the summer of 1752, the forces of the alliance were victorious, and Balkh was restored to the rule of the Maimana Khanate. During the campaign, a commander of one of the [[Afghan Qizilbash]] forces fought against Allah Khan, prompting Mizrab Bi, a son of Hazara Bi, to revolt in 1753. Hajji Bi urgently requested aid from Ahmad Shah again, he responded by sending 5,000 men. After being restored to Balkh, Hajji Bi pursued a campaign in Qataghan, and with aid from the Afghans, the revolt was put down. Mizrab Bi was brought to submission, and [[Badakhshan]] was subjugated as well.{{sfn|Lee|2022|pp=135–136}}{{sfn|Lee|1996|pp=85–86}}
+
+In 1755–1756, Hajji Bi petitioned Ahmad Shah at [[Kabul]] to be made [[Ispahsalar|commander-in-chief]] of forces in Balkh. The request was accepted, stripping Allah Khan of his position. However, Hajji Bi became noted for his abuse of power in the position, triggering an investigation by the Afghans, who sent Allah Khan to oversee the affairs of the region. Allah Khan immediately declared the reports of oppression to be true, and was reinstated as commander-in-chief in Balkh. Ahmad Shah also declared a new governor of Balkh, Nawab Khan Alakozai.{{sfn|Lee|2022|p=136}}{{sfn|Lee|1996|p=86}}
+
+Believing it was the beginning of the Afghans attempting to assert their own hegemony over all of [[Afghan Turkestan]], Hajji Bi began plotting with Izbasar, the ruler of [[Sheberghan]]. The two began a rebellion that achieved little, ending in a pardon for both Hajji Bi and Izbasar.{{sfn|Lee|1996|pp=86–87}} In 1761, Rahim Bi Manghit, the ruler of [[Khanate of Bukhara|Bukhara]], invaded Afghan Turkestan, intent on re-establishing Bukharan suzerainty over the region. Izbazar declared his loyalty to the ruler of Bukhara and aided in the invasion. Bukharan forces initially overran [[Aqcha]] before being defeated by Allah Khan, who built a pyramid with the head of dead Bukharan soldiers. Afghan forces continued to Aqcha, where the Bukharans and Izbasar were defeated again. Aqcha was besieged and another force of 8,000 Bukharans were sent to Aqcha to relieve the siege, only to be defeated by the combined forces of Allah Khan and Hajji Bi.{{sfn|Lee|2022|p=136}}{{sfn|Lee|1996|pp=87–89}}
+[[File:Painting of Ahmad Shah Abdali and his grand wazir Shah Wali Khan, ca.1760's.jpg|thumb|Depiction of Ahmad Shah Durrani alongside his vizier, Shah Wali Khan|alt=A color portrait of two men during sunset. One of them, a bearded man wearing a crown, is seated on the throne, while the other stands to his left]]
+Attempts to breach the walls of Aqcha failed, and negotiations began. The Bukharans withdrew across the [[Amu Darya]], while Allah Khan was sent to Sheberghan to bring Izbasar into submission. However, Izbasar opened negotiations with Nawab Khan, who demanded Allah Khan be put to death due to an enmity between the two. Izbasar complied, executing Allah Khan, receiving a pardon from Nawab Khan as a result.{{sfn|Lee|2022|p=136}}{{sfn|Lee|1996|pp=87–89}}
+
+In 1768, a rebellion in Qataghan and Badakhshan prompted an invasion from Shah Murad Manghit, the next Bukharan ruler. Ahmad Shah sent 6,000 men under Shah Wali Khan to face the rebels. As a result, Shah Murad crossed the Amu Darya, advancing to [[Qarshi]], and threatening to attack Aqcha. In response, Ahmad Shah mobilized an army, affirming his authority in [[Maimana]], [[Andkhoy (city)|Andkhoy]], Sheberghan, and [[Balkh]] as he advanced. This quickly brought Shah Murad to negotiations, who recognized Afghan control over Balkh, with the amirs of the [[Chahar Wilayat]] also submitting tribute to the Durranis. To further avoid a battle with the Afghans, Shah Murad surrendered the [[cloak of Muhammad]] after Ahmad Shah demanded it. With the cloak, Ahmad Shah established a shrine known as the [[Kirka Sharif]] in Kandahar, which was built next to [[Mausoleum of Ahmad Shah Durrani|his tomb]].{{sfn|Lee|2022|pp=136–137}}{{sfn|Lee|1996|pp=90–91}}{{sfn|Noelle-Karimi|1997|p=71}}
+
+===Second Khorasan campaign (1754–1755)===
+{{main|Durrani Campaign to Khorasan (1754–55)}}
+In 1754, Ahmad Shah began preparing for a second campaign in Khorasan. During this time, [[Nishapur]] was besieged by Alam Khan, a former [[Afsharid]] viceroy. When Ahmad Shah began his invasion, Alam Khan's army completely dispersed, forcing his withdrawal to [[Sabzevar]].{{sfn|Perry|1985}} Beginning his campaign in May 1754, Ahmad Shah departed from Herat with his army and advanced toward [[Ferdows|Tun]]. He dispatched Jahan Khan and [[Nasir Khan I Ahmadzai|Nasir Khan]], the ruler of the [[Khanate of Kalat]], to devastate the countryside. Following this, the Afghan forces marched against the governor of [[Tabas]], Ali Murad Khan, who assembled his own army and met the Afghans in battle. Singh describes the battle that took place as one of the most bloodiest battles in Persian history. Ammunition failed to gain any clear advantage for both sides, forcing both armies to draw swords and began clashing. The battle remained indecisive until Ali Murad Khan was killed, and the remaining Persian army was completely routed.{{sfn|Singh|1959|pp=95–96}}[[File:Coin of Ahmad Shah Durrani, Mashhad Mint.png|thumb|Coin of Ahmad Shah Durrani, minted in Mashhad, date unknown|alt=A color photograph of the two sides of a coin with Perso-Arabic text on them]]
+With the Persians defeated, Tabas and Tun were conquered between June and July 1754 by the Afghans.{{sfn|Singh|1959|p=96}} Ahmad Shah then led his forces to Mashhad, arriving before the city on 23 July.{{sfn|Noelle-Karimi|2014|p=110}} A long siege protracted until the Afsharids finally submitted to Ahmad Shah on 1 December 1754. On the 4th, Ahmad Shah's name was [[Khutbah#Sovereign's name|read in the sermon]], acknowledging his sovereignty over the Afsharids. With their victory, the Durranis annexed the territories of [[Torshiz]], [[Bakharz]], [[Torbat-e Jam|Jam]], [[Khaf, Iran|Khaf]], and [[Torbat-e Heydarieh|Turbat-e Haidari]] from the Afsharids.{{sfn|Singh|1959|p=97}}{{sfn|Noelle-Karimi|2014|p=110}} On 9 May 1755, Shahrokh Shah was officially re-instated as ruler over Mashhad, effectively as a Durrani protectorate.{{sfn|Perry|1985}} Ahmad Shah then began his march on Nishapur in the spring of 1755, while Shah Pasand Khan was dispatched toward Mazandaran against the [[Mohammad Hasan Khan Qajar|Qajars]].{{sfn|Noelle-Karimi|2014|p=110}}{{sfn|Singh|1959|p=89}}
+[[File:A Quran dedicated to Ahmad Shah Durrani, c.1754.jpg|thumb|left|A [[Quran]] dedicated to Ahmad Shah Durrani, c.&nbsp;1754|alt=A color photograph of two pages from a decorated book with Perso-Arabic text]]
+During the siege of Mashhad, the Camesgazak [[Kurd]] contingent of Alam Khan's forces completely defected to the Afghans, killing Alam Khan after dragging him from Sabzevar, which was conquered as a result.{{sfn|Perry|1985}}{{sfn|Singh|1959|p=95}} On 17 June 1755, the Afghan armies arrived at Nishapur, resulting in Abbas Quli's immediate submission. Abbas Quli sought to be pardoned for giving resistance during Ahmad Shah's first campaign. Not long after, however, Nishapur raised in rebellion due to news of Shah Pasand Khan being defeated by the Qajars. The gates of the city were closed on Ahmad Shah's troops,{{sfn|Singh|1959|p=89}} so the Afghans laid siege for one week.{{sfn|Noelle-Karimi|2014|pp=110–111}} During the siege, Ahmad Shah lacked important [[siege equipment]], and he solved this problem by having every mounted soldier carry kilograms of [[gunmetal]]s. As the siege began, Ahmad Shah's [[Armenians|Armenian]] cannon makers melted down the metal the soldiers had carried, forging a large cannon. The first shot of the cannon blasted through the city walls, and caused havoc in the city through houses and [[bazaars]].{{sfn|Lee|2022|p=133}}
+
+The weapon forced the submission of the city elders, and they opened the gates of the city despite Abbas Quli's opposition. The city was then plundered, with the populace of the city spared if they went to the mosques and did not take anything with them. Afghan forces went to houses and tore down the defences, razing significant portions of the city.{{sfn|Lee|2022|p=134}}{{sfn|Noelle-Karimi|2014|p=111}} Following the victory at Nishapur, Ahmad Shah defeated the Qajars and advanced further by sacking the cities of Tun and Tabas, carrying out massacres in these cities.{{sfn|Lee|2022|p=134}} Abbas Quli was initially captured by Ahmad Shah until he earned his favour. Abbas Quli married one of Ahmad Shah's daughters, while Ahmad Shah married Abbas Quli's sister. With these arrangements, Abbas Quli was allowed to return to Nishapur as governor of the city. He would remain close to Ahmad Shah throughout his life.{{sfn|Singh|1959|pp=100, 135}}
+
+===Fourth invasion of India (1756–1757)===
+{{main|Sack of Delhi (1757)}}
+
+[[File:Brooklyn Museum - Emperor Alamgir II - Sukha Luhar.jpg|thumb|Portrait of Mughal emperor [[Alamgir II]]|alt=A color portrait of an old bearded man, seated on a throne and wearing a turban]]
+Moin-ul-Mulk governed Punjab until his death in November 1753, and was succeeded by [[Mughlani Begum]]. In March 1756, [[Mughal vizier]] [[Ghazi ud-Din Khan Feroze Jung III|Imad ul-Mulk]] imprisoned her and deputed [[Adina Beg]] as the governor. Mughlani Begum pleaded Ahmad Shah to lead another invasion, promising him wealth.{{sfn|Gupta|1976|p=169}}{{sfn|Gupta|1978|pp=123–128}} Due to the tyrannies of Imad ul-Mulk, several nobles such as [[Najib ad-Dawlah|Najib ud-Daula]], a chief of [[Kingdom of Rohilkhand|Rohilkand]], and the new Mughal emperor [[Alamgir II]], pleaded for Ahmad Shah to invade. Ahmad Shah accepted the invitations and began his [[Indian campaign of Ahmad Shah Durrani#Fourth Invasion|fourth invasion]] in November 1756, leaving Peshawar on the 15th, and crossing [[Attock]] on the 26th with an army of 80,000 men.{{sfn|Gupta|1961|p=81}}{{sfn|Singh|1959|pp=148–151}}{{sfn|Gupta|1961|p=326}} He reached Lahore on 20 December, seizing the city with little resistance.{{sfn|Lee|2022|p=124}} Ahmad Shah garnered tribute from the city before continuing his march, crossing the [[Sutlej]] river on 10 January at [[Ludhiana]], while the [[advance guard]] under his general, Jahan Khan, seized Sirhind, [[Karnal]], and [[Panipat]].{{sfn|Gupta|1961|p=80}}{{sfn|Singh|1959|p=153}}
+
+The [[Maratha Confederacy|Marathas]], who had signed a treaty to protect the Mughals from foreign invasions in 1752,{{sfn|Mehta|2005|p=223}} assembled a contingent of 3,400 men under Antaji Mankeshwar, battling the Afghans at [[Battle of Narela|Narela]]. The Maratha forces, however, were defeated and forced to withdraw with losses of 100 men.{{sfn|Singh|1959|p=158}}{{sfn|Barua|2005|p=55}} Following the defeat of the Marathas, Najib ud-Daula defected to the Afghans, with Imad ul-Mulk surrendering not long after. Jahan Khan continued his advance to [[Luni, Rajasthan|Luni]] and besieged [[Shahdara district|Shahdara]] on 17 January, with the [[Jama Masjid, Delhi|Jama Masjid]] in Delhi reading Ahmad Shah's name in the [[Khutbah]] as a [[Khutbah#Sovereign's name|sign of sovereignty]]. The Afghan forces continued advancing on Delhi, arriving before the city on 28 January.{{sfn|Singh|1959|p=163}}{{sfn|Gupta|1978|p=129}}
+[[File:Fatehpuri Masjid in Delhi 19.jpg|thumb|left|[[Fatehpuri Mosque]], where Alamgir received Ahmad Shah before he entered Delhi|alt=A color photograph of a mosque]]
+Meeting with Alamgir II at the [[Fatehpuri Mosque]], Ahmad Shah led a grand entry into Delhi, which was marked with a [[gun salute]].{{sfn|Singh|1959|p=164}}{{sfn|Mehta|2005|p=254}} However, many inhabitants of the city had already fled or hidden, with the streets completely deserted. Many people barricaded themselves in their houses. Ahmad Shah's name was also inserted in the Khutbah for other mosques. Initially the Afghan army was ordered not to sack the city.{{sfn|Lee|2022|p=124}} Alamgir II was placed under house arrest,{{sfn|Mehta|2005|p=226}} and houses outside the city of Delhi were ravaged.{{sfn|Mehta|2005|p=254}} On the 29th, the bazaars of the city were [[Sack of Delhi (1757)|sacked]] and Jahan Khan's soldiers extracted tribute from [[Feroz Shah Kotla]], a large fortress in Delhi. On 30 January, Ahmad Shah minted coins in his name. He also married [[Hazrat Begum]], a daughter of Alamgir II,{{sfn|Sarkar|1971|pp=89–90}} while his son, Timur Shah, married another daughter of Alamgir.{{sfn|Gupta|1961|pp=326–327}}
+
+Ahmad Shah then ordered all [[Hindus]] to wear distinctive marks on their head,{{sfn|Gupta|1961|p=327}} and forbade non-Muslims from wearing a turban. Extortionate demands were also placed upon the Mughal nobility. The Mughal nobility refused, and Ahmad Shah dispatched his own tax collectors, demanding additional tribute. Those suspected of concealing valuables were subjected to torture, including [[foot whipping]]. Many thousands died or were crippled as a result, while others resorted to suicide. A tax was also imposed on every household in Delhi.{{sfn|Lee|2022|p=124}}
+
+Imad ul-Mulk was forced to hand over gold and ornaments valued at 10&nbsp;million rupees, and another 300,000 gold coins.{{sfn|Gupta|1961|p=81}}{{sfn|Singh|1959|p=165}} Wazir [[Intizam-ud-Daulah]] was summoned, and many of his assets were confiscated, including over 10 million rupees and 100 of his wives. Unable to produce the required wealth, Intizam admitted his father had buried a fortune, which the Afghans uncovered. The Afghans recovered over 15&nbsp;million rupees in cash, along with various goods, including 200 golden candles that were the size of a man. The treasure also included diamonds, rubies, pearls, and emeralds.{{sfn|Gupta|1961|p=81}}{{sfn|Singh|1959|p=166}}
+
+After sacking Delhi, Ahmad Shah campaigned against the [[Bharatpur State|Jats]]. [[Suraj Mal]], the ruler of the Jats, initially submitted to Ahmad Shah, but refused to send asylum seekers from the sack of Delhi, resulting in conflict.{{sfn|Gupta|1961|pp=83–84}} An Afghan force was sent to [[Faridabad]], seizing the fortress and razing it. However, a Jat raid under [[Jawahar Singh]] defeated the Afghans, massacring them. In response, Ahmad Shah laid siege to [[Ballabhgarh]], while Jahan Khan and Najib ud-Daula were dispatched to loot the surrounding regions. They advanced toward [[Mathura]], while Jawahar Singh met them for battle at [[Chaumuhan]]. The ensuing battle left between 10 and 12,000 dead on both sides combined, with an innumerable amount of men wounded as well.{{sfn|Gupta|1961|pp=85–86}} 
+
+Jawahar Singh alongside Antaji Mankeshwar reinforced Ballabhgarh. The cannon fire of the Afghans completely broke the defences of the fortress, forcing Jawahar to withdraw in the night, with Afghan forces seizing the city on 4 March.{{sfn|Lee|2022|p=124}}{{sfn|Singh|1959|pp=175–176}} An expedition under Abdus Samad Khan, another of Ahmad Shah's generals, nearly arrested Jawahar Singh during an ambush, but Jawahar ultimately evaded capture.{{sfn|Gupta|1961|p=84}}
+[[File:Jawahar Singh of Bharatpur.jpg|thumb|left|Portrait of Jawahar Singh|alt=A color portrait of a mustached man, from the chest up, wearing a crown]]
+Toward the end of February 1757, the Afghan forces arrived in Mathura and sacked it. The city, despite being inhabited overwhelmingly by non-combatants, mainly [[pilgrims]] of the Hindu [[Holi]] festival, was attacked and the inhabitants were massacred by the Afghans. The Afghan forces slaughtered and defiled the bodies of Hindu [[Sadhu|ascetics]] by humiliating them with slaughtered cows. Temples of the city were razed, and the images of [[idolatry|idols]] were destroyed. Jahan Khan furthered the massacre by rewarding a bounty of five rupees for every Hindu head, resulting in the death of thousands of men, women, and children. The Muslims of the city were subjected to the attack as well. Following his massacre at Mathura, Jahan Khan continued his campaign, with the city of [[Vrindavan]] being attacked and its inhabitants massacred on 6 March.{{sfn|Lee|2022|p=125}}{{sfn|Singh|1959|pp=176–178}}{{sfn|Gupta|1961|pp=85–87}} The Tarikh-I-Husain Shahi establishes the idol destruction in line with [[iconoclasm]], remarking: "Idols were broken and kicked about like polo-balls by the Islamic heroes."{{sfn|Sarkar|1971|p=119}}
+
+Ahmad Shah, following Jahan Khan, attacked the city of [[Gokul]] on 16 March, which was inhabited by [[Daśanāmi Sampradaya#Naga Sadhus akharas|Naga Sadhus]], a Hindu [[Bhakti movement|Bhakti]] sect. The Afghans attacked the city where a battle ensued, resulting in the death of 2,000 men for both sides. Jugal Kishor, a diplomat from the [[Bengal Subah]], informed Ahmad Shah there was nothing of value in Gokul. Ahmad Shah ordered a withdrawal, sparing the city from sacking.{{sfn|Singh|1959|p=179}}{{sfn|Gupta|1961|p=88}}{{sfn|Lee|2022|p=125}} On 21 March, Jahan Khan arrived before [[Agra]] with 15,000 men, besieging the city. Civilians from the town received Jahan Khan and his army, promising 500,000 rupees in tribute. However, after failing to raise the amount, Afghan forces entered the city, plundering it and massacring over 2,000. The Afghan forces attempted to seize [[Agra Fort]] but failed due to the defence of Mirza Saifullah, the garrison commander. He defended the fort with extensive artillery usage, preventing the Afghans from approaching with cannons. Jahan Khan seized 100,000 rupees in tribute, before withdrawing to Ahmad Shah's camp on 24 March after being recalled.{{sfn|Singh|1959|pp=176–177}}{{sfn|Gupta|1961|p=85-86}}[[File:Najib Khan Yousafzai.png|thumb|Illustration of Najib ud-Daula|alt=A black and white portrait of a mustached man wearing a turban/crown]]
+[[Cholera]] had broken out in the Afghan camp, killing around 150 men per day, caused mainly by the polluted [[Yamuna River]] which was overwhelmed with bodies. As a result, Ahmad Shah intended to return to Afghanistan, especially to secure the loot from the campaign. The heat of the Indian summer also convinced him to return. Ahmad Shah started returning to Afghanistan in April 1757, declaring his son Timur Shah governor of [[Punjab]], while Jahan Khan served as his deputy. Sirhind was annexed from the Mughals, Imad ul-Mulk was re-instated as vizier, and Najib ud-Daula appointed the [[Mir Bakhshi]].{{sfn|Mehta|2005|p=254}}{{sfn|Singh|1959|pp=180–189}}{{sfn|Gupta|1961|pp=89–91}}{{sfn|Lee|2022|pp=125–126}} Alamgir II was allowed to rule Delhi as a vassal of the Durrani Empire.{{sfn|Mehta|2005|p=254}}
+
+The Afghan invasion had dire consequences for the Mughal Empire, as most of the Mughal army, along with those from the Bengal Subah, were forcibly deployed against the Afghans. Mere months later, the army of the Bengal Subah, weakened due to the Afghan invasion, were utterly defeated at the [[Battle of Plassey]], leading to the rise of [[East India Company|British]] power in India.{{sfn|Lee|2022|p=130}}
+
+The total loot Ahmad Shah carried back to Afghanistan is disputed. Contemporary writers estimate the Afghans seized 30 to 300&nbsp;million rupees worth of goods.{{sfn|Singh|1959|p=186}}{{sfn|Lee|2022|p=126}} Over 28,000 elephants, camels, and mules carried Ahmad Shah's loot, alongside 80,000 soldiers, who carried whatever they had looted, with many of the Afghan cavalry returning on foot while they loaded the loot unto their horses.{{sfn|Singh|1959|p=186}}{{sfn|Lee|2022|p=126}} The massacres committed by the Afghans throughout the campaign made the Yamuna River flow red with blood for two weeks.{{sfn|Barua|2005|p=55}}
+
+===Durrani administration of the Punjab (1757–1758)===
+[[File:A watercolour painting depicting a headless Baba Deep Singh and fellow Sikh warriors shown fighting the hostile Afghan forces at the Battle of Amritsar (1757), circa 1880's.jpg|thumb|Depiction of the [[Battle of Amritsar (1757)|battle of Amritsar]] (1757) between the Sikhs and Afghans|alt=A color painting which shows two armies, one wearing green/blue and the other wearing orange, waging combat. A headless soldier who continues to fight after decapitating an opponent can be seen ]]
+[[Timur Shah]] was only eleven years old, and thus Punjab was governed mostly by [[Jahan Khan Popalzai|Jahan Khan]], who was noted as an experienced warrior but incapable administrator. He attacked the [[Sikhs]] who were celebrating the [[Diwali]] festival at [[Amritsar]] in [[Battle of Amritsar (1757)|1757]], and also destroyed and polluted many Sikh shrines, declaring [[Jihad]].{{sfn|Mehta|2005|p=256}} The tyrannies of Jahan Khan resulted in the Sikhs forging an alliance with [[Adina Beg]], who had fled from Punjab during Ahmad Shah's fourth invasion.{{sfn|Gupta|1961|pp=91–92}}{{sfn|Lee|2022|p=126}} As a result, Jahan Khan led a campaign against Adina Beg in the [[Jalandhar Doab]], pillaging the region. Adina Beg acquiesced to submitting tribute, but ignored summons to the Afghan court in Lahore. On one such occasion of being summoned, Adina Beg refused to trust Jahan Khan and fled to the [[Hill states]], where he forged an alliance with [[Vadbhag Singh Sodhi]] and [[Jassa Singh Ahluwalia]], the leader of the [[Dal Khalsa (Sikh army)|Dal Khalsa]].{{sfn|Gupta|1961|pp=91–92}}
+
+Jahan Khan dispatched a force under Murad Khan in response, who met the alliance at the [[battle of Mahilpur]], where the Afghans were defeated, resulting in the looting of the Jalandhar Doab. More troops from Lahore were sent to quell the alliance but all of them were defeated, allowing the Sikhs to plunder the suburbs of Lahore.{{sfn|Lee|2022|p=126}}{{sfn|Gupta|1961|pp=92–93}}{{sfn|Mehta|2005|p=256}}
+[[File:Raghunath Rao.jpg|thumb|Painting of [[Raghunath Rao]]|alt=A color portrait of a turbaned man wearing a white dress]]
+A [[Maratha Confederacy|Maratha]] force led by [[Raghunath Rao]] arrived at Agra in May 1757 when Ahmad Shah was crossing the [[Indus River]] to Afghanistan. The Maratha forces completely seized the [[Ganga Doab|Ganges Doab]], and defeated [[Najib ad-Dawlah|Najib ud-Daula]] at the [[Battle of Delhi (1757)|battle of Delhi]] in September 1757. Alamgir II was retained on the throne as a puppet, and Imad ul-Mulk remained as vizier.{{sfn|Mehta|2005|pp=255–256}} Adina Beg requested the Marathas to invade Punjab, and Raghunath Rao accepted.{{sfn|Gupta|1961|p=93}} The Maratha invasion began in February 1758, advancing and reaching Sirhind in March, which was besieged. Abdus Samad Khan, the Afghan governor of Sirhind, fled the city but was eventually captured, and Sirhind was plundered. The developments at Sirhind alerted Jahan Khan, who raised an army of 2,000 men and scouted far ahead of Lahore, but refused to give battle to the alliance. Upon receiving news of the Marathas approaching Lahore, he began preparing to return to Afghanistan on 19 April.{{sfn|Lee|2022|p=126}}{{sfn|Gupta|1961|pp=93–94}}{{sfn|Singh|1959|pp=200–203}}
+
+Encamping at Shahdara, the Afghans retreated across the Ravi, leaving Lahore in anarchy and free for capture by the alliance.{{sfn|Mehta|2005|p=256}} Afghan rearguard contingents were ambushed by the Marathas, pushing Jahan Khan and Timur Shah to speed their progress to Afghanistan. Further close encounters at [[Eminabad]] saw the Afghans driven to the [[Chenab River|Chenab]] below [[Wazirabad]], where they were attacked by the Marathas and Sikhs, who took some two hundred Afghan prisoners. Modern scholarship designates this encounter as the end of the Maratha pursuit. Near contemporary sources state the Marathas were able to establish themselves at Attock, and possibly even at Peshawar.{{sfn|Gupta|1961|pp=94–96}}{{sfn|Singh|1959|pp=205–206}}
+
+===Kalat Rebellion (1758–1759)===
+With the Maratha conquest of Punjab, Nasir Khan, the ruler of the Khanate of Kalat, declared his independence from Ahmad Shah. Attempts to conciliate and have Nasir Khan return to Afghan suzerainty failed, prompting Ahmad Shah to dispatch a force under Shah Wali Khan, which was defeated at Pringuez, forcing their retreat to [[Quetta]].{{sfn|Singh|1959|p=211}}{{sfn|Khan Durrani|1991|p=139}}{{sfn|Lee|2022|p=126}} Informed of the defeat, Ahmad Shah raised his own force and marched against [[Kalat, Balochistan|Kalat]] in the summer of 1758.{{sfn|Chahryar|Baipakov|Irfan|2003|p=289}} He met Nasir Khan in battle at [[Mastung, Pakistan|Mastung]], where the Kalat forces were defeated, prompting Nasir Khan's withdrawal to Kalat city, which Ahmad Shah then besieged.{{sfn|Gupta|1961|p=118}} The siege of Kalat continued for forty days to no avail, and numerous storming attempts by the Afghans failed.{{sfn|Singh|1959|pp=211–212}}{{sfn|Lee|2022|p=126}}
+
+Nasir Khan, beleaguered of having been trapped in his capital, opened peace negotiations with the Afghans, apologizing for his rebellion. Ahmad Shah, having no intentions to annex Kalat or to bestow the province unto another governor, reaffirmed Nasir Khan in his position. A treaty was made, stipulating that Nasir Khan would re-enter and recognize the suzerainty of Ahmad Shah, but he would pay no tribute and furnish troops when called upon for war by the Shah. After the treaty, Ahmad Shah married a cousin of Nasir Khan.{{sfn|Singh|1959|pp=212–214}}{{sfn|Chahryar|Baipakov|Irfan|2003|p=289}}{{sfn|Khan Durrani|1991|p=139}} Months later, a [[dervish]] began a revolt by having an individual named Mir Khush Khan Durrani proclaimed king. This rebellion, however, was crushed with the dervish who instigated the revolt being executed, and Mir Khush Khan being blinded.{{sfn|Lee|2022|p=140}}
+
+===Fifth invasion of India (1759–1761)===
+{{main|Afghan–Maratha War|Third Battle of Panipat}}
+
+Preoccupied with the uprising in Kalat, Ahmad Shah was unable to pursue a campaign against the Marathas, instead dispatching his generals, [[Jahan Khan Popalzai|Jahan Khan]] and Nur ud-Din Bamizai, who were both defeated. In October 1759, Ahmad Shah began his fifth invasion of India.{{sfn|Noelle-Karimi|2014|p=112}} He had been invited by numerous rulers and [[Ulama|religious leaders]] across India, including [[Shah Waliullah Dehlawi]], who wrote to Ahmad Shah pleading for him to save the Muslims of India. Hari Ram Gupta considered the letter sent by Shah Waliullah as one of the most important historical documents of the 18th century.{{sfn|Gupta|1961|p=121}} Ahmad Shah used this letter to get a [[jihad]] declared by religious leaders in [[Kandahar]].{{sfn|Lee|2022|pp=126–127}} Further invitations were sent by [[Najib ad-Dawlah|Najib ud-Daula]], who wanted India to become a permanent extension of the Afghan empire. [[Alamgir II]] sent fervent requests to Ahmad Shah for aid, affirming his loyalty and informing him of the intentions of [[Ghazi ud-Din Khan Feroze Jung III|Imad ul-Mulk]], who wished to assassinate him. Even Hindu rulers such as [[Madho Singh I|Madho Singh]], the ruler of [[Kingdom of Amber|Amber]], and [[Vijay Singh of Marwar|Vijay Singh]], the ruler of [[Kingdom of Marwar|Marwar]], were discontent with Maratha expansion and sent letters to Ahmad Shah.{{sfn|Singh|1959|pp=221–225}} Ahmad Shah also wished to avenge the defeat of his son Timur Shah, and to reclaim the lost territories of [[Punjab]].{{sfn|Mehta|2005|pp=263–264}}
+
+Ahmad Shah split his forces to attack from two sides. Jahan Khan advanced from Kandahar to [[Kabul]], and then through the [[Khyber Pass]] with an army of 20,000; while Ahmad Shah led a force of 40,000 through the [[Bolan Pass]]. He was further reinforced by [[Nasir Khan I Ahmadzai|Nasir Khan]] and other Afghan chiefs, eventually fording the [[Indus]] on 25 October 1759.{{sfn|Mehta|2005|p=264}} When Ahmad Shah entered the [[Punjab]], Jahan Khan had forced the Maratha forces stationed at [[Attock]] to evacuate, pursuing them and battling at [[Rohtas Fort|Rohtas]], where the [[Maratha army]] was routed, forcing their withdrawal to [[Delhi]].{{sfn|Singh|1959|pp=225–226}}{{sfn|Mehta|2005|pp=264–265}}
+[[File:Muhi-ul-millat.png|thumb|Portrait of [[Shah Jahan III]], who was placed on the Mughal throne after Imad ul-Mulk had Alamgir II assassinated|alt=A color portrait, from the waist up, of a bearded man wearing a crown and royal dress]]
+At this time, Ahmad Shah approached [[Multan]] with his army. The Maratha governor in response fled to [[Lahore]], leaving the city to be captured without resistance. With the Afghans converging on Lahore, the Maratha forces withdrew to [[Batala]] and then Sirhind,{{sfn|Gupta|1961|p=124}} with some Maratha detachments being caught and destroyed. At Lahore, Jahan Khan battled with the Sikhs. No clear victor emerged, and the Afghans suffered some 2,000 dead, while Jahan Khan was wounded during the battle.{{sfn|Singh|1959|pp=226–227}}{{sfn|Mehta|2005|p=265}} The approach of Ahmad Shah Durrani caused havoc throughout all of [[Northern India]], causing Imad ul-Mulk to have Alamgir II and Intizam-ud-Daulah murdered as a result, placing [[Shah Jahan III]] on the Mughal throne.{{sfn|Gupta|1961|pp=125–126}} Ahmad Shah continued advancing through Punjab and Jahan Khan seized Sirhind on 27 November, with both armies uniting at Sirhind in December 1759.{{sfn|Mehta|2005|p=266}}{{sfn|Singh|1959|p=228}}
+
+Enraged by the execution of Alamgir II, Ahmad Shah began racing toward Delhi. He reached [[Ambala]] on 20 December and advanced towards [[Taraori]], leading to [[Battle of Taraori (1759)|a battle against the Marathas]] led by [[Dattaji Scindia]]. The advance guard of the Afghan army clashed with the Marathas and was initially routed, initiating a withdrawal. However, Ahmad Shah, ready to support the battle, dispatched 5,000 men under Shah Pasand Khan. The forces of Imad ul-Mulk in the battle completely fled at the sight of Shah Pasand's flag,{{sfn|Sarkar|1971|p=218}} and the Afghans attacked with [[muskets]]. Further detachments of the Afghan army sent by Ahmad Shah brought the battle to an end, with the Maratha force completely surrounded and destroyed.{{sfn|Mehta|2005|pp=266–267}}{{sfn|Singh|1959|pp=228–229}}{{sfn|Gupta|1961|pp=126–127}}
+[[File:Dattaji Rao Scindia.jpg|thumb|left|Dattaji Scindia, the Maratha commander in Northern India|alt=A color painting of a mustached an turbaned, seated under a canopy, surrounded by soldiers and musicians]]
+Following the battle, Ahmad Shah forded the Yamuna and united with the forces of Najib ud-Daula and other [[Rohilla]] leaders at [[Saharanpur]]. The combined armies marched toward Delhi, encamping at Luni, around {{Convert|10|km|mi|abbr=on}} from the [[Red Fort]] in Delhi on the other side of the Yamuna. Dattaji Scindia returned to [[Kunjpura]] following his defeat at Taraori, and prepared to defend Delhi from the Afghan army. He first sent Imad ul-Mulk to set up the defences of the city. However, Imad ul-Mulk deserted the Marathas and fled to [[Suraj Mal]].{{sfn|Mehta|2005|pp=266–267}}{{sfn|Singh|1959|pp=228–229}}{{sfn|Gupta|1961|pp=126–127}}
+
+Dattaji then advanced to [[Sonipat]], attempting to track Ahmad Shah's movements, which was made difficult as the Afghans kept their movements confidential by killing every Indian found outside their houses. Dattaji established camp at [[Burari, Delhi|Barari]] on 4 January 1760. On 9 January, Najib ud-Daula began crossing the Yamuna with Ahmad Shah following him, leading to the [[battle of Barari Ghat]]. The Maratha forces opposed the advance of the Afghans across the river but were overpowered by [[musketeers]], with much of the Maratha army only armed with spears and swords. Dattaji, attempting to enter the fray himself, was shot either in the eye,{{sfn|Singh|1959|p=231}} or the ribs,{{sfn|Gupta|1961|p=129}} causing his death. Further Maratha reinforcements were useless against the Afghan musket fire, forcing the Marathas to withdraw from the field with a thousand dead, and the Afghans victorious.{{sfn|Lee|2022|p=127}}{{sfn|Gupta|1961|pp=128–129}}{{sfn|Singh|1959|pp=230–231}}{{sfn|Mehta|2005|pp=267–269}}
+
+Having defeated the Marathas at Barari Ghat, Ahmad Shah entered Delhi, with his men plundering the city. Much of the population of the city had already fled, and he took [[Shah Jahan III]] under his protection instead of claiming the [[Mughal Empire|Mughal throne]] for himself. Ahmad Shah also deputed Yaqub Ali Khan as governor of the city, who was a nephew of his [[vizier]], Shah Wali Khan, before leaving to march against Suraj Mal.{{sfn|Gupta|1961|pp=130–131}}{{sfn|Mehta|2005|p=270}} Leaving Delhi on 27 January, Ahmad Shah besieged [[Deeg]] on 7 February, although not committing to the siege seriously.{{sfn|Sarkar|1971|p=227}} During the siege, he sent a detachment under Jahan Khan which routed a Maratha army on 11 February at [[Rewari]]. Ahmad Shah then pursued a Maratha force led by [[Malhar Rao Holkar]] stationed at [[Narnaul]]. After reaching Rewari, Ahmad Shah was evaded by Holkar, and the Maratha force crossed the Yamuna river on 26–27 February, entering Najib ud-Daula's territories. On 28 February, Holkar advanced to [[Sikandrabad]], awaiting news of the Afghan position. On 1 March 1760, Ahmad Shah dispatched a force of 15,000 under Jahan Khan, Shah Pasand Khan, and Qalandar Khan to halt the Maratha army. The Marathas were caught on 4 March and completely routed at the [[battle of Sikandarabad]],{{sfn|Mehta|2005|pp=271–272}}{{sfn|Singh|1959|pp=234–235}}{{sfn|Lee|2022|p=127}} with many Maratha officers slain. Holkar himself fled for his life to Agra, and then to [[Bharatpur, Rajasthan|Bharatpur]] to meet Suraj Mal.{{sfn|Sarkar|1971|pp=228–229}}{{sfn|Gupta|1961|pp=131–132}}
+
+With another victory over the Marathas, Ahmad Shah proceeded to [[Aligarh]], which belonged to the Jats, and besieged it. Unable to receive any reinforcements, the fort surrendered to the Afghans. At Aligarh, Najib ud-Daula advised Ahmad Shah to rest and wait out for the summer and monsoon seasons to pass, especially as the summer had been so catastrophic for the Afghans during the fourth invasion of India.{{sfn|Sarkar|1971|pp=229–230}} Najib ud-Daula then expelled the Marathas from [[Shikohabad]], [[Phaphund]], and [[Bithoor]].{{sfn|Gupta|1961|p=132}}{{sfn|Mehta|2005|pp=272–273}}
+[[File:Shuja-ud-daula, Nawab of Oudh.tif|thumb|left|[[Shuja-ud-Daula]], a vital Durrani ally during Ahmad Shah's fifth invasion|alt=A color portrait of a burly mustached man wearing a turban and royal dress]]
+As the Afghans settled in, they resorted to diplomacy to strengthen their position. [[Ahmad Khan Bangash]], although an initial Maratha ally, was appealed to by Shah Wali Khan as an Afghan brother. Ahmad Khan thus allied with the Durranis and arrived at their camp on 13 April 1760.{{sfn|Singh|1959|pp=237–240}} The Afghans also successfully negotiated with the ruler of [[Oudh]], [[Shuja ud-Daula]], who allied with the Durrani camp in July 1760. Ahmad Shah also had friendly relations with the [[Rajput]]s, even declaring to them his intention to invade the [[Deccan]] in the winter.{{sfn|Gupta|1961|pp=133–143}} At this time, the Marathas sent reinforcements under [[Sadashivrao Bhau]], a cousin of the [[Peshwa]], [[Balaji Baji Rao]]. The reinforcements also included [[Vishwasrao]], the heir of the Maratha Confederacy, and nearly all significant Maratha commanders. Sadashivrao was described as an ignorant commander with a short temper and pride, ignoring the advice of more senior commanders who had experience in Northern India, and failing to anticipate certain outcomes.{{sfn|Gupta|1961|pp=147–150}}
+
+The Maratha force reached [[Agra]] on 14 July. Sadashivrao, finding the Yamuna river overflowing, settled on advancing to Delhi. The Marathas advanced from Mathura and reached Delhi on 23 July, where [[Capture of Delhi (1760)|it was stormed]]. The city fell to the Marathas, but the Red Fort held out. On 29 July, negotiations for the garrison's withdrawal culminated. Yaqub Ali Khan was allowed to leave the city to Ahmad Shah's camp with his men unharmed, and Maratha forces occupied the Red Fort on 1 August.{{sfn|Gupta|1961|pp=153–154}}{{sfn|Mehta|2005|pp=274–275}}{{sfn|Sarkar|1971|pp=252–255}} The Marathas began facing difficulties on 4 August, when Suraj Mal and Imad ul-Mulk defected from the Marathas and returned to their posts. Furthermore, the Maratha army lacked food and feed for their horses. The situation became so difficult that Sadashivrao wrote there was no money to pay for food and the men of the army and the horses were fasting.{{sfn|Gupta|1961|pp=155–158}} Peace negotiations between Ahmad Shah and the Marathas also failed, with both parties seeking their own extensive demands.{{sfn|Mehta|2005|pp=275–276}}
+
+By the end of September 1760, the Maratha camp was overridden with starvation. Ahmad Shah, however, was anxious to return to Afghanistan since his settling at Aligarh, as he never intended to form an Afghan empire based in India. The Marathas left Delhi on 10 October, and Ahmad Shah responded by having his army arrayed across the Yamuna. Sadashivrao, intending to seize Kunjpura, which had vast supplies, arrived before the city on 16 October. The [[battle of Kunjpura]] ensued which saw the Marathas victorious and the Afghan governor at Kunjpura, [[Najabat Khan]], and Abdus Samad Khan killed.{{sfn|Gupta|1961|pp=164–167}}{{sfn|Mehta|2005|pp=277–278}} Ahmad Shah was unable to help the defenders of Delhi and Kunjpura as he was stuck on the other side of the Yamuna.{{sfn|Sarkar|1971|p=282}}
+[[File:Plan of the Battle of Paniput, 1761.jpg|thumb|left|Afghan and Maratha camps detailed by a plan of the third battle of Panipat|alt=A black and white map of two armies two armies deployed against each other between a jungle and a town]]
+Ahmad Shah, infuriated at the fall of Kunjpura, began preparing for a crossing over the flooded and practically unfordable Yamuna river at [[Baghpat]].{{sfn|Gupta|1978|p=182}} The Afghan forces crossed between 25 and 26 October, massacring a Maratha detachment near Sonipat. Another [[Battle of Samalkha (1760)|battle]] at [[Samalkha]] saw the Marathas forced back to their camp at Panipat.{{sfn|Gupta|1961|pp=168–169}}{{sfn|Mehta|2005|p=278}} On 30 October, Ahmad Shah reached Sambhalka, and arrayed before the Marathas on 1 November.{{sfn|Sarkar|1971|p=284}} Najib ud-Daula was dispatched by Ahmad Shah to prevent Maratha supplies flowing in from Delhi, defeating the forces of Naro Shankar, the Maratha governor of Delhi. Sadashivrao in response sent [[Govind Pant Bundela]] to invade Rohilla territories and cut off Afghan supplies. Marching with 12,000 horsemen, the Maratha detachment advanced up to [[Meerut]] before [[Battle of Meerut (1760)|being attacked]] by an Afghan contingent of 14,000 dispatched by Ahmad Shah on 17 December under Atai Khan.{{sfn|Sarkar|1971|p=312}} Govind Pant was killed and the Maratha force was routed, with large amounts of supplies being seized by the Afghans.{{sfn|Gupta|1978|p=183}}{{sfn|Singh|1959|p=253}} 
+
+The Marathas were cut off from all supplies as a result, and a last desperate attempt for peace was sent by Sadashivrao, even agreeing on any term Ahmad Shah deemed fit. Najib ud-Daula shut down the idea and Ahmad Shah rejected peace.{{sfn|Sarkar|1971|pp=316–317}} As starvation gripped the Maratha camp, Sadashivrao concluded with his cabinet of war on 13 January to attack the Afghans. On 14 January, the Maratha forces assembled and began marching on the Afghan camp.{{sfn|Mehta|2005|p=283}}{{sfn|Gupta|1978|p=184}} The numbers of the battle vary by source. Historian JL Mehta states the Afghans had 79,800 men, while the mustered Marathas 85,000. The Afghans had a gradual flow of manpower into the army while the Marathas did not, ensuring the Marathas were far outnumbered during the battle.{{sfn|Mehta|2005|p=280}} 
+[[File:The Third battle of Panipat 13 January 1761.jpg|thumb|250px|Painting of the [[Third Battle of Panipat]] in [[Northern India]]|alt=A painting of a battlefield with cavalry, infantry and artillery depicted]]
+The [[third battle of Panipat]] ensued and [[Ibrahim Khan Gardi]] unleashed his cannons on the Afghans. However, the troops operating the cannons were completely inexperienced and their artillery fire merely flew overhead the Afghan army. Ibrahim Khan, realizing his failure in this regard, held his cannon fire and instead engaged with a detachment of his troops against the Rohilla units of Ahmad Shah's army. Other Maratha officers attempted to engage as well with Ibrahim Khan's forces. The Rohillas responded with musket fire and the Marathas were beaten back with heavy casualties. Ibrahim Khan's forces were devastated by Rohilla cavalry, resulting in the losses of over six battalions and Ibrahim Khan himself being wounded, with the Maratha left wing failing.{{sfn|Mehta|2005|p=286}}{{sfn|Singh|1959|p=257}}{{sfn|Sarkar|1971|pp=328–333}}
+{{multiple image
+| align    = right
+| image1   = Detail of Sadashiv Rao on horseback from a larger Faizabad-style painting of the Third Battle of Panipat, Mughal, ca.1761–1770.jpg
+| width1   = 180
+| alt1     = A painting of a wounded man on horseback being taken away from the battlefield
+| link1    = File:Detail of Sadashiv Rao on horseback from a larger Faizabad-style painting of the Third Battle of Panipat, Mughal, ca.1761–1770.jpg
+| caption1 = Painting of a wounded Sadashivrao being carried away on horseback during the Third battle of Panipat
+| image2   = Detail of Ahmad Shah Abdali on horseback from a larger Faizabad-style painting of the Third Battle of Panipat, Mughal, ca.1761–1770.jpg
+| width2   = 130
+| alt2     = A painting of a man on horseback fighting at a battlefield
+| link2    = File:Detail of Ahmad Shah Abdali on horseback from a larger Faizabad-style painting of the Third Battle of Panipat, Mughal, ca.1761–1770.jpg
+| caption2 = Ahmad Shah Durrani depicted on horseback during the Third battle of Panipat
+}}
+
+Sadashivrao led an attack on the Afghan centre simultaneously, with both sides having equal numbers. Despite the Rohilla victory on the left wing, the Afghan centre was exposed, and the Marathas breached over three lines in the Afghan centre, with around 3,000 Afghans dead or wounded. At a pivotal moment, Ahmad Shah sent his reinforcements of 4,000 [[Qizilbash]] to the right wing and 10,000 men to the Afghan centre. Ahmad Shah also dispatched his [[zamburak]]s, inflicting heavy casualties on the Marathas. A counter-attack was launched by the Afghans across all fronts.{{sfn|Mehta|2005|pp=268–269}}{{sfn|Sarkar|1971|pp=333–336}} 
+
+[[Vishwasrao]] was then killed by a bullet, with news of his death spreading through the Maratha camp and leading to the desertion of over 2,000 Afghans and Rohillas serving the Marathas. The Maratha left wing was thus dismantled and routed. As the Rohillas launched their own attack, [[Malhar Rao Holkar]] fled the battle. The Afghan left wing caved in on the Maratha centre, while the Maratha right wing was completely annihilated by Najib ud-Daula. Ahmad Shah then advanced to the centre to command the final stage of the battle.{{sfn|Mehta|2005|pp=290–292}}{{sfn|Sarkar|1971|p=341}}
+
+Sadashivrao attempted to assault the Afghan centre twice but was pushed back with heavy losses. Ahmad Shah then ordered 8,000 reinforcements from his own tribe to attack, and Sadashivrao was killed during the fray. The death of Sadashivrao saw all Maratha resistance dissipate and the Maratha centre was slaughtered. The Marathas who tried to escape the battlefield were chased.{{sfn|Mehta|2005|pp=292–294}}{{sfn|Gupta|1978|p=184}} A minimum of 75,000 Marathas are estimated to have been killed,{{sfn|Mehta|2005|p=294}} the maximum number being 100,000.{{sfn|Burnard|Hart|Houllemare|2024|p=332}}{{sfn|Sardesai|2018|p=194}} This included over 30,000 Marathas perishing in battle, another 10,000 being killed while retreating, and another 10,000 reported missing. After the battle, 50,000 Maratha camp followers were massacred or sold into [[slavery]].{{sfn|Roy|2004|p=93}}[[File:Coin of Ahmad Shah Durrani, minted in Shahjahanabad (Delhi).jpg|thumb|Coin of Ahmad Shah Durrani, struck in Delhi|alt=A color photograph of the two sides of a gold coin with Perso-Arabic writing]]
+The loss at Panipat resulted in the end of Maratha influence in Northern India. The day after the battle, Ahmad Shah entered the city of Panipat wearing jewels such as the [[Koh-i-Noor]]. The Afghan troops massacred any male over the age of fourteen and enslaved the woman and children of the city.{{sfn|Lee|2022|pp=127–128}} Ahmad Shah made a pilgrimage to the tomb of [[Bu Ali Shah Qalandar]], and then left Panipat on 19 July to enter Delhi. He formally entered the Red Fort on 29 January, with the [[Khutba wa sikka|khutbah being read in his name and coins being struck]]. After resting for two months, Ahmad Shah's troops demanded to return to Afghanistan, as much of them had been unpaid for over a year and a half. As a result, after plundering Delhi, he began returning to Afghanistan on 20–22 March.{{sfn|Mehta|2005|pp=298–302}}{{sfn|Sarkar|1971|pp=375–376}}{{sfn|Gupta|1978|p=185}}
+
+Ahmad Shah settled the affairs of India by placing [[Shah Alam II]] on the Mughal throne with Najib ud-Daula as his [[Bakhshi (Mughal Empire)|Bakhshi]], and [[Mirza Jawan Bakht (born 1749)|Jawan Bakht]] being recognized as the heir to Shah Alam. Delhi was given to Najib ud-Daula and Jawan Bakht to rule together, while Imad ul-Mulk was permitted to serve as vizier again.{{sfn|Mehta|2005|pp=299–300}} No peace deal was made with the Marathas as Peshwa Balaji Baji Rao died soon after the loss at Panipat.{{sfn|Singh|1959|pp=261–262}}{{sfn|Sarkar|1971|pp=378–381}} While returning to Afghanistan, the Afghan army was attacked by the Sikhs under [[Jassa Singh Ahluwalia]], who carried away stragglers. The Sikhs attacked the Afghan flanks at night but maintained distance to avoid the Afghan artillery and cavalry, and avoided [[pitched battle]]. A surprise attack on the [[Beas river]] by the Sikhs freed many Maratha prisoners.{{sfn|Mehta|2005|p=302}} In response, Ahmad Shah established defences around his camp every night, and at Lahore, he sent numerous expeditions against the Sikhs that captured and killed many. He completed his return to Afghanistan by May 1761.{{sfn|Gupta|1978|p=185}}{{sfn|Singh|1959|p=264}}
+
+=== Rebellions in Afghanistan (1760–1762) ===
+While Ahmad Shah campaigned, numerous incidents had occurred throughout [[Afghanistan]]. When the [[Marathas]] occupied [[Delhi]], an uprising began under Hajji Jamal Khan Zargarani based on reports of Ahmad Shah's death, and he proclaimed himself king of Afghanistan. At [[Kandahar]] he struck coins in his name. However, as news of Ahmad Shah's victories trickled in from India, he renounced his claim and fled for his life to a remote area of the country.{{sfn|Singh|1959|p=268}}{{sfn|Lee|2022|p=140}} Another revolt had begun under Darwish Ali Khan Hazara, who avoided Shah Pasand's forces, before eventually being allowed to return to Herat between 1761 and 1762.{{sfn|Noelle-Karimi|2014|pp=119–120}} In early 1761, Abd al-Khaliq Khan, Dilawar Khan Ishaqzai and Zal Beg Popalzai, who were members of Ahmad Shah's tribal council, rebelled. They first went to the fortress of [[Grishk]], falsely claiming Ahmad Shah had been defeated in India, and declared Abd al-Khaliq as king. The combined forces from Griskh marched to Kandahar, making Ahmad Shah's son Sulaiman Mirza abandon the capital.{{sfn|Lee|2022|p=139}}{{sfn|Singh|1959|pp=268–269}}
+
+Shah Pasand Khan was dispatched to crush the revolt, and he arrived before the city, clarifying Ahmad Shah was alive. The rebellion's support thus dissipated, and the leaders of the rebellion went to Shah Pasand's camp for mercy. Insignificant rebels were spared, while Zal Beg Popalzai and other significant leaders were executed. Dilawar Khan fled to [[Herat]] where [[Timur Shah Durrani]] allowed him to become the commander of his personal bodyguard, and Abd al-Khaliq was imprisoned.{{sfn|Lee|2022|p=139}}{{sfn|Singh|1959|p=269}}
+
+===Sixth invasion of India (1762)===
+{{main|Battle of Kup}}
+As Ahmad Shah retired to Afghanistan from his fifth invasion of India, the [[Sikh Confederacy|Sikhs]] defeated many of his governors, primarily during a decisive battle at [[Battle of Gujranwala (1761)|Gujranwala]] which led to the [[Siege of Lahore (1761)|fall of Lahore]] in November 1761.{{sfn|Mehta|2005|p=303}}{{sfn|Lee|2022|p=128}} Enraged at the defeat of his deputies, Ahmad Shah prepared for his sixth invasion of India, initiating it in February 1762.{{sfn|Noelle-Karimi|2014|p=112}}{{sfn|Gupta|1978|p=187}} With a [[light cavalry]] force, he dashed through Punjab in a rapid march, crossing over 200 kilometres and fording two rivers in 36 hours.{{sfn|Gupta|1978|pp=180}} News of this reached the Sikhs who were engaged in a siege at [[Jandiala]]. The Sikhs raised the siege and withdrew, until their position was compromised by the Afghan governor of [[Malerkotla]].{{sfn|Singh|1959|p=277}} Ahmad Shah led his forces along with those of [[Zain Khan Sirhindi]], catching the Sikhs at the village of [[Battle of Kup|Kup]]. The Sikhs under Jassa Singh and [[Charat Singh]] were completely defeated and massacred in an event known as the [[Vadda Ghalughara]].{{sfn|Sarkar|1964|pp=483–486}}{{sfn|Gupta|1978|pp=188–191}} Ahmad Shah ordered that nobody wearing Indian clothes was to be left alive, and thus camp followers including women and children were killed.{{sfn|Lee|2022|p=128}} After the battle of Kup, Ahmad Shah invaded [[Patiala State]], ruled by [[Ala Singh]]. Ahmad Shah stormed the fortress of [[Barnala]], before Ala Singh produced himself before the Shah, submitting tribute. Ahmad Shah then returned to Lahore on 3 March after camping at Sirhind.{{sfn|Singh|1959|pp=280–281}}{{sfn|Sarkar|1964|p=486}}[[File:The Golden Temple in 1840.png|thumb|Depiction of [[Harmandir Sahib]] (now commonly known as the Golden Temple). Afghan forces razed it and polluted the lake.|alt=A watercolor painting of a gold topped temple in the center of a lake]]
+At Lahore, he assembled his forces and attacked [[Amritsar]], arriving at the city on 10 April, a day before the [[Vaisakhi]] festival. The city was sacked and a massacre ensued where [[Harmandir Sahib]] was razed, blown with gunpowder and the blood of men and cows polluted the lake surrounding it.{{sfn|Gupta|1978|p=192}}{{sfn|Sarkar|1964|p=487}} At this time, a piece of [[Shrapnel shell|shrapnel]] hit Ahmad Shah on the nose, causing an open wound that would plague him for the rest of his life.{{sfn|Lee|2022|p=128}}{{sfn|Singh|1959|pp=281–282}} Ahmad Shah then rested at Lahore, intending to settle the affairs of India. He sent an expedition toward [[Kashmir]] which had [[Kingdom of Kashmir (1754–1762)|declared its independence]] under [[Sukh Jiwan Mal]], and Kashmir was re-conquered.{{sfn|Singh|1959|pp=283–284}}{{sfn|Gupta|1978|pp=193–194}} Peace negotiations began with the Marathas, while Ahmad Shah called upon Indian princes to recognize [[Shah Alam II]] as the Mughal emperor.{{sfn|Sarkar|1964|pp=487–489}}
+
+Between April–May 1762, Zain Khan was defeated by the Sikhs at [[Battle of Harnaulgarh|Harnaulgarh]]. During the summer, Ahmad Shah moved his camp to [[Kalanaur, Gurdaspur|Kalanaur]]. The Sikhs capitalized off of this, with Jassa Singh and [[Tara Singh Ghaiba|Tara Singh]] invading the [[Jalandhar Doab]], while Charat Singh plundered the regions north of Lahore.{{sfn|Singh|1959|pp=285–286}}{{sfn|Sarkar|1964|pp=490–491}} In October 1762, Ahmad Shah possibly fought a battle at [[Battle of Pipli Sahib|Amritsar]], an event not accepted by all historians.{{sfn|Singh|1977|p=148}} The possible battle was fought under a complete solar eclipse that raged until the night, where Ahmad Shah withdrew to Lahore before returning to see the Sikhs had also withdrawn.{{sfn|Singh|1959|pp=286–287}} Afterward, Ahmad Shah appointed a Hindu, [[Kabuli Mal]], as the Durrani governor of Punjab, believing it would bring stability. Ahmad Shah began withdrawing to Afghanistan on 12 December after news of an uprising in Kandahar arrived.{{sfn|Lee|2022|p=129}} While returning, he [[Battle of the Ravi Ford|routed a Sikh army]] on the banks of the [[Ravi river]].{{sfn|Gupta|1978|pp=194–195}} His health was significantly affected during the invasion as a result of the summer heat, further worsened by his wounded nose.{{sfn|Singh|1959|p=288}}
+
+===Encounters with the Qing (1763–1764, 1768–1769)===
+{{main|Durrani-Qing relations}}
+[[File:Route of Khwāja Mirhan’s embassy from Fayzabad to Beijing, through Central and East Asia.png|thumb|Map of the route the Afghan embassy undertook to the Qing dynasty in 1763|alt=A color map centred on the Himalays, Tibet and China; which shows a journey from Afghanistan to Beijing]] 
+Numerous Central Asian rulers such as Fazil Biy, the ruler of [[Khujand]], [[Irdana Biy]], the ruler of [[Kokand Khanate|Kokand]], and even a [[Kazakh Khanate|Kazakh Sultan]] pleaded to Ahmad Shah Durrani, the ruler of the [[Durrani Empire]], to aid them against Qing expansionism.{{sfn|Kim|2004|p=20}} Ahmad Shah accepted the call for aid, and began preparing by occupying the regions between [[Tashkent]] and [[Kokand]] in 1763,{{sfn|Newby|2005|p=34}}{{sfn|K. Palat|Tabyshalieva|2003|p=74}} though later withdrawing as it became clear the Qing did not intend to invade.{{sfn|Levi|2017|p=42–43}} Later emissaries from the [[Russian Empire]] also attempted to encourage the Afghans to commit to an anti-Qing campaign, but withdrew after arriving at [[Herat]] upon learning Ahmad Shah was committed to a campaign in India in 1764 with no clear intention of advancing north.{{sfn|Eijk|Khan|2023|p=719}}
+
+In 1763, Ahmad Shah had dispatched an embassy to the Qing. His aims are unknown, however, an embassy allowed Ahmad Shah to establish himself as an emperor. The letter he sent to the Qing emperor [[Qianlong]] is missing, but based on the Qing reply, the letter was likely dedicated to his conquests, victory at Panipat, and Qing expansion. The letter positioned Ahmad Shah's expansions as bringing order and stability to areas overrun with rebels and lawlessness, referring to his [[#Military campaigns|campaigns in Iran and India]]. The battle of Panipat was strongly detailed in the letter, in what was likely a fath-nama, meaning a victory letter or declaration to celebrate a victory. The Qing emperor ignored the implied threat.{{sfn|Eijk|Khan|2023|pp=715–717}}
+
+In the second part of the letter, Qianlong appeared much more defensive, justifying the [[Dzungar–Qing Wars|Qing conquest of the Dzungars]] and the [[Revolt of the Altishahr Khojas|Altishahr Khojas]]. He accused them of causing devastation and laying false accusations against him. A report also suggests Ahmad Shah considered the territories the Qing claimed actually belonged to the Muslims. In reality, Ahmad Shah possibly wanted to establish spheres of influence, which was similarly done with the [[Ottoman Empire|Ottomans]] who had divided [[Iran]] between them, and a [[#Turkestan (1751–1768)|treaty with Bukhara]] that had established the [[Amu Darya]] as the border.{{sfn|Eijk|Khan|2023|pp=717–718}}
+{{Quote box |quote = Why has your Khan dispatched you? Has your Khan not sent you to appear at an audience with the brilliance of our Great Lord? Our Great Lord is the ruler who has united All under Heaven. Besides you Afghans, as soon as people from the West, Russia, even the former Zunghars came, all of them promptly prostrated themselves before the Great Lord. He is like Heaven; do you not bow before Heaven?{{sfn|Eijk|Khan|2023|p=708}}
+|author = A Qing grand councillor, remarking at the Afghan envoy's refusal to Kowtow
+|width  = 30%
+|align  = right
+}}
+When the Afghan embassy arrived in Beijing, the chief envoy, Khwaja Mirhan, refused to [[kowtow]] before the Qing emperor. The Qing officials, in shock, demanded he kowtow, to which Mirhan eventually acquiesced. This incident damaged the Qing-Afghan relations and Qianlong cut ties with the Afghans following this. No immediate consequence occurred, and the envoy was shown favour.{{sfn|Eijk|Khan|2023|pp=718–720}} Mirhan's refusal likely came out of religious reasons, but the Qing received it as Ahmad Shah declaring himself equal to Qianlong. From Qianlong's view, he saw the Afghans as a significant power and attempted to impress the envoy and Ahmad Shah by the Qing empire. This was especially done due to the recent conquest of Altishahr and concerns over stability in the region.{{sfn|Eijk|Khan|2023|pp=720–724}}
+
+{{multiple image
+| perrow      = 2
+| total_width = 300
+| align       = right
+| image1      = Horse Chaoni'er.jpg
+| width1      = 180
+| alt1        = A color sketch of a white horse with Chinese letters at the sides
+| image2      = Horse Laiyuanliu.jpg
+| width2      = 130
+| alt2        = A color sketch of a brown horse with Chinese letters at the sides
+| image3      = Horse Yuekulai.jpg
+| width3      = 130
+| alt3        = A color sketch of a golden-yellow horse with Chinese letters at the sides
+| image4      = Horse Lingkunbai.jpg
+| width4      = 130
+| alt4        = A color sketch of a golden-white horse with Chinese letters at the sides
+| footer      = [[Four Afghan Steeds|Depiction of the four Afghan horses]] sent by Ahmad Shah, painted by Qing court painter [[Giuseppe Castiglione (Jesuit painter)|Giuseppe Castiglione]]
+}}
+
+Ahmad Shah's gifts to the Qing emperor included [[Four Afghan Steeds|four horses]], which were painted by the Qing court painter [[Giuseppe Castiglione (Jesuit painter)|Giuseppe Castiglione]]. Nonetheless, by the time of the envoy's return journey to Afghanistan, Qianlong made preparations to secure Qing territories.{{sfn|Eijk|Khan|2023|pp=724–726}} In 1759, as the revolt of the Altishahr Khojas crumbled, two descendants of the Afaqi Sufi lineage crossed into Badakhshan after being pursued by Qing forces. Fude, the Qing general of the expedition, demanded Sultan Shah, the ruler of Badakhshan, arrest the brothers. Sultan Shah accepted, likely wishing to receive Qing military aid against the [[Durrani Empire]]. However, after the Afaqi descendants had resided in Badakhshan for months and Sultan Shah initially refused to hand them over, possibly intending to send them to [[Bukhara]], the Qing grew wary. Qianlong threatened an invasion, which did not come about as one of the descendant's remains were sent to [[Yarkand]].{{sfn|Eijk|Khan|2023|pp=726–729}}
+
+The death of the Afaqi brothers spurned relations with the Afghans, causing Sultan Shah to plead to the Qing, claiming Ahmad Shah intended to exact revenge for their deaths. No immediate Afghan invasion occurred. The Qing had faced numerous frustrations with their tributaries in [[Central Asia]], alongside a major insurrection in [[Uqturpan County|Uch-Turfan]] that required tremendous effort to defeat. As a result, Qianlong adopted a policy of strict non-interference, realizing Qing troops in Altishahr were significantly stretched and spread thin. The Afghans, however, seen as a threat, would show the weakness of Qing control in the region.{{sfn|Eijk|Khan|2023|pp=729–732}}
+
+In August 1768, Qianlong was informed of the Afghan invasion of Badakhshan led by Shah Wali Khan in May, with Afghan forces seizing Sultan Shah's capital [[Fayzabad, Badakhshan|Fayzabad]]. A Qing agent, Yunggui, proposed that the Qing should interfere in the conflict. Qianlong, however, affirmed military intervention would be irrational, and strictly forbade any military interference. Historians see this as surprising, as the invasion by the Afghans threatened the Qing Empire itself.{{sfn|Eijk|Khan|2023|p=732}}
+[[File:万国来朝图 Badakhshan delegates (拔達克山) in Peking in 1761.jpg|thumb|Delegates from Badakhshan in [[Peking]], 1761|alt=A cropped color painting of two mustached men wearing turbans or caps]]
+Qing sources affirm the Afghans had established Sarimsaq, a child of the Afaqi's who had escaped to Badakhshan, in [[Kunduz]]. Qianlong was distraught, as another possible revolt could revolve around Sarimsaq, especially after reports of Muslim travellers and funds sent to Sarimsaq arrived. This news still did not convince Qianlong to act, and he refused to send any negative response to Ahmad Shah at all. During this time, Sultan Shah had defeated the Afghan governor and reoccupied his capital. Fearing another Afghan invasion, he sent desperate letters to the Qing in winter 1768 to ask for help, claiming Ahmad Shah would invade next year. Qianlong rebutted, blaming Sultan Shah for provoking the conflict with the Afghans and affirmed he would only fight the Afghans if they actually invaded Qing territory. Sultan Shah wrote a letter to [[Emin Khoja]] in response in August 1769, expecting aid as he was a vassal, only to find himself abandoned. In December 1769, Sultan Shah wrote another letter accusing Qianlong of failing to uphold his duties. Qianlong rebuked him, and stated the Qing would not aid him under any circumstances.{{sfn|Eijk|Khan|2023|pp=733–734}}
+{{Quote box
+| quote = We have long known that you have previously presented gifts to the Afghans. That you now have no more options but to evade the issue just shows that you are paying tribute to the Afghans! […] If you cannot protect your own lands, and wish to submit to the Afghans, then suit yourself! […] If you wish to rely on our armies to serve your enmities and to subjugate your neighboring tribes, then we will under no circumstances provide you with our troops.{{sfn|Eijk|Khan|2023|p=734}}
+| author = Qianlong's reply to Sultan Shah's plea for aid against Ahmad Shah
+| width = 30%
+| align = right
+}}
+Qianlong had initially considered the Afghans [[Tributary state|tributaries]], but after the former incident, he no longer sought the prospect of any form of Durrani submission. His reply to Sultan Shah effectively saw the Qing recognize the Afghans as a rival power to them, with Qianlong recognizing the Afghans could not be treated like tributaries. Rather than aiding the ruler of Badakhshan as his initial policy implicated him to, Qianlong instead justified the Afghan invasion, prompted by overextended armies, the distance, and stability. Instead, Qianlong gambled on the difficult terrain between the Afghan and Qing realms for safety.{{sfn|Eijk|Khan|2023|pp=734–735}} Within the same year, Ahmad Shah had occupied Badakhshan and Sultan Shah was executed.{{sfn|Newby|2005|p=43}}
+
+===Seventh invasion of India (1764–1765)===
+After Ahmad Shah returned to Afghanistan following his [[#Sixth invasion of India (1762)|sixth invasion]], the Sikhs reoccupied Lahore, chasing off the Shah's governor and sacking [[Kasur]]. The Sikhs followed up the victory by overrunning the Jalandhar Doab, while inflicting a crushing defeat on Jahan Khan at Sialkot in November 1763. The Sikhs continued their attacks, sacking the cities of Malerkotla and [[Morinda, Punjab|Morinda]], and defeating another Afghan army at Sirhind, killing Zain Khan Sirhindi. The victories subsequently allowed the Sikhs to seize Rohtas and even plunder Multan, advancing up to the [[Derajat]] by the end of their campaigns.{{sfn|Gupta|1978|pp=195–214}}{{sfn|Singh|1959|pp=289–295}}{{sfn|Lee|2022|p=129}} 
+
+Ahmad Shah initially tried to face this threat, fording the [[Indus River]] with 40,000 men in early 1764. However, the Sikhs assembled 100,000 men in response and [[Battle of Chenab (1764)|attacked Ahmad Shah as he crossed the Chenab]], routing him, where he withdrew back to [[Kandahar]].{{sfn|Khoja|2018|p=191–192}}{{sfn|Malhotra|2016|p=45}} Undiminished, Ahmad Shah declared a jihad, inviting his vassal [[Nasir Khan I Ahmadzai|Nasir Khan]] to march with him on Punjab.{{sfn|Lee|2022|p=129}} In October 1764,{{sfn|Noelle-Karimi|2014|p=112}} Ahmad Shah reached Eminabad in December with 18,000 men, further reinforced by Nasir Khan, who brought with him 12,000 men. The combined armies marched to Lahore, and a Sikh ambush on a scouting party near the city resulted in both sides withdrawing.{{sfn|Gupta|1978|pp=215–216}}{{sfn|Singh|1959|pp=298–299}}
+
+Ahmad Shah then proceeded with his army to Amritsar and sacked the city a third time before returning to Lahore.{{sfn|Lee|2022|p=129}} Frustrated he could not fight the Sikhs in a [[pitched battle]], Ahmad Shah led his forces through the Jalandhar Doab and razed the Sikh homes and farms there, accumulating supplies for his army. The Afghans advanced through Jandiala, Batala, and [[Dina Nagar]], fighting numerous engagements with the Sikhs which usually ended unfavourably or required heavy effort to repel. The entire countryside was destroyed by the Afghan advances.{{sfn|Gupta|1978|pp=216–217}}{{sfn|Singh|1959|pp=299–300}} 
+
+After another battle in the Jalandhar Doab where the Sikhs were driven off, the Afghans crossed the Sutlej and repelled a Sikh army at [[Rupar]] Ghat from raiding their baggage train. After arriving at [[Kunjpura]] in late February 1765, Ahmad Shah's generals pleaded with him to return to Afghanistan, fearing the heat of the [[summer]] and the rain of [[monsoon]] seasons, instead suggesting they return the following winter.{{sfn|Gupta|1978|pp=217–219}}{{sfn|Singh|1959|pp=300–301}}[[File:Painting of Ala Singh of Patiala in tondo, Pahari School, ca.1880.jpg|thumb|Painting of Ala Singh, whom Ahmad Shah had conferred the governorship of Sirhind|alt=A color portrait of a bearded and turbaned man wearing white clothes and seated on a throne]]
+While returning to Afghanistan, Ahmad Shah conferred Sirhind on Ala Singh, a Sikh who had submitted to him. Ala Singh submitted the same tribute as other governors, paying a subsidy of 350,000 rupees annually. It was also believed the appointment would divide the Sikhs. This would later prove successful, as Ala Singh repelled an attack by the [[Dal Khalsa (Sikh Army)|Dal Khalsa]] under [[Hari Singh Dhillon]] and also killed him.{{sfn|Gupta|1978|pp=219–220}} 
+
+After crossing the Sutlej, the Afghan army was set upon by the Sikhs and a battle ensued. Both sides eventually withdrew when nightfall came. On the second day a Sikh force attempted to harass the Afghan rear, but was repelled and the Sikhs suffered heavy casualties. Skirmishes on the third day saw the Sikhs continue [[hit-and-run tactics]] at [[Nurmahal]], and a battle on the fourth day near [[Kapurthala]] saw the Afghans receive heavy casualties. A final battle on the seventh day took place on the [[Beas]], where the Sikhs were routed and pursued.{{sfn|Gupta|1978|pp=221–224}} 
+
+Ahmad Shah completed his return to Afghanistan by the end of March, but suffered heavy casualties crossing the [[Chenab River|Chenab]] after reaching an incorrect area to ford the river, with thousands of men drowned or swept away by the current.{{sfn|Lee|2022|p=130}}{{sfn|Singh|1959|pp=306–308}} Lee claims the Afghans suffered more casualties in the crossing than all of Ahmad Shah's battles with the Sikhs.{{sfn|Lee|2022|p=130}}
+
+===Eighth invasion of India (1766–1767)===
+In March 1765, the Sikhs had reoccupied Lahore and ousted the Shah's governor. As a result, Ahmad Shah began preparing for an eighth invasion of India. He was also possibly invited by the [[vakil]] of [[Mir Qasim]], the former ruler of [[Bengal Subah|Bengal]] until he was deposed by the British. Shah Wali Khan, however, wrote to [[Lord Clive]] and affirmed the invasion was focused on the Sikhs.{{sfn|Singh|1959|pp=307–308}}{{sfn|Gupta|1978|pp=227–237}} 
+
+In November 1766, Ahmad Shah launched his invasion.{{sfn|Noelle-Karimi|1997|p=112}} He forded the Indus River at Attock in December, and defeated a Sikh army under Ballam Singh at Behgy, near [[Rohtas Fort|Rohtas]]. The Afghans continued their advance, encamping at [[Gujrat, Pakistan|Gujrat]] on 14 December, receiving many Muslim rulers in the region. Ahmad Shah then defeated another attempt by the Sikhs to oppose him on the other side of the [[Jhelum River]], continuing his advance by reaching [[Ghuinke]], defeating a Sikh contingent in a fort there, and then reaching Eminabad.{{sfn|Gupta|1978|pp=237–238}}{{sfn|Singh|1959|p=311}}
+
+The Shah reached [[Lahore]] on 22 December, finding the Sikhs had deserted the city. The Afghans occupied the city, while Ahmad Shah dispatched a contingent of 1,500 to [[Sirhind]]. The Sikhs under Charat Singh assembled a force of 20,000 near Lahore, and Ahmad Shah assembled his own host of 50,000 in response. He dispatched Jahan Khan to [[Amritsar]], forcing the Sikhs to withdraw. Ahmad Shah then encamped at [[Fatehabad, Punjab|Fatahabad]] on 28 December, south-east of Amritsar.{{sfn|Gupta|1978|pp=238–239}} 
+
+The Sikhs then raided the Shah's baggage train at Lahore, before retreating as Ahmad Shah approached on 1 January 1767. Ahmad Shah offered peace to the Sikhs, intending to march on [[Northern India]] and offering to divide lands for them, lest they fight him in the field. The Sikhs rejected all offers, and defeated Jahan Khan at Amritsar on 17 January. Ahmad Shah quickly came to his aid and attacked the Sikhs, forcing them to flee and destroying Amritsar. The Afghan [[Train (military)|baggage train]] was attacked during this time, but [[Nasir Khan I Ahmadzai|Nasir Khan]] routed and pursued the Sikh army.{{sfn|Gupta|1978|pp=239–241}}{{sfn|Singh|1959|pp=312–313}}
+{{Quote box
+| quote = Nobody should go ahead and none should move from his place. "..." Wait, the devilish foe will itself come to you. Do not step outside your ranks but stick to your place like the [[Caucasus mountains]]. When you find that the Dogs have approached you, fall on their heads. I have advised all the [[Ghazis]] similarly. When you move forward all of you should remain closely united. None should go ahead and nobody should lag behind, and no person should keep away from the main body. All should fall on the enemy in a body simultaneously.{{sfn|Gupta|1976|pp=213}}
+| author = Ahmad Shah remarking to [[Nasir Khan I Ahmadzai|Nasir Khan]] prior to a battle with the Sikhs
+| width = 30%
+| align = right
+}}
+Ahmad Shah then crossed the [[Beas River]] and received many sardars including [[Najib ad-Dawlah|Najib ud-Daula]], as well as the vakils of Mir Qasim, the [[Bharatpur State|Jats]], and [[Kingdom of Amber|Jaipur]].{{sfn|Gupta|1978|p=241}} When his invasion began, Ahmad Shah was surprised and infuriated when the chiefs of India who had sworn allegiance to him did not come to offer homage to him personally. The British also had [[Mughal Emperor]] [[Shah Alam II]] and Vizier [[Shuja ud-Daula]] refrain from sending aid to the Shah, fearing advances further east of Delhi. The British urged the Marathas, Rohillas, and Jats to form a coalition against Ahmad Shah, assuring British aid. Ahmad Shah, however, was seen as invincible in India following the victory at Panipat, with many chiefs being terrified of him.{{sfn|Singh|1959|p=315}} 
+
+Ahmad Shah continued his advance to Nurmahal, before reaching [[Machhiwara]], where the Sikhs opposed his advance and harassed him. He attempted to pursue the Sikhs to no avail, while they inflicted a severe defeat on Nasir Khan. The Afghans continued and arrived at Ismailabad, south of [[Ambala]], on 18 March. From there, Ahmad Shah declared his intention to march on Delhi, but Najib ud-Daula opposed this, saying the countryside would flee upon his arrival. With the Sikhs also harassing the rear of his army, Ahmad Shah chose to withdraw and focus on the Sikhs.{{sfn|Gupta|1978|pp=242–243}}
+
+After withdrawing to Sirhind, Ahmad Shah organized numerous campaigns against the Sikhs within a month, and a large Sikh army at [[Mani Majra]] was defeated with many captured. The Sikh holy cities of [[Kiratpur Sahib|Kiratpur]] and [[Anandpur Sahib|Anandpur]] were also sacked. During this time, Sikh forces began raiding Najib ud-Daula's domains, even storming Meerut on 14 May. Ahmad Shah dispatched Jahan Khan, who travelled around {{Convert|300|km|mi|abbr=on}} in three days by forced marches and defeated the Sikhs at Meerut, before returning.{{sfn|Gupta|1978|pp=245–246}}{{sfn|Singh|1959|p=317}} As the summer heat became unbearable and the monsoon season was nearing, Ahmad Shah withdrew by quick marches through Lahore back to Afghanistan. As he withdrew, Lahore was quickly reoccupied by the Sikhs.{{sfn|Gupta|1978|p=246}}{{sfn|Singh|1959|p=318}}
+
+===Ninth invasion of India (1768–1769)===
+In December 1768, Ahmad Shah attempted a ninth invasion of India.{{sfn|Noelle-Karimi|1997|p=112}} His forces advanced as far as the Jhelum River, but the Sikhs fell back and attacked him from all directions. No loot could be garnered, and internal disputes rose within the Afghan army, forcing a complete withdrawal. As he withdrew between Peshawar and Kabul, the division in his army grew greater and his camp was plundered, with many killed as a result.{{sfn|Gupta|1978|p=249}} This was the final invasion of India by Ahmad Shah, excluding three later attempts.{{sfn|Singh|1959|p=320}}
+
+===Tenth, eleventh, and attempted twelfth invasions of India (1769–1771)===
+Between late 1769 and autumn 1771, Ahmad Shah attempted three more invasions of India. In December 1769, he advanced toward Peshawar but was unsure on how to reach Delhi, withdrawing back to Kandahar. In June 1770, Ahmad Shah again advanced to Peshawar, planning an invasion of India. However, undetermined to fight the Sikhs, he again withdrew. In August 1771, Ahmad Shah planned an invasion of India, with strong rumours circulating of Ahmad Shah attacking in the winter. This was unfounded, and historian [[Sir Robert Barker, 1st Baronet|Robert Barker]] states Ahmad Shah would not cross the Indus due to opposition by the Sikhs.{{sfn|Gupta|1978|pp=249–250}}
+
+===Third Khorasan campaign (1769–1770)===
+{{main|Durrani Campaign to Khorasan (1769–70)}}
+
+Upon hearing of Afghan difficulties in Punjab, Nasrullah Mirza, son of the [[Afsharid]] ruler [[Shahrokh Shah]], began preparing to declare independence. He first attempted to secure aid from [[Karim Khan Zand]] to no avail, before receiving support from the Kurds and raising an army in [[Chenaran]]. Ahmad Shah began marching from Herat to Khorasan between 1769 and 1770, occupying [[Torbat-e Jam]] and [[Langar, Torbat-e Jam|Langar]]. Nasrullah immediately rushed back to Mashhad, while Ahmad Shah arrived and besieged the city.{{sfn|Singh|1959|pp=320–321}}{{sfn|Chahryar|Baipakov|Irfan|2003|p=292}} 
+
+Nasrullah dispatched [[Nader Mirza Afshar]] to try and seek aid, which he did receive from the chief of Tabas, Ali Mardan Khan. The siege at Mashhad persisted, and [[sortie]] attempts against the Afghans were made. Reinforcements under Nader Mirza and Ali Mardan began arriving, and Ahmad Shah dispatched his general, Rasul Khan to battle against them. The Afghan contingent was repelled at [[Gonabad]]. Ahmad Shah sent a second army under Jahan Khan and Nasir Khan, which defeated the Persians, slaying Ali Mardan Khan and pursuing Nader Mirza as far as [[Soltanabad, Khoshab|Soltanabad]].{{sfn|Singh|1959|pp=321–322}}
+
+Not wishing to fire upon the city as it contained the [[Imam Reza shrine]], negotiations were opened and successfully saw Shahrokh submit again to Afghan suzerainty. Shahrokh also had his daughter, Gauhar-Shad, married to [[Timur Shah Durrani]], with the marriage completed in the Afghan camp. Despite the surrender of Shahrokh and Nasrullah, Ahmad Shah had no intention of directly annexing Khorasan, and instead left Shahrokh to rule under Afghan suzerainty, who also furnished troops for the Afghan army.{{sfn|Chahryar|Baipakov|Irfan|2003|p=292}} To ensure loyalty, one of Shahrokh's sons, Yazdan Bakhsh, was taken as hostage. Ahmad Shah began marching back to Kandahar on 9 June, ending his final military campaign.{{sfn|Singh|1959|pp=322–323}}
+
+==Death==
+[[File:Mosque in Kandahar-2011.jpg|thumb|The [[tomb of Ahmad Shah Durrani]] in [[Kandahar]]; it is adjacent to the [[Kirka Sharif]] which contains the [[Cloak of Muhammad]].|alt=A color photograph of a blue and white mosque nestled behind trees]]
+Ahmad Shah's relentless military campaigning took a serious toll on his health. Numerous reasons are attributed to his death, including a malignant wound on his nose, a form of facial cancer,{{sfn|Chahryar|Baipakov|Irfan|2003|p=292}} or possibly a nose injury from blowing up [[Harmandir Sahib]].{{sfn|Grewal|2004|p=23}} The wound aggravated despite all attempts to cure it, and by summer 1772, Ahmad Shah had to be spoonfed and he could not verbally communicate. He retired to a palace in [[Maruf, Afghanistan|Maruf]], east of Kandahar,{{sfn|Singh|1959|p=326}} eventually dying either on 16 or 23 October 1772.{{sfn|Lee|2022|pp=140–141}} He was buried in Kandahar, where a [[tomb of Ahmad Shah Durrani|mausoleum]] was later built by his son, [[Timur Shah Durrani]] in 1777.{{sfn|Chahryar|Baipakov|Irfan|2003|p=292}} It is adjacent to the [[Kirka Sharif]], brought to Afghanistan during Ahmad Shah's [[#Turkestan (1751–1768)|campaign against Bukhara in 1768]].{{sfn|Lamb|2004|p=38}}
+
+==Children and succession==
+[[Hari Ram Gupta]] stated that Ahmad Shah had four sons, Sulaiman, [[Timur Shah Durrani|Timur]], Parwez, and Sikander.{{sfn|Singh|1959|p=387}} However, Noelle mentions another son, who was the youngest, Sanjar Mirza.{{sfn|Noelle-Karimi|2014|p=110}}
+
+[[File:Temur-Shah.jpg|thumb|The son and successor of Ahmad Shah, [[Timur Shah Durrani]]|alt=A black and white portrait, from the chset up, of a bearded and turbaned man]]
+Before his death, Ahmad Shah nominated his younger son, Timur Shah Durrani, to succeed him, passing over his eldest son, Sulaiman Mirza. The announcement led to an internal conflict between factions loyal to Sulaiman and Timur. Ahmad Shah dismissed the faction of Sulaiman, proclaiming Timur far more capable than Sulaiman. However, Timur was left as governor at [[Herat]], allowing the faction of Sulaiman to grow their influence. Upon Ahmad Shah's death, the faction of Sulaiman refused the throne to Timur, and gave it to Sulaiman, triggering a short civil war. Timur emerged victorious without battle, as support for Sulaiman had dissipated, and he fled to India.{{sfn|Lee|2022|pp=143–146}} Later during the reign of Timur, his brother Sikander would become the main focus of a conspiracy to succeed to the Durrani throne after a plot on Timur's life that nearly succeeded in [[Peshawar]].{{sfn|Lee|2022|p=148}}{{sfn|Singh|1959|p=388}}
+
+==Legacy==
+
+===Generalship and military campaigns===
+Historians widely regard Ahmad Shah as an excellent military leader and [[tactician]],{{sfn|Adamec|2010|p=2}}<ref>{{harvnb|K. Palat|Tabyshalieva|2003|p=290}}: "Ahmad Shah Durrani was not only a visionary leader but also a talented military man."</ref> and he is compared to military leaders such as [[John Churchill, 1st Duke of Marlborough|Marlborough]],{{sfn|Black|2002|p=42}} [[Mahmud of Ghazni]], [[Babur]], and [[Nader Shah]].{{sfn|Lee|2022|p=141}} Throughout all his military campaigns, he had rarely ever lost a battle.<ref>{{harvnb|Dalrymple|Anand|2016|p=67}}: "Few possessors of the Koh-I-Noor have led happy lives, and while Ahmad Shah rarely lost a battle, he was eventually defeated by a foe more intractable than any army..."</ref> Historian Kaushik Roy remarks that Ahmad Shah was one of the greatest generals of eighteenth century Asia.{{sfn|Roy|2004|p=92}} [[Hari Ram Gupta]] shares a similar notion, referring to Ahmad Shah as the "greatest general of Asia of his time", as well as one of the greatest conquerors in Asian history.<ref>{{harvnb|Gupta|1978|p=192}}: "The Afghans fought with equal valour and energy and displayed strategy under the leadership of the greatest general of Asia of his time..."</ref><ref>{{harvnb|Gupta|1976|pp=225–226}}: "Ahmad Shah Abdali was one of the greatest conquerors who have ever appeared in Asia."</ref> His most notable military achievement was the decisive [[Third Battle of Panipat]], the largest land battle of the century which pushed the [[Maratha Empire]] out of [[Northern India]].{{sfn|Lee|2022|p=142}}{{sfn|Black|2002|p=44}} The victory at Panipat created an aura of invincibility surrounding him, as later [[British East India Company|British]] attempts to form a coalition against Ahmad Shah failed due to many Indian chiefs being terrified of him.{{sfn|Singh|1959|p=315}} Throughout his reign as Shah, Ahmad Shah led over fifteen major military campaigns, including [[Indian campaign of Ahmad Shah Durrani|nine punishing invasions of India]], three in [[Iranian Khorasan]], and three in [[Afghan Turkestan]].{{sfn|Lee|2022|p=118}} Despite this, his invasions of India had greater consequences and led to the decline of [[Muslim period in the Indian subcontinent|Muslim power in Northern India]].{{sfn|Lee|2022|p=130}}
+
+As he invaded India and [[Sack of Delhi (1757)|occupied Delhi in 1757]], most of the best men comprising the army of the [[Bengal Subah]] were forcibly deployed against Ahmad Shah's invasion.{{sfn|Gommans|1995|p=261}} Months later, the army of the Bengal Subah, severely understrength, was crushed at the [[Battle of Plassey]] by the British. Later, in 1765, Mughal Emperor Shah Alam II ceded complete rule of [[Bengal]], [[Bihar]], and [[Orrisa]] to the British. Ahmad Shah's invasions thus, inadvertently, aided the rise of the British in India.{{sfn|Dupree|1980|p=338}} Ahmad Shah also seemed much more interested in plundering rather than restoring Muslim power in India, and his refusal to shift his capital from Kandahar to India made the idea of forging an empire in India untenable.{{sfn|Lee|2022|pp=130–131}} His invasions would also leave the [[Indian subcontinent]] in chaos and disorder.{{sfn|Dupuy|Dupuy|1977|p=765–766}}
+
+Ahmad Shah introduced numerous military reforms, with the Durrani army being renowned for their excellent discipline, typically depending upon Ahmad Shah himself. He was able to introduce new tactics and technology surrounding [[Dragoon|mounted musketeers]], as well as [[Zamburak]] light camel artillery. The death of Ahmad Shah saw a sharp decline in military strength for the Durranis.{{sfn|Gommans|1995|p=279}} [[Jacques Lauriston]], a French officer, observed: "...that which renders the [[Afghan (ethnonym)|Pathans]] superior is primarily the discipline and subordination so strictly observed in the Abdali [Durrani] army."{{sfn|Gommans|1995|p=271}}
+
+===The Durrani Empire and Afghanistan===
+{{main|Durrani Empire}}
+
+[[File:Seal of Ahmad Shah Durrani.svg|thumb|right|Seal of Ahmad Shah Durrani|alt=Imperial emblem of Ahmad Shah Durrani]]
+Ahmad Shah is seen commonly as the founder of modern [[Afghanistan]],{{sfn|Lee|2022|p=114}} with his relentless military campaigns forging an independent Afghanistan, and an empire stretching from the [[Oxus River]] in the north to the [[Gulf of Oman]] in the south. In the east, it stretched from the mountains of [[Tibet]] and [[Kashmir]], to [[Iran]] and as far as [[Kerman]] in the western ends of his empire.{{sfn|Gupta|1976|pp=226}} However, his empire was already struggling even before his death. Even though Kashmir, [[Peshawar]], [[Multan]], and many other regions beyond the [[Indus]] were under Afghan control, much of [[Punjab]] fell into the hands of the Sikhs.{{sfn|Lee|2022|p=130}}
+
+Ahmad Shah's empire was also less equated to his much earlier predecessors, the [[Ghaznavid]] and [[Mughal Empire|Mughal]] empires, who are largely remembered by their [[Mughal architecture|architecture]] and [[Patronage|patronization of the arts]]. As Lee remarks: "...Ahmad Shah spent more time destroying civilizations than he did in establishing his own."{{sfn|Lee|2022|p=141}} Gupta also states Ahmad Shah may have been an excellent [[Conquest (military)|conqueror]], but he failed in consolidating his empire.{{sfn|Gupta|1976|pp=228}} Next to the [[Ottoman Empire]], the Durrani Empire is considered to be among the most significant [[Islamic empires]] of the second half of the 18th century.{{sfn|Dupree|1980|p=334}}
+
+===Atrocities===
+Throughout Ahmad Shah's reign, he and his generals oversaw the indiscriminate massacre of thousands of civilians. This included the massacre of prisoners who had surrendered, as well as the mass desecration of both [[Sikhism|Sikh]] and [[Hindu pilgrimage sites in India|Hindu]] holy sites. His men often put [[pilgrims]] and priests to death, committed rape, mass enslavement of women and children, and pillaging, with even Muslims being targeted. Ahmad Shah had also broke oaths of pardons and promises of safe conduct.{{sfn|Lee|2022|p=142}}
+
+The Afghan wholesale massacres and enslavements in India, and the oppression of Sikhs and Hindus, as well as the destruction of their holy places shattered the former [[Religious policy of the Mughals after Akbar|Mughal policy of religious tolerance]]. Stereotypes against [[Pashtuns]] also formed as a result, and they were deemed bloodthirsty zealots by the British and Indians alike.{{sfn|Lee|2022|pp=130–131}}
+
+===Poetry===
+Ahmad Shah was a [[poet]], authoring several poems in [[Pashto]] and occasionally [[Persian language|Persian]].{{sfn|Dupree|1980|p=81}} His [[Diwan (poetry)|Diwan]] (collection of [[ode]]s) showed visible [[Sufi]] influence.{{sfn|Masaeli|Sneller|2020|p=101}} Significant influence also came from other Pashtun poets such as [[Khushal Khan Khattak]] and [[Rahman Baba]].{{sfn|Pelevin|2025|p=332}} Ahmad Shah was known to admire [[Waqif Lahori|Waqif]], a poet from Batala, and even invited him to the Afghan court in [[Kandahar]]. [[Nizam al-Din 'Ishrat Sialkoti|Nizam al-Din 'Ishrat]], another poet he had admired, was commissioned by Ahmad Shah to record his reign, composing the ''Shāhnāma-yi Aḥmadiyya'', a [[mathnawi]] poem of 614 pages.{{sfn|Chahryar|Baipakov|Irfan|2003|p=322}}
+
+Ahmad Shah's poetry often contained traditional and religious themes, as well as philosophical, mystical, love, and moralistic themes. Love was often a common theme in Ahmad Shah's writings. While couplets with patriotic, social, ethnic, and cultural being found in his writing as well, indirectly mentioning the [[Pashtunwali]], and love for his country.{{sfn|Pelevin|2025|p=331–333}}
+
+In one such notable poem, Ahmad Shah wrote: 
+{{blockquote|{{tree list}}
+* ''Hearts are filled with the blood of love for you,''
+* ''On your way, youth lay down their heads.''
+* ''When I come back to you my heart calms down.''
+* ''Without you, my worries are like snakes on my heart.''
+* ''No matter how many countries of this world become mine,''
+* ''I will never forget your beautiful gardens''
+* ''I forget the throne of [[Delhi]] when I remember,''
+* ''The mountain tops of my beautiful [[Pashtunkhwa]]''
+* ''I shall throw around the goods of my enemy's life''
+* ''When the [[Afghan (ethnonym)|Pashtuns]] strike with their blades.''
+* ''The times of [[Sher Shah Suri|Farid]] and [[Sheikh Hamid|Hamid]] will return''
+* ''As I launch my raids in all directions.''
+* ''Even if the whole world is on one side and you are on the other,''
+* ''I love your barren and desolate steppes more.''
+* ''Ahmad Shah will never forget your value,''
+* ''Even if he conquers the countries of the whole world.''{{sfn|Pelevin|2025|p=333}}
+{{tree list/end}}}}
+
+The poem by Ahmad Shah invokes his numerous [[Indian campaign of Ahmad Shah Durrani|invasions into India]] and the memory of past Afghan ancestors who had risen to supremacy over [[Northern India]], including conquerors such as [[Sher Shah Suri]], and [[Sheikh Hamid|Hamid Lodi]], the ruler of [[Emirate of Multan|Multan]].{{sfn|Pelevin|2025|p=333–334}}
+
+==Military record==
+{| class="wikitable sortable plainrowheaders"  style="width:100%; font-size:90%; margin:1em auto 1em auto;"
+|-
+!width="65"|Outcome
+! style="width:140px;"|Date
+! style="width:110px;"|War
+! style="width:auto;"|Action
+! style="width:170px;"|Opponent/s
+!width="45"|Type
+! style="width:120px;"|Country<br>(present day)
+!width="50"|Rank
+|-
+|{{WinDL|Victory}}
+!scope="row"|<span style="display:none">1738-11-26</span>26 November 1738
+| rowspan="3" style="background:#ACBECF" |[[Nader Shah's invasion of India]]
+|[[Battle of Khyber Pass]]
+| rowspan="3" |<span style="display:none">.</span>[[Mughal Empire]]
+| rowspan="2" |Battle
+|[[Afghanistan]], [[Pakistan]]
+| rowspan="6" |[[Ispahsalar]]
+<span style="display:none">⁂</span>
+|-
+|{{WinDL|Victory}}
+! rowspan="2" scope="row" |<span style="display:none">1739-02-24</span>24 February 1739
+|[[Battle of Karnal]]
+| rowspan="2" |[[India]]
+|-
+|{{WinDL|Victory}}
+|<span style="display:none">Chaeronea</span>[[Nader Shah's invasion of India#Massacre of Delhi|Sack of Delhi]]
+|Sacking
+|-
+|{{WinDL|res=Draw}}, [[Treaty of Kerden]]
+!scope="row"|<span style="display:none">1743–1746</span>1743–1746
+|style="background:#ACBECF"|[[Ottoman–Persian War (1743–1746)]]
+|Numerous actions in the war
+|<span style="display:none">.</span>[[Ottoman Empire]]
+| rowspan="3" |Battle
+|[[Iraq]], [[Armenia]], [[Georgia (country)|Georgia]], [[Turkey]]
+|-
+|{{WinDL|Victory}}
+! rowspan="2" scope="row" |<span style="display:none">1747</span> 1747
+| rowspan="2" style="background:#ACBECF" |[[#Death of Nader Shah|Rise to power]]
+|<span style="display:none">Chaeronea</span>[[#Death of Nader Shah|Battle of Quchan]]
+|<span style="display:none">.</span>[[Qizilbash]] and Persians
+|[[Iran]]
+|-
+|{{WinDL|Victory}}
+|<span style="display:none">Chaeronea</span>[[#Return to Kandahar|Battle of Farah]]
+|<span style="display:none">.</span>[[Afsharids]]
+| rowspan="4" |Afghanistan
+|-
+|{{WinDL|Victory}}
+! rowspan="3" scope="row" |<span style="display:none">1747</span> Autumn 1747
+| rowspan="3" style="background:#ACBECF" |[[#Campaign to Kabul (1747)|Kabul campaign]]
+|<span style="display:none">Chaeronea</span>[[#Campaign to Kabul (1747)|Siege of Qalati Ghilji]]
+|<span style="display:none">.</span>[[Tokhi]]
+|Siege
+| rowspan="46" |[[Shah]]
+<span style="display:none">⁂</span>
+|-
+|{{WinDL|Victory}}
+|<span style="display:none">Chaeronea</span>[[#Campaign to Kabul (1747)|Battle of Ghazni]]
+| rowspan="3" |<span style="display:none">.</span>[[Mughal Empire]]
+|Battle
+|-
+|{{WinDL|Victory}}
+|<span style="display:none">Chaeronea</span>[[#Campaign to Kabul (1747)|Stratagem of Kabul]]
+|Defection
+|-
+|{{WinDL|Victory}}
+!scope="row"|<span style="display:none"></span>11 January 1748
+| rowspan="2" style="background:#ACBECF" |[[#First invasion of India (1747–1748)|First invasion of India]]
+|<span style="display:none">Chaeronea</span>[[Battle of Lahore (1748)|Battle of Lahore]]
+| rowspan="2" |Battle
+|Pakistan
+|-
+|{{no2|Defeat}}
+!scope="row"|<span style="display:none"></span>11 March 1748
+|<span style="display:none">Chaeronea</span>[[Battle of Manupur]]
+|<span style="display:none">.</span>[[Mughal Empire]]<br>[[Kingdom of Jaipur]]<br>[[Malerkotla State]]
+|India
+|-
+|{{WinDL|Victory}}
+!scope="row"|<span style="display:none"></span>1749–1750
+| rowspan="4" style="background:#ACBECF" |[[Durrani Campaign to Khorasan (1749–51)|First Khorasan campaign]]
+|<span style="display:none">Chaeronea</span>[[#First Khorasan campaign (1749–1751)|Siege of Herat]]
+| rowspan="3" |<span style="display:none">.</span>Afsharids
+| rowspan="4" |Siege
+|Afghanistan
+|-
+|{{WinDL|Victory}}
+! rowspan="2" scope="row" |<span style="display:none"></span>1750 
+|<span style="display:none">Chaeronea</span>[[#First Khorasan campaign (1749–1751)|Nun (1750)]]
+| rowspan="3" |Iran
+|-
+|{{WinDL|Victory}}
+|<span style="display:none">Chaeronea</span>[[#First Khorasan campaign (1749–1751)|Siege of Mashhad]]
+|-
+|{{no2|Defeat}}
+!scope="row"|<span style="display:none"></span>1750–1751
+|<span style="display:none">Chaeronea</span>[[#First Khorasan campaign (1749–1751)|Siege of Nishapur]]
+|<span style="display:none">.</span>[[Qara Bayat Amirdom]]
+|-
+|{{WinDL|Victory}}
+!scope="row"|<span style="display:none"></span>6 March – 3 April 1752
+|style="background:#ACBECF"|[[#Third invasion of India (1751–1752)|Third invasion of India]]
+|<span style="display:none">Chaeronea</span>[[Battle of Lahore (1752)|Battle of Lahore]]
+|<span style="display:none">.</span>[[Mughal Empire]]
+|Battle
+|Pakistan
+|-
+|{{WinDL|Victory}}
+! rowspan="2" scope="row" |<span style="display:none"></span>May 1754
+| rowspan="4" style="background:#ACBECF" |[[Durrani Campaign to Khorasan (1754–55)|Second Khorasan campaign]]
+|<span style="display:none">Chaeronea</span>[[Durrani Campaign to Khorasan (1754–55)|Sack of Tun]]
+| rowspan="2" |<span style="display:none">.</span>Governor of Tabas
+| rowspan="2" |Sack
+| rowspan="4" |Iran
+|-
+|{{WinDL|Victory}}
+|<span style="display:none">Chaeronea</span>[[Durrani Campaign to Khorasan (1754–55)|Sack of Tabas]]
+|-
+|{{WinDL|Victory}}
+!scope="row"|<span style="display:none"></span>23 July – 1 December 1754
+|<span style="display:none">Chaeronea</span>[[Durrani Campaign to Khorasan (1754–55)|Siege of Mashhad]]
+|<span style="display:none">.</span>Afsharids
+| rowspan="2" |Siege
+|-
+|{{WinDL|Victory}}
+!scope="row"|<span style="display:none"></span>17–24 June 1755
+|<span style="display:none">Chaeronea</span>[[Siege of Nishapur (1755)|Siege of Nishapur]]
+|<span style="display:none">.</span>Qara Bayat Amirdom
+|-
+|{{WinDL|Victory}}
+!scope="row"|<span style="display:none"></span>28 January – 22 February 1757
+| rowspan="3" style="background:#ACBECF" |[[#Fourth invasion of India (1756–1757)|Fourth invasion of India]]
+|<span style="display:none">Chaeronea</span>[[Sack of Delhi (1757)|Sack of Delhi]]
+|<span style="display:none">.</span>Mughal Empire<br>[[Bengal Subah|Bengal]]
+|Sacking
+| rowspan="3" |India
+|-
+|{{WinDL|Victory}}
+!scope="row"|<span style="display:none"></span>4 February – March 1757
+|<span style="display:none">Chaeronea</span>[[#Fourth invasion of India (1756–1757)|Siege of Ballabhgarh]]
+|<span style="display:none">.</span>[[Bharatpur State]]
+|Siege
+|-
+|{{WinDL|Victory}}
+!scope="row"|<span style="display:none"></span>16 March 1757
+|<span style="display:none">Chaeronea</span>[[#Fourth invasion of India (1756–1757)|Battle of Gokul]]
+|<span style="display:none">.</span>[[Daśanāmi Sampradaya#Naga Sadhus akharas|Naga Sadhus]]
+| rowspan="2" |Battle
+|-
+|{{WinDL|Victory}}
+!scope="row"|<span style="display:none"></span>Summer 1758
+| rowspan="2" style="background:#ACBECF" |[[#Kalat Rebellion (1758—1759)|Kalat rebellion]]
+|<span style="display:none">Chaeronea</span>[[#Kalat Rebellion (1758—1759)|Battle of Mastung]]
+| rowspan="2" |<span style="display:none">.</span>[[Khanate of Kalat]]
+| rowspan="2" |Pakistan
+|-
+|{{WinDL|Victory}}
+!scope="row"|<span style="display:none"></span>1758–1759
+|<span style="display:none">Chaeronea</span>[[#Kalat Rebellion (1758—1759)|Siege of Kalat]]
+|Siege
+|-
+|{{WinDL|Victory}}
+!scope="row"|<span style="display:none"></span>24 December 1759
+| rowspan="7" style="background:#ACBECF" |[[Afghan–Maratha War]] ([[#Fifth invasion of India (1759–1761)|Fifth invasion of India]])
+|<span style="display:none">Chaeronea</span>[[Battle of Taraori]]
+| rowspan="7" |<span style="display:none">.</span>[[Maratha Empire]]
+| rowspan="3" |Battle
+| rowspan="11" |India
+|-
+|{{WinDL|Victory}}
+!scope="row"|<span style="display:none"></span>9 January 1760
+|<span style="display:none">Chaeronea</span>[[Battle of Barari Ghat]]
+|-
+|{{WinDL|Victory}}
+!scope="row"|<span style="display:none"></span>4 March 1760
+|<span style="display:none">Chaeronea</span>[[Battle of Sikandarabad]]
+|-
+|{{WinDL|Victory}}
+!scope="row"|<span style="display:none"></span>March 1760
+|<span style="display:none">Chaeronea</span>[[#Fifth invasion of India (1759–1761)|Siege of Aligarh]]
+|Siege
+|-
+|{{WinDL|Victory}}
+!scope="row"|<span style="display:none"></span>October–November 1760
+|<span style="display:none">Chaeronea</span>[[Battle of Samalkha (1760)|Samalkha]]
+| rowspan="4" |Battle
+|-
+|{{WinDL|Victory}}
+!scope="row"|<span style="display:none"></span>17 December 1760
+|<span style="display:none">Chaeronea</span>[[Battle of Meerut]]
+|-
+|{{WinDL|Victory}}
+!scope="row"|<span style="display:none"></span>14 January 1761
+|<span style="display:none">Chaeronea</span>[[Third Battle of Panipat]]
+|-
+|{{WinDL|Victory}}
+!scope="row"|<span style="display:none"></span>5 February 1762
+| rowspan="5" style="background:#ACBECF" |[[Afghan–Sikh Wars]] ([[#Sixth invasion of India (1762)|Sixth invasion of India]])
+|<span style="display:none">Chaeronea</span>[[Battle of Kup]]
+|<span style="display:none">.</span>[[Sikh Confederacy]]
+|-
+|{{WinDL|Victory}}
+!scope="row"|<span style="display:none"></span>February 1762
+|<span style="display:none">Chaeronea</span>[[#Sixth invasion of India (1762)|Siege of Barnala]]
+|<span style="display:none">.</span>[[Patiala State]]
+|Siege
+|-
+|{{WinDL|Victory}}
+!scope="row"|<span style="display:none"></span>10 April 1762
+|<span style="display:none">Chaeronea</span>[[#Sixth invasion of India (1762)|Sacking of Amritsar]]
+| rowspan="17" |<span style="display:none">.</span>Sikh Confederacy
+|Sacking
+|-
+|{{WinDL|res=Draw}}, [[Battle of Pipli Sahib#Result|result disputed]]
+!scope="row"|<span style="display:none"></span>17 October 1762
+|<span style="display:none">Chaeronea</span>[[Battle of Pipli Sahib]]
+| rowspan="13" |Battle
+|-
+|{{WinDL|Victory}}
+!scope="row"|<span style="display:none"></span>12 December 1762
+|<span style="display:none">Chaeronea</span>[[Battle of the Ravi Ford]]
+|Pakistan
+|-
+|{{no2|Defeat}}
+!scope="row"|<span style="display:none"></span>Early 1764
+| rowspan="9" style="background:#ACBECF" |Afghan–Sikh Wars ([[#Seventh invasion of India (1764–1765)|Seventh invasion of India]])
+|<span style="display:none">Chaeronea</span>[[Battle of Chenab]]
+|India
+|-
+|{{WinDL|Victory}}
+!scope="row"|<span style="display:none"></span>1764
+|<span style="display:none">Chaeronea</span>[[Battle of Qarawal]]
+|Pakistan
+|-
+|{{WinDL|Victory}}
+!scope="row"|<span style="display:none"></span>1 December 1764
+|<span style="display:none">Chaeronea</span>[[#Seventh invasion of India (1764–1765)|Battle of Amritsar]]
+| rowspan="7" |India
+|-
+|{{WinDL|Victory}}
+! rowspan="6" scope="row" |<span style="display:none"></span>1765
+|<span style="display:none">Chaeronea</span>[[#Seventh invasion of India (1764–1765)|Battle of Jalandhar Doab]]
+|-
+|{{WinDL|Victory}}
+|<span style="display:none">Chaeronea</span>[[#Seventh invasion of India (1764–1765)|Battle of Rupar Ghat]]
+|-
+|{{WinDL|Victory}}
+|<span style="display:none">Chaeronea</span>[[#Seventh invasion of India (1764–1765)|Battle of Sutlej]]
+|-
+|{{WinDL|res=Draw}}, no decisive engagement
+|<span style="display:none">Chaeronea</span>[[#Seventh invasion of India (1764–1765)|Battle of Nurmahal]]
+|-
+|{{WinDL|res=Draw}}, no decisive engagement
+|<span style="display:none">Chaeronea</span>[[#Seventh invasion of India (1764–1765)|Battle of Kapurthala]]
+|-
+|{{WinDL|Victory}}
+|<span style="display:none">Chaeronea</span>[[#Seventh invasion of India (1764–1765)|Battle of Beas]]
+|-
+|{{WinDL|Victory}}
+! rowspan="2" scope="row" |<span style="display:none"></span>December 1766
+| rowspan="4" style="background:#ACBECF" |Afghan–Sikh Wars ([[#Eighth invasion of India (1766–1767)|Eighth invasion of India]])
+|<span style="display:none">Chaeronea</span>[[#Seventh invasion of India (1764–1765)|Battle of Behgy]]
+| rowspan="2" |Pakistan
+|-
+|{{WinDL|Victory}}
+|<span style="display:none">Chaeronea</span>[[#Seventh invasion of India (1764–1765)|Battle of Jhelum]]
+|-
+|{{WinDL|Victory}}
+!scope="row"|<span style="display:none"></span>January 1767
+|<span style="display:none">Chaeronea</span>[[#Seventh invasion of India (1764–1765)|Sack of Amritsar]]
+|Sack
+| rowspan="2" |India
+|-
+|{{WinDL|Victory}}
+!scope="row"|<span style="display:none"></span>1767
+|<span style="display:none">Chaeronea</span>[[#Seventh invasion of India (1764–1765)|Battle of Mani Majra]]
+| rowspan="2" |Battle
+|-
+|{{WinDL|res=Draw}}, no decisive engagement
+!scope="row"|<span style="display:none"></span>1769
+|style="background:#ACBECF"|Afghan–Sikh Wars ([[#Ninth invasion of India (1768–1769)|Ninth invasion of India]])
+|<span style="display:none">Chaeronea</span>[[#Seventh invasion of India (1764–1765)|Battle of Jhelum]]
+|Pakistan
+|-
+|{{WinDL|Victory}}
+!scope="row"|<span style="display:none"></span>1769–1770
+|style="background:#ACBECF"|Afghan–Sikh Wars ([[Durrani Campaign to Khorasan (1769–70)|Third Khorasan campaign]])
+|<span style="display:none">Chaeronea</span>[[#Third Khorasan campaign (1769–1770)|Siege of Mashhad]]
+|<span style="display:none">.</span>Afsharids
+|Siege
+|Iran
+|-
+|}
+
+== In popular culture ==
+* In the 1994 television series ''[[The Great Maratha]]'', the character of Ahmad Shah Durrani is portrayed by [[Bob Christo]].<ref>{{Cite web |date=6 March 2011 |title=Mr Christos Mojo |url=https://indianexpress.com/article/news-archive/web/mr-christo-s-mojo/ |access-date=13 November 2024 |website=The Indian Express |language=en}}</ref>
+* In the 2019 [[Bollywood]] war drama film [[Panipat (film)|''Panipat'']], Ahmad Shah Durrani appears as the main antagonist who invades the [[Maratha Empire]], and is portrayed by [[Sanjay Dutt]].<ref>{{Cite web |last=Chaubey |first=Pranita |date=28 November 2019 |title=Panipat Stars Arjun Kapoor And Sanjay Dutt Sum Up Their Experiences Of Shooting For The Film |url=https://www.ndtv.com/entertainment/panipat-stars-arjun-kapoor-and-sanjay-dutt-sum-up-their-experiences-of-shooting-for-the-film-2140237 |access-date=31 July 2025 |website=NDTV |language=en}}</ref>
+
+==See also==
+* [[List of monarchs of Afghanistan]]
+* [[Dost Mohammad Khan]]
+* [[Barakzai dynasty]]
+
+== References ==
+=== Notes ===
+{{notelist}}
+
+=== Citations ===
+{{reflist|20em}}
+
+== Bibliography ==
+{{refbegin|30em}}
+* {{Cite book |last=Adamec |first=Ludwig W. |url=https://books.google.com/books?id=Kzjj_LSlxO8C |title=The A to Z of Afghan Wars, Revolutions and Insurgencies |date=7 April 2010 |publisher=Bloomsbury Publishing |isbn=978-1-4617-3189-4 |author-link=Ludwig W. Adamec}}
+* {{cite encyclopedia |title=DORRĀNĪ |last1=Balland |first1=Daniel|url=https://iranicaonline.org/articles/dorrani-1 |encyclopedia=Encyclopaedia Iranica |access-date=13 November 2024 |publication-date=15 December 1995|archive-date=9 October 2023 |archive-url=https://web.archive.org/web/20231009110503/https://iranicaonline.org/articles/dorrani-1 |url-status=live}}
+* {{Cite book |last=Barfield |first=Thomas |url=https://books.google.com/books?id=4VR0EAAAQBAJ |title=Afghanistan: A Cultural and Political History, Second Edition |date=6 December 2022 |publisher=Princeton University Press |isbn=978-0-691-23856-2 |language=en}}
+* {{Cite book |last=Barua |first=Pradeep |url=https://books.google.com/books?id=FIIQhuAOGaIC |title=The State at War in South Asia |date=1 January 2005 |publisher=University of Nebraska Press |isbn=978-0-8032-1344-9 |language=en}}
+* {{Cite book |last=Black |first=Jeremy |url=https://books.google.com/books?id=Ph5mGwAACAAJ |title=Warfare in the Eighteenth Century |date=2002 |publisher=Cassell |isbn=978-0-304-36212-7 |author-link=Jeremy Black (historian)}}
+* {{Cite book |last1=Burnard |first1=Trevor |url=https://books.google.com/books?id=8GkTEQAAQBAJ |title=The Oxford Handbook of the Seven Years' War |last2=Hart |first2=Emma |last3=Houllemare |first3=Marie |date=2024 |publisher=Oxford University Press |isbn=978-0-19-762260-5 |author1-link=Trevor Burnard}}
+* {{Cite book |last1=Chahryar |first1=Adle |url=https://books.google.com/books?id=AzG5llo3YCMC |title=History of Civilizations of Central Asia: Development in Contrast: from the Sixteenth to the Mid-nineteenth Century |last2=Baipakov |first2=Karl M. |last3=Irfan |first3=Habib |date=31 December 2003 |publisher=UNESCO Publishing |isbn=978-92-3-103876-1
+|author3-link=Irfan Habib}}
+* {{Cite book |last=Chaurasia |first=Radhey Shyam |url=https://books.google.com/books?id=8XnaL7zPXPUC |title=History of Medieval India: From 1000 A.D. to 1707 A.D. |date=2002 |publisher=Atlantic Publishers |isbn=978-81-269-0123-4 |language=en}}
+* {{Cite book |last1=Clements |first1=Frank A. |url=https://books.google.com/books?id=o6fOEAAAQBAJ |title=Conflict in Afghanistan: An Encyclopedia |last2=Adamec |first2=Ludwig W. |date=2 December 2003 |publisher=Bloomsbury Publishing USA |isbn=978-1-85109-407-3 |author2-link=Ludwig W. Adamec}}
+* {{Cite book |last1=Dalrymple |first1=William |url=https://books.google.com/books?id=EoJoDwAAQBAJ |title=Kohinoor: The Story of the World's Most Infamous Diamond |last2=Anand |first2=Anita |date=2016 |publisher=Juggernaut Books |isbn=978-93-86228-08-6
+|author-link=William Dalrymple}}
+* {{cite book |last=Dupree |first=Louis |date=1980 |title=Afghanistan |publisher=Princeton University Press |isbn=0-691-03006-5
+|author-link=Louis Dupree (professor)}}
+* {{Cite book |last=Dupuy |first=Richard Ernest |url=https://books.google.ca/books/about/The_Encyclopedia_of_Military_History_fro.html?id=No8YAAAAIAAJ&redir_esc=y |title=The Encyclopedia of Military History from 3500 B.C. to the Present |last2=Dupuy |first2=Trevor Nevitt |date=1977 |publisher=Harper & Row |isbn=978-0-06-011139-7 |language=en}} 
+* {{Cite journal |last1=Eijk |first1=Juul |last2=Khan |first2=Timur |date=7 June 2023 |title='Do You Not Bow before Heaven?': The First Qing- Durrānī Encounter, the Tributary Non-relationship, and Disorder on a Shared Frontier |journal=Journal of the Economic and Social History of the Orient |volume=66 |issue=5–6 |pages=707–741 |doi=10.1163/15685209-12341605 |issn=1568-5209|doi-access=free}}
+* {{Cite journal |last=Gommans |first=Jos |date=1995-08-01 |title=Indian Warfare and Afghan Innovation During the Eighteenth Century |url=https://doi.org/10.1177/025764309501100204 |journal=Studies in History |language=EN |volume=11 |issue=2 |pages=261–280 |doi=10.1177/025764309501100204 |issn=0257-6430|url-access=subscription }} 
+* {{Cite book |last=Grewal |first=J. S. |title=The Khalsa Sikh and Non-Sikh Perspectives |publisher=Manohar |year=2004 |isbn= 9788173045806|pages=23|url= https://books.google.com/books?id=SonXAAAAMAAJ}}
+* {{Cite book |last=Gupta |first=Hari Ram |url=https://books.google.com/books?id=ZxJDAAAAYAAJ |title=History of the Sikhs: Evolution of Sikh Confederacies, 1708-1769 |date=1978 |publisher=Munshiram Manoharlal |language=en
+|author-link=Hari Ram Gupta}} 
+* {{Cite book |last=Gupta |first=Hari Ram |url=https://books.google.com/books?id=wGduAAAAMAAJ |title=Later Mughal History of the Panjab (1707-1793) |date=1976 |publisher=Sang-e-Meel Publications |language=en}}
+* {{Cite book |last=Gupta |first=Hari Ram |url=https://books.google.com/books?id=TmU9AAAAMAAJ |title=Marathas and Panipat |date=1961 |publisher=Panjab University |language=en}} 
+*{{Cite book |last=Jr |first=Everett Jenkins |url=https://books.google.com/books?id=kSYkCQAAQBAJ |title=The Muslim Diaspora (Volume 2, 1500-1799): A Comprehensive Chronology of the Spread of Islam in Asia, Africa, Europe and the Americas |date=7 May 2015 |publisher=McFarland |isbn=978-1-4766-0889-1 |language=en}}
+* {{Cite book |last1=K. Palat |first1=Madhavan |url=https://books.google.com/books?id=AzG5llo3YCMC |title=History of Civilizations of Central Asia: Development in Contrast: From the Sixteenth to the Mid-nineteenth Century |last2=Tabyshalieva |first2=Anara |date=2003 |publisher=UNESCO Publishing |isbn=978-92-3-103876-1
+|author1-link=Madhavan K. Palat}}
+* {{Cite journal |last=Khan Durrani |first=Ashiq Muhammad |date=1991 |title=The People of Afghanistan: Relations between the Sadozais and the Ahmadzais of Qalat |url=https://drive.google.com/file/d/1VRq1_v1wuGf4MpSS229I3TAHVEpiWt1_/view |journal=ProQuest |via=Google drive}} 
+* {{Cite journal |last=Khoja |first=Neelam |date=2018 |title=Sovereignty, Space, and Identity: The Politics of Power in Eighteenth Century Punjab |url=http://nrs.harvard.edu/urn-3:HUL.InstRepos:41121239 |language=en}} 
+* {{Cite book |last=Kim |first=Hodong |url=https://www.google.ca/books/edition/Holy_War_in_China/AtduqAtBzegC?hl=en&gbpv=0 |title=Holy War in China: The Muslim Rebellion and State in Chinese Central Asia, 1864-1877 |date=2004 |publisher=Stanford University Press |isbn=978-0-8047-6723-1 |language=en}}
+* {{Cite book |last=Lamb |first=Christina |url=https://books.google.com/books?id=aPCoojnEOScC |title=The Sewing Circles of Herat: A Personal Voyage Through Afghanistan |date=3 February 2004 |publisher=Harper Collins |isbn=978-0-06-050527-1
+|author-link=Christina Lamb}}
+* {{Cite book |last=Lee |first=Jonathan L. |url=https://books.google.com/books?id=We1tAAAAMAAJ |title=The "ancient Supremacy": Bukhara, Afghanistan, and the Battle for Balkh, 1731-1901 |date=1996 |publisher=E.J. Brill |isbn=978-90-04-10399-3}}
+* {{Cite book |last=Lee |first=Jonathan L. |url=https://books.google.com/books?id=asR9DwAAQBAJ |title=Afghanistan: A History from 1260 to the Present |date=8 March 2022 |publisher=Reaktion Books |isbn=978-1-78914-019-4}}
+* {{Cite book |last=Levi |first=Scott C. |url=https://books.google.com/books?id=9Z2tswEACAAJ |title=The Rise and Fall of Khoqand, 1709-1876: Central Asia in the Global Age |date=2017 |publisher=University of Pittsburgh Press |isbn=978-0-8229-6506-0 |language=en}}
+* {{Cite book |last=Malhotra |first=Karamjit K. |url=https://books.google.com/books?id=QuNeAQAACAAJ |title=The Eighteenth Century in Sikh History: Political Resurgence, Religious and Social Life, and Cultural Articulation |date=2016 |publisher=Oxford University Press |isbn=978-0-19-908760-0 |language=en}}
+* {{Cite book |last1=Masaeli |first1=Mahmoud |url=https://books.google.com/books?id=p3vGDwAAQBAJ |title=Responses of Mysticism to Religious Terrorism: Sufism and Beyond |last2=Sneller |first2=Rico |date=2 January 2020 |publisher=Gompel&Svacina |isbn=978-94-6371-190-6 |language=en}}
+* {{Cite book |last=Mehta |first=Jaswant Lal |url=https://books.google.com/books?id=d1wUgKKzawoC |title=Advanced Study in the History of Modern India 1707-1813 |date=1 January 2005 |publisher=Sterling Publishers |isbn=978-1-932705-54-6 |language=en}}
+* {{Cite book |last=Mishra |first=Patit Paban |url=https://books.google.com/books?id=D54sEQAAQBAJ |title=An Encyclopaedia in Spatio-Temporal Dimensions: Biography, Culture, and Religion |date=20 October 2024 |publisher=Cambridge Scholars Publishing |isbn=978-1-0364-1367-5 |language=en}}
+* {{cite thesis |last=Nejatie |first=Sajjad |title=The Pearl of Pearls: The Abdālī-Durrānī Confederacy and Its Transformation under Aḥmad Shāh, Durr-i Durrān |type=PhD|year=2017|url=https://tspace.library.utoronto.ca/handle/1807/80750 |publisher=University of Toronto |access-date=26 September 2019 |archive-date=4 February 2022 |archive-url=https://web.archive.org/web/20220204000043/https://tspace.library.utoronto.ca/handle/1807/80750|url-status=live}}
+* {{Cite book |last=Newby |first=L. J. |url=https://books.google.com/books?id=KTmO416hNQ8C |title=The Empire And the Khanate: A Political History of Qing Relations With Khoqand C1760-1860 |date=2005 |publisher=BRILL |isbn=978-90-04-14550-4 |language=en}}
+* {{Cite book |last=Noelle-Karimi |first=Christine |url=https://books.google.com/books?id=Mf2cvE5jYrYC |title=State and Tribe in Nineteenth-century Afghanistan: The Reign of Amir Dost Muhammad Khan (1826-1863) |date=1997 |publisher=Psychology Press |isbn=978-0-7007-0629-7 |language=en}}
+* {{Cite book |last=Noelle-Karimi |first=Christine |url=https://books.google.com/books?id=Kdl9oAEACAAJ |title=The Pearl in Its Midst: Herat and the Mapping of Khurasan (15th-19th Centuries) |date=2014 |publisher=Austrian Academy of Sciences Press |isbn=978-3-7001-7202-4 |language=en}}
+* {{Cite book |last=Parmu |first=R. K. |url=https://books.google.com/books?id=hqM5AQAAIAAJ&q=A%20History%20of%20Muslim%20Rule%20in%20Kashmir,%201320-1819 |title=A History of Muslim Rule in Kashmir, 1320-1819 |date=1969 |publisher=People's Publishing House |language=en}}
+* {{Cite book |last=Pelevin |first=Mikhail |url=https://www.google.ca/books/edition/Love_Honour_and_God/3FpzEQAAQBAJ?hl=en&gbpv=0 |title=Love, Honour and God: Pashto Writings of Early Modern Times |date=2025-07-28 |publisher=BRILL |isbn=978-90-04-73735-8 |language=en}}
+* {{Cite web |last=Perry |first=John R. |date=1985 |title=ʿALAM KHAN |url=https://iranicaonline.org/articles/alam-khan-arab-e-kozayma-amir-viceroy-of-the-afsharid-state-of-khorasan-1161-68-1748-54 |website=[[Encyclopedia Iranica]]
+|author-link=John R. Perry (orientalist)}}
+* {{Cite book |last=Roy |first=Kaushik |url=https://books.google.com/books?id=jpXijlqeRpIC |title=India's Historic Battles: From Alexander the Great to Kargil |date=2004 |publisher=Orient Blackswan |isbn=978-81-7824-109-8 |language=en}}
+* {{Cite book |last=Rubin |first=Barnett R. |url=https://books.google.com/books?id=IXIRDAAAQBAJ |title=Afghanistan from the Cold War Through the War on Terror |date=25 March 2015 |publisher=Oxford University Press |isbn=978-0-19-022927-6 |language=en}}
+* {{Cite book|title=The history of Afghanistan |last1=Runion |first1=Meredith L. |year=2007 |publisher=Greenwood Publishing Group |isbn=978-0-313-33798-7 |url=https://books.google.com/books?id=aZk9XzqCFGUC&pg=PA71|access-date=23 September 2010}}
+* {{Cite book |last=Sardesai |first=D. R. |url=https://books.google.com/books?id=sx-yDwAAQBAJ |title=India: The Definitive History |date=4 May 2018 |publisher=Routledge |isbn=978-0-429-96842-6 |language=en}}
+* {{Cite book |last=Sarkar |first=Sir Jadunath |url=https://books.google.com/books?id=SRIhAAAAMAAJ |title=Fall of the Mughal Empire |date=1964 |publisher=M. C. Sarkar |language=en |author-link=Jadunath Sarkar}}
+* {{Cite book |last=Sarkar |first=Sir Jadunath |url=https://books.google.com/books?id=RtU5AQAAIAAJ |title=1754-1771 (Panipat) |edition=3rd; 1966, 1971 printing |date=1971 |publisher=Orient Longman |language=en}}
+* {{Cite book |title=Ahmad Shah Durrani: Father of Modern Afghanistan|last1=Singh|first1=Ganda |year=1959 |publisher=Asia Publishing House |isbn=978-1-4021-7278-6 |author-link=Ganda Singh (historian) |url=https://archive.org/details/dli.csl.5426 |access-date=25 August 2010}}
+* {{Cite book |last=Singh |first=Khushwant |url=https://books.google.com/books?id=PfSISgAACAAJ |title=A History of the Sikhs |date=1977 |publisher=Oxford University Press |isbn=978-0-19-560600-3
+|author-link=Khushwant Singh}} 
+* {{Cite thesis |last=Verma |first=Esha |title=Sindh in Transition: From Mughal Rule to British Annexation, Early Eighteenth Century to 1843 |date=1 January 2016 |degree=thesis |publisher=Open Access Te Herenga Waka-Victoria University of Wellington |url=https://openaccess.wgtn.ac.nz/articles/thesis/Sindh_in_Transition_From_Mughal_Rule_to_British_Annexation_Early_Eighteenth_Century_to_1843/17143394/1 |language=en}}
+{{refend}}
+{{s-start}}
+{{s-reg}}
+{{s-bef|before=Position established}}
+{{s-ttl|title=[[List of monarchs of Afghanistan|Emir of Afghanistan]]|years=1747–1772}}
+{{s-aft|after=[[Timur Shah Durrani]]}}
+{{s-end}}
+
+{{Monarchs of Afghanistan}}
+{{Durrani dynasty}}
+{{Pashtun}}
+{{Subject bar|Biography|Royalty|History|d=1|auto=1}}
+{{Authority control}}
+
+{{DEFAULTSORT:Durrani, Ahmad Shah}}
+[[Category:1720s births]]
+[[Category:1772 deaths]]
+[[Category:18th-century Afghan monarchs]]
+[[Category:Emirs of Afghanistan]]
+[[Category:Durrani dynasty|Ahmad Shah]]
+[[Category:18th-century Afghan poets]]
+[[Category:Generals of Afsharid Iran]]
+[[Category:Pashtun people]]
+[[Category:Pashto-language poets]]
+[[Category:People from Herat]]
+[[Category:People from Multan]]
+[[Category:Afghan Muslims]]
+[[Category:18th-century monarchs in Asia]]
+[[Category:Military leaders]]
+[[Category:Leaders]]
+[[Category:Emperors]]
+[[Category:Heads of state of Afghanistan]]

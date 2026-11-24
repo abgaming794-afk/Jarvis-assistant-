@@ -6,7 +6,24 @@ sys.path.insert(0, ROOT + "visuals")
 import panipat as N
 N.VO_DUR = N.VO_END
 SR = 48000; DUR = N.END; n = int(DUR * SR)
-ALIAS = dict(whoosh="whoosh_fast", swish="whoosh_fast", paper="drag", pin="pop", drop="pop", tick="pop", chime="ding", click="pop", water="grow", wind="whoosh_long")
+ALIAS = dict(click="pop")
+SFX_GAIN = 20 * np.log10(0.20)                                   # all SFX at 20% (user)
+def make_marker(path, sr=48000, seed=4):
+    """real felt-tip marker on paper: two quick strokes of grainy band-passed friction noise + faint squeak."""
+    rng = np.random.default_rng(seed); out = []
+    for dur, gap in ((0.30, 0.06), (0.26, 0.0)):
+        n_ = int(dur * sr); x = rng.normal(0, 1, n_)
+        X = np.fft.rfft(x); f = np.fft.rfftfreq(n_, 1 / sr)
+        X *= np.exp(-((np.log(f + 1) - np.log(3800)) ** 2) / (2 * 0.45 ** 2))            # 2-7 kHz felt friction
+        x = np.fft.irfft(X, n_); x /= np.abs(x).max() + 1e-9
+        grain = np.repeat(rng.uniform(0.55, 1.0, n_ // 240 + 1), 240)[:n_]                # paper fibres
+        tt_ = np.arange(n_) / sr; env = np.sin(np.pi * np.clip(tt_ / dur, 0, 1)) ** 0.6
+        sq = 0.06 * np.sin(2 * np.pi * (1650 + 300 * tt_ / dur) * tt_) * env              # tiny squeak
+        out.append((x * grain * env + sq) * 0.8); out.append(np.zeros(int(gap * sr)))
+    sig = np.concatenate(out).astype(np.float32)
+    import wave as _w
+    with _w.open(path, "wb") as w: w.setnchannels(1); w.setsampwidth(2); w.setframerate(sr); w.writeframes((sig.clip(-1, 1) * 32767).astype(np.int16).tobytes())
+make_marker(ROOT + "audio/sfx/marker.wav")
 def load(p):
     raw = subprocess.run(["ffmpeg", "-loglevel", "error", "-i", p, "-f", "f32le", "-ac", "1", "-ar", str(SR), "-"], capture_output=True, check=True).stdout
     return np.frombuffer(raw, np.float32).copy()
@@ -24,7 +41,7 @@ for name, t, g in N.sfx_events():
     elif os.path.exists(ROOT + f"audio/sfx/{ALIAS.get(name, name)}.wav"): src = ROOT + f"audio/sfx/{ALIAS.get(name, name)}.wav"
     else: continue
     if name not in cache: cache[name] = load(src)
-    put(cache[name], t, g - 8)   # SFX at half loudness (-6 dB) on user request
+    put(cache[name], t, g - 8 + SFX_GAIN)   # SFX at half loudness (-6 dB) on user request
 # music: Am - F - C - G pads + bass + soft pulse (original synthesis, from the AMRIT BORII engine)
 tt = np.arange(n) / SR
 def note(m): return 440 * 2 ** ((m - 69) / 12)

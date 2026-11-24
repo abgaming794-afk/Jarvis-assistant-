@@ -20,6 +20,7 @@ from storyproof import (Satellite, SERIF_DISPLAY, SERIF_TEXT, serif_title, stamp
 import battle2d
 from battle2d import *
 import cam3d
+from rulers import toon, portrait_card, vs_badge, premium_timeline
 from cam3d import Cam, on_map, parchment, satellite, route, float_flag, pin, quad, FULL, doc_card, fire, _n, FOC
 
 HERE = os.path.dirname(os.path.abspath(__file__)); PROJ = os.path.dirname(HERE)
@@ -121,6 +122,9 @@ def btex(kind):
         s = skia.Surface(240, 160); cc = s.getCanvas(); cc.clear(skia.ColorTRANSPARENT); draw_banner(cc, kind); _BT[kind] = s.makeImageSnapshot()
     return _BT[kind]
 for k_ in FLAGK: cam3d._FLAGIMG[k_] = btex(k_)
+_fp0 = cam3d.Cam.footprint
+cam3d.Cam.footprint = lambda self, far=None: _fp0(self, far or self.dist * 40)
+cam3d.haze = lambda c, cam, col="#E9C99A": None
 _old_emblem = battle2d.banner_emblem
 def _emblem(c, kind, x0, y0, w, h, a=255):
     if kind in FLAGK:
@@ -152,7 +156,7 @@ def flag_region(c, cam, path, kind, t, k=1.0, alpha=0.78, edge="#FFFFFF"):
         if kind == "tiranga":
             for i, col in enumerate(("#FF9933", "#FFFFFF", "#138808")):
                 fp = paint(col, int(255 * alpha * 0.7)); fp.setBlendMode(skia.BlendMode.kMultiply if col != "#FFFFFF" else skia.BlendMode.kSrcOver)
-                if col == "#FFFFFF": fp.setAlphaf(0.35)
+                if col == "#FFFFFF": fp.setAlphaf(0.10)
                 c.drawRect(skia.Rect(b.left(), b.top() + b.height() * i / 3, b.right(), b.top() + b.height() * (i + 1) / 3), fp)
         else:
             fp = paint(main, int(255 * alpha * 0.85)); fp.setBlendMode(skia.BlendMode.kMultiply); c.drawRect(b, fp)
@@ -377,12 +381,12 @@ class Sc1761:
     """Maratha gun line (Ibrahim Khan Gardi) + cavalry vs Durrani cavalry; massive clash; Marathas routed."""
     def __init__(self, t0, dur, t_rout):
         self.t0, self.dur, self.tr = t0, dur, t_rout
-        self.B = Battle(dict(fac="durrani", cav=9, inf=5), dict(fac="maratha", inf=9, cav=5), "left", t0=t0, dur=dur, t_clash=1.7, t_rout=t_rout - t0,
-                        clash_x=920, seed=33, volley="R", base=108)
+        self.B = Battle(dict(fac="maratha", inf=9, cav=5), dict(fac="durrani", cav=9, inf=5), "right", t0=t0, dur=dur, t_clash=1.7, t_rout=t_rout - t0,
+                        clash_x=1000, seed=33, volley="L", base=108)
         self.fires = [t0 + 0.3 + i * 0.45 for i in range(int(dur / 0.45) + 2)]
     def draw(self, c, t):
         bt_begin(c); self.B.draw(c, t)
-        for i in range(3): cannon(c, 1500 - i * 70, 860 + i * 70, 0.85, t, [f + i * 0.15 for f in self.fires if f < self.tr], face=-1)
+        for i in range(3): cannon(c, 470 + i * 70, 860 + i * 70, 0.85, t, [f + i * 0.15 for f in self.fires if f < self.tr], face=1)
         c.restore()
     def sfx(self): return [("cannon", f, -10) for f in self.fires[:6]] + [("gallop_many", self.t0, -8), ("clash_bed", self.t0 + 1.7, -8), ("crowd_panic", self.tr, -8)]
 
@@ -457,22 +461,54 @@ def camera(t):
             return cm
     return Cam(*KF[-1][1:])
 
-SAT = Satellite(55, 100, 5, 42)
+SAT = Satellite(35, 125, -12, 52)
 
 # ================================================================== documents / real paintings (public domain)
 DOCS_ON = [
     dict(img=img(DOCS + "baburnama.jpg"), t_in=kw(u_mughal, "Mughal") - 0.1, t_out=ue(u_mughal) + 0.55, focus=(0.5, 0.62), zoom=1.3, rest_w=0.62,
          boxes=[(0.05, 0.5, 0.95, 0.9, kw(u_mughal, "Mughal") + 0.5)], cap="Baburnama: Panipat 1526", credit="Deo Gujarati, c. 1590 (Vaqi'at-i Baburi) · public domain"),
-    dict(img=img(DOCS + "hemu_1910s.jpg"), t_in=kw(u_hemu, "Hemu") - 0.05, t_out=kw(u_hemu, "haathi") - POP_FILL - POP_RISE - 0.35, focus=(0.5, 0.45), zoom=1.25, rest_w=0.6,
-         boxes=[(0.33, 0.33, 0.67, 0.6, kw(u_hemu, "Hemu") + 0.4)], cap="Hemu 'Vikramaditya'", note="Aadhunik chitran (1910s) · asli portrait nahi",
-         credit="Print, c. 1910s · public domain"),
     dict(img=img(DOCS + "akbarnama_hemu.jpg"), t_in=kw(u_bikhar, "bikhar") + 0.35, t_out=us(u_1761) + 0.25, focus=(0.5, 0.4), zoom=1.3, rest_w=0.6,
          boxes=[(0.25, 0.22, 0.75, 0.55, kw(u_bikhar, "bikhar") + 0.8)], cap="Akbarnama: Hemu ki haar", credit="Kankar, Akbarnama c. 1590s · public domain"),
-    dict(img=img(DOCS + "abdali.jpg"), t_in=kw(u_abdali, "Ahmad") - 0.1, t_out=kw(u_badi, "sabse") - POP_FILL - POP_RISE - 0.35, focus=(0.5, 0.35), zoom=1.2, rest_w=0.56,
-         cap="Ahmad Shah Abdali (Durrani)", credit="Mughal miniature c. 1757, BnF Paris · public domain"),
     dict(img=img(DOCS + "faizabad_1761.jpg"), t_in=kw(u_badi, "ladaaiyon") + 0.1, t_out=us(u_maut) - 0.05, focus=(0.42, 0.5), zoom=1.4, rest_w=0.92,
          boxes=[(0.25, 0.15, 0.62, 0.85, kw(u_badi, "ladaaiyon") + 0.6)], cap="Panipat 1761: topon ki do qataarein", credit="Faizabad-style painting c. 1770 · public domain"),
 ]
+
+# ================================================================== VS ruler cards: real painting + matching animated cartoon
+RP = dict(
+    babur=(img(DOCS + "babur.jpg"), (0.1, 0.05, 0.95, 0.6), "BABUR", "Painting c. 1640 (baad ki, Shah Jahan Album)"),
+    lodi=(img(DOCS + "lodi.jpg"), (0.3, 0.12, 1.0, 0.6), "IBRAHIM LODI", "Baburnama c. 1590 ka chitran"),
+    akbar=(img(DOCS + "akbar.jpg"), (0.15, 0.0, 0.85, 0.5), "AKBAR", "Govardhan c. 1630 (baad ki painting)"),
+    hemu=(img(DOCS + "hemu_1910s.jpg"), (0.28, 0.2, 0.72, 0.5), "HEMU", "1910s chitran · asli portrait nahi"),
+    bhau=(img(DOCS + "bhau.jpg"), (0.2, 0.3, 0.85, 0.72), "SADASHIVRAO BHAU", "Portrait c. 1760"),
+    abdali=(img(DOCS + "abdali.jpg"), (0.1, 0.0, 0.98, 0.65), "AHMAD SHAH ABDALI", "Mughal miniature c. 1757 (BnF)"),
+)
+VS = [  # (left, t_in, right, t_in, t_out, headline)
+    ("babur", kw(u_babur, "Babur") - 0.1, "lodi", kw(u_lodi, "Lodi") - 0.15, min(SC["p1"][1] - POP_FILL - 0.1, kw(u_lodi2, "1,000") + 0.6), "PANIPAT I · 1526"),
+    ("akbar", us(u_1556) + 0.25, "hemu", kw(u_hemu, "Hemu") - 0.1, SC["p2"][1] - POP_FILL - POP_RISE - 0.05, "PANIPAT II · 1556"),
+    ("bhau", kw(u_abdali, "Marathe") - 0.1, "abdali", kw(u_abdali, "Abdali") - 0.15, SC["p3"][1] - POP_FILL - POP_RISE - 0.05, "PANIPAT III · 1761"),
+]
+VS_SUB = dict(babur="Kabul se aaya", lodi="Delhi Sultan", akbar="sirf 13 saal ka (Bairam Khan ke saath)", hemu="Delhi jeeti -> 'Vikramaditya'",
+              bhau="Maratha senapati", abdali="Durrani shah (Afghanistan)")
+def vs_active(t): return any(a - 0.1 <= t <= o + 0.45 for _, a, _, b, o, _ in VS)
+def draw_vs(c, t):
+    for L, ta, Rk, tb, to, head in VS:
+        if not (ta - 0.05 <= t <= to + 0.45): continue
+        out = seg(t, to, to + 0.4); dim = seg(t, ta, ta + 0.4) * (1 - out)
+        c.drawRect(skia.Rect(0, 0, DW, DH), paint("#05080F", int(150 * dim)))
+        g = skia.GradientShader.MakeRadial((DW / 2, 640), 700, [hexc("#FFD166", int(40 * dim)), hexc("#FFD166", 0)]); c.drawRect(skia.Rect(0, 0, DW, DH), skia.Paint(Shader=g))
+        headline(c, head, seg(t, ta, ta + 0.7) * (1 - out), y=215, size=62, col="#FFF1C2")
+        for side, key, t0 in (("L", L, ta), ("R", Rk, tb)):
+            k = seg(t, t0, t0 + 0.55) * (1 - out); im, box, name, note = RP[key]
+            x0, x1 = (40, 510) if side == "L" else (570, 1040)
+            dx = (1 - ease_out(seg(t, t0, t0 + 0.55))) * (-160 if side == "L" else 160)
+            c.save(); c.translate(dx, 0)
+            portrait_card(c, im, box, x0, 330, x1, 735, k, t, name, note, tilt=(-1 if side == "L" else 1))
+            other = tb if side == "L" else ta
+            toon(c, 210 if side == "L" else 870, 1135, 470, t, key, face=1 if side == "L" else -1, k=seg(t, t0 + 0.2, t0 + 0.75) * (1 - out),
+                 point=seg(t, max(t0, other) + 0.3, max(t0, other) + 0.9), seed=3 if side == "L" else 7)
+            c.restore()
+        vs_badge(c, DW / 2, 540, seg(t, tb, tb + 0.4) * (1 - out), t)
+        if dim > 0: text(c, "Painting: asli (public domain) · cartoon: kalpanik chitran", DW / 2, 1528, 19, "#FFFFFF", FT_SEMI, "c", int(200 * dim), shadow=True)
 
 # ================================================================== what is on the map at time t
 def map_layer(c, cam, t):
@@ -588,12 +624,21 @@ def captions(c, t):
                 c.drawString(wd, x, y, font(FT_BLACK, size), paint(YEL if hot else "#FFFFFF", int(255 * k))); x += w
             return
 
-def timeline(c, t, a):
-    if a <= 0: return
-    from storyproof import timeline_ribbon
-    pos, vel = year_pos(t)
-    rrect(c, DW / 2 - 320, 1180, DW / 2 + 320, 1268, 44, "#000000", int(120 * a))
-    timeline_ribbon(c, YRS, pos, y=1236, spacing=190, vel=vel, a=int(255 * a))
+TL = [(1192, "1192"), (1526, "1526"), (1556, "1556"), (1739, "1739"), (1761, "1761")]
+TLX = [(1192, 110), (1526, 325), (1556, 540), (1739, 755), (1761, 970)]
+def year_at(t):
+    keys = [(0, 1526), (us(u_1556) - 0.1, 1526), (us(u_1556) + 0.8, 1556), (us(u_1761) - 0.1, 1556), (us(u_1761) + 0.8, 1761),
+            (kw(u_tarain, "Tarain") - 0.4, 1761), (kw(u_tarain, "Tarain") + 0.4, 1192), (kw(u_tarain, "Karnal") - 0.3, 1192), (kw(u_tarain, "Karnal") + 0.5, 1739)]
+    for (t0, a), (t1, b) in zip(keys, keys[1:]):
+        if t0 <= t <= t1: return lerp(a, b, ease_io(seg(t, t0, t1)))
+    return keys[-1][1]
+NODES = [(1192, "1192", "Tarain"), (1526, "1526", "Panipat I"), (1556, "1556", "Panipat II"), (1739, "1739", "Karnal"), (1761, "1761", "Panipat III")]
+def _tlx(yr):
+    for (a, xa), (b, xb) in zip(TLX, TLX[1:]):
+        if a <= yr <= b: return lerp(xa, xb, (yr - a) / (b - a))
+    return TLX[0][1] if yr < TLX[0][0] else TLX[-1][1]
+def timeline(c, t, k):
+    premium_timeline(c, t, k, year_at(t), NODES, _tlx)
 
 def poll(c, t):
     k0 = seg(t, us(u_poll) + 0.2, us(u_poll) + 0.7)
@@ -623,6 +668,7 @@ def subscribe(c, t):
     c.drawPath(p, paint("#FFFFFF")); c.drawPath(p, paint("#000000", 255, stroke=3))
 
 def overlays(c, t, cam):
+    draw_vs(c, t)
     # ---- hook: "EK HI MAIDAN" -> PANIPAT glides in letter by letter, "?" drops on "kyun", three battle years pop on "teen"
     hk_out = 1 - seg(t, us(u_1526) - 0.3, us(u_1526) + 0.1)
     if hk_out > 0:
@@ -638,22 +684,21 @@ def overlays(c, t, cam):
             text(c, "?", DW / 2 + text_w("PANIPAT", 150, SERIF_DISPLAY) / 2 + 60, yq, 190, "#E63946", SERIF_DISPLAY, "c", 255, shadow=True)
         chip(c, "Teen baar kismat badli", DW / 2, 760, seg(t, kw(u_hook, "kismat"), kw(u_hook, "kismat") + 0.4) * (1 - seg(t, kw(u_kyun, "Panipat") - 0.3, kw(u_kyun, "Panipat"))), "#14213D", "#FFFFFF", 38)
     # ---- 1526 numbers
-    b_k = seg(t, kw(u_babur, "12"), kw(u_babur, "12") + 0.9) * (1 - seg(t, us(u_lodi) - 0.3, us(u_lodi)))
-    headline(c, "Babur", seg(t, kw(u_babur, "Babur") - 0.1, kw(u_babur, "Babur") + 0.7) * (1 - seg(t, us(u_lodi) - 0.3, us(u_lodi))), "Kabul se aaya")
+    b_k = seg(t, kw(u_babur, "12"), kw(u_babur, "12") + 0.9) * (1 - seg(t, VS[0][4], VS[0][4] + 0.3))
     if b_k > 0:
-        counter(c, 12000, lambda v: f"{int(v):,}", 300, 470, b_k, 86, "#9BE59B", "sainik")
-        chip(c, "15-20 topein", 780, 445, seg(t, kw(u_babur, "topein") - 0.2, kw(u_babur, "topein") + 0.3) * (1 - seg(t, us(u_lodi) - 0.3, us(u_lodi))), "#2F6B3A", "#FFFFFF", 40)
-    headline(c, "Ibrahim Lodi", seg(t, kw(u_lodi, "Lodi") - 0.3, kw(u_lodi, "Lodi") + 0.7) * (1 - seg(t, SC["p1"][1] - POP_FILL - 0.3, SC["p1"][1] - POP_FILL)), "Delhi Sultanat")
+        counter(c, 12000, lambda v: f"{int(v):,} sainik", 270, 1205, b_k, 52, "#9BE59B")
+        chip(c, "+ 15-20 topein", 270, 1265, seg(t, kw(u_babur, "topein") - 0.2, kw(u_babur, "topein") + 0.3) * (1 - seg(t, VS[0][4], VS[0][4] + 0.3)), "#2F6B3A", "#FFFFFF", 32)
     l_k = seg(t, us(u_lodi2), us(u_lodi2) + 0.9) * (1 - seg(t, SC["p1"][1] - POP_FILL - 0.3, SC["p1"][1] - POP_FILL))
     if l_k > 0:
-        chip(c, "50-70 hazaar", 300, 1010, l_k, "#1E3A8A", "#FFFFFF", 48); text(c, "sainik (andaaze alag, behes)", 300, 1085, 24, "#FFFFFF", FT_SEMI, "c", int(255 * clamp(l_k * 2)), shadow=True)
+        chip(c, "50-70 hazaar sainik (behes)", 800, 1190, l_k, "#1E3A8A", "#FFFFFF", 30)
         k2 = seg(t, kw(u_lodi2, "1,000") - 0.2, kw(u_lodi2, "1,000") + 0.5) * (1 - seg(t, SC["p1"][1] - POP_FILL - 0.3, SC["p1"][1] - POP_FILL))
-        counter(c, 1000, lambda v: f"{int(v):,}", 790, 1040, k2, 72, "#9CC3FF", "haathi")
+        chip(c, "+ 1,000 haathi", 800, 1258, k2, "#1E3A8A", YEL, 32)
     # ---- after 1526
     headline(c, "Mughal raaj shuru", seg(t, SC["p1"][2] + POP_OUT, SC["p1"][2] + POP_OUT + 0.6) * (1 - seg(t, us(u_1556) - 0.3, us(u_1556))), "1526 ke baad (naksha c. 1530, andaazan)")
-    headline(c, "30 saal baad", seg(t, us(u_1556), us(u_1556) + 0.6) * (1 - seg(t, kw(u_hemu, "Hemu") - 0.3, kw(u_hemu, "Hemu"))), "1556")
-    chip(c, "Delhi jeeti -> 'Vikramaditya'", DW / 2, 460, seg(t, kw(u_hemu, "Vikramaditya") - 0.3, kw(u_hemu, "Vikramaditya") + 0.2) * (1 - seg(t, kw(u_hemu, "haathi") - 0.6, kw(u_hemu, "haathi") - 0.3)), "#7C2D12", "#FFFFFF", 38)
-    headline(c, "Marathe vs Abdali", seg(t, kw(u_abdali, "Marathe") - 0.2, kw(u_abdali, "Marathe") + 0.8) * (1 - seg(t, SC["p3"][1] - 1.2, SC["p3"][1] - 0.9)), "14 January 1761")
+    chip(c, "Delhi jeeti -> 'Vikramaditya'", 800, 1190, seg(t, kw(u_hemu, "Vikramaditya") - 0.3, kw(u_hemu, "Vikramaditya") + 0.2) * (1 - seg(t, VS[1][4], VS[1][4] + 0.3)), "#7C2D12", "#FFFFFF", 30)
+    chip(c, "Akbar: sirf 13 saal ka", 270, 1190, seg(t, VS[1][1] + 0.6, VS[1][1] + 1.0) * (1 - seg(t, VS[1][4], VS[1][4] + 0.3)), "#2F6B3A", "#FFFFFF", 30)
+    chip(c, "Maratha senapati", 270, 1190, seg(t, VS[2][1] + 0.6, VS[2][1] + 1.0) * (1 - seg(t, VS[2][4], VS[2][4] + 0.3)), "#E8731A", "#FFFFFF", 30)
+    chip(c, "Durrani shah", 800, 1190, seg(t, VS[2][3] + 0.5, VS[2][3] + 0.9) * (1 - seg(t, VS[2][4], VS[2][4] + 0.3)), "#1F2937", "#FFFFFF", 30)
     # ---- the why
     headline(c, "Ab naksha dekho", seg(t, us(u_naksha), us(u_naksha) + 0.6) * (1 - seg(t, kw(u_uttar, "Uttarapath") - 0.3, kw(u_uttar, "Uttarapath"))))
     headline(c, "UTTARAPATH", seg(t, kw(u_uttar, "Uttarapath") - 0.1, kw(u_uttar, "Uttarapath") + 0.7) * (1 - seg(t, us(u_yamuna) - 0.2, us(u_yamuna) + 0.1)), "Kabul -> Delhi ka purana raasta (aaj GT Road)", col=YEL)
@@ -670,10 +715,11 @@ def overlays(c, t, cam):
            (us(u_1556), SC["p2"][1] - 1.0, "Naksha: 1556 andaazan · flags: PRATIK"), (us(u_1761), SC["p3"][1] - 1.0, "Naksha: c. 1760s-80s (andaazan) · flags: PRATIK"),
            (us(u_poll) + 0.3, END, "Aaj ka Bharat")]
     for a, b, s in era: era_chip(c, s, seg(t, a, a + 0.4) * (1 - seg(t, b - 0.3, b)))
-    tl_a = seg(t, us(u_1526) - 0.2, us(u_1526) + 0.3) * (1 - seg(t, us(u_naksha), us(u_naksha) + 0.4))
+    tl_a = seg(t, us(u_1526) - 0.2, us(u_1526) + 0.3) * (1 - seg(t, us(u_naksha), us(u_naksha) + 0.4)) + seg(t, us(u_tarain) - 0.3, us(u_tarain)) * (1 - seg(t, us(u_matlab) - 0.2, us(u_matlab) + 0.2))
     for key in SC:
         sc, a, b, *_ = SC[key]; tl_a *= 1 - seg(t, a - 1.1, a - 0.8) * (1 - seg(t, b + 0.6, b + 0.9))
     for d in DOCS_ON: tl_a *= 1 - seg(t, d["t_in"], d["t_in"] + 0.3) * (1 - seg(t, d["t_out"], d["t_out"] + 0.3))
+    if vs_active(t): tl_a = 0
     timeline(c, t, tl_a)
     if t > us(u_poll) - 0.2: poll(c, t); subscribe(c, t)
     credit(c, "Borders: historical-basemaps (A. Ourednik, GPL-3.0), andaazan · Satellite: NASA Blue Marble", int(255 * seg(t, us(u_1526), us(u_1526) + 0.5) * (1 - seg(t, us(u_lodi2), us(u_lodi2) + 0.4))), y=1560)
@@ -709,19 +755,16 @@ def render(t, width=540):
     frame(c, t, width); return s.makeImageSnapshot().toarray(colorType=skia.ColorType.kRGBA_8888_ColorType)
 
 def sfx_events():
-    E = [("whoosh", 0.0, -8), ("riser", 0.3, -14), ("pin", 1.1, -8)]
-    E += [("pop", kw(u_hook, "teen") + i * 0.18, -10) for i in range(3)] + [("whoosh", kw(u_kyun, "Panipat") - 0.1, -9), ("drop", kw(u_kyun, "kyun"), -8)]
-    for d in DOCS_ON: E += [("paper", d["t_in"], -5), ("paper", d["t_out"], -7)]
-    for key, (sc, a, b, *_r) in SC.items():
-        E += [("whoosh", a - POP_FILL - POP_RISE - 0.2, -8), ("paper", a - POP_FILL - POP_RISE, -9), ("swish", a - POP_FILL, -10), ("swish", b, -11), ("paper", b + POP_OUT, -11)]
-        E += sc.sfx()
-    E += [("tick", us(u_1526), -8), ("tick", us(u_1556), -8), ("tick", us(u_1761), -8), ("pop", kw(u_babur, "12"), -10), ("pop", kw(u_babur, "topein"), -10),
-          ("pop", us(u_lodi2), -10), ("pop", kw(u_lodi2, "1,000"), -10), ("stamp", kw(u_bhadak, "bhadak"), -4), ("stamp", kw(u_mughal, "maara"), -4),
-          ("stamp", kw(u_teer, "teer"), -4), ("stamp", kw(u_bikhar, "bikhar"), -5), ("pop", kw(u_maut, "30"), -8), ("whoosh", us(u_naksha), -8),
-          ("riser", kw(u_uttar, "Kabul"), -14), ("chime", kw(u_uttar, "Uttarapath"), -10), ("water", kw(u_yamuna, "Yamuna"), -10), ("wind", kw(u_yamuna, "Thar"), -12),
-          ("gallop_few", us(u_sapaat), -10), ("tick", kw(u_95, "95"), -8), ("pin", kw(u_tarain, "Tarain"), -8), ("pin", kw(u_tarain, "Karnal"), -8),
-          ("stamp", us(u_matlab) + 0.2, -4), ("stamp", kw(u_matlab, "Panipat"), -4), ("whoosh", us(u_poll), -8)]
-    E += [("pop", kw(u_opts, w), -9) for w in ("1526", "1556", "1761")] + [("stamp", kw(u_sub, "Comment"), -6), ("click", kw(u_sub, "subscribe") + 0.6, -6), ("chime", VO_END + 0.1, -12)]
+    """only meaningful hits: stamps, a few number pops, marker pen on every highlight, poll pops, subscribe click.
+    No whoosh / swish / paper / riser transition sounds (user). Battle sounds only from the user's own files."""
+    E = [("pop", kw(u_hook, "teen") + i * 0.18, -12) for i in range(3)]
+    for d in DOCS_ON:
+        for bx in d.get("boxes", []): E.append(("marker", bx[4], -4))
+    for key, (sc, a, b, *_r) in SC.items(): E += sc.sfx()
+    E += [("pop", kw(u_babur, "12"), -12), ("pop", kw(u_lodi2, "1,000"), -12), ("stamp", kw(u_bhadak, "bhadak"), -6), ("stamp", kw(u_mughal, "maara"), -6),
+          ("stamp", kw(u_teer, "teer"), -6), ("stamp", kw(u_bikhar, "bikhar"), -7), ("pop", kw(u_maut, "30"), -10),
+          ("marker", kw(u_uttar, "Kabul"), -6), ("marker", kw(u_95, "95") - 0.2, -4), ("stamp", us(u_matlab) + 0.2, -6), ("stamp", kw(u_matlab, "Panipat"), -6)]
+    E += [("pop", kw(u_opts, w), -12) for w in ("1526", "1556", "1761")] + [("stamp", kw(u_sub, "Comment"), -8), ("click", kw(u_sub, "subscribe") + 0.6, -8)]
     return sorted([e for e in E if 0 <= e[1] < END], key=lambda e: e[1])
 
 if __name__ == "__main__":

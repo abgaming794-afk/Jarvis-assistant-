@@ -32,3 +32,15 @@ All from English Wikipedia (raw wikitext fetched 24 Nov 2026), which cites the b
 ## Neutrality notes
 - Flags: Mughal "Alam" and Maratha "Bhagwa Jhenda" shown as PRATIK (andaazan); Lodi/Sur/Durrani as symbol banners.
 - Numbers for 1526 and 1761 disputed -> on-screen "andaaze alag-alag (behes)".
+
+## Ruler portraits (VS cards) - all public domain
+| Ruler | Image | Label on screen |
+|---|---|---|
+| Babur | "Humayun and Babur (Late Shah Jahan Album) Babur detail.jpg", c. 1640, Smithsonian | baad ki painting |
+| Ibrahim Lodi | "Ibrahim Lodi at the Battle of Panipat (1526).jpg", Baburnama c. 1590 | Baburnama ka chitran |
+| Akbar | "Govardhan. Akbar With Lion and Calf ca. 1630, Metmuseum (cropped).jpg" | baad ki painting |
+| Hemu | 1910s print | aadhunik chitran, asli portrait nahi |
+| Sadashivrao Bhau | "Bust portrait in an oval of the Bhao, Sadhashir Rao,.jpg", c. 1760 | portrait c. 1760 |
+| Ahmad Shah Abdali | Mughal miniature c. 1757, BnF | - |
+| Akbar age | "the 13-year-old Akbar and his guardian, Bairam Khan" - en.wikipedia.org/wiki/Second_Battle_of_Panipat | "sirf 13 saal ka" |
+Cartoon rulers are the channel's own drawings (kalpanik chitran), styled after these paintings.
