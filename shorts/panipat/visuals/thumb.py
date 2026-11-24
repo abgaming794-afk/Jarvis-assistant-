@@ -5,12 +5,13 @@ import panipat as p
 from panipat import *
 from PIL import Image, ImageFilter, ImageEnhance
 W = 2160
-bg = Image.fromarray(p.render(15.4, W)).convert("RGB").filter(ImageFilter.GaussianBlur(10))
+_s = skia.Surface(1080, 1920); _c = _s.getCanvas(); p.ground(_c, 15.4); p.lineup(_c, "p1", 15.4, 0.6); p.SC["p1"][0].draw(_c, 15.4)
+bg = Image.fromarray(_s.makeImageSnapshot().toarray(colorType=skia.ColorType.kRGBA_8888_ColorType)).convert("RGB").resize((W, 3840)).filter(ImageFilter.GaussianBlur(8))
 bg = ImageEnhance.Brightness(bg).enhance(0.55)
 s = skia.Surface(W, 3840); c = s.getCanvas(); c.drawImage(sk_image(bg), 0, 0); c.scale(2, 2)
 g = skia.GradientShader.MakeRadial((540, 980), 900, [hexc("#000000", 0), hexc("#000000", 170)]); c.drawRect(skia.Rect(0, 0, 1080, 1920), skia.Paint(Shader=g))
 # title
-f = font(SERIF_DISPLAY, 210); w = f.measureText("PANIPAT"); x = 540 - (w + 120) / 2
+f = font(SERIF_DISPLAY, 196); w = f.measureText("PANIPAT"); x = 540 - (w + 120) / 2
 c.drawString("PANIPAT", x + 8, 470 + 10, f, paint("#000000", 200)); 
 gp = skia.GradientShader.MakeLinear([(0, 300), (0, 480)], [hexc("#FFF1A8"), hexc("#F4B400")]); pt = skia.Paint(Shader=gp, AntiAlias=True)
 c.drawString("PANIPAT", x, 470, f, pt); c.drawString("PANIPAT", x, 470, f, paint("#5A3A00", 255, stroke=4))
