@@ -1,0 +1,19 @@
+{
+  "background": "src/battle_photoreal.jpg",
+  "portrait": "src/mbq_cut.png",
+  "portrait_side": "left",
+  "portrait_scale": 1.62,
+  "portrait_xy": [-170, 40],
+  "fade_edge_px": 420,
+  "fade_from_row": 1150,
+  "headline": [["ARAB", "#FFFFFF"], ["RUK GAYE?", "#FFD23F"]],
+  "headline_xy": [1330, 470],
+  "headline_size": 400,
+  "line_gap": 430,
+  "circle": [3260, 1440, 560, 330],
+  "arrow": [[2330, 960], [2620, 1000], [2720, 1180]],
+  "india_map": {"center": [2000, 1720], "px_per_deg": 19.0, "center_lonlat": [80.0, 22.5], "question_xy": [2330, 1960]},
+  "ai_label": "AI chitran · asli tasveer nahi",
+  "out_dir": "out",
+  "tag": "KHILAFAT_thumb_v2"
+}

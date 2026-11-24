@@ -1,0 +1,24 @@
+{
+  "name": "unexplored-truth-by-amrit",
+  "version": "1.0.0",
+  "description": "Unexplored Truth by Amrit - end-to-end studio for the AMRIT BORI YouTube channel (@itsamritbori): long-form Hinglish history and geopolitics documentaries (16:9) and Shorts (9:16) - topic, research, script, voice-over alignment, 2D map animation with period-correct flags, real image and Wikipedia cards, ChatGPT AI-image workflow with labels, 360p review, resumable 4K 60fps 10-bit render, photoreal Nitish Rajput / Dhruv Rathee style thumbnails and unlisted YouTube upload via vidIQ.",
+  "author": {
+    "name": "Amrit Bori"
+  },
+  "keywords": [
+    "4k",
+    "ai-images",
+    "documentary",
+    "elevenlabs",
+    "flag-map",
+    "geopolitics",
+    "hinglish",
+    "history",
+    "map-animation",
+    "photoreal-thumbnail",
+    "shorts",
+    "thumbnail",
+    "vertical",
+    "youtube"
+  ]
+}
