@@ -4,3 +4,6 @@ render/
 audio/sfx/
 __pycache__/
 *.mp3
+*.jpg
+!visuals/docs/*.jpg
+!visuals/places/*.jpg
