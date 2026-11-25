@@ -118,6 +118,23 @@ def _world():
         return json.load(f)["features"]
 
 
+@functools.lru_cache(maxsize=1)
+def india_full():
+    """India's OFFICIAL outline (full J&K incl. PoK/Gilgit-Baltistan, Ladakh incl. Aksai Chin, Arunachal).
+    RULE: every map that shows India must draw this on top of the world layer."""
+    with open(os.path.join(DATA, "india_full.geojson"), encoding="utf-8") as f:
+        return json.load(f)["features"][0]["geometry"]
+
+
+def draw_india(d, P, fill, outline, width):
+    g = india_full()
+    polys = [g["coordinates"]] if g["type"] == "Polygon" else g["coordinates"]
+    for poly in polys:
+        ring = [P(x, y) for x, y in poly[0]]
+        if len(ring) > 2:
+            d.polygon(ring, fill=fill, outline=outline, width=width)
+
+
 class MapProj:
     def __init__(self, view, W, H):
         lon0, lat0, lon1, lat1 = view
@@ -176,6 +193,8 @@ def map_image(view, W, H, highlight_json="{}", style="classic"):
             ring = [P(x, y) for x, y in poly[0]]
             if len(ring) > 2:
                 d.polygon(ring, fill=fill, outline=hexc(pal[2] if not col else shade(col, 0.6)), width=lw)
+    icol = highlight.get("IND") or highlight.get("India")
+    draw_india(d, P, hexc(icol) if icol else hexc(pal[1]), hexc(shade(icol, 0.6) if icol else pal[2]), lw)
     return img.convert("RGB")
 
 

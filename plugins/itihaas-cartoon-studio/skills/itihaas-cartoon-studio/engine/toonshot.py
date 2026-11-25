@@ -15,7 +15,7 @@ from PIL import Image, ImageDraw, ImageFilter, ImageFont, ImageOps
 from common import hexc, shade, font, serif, clamp, ease_out, ease_in_out, back_out, lerp, FONTS
 import toon, props, rooms, motion, pbfx
 from common import SKILL
-from scenes import MapProj, _quad, _paste_center, _paste, _mirror, _world, _indian
+from scenes import MapProj, _quad, _paste_center, _paste, _mirror, _world, _indian, draw_india
 
 OS = 1.10
 DEV = re.compile(r"[ऀ-ॿ]")
@@ -140,6 +140,8 @@ def light_map(view, W, H, hl_json="{}"):
             if len(ring) > 2:
                 d.polygon(ring, fill=hexc(col) if col else (243, 236, 220, 255),
                           outline=hexc(shade(col, 0.7)) if col else (196, 184, 160, 255), width=lw)
+    icol = hl.get("IND") or hl.get("India")
+    draw_india(d, P, hexc(icol) if icol else (243, 236, 220, 255), hexc(shade(icol, .7)) if icol else (196, 184, 160, 255), lw)
     arr = np.asarray(img.convert("RGB"), np.float32)
     arr += np.random.default_rng(2).normal(0, 3, (H, W, 1))
     yy, xx = np.mgrid[0:H, 0:W]
