@@ -210,11 +210,19 @@ def sticker(name, h, color=None, border=True, path=None):
         white.putalpha(a)
         white.alpha_composite(base)
         base = white
-    sh = Image.new("RGBA", (base.width + 30, base.height + 30), (0, 0, 0, 0))
-    shadow = Image.new("RGBA", base.size, (0, 0, 0, 110))
-    shadow.putalpha(base.getchannel("A").point(lambda v: v * 110 // 255))
-    sh.alpha_composite(shadow.filter(ImageFilter.GaussianBlur(6)), (14, 18))
-    sh.alpha_composite(base, (6, 6))
+    pad = max(10, int(h * .12))
+    sh = Image.new("RGBA", (base.width + pad * 3, base.height + pad * 3), (0, 0, 0, 0))
+    shadow = Image.new("RGBA", base.size, (8, 6, 12, 255))
+    shadow.putalpha(base.getchannel("A").point(lambda v: v * 95 // 255))
+    sh.alpha_composite(shadow, (pad + int(h * .03), pad + int(h * .06)))
+    sh = sh.filter(ImageFilter.GaussianBlur(max(2, h * .05)))
+    sh.alpha_composite(base, (pad, pad))
+    # subtle top-left rim light so cut-outs read as real objects, not stickers
+    rim = Image.new("RGBA", base.size, (255, 248, 230, 0))
+    a = base.getchannel("A")
+    edge = ImageChops.subtract(a, ImageChops.offset(a, int(max(1, h * .015)), int(max(1, h * .015))))
+    rim.putalpha(edge.point(lambda v: v * 70 // 255))
+    sh.alpha_composite(rim, (pad, pad))
     return sh
 
 
@@ -235,7 +243,7 @@ def draw_stickers(fr, items, t, dur, skill_dir=""):
         path = None
         if s.get("img"):
             path = s["img"] if os.path.isabs(s["img"]) else os.path.join(skill_dir, s["img"])
-        spr = sticker(s.get("name", "coin"), h, s.get("color"), s.get("border", True), path)
+        spr = sticker(s.get("name", "coin"), h, s.get("color"), s.get("border", False), path)
         if s.get("side") in SIDE_POS:
             x, y = SIDE_POS[s["side"]]
         else:

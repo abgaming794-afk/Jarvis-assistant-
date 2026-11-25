@@ -247,7 +247,7 @@ def main():
         m = m * gain
     else:
         m = 0
-    mix = voice * 0.95 + fx * 0.6 + m
+    mix = voice * 0.95 + fx * 0.6 * float(story.get('sfx_volume', 0.2)) + m
     peak = np.abs(mix).max()
     if peak > 0.98:
         mix *= 0.98 / peak

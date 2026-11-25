@@ -13,7 +13,7 @@ import math, random, re, json, os, functools
 import numpy as np
 from PIL import Image, ImageDraw, ImageFilter, ImageFont, ImageOps
 from common import hexc, shade, font, serif, clamp, ease_out, ease_in_out, back_out, lerp, FONTS
-import toon, props, rooms, motion, pbfx
+import toon, props, rooms, motion, pbfx, docs3d
 from common import SKILL
 from scenes import MapProj, _quad, _paste_center, _paste, _mirror, _world, _indian, draw_india
 
@@ -178,7 +178,7 @@ class ToonShot:
                     hl = {k: "#d8402f" for k in hl}
                 img = light_map(tuple(sc.get("view", [60, 5, 100, 38])), self.CW, self.CH, json.dumps(hl, sort_keys=True))
             else:
-                bg = sc.get("bg", {"black": "black", "chart": "paper", "memo": "desk_top",
+                bg = sc.get("bg", {"black": "black", "chart": "paper", "memo": "desk_top", "realdoc": "desk_top",
                                    "newspaper": "desk_top"}.get(self.type, "study_night"))
                 if bg == "paper":
                     img = rooms.make("office_day", self.CW, self.CH)
@@ -191,7 +191,7 @@ class ToonShot:
     # ---------------- camera
     def camera(self, t):
         default = {"set": "auto", "black": "static", "map": "dolly_in", "memo": "dolly_in", "chart": "drift",
-                   "newspaper": "dolly_in", "topdown": "table_roll"}.get(self.type, "dolly_in")
+                   "newspaper": "dolly_in", "topdown": "table_roll", "realdoc": "drift"}.get(self.type, "dolly_in")
         return motion.camera(self.sc.get("cam", default), t, self.dur, self.b.get("id", ""))
 
     def _spec(self, who):
@@ -383,6 +383,10 @@ class ToonShot:
                 d = ImageDraw.Draw(can)
         elif self.type == "memo":
             self._memo(can, t)
+        elif self.type == "realdoc":
+            if not hasattr(self, "_doc"):
+                self._doc = docs3d.DocShot(sc, CW, CH, self.dur)
+            self._doc.draw(can, t)
         elif self.type == "newspaper":
             self._paper(can, t)
 
@@ -438,12 +442,15 @@ class ToonShot:
                 sd.rounded_rectangle([4, 4, st.width - 4, st.height - 4], radius=int(12 * u), outline=(200, 30, 36, 230), width=int(9 * u))
                 sd.text((st.width / 2, st.height / 2), sc["stamp"], font=fs, fill=(200, 30, 36, 230), anchor="mm")
                 _paste_center(paper, st, pw * .62, ph * .8, lerp(2.0, 1.0, ease_out(sk)), 1.0, 12)
-        k = ease_out(clamp(t / .4))
-        _paste_center(can, paper, CW * sc.get("x", .5), lerp(CH * 1.5, CH * .52, k), 1.0, 1.0, sc.get("rot", -2))
-        if sc.get("pin", True) and not sc.get("sticky"):
-            d = ImageDraw.Draw(can)
-            px, py = CW * sc.get("x", .5), lerp(CH * 1.5, CH * .52, k) - ph / 2 + 18 * u
-            d.ellipse([px - 14 * u, py - 14 * u, px + 14 * u, py + 14 * u], fill=(200, 40, 40, 255), outline=(40, 20, 20, 255), width=int(3 * u))
+        d3 = dict(sc)
+        d3.setdefault("yaw", [16, 5])
+        d3.setdefault("pitch", [10, 3])
+        d3.setdefault("roll", [3, -1])
+        d3.setdefault("push", [1.0, 1.25])
+        if 0 <= hi < len(boxes):
+            x0, y0, x1, y1 = boxes[hi]
+            d3.setdefault("focus", [(x0 + x1) / 2 / pw, (y0 + y1) / 2 / ph])
+        docs3d.place_3d(can, paper, t, self.dur, d3)
 
     def _paper(self, can, t):
         sc, CW, CH, u = self.sc, self.CW, self.CH, self.u
@@ -630,6 +637,8 @@ class ToonShot:
             pbfx.draw_names(fr, sc["names"], t)
         if sc.get("stickers"):
             motion.draw_stickers(fr, sc["stickers"], t, self.dur, SKILL)
+        if sc.get("source"):
+            docs3d.draw_source(fr, sc["source"], sc.get("source_by", ""), t, sc.get("source_at", .6))
         return fr
 
     def frame(self, t):

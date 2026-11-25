@@ -532,7 +532,9 @@
       "at": 2.5,
       "release": 3.8
      }
-    ]
+    ],
+    "source": "Court Minutes of the East India Company, 1599–1603 (ed. H. Stevens, 1886)",
+    "source_by": "via Wikimedia Commons · Public domain"
    }
   },
   {
@@ -589,7 +591,9 @@
       0.52
      ],
      "label": "LAGBHAG £30,000"
-    }
+    },
+    "source": "Court Minutes of the East India Company, 1599–1603 (ed. H. Stevens, 1886)",
+    "source_by": "via Wikimedia Commons · Public domain"
    }
   },
   {
@@ -1004,18 +1008,36 @@
    "speaker": "N",
    "text": "उस रात, ईस्ट इंडिया कंपनी का जन्म हुआ.",
    "scene": {
-    "type": "memo",
-    "bg": "desk_top",
-    "title": "EAST INDIA COMPANY",
-    "lines": [
-     "The Governor and Company of",
-     "Merchants of London trading",
-     "into the East Indies",
-     "Royal Charter: 31 December 1600",
-     "Monopoly of trade: 15 years"
+    "type": "realdoc",
+    "img": "assets/docs/eic_charter_1600_abstract_p9.jpg",
+    "crop": [
+     0.04,
+     0.12,
+     0.96,
+     0.62
     ],
-    "highlight": 0,
-    "stamp": "1600"
+    "highlights": [
+     {
+      "rect": [
+       0.07,
+       0.535,
+       0.84,
+       0.575
+      ],
+      "at": 1.0,
+      "time": 0.9
+     }
+    ],
+    "focus": [
+     0.45,
+     0.55
+    ],
+    "push": [
+     1.0,
+     1.3
+    ],
+    "source": "A Collection of Charters and Statutes relating to the East India Company (1817)",
+    "source_by": "Wikimedia Commons · Public domain"
    }
   },
   {
@@ -1048,7 +1070,9 @@
       "h": 0.2,
       "color": "#c0322b"
      }
-    ]
+    ],
+    "source": "The Voyages of Sir James Lancaster to the East Indies (Hakluyt Society, 1877)",
+    "source_by": "via Wikimedia Commons · Public domain"
    }
   },
   {
@@ -1091,7 +1115,9 @@
       "anim": "drop",
       "color": "#d9822b"
      }
-    ]
+    ],
+    "source": "The Voyages of Sir James Lancaster to the East Indies (Hakluyt Society, 1877)",
+    "source_by": "via Wikimedia Commons · Public domain"
    }
   },
   {
@@ -1225,5 +1251,6 @@
     ]
    }
   }
- ]
+ ],
+ "sfx_volume": 0.2
 }
