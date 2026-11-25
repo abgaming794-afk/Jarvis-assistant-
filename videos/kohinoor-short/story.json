@@ -187,8 +187,7 @@
      }
     ],
     "big": {
-     "t": "{n} SAAL",
-     "count": 10,
+     "t": "10 SAAL",
      "y": 0.2,
      "size": 150,
      "at": 0.3,
@@ -515,7 +514,7 @@
   {
    "id": "s11",
    "speaker": "N",
-   "text": "यानी तोहफ़ा नहीं। जंग हारने के बाद, शर्त लिखकर लिया गया।",
+   "text": "यानी तोहफ़ा नहीं। हार के बाद, शर्त लिखकर लिया गया।",
    "scene": {
     "type": "black",
     "t": "TOHFA NAHI. SHART.",
@@ -530,7 +529,7 @@
   {
    "id": "s12",
    "speaker": "N",
-   "text": "और डलहौज़ी ने ख़ुद लिखा: समर्पण की निशानी… जीत की यादगार।",
+   "text": "और डलहौज़ी ने ख़ुद लिखा: समर्पण की निशानी… जीत की ऐतिहासिक यादगार।",
    "scene": {
     "img": "/home/user/Jarvis-assistant-/videos/kohinoor-short/docs/dalhousie_dispatch_1849_p665.jpg",
     "crop": [
@@ -620,15 +619,15 @@
       ],
       "via": [
        [
-        58,
-        12
+        62,
+        2
        ],
        [
-        45,
-        -10
+        57.5,
+        -20.2
        ],
        [
-        18,
+        20,
         -36
        ],
        [
@@ -674,7 +673,7 @@
   {
    "id": "s14",
    "speaker": "N",
-   "text": "फिर इसे दोबारा कटवाया गया, करीब बयालीस प्रतिशत वज़न घट गया।",
+   "text": "फिर इसे दोबारा कटवाया गया, और वज़न, चालीस प्रतिशत से ज़्यादा घट गया।",
    "scene": {
     "type": "realdoc",
     "img": "/home/user/Jarvis-assistant-/videos/kohinoor-short/docs/kohinoor_original_setting_1851.jpg",
@@ -700,7 +699,7 @@
     ],
     "curl": false,
     "big": {
-     "t": "186 se 105.6 CT",
+     "t": "~186 se 105.6 CT",
      "y": 0.22,
      "size": 104,
      "at": 1.0,
@@ -740,7 +739,7 @@
       "delay": 0.8
      }
     ],
-    "caption": "TOWER OF LONDON · AAJ",
+    "caption": "JEWEL HOUSE · TOWER OF LONDON",
     "names": [
      {
       "t": "Tohfa ya shart? Comment karo",

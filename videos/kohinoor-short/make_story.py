@@ -33,7 +33,7 @@ beat(4, "पंजाब का महाराजा है, दलीप स�
 beat(5, "उम्र? सिर्फ़ दस साल।",
      {"type": "set", "bg": "mughal_court", "cam": "punch", "zoom": 1.3, "focus": [.5, .45],
       "chars": [{"who": "duleep", "x": .5, "h": .62, "close": True, "expr": "sad", "face": "right"}],
-      "big": {"t": "{n} SAAL", "count": 10, "y": .2, "size": 150, "at": .3, "color": "#f1c232"}}, sfx=["ding"])
+      "big": {"t": "10 SAAL", "y": .2, "size": 150, "at": .3, "color": "#f1c232"}}, sfx=["ding"])
 beat(6, "और सिख सेना, जंग हार चुकी है।",
      {"type": "map", "view": [66, 23, 80, 39.5], "highlight": {}, "cam": "drift",
       "labels": [{"lon": 72.6, "lat": 30.6, "t": "PUNJAB", "size": 64, "color": "#7a2a1e", "delay": .2}],
@@ -63,9 +63,9 @@ beat(10, "कोहिनूर… इंग्लैंड की रानी 
                       {"rect": [0.01, 0.858, 0.43, 0.918], "at": .9, "time": .6, "color": "#ff9a8a"}],
           big={"t": "SURRENDERED", "y": .16, "size": 110, "at": .5, "color": "#ff5a4a"}),
      transition="cut", sfx=["stamp"])
-beat(11, "यानी तोहफ़ा नहीं। जंग हारने के बाद, शर्त लिखकर लिया गया।",
+beat(11, "यानी तोहफ़ा नहीं। हार के बाद, शर्त लिखकर लिया गया।",
      {"type": "black", "t": "TOHFA NAHI. SHART.", "size": 110, "align": "center"}, transition="flash", sfx=["drum"])
-beat(12, "और डलहौज़ी ने ख़ुद लिखा: समर्पण की निशानी… जीत की यादगार।",
+beat(12, "और डलहौज़ी ने ख़ुद लिखा: समर्पण की निशानी… जीत की ऐतिहासिक यादगार।",
      dict(DISP, type="realdoc", push=[1.1, 1.35], yaw=[14, 4], focus=[.5, .5],
           highlights=[{"rect": [0.01, 0.262, 0.30, 0.312], "at": .9, "time": .5},
                       {"rect": [0.73, 0.54, 0.99, 0.585], "at": 2.0, "time": .4},
@@ -73,19 +73,19 @@ beat(12, "और डलहौज़ी ने ख़ुद लिखा: सम�
      transition="zoom_through", sfx=["page"])
 beat(13, "अठारह सौ पचास में, जहाज़ से ब्रिटेन, रानी विक्टोरिया के पास।",
      {"type": "map", "view": [-22, -40, 88, 60], "highlight": {"GBR": "#c0322b", "IND": "#e9c46a", "PAK": "#e9c46a"}, "cam": "drift",
-      "routes": [{"from": [72.8, 18.9], "via": [[58, 12], [45, -10], [18, -36], [-12, 0], [-12, 40]], "to": [-1.1, 50.8], "bend": .08, "delay": .3, "mover": "ship"}],
+      "routes": [{"from": [72.8, 18.9], "via": [[62, 2], [57.5, -20.2], [20, -36], [-12, 0], [-12, 40]], "to": [-1.1, 50.8], "bend": .08, "delay": .3, "mover": "ship"}],
       "pins": [{"lon": 72.8, "lat": 18.9, "label": "BOMBAY", "delay": .2}, {"lon": -1.1, "lat": 50.8, "label": "3 JULY 1850", "delay": 3.0}],
       "source": "Koh-i-Noor: HMS Medea, 1850", "source_by": "GIA · World History Encyclopedia"}, transition="whip_up", sfx=["whoosh"])
-beat(14, "फिर इसे दोबारा कटवाया गया, करीब बयालीस प्रतिशत वज़न घट गया।",
+beat(14, "फिर इसे दोबारा कटवाया गया, और वज़न, चालीस प्रतिशत से ज़्यादा घट गया।",
      {"type": "realdoc", "img": D("kohinoor_original_setting_1851.jpg"), "crop": [0.04, 0, 0.96, 0.9], "w": 1.2, "tone": "sepia",
       "push": [1.0, 1.3], "yaw": [-10, -3], "focus": [.5, .3], "curl": False,
-      "big": {"t": "186 se 105.6 CT", "y": .22, "size": 104, "at": 1.0, "color": "#f1c232"},
+      "big": {"t": "~186 se 105.6 CT", "y": .22, "size": 104, "at": 1.0, "color": "#f1c232"},
       "source": "The Koh-i-Noor in its original setting (engraving, 1851)", "source_by": "Wikimedia Commons · Public domain · recut 1852"},
      transition="push_left", sfx=["cash"])
 beat(15, "आज भी ये, लंदन के टावर में, एक ताज में जड़ा है।",
      {"type": "set", "bg": "fort", "cam": "dolly_in", "fg": [],
       "props": [{"name": "crown", "x": .5, "y": .42, "h": .24, "anim": "drop"}, {"name": "diamond", "x": .5, "y": .42, "h": .07, "anim": "pop", "delay": .8}],
-      "caption": "TOWER OF LONDON · AAJ",
+      "caption": "JEWEL HOUSE · TOWER OF LONDON",
       "names": [{"t": "Tohfa ya shart? Comment karo", "x": .12, "y": .18, "at": 1.4, "bar": "#f1c232"}],
       "emph": [{"x": .5, "y": .5, "r": .1, "at": 1.0}]}, transition="whip_right", sfx=["ding"])
 beat(16, "उस दस साल के महाराजा का क्या हुआ? अगला पार्ट — सब्सक्राइब करें।",
