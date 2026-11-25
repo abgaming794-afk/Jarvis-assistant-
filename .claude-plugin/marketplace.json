@@ -1,0 +1,12 @@
+{
+  "name": "itihaas-studio",
+  "owner": {"name": "Itihaas Cartoon Studio"},
+  "plugins": [
+    {
+      "name": "itihaas-cartoon-studio",
+      "source": "./plugins/itihaas-cartoon-studio",
+      "description": "Hindi history cartoon documentaries A to Z (documentary-toon style).",
+      "version": "0.5.0"
+    }
+  ]
+}
