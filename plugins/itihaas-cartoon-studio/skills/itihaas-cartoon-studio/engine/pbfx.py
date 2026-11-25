@@ -63,11 +63,11 @@ def window_layers(key, CW, CH):
     while bx < x1:
         bw = r.uniform(.07, .14) * CW
         top = y0 + r.uniform(.12, .35) * (y1 - y0)
-        d.rectangle([bx, top, bx + bw, y1], fill=(22, 28, 66, 120))
+        d.rectangle([bx, top, bx + bw, y1], fill=(22, 28, 66, 70))
         for wy in np.arange(top + 30 * u, y1 - 20 * u, 70 * u):
             for wx in np.arange(bx + 18 * u, bx + bw - 30 * u, 60 * u):
                 if r.random() < .38:
-                    d.rectangle([wx, wy, wx + 28 * u, wy + 22 * u], fill=(250, 214, 140, 150))
+                    d.rectangle([wx, wy, wx + 28 * u, wy + 22 * u], fill=(250, 214, 140, 110))
         bx += bw + r.uniform(4, 30) * u
     sign = w.get("sign")
     if sign:
@@ -95,7 +95,7 @@ def window_layers(key, CW, CH):
             g.text((sx, yy), t, font=f, fill=(230, 245, 230, 240), anchor="mm")
         refl.alpha_composite(ImageOps.mirror(lay) if w.get("mirror_street", True) else lay)
     mask = Image.new("L", (CW, CH), 0)
-    ImageDraw.Draw(mask).rectangle([x0, y0, x1, y1], fill=int(255 * w.get("glass", .75)))
+    ImageDraw.Draw(mask).rectangle([x0, y0, x1, y1], fill=int(255 * w.get("glass", .55)))
     a = refl.getchannel("A")
     refl.putalpha(Image.fromarray((np.asarray(a, np.float32) * np.asarray(mask, np.float32) / 255).astype(np.uint8)))
     # ---- wall + frame in front

@@ -522,6 +522,10 @@ def floor(name):
 
 @functools.lru_cache(maxsize=24)
 def make(name, W, H, seed=0):
+    if abs(W / H - 16 / 9) > 0.02:          # other aspect (split screen): render 16:9 at this height, crop centre
+        full = make(name, int(H * 16 / 9), H, seed)
+        x0 = max(0, (full.width - W) // 2)
+        return full.crop((x0, 0, x0 + W, H)) if full.width >= W else full.resize((W, H))
     fn = SETS.get(name)
     if fn is None:
         raise KeyError(f"unknown set '{name}'. Use one of: {', '.join(SETS)}")

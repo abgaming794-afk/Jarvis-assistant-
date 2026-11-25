@@ -588,7 +588,7 @@
       0.5,
       0.52
      ],
-     "label": "≈ £30,000"
+     "label": "LAGBHAG £30,000"
     }
    }
   },
@@ -804,10 +804,10 @@
     "board": {
      "text": "HUMEIN [SHAHI CHARTER] CHAHIYE|VARNA SAB KHATAM",
      "rect": [
-      0.02,
-      0.03,
-      0.62,
-      0.2
+      0.09,
+      0.06,
+      0.66,
+      0.22
      ],
      "at": 0.2,
      "time": 2.4
