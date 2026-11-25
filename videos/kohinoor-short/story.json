@@ -1,0 +1,843 @@
+{
+ "title": "Koh-i-Noor Gift Tha Ya Loot? 1849 Ki Asli Treaty",
+ "style": "toon",
+ "aspect": "9:16",
+ "res": "1080",
+ "fps": 30,
+ "subs": true,
+ "sub_y": 0.655,
+ "sub_size": 66,
+ "music": "mystery",
+ "music_volume": 0.1,
+ "sfx_volume": 0.2,
+ "pause": 0.06,
+ "auto_transitions": true,
+ "voice": {
+  "engine": "edge",
+  "voice": "hi-IN-MadhurNeural",
+  "rate": "+10%",
+  "pitch": "-6Hz"
+ },
+ "speakers": {
+  "N": {
+   "elevenlabs": {
+    "voice_id": "EppcM8bFS2tfl4Xu0tpj",
+    "model": "eleven_v3"
+   }
+  }
+ },
+ "cast": {
+  "duleep": {
+   "preset": "maharaja",
+   "facial": null
+  },
+  "officer": {
+   "preset": "british_officer"
+  },
+  "minister": {
+   "preset": "minister"
+  },
+  "minister2": {
+   "preset": "nawab"
+  }
+ },
+ "beats": [
+  {
+   "id": "s01",
+   "speaker": "N",
+   "text": "कोहिनूर, तोहफ़ा था… या लूट?",
+   "scene": {
+    "type": "set",
+    "bg": "black",
+    "cam": "push_fast",
+    "fg": [],
+    "props": [
+     {
+      "name": "diamond",
+      "x": 0.5,
+      "y": 0.45,
+      "h": 0.26,
+      "anim": "pop",
+      "delay": 0.05
+     }
+    ],
+    "big": {
+     "t": "GIFT ya LOOT?",
+     "y": 0.2,
+     "size": 120,
+     "at": 0.15
+    },
+    "emph": [
+     {
+      "x": 0.5,
+      "y": 0.45,
+      "r": 0.12,
+      "at": 0.2
+     }
+    ]
+   },
+   "sfx": [
+    "boom"
+   ],
+   "tags": "[dramatic]"
+  },
+  {
+   "id": "s02",
+   "speaker": "N",
+   "text": "जवाब, अंग्रेज़ों के अपने सरकारी काग़ज़ में लिखा है।",
+   "scene": {
+    "img": "/home/user/Jarvis-assistant-/videos/kohinoor-short/docs/treaty_lahore_1849_p653.jpg",
+    "crop": [
+     0.04,
+     0.29,
+     0.96,
+     0.66
+    ],
+    "w": 0.94,
+    "tone": "sepia",
+    "source": "Treaty of Lahore, 29 March 1849 — Papers relating to the Punjab (1849), p.653",
+    "source_by": "Parliamentary Papers · Internet Archive · Public domain",
+    "type": "realdoc",
+    "push": [
+     1.0,
+     1.15
+    ],
+    "yaw": [
+     -28,
+     -10
+    ],
+    "focus": [
+     0.5,
+     0.5
+    ]
+   },
+   "transition": "zoom_through",
+   "sfx": [
+    "page"
+   ]
+  },
+  {
+   "id": "s03",
+   "speaker": "N",
+   "text": "लाहौर। उन्तीस मार्च, अठारह सौ उनचास।",
+   "scene": {
+    "type": "black",
+    "t": "LAHORE · 29 MARCH 1849",
+    "size": 92,
+    "align": "center"
+   },
+   "transition": "flash",
+   "sfx": [
+    "type"
+   ]
+  },
+  {
+   "id": "s04",
+   "speaker": "N",
+   "text": "पंजाब का महाराजा है, दलीप सिंह।",
+   "scene": {
+    "type": "set",
+    "bg": "mughal_court",
+    "cam": "dolly_in",
+    "props": [
+     {
+      "name": "throne",
+      "x": 0.5,
+      "y": 0.72,
+      "h": 0.3,
+      "layer": "back"
+     }
+    ],
+    "chars": [
+     {
+      "who": "duleep",
+      "x": 0.5,
+      "h": 0.3,
+      "y": -0.06,
+      "expr": "worried",
+      "face": "right",
+      "label": "DULEEP SINGH"
+     }
+    ],
+    "caption": "LAHORE, 1849"
+   },
+   "transition": "whip_right"
+  },
+  {
+   "id": "s05",
+   "speaker": "N",
+   "text": "उम्र? सिर्फ़ दस साल।",
+   "scene": {
+    "type": "set",
+    "bg": "mughal_court",
+    "cam": "punch",
+    "zoom": 1.3,
+    "focus": [
+     0.5,
+     0.45
+    ],
+    "chars": [
+     {
+      "who": "duleep",
+      "x": 0.5,
+      "h": 0.62,
+      "close": true,
+      "expr": "sad",
+      "face": "right"
+     }
+    ],
+    "big": {
+     "t": "{n} SAAL",
+     "count": 10,
+     "y": 0.2,
+     "size": 150,
+     "at": 0.3,
+     "color": "#f1c232"
+    }
+   },
+   "sfx": [
+    "ding"
+   ]
+  },
+  {
+   "id": "s06",
+   "speaker": "N",
+   "text": "और सिख सेना, जंग हार चुकी है।",
+   "scene": {
+    "type": "map",
+    "view": [
+     66,
+     23,
+     80,
+     39.5
+    ],
+    "highlight": {},
+    "cam": "drift",
+    "labels": [
+     {
+      "lon": 72.6,
+      "lat": 30.6,
+      "t": "PUNJAB",
+      "size": 64,
+      "color": "#7a2a1e",
+      "delay": 0.2
+     }
+    ],
+    "pins": [
+     {
+      "lon": 74.35,
+      "lat": 31.55,
+      "label": "LAHORE",
+      "delay": 0.3
+     },
+     {
+      "lon": 74.08,
+      "lat": 32.57,
+      "label": "GUJRAT · 1849",
+      "delay": 1.0
+     }
+    ],
+    "stickers": [
+     {
+      "name": "cannon",
+      "x": 0.3,
+      "y": 0.3,
+      "h": 0.1,
+      "anim": "pop",
+      "at": 0.9
+     }
+    ],
+    "source": "Second Anglo-Sikh War, 1848–49",
+    "source_by": "Encyclopaedia Britannica"
+   },
+   "transition": "zoom_through",
+   "sfx": [
+    "boom"
+   ]
+  },
+  {
+   "id": "s07",
+   "speaker": "N",
+   "text": "इसलिए उसका दरबार, अंग्रेज़ों की शर्तें मान लेता है।",
+   "scene": {
+    "type": "set",
+    "bg": "mughal_court",
+    "cam": "truck_left",
+    "props": [
+     {
+      "name": "throne",
+      "x": 0.5,
+      "y": 0.62,
+      "h": 0.24,
+      "layer": "back"
+     },
+     {
+      "name": "charter",
+      "x": 0.5,
+      "y": 0.38,
+      "h": 0.16,
+      "anim": "drop",
+      "delay": 0.3,
+      "label": "SHARTEIN"
+     }
+    ],
+    "chars": [
+     {
+      "who": "duleep",
+      "x": 0.5,
+      "h": 0.24,
+      "y": -0.16,
+      "expr": "sad",
+      "face": "right"
+     },
+     {
+      "who": "minister",
+      "x": 0.2,
+      "h": 0.44,
+      "expr": "worried",
+      "face": "right",
+      "pose": "bow"
+     },
+     {
+      "who": "minister2",
+      "x": 0.8,
+      "h": 0.44,
+      "expr": "sad",
+      "face": "left",
+      "pose": "head"
+     }
+    ],
+    "names": [
+     {
+      "t": "Council of Regency",
+      "x": 0.06,
+      "y": 0.12,
+      "at": 0.8,
+      "bar": "#c0322b"
+     }
+    ]
+   },
+   "transition": "whip_left",
+   "sfx": [
+    "stamp"
+   ]
+  },
+  {
+   "id": "s08",
+   "speaker": "N",
+   "text": "पहली शर्त: पंजाब पर हर दावा ख़त्म।",
+   "scene": {
+    "img": "/home/user/Jarvis-assistant-/videos/kohinoor-short/docs/treaty_lahore_1849_p653.jpg",
+    "crop": [
+     0.04,
+     0.47,
+     0.96,
+     0.63
+    ],
+    "w": 1.25,
+    "tone": "sepia",
+    "source": "Treaty of Lahore, 29 March 1849 — Papers relating to the Punjab (1849), p.653",
+    "source_by": "Parliamentary Papers · Internet Archive · Public domain",
+    "type": "realdoc",
+    "push": [
+     1.0,
+     1.12
+    ],
+    "yaw": [
+     -8,
+     -2
+    ],
+    "focus": [
+     0.5,
+     0.16
+    ],
+    "x": 0.5,
+    "highlights": [
+     {
+      "rect": [
+       0.14,
+       0.064,
+       0.99,
+       0.124
+      ],
+      "at": 0.4,
+      "time": 0.6
+     },
+     {
+      "rect": [
+       0.01,
+       0.164,
+       0.99,
+       0.224
+      ],
+      "at": 0.9,
+      "time": 0.6
+     },
+     {
+      "rect": [
+       0.01,
+       0.25,
+       0.42,
+       0.31
+      ],
+      "at": 1.4,
+      "time": 0.4
+     }
+    ]
+   },
+   "transition": "push_left",
+   "sfx": [
+    "page"
+   ]
+  },
+  {
+   "id": "s09",
+   "speaker": "N",
+   "text": "और तीसरी शर्त, बस एक पत्थर के लिए।",
+   "scene": {
+    "img": "/home/user/Jarvis-assistant-/videos/kohinoor-short/docs/treaty_lahore_1849_p653.jpg",
+    "crop": [
+     0.04,
+     0.47,
+     0.96,
+     0.63
+    ],
+    "w": 1.25,
+    "tone": "sepia",
+    "source": "Treaty of Lahore, 29 March 1849 — Papers relating to the Punjab (1849), p.653",
+    "source_by": "Parliamentary Papers · Internet Archive · Public domain",
+    "type": "realdoc",
+    "push": [
+     1.05,
+     1.18
+    ],
+    "yaw": [
+     -4,
+     -1
+    ],
+    "focus": [
+     0.45,
+     0.72
+    ],
+    "x": 0.56,
+    "highlights": [
+     {
+      "rect": [
+       0.14,
+       0.689,
+       0.99,
+       0.749
+      ],
+      "at": 0.6,
+      "time": 0.7
+     }
+    ]
+   },
+   "transition": "cut"
+  },
+  {
+   "id": "s10",
+   "speaker": "N",
+   "text": "कोहिनूर… इंग्लैंड की रानी को सौंपा जाएगा।",
+   "scene": {
+    "img": "/home/user/Jarvis-assistant-/videos/kohinoor-short/docs/treaty_lahore_1849_p653.jpg",
+    "crop": [
+     0.04,
+     0.47,
+     0.96,
+     0.63
+    ],
+    "w": 1.25,
+    "tone": "sepia",
+    "source": "Treaty of Lahore, 29 March 1849 — Papers relating to the Punjab (1849), p.653",
+    "source_by": "Parliamentary Papers · Internet Archive · Public domain",
+    "type": "realdoc",
+    "push": [
+     1.18,
+     1.3
+    ],
+    "yaw": [
+     -1,
+     1
+    ],
+    "focus": [
+     0.5,
+     0.84
+    ],
+    "x": 0.5,
+    "highlights": [
+     {
+      "rect": [
+       0.14,
+       0.689,
+       0.99,
+       0.749
+      ],
+      "at": 0,
+      "time": 0.01
+     },
+     {
+      "rect": [
+       0.57,
+       0.776,
+       0.99,
+       0.836
+      ],
+      "at": 0.3,
+      "time": 0.6,
+      "color": "#ff9a8a"
+     },
+     {
+      "rect": [
+       0.01,
+       0.858,
+       0.43,
+       0.918
+      ],
+      "at": 0.9,
+      "time": 0.6,
+      "color": "#ff9a8a"
+     }
+    ],
+    "big": {
+     "t": "SURRENDERED",
+     "y": 0.16,
+     "size": 110,
+     "at": 0.5,
+     "color": "#ff5a4a"
+    }
+   },
+   "transition": "cut",
+   "sfx": [
+    "stamp"
+   ]
+  },
+  {
+   "id": "s11",
+   "speaker": "N",
+   "text": "यानी तोहफ़ा नहीं। जंग हारने के बाद, शर्त लिखकर लिया गया।",
+   "scene": {
+    "type": "black",
+    "t": "TOHFA NAHI. SHART.",
+    "size": 110,
+    "align": "center"
+   },
+   "transition": "flash",
+   "sfx": [
+    "drum"
+   ]
+  },
+  {
+   "id": "s12",
+   "speaker": "N",
+   "text": "और डलहौज़ी ने ख़ुद लिखा: समर्पण की निशानी… जीत की यादगार।",
+   "scene": {
+    "img": "/home/user/Jarvis-assistant-/videos/kohinoor-short/docs/dalhousie_dispatch_1849_p665.jpg",
+    "crop": [
+     0.04,
+     0.36,
+     0.96,
+     0.52
+    ],
+    "w": 0.96,
+    "tone": "sepia",
+    "source": "Dalhousie's dispatch, 1849 — Papers relating to the Punjab (1849), p.665",
+    "source_by": "Parliamentary Papers · Internet Archive · Public domain",
+    "type": "realdoc",
+    "push": [
+     1.1,
+     1.35
+    ],
+    "yaw": [
+     14,
+     4
+    ],
+    "focus": [
+     0.5,
+     0.5
+    ],
+    "highlights": [
+     {
+      "rect": [
+       0.01,
+       0.262,
+       0.3,
+       0.312
+      ],
+      "at": 0.9,
+      "time": 0.5
+     },
+     {
+      "rect": [
+       0.73,
+       0.54,
+       0.99,
+       0.585
+      ],
+      "at": 2.0,
+      "time": 0.4
+     },
+     {
+      "rect": [
+       0.01,
+       0.633,
+       0.25,
+       0.678
+      ],
+      "at": 2.4,
+      "time": 0.4
+     }
+    ]
+   },
+   "transition": "zoom_through",
+   "sfx": [
+    "page"
+   ]
+  },
+  {
+   "id": "s13",
+   "speaker": "N",
+   "text": "अठारह सौ पचास में, जहाज़ से ब्रिटेन, रानी विक्टोरिया के पास।",
+   "scene": {
+    "type": "map",
+    "view": [
+     -22,
+     -40,
+     88,
+     60
+    ],
+    "highlight": {
+     "GBR": "#c0322b",
+     "IND": "#e9c46a",
+     "PAK": "#e9c46a"
+    },
+    "cam": "drift",
+    "routes": [
+     {
+      "from": [
+       72.8,
+       18.9
+      ],
+      "via": [
+       [
+        58,
+        12
+       ],
+       [
+        45,
+        -10
+       ],
+       [
+        18,
+        -36
+       ],
+       [
+        -12,
+        0
+       ],
+       [
+        -12,
+        40
+       ]
+      ],
+      "to": [
+       -1.1,
+       50.8
+      ],
+      "bend": 0.08,
+      "delay": 0.3,
+      "mover": "ship"
+     }
+    ],
+    "pins": [
+     {
+      "lon": 72.8,
+      "lat": 18.9,
+      "label": "BOMBAY",
+      "delay": 0.2
+     },
+     {
+      "lon": -1.1,
+      "lat": 50.8,
+      "label": "3 JULY 1850",
+      "delay": 3.0
+     }
+    ],
+    "source": "Koh-i-Noor: HMS Medea, 1850",
+    "source_by": "GIA · World History Encyclopedia"
+   },
+   "transition": "whip_up",
+   "sfx": [
+    "whoosh"
+   ]
+  },
+  {
+   "id": "s14",
+   "speaker": "N",
+   "text": "फिर इसे दोबारा कटवाया गया, करीब बयालीस प्रतिशत वज़न घट गया।",
+   "scene": {
+    "type": "realdoc",
+    "img": "/home/user/Jarvis-assistant-/videos/kohinoor-short/docs/kohinoor_original_setting_1851.jpg",
+    "crop": [
+     0.04,
+     0,
+     0.96,
+     0.9
+    ],
+    "w": 1.2,
+    "tone": "sepia",
+    "push": [
+     1.0,
+     1.3
+    ],
+    "yaw": [
+     -10,
+     -3
+    ],
+    "focus": [
+     0.5,
+     0.3
+    ],
+    "curl": false,
+    "big": {
+     "t": "186 se 105.6 CT",
+     "y": 0.22,
+     "size": 104,
+     "at": 1.0,
+     "color": "#f1c232"
+    },
+    "source": "The Koh-i-Noor in its original setting (engraving, 1851)",
+    "source_by": "Wikimedia Commons · Public domain · recut 1852"
+   },
+   "transition": "push_left",
+   "sfx": [
+    "cash"
+   ]
+  },
+  {
+   "id": "s15",
+   "speaker": "N",
+   "text": "आज भी ये, लंदन के टावर में, एक ताज में जड़ा है।",
+   "scene": {
+    "type": "set",
+    "bg": "fort",
+    "cam": "dolly_in",
+    "fg": [],
+    "props": [
+     {
+      "name": "crown",
+      "x": 0.5,
+      "y": 0.42,
+      "h": 0.24,
+      "anim": "drop"
+     },
+     {
+      "name": "diamond",
+      "x": 0.5,
+      "y": 0.42,
+      "h": 0.07,
+      "anim": "pop",
+      "delay": 0.8
+     }
+    ],
+    "caption": "TOWER OF LONDON · AAJ",
+    "names": [
+     {
+      "t": "Tohfa ya shart? Comment karo",
+      "x": 0.12,
+      "y": 0.18,
+      "at": 1.4,
+      "bar": "#f1c232"
+     }
+    ],
+    "emph": [
+     {
+      "x": 0.5,
+      "y": 0.5,
+      "r": 0.1,
+      "at": 1.0
+     }
+    ]
+   },
+   "transition": "whip_right",
+   "sfx": [
+    "ding"
+   ]
+  },
+  {
+   "id": "s16",
+   "speaker": "N",
+   "text": "उस दस साल के महाराजा का क्या हुआ? अगला पार्ट — सब्सक्राइब करें।",
+   "scene": {
+    "type": "realdoc",
+    "img": "/home/user/Jarvis-assistant-/videos/kohinoor-short/docs/duleep_singh_1854.jpg",
+    "crop": [
+     0,
+     0,
+     1,
+     0.62
+    ],
+    "w": 0.62,
+    "tone": "color",
+    "push": [
+     1.0,
+     1.2
+    ],
+    "yaw": [
+     -14,
+     -4
+    ],
+    "focus": [
+     0.5,
+     0.3
+    ],
+    "curl": false,
+    "source": "F. X. Winterhalter, Maharaja Duleep Singh, c.1854",
+    "source_by": "Royal Collection · Wikimedia Commons · Public domain"
+   },
+   "transition": "zoom_through",
+   "sfx": [
+    "riser"
+   ],
+   "tags": "[softly]"
+  }
+ ],
+ "description": "Koh-i-Noor angrezon ko tohfe me mila tha ya chheena gaya tha? Jawab 1849 ki Treaty of Lahore ki teesri shart me hai — aur Lord Dalhousie ki apni report me.",
+ "tags": [
+  "Koh-i-Noor",
+  "Kohinoor",
+  "Duleep Singh",
+  "Treaty of Lahore 1849",
+  "Dalhousie",
+  "history in hindi",
+  "itihaas",
+  "shorts"
+ ],
+ "pinned_comment": "Aapke hisaab se Koh-i-Noor ko wapas Bharat aana chahiye? Comment me batao.",
+ "sources": [
+  {
+   "t": "Papers relating to the Punjab, 1847–1849 (Parliamentary Papers, May 1849), pp. 653, 665",
+   "url": "https://archive.org/details/papersrelatingto00grea"
+  },
+  {
+   "t": "Winterhalter, Maharaja Duleep Singh, c.1854 (Wikimedia Commons, PD)",
+   "url": "https://commons.wikimedia.org/wiki/File:Painting_of_Maharaja_Duleep_Singh_by_Franz_Xaver_Winterhalter,_circa_1854.jpg"
+  },
+  {
+   "t": "The Koh-i-noor in its original setting, 1851 (Wikimedia Commons, PD)",
+   "url": "https://commons.wikimedia.org/wiki/File:THE_KOH-I-NOOR,_OR_MOUNTAIN_OF_LIGHT.jpg"
+  },
+  {
+   "t": "Koh-i-Noor — World History Encyclopedia",
+   "url": "https://www.worldhistory.org/Koh-i-Noor/"
+  },
+  {
+   "t": "Famous Diamonds: Koh-i-Noor — GIA",
+   "url": "https://4cs.gia.edu/en-us/blog/famous-diamonds-kohinoor/"
+  },
+  {
+   "t": "Sikh Wars — Britannica",
+   "url": "https://www.britannica.com/event/Sikh-Wars"
+  }
+ ]
+}
