@@ -194,6 +194,8 @@ def main():
     proj = os.path.abspath(sys.argv[1])
     fps = int(sys.argv[sys.argv.index("--fps") + 1]) if "--fps" in sys.argv else 30
     story = load_json(os.path.join(proj, "story.json"))
+    import motion
+    motion.auto_transitions(story)
     timing = load_json(os.path.join(proj, "audio", "timing.json"))
     starts, total = beat_starts(story, timing, fps)
     n = int((total + 0.5) * SR)
@@ -211,8 +213,11 @@ def main():
         typ = sc.get("type", "set" if story.get("style", "toon") == "toon" else "chars")
         timed = [(nm, 0.0) for nm in names]
         if story.get("auto_sfx", True):
-            if (b.get("transition") or sc.get("transition")) == "whip":
+            trn = b.get("transition") or sc.get("transition") or ""
+            if trn.startswith("whip") or trn in ("zoom_through", "push_left", "push_right"):
                 timed.append(("whoosh", 0.0))
+            elif trn in ("blur", "iris"):
+                timed.append(("swoosh", 0.0))
             if typ == "black":
                 timed.append(("type", 0.05))
             if typ in ("memo", "newspaper"):

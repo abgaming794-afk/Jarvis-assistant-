@@ -1,0 +1,1229 @@
+{
+ "title": "East India Company Kaise Bani?",
+ "style": "toon",
+ "res": "360",
+ "music": "investigate",
+ "music_volume": 0.11,
+ "pause": 0.12,
+ "auto_transitions": true,
+ "voice": {
+  "engine": "edge",
+  "voice": "hi-IN-MadhurNeural",
+  "rate": "+6%",
+  "pitch": "-6Hz"
+ },
+ "speakers": {
+  "N": {},
+  "V1": {
+   "pitch": "-16Hz",
+   "rate": "-4%"
+  },
+  "V2": {
+   "pitch": "+8Hz",
+   "rate": "+12%"
+  },
+  "V3": {
+   "pitch": "+2Hz",
+   "rate": "+2%"
+  },
+  "Q": {
+   "voice": "hi-IN-SwaraNeural",
+   "pitch": "-6Hz",
+   "rate": "-6%"
+  }
+ },
+ "cast": {
+  "merchant1": {
+   "preset": "fat_merchant",
+   "hat": "wide_hat",
+   "hat_color": "#1f1d22"
+  },
+  "merchant2": {
+   "preset": "company_merchant"
+  },
+  "merchant3": {
+   "preset": "company_merchant",
+   "facial": "mustache",
+   "color": "#4a3a2e",
+   "hair_color": "#8a6a4a",
+   "hat": null
+  },
+  "queen": {
+   "preset": "queen_elizabeth"
+  },
+  "taxman": {
+   "preset": "company_merchant",
+   "color": "#2a3a2a"
+  }
+ },
+ "beats": [
+  {
+   "id": "s01",
+   "speaker": "N",
+   "text": "लंदन. सितंबर, पंद्रह सौ निन्यानवे.",
+   "chapter": "London, 1599",
+   "scene": {
+    "type": "set",
+    "bg": "company_hall",
+    "cam": "truck_left",
+    "window": {
+     "rect": [
+      0.04,
+      0.06,
+      0.88,
+      0.7
+     ],
+     "sign": "FOUNDERS HALL",
+     "sign_color": "#ffcf6b",
+     "street": [
+      "LIME STREET",
+      "LONDON"
+     ],
+     "mullions": [
+      0.33,
+      0.58
+     ],
+     "wall": "#2f5f6a"
+    },
+    "table": {
+     "y": 0.6,
+     "x0": 0.32,
+     "x1": 0.64,
+     "items": [
+      "cup",
+      "coin_bag",
+      "cup",
+      "cup"
+     ]
+    },
+    "fg": [],
+    "chars": []
+   }
+  },
+  {
+   "id": "s02",
+   "speaker": "N",
+   "text": "रात के अंधेरे में, कुछ व्यापारी एक हॉल में जमा थे.",
+   "scene": {
+    "type": "set",
+    "bg": "company_hall",
+    "cam": "dolly_in",
+    "window": {
+     "rect": [
+      0.04,
+      0.06,
+      0.88,
+      0.7
+     ],
+     "sign": "FOUNDERS HALL",
+     "sign_color": "#ffcf6b",
+     "street": [
+      "LIME STREET",
+      "LONDON"
+     ],
+     "mullions": [
+      0.33,
+      0.58
+     ],
+     "wall": "#2f5f6a"
+    },
+    "table": {
+     "y": 0.6,
+     "x0": 0.32,
+     "x1": 0.64,
+     "items": [
+      "cup",
+      "coin_bag",
+      "cup",
+      "cup"
+     ]
+    },
+    "fg": [],
+    "chars": [
+     {
+      "who": "merchant1",
+      "x": 0.27,
+      "h": 0.5,
+      "seated": true,
+      "face": "right",
+      "enter": "pop",
+      "delay": 0.3
+     },
+     {
+      "who": "merchant2",
+      "x": 0.68,
+      "h": 0.5,
+      "seated": true,
+      "face": "left",
+      "enter": "pop",
+      "delay": 1.0
+     },
+     {
+      "who": "merchant3",
+      "x": 0.77,
+      "h": 0.48,
+      "seated": true,
+      "face": "left",
+      "enter": "pop",
+      "delay": 1.6
+     }
+    ]
+   }
+  },
+  {
+   "id": "s03",
+   "speaker": "N",
+   "text": "और सबके चेहरे पर एक ही परेशानी थी.",
+   "scene": {
+    "type": "set",
+    "bg": "company_hall",
+    "cam": "truck_right",
+    "window": {
+     "rect": [
+      0.04,
+      0.06,
+      0.88,
+      0.7
+     ],
+     "sign": "FOUNDERS HALL",
+     "sign_color": "#ffcf6b",
+     "street": [
+      "LIME STREET",
+      "LONDON"
+     ],
+     "mullions": [
+      0.33,
+      0.58
+     ],
+     "wall": "#2f5f6a"
+    },
+    "table": {
+     "y": 0.6,
+     "x0": 0.32,
+     "x1": 0.64,
+     "items": [
+      "cup",
+      "coin_bag",
+      "cup",
+      "cup"
+     ]
+    },
+    "fg": [],
+    "chars": [
+     {
+      "who": "merchant1",
+      "x": 0.27,
+      "h": 0.5,
+      "seated": true,
+      "face": "right",
+      "expr": "worried"
+     },
+     {
+      "who": "merchant2",
+      "x": 0.68,
+      "h": 0.5,
+      "seated": true,
+      "face": "left",
+      "expr": "worried"
+     },
+     {
+      "who": "merchant3",
+      "x": 0.77,
+      "h": 0.48,
+      "seated": true,
+      "face": "left",
+      "expr": "sad"
+     }
+    ],
+    "names": [
+     {
+      "t": "LONDON KE VYAPARI",
+      "x": 0.5,
+      "y": 0.8,
+      "at": 0.5
+     }
+    ]
+   }
+  },
+  {
+   "id": "s04",
+   "speaker": "V1",
+   "text": "डचों ने काली मिर्च का दाम दुगुने से भी ज़्यादा कर दिया है!",
+   "scene": {
+    "type": "set",
+    "bg": "company_hall",
+    "cam": "dolly_in",
+    "table": {
+     "y": 0.66,
+     "x0": 0.2,
+     "x1": 0.8,
+     "items": [
+      "cup",
+      "coin_bag",
+      "cup",
+      "coin_bag",
+      "cup"
+     ]
+    },
+    "zoom": 1.15,
+    "focus": [
+     0.35,
+     0.5
+    ],
+    "chars": [
+     {
+      "who": "merchant1",
+      "x": 0.32,
+      "h": 0.62,
+      "seated": true,
+      "face": "right",
+      "expr": "angry",
+      "talk": true,
+      "gesture": [
+       "idle",
+       "fist",
+       "idle",
+       "point"
+      ]
+     },
+     {
+      "who": "merchant2",
+      "x": 0.68,
+      "h": 0.58,
+      "seated": true,
+      "face": "left",
+      "expr": "shocked"
+     }
+    ],
+    "emph": [
+     {
+      "x": 0.3,
+      "y": 0.3,
+      "r": 0.14,
+      "at": 0.4
+     }
+    ],
+    "swoosh": [
+     {
+      "x": 0.38,
+      "y": 0.42,
+      "r": 0.08,
+      "at": 0.6,
+      "color": "#e9b44c"
+     }
+    ],
+    "stickers": [
+     {
+      "name": "arrow_up",
+      "side": "top_right",
+      "anim": "pop",
+      "pulse": true,
+      "h": 0.16,
+      "label": "PEPPER"
+     }
+    ]
+   }
+  },
+  {
+   "id": "s05",
+   "speaker": "V2",
+   "text": "तो हम उनसे क्यों ख़रीदें? ख़ुद पूरब चलते हैं.",
+   "scene": {
+    "type": "set",
+    "bg": "company_hall",
+    "cam": "orbit_right",
+    "table": {
+     "y": 0.66,
+     "x0": 0.2,
+     "x1": 0.8,
+     "items": [
+      "cup",
+      "coin_bag",
+      "cup",
+      "coin_bag",
+      "cup"
+     ]
+    },
+    "chars": [
+     {
+      "who": "merchant2",
+      "x": 0.6,
+      "h": 0.6,
+      "seated": true,
+      "face": "left",
+      "expr": "happy",
+      "talk": true,
+      "gesture": [
+       "idle",
+       "point",
+       "point",
+       "idle"
+      ]
+     },
+     {
+      "who": "merchant1",
+      "x": 0.14,
+      "h": 1.25,
+      "y": 0.42,
+      "back": true,
+      "face": "right"
+     }
+    ]
+   }
+  },
+  {
+   "id": "s06",
+   "speaker": "V3",
+   "text": "जहाज़? नाविक? इतना पैसा कहाँ से आएगा?",
+   "scene": {
+    "type": "set",
+    "bg": "company_hall",
+    "cam": "dolly_in",
+    "table": {
+     "y": 0.66,
+     "x0": 0.2,
+     "x1": 0.8,
+     "items": [
+      "cup",
+      "coin_bag",
+      "cup",
+      "coin_bag",
+      "cup"
+     ]
+    },
+    "zoom": 1.2,
+    "focus": [
+     0.6,
+     0.45
+    ],
+    "chars": [
+     {
+      "who": "merchant3",
+      "x": 0.6,
+      "h": 0.62,
+      "seated": true,
+      "face": "left",
+      "expr": "worried",
+      "talk": true,
+      "pose": "shrug"
+     }
+    ],
+    "bubble": {
+     "from": [
+      0.55,
+      0.32
+     ],
+     "x": 0.72,
+     "y": 0.17,
+     "prop": "ship",
+     "at": 0.3
+    }
+   }
+  },
+  {
+   "id": "s07",
+   "speaker": "N",
+   "text": "जवाब सीधा था.",
+   "scene": {
+    "type": "black",
+    "t": "जवाब सीधा था."
+   }
+  },
+  {
+   "id": "s08",
+   "speaker": "N",
+   "text": "सब मिलकर पैसा लगाएँगे.",
+   "scene": {
+    "type": "topdown",
+    "cups": [
+     [
+      0.18,
+      0.3
+     ],
+     [
+      0.8,
+      0.27
+     ],
+     [
+      0.82,
+      0.78
+     ]
+    ],
+    "people": [
+     {
+      "x": 0,
+      "y": 0.35,
+      "color": "#2f2f3a",
+      "hair": "#5a4030"
+     },
+     {
+      "x": 1,
+      "y": 0.2,
+      "color": "#3a2a4a",
+      "hair": "#8a6a4a"
+     },
+     {
+      "x": 1,
+      "y": 0.85,
+      "color": "#2a3a2a",
+      "hair": "#3a2418"
+     }
+    ],
+    "paper": {
+     "x": 0.48,
+     "y": 0.55,
+     "w": 0.2,
+     "draw": "ship",
+     "at": 0.1,
+     "sleeve": "#2f2f3a",
+     "note": "EAST!"
+    }
+   }
+  },
+  {
+   "id": "s09",
+   "speaker": "N",
+   "text": "किसी ने सौ पाउंड रखे. किसी ने दो सौ. किसी ने उससे भी ज़्यादा.",
+   "scene": {
+    "type": "topdown",
+    "paper": {
+     "x": 0.2,
+     "y": 0.82,
+     "w": 0.16,
+     "draw": "ship",
+     "at": -9,
+     "hand": false,
+     "rot": 12
+    },
+    "hands": [
+     {
+      "from": "left",
+      "to": [
+       0.3,
+       0.45
+      ],
+      "sleeve": "#2f2f3a",
+      "item": "coin_bag",
+      "label": "£100",
+      "at": 0.1,
+      "release": 1.4
+     },
+     {
+      "from": "top",
+      "to": [
+       0.55,
+       0.3
+      ],
+      "sleeve": "#3a2a4a",
+      "item": "coin_bag",
+      "label": "£200",
+      "at": 1.3,
+      "release": 2.6
+     },
+     {
+      "from": "right",
+      "to": [
+       0.7,
+       0.58
+      ],
+      "sleeve": "#2a3a2a",
+      "item": "coin_bag",
+      "label": "£500",
+      "at": 2.5,
+      "release": 3.8
+     }
+    ]
+   }
+  },
+  {
+   "id": "s10",
+   "speaker": "N",
+   "text": "और देखते ही देखते, करीब तीस हज़ार पाउंड जमा हो गए.",
+   "scene": {
+    "type": "topdown",
+    "paper": {
+     "x": 0.2,
+     "y": 0.82,
+     "w": 0.16,
+     "draw": "ship",
+     "at": -9,
+     "hand": false,
+     "rot": 12
+    },
+    "hands": [
+     {
+      "from": "left",
+      "to": [
+       0.3,
+       0.45
+      ],
+      "item": "coin_bag",
+      "at": -2,
+      "release": -1
+     },
+     {
+      "from": "top",
+      "to": [
+       0.55,
+       0.3
+      ],
+      "item": "coin_bag",
+      "at": -2,
+      "release": -1
+     },
+     {
+      "from": "right",
+      "to": [
+       0.7,
+       0.58
+      ],
+      "item": "coin_bag",
+      "at": -2,
+      "release": -1
+     }
+    ],
+    "merge": {
+     "at": 0.5,
+     "to": [
+      0.5,
+      0.52
+     ],
+     "label": "≈ £30,000"
+    }
+   }
+  },
+  {
+   "id": "s11",
+   "speaker": "N",
+   "text": "लेकिन ये पैसा जा कहाँ रहा था?",
+   "scene": {
+    "type": "split",
+    "left": {
+     "type": "set",
+     "bg": "company_hall",
+     "cam": "dolly_in",
+     "props": [
+      {
+       "name": "coin_pile_top",
+       "x": 0.5,
+       "y": 0.7,
+       "h": 0.35,
+       "anim": "pop"
+      }
+     ],
+     "fg": []
+    },
+    "right": {
+     "type": "set",
+     "bg": "sea",
+     "cam": "truck_right",
+     "fg": [],
+     "stickers": [
+      {
+       "name": "question",
+       "side": "top",
+       "anim": "pop",
+       "h": 0.2,
+       "at": 0.6
+      }
+     ]
+    }
+   }
+  },
+  {
+   "id": "s12",
+   "speaker": "N",
+   "text": "पूरब की तरफ़. मसालों के देशों की ओर. और आगे चलकर... भारत की ओर.",
+   "scene": {
+    "type": "map",
+    "view": [
+     -20,
+     -40,
+     120,
+     60
+    ],
+    "highlight": {
+     "GBR": "#c0322b",
+     "IDN": "#e8a33a",
+     "IND": "#d8402f"
+    },
+    "routes": [
+     {
+      "from": [
+       -1,
+       50
+      ],
+      "via": [
+       [
+        -20,
+        10
+       ],
+       [
+        18,
+        -36
+       ],
+       [
+        60,
+        -12
+       ]
+      ],
+      "to": [
+       106,
+       -6
+      ],
+      "bend": 0.08,
+      "delay": 0.3,
+      "mover": "ship"
+     },
+     {
+      "from": [
+       60,
+       -12
+      ],
+      "to": [
+       72.8,
+       21.2
+      ],
+      "bend": 0.15,
+      "delay": 3.2,
+      "time": 1.4,
+      "color": "#ffd166"
+     }
+    ],
+    "pins": [
+     {
+      "lon": -0.1,
+      "lat": 51.5,
+      "label": "LONDON",
+      "delay": 0.1
+     },
+     {
+      "lon": 106,
+      "lat": -6,
+      "label": "MASALA DWEEP",
+      "delay": 2.4
+     },
+     {
+      "lon": 77,
+      "lat": 22,
+      "label": "BHARAT",
+      "delay": 3.8
+     }
+    ]
+   }
+  },
+  {
+   "id": "s13",
+   "speaker": "N",
+   "text": "पर एक दिक्कत थी.",
+   "scene": {
+    "type": "black",
+    "t": "पर एक दिक्कत थी..."
+   }
+  },
+  {
+   "id": "s14",
+   "speaker": "N",
+   "text": "महारानी की इजाज़त के बिना, ये सफ़र मुमकिन नहीं था.",
+   "scene": {
+    "type": "set",
+    "bg": "palace_room",
+    "cam": "dolly_in",
+    "chars": [
+     {
+      "who": "queen",
+      "x": 0.5,
+      "h": 0.42,
+      "expr": "smug",
+      "y": -0.12
+     },
+     {
+      "who": "merchant1",
+      "x": 0.2,
+      "h": 0.5,
+      "expr": "worried",
+      "face": "right"
+     },
+     {
+      "who": "merchant2",
+      "x": 0.8,
+      "h": 0.5,
+      "expr": "worried",
+      "face": "left"
+     }
+    ],
+    "stickers": [
+     {
+      "name": "warning",
+      "side": "top_right",
+      "anim": "pop",
+      "pulse": true,
+      "h": 0.15,
+      "at": 0.8
+     }
+    ]
+   }
+  },
+  {
+   "id": "s15",
+   "speaker": "N",
+   "text": "महीने बीतते गए.",
+   "scene": {
+    "type": "set",
+    "bg": "study_night",
+    "cam": "dolly_in",
+    "month_cal": {
+     "x": 0.08,
+     "y": 0.12,
+     "w": 0.17,
+     "title": "1600",
+     "icon": "ship",
+     "at": 0.1,
+     "time": 2.2
+    },
+    "chars": [
+     {
+      "who": "merchant3",
+      "x": 0.62,
+      "h": 0.45,
+      "expr": "sad",
+      "pose": "chin",
+      "face": "left"
+     }
+    ]
+   }
+  },
+  {
+   "id": "s16",
+   "speaker": "V1",
+   "text": "हमें शाही चार्टर चाहिए. वरना सब ख़त्म.",
+   "scene": {
+    "type": "set",
+    "bg": "company_hall",
+    "cam": "dolly_in",
+    "board": {
+     "text": "HUMEIN [SHAHI CHARTER] CHAHIYE|VARNA SAB KHATAM",
+     "rect": [
+      0.02,
+      0.03,
+      0.62,
+      0.2
+     ],
+     "at": 0.2,
+     "time": 2.4
+    },
+    "chars": [
+     {
+      "who": "merchant1",
+      "x": 0.5,
+      "h": 0.5,
+      "y": -0.1,
+      "expr": "shout",
+      "talk": true,
+      "gesture": [
+       "shrug",
+       "fist",
+       "shrug",
+       "point"
+      ]
+     },
+     {
+      "who": "merchant2",
+      "x": 0.2,
+      "h": 1.0,
+      "y": 0.5,
+      "back": true
+     },
+     {
+      "who": "merchant3",
+      "x": 0.4,
+      "h": 1.0,
+      "y": 0.55,
+      "back": true
+     },
+     {
+      "who": "taxman",
+      "x": 0.66,
+      "h": 1.0,
+      "y": 0.52,
+      "back": true
+     },
+     {
+      "who": "merchant2",
+      "x": 0.86,
+      "h": 1.0,
+      "y": 0.5,
+      "back": true
+     }
+    ]
+   }
+  },
+  {
+   "id": "s17",
+   "speaker": "N",
+   "text": "आख़िरकार, इकत्तीस दिसंबर सोलह सौ को, बुलावा आया.",
+   "scene": {
+    "type": "set",
+    "bg": "palace_room",
+    "cam": "truck_right",
+    "caption": "31 DEC 1600",
+    "chars": [
+     {
+      "who": "queen",
+      "x": 0.62,
+      "h": 0.48,
+      "expr": "proud",
+      "face": "left"
+     },
+     {
+      "who": "merchant1",
+      "x": 0.02,
+      "to": 0.3,
+      "h": 0.46,
+      "face": "right",
+      "walk_time": 2.2
+     },
+     {
+      "who": "merchant2",
+      "x": -0.1,
+      "to": 0.18,
+      "h": 0.46,
+      "face": "right",
+      "walk_time": 2.4
+     }
+    ]
+   }
+  },
+  {
+   "id": "s18",
+   "speaker": "Q",
+   "text": "पंद्रह साल तक, पूरब का सारा व्यापार... सिर्फ़ तुम्हारा.",
+   "scene": {
+    "type": "set",
+    "bg": "palace_room",
+    "cam": "dolly_in",
+    "zoom": 1.25,
+    "focus": [
+     0.55,
+     0.45
+    ],
+    "chars": [
+     {
+      "who": "queen",
+      "x": 0.55,
+      "h": 0.62,
+      "expr": "smug",
+      "pose": "hold",
+      "hold": "charter",
+      "hold_size": 0.2,
+      "talk": true,
+      "face": "left"
+     }
+    ],
+    "names": [
+     {
+      "t": "QUEEN ELIZABETH I",
+      "x": 0.06,
+      "y": 0.8,
+      "at": 0.4,
+      "bar": "#c9a227"
+     }
+    ]
+   }
+  },
+  {
+   "id": "s19",
+   "speaker": "V2",
+   "text": "सिर्फ़ हमारा?",
+   "scene": {
+    "type": "set",
+    "bg": "palace_room",
+    "cam": "orbit_left",
+    "chars": [
+     {
+      "who": "merchant2",
+      "x": 0.6,
+      "h": 0.55,
+      "expr": "shocked",
+      "talk": true,
+      "face": "left",
+      "jump": true
+     },
+     {
+      "who": "queen",
+      "x": 0.14,
+      "h": 1.2,
+      "y": 0.4,
+      "back": true
+     }
+    ],
+    "emph": [
+     {
+      "x": 0.6,
+      "y": 0.3,
+      "r": 0.12,
+      "at": 0.1
+     }
+    ]
+   }
+  },
+  {
+   "id": "s20",
+   "speaker": "Q",
+   "text": "सिर्फ़ तुम्हारा.",
+   "scene": {
+    "type": "set",
+    "bg": "palace_room",
+    "cam": "push_fast",
+    "zoom": 1.25,
+    "focus": [
+     0.55,
+     0.45
+    ],
+    "chars": [
+     {
+      "who": "queen",
+      "x": 0.55,
+      "h": 0.62,
+      "expr": "smug",
+      "talk": true,
+      "face": "left"
+     }
+    ],
+    "popup": {
+     "name": "charter",
+     "x": 0.78,
+     "at": 0.4,
+     "h": 0.42,
+     "rot": -8
+    }
+   }
+  },
+  {
+   "id": "s21",
+   "speaker": "N",
+   "text": "उस रात, ईस्ट इंडिया कंपनी का जन्म हुआ.",
+   "scene": {
+    "type": "memo",
+    "bg": "desk_top",
+    "title": "EAST INDIA COMPANY",
+    "lines": [
+     "The Governor and Company of",
+     "Merchants of London trading",
+     "into the East Indies",
+     "Royal Charter: 31 December 1600",
+     "Monopoly of trade: 15 years"
+    ],
+    "highlight": 0,
+    "stamp": "1600"
+   }
+  },
+  {
+   "id": "s22",
+   "speaker": "N",
+   "text": "फ़रवरी सोलह सौ एक. कंपनी के चार बड़े जहाज़ लंदन से निकले.",
+   "scene": {
+    "type": "set",
+    "bg": "port",
+    "cam": "truck_right",
+    "caption": "FEB 1601",
+    "fg": [
+     {
+      "kind": "crates",
+      "x": 0.04
+     }
+    ],
+    "props": [
+     {
+      "name": "ship",
+      "x": 0.9,
+      "y": 0.55,
+      "h": 0.3,
+      "anim": "slide"
+     },
+     {
+      "name": "flag",
+      "x": 0.1,
+      "y": 0.5,
+      "h": 0.2,
+      "color": "#c0322b"
+     }
+    ]
+   }
+  },
+  {
+   "id": "s23",
+   "speaker": "N",
+   "text": "दो साल बाद, वो लौटे. काली मिर्च से लदे हुए.",
+   "scene": {
+    "type": "set",
+    "bg": "port",
+    "cam": "dolly_in",
+    "caption": "1603",
+    "props": [
+     {
+      "name": "spice_sack",
+      "x": 0.3,
+      "y": 0.78,
+      "h": 0.17,
+      "anim": "drop"
+     },
+     {
+      "name": "spice_sack",
+      "x": 0.42,
+      "y": 0.8,
+      "h": 0.17,
+      "anim": "drop",
+      "color": "#b3202a"
+     },
+     {
+      "name": "spice_sack",
+      "x": 0.56,
+      "y": 0.79,
+      "h": 0.17,
+      "anim": "drop"
+     },
+     {
+      "name": "spice_sack",
+      "x": 0.7,
+      "y": 0.8,
+      "h": 0.17,
+      "anim": "drop",
+      "color": "#d9822b"
+     }
+    ]
+   }
+  },
+  {
+   "id": "s24",
+   "speaker": "V3",
+   "text": "मुनाफ़ा!",
+   "scene": {
+    "type": "set",
+    "bg": "port",
+    "cam": "punch",
+    "chars": [
+     {
+      "who": "merchant3",
+      "x": 0.5,
+      "h": 0.55,
+      "expr": "laugh",
+      "pose": "cheer",
+      "talk": true,
+      "jump": true
+     }
+    ],
+    "emph": [
+     {
+      "x": 0.5,
+      "y": 0.32,
+      "r": 0.15,
+      "at": 0.05
+     }
+    ],
+    "stickers": [
+     {
+      "name": "coin",
+      "anim": "rain",
+      "h": 0.1,
+      "at": 0.1
+     }
+    ]
+   }
+  },
+  {
+   "id": "s25",
+   "speaker": "N",
+   "text": "व्यापारी ख़ुश थे. उन्हें लगा, ये बस मसालों का धंधा है.",
+   "scene": {
+    "type": "set",
+    "bg": "company_hall",
+    "cam": "truck_left",
+    "table": {
+     "y": 0.66,
+     "x0": 0.2,
+     "x1": 0.8,
+     "items": [
+      "cup",
+      "coin_bag",
+      "cup",
+      "coin_bag",
+      "cup"
+     ]
+    },
+    "chars": [
+     {
+      "who": "merchant1",
+      "x": 0.3,
+      "h": 0.58,
+      "seated": true,
+      "expr": "laugh",
+      "face": "right",
+      "gesture": [
+       "cheer",
+       "idle"
+      ]
+     },
+     {
+      "who": "merchant2",
+      "x": 0.7,
+      "h": 0.58,
+      "seated": true,
+      "expr": "happy",
+      "face": "left",
+      "gesture": [
+       "idle",
+       "cheer"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "s26",
+   "speaker": "N",
+   "text": "किसे पता था...",
+   "scene": {
+    "type": "black",
+    "t": "किसे पता था..."
+   }
+  },
+  {
+   "id": "s27",
+   "speaker": "N",
+   "text": "कि ये कुछ व्यापारी, एक दिन पूरा भारत ख़रीद लेंगे.",
+   "scene": {
+    "type": "map",
+    "view": [
+     62,
+     4,
+     98,
+     36
+    ],
+    "highlight": {
+     "IND": "#d8402f"
+    },
+    "cam": "dolly_in",
+    "labels": [
+     {
+      "lon": 79,
+      "lat": 21,
+      "t": "BHARAT",
+      "size": 70,
+      "color": "#ffffff",
+      "delay": 0.4
+     }
+    ],
+    "stickers": [
+     {
+      "name": "eic_flag",
+      "side": "top_left",
+      "anim": "slide",
+      "h": 0.15,
+      "at": 1.0
+     }
+    ]
+   }
+  }
+ ]
+}

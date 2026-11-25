@@ -71,6 +71,8 @@ def render_beat(job):
 def main():
     proj = os.path.abspath(sys.argv[1])
     story = load_json(os.path.join(proj, "story.json"))
+    import motion
+    motion.auto_transitions(story)
     res = arg("--res", str(story.get("res", "1080")))
     W, H = RES[res]
     fps = int(arg("--fps", story.get("fps", 30)))

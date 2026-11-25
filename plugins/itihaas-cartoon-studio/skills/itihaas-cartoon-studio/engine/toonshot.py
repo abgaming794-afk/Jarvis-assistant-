@@ -13,7 +13,7 @@ import math, random, re, json, os, functools
 import numpy as np
 from PIL import Image, ImageDraw, ImageFilter, ImageFont, ImageOps
 from common import hexc, shade, font, serif, clamp, ease_out, ease_in_out, back_out, lerp, FONTS
-import toon, props, rooms, motion
+import toon, props, rooms, motion, pbfx
 from common import SKILL
 from scenes import MapProj, _quad, _paste_center, _paste, _mirror, _world, _indian
 
@@ -167,6 +167,9 @@ class ToonShot:
     def base(self):
         if self._base is None:
             sc = self.sc
+            if self.type == "topdown":
+                self._base = pbfx.topdown_base(self.CW, self.CH, sc)
+                return self._base
             if self.type == "map":
                 hl = sc.get("highlight", {})
                 if isinstance(hl, list):
@@ -185,8 +188,8 @@ class ToonShot:
 
     # ---------------- camera
     def camera(self, t):
-        default = {"set": "auto", "black": "static", "map": "dolly_in", "memo": "dolly_in", "chart": "static",
-                   "newspaper": "dolly_in"}.get(self.type, "dolly_in")
+        default = {"set": "auto", "black": "static", "map": "dolly_in", "memo": "dolly_in", "chart": "drift",
+                   "newspaper": "dolly_in", "topdown": "table_roll"}.get(self.type, "dolly_in")
         return motion.camera(self.sc.get("cam", default), t, self.dur, self.b.get("id", ""))
 
     def _spec(self, who):
@@ -225,9 +228,9 @@ class ToonShot:
             face = ch.get("face")
             if face is None:
                 face = "right" if (ch.get("to", x) >= x and x < .5) else "left"
-            spr = toon.make(spec, expr, pose, h, mouth, blink, 1, walk)
+            spr = toon.make(spec, expr, pose, h, mouth, blink, 1, walk, ch.get("back", False))
             if ch.get("hold"):
-                hx, hy = toon.hand_point(pose, h)
+                hx, hy = toon.hand_point(pose, h, spec)
                 ps = props.make(ch["hold"], int(h * ch.get("hold_size", .16)), ch.get("hold_color"))
                 spr = spr.copy()
                 spr.alpha_composite(ps, (int(clamp(hx - ps.width / 2, 0, spr.width - ps.width)),
@@ -240,7 +243,9 @@ class ToonShot:
                 bottom = top + h
             else:
                 bottom = floor_y + self.CH * ch.get("y", 0.0)
-            bob = math.sin(t * 2 * math.pi / 2.6 + i * 1.9) * self.CH * .0035
+            bob = math.sin(t * 2 * math.pi / 2.6 + i * 1.9) * self.CH * .0015
+            breath = 1 + .012 * math.sin(t * 2 * math.pi / 2.8 + i * 1.3)
+            spr = spr.resize((spr.width, max(1, int(spr.height * breath))), Image.BILINEAR)
             if ch.get("jump"):
                 bob -= abs(math.sin(t * 2 * math.pi / .55)) * self.CH * .03
             if ch.get("shake"):
@@ -258,7 +263,14 @@ class ToonShot:
                 r, g, b_, a = spr.split()
                 f = lambda v: int(v * .5)
                 spr = Image.merge("RGBA", (r.point(f), g.point(f), b_.point(f), a))
-            _paste(can, spr, cx - spr.width / 2, bottom - spr.height + bob)
+            top = bottom - spr.height + bob
+            clip = ch.get("clip", self.sc.get("table", {}).get("y") if ch.get("seated") else None)
+            if clip is not None:
+                keep = int(self.CH * clip - top + self.CH * .01)
+                if keep <= 0:
+                    continue
+                spr = spr.crop((0, 0, spr.width, min(spr.height, keep)))
+            _paste(can, spr, cx - spr.width / 2, top)
             if ch.get("label"):
                 lk = back_out(clamp((t - delay - ch.get("label_at", .25)) / .3), 2)
                 if lk > 0:
@@ -480,7 +492,7 @@ class ToonShot:
         u = H / 1080
         if self.type == "black":
             text = sc.get("t", "")
-            size = int(sc.get("size", 84) * u)
+            size = int(sc.get("size", 64) * u)
             f = hfont(text, size, "caveat")
             n = len(text)
             k = clamp(t / max(.4, min(self.dur * .55, .06 * n)))
@@ -499,8 +511,12 @@ class ToonShot:
             lh = size * 1.25
             full_lines = max(1, len(lines))
             y0 = H / 2 - lh * full_lines / 2
+            left = sc.get("align", "left") == "left"
             for i, l in enumerate(lines):
-                d.text((W / 2, y0 + i * lh + lh / 2), l, font=f, fill=hexc(sc.get("color", "#f4f1ea")), anchor="mm")
+                if left:
+                    d.text((W * sc.get("x", .08), y0 + i * lh + lh / 2), l, font=f, fill=hexc(sc.get("color", "#f4f1ea")), anchor="lm")
+                else:
+                    d.text((W / 2, y0 + i * lh + lh / 2), l, font=f, fill=hexc(sc.get("color", "#f4f1ea")), anchor="mm")
         # big number / word inside any scene
         bg = sc.get("big")
         if bg:
@@ -533,20 +549,61 @@ class ToonShot:
             fg = motion.AUTO_FG.get(self.sc.get("bg", "study_night"), [])
         return [{"kind": f} if isinstance(f, str) else f for f in fg]
 
+    def _sub(self, side):
+        subs = getattr(self, "_subs", None)
+        if subs is None:
+            subs = self._subs = {}
+        if side not in subs:
+            b = dict(self.b)
+            b["scene"] = self.sc[side]
+            b["id"] = self.b.get("id", "x") + side
+            b.pop("transition", None)
+            subs[side] = ToonShot(b, self.story, self.W // 2, self.H, self.dur, self.env, self.fps)
+        return subs[side]
+
     def frame_core(self, t):
+        if self.type == "split":
+            fr = Image.new("RGBA", (self.W, self.H), (0, 0, 0, 255))
+            fr.paste(self._sub("left").frame_core(t), (0, 0))
+            side = "right2" if self.sc.get("right2") and t >= self.sc.get("swap_at", self.dur * .55) else "right"
+            rf = self._sub(side).frame_core(t)
+            if side == "right2":
+                k = ease_out(clamp((t - self.sc.get("swap_at", self.dur * .55)) / .3))
+                old = self._sub("right").frame_core(t)
+                tmp = Image.new("RGBA", rf.size, (0, 0, 0, 255))
+                tmp.paste(old, (0, int(-self.H * k)))
+                tmp.paste(rf, (0, int(self.H * (1 - k))))
+                rf = tmp
+            fr.paste(rf, (self.W // 2, 0))
+            ImageDraw.Draw(fr).line([(self.W // 2, 0), (self.W // 2, self.H)], fill=(20, 16, 16, 255), width=max(2, self.H // 270))
+            return fr
         z, ox, oy, roll = self.camera(t)
         focus = tuple(self.sc.get("focus", [.5, .5]))
+        u = self.u
         if self.type == "set":
             mid = Image.new("RGBA", (self.CW, self.CH), (0, 0, 0, 0))
             self.draw_props(mid, t, "back")
+            self.sc["_dur"] = self.dur
+            pbfx.draw_board(mid, self.sc, t, u)
+            pbfx.draw_days_left(mid, self.sc, t, u)
+            pbfx.draw_month_cal(mid, self.sc, t, u)
             self.draw_chars(mid, t)
+            pbfx.draw_table(mid, self.sc, t, u)
             self.draw_props(mid, t, "front")
             fr = motion.layer_view(self.base(), self.CW, self.CH, self.W, self.H, z, ox, oy, motion.LAYER_K["bg"], focus)
             fr.alpha_composite(motion.layer_view(mid, self.CW, self.CH, self.W, self.H, z, ox, oy, 1.0, focus))
+            if self.sc.get("window"):
+                refl, wall = pbfx.window_layers(json.dumps(self.sc["window"], sort_keys=True), self.CW, self.CH)
+                fr.alpha_composite(motion.layer_view(refl, self.CW, self.CH, self.W, self.H, z, ox, oy, 1.35, focus))
+                fr.alpha_composite(motion.layer_view(wall, self.CW, self.CH, self.W, self.H, z, ox, oy, 1.2, focus))
             items = self._fg_items()
             if items:
                 fg = motion.fg_layer(json.dumps(items, sort_keys=True), self.CW, self.CH)
                 fr.alpha_composite(motion.layer_view(fg, self.CW, self.CH, self.W, self.H, z, ox, oy, motion.LAYER_K["fg"], focus))
+        elif self.type == "topdown":
+            can = self.base().copy()
+            pbfx.topdown_draw(can, self.sc, t, self.dur, self._spec)
+            fr = motion.layer_view(can, self.CW, self.CH, self.W, self.H, z, ox, oy, 1.0, focus)
         else:
             can = self.base().copy()
             self.draw_props(can, t, "back")
@@ -555,9 +612,22 @@ class ToonShot:
             self.draw_props(can, t, "front")
             fr = motion.layer_view(can, self.CW, self.CH, self.W, self.H, z, ox, oy, 1.0, focus)
         fr = motion.roll_img(fr, roll)
+        if self.type not in ("black",) and self.sc.get("dust", self.type == "set"):
+            motion.draw_dust(fr, t, self.b.get("id", ""))
         self.draw_overlay(fr, t)
-        if self.sc.get("stickers"):
-            motion.draw_stickers(fr, self.sc["stickers"], t, self.dur, SKILL)
+        sc = self.sc
+        for bb in ([sc["bubble"]] if isinstance(sc.get("bubble"), dict) else sc.get("bubble", [])):
+            pbfx.draw_bubble(fr, bb, t)
+        for e in sc.get("emph", []):
+            pbfx.draw_emph(fr, e, t)
+        for e in sc.get("swoosh", []):
+            pbfx.draw_swoosh(fr, e, t)
+        if sc.get("popup"):
+            pbfx.draw_popup(fr, sc["popup"], t)
+        if sc.get("names"):
+            pbfx.draw_names(fr, sc["names"], t)
+        if sc.get("stickers"):
+            motion.draw_stickers(fr, sc["stickers"], t, self.dur, SKILL)
         return fr
 
     def frame(self, t):

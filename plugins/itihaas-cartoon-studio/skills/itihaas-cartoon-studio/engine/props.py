@@ -254,6 +254,61 @@ def portrait(p, c):
     p.rrect(56, 125, 144, 174, 20, "#7a1f2b", ol=False)
 
 
+def cash_stack_top(p, c):
+    col = c or "#6aa063"
+    for k, (dx, dy, a) in enumerate([(-8, 6, -6), (4, -2, 4), (0, 0, 0)]):
+        x0, y0 = 30 + dx, 55 + dy
+        p.rrect(x0, y0, x0 + 140, y0 + 80, 4, shade(col, 0.85 + k * .08))
+    p.rrect(42, 64, 158, 126, 3, shade(col, 1.15), w=2.5)
+    p.ell(100, 95, 18, 18, shade(col, .7), w=2.5)
+    p.line([(94, 102), (100, 95), (104, 88)], "#e8f5e0", 3)
+
+
+def coin_pile_top(p, c):
+    import random
+    r = random.Random(3)
+    for k in range(14):
+        x, y = 100 + r.uniform(-55, 55), 100 + r.uniform(-40, 40)
+        p.ell(x, y, 24, 24, "#f1c232", w=3)
+        p.ell(x, y, 16, 16, "#d9a821", ol=False)
+
+
+def notepad(p, c):
+    p.rrect(30, 10, 170, 195, 4, "#f7f6f0")
+    p.rrect(30, 10, 170, 40, 4, c or "#2f8a4e")
+    for k in range(5):
+        p.line([(45, 70 + k * 24), (155, 70 + k * 24)], "#b8c7d8", 2)
+    p.line([(120, 60), (160, 150)], "#e8b33a", 9)
+    p.poly([(156, 142), (166, 162), (152, 156)], "#3a2a1a", w=1.5)
+
+
+def menu_card(p, c):
+    p.rrect(25, 5, 175, 195, 4, "#f6f1e6")
+    p.d.rectangle(p.box(100, 100, 70, 90), outline=hexc(c or "#b8302a"), width=p._w(4))
+    p.rrect(45, 45, 155, 120, 3, "#dfe8d8", w=2)
+    for k in range(4):
+        p.ell(100, 98 - k * 9, 34, 9, "#c98a3a", w=2)
+    for k in range(4):
+        p.line([(48, 140 + k * 12), (150, 140 + k * 12)], "#9a948a", 2)
+
+
+def coin_bag(p, c):
+    col = c or "#b98e55"
+    p.ell(100, 125, 70, 62, col)
+    p.poly([(72, 66), (128, 66), (115, 42), (85, 42)], col)
+    p.rrect(72, 60, 128, 72, 6, "#6a4422")
+    p.d.text((p.s * 100, p.s * 128), "£", font=font(70 * p.s, "Black"), anchor="mm", fill=hexc("#6a4422"))
+
+
+def charter(p, c):
+    p.rrect(30, 20, 170, 180, 4, "#f1e3bf")
+    for k in range(6):
+        p.line([(48, 52 + k * 18), (152 - (k % 2) * 20, 52 + k * 18)], "#8a6a3a", 3)
+    p.ell(128, 158, 18, 18, "#b3202a")
+    p.line([(120, 172), (112, 196)], "#b3202a", 6)
+    p.line([(136, 172), (144, 196)], "#b3202a", 6)
+
+
 PROPS = {k: v for k, v in globals().items() if callable(v) and not k.startswith("_") and k not in
          ("Pen", "shade", "hexc", "font", "make")}
 

@@ -92,8 +92,12 @@ def main():
     timing = {"voice": vcfg.get("voice") or vcfg.get("voice_id"), "beats": {}}
     total = 0.0
     words = 0
+    speakers = story.get("speakers", {})
+    base_cfg = dict(vcfg)
     for b in story["beats"]:
         bid, text = b["id"], b["text"].strip()
+        vcfg = dict(base_cfg)
+        vcfg.update(speakers.get(b.get("speaker", "N"), {}))
         words += len(text.split())
         h = hashlib.md5(json.dumps([text, vcfg, b.get("tempo", 1)], sort_keys=True).encode()).hexdigest()[:12]
         wav = os.path.join(adir, "beats", f"{bid}.wav")
@@ -115,7 +119,7 @@ def main():
                         if eng == "elevenlabs":
                             _eleven(text, vcfg, src)
                         else:
-                            asyncio.run(_edge(text, vcfg["voice"], b.get("rate", vcfg.get("rate", "+0%")),
+                            asyncio.run(_edge(text, vcfg.get("voice", "hi-IN-MadhurNeural"), b.get("rate", vcfg.get("rate", "+0%")),
                                               vcfg.get("pitch", "+0Hz"), src))
                         break
                     except Exception as e:

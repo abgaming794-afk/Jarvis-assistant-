@@ -16,7 +16,7 @@ from PIL import Image, ImageDraw, ImageFilter, ImageChops, ImageOps
 from common import hexc, shade, clamp, ease_out, ease_in_out, back_out, lerp
 import props
 
-LAYER_K = {"bg": 0.5, "mid": 1.0, "fg": 1.8}
+LAYER_K = {"bg": 0.3, "mid": 1.0, "fg": 1.8}
 AUTO_MOVES = ["dolly_in", "truck_right", "dolly_in", "orbit_left", "crane_up", "truck_left", "dolly_out", "orbit_right"]
 
 
@@ -29,29 +29,31 @@ def camera(cam, t, dur, seed=""):
     """-> (zoom, offset_x, offset_y, roll_degrees) for the mid layer (k = 1)."""
     if cam == "auto":
         cam = AUTO_MOVES[sum(map(ord, seed)) % len(AUTO_MOVES)]
-    p = ease_in_out(t / max(.1, dur))
     lin = clamp(t / max(.1, dur))
+    p = 1 - (1 - lin) ** 2.2          # ease-out: moving at the cut, settling at the end (hides cuts)
     z, ox, oy, roll = 1.0, 0.0, 0.0, 0.0
     if cam in ("in", "dolly_in"):
-        z = lerp(1.0, 1.10, p)
+        z = lerp(1.0, 1.12, p)
     elif cam in ("out", "dolly_out"):
-        z = lerp(1.10, 1.0, p)
+        z = lerp(1.12, 1.0, p)
     elif cam in ("right", "truck_right"):
-        z, ox = 1.07, lerp(-.045, .045, p)
+        z, ox = 1.08, lerp(-.05, .05, p)
     elif cam in ("left", "truck_left"):
-        z, ox = 1.07, lerp(.045, -.045, p)
+        z, ox = 1.08, lerp(.05, -.05, p)
     elif cam in ("up", "crane_up"):
-        z, oy = 1.07, lerp(.04, -.04, p)
+        z, oy = 1.08, lerp(.045, -.045, p)
     elif cam in ("down", "crane_down"):
-        z, oy = 1.07, lerp(-.04, .04, p)
+        z, oy = 1.08, lerp(-.045, .045, p)
     elif cam == "orbit_left":
-        z, ox, roll = lerp(1.04, 1.09, p), lerp(.05, -.05, p), lerp(-1.2, 1.2, p)
+        z, ox, roll = lerp(1.05, 1.11, p), lerp(.05, -.05, p), lerp(-1.4, 1.4, p)
     elif cam == "orbit_right":
-        z, ox, roll = lerp(1.04, 1.09, p), lerp(-.05, .05, p), lerp(1.2, -1.2, p)
+        z, ox, roll = lerp(1.05, 1.11, p), lerp(-.05, .05, p), lerp(1.4, -1.4, p)
     elif cam == "push_fast":
-        z = 1.0 + .16 * ease_out(lin)
+        z = 1.0 + .18 * ease_out(lin)
+    elif cam == "table_roll":
+        z, roll = lerp(1.04, 1.12, p), lerp(-3.0, 3.0, lin)
     elif cam == "drift":
-        z, ox, oy = 1.06, .02 * math.sin(t * .9), .012 * math.sin(t * .7 + 1)
+        z = 1.05
     elif cam == "punch":
         z = 1.0 + .09 * ease_out(t / .3)
     elif cam == "shake":
@@ -59,6 +61,10 @@ def camera(cam, t, dur, seed=""):
         k = 1 - clamp(t / .7)
         r = random.Random(int(t * 30))
         ox, oy = (r.random() - .5) * .016 * k, (r.random() - .5) * .016 * k
+    if cam != "static":   # never fully still: slow hand-held drift
+        ox += .004 * math.sin(t * .9 + 1.3)
+        oy += .003 * math.sin(t * 1.3 + .4)
+        z += .006 * math.sin(t * .7)
     return z, ox, oy, roll
 
 
@@ -355,3 +361,41 @@ def fg_layer(spec_key, CW, CH):
                 bx, by, br = r.uniform(0, CW), r.uniform(.7, 1.0) * CH, r.uniform(.012, .03) * CW
                 d.ellipse([bx - br, by - br, bx + br, by + br], fill=(255, 190, 110, 45))
     return img.filter(ImageFilter.GaussianBlur(CW / 260))
+
+
+def draw_dust(fr, t, seed=""):
+    """Tiny motes drifting through the light - keeps every frame alive."""
+    W, H = fr.size
+    r = random.Random(seed)
+    d = ImageDraw.Draw(fr)
+    for k in range(18):
+        x0, y0, sp = r.random(), r.random(), r.uniform(.006, .02)
+        x = ((x0 + t * sp) % 1.0) * W
+        y = ((y0 - t * sp * .6 + .05 * math.sin(t + k)) % 1.0) * H
+        rr = max(1, H / 540 * r.uniform(.8, 1.8))
+        a = int(70 + 60 * math.sin(t * 2 + k))
+        d.ellipse([x - rr, y - rr, x + rr, y + rr], fill=(255, 240, 200, max(0, a)))
+
+
+AUTO_TR = ["whip_right", "zoom_through", "whip_left", "blur", "push_left", "zoom_through", "whip_up"]
+
+
+def auto_transitions(story):
+    """Give every beat without a transition a seamless one (same set -> cut on matching motion)."""
+    if not story.get("auto_transitions", True):
+        return story
+    beats = story["beats"]
+    j = 0
+    for i, b in enumerate(beats):
+        if "transition" in b or i == 0:
+            continue
+        sc, pv = b.get("scene", {}), beats[i - 1].get("scene", {})
+        typ, ptyp = sc.get("type", "set"), pv.get("type", "set")
+        if typ == "black" or ptyp == "black":
+            b["transition"] = "cut"
+        elif typ == ptyp == "set" and sc.get("bg") == pv.get("bg"):
+            b["transition"] = "cut"
+        else:
+            b["transition"] = AUTO_TR[j % len(AUTO_TR)]
+            j += 1
+    return story
