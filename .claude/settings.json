@@ -1,0 +1,13 @@
+{
+  "extraKnownMarketplaces": {
+    "itihaas-studio": {
+      "source": {
+        "source": "directory",
+        "path": "./"
+      }
+    }
+  },
+  "enabledPlugins": {
+    "itihaas-cartoon-studio@itihaas-studio": true
+  }
+}
