@@ -39,19 +39,40 @@ async def _edge(text, voice, rate, pitch, out):
     await com.save(out)
 
 
-def _eleven(text, cfg, out):
-    import urllib.request
+class QuotaError(Exception):
+    pass
+
+
+TAG_MODELS = ("eleven_v3", "eleven_v4")
+
+
+def el_prompt(text, tags, model):
+    """ElevenLabs v3/v4 read inline audio tags like [angry] [whispers] [pause]; older models would speak them."""
+    return f"{tags} {text}".strip() if tags and model in TAG_MODELS else text
+
+
+def _eleven(text, cfg, out, tags=""):
+    import urllib.request, urllib.error
     key = os.environ.get("ELEVENLABS_API_KEY") or cfg.get("key")
     if not key:
-        raise SystemExit("ElevenLabs needs ELEVENLABS_API_KEY")
-    vid = cfg["voice_id"]
-    body = json.dumps({"text": text, "model_id": cfg.get("model", "eleven_multilingual_v2"),
-                       "voice_settings": {"stability": 0.45, "similarity_boost": 0.8, "style": 0.35}}).encode()
-    req = urllib.request.Request(f"https://api.elevenlabs.io/v1/text-to-speech/{vid}", data=body,
-                                 headers={"xi-api-key": key, "Content-Type": "application/json",
-                                          "Accept": "audio/mpeg"})
-    with urllib.request.urlopen(req, context=_ssl_ctx(), timeout=120) as r, open(out, "wb") as f:
-        f.write(r.read())
+        raise QuotaError("ElevenLabs needs ELEVENLABS_API_KEY (or use the ElevenLabs connector route, see voice.md)")
+    vid = cfg.get("voice_id")
+    if not vid:
+        raise QuotaError("speaker has no voice_id for ElevenLabs")
+    model = cfg.get("model", "eleven_multilingual_v2")
+    st = {"stability": 0.45, "similarity_boost": 0.8, "style": 0.3}
+    st.update(cfg.get("settings", {}))
+    body = json.dumps({"text": el_prompt(text, tags, model), "model_id": model, "voice_settings": st}).encode()
+    req = urllib.request.Request(f"https://api.elevenlabs.io/v1/text-to-speech/{vid}?output_format=mp3_44100_128", data=body,
+                                 headers={"xi-api-key": key, "Content-Type": "application/json", "Accept": "audio/mpeg"})
+    try:
+        with urllib.request.urlopen(req, context=_ssl_ctx(), timeout=180) as r, open(out, "wb") as f:
+            f.write(r.read())
+    except urllib.error.HTTPError as e:
+        msg = e.read().decode(errors="ignore")[:300]
+        if e.code in (401, 402, 403) or "quota" in msg.lower() or "credits" in msg.lower():
+            raise QuotaError(f"ElevenLabs refused ({e.code}): {msg}")
+        raise
 
 
 def to_wav(src, dst, tempo=1.0):
@@ -99,7 +120,15 @@ def main():
         vcfg = dict(base_cfg)
         vcfg.update(speakers.get(b.get("speaker", "N"), {}))
         words += len(text.split())
-        h = hashlib.md5(json.dumps([text, vcfg, b.get("tempo", 1)], sort_keys=True).encode()).hexdigest()[:12]
+        own = None
+        for ext in (".wav", ".mp3", ".m4a"):
+            q = os.path.join(adir, "own", bid + ext)
+            if os.path.exists(q):
+                own = q
+        if own and vcfg.get("use_own_if_present", True):
+            vcfg = dict(vcfg, engine="own")
+        h = hashlib.md5(json.dumps([text, vcfg, b.get("tempo", 1), b.get("tags", ""),
+                                    os.path.getmtime(own) if own else 0], sort_keys=True).encode()).hexdigest()[:12]
         wav = os.path.join(adir, "beats", f"{bid}.wav")
         prev = old.get("beats", {}).get(bid, {})
         if force or prev.get("hash") != h or not os.path.exists(wav):
@@ -117,11 +146,13 @@ def main():
                 for attempt in range(4):
                     try:
                         if eng == "elevenlabs":
-                            _eleven(text, vcfg, src)
+                            _eleven(text, dict(vcfg, **vcfg.get("elevenlabs", {})), src, b.get("tags", ""))
                         else:
                             asyncio.run(_edge(text, vcfg.get("voice", "hi-IN-MadhurNeural"), b.get("rate", vcfg.get("rate", "+0%")),
                                               vcfg.get("pitch", "+0Hz"), src))
                         break
+                    except QuotaError as e:
+                        raise SystemExit(f"STOP: {e}")
                     except Exception as e:
                         if attempt == 3:
                             raise

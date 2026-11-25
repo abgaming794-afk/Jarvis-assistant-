@@ -39,6 +39,7 @@ def main():
     for mod, pip in PKGS.items():
         print(f"{pip:9}{'OK' if have(mod) else 'MISSING'}")
     print(f"ffmpeg   {ff or 'MISSING'}")
+    print(f"ElevenLabs API key  {'set' if os.environ.get('ELEVENLABS_API_KEY') else 'not set (free Edge voices, or the ElevenLabs connector route)'}")
     for f in ("assets/fonts/Caveat-Variable.ttf", "assets/fonts/Kalam-Bold.ttf", "engine/data/world.geojson",
               "engine/data/india_full.geojson"):
         print(f"{f:40}{'OK' if os.path.exists(os.path.join(SKILL, f)) else 'MISSING'}")

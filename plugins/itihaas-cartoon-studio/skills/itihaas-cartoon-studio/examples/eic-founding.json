@@ -13,23 +13,44 @@
   "pitch": "-6Hz"
  },
  "speakers": {
-  "N": {},
+  "N": {
+   "elevenlabs": {
+    "voice_id": "EppcM8bFS2tfl4Xu0tpj",
+    "model": "eleven_v4"
+   }
+  },
   "V1": {
    "pitch": "-16Hz",
-   "rate": "+6%"
+   "rate": "+6%",
+   "elevenlabs": {
+    "voice_id": "7EvySNHBey9ISwbL5Bt5",
+    "model": "eleven_v4"
+   }
   },
   "V2": {
    "pitch": "+8Hz",
-   "rate": "+20%"
+   "rate": "+20%",
+   "elevenlabs": {
+    "voice_id": "7b9mYhmnp0y2qSH1FnBL",
+    "model": "eleven_v4"
+   }
   },
   "V3": {
    "pitch": "+2Hz",
-   "rate": "+12%"
+   "rate": "+12%",
+   "elevenlabs": {
+    "voice_id": "n4jGuG5wrMvqWCjMtnMS",
+    "model": "eleven_v4"
+   }
   },
   "Q": {
    "voice": "hi-IN-SwaraNeural",
    "pitch": "-6Hz",
-   "rate": "+4%"
+   "rate": "+4%",
+   "elevenlabs": {
+    "voice_id": "MaJjkQJkKTqVB1XVQopL",
+    "model": "eleven_v4"
+   }
   }
  },
  "cast": {
@@ -103,7 +124,8 @@
      "y": 0.2,
      "at": 0.6
     }
-   }
+   },
+   "tags": "[dramatically]"
   },
   {
    "id": "s02",
@@ -248,7 +270,8 @@
       "at": 0.5
      }
     ]
-   }
+   },
+   "tags": "[slowly]"
   },
   {
    "id": "s04",
@@ -327,7 +350,8 @@
       "label": "PEPPER"
      }
     ]
-   }
+   },
+   "tags": "[angry]"
   },
   {
    "id": "s05",
@@ -374,7 +398,8 @@
       "face": "right"
      }
     ]
-   }
+   },
+   "tags": "[excited]"
   },
   {
    "id": "s06",
@@ -423,7 +448,8 @@
      "prop": "ship",
      "at": 0.3
     }
-   }
+   },
+   "tags": "[sarcastic]"
   },
   {
    "id": "s07",
@@ -637,7 +663,8 @@
       }
      ]
     }
-   }
+   },
+   "tags": "[curious]"
   },
   {
    "id": "s12",
@@ -728,7 +755,8 @@
    "scene": {
     "type": "black",
     "t": "पर एक बड़ी अड़चन थी..."
-   }
+   },
+   "tags": "[dramatically]"
   },
   {
    "id": "s14",
@@ -865,7 +893,8 @@
       "back": true
      }
     ]
-   }
+   },
+   "tags": "[shouting]"
   },
   {
    "id": "s17",
@@ -938,7 +967,8 @@
       "bar": "#c9a227"
      }
     ]
-   }
+   },
+   "tags": "[slowly]"
   },
   {
    "id": "s19",
@@ -974,7 +1004,8 @@
       "at": 0.1
      }
     ]
-   }
+   },
+   "tags": "[surprised]"
   },
   {
    "id": "s20",
@@ -1006,7 +1037,8 @@
      "h": 0.42,
      "rot": -8
     }
-   }
+   },
+   "tags": "[mischievously]"
   },
   {
    "id": "s21",
@@ -1160,7 +1192,8 @@
       "at": 0.1
      }
     ]
-   }
+   },
+   "tags": "[excited] [laughs]"
   },
   {
    "id": "s25",
@@ -1217,7 +1250,8 @@
    "scene": {
     "type": "black",
     "t": "डेढ़ सौ साल बाद..."
-   }
+   },
+   "tags": "[softly]"
   },
   {
    "id": "s27",
@@ -1254,7 +1288,8 @@
       "at": 0.6
      }
     ]
-   }
+   },
+   "tags": "[dramatically]"
   }
  ],
  "sfx_volume": 0.2,

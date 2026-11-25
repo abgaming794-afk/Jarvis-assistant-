@@ -61,8 +61,11 @@ python $E/meta.py videos/demo                          # upload/ pack
 ```
 
 ## Voices
-Free Edge voices by default. ElevenLabs: set `ELEVENLABS_API_KEY` and put `voice_id`s in `story.json → speakers`.
-Own recordings: `videos/<name>/audio/own/s01.mp3 …` with `"voice": {"engine": "own"}`. See `references/voice.md`.
+- Free Edge voices by default.
+- **ElevenLabs (automatic):** `export ELEVENLABS_API_KEY=your_key`, set `"voice": {"engine": "elevenlabs"}` in story.json.
+  Each speaker already has a Hindi ElevenLabs voice and emotion tags; `python $E/el_lines.py videos/<name>` shows the
+  lines and credit estimate. Without a key, Claude can use the ElevenLabs connector instead (references/voice.md).
+- Own recordings: drop `s01.mp3 …` into `videos/<name>/audio/own/` — they are used automatically.
 
 ## Rules built in
 - India is always drawn with its full official map (J&K incl. PoK/Gilgit-Baltistan, Ladakh incl. Aksai Chin, Arunachal).
