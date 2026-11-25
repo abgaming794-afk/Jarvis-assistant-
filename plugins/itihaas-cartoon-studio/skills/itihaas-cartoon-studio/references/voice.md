@@ -12,6 +12,12 @@
 **Any file in `audio/own/<id>.mp3|wav|m4a` always wins** for that beat (set `"use_own_if_present": false` to disable),
 so you can mix: most lines from Edge/ElevenLabs, a few re-recorded by hand.
 
+## One full voiceover file (ElevenLabs export, own recording, upload)
+Record / generate the whole script in story.json order with a short pause (~1 s) between lines, then
+`python split_vo.py <project> vo.mp3` → writes `audio/own/<id>.wav` for every beat. It matches the pauses to the
+script structure (spoken length per beat + sentence breaks), prints a table and flags `<-- check` beats.
+If a cut is wrong, pass exact start times of beats 2..N: `--cuts 6.5,12.4,...` (its guess is in `audio/own/_cuts.txt`).
+
 ## ElevenLabs — route A: API key (fully automatic)
 1. ElevenLabs website → Profile → API keys → create a key.
 2. Set it before running: `export ELEVENLABS_API_KEY=...` (Termux/Mac/Linux) or `setx ELEVENLABS_API_KEY ...` (Windows).

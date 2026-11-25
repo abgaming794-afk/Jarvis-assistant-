@@ -10,6 +10,7 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 SKILL = os.path.dirname(HERE)
 TERMUX = "com.termux" in os.environ.get("PREFIX", "") or os.path.isdir("/data/data/com.termux")
 PKGS = {"PIL": "Pillow", "numpy": "numpy", "edge_tts": "edge-tts", "certifi": "certifi"}
+OPTIONAL = {"edge_tts", "certifi"}   # only for the free online voice; not needed with your own / uploaded VO
 
 
 def have(mod):
@@ -33,18 +34,22 @@ def ffmpeg():
 
 def main():
     fix = "--fix" in sys.argv
-    missing = [pip for mod, pip in PKGS.items() if not have(mod)]
+    missing = [pip for mod, pip in PKGS.items() if not have(mod) and mod not in OPTIONAL]
+    opt_missing = [pip for mod, pip in PKGS.items() if not have(mod) and mod in OPTIONAL]
     ff = ffmpeg()
     print(f"python   {sys.version.split()[0]}  ({'Termux' if TERMUX else sys.platform})")
     for mod, pip in PKGS.items():
-        print(f"{pip:9}{'OK' if have(mod) else 'MISSING'}")
+        print(f"{pip:9}{'OK' if have(mod) else ('missing (optional: free online voice)' if mod in OPTIONAL else 'MISSING')}")
     print(f"ffmpeg   {ff or 'MISSING'}")
     print(f"ElevenLabs API key  {'set' if os.environ.get('ELEVENLABS_API_KEY') else 'not set (free Edge voices, or the ElevenLabs connector route)'}")
     for f in ("assets/fonts/Caveat-Variable.ttf", "assets/fonts/Kalam-Bold.ttf", "engine/data/world.geojson",
               "engine/data/india_full.geojson"):
         print(f"{f:40}{'OK' if os.path.exists(os.path.join(SKILL, f)) else 'MISSING'}")
     if not missing and ff:
-        print("\nREADY")
+        if opt_missing and fix:
+            subprocess.call([sys.executable, "-m", "pip", "install", "--quiet", *opt_missing])
+        print("\nREADY" + ("  (no edge-tts: use your own / ElevenLabs VO, e.g. split_vo.py)" if opt_missing and not all(
+            have(m) for m in OPTIONAL) else ""))
         return 0
     if TERMUX:
         print("\nTermux: run these once, then run doctor.py again:")

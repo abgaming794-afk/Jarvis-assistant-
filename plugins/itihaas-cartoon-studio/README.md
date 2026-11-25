@@ -60,12 +60,19 @@ python $E/render.py videos/demo --res 720              # out/final_720p.mp4
 python $E/meta.py videos/demo                          # upload/ pack
 ```
 
+## 4. Use it in Gemini (Neon / "Computer" mode) or any sandbox agent
+Build the skill zip once: `python plugins/itihaas-cartoon-studio/tools/build_gemini_skill.py` →
+`plugins/itihaas-cartoon-studio/dist/itihaas-cartoon-studio-gemini.zip`. Upload that zip in Gemini and say
+"use this skill". It guides you: topic → length → script + clean voiceover → you upload the voiceover MP3 →
+it splits the MP3 per line (`split_vo.py`), renders and gives the MP4 + upload pack. No API key needed there.
+
 ## Voices
 - Free Edge voices by default.
 - **ElevenLabs (automatic):** `export ELEVENLABS_API_KEY=your_key`, set `"voice": {"engine": "elevenlabs"}` in story.json.
   Each speaker already has a Hindi ElevenLabs voice and emotion tags; `python $E/el_lines.py videos/<name>` shows the
   lines and credit estimate. Without a key, Claude can use the ElevenLabs connector instead (references/voice.md).
 - Own recordings: drop `s01.mp3 …` into `videos/<name>/audio/own/` — they are used automatically.
+- One full voiceover file: `python $E/split_vo.py videos/<name> vo.mp3` cuts it into those per-line files.
 
 ## Rules built in
 - India is always drawn with its full official map (J&K incl. PoK/Gilgit-Baltistan, Ladakh incl. Aksai Chin, Arunachal).

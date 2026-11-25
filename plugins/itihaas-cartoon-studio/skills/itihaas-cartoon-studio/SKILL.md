@@ -52,6 +52,7 @@ Launch the `itihaas-cartoon-studio:fact-checker` agent on SCRIPT.md + FACTS.md a
 ## Step 4 — voice & audio
 Voice choice (voice.md): `ELEVENLABS_API_KEY` set → engine elevenlabs (route A); ElevenLabs connector available →
 route B (generate each line from `el_lines.py --json`, save to `audio/own/<id>.mp3`); otherwise free Edge.
+User gave ONE voiceover file → `python "<ENGINE>/split_vo.py" <project> <file>` (check its table; `--cuts` to fix).
 Give dialogue beats `"tags"` ([angry], [excited], [whispers]) for ElevenLabs v3/v4.
 `python "<ENGINE>/voice.py" <project>` (prints minutes, wpm) → adjust beats if length is off by >8%.
 `python "<ENGINE>/audio.py" <project>` (music bed + auto SFX at sfx_volume, ducked under voice).
