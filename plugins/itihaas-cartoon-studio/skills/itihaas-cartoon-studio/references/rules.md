@@ -11,6 +11,8 @@ Aksai Chin, and Arunachal Pradesh — as on Survey of India maps. Never show the
 - When asking an AI image tool for a picture with an India map, always add: "full official map of India
   including all of Jammu and Kashmir, Ladakh with Aksai Chin, and Arunachal Pradesh".
 - Do not use a map image from the web unless it shows the full official outline.
+- Never crop the outline: a map `view` that shows India must reach at least 39°N (the J&K crown is at ~37°N) and use
+  `cam: drift` (not dolly_in) so the camera push never cuts the top off. Check the last frame in the preview.
 
 ## 2. Facts
 Every number, date and claim is checked against sources (research/FACTS.md). Dramatised dialogue is

@@ -13,7 +13,7 @@ Output: `videos/<slug>/out/final.mp4` (or `final_<res>p.mp4`) + `upload/` pack.
 
 Read when you reach the step that needs it:
 - `references/rules.md` — **mandatory channel rules** (India full map, facts, style-not-content)
-- `references/script-template.md` — story structure and writing rules
+- `references/script-template.md` — click confirmation, hook, FOMO, high/low-value lines, pacing, payoff, CTA
 - `references/scenes.md` — every story.json key, scene type and device
 - `references/voice.md` — free / ElevenLabs / own voices
 - `references/style-analysis.md` — what the reference editing style does (camera, transitions, pacing)
@@ -40,7 +40,10 @@ to get licence + URL; for PDFs use page thumbnails at standard widths (330 / 128
 `assets/docs/` or `<project>/docs/` and record title/url/licence in credits.json. Never fake a document.
 
 ## Step 3 — script → `SCRIPT.md`, then `story.json`
-Follow script-template.md (cold open, open loop, chapters, dialogue mini-scenes, analogy, callback ending).
+Follow script-template.md: **click confirmation in the first 5 s, hook + open loop by 30 s, honest FOMO
+(open loops, chapter cliffhangers, next-part loop), ≥90 % high-value lines, but/therefore pacing, title answered
+plainly, CTA only after the payoff**. Tag beats in SCRIPT.md ([CC] [HOOK] [LOOP+] [FOMO] [HV] [PROOF] [PAYOFF] [CTA]).
+Run the `itihaas-cartoon-studio:script-doctor` agent and apply its replacements until every score is ≥ 8.
 Convert to story.json (scenes.md): one beat per line (2.5–5 s), set + 2–3 camera angles per location,
 characters with gestures, a device in most beats (board, bubble, emph, popup, table, window, names),
 `realdoc` for every proof, `source` on every fact shot, black cards for chapters/punchlines, India maps as full outline.
