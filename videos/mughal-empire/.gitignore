@@ -2,3 +2,4 @@ out/
 work/
 audio/
 *.mp4
+__pycache__/
