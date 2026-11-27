@@ -68,7 +68,7 @@ def draw(fr, beat, t, dur, prev_beat=None):
     pw, ph = int(tw + 26 * u), int(40 * u)
     pill = Image.new("RGBA", (pw, ph), (0, 0, 0, 0))
     pd = ImageDraw.Draw(pill)
-    pd.rounded_rectangle([0, 0, pw - 1, ph - 1], radius=int(ph * .45), fill=(241, 194, 50, 240), outline=(40, 28, 22, 255),
+    pd.rounded_rectangle([0, 0, pw - 1, ph - 1], radius=int(ph * .45), fill=(16, 13, 12, 230), outline=(214, 178, 96, 255),
                          width=max(1, int(2 * u)))
-    pd.text((pw / 2, ph / 2), txt, font=f_big, fill=(40, 28, 22, 255), anchor="mm")
+    pd.text((pw / 2, ph / 2), txt, font=f_big, fill=(247, 243, 234, 255), anchor="mm")
     fr.alpha_composite(pill, (int(x0 + cx - pw / 2), int(y0 - ph * .78)))

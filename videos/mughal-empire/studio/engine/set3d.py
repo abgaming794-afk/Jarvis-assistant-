@@ -329,6 +329,10 @@ def build(setname, sc):
         env.append((0, [5, 4, 6], [0, 0, -10], [0, -4, 0], "tent_cloth", 0.7, False))
         _box(obj, 0, 6.4, 3.4, 1.2, 0.75, "wood_block", "map_top")
         dflt.update(target=[0, 1.0, 4.0], dist=5.2, height=1.9, mood=0.85)
+    elif setname == "map" and sc.get("global_map"):
+        env.append((0, [-300, -0.05, -200], [600, 0, 0], [0, 0, 600], "sea_far", 1.0, False))
+        env.append((0, [-GMW / 2, 0.0, GMZ0], [GMW, 0, 0], [0, 0, GMH], "global_map", 1.0, False))
+        dflt.update(target=[0, 0, GMZ0 + GMH / 2], dist=20, height=30, fov=50)
     elif setname == "map":
         env.append((0, [-30, 0, -10], [60, 0, 0], [0, 0, 50], "table_dark", 1.0, False))
         pd = float(sc.get("map_pad", 1.0))
@@ -422,6 +426,9 @@ def surface(name, map_json=None, W=None, H=None):
         return im
     if name == "fort_wall_side":
         return tex("fort_wall")
+    if name == "sea_far":
+        im, d = _canvas(64, 64, "#0c1620")
+        return im
     if name == "table_dark":
         im, d = _canvas(256, 256, "#2a1f1a")
         for y in range(0, 256, 32):
@@ -435,53 +442,104 @@ def surface(name, map_json=None, W=None, H=None):
 
 
 # ------------------------------------------------------------------ camera moves
+def _cr(p0, p1, p2, p3, u):
+    """Catmull-Rom between p1 and p2."""
+    u2, u3 = u * u, u * u * u
+    return 0.5 * ((2 * p1) + (-p0 + p2) * u + (2 * p0 - 5 * p1 + 4 * p2 - p3) * u2 + (-p0 + 3 * p1 - 3 * p2 + p3) * u3)
+
+
+def key_of(sc, dflt):
+    """Framing key [tx, ty, tz, dist, height, yaw_deg, fov] of a scene."""
+    tg = sc.get("target", dflt["target"])
+    return [tg[0], tg[1], tg[2], sc.get("dist", dflt["dist"]), sc.get("height", dflt["height"]), sc.get("yaw", 0),
+            sc.get("fov", dflt["fov"])]
+
+
+def cloud_k(sc, t, dur):
+    """0..1 cloud cover / rise amount for the seamless 'fly through clouds' location change."""
+    T = min(sc.get("cloud_time", 0.75), dur * 0.3)
+    k = 0.0
+    if sc.get("exit_clouds") and t > dur - T:
+        k = max(k, clamp((t - (dur - T)) / T))
+    if sc.get("enter_clouds") and t < T:
+        k = max(k, 1 - clamp(t / T))
+    return k
+
+
+def _smoother(x):
+    x = clamp(x)
+    return x * x * x * (x * (x * 6 - 15) + 10)
+
+
+def path_key(path, t):
+    """Camera key for the whole continuous shot: hold (with slow drift) on each beat's framing,
+    glide to the next framing in a short window around each beat boundary."""
+    F = [np.array(f, float) for f in path["F"]]
+    S = path["S"]
+    i = path["i"]
+    n = len(F)
+    tg = S[i] + t
+    d = [S[k + 1] - S[k] for k in range(n)]
+    a = [0.0] + [min(0.55 * d[k - 1], 1.0) for k in range(1, n)]     # glide time before boundary k
+    c = [0.0] + [min(0.45 * d[k], 0.8) for k in range(1, n)]         # glide time after boundary k
+
+    def drift(k, hp):
+        f = F[k].copy()
+        f[3] *= 1 - 0.07 * hp                       # slow push-in
+        f[5] += (3.0 if k % 2 else -3.0) * hp       # slow orbit, alternating
+        return f
+
+    for k in range(1, n):
+        w0, w1 = S[k] - a[k], S[k] + c[k]
+        if w0 <= tg <= w1:
+            u = _smoother((tg - w0) / max(1e-3, w1 - w0))
+            return drift(k - 1, 1.0) * (1 - u) + drift(k, 0.0) * u
+    m = max(0, min(n - 1, next((k for k in range(n) if S[k] <= tg < S[k + 1]), n - 1)))
+    h0 = S[m] + (c[m] if m > 0 else 0.0)
+    h1 = S[m + 1] - (a[m + 1] if m + 1 < n else 0.0)
+    hp = clamp((tg - h0) / max(1e-3, h1 - h0))
+    return drift(m, hp)
+
+
 def cam_pose(sc, dflt, t, dur):
-    tgt = np.array(sc.get("target", dflt["target"]), float)
-    dist = sc.get("dist", dflt["dist"])
-    h = sc.get("height", dflt["height"])
-    yaw = math.radians(sc.get("yaw", 0))
-    mv = sc.get("cam", "dolly_in")
-    lin = max(-0.3, min(1.3, t / max(dur, 1e-3)))          # keeps moving through cuts (seamless)
-    k = 0.72 * lin + 0.28 * ease_in_out(clamp(lin))
-    amt = sc.get("amount", 1.0)
-    d_yaw, d_dist, d_h, d_x = 0.0, 0.0, 0.0, 0.0
-    if mv == "dolly_in":
-        d_dist = -0.28 * dist * amt * k
-    elif mv == "dolly_out":
-        d_dist = 0.28 * dist * amt * (k - 1) * -1 - 0.28 * dist * amt
-        d_dist = -0.28 * dist * amt * (1 - k)
-    elif mv == "push":
-        d_dist = -0.45 * dist * amt * ease_out(clamp(t / max(dur, 1e-3)))
-    elif mv == "truck_left":
-        d_x = 1.4 * amt * (0.5 - k)
-    elif mv == "truck_right":
-        d_x = 1.4 * amt * (k - 0.5)
-    elif mv == "crane_up":
-        d_h = 1.6 * amt * (k - 0.3)
-    elif mv == "crane_down":
-        d_h = 1.6 * amt * (0.7 - k)
-    elif mv == "orbit_left":
-        d_yaw = math.radians(22 * amt) * (0.5 - k)
-    elif mv == "orbit_right":
-        d_yaw = math.radians(22 * amt) * (k - 0.5)
-    elif mv == "shake":
-        d_dist = -0.12 * dist * amt * k
-        d_x = 0.06 * math.sin(t * 37) + 0.04 * math.sin(t * 23)
-        d_h = 0.05 * math.sin(t * 31)
-    elif mv == "top":   # high angle looking down (battle plans)
-        d_h = 0.6 * amt * (0.5 - k)
-        d_dist = -0.1 * dist * amt * k
-    elif mv == "fly":   # high descending arc, for establishing shots
-        d_h = 3.0 * amt * (1 - k)
-        d_dist = 0.35 * dist * amt * (1 - k)
-        d_yaw = math.radians(14 * amt) * (0.5 - k)
-    yy = yaw + d_yaw
-    dd = dist + d_dist
-    pos = tgt + np.array([math.sin(yy) * -dd + d_x, h + d_h - tgt[1], math.cos(yy) * -dd])
-    look = tgt + np.array([d_x, 0, 0])
-    # tiny handheld drift so nothing is ever frozen
-    pos = pos + np.array([0.03 * math.sin(t * 0.9), 0.02 * math.sin(t * 1.3), 0])
-    return pos, look
+    if sc.get("path"):
+        v = path_key(sc["path"], t)
+        tgt, dist, h, yaw, fov = v[0:3], v[3], v[4], math.radians(v[5]), v[6]
+    elif sc.get("keys"):
+        K = [np.array(k, float) for k in sc["keys"]]
+        u = clamp(t / max(dur, 1e-3))
+        v = _cr(K[0], K[1], K[2], K[3], u)
+        tgt, dist, h, yaw, fov = v[0:3], v[3], v[4], math.radians(v[5]), v[6]
+    else:   # single-beat move (legacy)
+        tgt = np.array(sc.get("target", dflt["target"]), float)
+        dist, h, yaw, fov = sc.get("dist", dflt["dist"]), sc.get("height", dflt["height"]), math.radians(sc.get("yaw", 0)), sc.get("fov", dflt["fov"])
+        mv = sc.get("cam", "dolly_in")
+        lin = max(-0.3, min(1.3, t / max(dur, 1e-3)))
+        k = 0.72 * lin + 0.28 * ease_in_out(clamp(lin))
+        amt = sc.get("amount", 1.0)
+        if mv == "dolly_in":
+            dist -= 0.28 * dist * amt * k
+        elif mv == "dolly_out":
+            dist -= 0.28 * dist * amt * (1 - k)
+        elif mv == "push":
+            dist -= 0.45 * dist * amt * ease_out(clamp(lin))
+        elif mv == "crane_up":
+            h += 1.6 * amt * (k - 0.3)
+        elif mv == "crane_down":
+            h += 1.6 * amt * (0.7 - k)
+        elif mv == "orbit_left":
+            yaw += math.radians(22 * amt) * (0.5 - k)
+        elif mv == "orbit_right":
+            yaw += math.radians(22 * amt) * (k - 0.5)
+        elif mv == "fly":
+            h += 3.0 * amt * (1 - k); dist += 0.35 * dist * amt * (1 - k)
+    ck = cloud_k(sc, t, dur)
+    if ck > 0:   # rise into / dive out of the clouds
+        h += (ck ** 2) * max(7.0, h * 0.9)
+        dist *= 1 + 0.4 * ck ** 2
+    pos = tgt + np.array([math.sin(yaw) * -dist, h - tgt[1], math.cos(yaw) * -dist])
+    pos = pos + np.array([0.025 * math.sin(t * 0.9), 0.015 * math.sin(t * 1.3), 0])
+    return pos, tgt, fov
 
 
 # ------------------------------------------------------------------ billboards
@@ -511,15 +569,38 @@ def _sprite_char(spec, ch, t, env, fps, h_px):
     return spr
 
 
+def _paste_sub(fr, img, x0f, y0f, w2f, h2f):
+    """Composite img at a fractional position and size (no 1-pixel snapping -> no jitter)."""
+    wi, hi = img.size
+    fx, fy = x0f - math.floor(x0f), y0f - math.floor(y0f)
+    ax, ay = wi / max(1e-3, w2f), hi / max(1e-3, h2f)
+    patch = img.transform((wi + 2, hi + 2), Image.AFFINE, (ax, 0, -fx * ax, 0, ay, -fy * ay), Image.BILINEAR)
+    X, Y = int(math.floor(x0f)), int(math.floor(y0f))
+    W, H = fr.size
+    if X >= W or Y >= H or X + patch.width <= 0 or Y + patch.height <= 0:
+        return
+    cx0, cy0 = max(0, -X), max(0, -Y)
+    patch = patch.crop((cx0, cy0, min(patch.width, W - X), min(patch.height, H - Y)))
+    fr.alpha_composite(patch, (X + cx0, Y + cy0))
+
+
 def render(fr, sc, story, t, dur, env=None, fps=30, spec_fn=None):
     W, H = fr.size
     sc["_faces"] = []
     setname = sc.get("set", "court")
     envq, objq, dflt = build(setname, sc)
-    pos, look = cam_pose(sc, dflt, t, dur)
-    cam = Cam(pos, look, sc.get("fov", dflt["fov"]), W, H)
+    pos, look, fov = cam_pose(sc, dflt, t, dur)
+    cam = Cam(pos, look, fov, W, H)
     mood = sc.get("mood", dflt["mood"])
     for (_, O, E1, E2, tn, sk, _) in envq:
+        if tn == "global_map":
+            tx = global_map_texture(json.dumps(sc.get("map", {}).get("highlight", {}), sort_keys=True))
+            draw_quad(fr, cam, O, E1, E2, tx, sk * mood)
+            continue
+        if tn == "sea_far":
+            tx = surface("sea_far")
+            draw_quad(fr, cam, O, E1, E2, tx, sk * mood)
+            continue
         if tn == "map_ground":
             tx = sc.get("_map_tex") or map_texture(json.dumps(sc.get("map", {}), sort_keys=True))
         else:
@@ -594,27 +675,38 @@ def render(fr, sc, story, t, dur, env=None, fps=30, spec_fn=None):
             dy -= abs(math.sin(te * 2 * math.pi / .55)) * hp * .08
         if cfg.get("shake") or anim == "shake":
             sx += math.sin(te * 55) * hp * .02
-        w2, h2 = max(1, int(spr.width * scale)), max(1, int(spr.height * scale))
-        if w2 * h2 > W * H * 6:
+        w2f, h2f = spr.width * scale, spr.height * scale
+        if w2f * h2f > W * H * 6 or w2f < 1 or h2f < 1:
             continue
-        img = spr.resize((w2, h2), Image.BILINEAR)
+        wi, hi = int(math.ceil(w2f)), int(math.ceil(h2f))
+        img = spr.resize((wi, hi), Image.LANCZOS if wi < spr.width * .5 else Image.BILINEAR)
         if face == "left":
             img = img.transpose(Image.FLIP_LEFT_RIGHT)
+        fa = 1.0
+        if cfg.get("exit"):
+            fa = 1 - clamp(te / 0.35)
+        if cfg.get("fade_in"):
+            fa = min(fa, clamp(te / 0.35))
+        if fa <= 0.01:
+            continue
+        if fa < 0.99:
+            img.putalpha(img.getchannel("A").point(lambda v, fa=fa: int(v * fa)))
         if cfg.get("dim"):
             r, g, b_, a = img.split()
             f = lambda v: int(v * .55)
             img = Image.merge("RGBA", (r.point(f), g.point(f), b_.point(f), a))
-        # contact shadow on the floor
-        sh = Image.new("RGBA", (max(2, int(w2 * .9)), max(2, int(h2 * .07))), (0, 0, 0, 0))
-        ImageDraw.Draw(sh).ellipse([0, 0, sh.width - 1, sh.height - 1], fill=(0, 0, 0, 70))
-        fr.alpha_composite(sh, (int(sx - sh.width / 2), int(sy - sh.height / 2)))
-        fr.alpha_composite(img, (int(sx - w2 / 2), int(sy - h2 + dy)))
-        if kind == "char":
-            sc.setdefault("_faces", []).append((sx - w2 * .42, sy - h2 + dy, sx + w2 * .42, sy - h2 + dy + h2 * .42))
-        if kind == "char" and cfg.get("talk"):
-            sc["_speaker"] = (sx - w2 / 2, sy - h2 + dy, sx + w2 / 2, sy)
+        x0f, y0f = sx - w2f / 2, sy - h2f + dy
+        # contact shadow
+        shw, shh = max(2, int(w2f * .9)), max(2, int(h2f * .07))
+        sh = Image.new("RGBA", (shw, shh), (0, 0, 0, 0))
+        ImageDraw.Draw(sh).ellipse([0, 0, shw - 1, shh - 1], fill=(0, 0, 0, int(70 * fa)))
+        _paste_sub(fr, sh, sx - shw / 2, sy - shh / 2, shw, shh)
+        _paste_sub(fr, img, x0f, y0f, w2f, h2f)
+        w2, h2 = w2f, h2f
         if cfg.get("label") and te > .3:
             labels.append((cfg["label"], sx, sy - h2 + dy, hp))
+    if setname == "map" and sc.get("global_map"):
+        draw_map_notes(fr, cam, sc.get("map", {}), t, H / 1080.0)
     fr.alpha_composite(_vignette(W, H))
     return labels
 
@@ -637,3 +729,134 @@ def map_texture(map_json):
     hl = m.get("highlight", {})
     img = toonshot.light_map(tuple(m.get("view", [60, 5, 100, 38])), 2048, 1024, json.dumps(hl, sort_keys=True))
     return img.convert("RGBA").transpose(Image.FLIP_TOP_BOTTOM)
+
+
+# ------------------------------------------------------------------ global 3D world map (one map for every map beat)
+GV = (4.0, -22.0, 136.0, 66.0)          # lon0, lat0, lon1, lat1 (big, so edges never show)
+GTW = 4096
+_gcl = math.cos(math.radians((GV[1] + GV[3]) / 2))
+GTH = int(GTW * (GV[3] - GV[1]) / ((GV[2] - GV[0]) * _gcl))
+GMW = 100.0
+GMH = GMW * GTH / GTW
+GMZ0 = -GMH / 2 + 20
+
+
+def _gproj():
+    import scenes
+    return scenes.MapProj(GV, GTW, GTH)
+
+
+def lonlat_world(lon, lat):
+    px, py = _gproj()(lon, lat)
+    return (px / GTW - 0.5) * GMW, GMZ0 + (1 - py / GTH) * GMH
+
+
+def view_key(view, elev=58.0, pad=1.0, fov=50.0):
+    """Camera key that frames a lon/lat box on the global map."""
+    lon0, lat0, lon1, lat1 = view
+    cx, cz = lonlat_world((lon0 + lon1) / 2, (lat0 + lat1) / 2)
+    x0, _ = lonlat_world(lon0, (lat0 + lat1) / 2)
+    x1, _ = lonlat_world(lon1, (lat0 + lat1) / 2)
+    vw = abs(x1 - x0) * pad
+    D = vw * 1.0
+    e = math.radians(elev)
+    return [cx, 0.0, cz + D * 0.12, D * math.cos(e), D * math.sin(e), 0.0, fov]
+
+
+@functools.lru_cache(maxsize=12)
+def global_map_texture(hl_json):
+    import toonshot
+    img = toonshot.light_map(GV, GTW, GTH, hl_json)
+    return img.convert("RGBA").transpose(Image.FLIP_TOP_BOTTOM)
+
+
+def draw_map_notes(fr, cam, m, t, u):
+    """Pins, labels and routes drawn in screen space on top of the 3D map (crisp, constant size)."""
+    import toonshot
+    d = ImageDraw.Draw(fr)
+    for r in m.get("routes", []):
+        pts = [r["from"]] + r.get("via", []) + [r["to"]]
+        W3 = [lonlat_world(*p) for p in pts]
+        dense = []
+        for a_, b_ in zip(W3, W3[1:]):
+            for i in range(24):
+                k = i / 24
+                dense.append((a_[0] + (b_[0] - a_[0]) * k, a_[1] + (b_[1] - a_[1]) * k))
+        dense.append(W3[-1])
+        k = ease_in_out(clamp((t - r.get("delay", 0.3)) / max(0.3, r.get("time", 1.6))))
+        n = max(2, int(len(dense) * k))
+        scr = [cam.project((x, 0.05, z)) for x, z in dense[:n]]
+        scr = [(p[0], p[1]) for p in scr if p]
+        col = hexc(r.get("color", "#ffd166"))
+        for i in range(0, len(scr) - 1, 2):
+            d.line([scr[i], scr[i + 1]], fill=col, width=max(2, int(5 * u)))
+        if k > 0 and scr and r.get("mover"):
+            spr = props.make(r["mover"], int(60 * u))
+            fr.alpha_composite(spr, (int(scr[-1][0] - spr.width / 2), int(scr[-1][1] - spr.height * .8)))
+    for pn in m.get("pins", []):
+        if t < pn.get("delay", 0):
+            continue
+        x, z = lonlat_world(pn["lon"], pn["lat"])
+        p = cam.project((x, 0.05, z))
+        if not p:
+            continue
+        kk = back_out(clamp((t - pn.get("delay", 0)) / .35), 2)
+        for ph in (0.0, 0.5):   # radar pulse rings
+            q = ((t - pn.get("delay", 0)) * 0.8 + ph) % 1.0
+            R = (10 + 46 * q) * u
+            d.ellipse([p[0] - R, p[1] - R * .55, p[0] + R, p[1] + R * .55], outline=(255, 90, 70, int(220 * (1 - q))), width=max(1, int(2 * u)))
+        rr = 9 * u * kk
+        d.ellipse([p[0] - rr, p[1] - rr, p[0] + rr, p[1] + rr], fill=(255, 70, 50, 255), outline=(255, 230, 220, 255), width=max(1, int(2 * u)))
+        if kk > .5:
+            ns, ew = ("N" if pn["lat"] >= 0 else "S"), ("E" if pn["lon"] >= 0 else "W")
+            coord = f"{abs(pn['lat']):.1f}°{ns} · {abs(pn['lon']):.1f}°{ew}"
+            fc = toonshot.hand(int(20 * u), "body")
+            d.text((p[0], p[1] + 16 * u), coord, font=fc, fill=toonshot.TEXT + (220,), anchor="mt")
+        tg = toonshot.tag(pn["label"], int(40 * u))
+        if kk > .5:
+            fr.alpha_composite(tg, (int(p[0] - tg.width / 2), int(p[1] - tg.height - 12 * u)))
+    for lb in m.get("labels", []):
+        if t < lb.get("delay", 0):
+            continue
+        x, z = lonlat_world(lb["lon"], lb["lat"])
+        p = cam.project((x, 0.05, z))
+        if not p:
+            continue
+        spr = toonshot.big_text(lb["t"], int(lb.get("size", 50) * u * 1.35), lb.get("color", "#ffffff"))
+        kk = ease_out(clamp((t - lb.get("delay", 0)) / .4))
+        if kk < 1:
+            al = spr.getchannel("A").point(lambda v, kk=kk: int(v * kk))
+            spr = spr.copy(); spr.putalpha(al)
+        fr.alpha_composite(spr, (int(p[0] - spr.width / 2), int(p[1] - spr.height / 2)))
+
+
+@functools.lru_cache(maxsize=4)
+def cloud_layer(W, H, seed=0):
+    rnd = np.random.default_rng(seed)
+    im = Image.new("RGBA", (W * 2, H * 2), (0, 0, 0, 0))
+    dd = ImageDraw.Draw(im)
+    for _ in range(70):
+        x, y = rnd.uniform(0, W * 2), rnd.uniform(0, H * 2)
+        r = rnd.uniform(.12, .32) * W
+        g = int(rnd.uniform(228, 252))
+        dd.ellipse([x - r, y - r * .6, x + r, y + r * .6], fill=(g, g, min(255, g + 4), 235))
+    return im.filter(ImageFilter.GaussianBlur(W * .03))
+
+
+def draw_clouds(fr, k, t, seed=0):
+    """Fly-through clouds; k = 0 (clear) .. 1 (fully white). Two layers moving at different speeds."""
+    if k <= 0:
+        return
+    W, H = fr.size
+    base = Image.new("RGBA", (W, H), (236, 240, 245, int(255 * clamp((k - .45) / .5))))
+    fr.alpha_composite(base)
+    for i, sp in enumerate((0.35, 0.8)):
+        cl = cloud_layer(W, H, seed + i)
+        sc_ = 1 + k * (0.6 + i * .5)
+        w2, h2 = int(cl.width * sc_ * .6), int(cl.height * sc_ * .6)
+        layer = cl.resize((w2, h2), Image.BILINEAR)
+        a = layer.getchannel("A").point(lambda v, kk=min(1, k * 1.6): int(v * kk))
+        layer.putalpha(a)
+        ox = int(-w2 / 2 + W / 2 + math.sin(t * sp + i) * W * .05)
+        oy = int(-h2 / 2 + H / 2 + (t * 120 * sp) % 40)
+        fr.alpha_composite(layer, (ox, oy))

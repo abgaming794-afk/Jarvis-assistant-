@@ -136,7 +136,7 @@ SC["s15"] = M(CA, "dolly_in", highlight={"UZB": "#3f8a6a", "IND": "#8a6a3a"}, pi
 SC["s16"] = S("cliff", "orbit_right", actors=[A("umar", -0.6, 5.0, expr="happy", face="right")],
               objs=[O("dovecote", 1.4, 6.3, y=0.0, h=2.0)], caption="AKHSI QILA · 1494",
               names=[{"t": "UMAR SHAIKH MIRZA · FERGANA KE SHASAK", "x": 0.04, "y": 0.72, "at": 0.4}])
-SC["s16b"] = S("cliff", "shake", actors=[A("umar", 1.1, 6.2, expr="shocked", pose="up", shake=True, face="right")],
+SC["s16b"] = S("cliff", "shake", actors=[A("umar", 1.1, 6.2, expr="shocked", pose="up", face="right")],
                objs=[O("dovecote", 1.4, 6.3, h=2.0, anim="fall", delay=0.3), O("pigeon", 1.2, 6.3, y=1.5, h=0.4, anim="rise", delay=0.4),
                      O("pigeon", 2.0, 6.5, y=1.8, h=0.35, anim="rise", delay=0.6)],
                stickers=[{"name": "warning", "side": "top_right", "anim": "pop", "h": 0.14, "at": 0.4, "label": "KHAAI"}],
@@ -266,12 +266,12 @@ SC["s42b"] = S("battlefield", "top", target=[1.0, 0, 12], dist=6.5, height=11.0,
 SC["s43"] = S("battlefield", "shake", target=[0, 0.8, 5], dist=4.0,
               objs=[O("cannon_fire", -1.0, 5.0, h=1.0), O("cannon_fire", 1.4, 5.6, h=1.0), O("smoke", 0, 7, h=1.6, anim="rise")])
 SC["s44"] = S("battlefield", "shake", target=[1.5, 1.2, 9], dist=6.0,
-              objs=[O("elephant_panic", 0.5, 9.0, h=2.3, face="left", anim="shake"), O("elephant_panic", 3.0, 10.0, h=2.3, face="left", anim="shake"),
+              objs=[O("elephant_panic", 0.5, 9.0, h=2.3, face="left", anim="bob"), O("elephant_panic", 3.0, 10.0, h=2.3, face="left", anim="bob"),
                     O("smoke", -1.5, 7.5, h=1.4)])
 SC["s44b"] = S("battlefield", "truck_right", target=[2.0, 1.0, 10], dist=7.0,
                objs=[O("war_elephant", 1.0, 9.0, h=2.3, face="right", to=[3.0, 12.5], move_time=3.0),
-                     O("army_block", 3.6, 13.5, h=2.0, color="#7a2a22", anim="shake")],
-               actors=[A("lodi_soldier", 5.0, 11.5, expr="shocked", pose="up", face="left", shake=True)],
+                     O("army_block", 3.6, 13.5, h=2.0, color="#7a2a22", anim="bob")],
+               actors=[A("lodi_soldier", 5.0, 11.5, expr="shocked", pose="up", face="left")],
                names=[{"t": "PARAMPARA KE MUTABIK", "x": 0.04, "y": 0.72, "at": 0.4}])
 SC["s45"] = S("battlefield", "crane_up", target=[0, 1.0, 5.5], dist=5.5,
               actors=[A("babur", 0, 5.2, expr="proud", pose="fist")], objs=[O("smoke", -2, 8, h=1.6), O("smoke", 2.6, 9, h=1.3), O("sword", 1.6, 5.8, h=0.5)],

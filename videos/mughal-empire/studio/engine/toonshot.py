@@ -26,6 +26,7 @@ PREMIUM = {"marker": ("BebasNeue-Regular.ttf", None), "cinzel_black": ("BebasNeu
            "body": ("Poppins-Regular.ttf", None), "comic": ("Poppins-SemiBold.ttf", None),
            "kalam": ("RozhaOne-Regular.ttf", None), "mukta": ("Mukta-Bold.ttf", None)}
 YELLOW = (255, 195, 31)
+TEXT = (247, 243, 234)          # the ONE text colour used everywhere
 
 
 def tracked(draw, xy, text, font, fill, track=0.08, anchor="lm"):
@@ -87,7 +88,7 @@ def tag(text, size, bg="#f6f2e8", fg="#1b1717", pointer=True, kind="marker"):
     if pointer:
         cx = img.width / 2
         g.polygon([(cx - pw, th + pady * 2 + 3), (cx + pw, th + pady * 2 + 3), (cx, th + pady * 2 + pw + 4)], fill=GOLD)
-    tracked(g, (3 + padx, 3 + pady + th / 2), text, f, (246, 238, 220, 255), .02, "lm")
+    tracked(g, (3 + padx, 3 + pady + th / 2), text, f, TEXT + (255,), .02, "lm")
     return img
 
 
@@ -106,14 +107,7 @@ def big_text(text, size, color="#f1c232", kind="marker"):
     ImageDraw.Draw(sh).text((ox + size // 28, oy + size // 22), text, font=f, fill=(0, 0, 0, 170), stroke_width=stroke, stroke_fill=(0, 0, 0, 170))
     img = sh.filter(ImageFilter.GaussianBlur(max(1, size // 30)))
     ImageDraw.Draw(img).text((ox, oy), text, font=f, fill=(30, 20, 14, 255), stroke_width=stroke, stroke_fill=(30, 20, 14, 255))
-    c = hexc(color)
-    dark = (c[0] * .3 + c[1] * .59 + c[2] * .11) < 110
-    if dark:   # dark text on light backgrounds (charts): no outline, no shadow
-        img = Image.new("RGBA", (w, h), (0, 0, 0, 0))
-        ImageDraw.Draw(img).text((ox, oy), text, font=f, fill=c[:3] + (255,))
-        return img
-    fill = YELLOW if color.lower() in ("#f1c232", "#ffc31f") else c[:3]
-    ImageDraw.Draw(img).text((ox, oy), text, font=f, fill=fill + (255,))
+    ImageDraw.Draw(img).text((ox, oy), text, font=f, fill=TEXT + (255,))
     return img
 
 
@@ -142,7 +136,7 @@ def light_map(view, W, H, hl_json="{}"):
     hl = json.loads(hl_json)
     img = Image.new("RGBA", (W, H), (0, 0, 0, 0))
     a = np.linspace(0, 1, H)[:, None]
-    sea = (np.array([182, 214, 230]) * (1 - a) + np.array([150, 190, 214]) * a)[:, None, :].repeat(W, 1)
+    sea = (np.array([18, 30, 42]) * (1 - a) + np.array([12, 22, 32]) * a)[:, None, :].repeat(W, 1)
     img = Image.fromarray(sea.reshape(H, W, 3).astype(np.uint8), "RGB").convert("RGBA")
     d = ImageDraw.Draw(img)
     P = MapProj(view, W, H)
@@ -160,7 +154,7 @@ def light_map(view, W, H, hl_json="{}"):
         for poly in polys(f["geometry"]):
             ring = [P(x, y) for x, y in poly[0]]
             if len(ring) > 2:
-                sd.polygon([(x + W * .003, y + W * .004) for x, y in ring], fill=(40, 70, 90, 70))
+                sd.polygon([(x + W * .003, y + W * .004) for x, y in ring], fill=(0, 0, 0, 90))
     img.alpha_composite(sh.filter(ImageFilter.GaussianBlur(W / 400)))
     d = ImageDraw.Draw(img)
     for f in _world():
@@ -169,10 +163,10 @@ def light_map(view, W, H, hl_json="{}"):
         for poly in polys(f["geometry"]):
             ring = [P(x, y) for x, y in poly[0]]
             if len(ring) > 2:
-                d.polygon(ring, fill=hexc(col) if col else (243, 236, 220, 255),
-                          outline=hexc(shade(col, 0.7)) if col else (196, 184, 160, 255), width=lw)
+                d.polygon(ring, fill=hexc(shade(col, 0.85)) if col else (44, 50, 58, 255),
+                          outline=hexc(shade(col, 1.35)) if col else (92, 104, 118, 255), width=lw)
     icol = hl.get("IND") or hl.get("India")
-    draw_india(d, P, hexc(icol) if icol else (243, 236, 220, 255), hexc(shade(icol, .7)) if icol else (196, 184, 160, 255), lw)
+    draw_india(d, P, hexc(shade(icol, .85)) if icol else (44, 50, 58, 255), hexc(shade(icol, 1.35)) if icol else (92, 104, 118, 255), lw)
     arr = np.asarray(img.convert("RGB"), np.float32)
     arr += np.random.default_rng(2).normal(0, 3, (H, W, 1))
     yy, xx = np.mgrid[0:H, 0:W]
@@ -212,8 +206,7 @@ class ToonShot:
                 bg = sc.get("bg", {"black": "black", "chart": "paper", "memo": "desk_top", "realdoc": "desk_top",
                                    "newspaper": "desk_top"}.get(self.type, "study_night"))
                 if bg == "paper":
-                    img = rooms.make("office_day", self.CW, self.CH)
-                    img = Image.new("RGB", img.size, (238, 230, 212))
+                    img = Image.new("RGB", (self.CW, self.CH), (22, 18, 16))
                 else:
                     img = rooms.make(bg, self.CW, self.CH, sc.get("seed", 0))
             self._base = img.convert("RGBA")
@@ -556,7 +549,7 @@ class ToonShot:
             left = sc.get("align", "left") == "left"
             for i, l in enumerate(lines):
                 if left:
-                    d.text((W * sc.get("x", .08), y0 + i * lh + lh / 2), l, font=f, fill=hexc(sc.get("color", "#f4ead2")), anchor="lm")
+                    d.text((W * sc.get("x", .08), y0 + i * lh + lh / 2), l, font=f, fill=TEXT + (255,), anchor="lm")
                 else:
                     d.text((W / 2, y0 + i * lh + lh / 2), l, font=f, fill=hexc(sc.get("color", "#f4f1ea")), anchor="mm")
         # big number / word inside any scene
@@ -648,7 +641,8 @@ class ToonShot:
                 fg = motion.fg_layer(json.dumps(items, sort_keys=True), self.CW, self.CH)
                 fr.alpha_composite(motion.layer_view(fg, self.CW, self.CH, self.W, self.H, z, ox, oy, motion.LAYER_K["fg"], focus))
         elif self.type == "set3d":
-            fr = Image.new("RGBA", (self.W, self.H), (20, 16, 14, 255))
+            sky = set3d.cloud_k(self.sc, t, self.dur) > 0
+            fr = Image.new("RGBA", (self.W, self.H), (150, 190, 214, 255) if sky else (20, 16, 14, 255))
             if self.sc.get("set") == "map":
                 if not hasattr(self, "_mapsub"):
                     pd = float(self.sc.get("map_pad", 1.0))
@@ -661,6 +655,8 @@ class ToonShot:
                     self._mapsub = ToonShot(mb, self.story, int(1600 * pd), int(800 * pd), self.dur, self.env, self.fps)
                 self.sc["_map_tex"] = self._mapsub.frame_core(t).convert("RGBA").transpose(Image.FLIP_TOP_BOTTOM)
             labels = set3d.render(fr, self.sc, self.story, t, self.dur, self.env, self.fps, self._spec)
+            if not self.sc.get("global_map"):
+                motion.draw_dust(fr, t, self.b.get("id", ""))
             self.sc["_dur"] = self.dur
             pbfx.draw_board(fr, self.sc, t, self.H / 1080.0)
             pbfx.draw_days_left(fr, self.sc, t, self.H / 1080.0)
@@ -697,9 +693,77 @@ class ToonShot:
             pbfx.draw_names(fr, sc["names"], t, sc.get("_faces"))
         if sc.get("stickers"):
             motion.draw_stickers(fr, sc["stickers"], t, self.dur, SKILL)
+        if sc.get("overlay"):
+            self._overlay(fr, t)
         if sc.get("source"):
             docs3d.draw_source(fr, sc["source"], sc.get("source_by", ""), t, sc.get("source_at", .6))
+        if self.type == "set3d":
+            set3d.draw_clouds(fr, set3d.cloud_k(sc, t, self.dur), t, hash(self.b.get("id", "")) % 5)
         return fr
+
+    def _overlay(self, fr, t):
+        """Cards / documents / black-card text floating over the running 3D scene (no cut)."""
+        ov = self.sc["overlay"]
+        W, H = self.W, self.H
+        u = H / 1080
+        kin = ease_out(clamp(t / .35)) if ov.get("fade_in", True) else 1.0
+        kout = 1 - ease_in_out(clamp((t - (self.dur - .35)) / .35)) if ov.get("fade_out", True) else 1.0
+        k = min(kin, kout)
+        if k <= 0:
+            return
+        bl = fr.filter(ImageFilter.GaussianBlur(max(1, W / 200 * k)))
+        dark = Image.new("RGBA", (W, H), (8, 6, 6, int((200 if ov["type"] == "black" else 120) * k)))
+        bl.alpha_composite(dark)
+        fr.paste(bl, (0, 0))
+        if ov["type"] == "black":
+            text = ov.get("t", "")
+            size = int(ov.get("size", 66) * u)
+            f = hfont(text, size, "caveat")
+            n = len(text)
+            kk = clamp(t / max(.4, min(self.dur * .55, .05 * n)))
+            shown = text[: int(round(n * kk))]
+            d = ImageDraw.Draw(fr)
+            x0 = W * .08
+            d.text((x0, H * .5), shown, font=f, fill=TEXT + (int(255 * k),), anchor="lm")
+            d.line([(x0, H * .5 + size * .85), (x0 + W * .12 * clamp(t / .6), H * .5 + size * .85)], fill=GOLD, width=max(2, int(3 * u)))
+            return
+        if not hasattr(self, "_ovsub"):
+            ob = dict(self.b); osc = dict(ov); osc.pop("fade_in", None); osc.pop("fade_out", None)
+            if osc["type"] == "map":
+                osc["cam"] = "static"
+            ob["scene"] = osc; ob.pop("transition", None); ob.pop("year", None); ob.pop("chapter_tag", None)
+            self._ovsub = ToonShot(ob, self.story, W, H, self.dur, self.env, self.fps)
+        sub = self._ovsub
+        if ov["type"] == "realdoc":
+            lay = Image.new("RGBA", (sub.CW, sub.CH), (0, 0, 0, 0))
+            if not hasattr(sub, "_doc"):
+                sub._doc = docs3d.DocShot(sub.sc, sub.CW, sub.CH, sub.dur)
+            sub._doc.draw(lay, t)
+            lay = lay.resize((W, H), Image.LANCZOS)
+            if k < 1:
+                lay.putalpha(lay.getchannel("A").point(lambda v: int(v * k)))
+            fr.alpha_composite(lay)
+            return
+        if ov["type"] == "map":
+            full = sub.frame_core(t).convert("RGBA")
+            if k < 1:
+                full.putalpha(int(255 * k))
+            fr.alpha_composite(full)
+            return
+        card = sub.frame_core(t).convert("RGBA")
+        sc_ = .78 * (0.92 + 0.08 * k)
+        cw, ch = int(W * sc_), int(H * sc_)
+        card = card.resize((cw, ch), Image.LANCZOS)
+        m = Image.new("L", (cw, ch), 0)
+        ImageDraw.Draw(m).rounded_rectangle([0, 0, cw - 1, ch - 1], radius=int(22 * u), fill=int(255 * k))
+        shadow = Image.new("RGBA", (cw + 60, ch + 60), (0, 0, 0, 0))
+        ImageDraw.Draw(shadow).rounded_rectangle([30, 36, cw + 30, ch + 36], radius=int(22 * u), fill=(0, 0, 0, int(150 * k)))
+        shadow = shadow.filter(ImageFilter.GaussianBlur(18 * u))
+        x0, y0 = (W - cw) // 2, int((H - ch) / 2 + (1 - k) * 30 * u)
+        fr.alpha_composite(shadow, (x0 - 30, y0 - 30))
+        card.putalpha(m)
+        fr.alpha_composite(card, (x0, y0))
+        ImageDraw.Draw(fr).rounded_rectangle([x0, y0, x0 + cw, y0 + ch], radius=int(22 * u), outline=(214, 178, 96, int(255 * k)), width=max(1, int(3 * u)))
 
     def frame(self, t):
         fr = self.frame_core(t)

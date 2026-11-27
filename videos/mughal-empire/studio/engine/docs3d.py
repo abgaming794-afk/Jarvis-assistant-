@@ -145,10 +145,10 @@ def draw_source(fr, text, by="", t=1.0, at=.6):
     y = 30 * u
     gold = (214, 178, 96, int(255 * k))
     white = (244, 240, 230, int(255 * k))
-    d.text((xr, y), "Srot", font=lab, fill=gold, anchor="ra")
+    d.text((xr, y), "Srot", font=lab, fill=white, anchor="ra")
     d.text((xr, y + 22 * u), text, font=f1, fill=white, anchor="ra")
     if by:
-        d.text((xr, y + 50 * u), by, font=f2, fill=(210, 204, 192, int(225 * k)), anchor="ra")
+        d.text((xr, y + 50 * u), by, font=f2, fill=(247, 243, 234, int(200 * k)), anchor="ra")
     fr.alpha_composite(lay)
 
 

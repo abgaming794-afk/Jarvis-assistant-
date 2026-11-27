@@ -216,7 +216,11 @@ def draw_board(can, sc, t, u):
                 break
             part = seg[:shown]
             shown -= len(seg)
-            g.text((x, y), part, font=f, fill=(241, 194, 50, 255) if hi else (246, 238, 220, 255), anchor="lm")
+            from toonshot import TEXT
+            g.text((x, y), part, font=f, fill=TEXT + (255,), anchor="lm")
+            if hi:
+                pw_ = g.textlength(part, font=f)
+                g.line([(x, y + size * .52), (x + pw_, y + size * .52)], fill=(214, 178, 96, 255), width=max(2, int(4 * u)))
             x += g.textlength(seg, font=f)
     if x0 + w > CW - 10 * u:
         x0 = CW - 10 * u - w
@@ -396,7 +400,7 @@ def draw_names(fr, names, t, faces=None):
         bd.rectangle([0, 0, int(7 * u), bh], fill=hexc(n.get("bar", "#d6b260")))
         bd.line([(int(7 * u), bh - 2), (box.width, bh - 2)], fill=(214, 178, 96, 160), width=max(1, int(2 * u)))
         from toonshot import tracked
-        tracked(bd, (int(24 * u), bh / 2), shown, f, (246, 238, 220, 255), .02, "lm")
+        tracked(bd, (int(24 * u), bh / 2), shown, f, (247, 243, 234, 255), .02, "lm")
         ka = ease_out(clamp((t - at) / .3))
         fr.alpha_composite(box, (int(x - (1 - ka) * 24 * u), int(y)))
 
