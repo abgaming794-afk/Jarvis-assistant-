@@ -608,6 +608,8 @@ def render(fr, sc, story, t, dur, env=None, fps=30, spec_fn=None):
         ImageDraw.Draw(sh).ellipse([0, 0, sh.width - 1, sh.height - 1], fill=(0, 0, 0, 70))
         fr.alpha_composite(sh, (int(sx - sh.width / 2), int(sy - sh.height / 2)))
         fr.alpha_composite(img, (int(sx - w2 / 2), int(sy - h2 + dy)))
+        if kind == "char" and cfg.get("talk"):
+            sc["_speaker"] = (sx - w2 / 2, sy - h2 + dy, sx + w2 / 2, sy)
         if cfg.get("label") and te > .3:
             labels.append((cfg["label"], sx, sy - h2 + dy, hp))
     fr.alpha_composite(_vignette(W, H))

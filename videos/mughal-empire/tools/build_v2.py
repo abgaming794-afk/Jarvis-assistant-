@@ -45,7 +45,7 @@ story = {
 A = lambda who, x, z, **k: dict(who=who, x=x, z=z, **k)
 O = lambda prop, x, z, **k: dict(prop=prop, x=x, z=z, **k)
 SRC_M = "Maddison, The World Economy: A Millennial Perspective (OECD, 2001)"
-NAATYA = {"t": "NAATYA ROOPANTARAN", "x": 0.06, "y": 0.1, "at": 0.2, "bar": "#555555"}
+NAATYA = {"t": "NAATYA ROOPANTARAN", "x": 0.80, "y": 0.035, "at": 0.2, "bar": "#8a7a5a", "small": True}
 
 
 def S(set_, cam, **k):

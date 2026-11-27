@@ -41,7 +41,8 @@ def draw(fr, beat, t, dur, prev_beat=None):
     px_per_year = bw / span_years
     base = bh * .62
     d.line([(int(bh * .3), base), (bw - int(bh * .3), base)], fill=(240, 228, 200, 200), width=max(1, int(2 * u)))
-    f_small = font(int(18 * u), "Bold")
+    from toonshot import hand
+    f_small = hand(int(19 * u), "oswald")
     first = int(math.floor(cur - span_years / 2))
     for yr in range(first, first + int(span_years) + 2):
         x = bw / 2 + (yr - cur) * px_per_year
@@ -61,7 +62,7 @@ def draw(fr, beat, t, dur, prev_beat=None):
     fr.alpha_composite(band, (x0, y0))
     # current year pill above the band
     yr = int(round(cur))
-    f_big = font(int(30 * u), "Black")
+    f_big = hand(int(30 * u), "cinzel_black")
     txt = str(yr)
     tw = ImageDraw.Draw(fr).textlength(txt, font=f_big)
     pw, ph = int(tw + 26 * u), int(40 * u)

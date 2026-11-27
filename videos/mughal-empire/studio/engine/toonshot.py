@@ -21,21 +21,22 @@ OS = 1.10
 DEV = re.compile(r"[ऀ-ॿ]")
 
 
-@functools.lru_cache(maxsize=64)
+PREMIUM = {"marker": ("Cinzel-VF.ttf", "Bold"), "caveat": ("PlayfairDisplay-VF.ttf", "Bold"),
+           "kalam": ("RozhaOne-Regular.ttf", None), "oswald": ("Oswald-VF.ttf", "SemiBold"),
+           "mukta": ("Mukta-Bold.ttf", None), "cinzel_black": ("Cinzel-VF.ttf", "Black")}
+
+
+@functools.lru_cache(maxsize=96)
 def hand(size, kind="caveat"):
-    """Hand-written fonts. kind: caveat (script), marker (bold labels), kalam (Devanagari + Latin)."""
+    """Premium fonts. kind: marker (Cinzel), caveat (Playfair Display), kalam (Rozha One, Devanagari),
+    oswald (labels), mukta (Devanagari labels), cinzel_black (titles)."""
     size = max(6, int(size))
-    if kind == "marker":
-        p = os.path.join(FONTS, "PermanentMarker-Regular.ttf")
-    elif kind == "kalam":
-        p = os.path.join(FONTS, "Kalam-Bold.ttf")
-    else:
-        p = os.path.join(FONTS, "Caveat-Variable.ttf")
+    fn, var = PREMIUM.get(kind, PREMIUM["caveat"])
     try:
-        f = ImageFont.truetype(p, size)
-        if kind == "caveat":
+        f = ImageFont.truetype(os.path.join(FONTS, fn), size)
+        if var:
             try:
-                f.set_variation_by_name("Bold")
+                f.set_variation_by_name(var)
             except Exception:
                 pass
         return f
@@ -44,45 +45,61 @@ def hand(size, kind="caveat"):
 
 
 def hfont(text, size, kind="caveat"):
-    return hand(size, "kalam" if DEV.search(text or "") else kind)
+    if DEV.search(text or ""):
+        return hand(size, "mukta" if kind == "oswald" else "kalam")
+    return hand(size, kind)
+
+
+GOLD = (214, 178, 96, 255)
+GLASS = (16, 13, 12, 222)
 
 
 @functools.lru_cache(maxsize=256)
 def tag(text, size, bg="#f6f2e8", fg="#1b1717", pointer=True, kind="marker"):
-    f = hfont(text, size, kind)
+    """Premium label pill: dark glass, thin gold border, Oswald caps."""
+    f = hfont(text, size * .82, "oswald")
     d = ImageDraw.Draw(Image.new("RGBA", (4, 4)))
     b = d.textbbox((0, 0), text, font=f)
     tw, th = b[2] - b[0], b[3] - b[1]
-    pad = int(size * 0.35)
-    pw = int(size * 0.35) if pointer else 0
-    img = Image.new("RGBA", (tw + pad * 2 + 8, th + pad * 2 + pw + 8), (0, 0, 0, 0))
+    padx, pady = int(size * 0.42), int(size * 0.26)
+    pw = int(size * 0.26) if pointer else 0
+    lw = max(1, size // 18)
+    img = Image.new("RGBA", (tw + padx * 2 + 6, th + pady * 2 + pw + 6), (0, 0, 0, 0))
     g = ImageDraw.Draw(img)
-    g.rounded_rectangle([4, 4, tw + pad * 2 + 4, th + pad * 2 + 4], radius=size * 0.18, fill=hexc(bg),
-                        outline=(30, 22, 20, 255), width=max(2, size // 14))
+    g.rounded_rectangle([3, 3, tw + padx * 2 + 3, th + pady * 2 + 3], radius=int(size * 0.3), fill=GLASS, outline=GOLD, width=lw)
     if pointer:
         cx = img.width / 2
-        g.polygon([(cx - pw, th + pad * 2 + 2), (cx + pw, th + pad * 2 + 2), (cx, th + pad * 2 + pw + 6)],
-                  fill=hexc(bg), outline=(30, 22, 20, 255))
-        g.line([(cx - pw + 2, th + pad * 2 + 4), (cx + pw - 2, th + pad * 2 + 4)], fill=hexc(bg), width=max(2, size // 12))
-    g.text((4 + pad - b[0], 4 + pad - b[1]), text, font=f, fill=hexc(fg))
+        g.polygon([(cx - pw, th + pady * 2 + 3), (cx + pw, th + pady * 2 + 3), (cx, th + pady * 2 + pw + 4)], fill=GOLD)
+    g.text((3 + padx - b[0], 3 + pady - b[1]), text, font=f, fill=(246, 238, 220, 255))
     return img
 
 
 @functools.lru_cache(maxsize=128)
 def big_text(text, size, color="#f1c232", kind="marker"):
-    f = hfont(text, size, kind)
-    c = hexc(color)
-    dark = (c[0] * .3 + c[1] * .59 + c[2] * .11) < 110
-    stroke = max(2, size // 12) if not dark else 0
+    """Premium title: Cinzel Black with a gold gradient, dark outline and soft shadow."""
+    f = hfont(text, size, "cinzel_black")
+    stroke = max(2, size // 22)
     d = ImageDraw.Draw(Image.new("RGBA", (4, 4)))
     b = d.textbbox((0, 0), text, font=f, stroke_width=stroke)
-    img = Image.new("RGBA", (b[2] - b[0] + stroke * 4, b[3] - b[1] + stroke * 4), (0, 0, 0, 0))
-    g = ImageDraw.Draw(img)
-    if not dark:
-        g.text((stroke * 2 - b[0] + stroke, stroke * 2 - b[1] + stroke), text, font=f, fill=(0, 0, 0, 140),
-               stroke_width=stroke, stroke_fill=(0, 0, 0, 140))
-    g.text((stroke * 2 - b[0], stroke * 2 - b[1]), text, font=f, fill=hexc(color), stroke_width=stroke,
-           stroke_fill=(24, 16, 14, 255))
+    pad = stroke * 4 + size // 10
+    w, h = b[2] - b[0] + pad * 2, b[3] - b[1] + pad * 2
+    ox, oy = pad - b[0], pad - b[1]
+    sh = Image.new("RGBA", (w, h), (0, 0, 0, 0))
+    ImageDraw.Draw(sh).text((ox + size // 28, oy + size // 22), text, font=f, fill=(0, 0, 0, 170), stroke_width=stroke, stroke_fill=(0, 0, 0, 170))
+    img = sh.filter(ImageFilter.GaussianBlur(max(1, size // 30)))
+    ImageDraw.Draw(img).text((ox, oy), text, font=f, fill=(30, 20, 14, 255), stroke_width=stroke, stroke_fill=(30, 20, 14, 255))
+    mask = Image.new("L", (w, h), 0)
+    ImageDraw.Draw(mask).text((ox, oy), text, font=f, fill=255)
+    c = hexc(color)
+    top, bot = (255, 241, 196), (c[0], c[1], c[2])
+    if (c[0] * .3 + c[1] * .59 + c[2] * .11) > 150:
+        bot = (201, 150, 40)
+    grad = Image.new("RGBA", (1, h))
+    for y in range(h):
+        k = y / max(1, h - 1)
+        grad.putpixel((0, y), tuple(int(top[i] + (bot[i] - top[i]) * k) for i in range(3)) + (255,))
+    grad = grad.resize((w, h))
+    img.paste(grad, (0, 0), mask)
     return img
 
 
@@ -501,9 +518,11 @@ class ToonShot:
         u = H / 1080
         if self.type == "black":
             text = sc.get("t", "")
-            size = int(sc.get("size", 64) * u)
+            size = int(sc.get("size", 72) * u)
             f = hfont(text, size, "caveat")
             n = len(text)
+            ImageDraw.Draw(fr).line([(W * sc.get("x", .08), H * .62), (W * sc.get("x", .08) + W * .12 * clamp(t / .6), H * .62)],
+                                    fill=GOLD, width=max(2, int(3 * u)))
             k = clamp(t / max(.4, min(self.dur * .55, .06 * n)))
             shown = text[: int(round(n * k))] if sc.get("type_on", True) else text
             d = ImageDraw.Draw(fr)
@@ -523,7 +542,7 @@ class ToonShot:
             left = sc.get("align", "left") == "left"
             for i, l in enumerate(lines):
                 if left:
-                    d.text((W * sc.get("x", .08), y0 + i * lh + lh / 2), l, font=f, fill=hexc(sc.get("color", "#f4f1ea")), anchor="lm")
+                    d.text((W * sc.get("x", .08), y0 + i * lh + lh / 2), l, font=f, fill=hexc(sc.get("color", "#f4ead2")), anchor="lm")
                 else:
                     d.text((W / 2, y0 + i * lh + lh / 2), l, font=f, fill=hexc(sc.get("color", "#f4f1ea")), anchor="mm")
         # big number / word inside any scene

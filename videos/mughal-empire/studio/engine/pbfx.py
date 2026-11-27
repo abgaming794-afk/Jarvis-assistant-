@@ -168,33 +168,58 @@ def draw_table(can, sc, t, u):
 
 
 def draw_board(can, sc, t, u):
+    """Premium dialogue card: dark glass, gold bar + border, Playfair Display, [highlight] words in gold."""
     b = sc.get("board")
     if not b:
         return
     CW, CH = can.size
     x0, y0, x1, y1 = b.get("rect", [0, .02, .6, .17])
     x0, x1, y0, y1 = x0 * CW, x1 * CW, y0 * CH, y1 * CH
-    d = ImageDraw.Draw(can)
-    d.rectangle([x0, y0, x1, y1], fill=hexc(b.get("color", "#e9e7e1")), outline=INK, width=max(1, int(4 * u)))
+    k_in = ease_out(clamp((t - b.get("at", .2) + .15) / .3))
+    if k_in <= 0:
+        return
     lines = b["text"].split("|")
+    import re
+    dev = bool(re.search(r"[ऀ-ॿ]", b["text"]))
+    size = int(b.get("size", 46) * u)
+    f = _hand(size, dev)
+    lh = size * 1.3
+    tmp = ImageDraw.Draw(can)
+    tw = max(tmp.textlength(l.replace("[", "").replace("]", ""), font=f) for l in lines)
+    pad = 30 * u
+    w = tw + pad * 2 + 14 * u
+    h = lh * len(lines) + pad * 1.4
+    spk = sc.get("_speaker")
+    if spk:   # keep the card off the speaker's face: try 3 slots, take the least overlap
+        fx0, fy0, fx1, fy1 = spk
+        fy1 = fy0 + (fy1 - fy0) * 0.45
+        slots = [(0.04 * CW, 0.12 * CH), (0.96 * CW - w, 0.12 * CH), ((CW - w) / 2, 0.68 * CH)]
+        if (fx0 + fx1) / 2 < CW / 2:
+            slots[0], slots[1] = slots[1], slots[0]
+        def ov(s):
+            ax0, ay0, ax1, ay1 = s[0], s[1], s[0] + w, s[1] + h
+            return max(0, min(ax1, fx1) - max(ax0, fx0)) * max(0, min(ay1, fy1) - max(ay0, fy0))
+        x0, y0 = min(slots, key=ov)
+    card = Image.new("RGBA", (int(w), int(h)), (0, 0, 0, 0))
+    g = ImageDraw.Draw(card)
+    g.rounded_rectangle([0, 0, w - 1, h - 1], radius=int(16 * u), fill=(16, 13, 12, 226), outline=(214, 178, 96, 255), width=max(1, int(2 * u)))
+    g.rectangle([int(8 * u), int(12 * u), int(14 * u), int(h - 12 * u)], fill=(214, 178, 96, 255))
     total = sum(len(l.replace("[", "").replace("]", "")) for l in lines)
     k = clamp((t - b.get("at", .2)) / max(.3, b.get("time", 2.2)))
     shown = int(total * k)
-    size = int(b.get("size", 54) * u)
-    import re
-    dev = bool(re.search(r"[ऀ-ॿ]", b["text"]))
-    f = _hand(size, dev) if dev else _marker(size)
-    lh = size * 1.15
-    cy = (y0 + y1) / 2 - lh * (len(lines) - 1) / 2
     for li, line in enumerate(lines):
-        x = x0 + 40 * u + li * 20 * u
-        for seg, red in _parse(line):
+        x = pad + 14 * u
+        y = pad * .7 + li * lh + lh / 2
+        for seg, hi in _parse(line):
             if shown <= 0:
                 break
             part = seg[:shown]
             shown -= len(seg)
-            d.text((x, cy + li * lh), part, font=f, fill=(214, 40, 40, 255) if red else (40, 40, 52, 255), anchor="lm")
-            x += d.textlength(seg, font=f)
+            g.text((x, y), part, font=f, fill=(241, 194, 50, 255) if hi else (246, 238, 220, 255), anchor="lm")
+            x += g.textlength(seg, font=f)
+    if x0 + w > CW - 10 * u:
+        x0 = CW - 10 * u - w
+    can.alpha_composite(card, (int(x0), int(y0 - (1 - k_in) * 20 * u)))
 
 
 def draw_days_left(can, sc, t, u):
@@ -341,25 +366,33 @@ def draw_popup(fr, p, t):
 
 
 def draw_names(fr, names, t):
+    """Premium lower-third tags: dark glass, gold bar, Oswald caps (Mukta for Devanagari)."""
     W, H = fr.size
     u = H / 1080
+    from toonshot import hfont
     for i, n in enumerate(names):
         at = n.get("at", .4 + i * .6)
         if t < at:
             continue
         text = n["t"]
-        k = clamp((t - at) / max(.3, .045 * len(text)))
-        shown = text[: max(1, int(len(text) * k))] + ("…" if n.get("dots") and k < 1 else "")
-        import re
-        f = _hand(int(n.get("size", 40) * u), bool(re.search(r"[ऀ-ॿ]", text)))
+        k = clamp((t - at) / max(.3, .035 * len(text)))
+        shown = text[: max(1, int(len(text) * k))]
+        small = n.get("small", False)
+        f = hfont(text, int(n.get("size", 26 if small else 34) * u), "oswald")
         d = ImageDraw.Draw(fr)
-        full_w = d.textlength(text, font=f) + 46 * u
+        full_w = d.textlength(text, font=f) + 52 * u
+        bh = int((40 if small else 56) * u)
         x, y = n.get("x", .49) * W, (n.get("y", .78) + i * .065) * H
-        box = Image.new("RGBA", (int(full_w), int(52 * u)), (18, 22, 30, 200))
+        if x + full_w > W - 12 * u:
+            x = W - 12 * u - full_w
+        box = Image.new("RGBA", (int(full_w), bh), (0, 0, 0, 0))
         bd = ImageDraw.Draw(box)
-        bd.rectangle([0, 0, int(6 * u), box.height], fill=hexc(n.get("bar", "#3fbf5a")))
-        bd.text((int(20 * u), box.height / 2), shown, font=f, fill=(236, 236, 236, 255), anchor="lm")
-        fr.alpha_composite(box, (int(x), int(y)))
+        bd.rounded_rectangle([0, 0, box.width - 1, bh - 1], radius=int(8 * u), fill=(16, 13, 12, 215))
+        bd.rectangle([0, 0, int(7 * u), bh], fill=hexc(n.get("bar", "#d6b260")))
+        bd.line([(int(7 * u), bh - 2), (box.width, bh - 2)], fill=(214, 178, 96, 160), width=max(1, int(2 * u)))
+        bd.text((int(24 * u), bh / 2), shown, font=f, fill=(246, 238, 220, 255), anchor="lm")
+        ka = ease_out(clamp((t - at) / .3))
+        fr.alpha_composite(box, (int(x - (1 - ka) * 24 * u), int(y)))
 
 
 # ------------------------------------------------------------------ top-down table scene

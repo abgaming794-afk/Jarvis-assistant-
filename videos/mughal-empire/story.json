@@ -1833,10 +1833,11 @@
     "names": [
      {
       "t": "NAATYA ROOPANTARAN",
-      "x": 0.06,
-      "y": 0.1,
+      "x": 0.8,
+      "y": 0.035,
       "at": 0.2,
-      "bar": "#555555"
+      "bar": "#8a7a5a",
+      "small": true
      }
     ]
    },
@@ -1890,10 +1891,11 @@
      },
      {
       "t": "NAATYA ROOPANTARAN",
-      "x": 0.06,
-      "y": 0.1,
+      "x": 0.8,
+      "y": 0.035,
       "at": 0.2,
-      "bar": "#555555"
+      "bar": "#8a7a5a",
+      "small": true
      }
     ]
    },
@@ -2455,10 +2457,11 @@
     "names": [
      {
       "t": "NAATYA ROOPANTARAN",
-      "x": 0.06,
-      "y": 0.1,
+      "x": 0.8,
+      "y": 0.035,
       "at": 0.2,
-      "bar": "#555555"
+      "bar": "#8a7a5a",
+      "small": true
      }
     ]
    },
@@ -2504,10 +2507,11 @@
     "names": [
      {
       "t": "NAATYA ROOPANTARAN",
-      "x": 0.06,
-      "y": 0.1,
+      "x": 0.8,
+      "y": 0.035,
       "at": 0.2,
-      "bar": "#555555"
+      "bar": "#8a7a5a",
+      "small": true
      }
     ]
    },
@@ -2910,10 +2914,11 @@
     "names": [
      {
       "t": "NAATYA ROOPANTARAN",
-      "x": 0.06,
-      "y": 0.1,
+      "x": 0.8,
+      "y": 0.035,
       "at": 0.2,
-      "bar": "#555555"
+      "bar": "#8a7a5a",
+      "small": true
      }
     ]
    },
@@ -2962,10 +2967,11 @@
     "names": [
      {
       "t": "NAATYA ROOPANTARAN",
-      "x": 0.06,
-      "y": 0.1,
+      "x": 0.8,
+      "y": 0.035,
       "at": 0.2,
-      "bar": "#555555"
+      "bar": "#8a7a5a",
+      "small": true
      }
     ]
    },

@@ -50,10 +50,14 @@ def font(size, weight="Black"):
 
 @functools.lru_cache(maxsize=16)
 def serif(size):
-    for p in ["/usr/share/fonts/truetype/dejavu/DejaVuSerif-Bold.ttf", "C:/Windows/Fonts/georgiab.ttf",
-              "/System/Library/Fonts/Supplemental/Georgia Bold.ttf"]:
-        if os.path.exists(p):
-            return ImageFont.truetype(p, max(6, int(size)))
+    p = os.path.join(FONTS, "PlayfairDisplay-VF.ttf")
+    if os.path.exists(p):
+        f = ImageFont.truetype(p, max(6, int(size)))
+        try:
+            f.set_variation_by_name("Bold")
+        except Exception:
+            pass
+        return f
     return font(size, "Bold")
 
 
