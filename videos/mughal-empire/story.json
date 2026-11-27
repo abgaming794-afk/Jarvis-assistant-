@@ -2034,7 +2034,7 @@
   {
    "id": "s33",
    "speaker": "LODI",
-   "text": "काबुल से कोई आएगा? और दिल्ली ले जाएगा? मज़ाक है!",
+   "text": "काबुल से कोई आएगा? और दिल्ली ले जाएगा?",
    "scene": {
     "type": "set",
     "bg": "mughal_court",
@@ -2060,7 +2060,7 @@
      }
     ],
     "board": {
-     "text": "KABUL SE KOI AAYEGA?|[MAZAAQ] HAI!",
+     "text": "KABUL SE KOI AAYEGA?|AUR [DILLI] LE JAYEGA?",
      "rect": [
       0.1,
       0.06,
@@ -2081,6 +2081,39 @@
     ]
    },
    "tags": "[mocking] [laughs]"
+  },
+  {
+   "id": "s33b",
+   "speaker": "LODI",
+   "text": "मज़ाक है!",
+   "scene": {
+    "type": "set",
+    "bg": "palace_room",
+    "cam": "punch",
+    "chars": [
+     {
+      "who": "ibrahim",
+      "x": 0.42,
+      "h": 0.66,
+      "expr": "laugh",
+      "talk": true,
+      "close": true,
+      "shake": true
+     }
+    ],
+    "board": {
+     "text": "[MAZAAQ] HAI!",
+     "rect": [
+      0.62,
+      0.08,
+      0.94,
+      0.2
+     ],
+     "at": 0.05,
+     "time": 0.8
+    }
+   },
+   "tags": "[laughs]"
   },
   {
    "id": "s34",

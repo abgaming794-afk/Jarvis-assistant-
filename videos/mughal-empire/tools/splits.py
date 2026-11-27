@@ -82,4 +82,8 @@ SPLITS = {
     "focus": [0.5, 0.5], "source": "Battle of Panipat, Baburnama, c. 1598 (Persian copy, Akbar's atelier)", "source_by": "Wikimedia Commons · Public domain"}, {}),
  "s47": ("करीब बारह हज़ार सैनिकों ने, एक पूरी सल्तनत गिरा दी.", "और पैदा हुआ — मुग़ल साम्राज्य.", "MOVE", {"sfx": ["crowd"]}),
  "s49": ("क्योंकि अगले ही साल, मेवाड़ के एक योद्धा से सामना हुआ…", "कहते हैं, जिसके शरीर पर अस्सी घाव थे.", "MOVE", {"tags": "[mysteriously]", "sfx": ["riser"]}),
+ "s33": ("काबुल से कोई आएगा? और दिल्ली ले जाएगा?", "मज़ाक है!",
+   {"type": "set", "bg": "palace_room", "cam": "punch",
+    "chars": [{"who": "ibrahim", "x": 0.42, "h": 0.66, "expr": "laugh", "talk": True, "close": True, "shake": True}],
+    "board": {"text": "[MAZAAQ] HAI!", "rect": [0.62, 0.08, 0.94, 0.2], "at": 0.05, "time": 0.8}}, {"tags": "[laughs]"}),
 }

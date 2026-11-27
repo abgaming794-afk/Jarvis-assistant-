@@ -3,7 +3,7 @@ with tts_align.py; dialogue lines are one request each on a second model.
 usage: python3 tools/tts_batch.py"""
 import base64, json, os, subprocess, sys, time, urllib.request, urllib.error, wave
 P = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-NARR_MODEL, DLG_MODEL = "gemini-3.1-flash-tts-preview", "gemini-2.5-pro-preview-tts"
+NARR_MODEL, DLG_MODEL = "gemini-3.1-flash-tts-preview", os.environ.get("DLG_MODEL", "gemini-2.5-flash-preview-tts")
 VOICE = {"N": "Charon", "BABUR": "Orus", "NANI": "Gacrux", "LODI": "Algenib", "SOLDIER": "Fenrir"}
 STYLE = {"BABUR": "young Central Asian prince speaking Hindi", "NANI": "wise elderly grandmother speaking Hindi",
          "LODI": "arrogant sultan speaking Hindi", "SOLDIER": "nervous young soldier speaking Hindi"}

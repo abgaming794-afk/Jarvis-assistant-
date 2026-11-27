@@ -170,7 +170,7 @@ B("s32", {"type": "set", "bg": "study_night", "cam": "dolly_in",
           "source": "First Battle of Panipat — Wikipedia", "source_by": "historical record"}, sfx=["page"])
 B("s33", {"type": "set", "bg": "mughal_court", "cam": "punch", "zoom": 1.25, "focus": [0.5, 0.45],
           "chars": [{"who": "ibrahim", "x": 0.5, "h": 0.6, "expr": "laugh", "talk": True, "gesture": ["idle", "point", "cross"], "seated": True}],
-          "board": {"text": "KABUL SE KOI AAYEGA?|[MAZAAQ] HAI!", "rect": [0.1, 0.06, 0.62, 0.22], "at": 0.2, "time": 2.0}}, speaker="LODI", tags="[mocking] [laughs]")
+          "board": {"text": "KABUL SE KOI AAYEGA?|AUR [DILLI] LE JAYEGA?", "rect": [0.1, 0.06, 0.62, 0.22], "at": 0.2, "time": 2.0}}, speaker="LODI", tags="[mocking] [laughs]")
 B("s34", {"type": "black", "t": "बाबर आया. लेकिन मेहमान बनकर नहीं."}, chapter="Panipat, 1526", tags="[dramatically]", sfx=["boom"])
 B("s35", {"type": "set", "bg": "battlefield", "cam": "crane_down", "caption": "PANIPAT · 21 APRIL 1526",
           "props": [{"name": "flag", "x": 0.2, "y": 0.5, "h": 0.2, "color": "#3f6d5a"}, {"name": "flag", "x": 0.8, "y": 0.5, "h": 0.2, "color": "#7a1f2b"}],
