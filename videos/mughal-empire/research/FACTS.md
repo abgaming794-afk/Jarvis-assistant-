@@ -1,0 +1,74 @@
+# FACTS — Mughal Empire ki Poori Kahani (1526–1857)
+
+Har line: fact · saal/number · source · safe Hindi wording. Estimates hamesha "करीब / अनुमान के मुताबिक" ke saath.
+
+## Cold open / payoff numbers
+1. **India ka world GDP share, 1700 ≈ 24.4 %** — Maddison (2001) table: India 90,750 / world 371,369 (million 1990 $). Popular rounding 23–27 %.
+   Source: Angus Maddison, *The World Economy: A Millennial Perspective* (OECD 2001); https://en.wikipedia.org/wiki/Economic_history_of_the_Indian_subcontinent
+   Hindi: "अनुमान के मुताबिक, सत्रह सौ में दुनिया की करीब एक-चौथाई दौलत इसी ज़मीन पर बनती थी."
+   Note: Maddison ka "India" = poora upmahadweep, Mughal raj iska zyादातर hissa tha → "मुग़ल हिंदुस्तान" kahein, "Mughal empire ka GDP" nahin.
+2. **Area ≈ 40 lakh km² (c. 1690), aabadi ≈ 10–15.8 crore (c. 1700)** — https://en.wikipedia.org/wiki/Mughal_Empire ; https://www.worldhistory.org/image/16429/
+   Hindi: "करीब चालीस लाख वर्ग किलोमीटर. और दस से पंद्रह करोड़ लोग."
+3. **331 saal: 1526 (Panipat) → 1857 (Delhi par British kabza, Zafar ki giraftari)**.
+
+## Bahadur Shah Zafar (aakhri badshah)
+4. Janm 24 Oct 1775 → Oct 1858 me ~82 saal. https://en.wikipedia.org/wiki/Bahadur_Shah_II
+5. 1857 ki baghawat ke baad 20/21 Sep 1857 Humayun ke maqbare se giraftar (Hodson). 22 Sep: Hodson ne Mirza Mughal, Mirza Khizr Sultan, aur pote Mirza Abu Bakr ko Khooni Darwaza ke paas goli maari. https://en.wikipedia.org/wiki/Bahadur_Shah_II
+6. 1858 me mukadma; Rangoon (Burma) bheje gaye. Delhi se safar 7 Oct 1858 ko bailgaadi/caravan se shuru, Dec 1858 Rangoon. https://en.wikipedia.org/wiki/Bahadur_Shah_II ; https://archive.thedailystar.net/magazine/2005/10/01/heritage.htm
+7. Maut 7 Nov 1862, Rangoon; bina nishaan ki kabr. https://indianculture.gov.in/stories/bahadur-shah-zafar
+   Hindi: "उनकी क़ब्र दिल्ली से दो हज़ार किलोमीटर से भी ज़्यादा दूर, रंगून में बनी." (Delhi–Yangon ~2,300 km seedhi doori)
+   "Do gaz zameen…" sher Zafar ka hai ya nahin — vivaadit. Quote mat karo.
+8. **Photo**: Bahadur Shah Zafar, May 1858, Robert & Harriet Tytler — British Library via Commons, Public domain.
+
+## Babur (1483–1530)
+9. Janm 14 Feb 1483, Andijan (Fergana). June 1494 me ~11 saal ki umr me Fergana ka shasak. https://en.wikipedia.org/wiki/Babur
+10. Pita ki taraf se Timur ki paanchvi peedhi; maa ki taraf se Changez Khan ke vansh se. https://www.britannica.com/biography/Babur
+11. Samarkand 1497 me jeeta, ~100 din me haath se nikla; 1501 me Shaybani Khan se haar; ghar (Fergana) bhi gaya. https://en.wikipedia.org/wiki/Babur
+12. 1504 me Kabul jeeta. 1519 se Hindustan ki taraf hamle. https://en.wikipedia.org/wiki/Babur
+13. Punjab ke governor Daulat Khan Lodi ne Ibrahim Lodi ke khilaaf Babur ko bulaya (aam taur par likha jaata hai). https://en.wikipedia.org/wiki/First_Battle_of_Panipat
+14. **Panipat, 21 April 1526** (Baburnama ki tareekh 20 April). Babur ki fauj ~12,000 (anumaan, kuch 15,000+). Ibrahim ki fauj — Babur ke mutabik 1 lakh; itihaskaar 40–70 hazaar; ~1,000 haathi. https://en.wikipedia.org/wiki/First_Battle_of_Panipat ; https://www.historyofwar.org/articles/battles_panipat_first.html
+15. Tulughma (side se gherna), araba (gaadiyon ki deewar, rassi/zanjeer se bandhi — Usmani tareeka), topkhana (Ustad Ali Quli), toredar banduk. Topon ki aawaz se haathi bidke. https://en.wikipedia.org/wiki/First_Battle_of_Panipat ; https://panipat.gov.in/first-battle/
+16. Ibrahim Lodi maidan me maare gaye — Delhi Sultanate ke iklaute sultan jo jung me maare gaye. Jung kuch ghanton me (subah se dopahar tak) khatm. https://en.wikipedia.org/wiki/Ibrahim_Lodi ; Baburnama (Beveridge tr. 1922)
+17. Babur ne Delhi aur Agra le liye; Agra ka khazana baanta. https://en.wikipedia.org/wiki/Babur
+18. Khanwa, 16/17 March 1527 — Rana Sanga ki gathbandhan fauj se jung, Babur jeete. https://en.wikipedia.org/wiki/Battle_of_Khanwa
+19. Babur ki maut 26 Dec 1530, Agra; baad me Kabul me dafn. https://en.wikipedia.org/wiki/Babur
+20. **Document**: "Battle of Panipat (20 April 1526)", Baburnama ki 1598 ki illustrated prati — Commons, Public domain.
+21. Baburnama — Babur ki apni Chagatai Turki me likhi aatmakatha. https://en.wikipedia.org/wiki/Baburnama
+
+## Humayun (1530–40, 1555–56)
+22. Chausa 1539 aur Kannauj (Bilgram) 17 May 1540 me Sher Shah Suri se haar → ~15 saal nirvasan (Sindh, Persia ke Shah Tahmasp ki sharan). https://en.wikipedia.org/wiki/Humayun
+23. 1542 me nirvasan ke dauraan Amarkot me Akbar ka janm (15 Oct 1542). https://en.wikipedia.org/wiki/Akbar
+24. 1555 me wapsi (Sirhind ki jeet), Delhi dobara. Jan 1556 Sher Mandal (Purana Qila) ki seedhiyon se gir kar maut. https://en.wikipedia.org/wiki/Sher_Mandal
+
+## Akbar (1556–1605)
+25. 13 saal ki umr me gaddi; Bairam Khan sanrakshak. Panipat-II, 5 Nov 1556, Hemu ko aankh me teer laga, giraftar. https://en.wikipedia.org/wiki/Second_Battle_of_Panipat
+26. Mansabdari, Raja Todar Mal ka zabt/dahsala lagaan system; Rajput rishte (Amber 1562); jizya 1564 me hataya; Sulh-i-kul; Fatehpur Sikri (1571+). https://en.wikipedia.org/wiki/Akbar
+27. Ain-i-Akbari (Abul Fazl) — saltanat ka hisaab-kitaab ka gazetteer. https://en.wikipedia.org/wiki/Ain-i-Akbari
+
+## Jahangir (1605–27) & Shah Jahan (1628–58)
+28. Sir Thomas Roe, James I ke doot, 1615–1619 Jahangir ke darbar me. https://en.wikipedia.org/wiki/Thomas_Roe
+29. Nur Jahan — sikke unke naam se. https://en.wikipedia.org/wiki/Nur_Jahan
+30. Taj Mahal ~1632–1653; kharch ka anumaan ~3.2 crore rupaye (us waqt). https://en.wikipedia.org/wiki/Taj_Mahal
+31. Takht-e-Taus (Peacock Throne), Shah Jahan ne banwaya; Lal Qila (Shahjahanabad) 1639–1648. https://en.wikipedia.org/wiki/Peacock_Throne
+32. 1657–58 uttaradhikar yuddh; Aurangzeb ne Dara Shikoh ko haraya (Samugarh, 1658), 1659 me Dara ko maut; Shah Jahan Agra Qile me 1666 tak qaid. https://en.wikipedia.org/wiki/Aurangzeb
+33. **Document**: Farman of Shah Jahan, 1632 — Telangana State Archives via Commons, Public domain.
+
+## Aurangzeb (1658–1707)
+34. Bijapur 1686, Golconda 1687 → sabse bada vistaar. https://www.worldhistory.org/image/16429/
+35. Jizya 1679 me dobara. Shivaji: Agra 1666 se bach nikle, 1674 rajyabhishek. 1681–1707 Aurangzeb khud Deccan me (~26 saal). https://en.wikipedia.org/wiki/Aurangzeb ; https://en.wikipedia.org/wiki/Mughal%E2%80%93Maratha_Wars
+36. Maut 3 March 1707, Ahmednagar ke paas; Khuldabad me saadi kabr. https://en.wikipedia.org/wiki/Aurangzeb
+
+## Bikhraav (1707–1857)
+37. 1707–1719: kai badshah, 1719 me akele ek saal me chaar. Sayyid bhai "kingmakers". https://en.wikipedia.org/wiki/Sayyid_brothers
+38. **Farrukhsiyar ka farman, 1717** — EIC ko Bengal me bina chungi vyapar, saalana 3,000 rupaye ke badle (Surman mission; William Hamilton surgeon). Kuch itihaskaar iski vyakhya ko vivaadit maante hain. https://en.banglapedia.org/index.php/Farrukh_Siyar%E2%80%99s_Farman
+39. **Nadir Shah, March 1739** — Karnal (24 Feb 1739) me jeet, Delhi me katleaam (anumaan 20–30 hazaar), loot ~70 crore rupaye (anumaan); Takht-e-Taus aur Koh-i-Noor Iran le gaye. https://en.wikipedia.org/wiki/Nader_Shah%27s_invasion_of_India ; https://www.dawn.com/news/440760
+40. Plassey 23 June 1757; Buxar 22 Oct 1764 (Shah Alam II bhi haare). https://en.wikipedia.org/wiki/Battle_of_Buxar
+41. **Allahabad ki sandhi, Aug 1765** — Shah Alam II ne Bengal-Bihar-Orissa ki Diwani EIC ko di; badle me saalana 26 lakh rupaye. https://en.wikipedia.org/wiki/Treaty_of_Allahabad
+42. 1803 — Delhi par British kabza (Lake); badshah Company ke pensioner. https://en.wikipedia.org/wiki/Shah_Alam_II
+43. **Painting**: Benjamin West, "Shah Alam conveying the grant of the Diwani to Lord Clive" (1818) — British Library, Public domain. (Painting hai, document nahin — "baad me banayi gayi painting" kahein.)
+44. **Document**: Firman of Bahadur Shah II, c. 1848 — Commons, Public domain.
+
+## Kyun gira (payoff — itihaskaaron ke mukhya kaaran)
+45. Uttaradhikar ka koi tay niyam nahin → har peedhi me bhaaiyon ki jung. https://en.wikipedia.org/wiki/Mughal_Empire
+46. Jagirdari/mansabdari sankat — jagir kam, mansabdar zyada (Satish Chandra, *Parties and Politics at the Mughal Court*). https://en.wikipedia.org/wiki/Mansabdar
+47. Deccan me lambi jung ka kharch; Maratha, Sikh, Jat, Rajput, nawabon ka uthaan; videshi hamle; Company ka paisa aur fauj.
