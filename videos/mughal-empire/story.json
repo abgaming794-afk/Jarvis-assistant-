@@ -516,23 +516,28 @@
       "who": "prince1",
       "x": -1.4,
       "z": 4.4,
-      "expr": "worried",
-      "label": "Mirza Mughal"
+      "expr": "worried"
      },
      {
       "who": "prince2",
       "x": 0.1,
       "z": 4.6,
-      "expr": "worried",
-      "label": "Mirza Khizr Sultan"
+      "expr": "worried"
      },
      {
       "who": "grandson",
       "x": 1.6,
       "z": 4.4,
       "expr": "sad",
-      "h": 1.15,
-      "label": "Mirza Abu Bakr (pota)"
+      "h": 1.15
+     }
+    ],
+    "names": [
+     {
+      "t": "Mirza Mughal (beta)  ·  Mirza Khizr Sultan (beta)  ·  Mirza Abu Bakr (pota)",
+      "x": 0.04,
+      "y": 0.72,
+      "at": 0.4
      }
     ]
    },
@@ -852,8 +857,15 @@
       "side": "top_right",
       "anim": "pop",
       "h": 0.15,
-      "at": 0.5,
-      "label": "Sirf jung nahi"
+      "at": 0.5
+     }
+    ],
+    "names": [
+     {
+      "t": "Sirf jung nahi",
+      "x": 0.04,
+      "y": 0.72,
+      "at": 0.4
      }
     ]
    },
@@ -891,8 +903,7 @@
       "x": 0,
       "z": 9.3,
       "y": 0.6,
-      "h": 2.1,
-      "label": "Takht-e-Taus"
+      "h": 2.1
      }
     ],
     "stickers": [
@@ -903,6 +914,14 @@
       "pulse": true,
       "h": 0.16,
       "at": 0.6
+     }
+    ],
+    "names": [
+     {
+      "t": "Takht-e-Taus",
+      "x": 0.04,
+      "y": 0.72,
+      "at": 0.4
      }
     ]
    },
@@ -937,8 +956,7 @@
       "x": 0,
       "z": 4.4,
       "y": 0.75,
-      "h": 0.9,
-      "label": "Koh-i-Noor"
+      "h": 0.9
      }
     ],
     "stickers": [
@@ -955,6 +973,14 @@
       "x": 0.5,
       "y": 0.45,
       "r": 0.16,
+      "at": 0.4
+     }
+    ],
+    "names": [
+     {
+      "t": "Koh-i-Noor",
+      "x": 0.04,
+      "y": 0.72,
       "at": 0.4
      }
     ]
@@ -1080,8 +1106,15 @@
       "side": "top_right",
       "anim": "pop",
       "h": 0.14,
-      "at": 0.6,
-      "label": "Bina chungi"
+      "at": 0.6
+     }
+    ],
+    "names": [
+     {
+      "t": "Bina chungi",
+      "x": 0.04,
+      "y": 0.72,
+      "at": 0.4
      }
     ]
    },
@@ -1309,12 +1342,19 @@
       "side": "top_right",
       "anim": "pop",
       "h": 0.14,
-      "at": 0.4,
-      "label": "Khaai"
+      "at": 0.4
      }
     ],
     "source": "Baburnama (tr. A. S. Beveridge, 1922)",
-    "source_by": "Public domain · muft upyog"
+    "source_by": "Public domain · muft upyog",
+    "names": [
+     {
+      "t": "Khaai",
+      "x": 0.04,
+      "y": 0.72,
+      "at": 0.4
+     }
+    ]
    },
    "sfx": [
     "boom"
@@ -1443,8 +1483,15 @@
       "h": 1.5,
       "expr": "proud",
       "dim": true,
-      "face": "right",
-      "label": "Timur · pita ki taraf"
+      "face": "right"
+     }
+    ],
+    "names": [
+     {
+      "t": "Timur (pita ki taraf)",
+      "x": 0.04,
+      "y": 0.72,
+      "at": 0.4
      }
     ]
    },
@@ -1474,8 +1521,7 @@
       "h": 1.5,
       "expr": "proud",
       "dim": true,
-      "face": "right",
-      "label": "Timur"
+      "face": "right"
      },
      {
       "who": "changez",
@@ -1484,12 +1530,19 @@
       "h": 1.5,
       "expr": "smug",
       "dim": true,
-      "face": "left",
-      "label": "Changez Khan · maa ki taraf"
+      "face": "left"
      }
     ],
     "source": "Babur — Encyclopaedia Britannica",
-    "source_by": "britannica.com (encyclopedia)"
+    "source_by": "britannica.com (encyclopedia)",
+    "names": [
+     {
+      "t": "Timur (pita ki taraf)  ·  Changez Khan (maa ki taraf)",
+      "x": 0.04,
+      "y": 0.72,
+      "at": 0.4
+     }
+    ]
    },
    "year": 1494,
    "chapter_tag": "Babur: Fergana se Panipat"
@@ -1558,8 +1611,7 @@
       "z": 5.2,
       "expr": "scheming",
       "face": "right",
-      "pose": "cross",
-      "label": "Chacha"
+      "pose": "cross"
      },
      {
       "who": "chacha",
@@ -1567,16 +1619,14 @@
       "z": 5.2,
       "expr": "angry",
       "face": "left",
-      "pose": "fist",
-      "label": "Chacha"
+      "pose": "fist"
      },
      {
       "who": "sardar",
       "x": 0.9,
       "z": 5.7,
       "expr": "smug",
-      "face": "left",
-      "label": "Bhai ke samarthak"
+      "face": "left"
      }
     ],
     "objs": [
@@ -1593,6 +1643,14 @@
       "z": 5.0,
       "y": 1.0,
       "h": 0.5
+     }
+    ],
+    "names": [
+     {
+      "t": "Rishtedaar hi dushman: chacha aur bhai ke samarthak",
+      "x": 0.04,
+      "y": 0.72,
+      "at": 0.4
      }
     ]
    },
@@ -2170,8 +2228,15 @@
       "side": "top_right",
       "anim": "pop",
       "h": 0.14,
-      "at": 0.6,
-      "label": "Purab"
+      "at": 0.6
+     }
+    ],
+    "names": [
+     {
+      "t": "Purab",
+      "x": 0.04,
+      "y": 0.72,
+      "at": 0.4
      }
     ]
    },

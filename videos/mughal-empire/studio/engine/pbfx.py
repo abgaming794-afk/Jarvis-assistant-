@@ -366,7 +366,7 @@ def draw_popup(fr, p, t):
     fr.alpha_composite(spr, (int(x - spr.width / 2), int(y)))
 
 
-def draw_names(fr, names, t):
+def draw_names(fr, names, t, faces=None):
     """Premium lower-third tags: dark glass, gold bar, Oswald caps (Mukta for Devanagari)."""
     W, H = fr.size
     u = H / 1080
@@ -386,6 +386,10 @@ def draw_names(fr, names, t):
         x, y = n.get("x", .49) * W, (n.get("y", .78) + i * .065) * H
         if x + full_w > W - 12 * u:
             x = W - 12 * u - full_w
+        if faces and x < W / 2:   # never on a face: move to the same row on the right
+            hit = any(min(x + full_w, f[2]) > max(x, f[0]) and min(y + bh, f[3]) > max(y, f[1]) for f in faces)
+            if hit:
+                x = W - 40 * u - full_w
         box = Image.new("RGBA", (int(full_w), bh), (0, 0, 0, 0))
         bd = ImageDraw.Draw(box)
         bd.rounded_rectangle([0, 0, box.width - 1, bh - 1], radius=int(8 * u), fill=(16, 13, 12, 215))

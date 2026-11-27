@@ -513,6 +513,7 @@ def _sprite_char(spec, ch, t, env, fps, h_px):
 
 def render(fr, sc, story, t, dur, env=None, fps=30, spec_fn=None):
     W, H = fr.size
+    sc["_faces"] = []
     setname = sc.get("set", "court")
     envq, objq, dflt = build(setname, sc)
     pos, look = cam_pose(sc, dflt, t, dur)
@@ -608,6 +609,8 @@ def render(fr, sc, story, t, dur, env=None, fps=30, spec_fn=None):
         ImageDraw.Draw(sh).ellipse([0, 0, sh.width - 1, sh.height - 1], fill=(0, 0, 0, 70))
         fr.alpha_composite(sh, (int(sx - sh.width / 2), int(sy - sh.height / 2)))
         fr.alpha_composite(img, (int(sx - w2 / 2), int(sy - h2 + dy)))
+        if kind == "char":
+            sc.setdefault("_faces", []).append((sx - w2 * .42, sy - h2 + dy, sx + w2 * .42, sy - h2 + dy + h2 * .42))
         if kind == "char" and cfg.get("talk"):
             sc["_speaker"] = (sx - w2 / 2, sy - h2 + dy, sx + w2 / 2, sy)
         if cfg.get("label") and te > .3:

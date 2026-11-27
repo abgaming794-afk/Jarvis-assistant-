@@ -84,8 +84,8 @@ SC["s04b"] = S("plain", "truck_right", target=[1.0, 1.0, 5.5], objs=[O("bullock_
                        A("redcoat", -3.4, 4.6, face="right", to=[0.8, 4.6], walk_time=4.5), A("redcoat", -0.4, 6.8, face="right", to=[3.8, 6.8], walk_time=4.5)],
                caption="OCT 1858 · DESH-NIKALA")
 Y.update(s04=1858, s04b=1858)
-SC["s05"] = S("palace", "truck_left", actors=[A("prince1", -1.4, 4.4, expr="worried", label="MIRZA MUGHAL"),
-                                              A("prince2", 0.1, 4.6, expr="worried", label="MIRZA KHIZR SULTAN"),
+SC["s05"] = S("palace", "truck_left", actors=[A("prince1", -1.4, 4.4, expr="worried", label="MIRZA MUGHAL (BETA)"),
+                                              A("prince2", 0.1, 4.6, expr="worried", label="MIRZA KHIZR SULTAN (BETA)"),
                                               A("grandson", 1.6, 4.4, expr="sad", h=1.15, label="MIRZA ABU BAKR (POTA)")])
 SC["s05b"] = S("fort", "dolly_out", caption="DELHI · 22 SEP 1857",
                actors=[A("prince1", -1.2, 5.0, expr="sad", dim=True), A("prince2", 0, 5.2, expr="sad", dim=True), A("grandson", 1.2, 5.0, expr="sad", dim=True, h=1.15),
@@ -148,17 +148,17 @@ SC["s17"] = S("palace", "crane_up", actors=[A("babur_boy", 0, 5.4, h=1.05, expr=
 SC["s18"] = S("palace", "push", target=[0, 0.8, 4.5], dist=3.2, actors=[A("babur_boy", 0, 4.6, h=1.05, expr="proud", pose="hips")],
               emph=[{"x": 0.5, "y": 0.3, "r": 0.14, "at": 0.3}])
 SC["s18b"] = S("palace", "truck_left", actors=[A("babur_boy", 0.9, 4.4, h=1.05, expr="proud", face="left"),
-                                              A("timur", -1.3, 6.0, h=1.5, expr="proud", dim=True, face="right", label="TIMUR · PITA KI TARAF")])
+                                              A("timur", -1.3, 6.0, h=1.5, expr="proud", dim=True, face="right", label="TIMUR (PITA KI TARAF)")])
 SC["s19"] = S("palace", "truck_right", actors=[A("babur_boy", 0, 4.4, h=1.05, expr="proud"),
-                                              A("timur", -2.0, 6.0, h=1.5, expr="proud", dim=True, face="right", label="TIMUR"),
-                                              A("changez", 2.0, 6.0, h=1.5, expr="smug", dim=True, face="left", label="CHANGEZ KHAN · MAA KI TARAF")],
+                                              A("timur", -2.0, 6.0, h=1.5, expr="proud", dim=True, face="right", label="TIMUR (PITA KI TARAF)"),
+                                              A("changez", 2.0, 6.0, h=1.5, expr="smug", dim=True, face="left", label="CHANGEZ KHAN (MAA KI TARAF)")],
               source="Babur — Encyclopaedia Britannica", source_by="britannica.com (encyclopedia)")
 SC["s20"] = M(CA, "dolly_out", highlight={"UZB": "#3f8a6a"}, pins=[{"lon": 72.3, "lat": 40.8, "label": "FERGANA", "delay": 0.2}],
               labels=[{"lon": 64, "lat": 37.5, "t": "CHHOTA SA RAJYA", "size": 40, "color": "#ffffff", "delay": 0.8}])
 SC["s20b"] = S("tent", "orbit_left", actors=[A("babur_boy", 0, 4.4, h=1.05, expr="worried"),
-                                            A("chacha", -1.8, 5.2, expr="scheming", face="right", pose="cross", label="CHACHA"),
-                                            A("chacha", 1.8, 5.2, expr="angry", face="left", pose="fist", label="CHACHA"),
-                                            A("sardar", 0.9, 5.7, expr="smug", face="left", label="BHAI KE SAMARTHAK")],
+                                            A("chacha", -1.8, 5.2, expr="scheming", face="right", pose="cross"),
+                                            A("chacha", 1.8, 5.2, expr="angry", face="left", pose="fist"),
+                                            A("sardar", 0.9, 5.7, expr="smug", face="left", label="RISHTEDAAR HI DUSHMAN: CHACHA AUR BHAI KE SAMARTHAK")],
                objs=[O("sword", -1.2, 5.0, y=1.0, h=0.5), O("sword", 1.4, 5.0, y=1.0, h=0.5)])
 SC["s21"] = S("fort", "dolly_in", target=[0, 2.0, 9.0], dist=14.0, height=1.5,
               actors=[A("babur", -1.2, 2.0, h=1.35, back=True, face="right")], names=[{"t": "SAMARKAND · TAIMUR KI RAJDHANI", "x": 0.04, "y": 0.72, "at": 0.4}])
@@ -344,8 +344,26 @@ def smart_case(text):
     return "|".join(out_lines)
 
 
+def labels_to_names(sc):
+    """Consistency: no tags above heads/objects. Collect them (left -> right) into one lower-third."""
+    items = []
+    for a in sc.get("actors", []) + sc.get("objs", []):
+        if a.get("label"):
+            items.append((a.get("x", 0), a.pop("label")))
+    for st in sc.get("stickers", []):
+        if st.get("label"):
+            items.append((99, st.pop("label")))
+    if items:
+        txt = "  ·  ".join(l for _, l in sorted(items, key=lambda it: it[0]))
+        sc.setdefault("names", []).insert(0, {"t": txt, "x": 0.04, "y": 0.72, "at": 0.4})
+    for side in ("left", "right"):
+        if isinstance(sc.get(side), dict):
+            labels_to_names(sc[side])
+
+
 CHAPTER = None
 for b in story["beats"]:
+    labels_to_names(b["scene"])
     if b.get("chapter"):
         CHAPTER = b["chapter"]
     if CHAPTER:

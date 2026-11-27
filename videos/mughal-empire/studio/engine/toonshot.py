@@ -581,7 +581,12 @@ class ToonShot:
         cap = sc.get("caption")
         if cap:  # small hand-written note at top (date / place)
             spr = tag(cap, int(38 * u), bg="#1c1f2a", fg="#ffffff", pointer=False)
-            _paste(fr, spr, 40 * u, H * .80)
+            cx0, cy0 = 40 * u, H * .80
+            for f in (sc.get("_faces") or []):
+                if min(cx0 + spr.width, f[2]) > max(cx0, f[0]) and min(cy0 + spr.height, f[3]) > max(cy0, f[1]):
+                    cx0 = W - 40 * u - spr.width
+                    break
+            _paste(fr, spr, cx0, cy0)
 
     def _fg_items(self):
         if self.type != "set":
@@ -689,7 +694,7 @@ class ToonShot:
         if sc.get("popup"):
             pbfx.draw_popup(fr, sc["popup"], t)
         if sc.get("names"):
-            pbfx.draw_names(fr, sc["names"], t)
+            pbfx.draw_names(fr, sc["names"], t, sc.get("_faces"))
         if sc.get("stickers"):
             motion.draw_stickers(fr, sc["stickers"], t, self.dur, SKILL)
         if sc.get("source"):
