@@ -90,6 +90,13 @@
    "color": "#5a4a3a",
    "age": "adult"
   },
+  "chacha": {
+   "preset": "minister",
+   "hat_color": "#3a3a3a",
+   "color": "#3a4a5a",
+   "age": "adult",
+   "facial": "full_beard"
+  },
   "zafar": {
    "preset": "mughal_emperor",
    "hair_color": "#ecebe6",
@@ -115,6 +122,22 @@
    "facial": "mustache",
    "age": "young"
   },
+  "lodi_soldier": {
+   "preset": "minister",
+   "hat": "helmet",
+   "hat_color": "#6a6a70",
+   "color": "#7a2a22",
+   "facial": "mustache",
+   "age": "young"
+  },
+  "ali_quli": {
+   "preset": "minister",
+   "hat": "turban",
+   "hat_color": "#2a2a2a",
+   "color": "#4a5a3a",
+   "facial": "full_beard",
+   "age": "adult"
+  },
   "sanga": {
    "preset": "maharaja",
    "hat_color": "#e0782f",
@@ -127,6 +150,44 @@
    "hat_color": "#e8e0c8",
    "hair": "short",
    "hair_color": "#8a6a4a"
+  },
+  "prince1": {
+   "preset": "nawab",
+   "hat_color": "#f2efe6",
+   "color": "#5a6a8a",
+   "facial": "beard",
+   "age": "adult"
+  },
+  "prince2": {
+   "preset": "nawab",
+   "hat_color": "#f2efe6",
+   "color": "#6a5a7a",
+   "facial": "mustache",
+   "age": "adult"
+  },
+  "grandson": {
+   "preset": "nawab",
+   "hat_color": "#f2efe6",
+   "color": "#7a8a6a",
+   "facial": null,
+   "age": "young"
+  },
+  "timur": {
+   "preset": "mughal_emperor",
+   "hat_color": "#3a2a22",
+   "color": "#6a2a2a",
+   "accent": "#c9a227",
+   "facial": "full_beard",
+   "age": "old"
+  },
+  "changez": {
+   "preset": "chinese_emperor",
+   "color": "#4a3a2a",
+   "accent": "#c9a227",
+   "hat_color": "#5a4030"
+  },
+  "eic": {
+   "preset": "company_merchant"
   }
  },
  "description": "",
@@ -172,63 +233,67 @@
    "speaker": "N",
    "text": "सत्रह सौ में, दुनिया की करीब एक-चौथाई दौलत…",
    "scene": {
-    "type": "set",
-    "bg": "mughal_court",
-    "cam": "dolly_in",
-    "fg": [],
-    "props": [
+    "type": "set3d",
+    "set": "court",
+    "cam": "push",
+    "objs": [
      {
-      "name": "throne",
-      "x": 0.5,
-      "y": 0.66,
-      "h": 0.36,
-      "anim": "pop"
+      "prop": "peacock_throne",
+      "x": 0,
+      "z": 9.3,
+      "y": 0.6,
+      "h": 1.9
      },
      {
-      "name": "chest",
-      "x": 0.22,
-      "y": 0.8,
-      "h": 0.16,
-      "anim": "drop"
+      "prop": "chest",
+      "x": -2.4,
+      "z": 6.0,
+      "h": 0.7
      },
      {
-      "name": "gold_bars",
-      "x": 0.78,
-      "y": 0.82,
-      "h": 0.12,
-      "anim": "drop"
+      "prop": "gold_bars",
+      "x": 2.4,
+      "z": 6.0,
+      "h": 0.5
+     },
+     {
+      "prop": "coins",
+      "x": -1.0,
+      "z": 4.8,
+      "h": 0.4
+     },
+     {
+      "prop": "chest",
+      "x": 3.4,
+      "z": 7.6,
+      "h": 0.7
+     },
+     {
+      "prop": "coins",
+      "x": 1.2,
+      "z": 4.6,
+      "h": 0.4
      }
     ],
     "big": {
      "t": "1/4 DUNIYA KI DAULAT",
      "y": 0.16
     },
-    "names": [
-     {
-      "t": "MUGHAL HINDUSTAN",
-      "x": 0.5,
-      "y": 0.84,
-      "at": 2.6,
-      "bar": "#c9a227"
-     }
-    ],
-    "caption": "SAAL 1700",
     "stickers": [
      {
       "name": "coin",
       "anim": "rain",
-      "h": 0.08,
+      "h": 0.07,
       "at": 0.3
      }
-    ],
-    "source": "Maddison, The World Economy: A Millennial Perspective (OECD, 2001)",
-    "source_by": "anumaan · India ≈ 24.4% world GDP"
+    ]
    },
    "tags": "[dramatically]",
    "sfx": [
     "cash"
    ],
-   "chapter": "Duniya ki 1/4 daulat"
+   "chapter": "Duniya ki 1/4 daulat",
+   "year": 1700
   },
   {
    "id": "s01b",
@@ -257,50 +322,55 @@
      }
     ],
     "source": "Maddison, The World Economy: A Millennial Perspective (OECD, 2001) · saal 1700",
-    "source_by": "anumaan · world GDP share"
+    "source_by": "anumaan · duniya ki GDP mein hissa"
    },
-   "tags": "[dramatically]"
+   "tags": "[dramatically]",
+   "year": 1700
   },
   {
    "id": "s02",
    "speaker": "N",
    "text": "करीब चालीस लाख वर्ग किलोमीटर. और दस करोड़ से ज़्यादा लोग.",
    "scene": {
-    "type": "map",
-    "view": [
-     60,
-     5,
-     100,
-     40
-    ],
-    "cam": "drift",
-    "highlight": {
-     "IND": "#d9a72b",
-     "PAK": "#d9a72b",
-     "BGD": "#d9a72b",
-     "AFG": "#c99a35"
-    },
-    "labels": [
-     {
-      "lon": 78,
-      "lat": 22,
-      "t": "MUGHAL HINDUSTAN",
-      "size": 60,
-      "color": "#ffffff",
-      "delay": 0.3
+    "type": "set3d",
+    "set": "map",
+    "cam": "dolly_in",
+    "map": {
+     "view": [
+      60,
+      5,
+      100,
+      40
+     ],
+     "highlight": {
+      "IND": "#d9a72b",
+      "PAK": "#d9a72b",
+      "BGD": "#d9a72b",
+      "AFG": "#c99a35"
      },
-     {
-      "lon": 78,
-      "lat": 17.5,
-      "t": "~40 LAKH KM²  ·  10+ CRORE LOG",
-      "size": 34,
-      "color": "#ffe9a8",
-      "delay": 1.4
-     }
-    ],
+     "labels": [
+      {
+       "lon": 78,
+       "lat": 22,
+       "t": "MUGHAL HINDUSTAN",
+       "size": 60,
+       "color": "#ffffff",
+       "delay": 0.3
+      },
+      {
+       "lon": 78,
+       "lat": 17.5,
+       "t": "~40 LAKH KM²  ·  10+ CRORE LOG",
+       "size": 34,
+       "color": "#ffe9a8",
+       "delay": 1.2
+      }
+     ]
+    },
     "source": "Mughal Empire (c. 1690–1700) — Wikipedia; World History Encyclopedia",
-    "source_by": "estimates"
-   }
+    "source_by": "anumaan"
+   },
+   "year": 1700
   },
   {
    "id": "s03",
@@ -320,136 +390,206 @@
    "speaker": "N",
    "text": "इसी साम्राज्य के आख़िरी बादशाह. उम्र, बयासी साल.",
    "scene": {
-    "type": "set",
-    "bg": "fort",
-    "cam": "truck_right",
-    "caption": "DELHI, OCT 1858",
-    "chars": [
+    "type": "set3d",
+    "set": "fort",
+    "cam": "dolly_in",
+    "actors": [
      {
       "who": "zafar",
-      "x": 0.5,
-      "h": 0.44,
+      "x": 0,
+      "z": 4.2,
       "expr": "sad",
-      "pose": "idle",
-      "face": "right",
-      "seated": true
+      "h": 1.3
      },
      {
       "who": "redcoat",
-      "x": 0.16,
-      "h": 0.5,
-      "expr": "neutral",
+      "x": -1.6,
+      "z": 4.6,
       "face": "right"
      },
      {
       "who": "redcoat",
-      "x": 0.84,
-      "h": 0.5,
-      "expr": "neutral",
+      "x": 1.6,
+      "z": 4.6,
       "face": "left"
      }
     ],
+    "caption": "DELHI, 1858",
     "names": [
      {
-      "t": "AAKHRI MUGHAL BADSHAH · 82 SAAL",
-      "x": 0.5,
-      "y": 0.84,
-      "at": 0.8
+      "t": "BAHADUR SHAH ZAFAR · 82 SAAL",
+      "x": 0.06,
+      "y": 0.8,
+      "at": 0.6,
+      "bar": "#c9a227"
      }
     ]
    },
-   "tags": "[slowly]"
+   "tags": "[slowly]",
+   "year": 1858
   },
   {
    "id": "s04b",
    "speaker": "N",
    "text": "अक्टूबर अठारह सौ अट्ठावन. वो एक बैलगाड़ी में बैठे थे.",
    "scene": {
-    "type": "set",
-    "bg": "village",
+    "type": "set3d",
+    "set": "plain",
     "cam": "truck_right",
-    "caption": "OCT 1858",
-    "chars": [
+    "target": [
+     1.0,
+     1.0,
+     5.5
+    ],
+    "objs": [
+     {
+      "prop": "bullock_cart",
+      "x": -1.6,
+      "z": 5.6,
+      "h": 1.6,
+      "to": [
+       2.6,
+       5.6
+      ],
+      "move_time": 4.5
+     }
+    ],
+    "actors": [
      {
       "who": "zafar",
-      "x": 0.2,
-      "to": 0.62,
-      "walk_time": 4,
-      "h": 0.42,
+      "x": -2.0,
+      "z": 5.55,
+      "y": 0.45,
+      "h": 0.95,
       "expr": "sad",
-      "seated": true,
-      "face": "right"
+      "to": [
+       2.2,
+       5.55
+      ],
+      "walk_time": 4.5
      },
      {
       "who": "redcoat",
-      "x": 0.0,
-      "to": 0.42,
-      "walk_time": 4,
-      "h": 0.48,
-      "face": "right"
+      "x": -3.4,
+      "z": 4.6,
+      "face": "right",
+      "to": [
+       0.8,
+       4.6
+      ],
+      "walk_time": 4.5
      },
      {
       "who": "redcoat",
-      "x": 0.35,
-      "to": 0.82,
-      "walk_time": 4,
-      "h": 0.48,
-      "face": "right"
+      "x": -0.4,
+      "z": 6.8,
+      "face": "right",
+      "to": [
+       3.8,
+       6.8
+      ],
+      "walk_time": 4.5
      }
-    ]
+    ],
+    "caption": "OCT 1858 · DESH-NIKALA"
    },
-   "tags": "[slowly]"
+   "tags": "[slowly]",
+   "year": 1858
   },
   {
    "id": "s05",
    "speaker": "N",
    "text": "उनके दो बेटे और एक पोता…",
    "scene": {
-    "type": "set",
-    "bg": "fort",
-    "cam": "dolly_in",
-    "zoom": 1.3,
-    "focus": [
-     0.5,
-     0.45
-    ],
-    "chars": [
+    "type": "set3d",
+    "set": "palace",
+    "cam": "truck_left",
+    "actors": [
      {
-      "who": "zafar",
-      "x": 0.5,
-      "h": 0.6,
+      "who": "prince1",
+      "x": -1.4,
+      "z": 4.4,
+      "expr": "worried",
+      "label": "MIRZA MUGHAL"
+     },
+     {
+      "who": "prince2",
+      "x": 0.1,
+      "z": 4.6,
+      "expr": "worried",
+      "label": "MIRZA KHIZR SULTAN"
+     },
+     {
+      "who": "grandson",
+      "x": 1.6,
+      "z": 4.4,
       "expr": "sad",
-      "pose": "head",
-      "face": "left",
-      "seated": true
+      "h": 1.15,
+      "label": "MIRZA ABU BAKR (POTA)"
      }
-    ],
-    "names": [
-     {
-      "t": "2 BETE + 1 POTA — GOLI SE MAARE GAYE",
-      "x": 0.06,
-      "y": 0.8,
-      "at": 1.0,
-      "bar": "#7a1f2b"
-     }
-    ],
-    "source": "Bahadur Shah II — Wikipedia (Hodson, 22 Sep 1857)",
-    "source_by": "historical record"
+    ]
    },
-   "tags": "[sad]"
+   "tags": "[sad]",
+   "year": 1857
   },
   {
    "id": "s05b",
    "speaker": "N",
    "text": "गोली से मारे जा चुके थे. और अब, देश-निकाला.",
    "scene": {
-    "type": "black",
-    "t": "...और अब, देश-निकाला."
+    "type": "set3d",
+    "set": "fort",
+    "cam": "dolly_out",
+    "caption": "DELHI · 22 SEP 1857",
+    "actors": [
+     {
+      "who": "prince1",
+      "x": -1.2,
+      "z": 5.0,
+      "expr": "sad",
+      "dim": true
+     },
+     {
+      "who": "prince2",
+      "x": 0,
+      "z": 5.2,
+      "expr": "sad",
+      "dim": true
+     },
+     {
+      "who": "grandson",
+      "x": 1.2,
+      "z": 5.0,
+      "expr": "sad",
+      "dim": true,
+      "h": 1.15
+     },
+     {
+      "who": "redcoat",
+      "x": -2.6,
+      "z": 3.6,
+      "face": "right",
+      "pose": "hold",
+      "hold": "musket"
+     }
+    ],
+    "names": [
+     {
+      "t": "HODSON NE GOLI MAARI",
+      "x": 0.06,
+      "y": 0.8,
+      "at": 0.5,
+      "bar": "#7a1f2b"
+     }
+    ],
+    "source": "Bahadur Shah II — Wikipedia",
+    "source_by": "historical record"
    },
    "tags": "[sad]",
    "sfx": [
     "tension"
-   ]
+   ],
+   "year": 1857
   },
   {
    "id": "s06",
@@ -472,12 +612,13 @@
      0.5,
      0.45
     ],
-    "source": "Bahadur Shah Zafar, May 1858 — photo by Robert Tytler & Charles Shepherd",
+    "source": "Bahadur Shah Zafar, May 1858 — Robert Tytler & Charles Shepherd",
     "source_by": "British Library via Wikimedia Commons · Public domain"
    },
    "sfx": [
     "click"
-   ]
+   ],
+   "year": 1858
   },
   {
    "id": "s06b",
@@ -507,100 +648,112 @@
     ],
     "source": "Bahadur Shah Zafar, May 1858 — Robert Tytler & Charles Shepherd",
     "source_by": "British Library via Wikimedia Commons · Public domain"
-   }
+   },
+   "year": 1858
   },
   {
    "id": "s07",
    "speaker": "N",
    "text": "दिल्ली से दो हज़ार किलोमीटर से ज़्यादा दूर…",
    "scene": {
-    "type": "map",
-    "view": [
-     66,
-     8,
-     102,
-     40
-    ],
-    "cam": "drift",
-    "highlight": {
-     "IND": "#c0322b",
-     "MMR": "#6a5a8a"
-    },
-    "routes": [
-     {
-      "from": [
-       77.2,
-       28.6
-      ],
-      "via": [
-       [
-        81.8,
-        25.4
-       ],
-       [
-        88.3,
-        22.5
-       ]
-      ],
-      "to": [
-       96.16,
-       16.8
-      ],
-      "delay": 0.4,
-      "time": 2.6,
-      "mover": "ship",
-      "color": "#ffd166"
-     }
-    ],
-    "pins": [
-     {
-      "lon": 77.2,
-      "lat": 28.6,
-      "label": "DELHI",
-      "delay": 0.1
+    "type": "set3d",
+    "set": "map",
+    "cam": "orbit_right",
+    "map": {
+     "view": [
+      66,
+      8,
+      102,
+      40
+     ],
+     "highlight": {
+      "IND": "#c0322b",
+      "MMR": "#6a5a8a"
      },
-     {
-      "lon": 96.16,
-      "lat": 16.8,
-      "label": "RANGOON · 1862",
-      "delay": 2.8
-     }
-    ],
-    "labels": [
-     {
-      "lon": 88,
-      "lat": 31.5,
-      "t": "2,000+ KM DOOR",
-      "size": 40,
-      "color": "#ffffff",
-      "delay": 1.6
-     }
-    ]
-   }
+     "routes": [
+      {
+       "from": [
+        77.2,
+        28.6
+       ],
+       "via": [
+        [
+         81.8,
+         25.4
+        ],
+        [
+         88.3,
+         22.5
+        ]
+       ],
+       "to": [
+        96.16,
+        16.8
+       ],
+       "delay": 0.3,
+       "time": 2.4,
+       "mover": "ship",
+       "color": "#ffd166"
+      }
+     ],
+     "pins": [
+      {
+       "lon": 77.2,
+       "lat": 28.6,
+       "label": "DELHI",
+       "delay": 0.1
+      },
+      {
+       "lon": 96.16,
+       "lat": 16.8,
+       "label": "RANGOON",
+       "delay": 2.6
+      }
+     ],
+     "labels": [
+      {
+       "lon": 87,
+       "lat": 31.5,
+       "t": "2,000+ KM DOOR",
+       "size": 40,
+       "color": "#ffffff",
+       "delay": 1.2
+      }
+     ]
+    }
+   },
+   "year": 1858
   },
   {
    "id": "s07b",
    "speaker": "N",
    "text": "रंगून में, उनकी बेनिशान क़ब्र बनी.",
    "scene": {
-    "type": "set",
-    "bg": "prison",
+    "type": "set3d",
+    "set": "cell",
     "cam": "dolly_in",
-    "caption": "RANGOON, 7 NOV 1862",
-    "props": [
+    "objs": [
      {
-      "name": "portrait",
-      "x": 0.5,
-      "y": 0.5,
-      "h": 0.34,
-      "anim": "pop",
-      "label": "1775 – 1862"
+      "prop": "grave",
+      "x": 0,
+      "z": 3.2,
+      "h": 0.9
+     }
+    ],
+    "caption": "RANGOON · 7 NOV 1862",
+    "names": [
+     {
+      "t": "BENISHAAN QABR",
+      "x": 0.06,
+      "y": 0.8,
+      "at": 0.5
      }
     ],
     "source": "Bahadur Shah Zafar — indianculture.gov.in",
     "source_by": "Govt. of India"
    },
-   "tags": "[sad]"
+   "tags": "[sad]",
+   "year": 1862
   },
   {
    "id": "s08",
@@ -609,33 +762,30 @@
    "scene": {
     "type": "split",
     "left": {
-     "type": "set",
-     "bg": "mughal_court",
+     "type": "set3d",
+     "set": "court",
      "cam": "dolly_in",
-     "fg": [],
-     "props": [
+     "objs": [
       {
-       "name": "throne",
-       "x": 0.5,
-       "y": 0.66,
-       "h": 0.4,
-       "anim": "pop"
+       "prop": "peacock_throne",
+       "x": 0,
+       "z": 9.3,
+       "y": 0.6,
+       "h": 1.9
       }
      ],
      "caption": "1700"
     },
     "right": {
-     "type": "set",
-     "bg": "prison",
+     "type": "set3d",
+     "set": "cell",
      "cam": "dolly_in",
-     "fg": [],
-     "chars": [
+     "actors": [
       {
        "who": "zafar",
-       "x": 0.5,
-       "h": 0.46,
-       "expr": "sad",
-       "seated": true
+       "x": 0,
+       "z": 3.0,
+       "expr": "sad"
       }
      ],
      "caption": "1858",
@@ -657,8 +807,40 @@
    "speaker": "N",
    "text": "इसका जवाब कोई एक जंग नहीं.",
    "scene": {
-    "type": "black",
-    "t": "एक कमज़ोरी... जो पहले दिन से अंदर थी."
+    "type": "set3d",
+    "set": "battlefield",
+    "cam": "orbit_left",
+    "objs": [
+     {
+      "prop": "army_block",
+      "x": -3,
+      "z": 9,
+      "h": 1.8
+     },
+     {
+      "prop": "army_block",
+      "x": 3,
+      "z": 10,
+      "h": 1.8,
+      "color": "#7a2a22"
+     },
+     {
+      "prop": "smoke",
+      "x": 0,
+      "z": 8,
+      "h": 1.6
+     }
+    ],
+    "stickers": [
+     {
+      "name": "warning",
+      "side": "top_right",
+      "anim": "pop",
+      "h": 0.15,
+      "at": 0.5,
+      "label": "SIRF JUNG NAHI"
+     }
+    ]
    },
    "tags": "[mysteriously]"
   },
@@ -677,21 +859,22 @@
    "speaker": "N",
    "text": "और रास्ते में आप देखेंगे — मोर वाला तख़्त कहाँ गया…",
    "scene": {
-    "type": "set",
-    "bg": "mughal_court",
-    "cam": "push_fast",
-    "zoom": 1.2,
-    "focus": [
-     0.5,
-     0.55
+    "type": "set3d",
+    "set": "court",
+    "cam": "push",
+    "target": [
+     0,
+     1.6,
+     8.5
     ],
-    "props": [
+    "dist": 5.0,
+    "objs": [
      {
-      "name": "throne",
-      "x": 0.5,
-      "y": 0.64,
-      "h": 0.42,
-      "anim": "pop",
+      "prop": "peacock_throne",
+      "x": 0,
+      "z": 9.3,
+      "y": 0.6,
+      "h": 2.1,
       "label": "TAKHT-E-TAUS"
      }
     ],
@@ -715,25 +898,29 @@
    "speaker": "N",
    "text": "कोहिनूर किसके हाथ लगा…",
    "scene": {
-    "type": "set",
-    "bg": "palace_room",
+    "type": "set3d",
+    "set": "palace",
     "cam": "dolly_in",
-    "props": [
-     {
-      "name": "crown",
-      "x": 0.5,
-      "y": 0.55,
-      "h": 0.3,
-      "anim": "spin",
-      "label": "KOH-I-NOOR"
-     }
+    "target": [
+     0,
+     1.0,
+     4.0
     ],
-    "emph": [
+    "dist": 4.0,
+    "objs": [
      {
-      "x": 0.5,
-      "y": 0.5,
-      "r": 0.18,
-      "at": 0.4
+      "prop": "chest",
+      "x": 0,
+      "z": 4.45,
+      "h": 0.75
+     },
+     {
+      "prop": "kohinoor",
+      "x": 0,
+      "z": 4.4,
+      "y": 0.75,
+      "h": 0.9,
+      "label": "KOH-I-NOOR"
      }
     ],
     "stickers": [
@@ -742,7 +929,15 @@
       "side": "top_left",
       "anim": "pop",
       "h": 0.16,
-      "at": 0.5
+      "at": 0.4
+     }
+    ],
+    "emph": [
+     {
+      "x": 0.5,
+      "y": 0.45,
+      "r": 0.16,
+      "at": 0.4
      }
     ]
    },
@@ -755,30 +950,40 @@
    "speaker": "N",
    "text": "और तीन हज़ार रुपये सालाना के एक फ़रमान से…",
    "scene": {
-    "type": "set",
-    "bg": "office_day",
+    "type": "set3d",
+    "set": "court",
     "cam": "dolly_in",
-    "popup": {
-     "name": "charter",
-     "x": 0.5,
-     "at": 0.2,
-     "h": 0.5,
-     "rot": -6
-    },
+    "actors": [
+     {
+      "who": "sardar",
+      "x": -1.4,
+      "z": 6.5,
+      "expr": "smug",
+      "face": "right"
+     },
+     {
+      "who": "eic",
+      "x": 1.3,
+      "z": 6.3,
+      "face": "left",
+      "expr": "happy"
+     }
+    ],
+    "objs": [
+     {
+      "prop": "farman",
+      "x": 0,
+      "z": 6.4,
+      "y": 0.6,
+      "h": 1.0,
+      "anim": "pop"
+     }
+    ],
     "big": {
      "t": "FARMAN 1717 · ₹3,000 / SAAL",
      "y": 0.14,
-     "at": 1.0
+     "at": 0.8
     },
-    "stickers": [
-     {
-      "name": "eic_flag",
-      "side": "top_right",
-      "anim": "slide",
-      "h": 0.14,
-      "at": 2.0
-     }
-    ],
     "source": "Farrukh Siyar's Farman — Banglapedia",
     "source_by": "historical record"
    },
@@ -791,41 +996,63 @@
    "speaker": "N",
    "text": "अंग्रेज़ों को बंगाल में बिना चुंगी व्यापार कैसे मिला.",
    "scene": {
-    "type": "set",
-    "bg": "port",
+    "type": "set3d",
+    "set": "river",
     "cam": "truck_right",
-    "caption": "BENGAL",
-    "props": [
+    "objs": [
      {
-      "name": "ship",
-      "x": 0.82,
-      "y": 0.55,
-      "h": 0.3,
-      "anim": "slide"
+      "prop": "ship",
+      "x": 2.5,
+      "z": 11,
+      "h": 2.4,
+      "anim": "bob"
      },
      {
-      "name": "spice_sack",
-      "x": 0.3,
-      "y": 0.8,
-      "h": 0.16,
+      "prop": "ship",
+      "x": 6.0,
+      "z": 13,
+      "h": 2.2,
+      "anim": "bob"
+     },
+     {
+      "prop": "spice_sack",
+      "x": -1.2,
+      "z": 4.4,
+      "h": 0.7,
       "anim": "drop"
      },
      {
-      "name": "spice_sack",
-      "x": 0.44,
-      "y": 0.81,
-      "h": 0.16,
+      "prop": "spice_sack",
+      "x": -0.3,
+      "z": 4.6,
+      "h": 0.7,
       "anim": "drop",
       "color": "#d9822b"
+     },
+     {
+      "prop": "eic_flag",
+      "x": 2.4,
+      "z": 6,
+      "h": 1.4
      }
     ],
+    "actors": [
+     {
+      "who": "eic",
+      "x": 0.9,
+      "z": 4.8,
+      "expr": "laugh",
+      "pose": "cheer"
+     }
+    ],
+    "caption": "BENGAL",
     "stickers": [
      {
-      "name": "eic_flag",
-      "side": "top_left",
-      "anim": "slide",
+      "name": "arrow_down",
+      "side": "top_right",
+      "anim": "pop",
       "h": 0.14,
-      "at": 0.4,
+      "at": 0.6,
       "label": "BINA CHUNGI"
      }
     ]
@@ -839,36 +1066,66 @@
    "speaker": "N",
    "text": "ये कहानी है तीन सौ इकत्तीस साल की.",
    "scene": {
-    "type": "black",
-    "t": "1526 से 1857 तक. 331 साल."
+    "type": "set3d",
+    "set": "court",
+    "cam": "fly",
+    "objs": [
+     {
+      "prop": "mughal_flag",
+      "x": 0,
+      "z": 9.4,
+      "y": 0.6,
+      "h": 1.4
+     }
+    ],
+    "big": {
+     "t": "331 SAAL",
+     "y": 0.16,
+     "at": 0.4
+    }
    },
    "sfx": [
     "drum"
-   ]
+   ],
+   "year": 1526
   },
   {
    "id": "s13b",
    "speaker": "N",
    "text": "पंद्रह सौ छब्बीस से, अठारह सौ सत्तावन तक.",
    "scene": {
-    "type": "set",
-    "bg": "mughal_court",
-    "cam": "truck_left",
-    "fg": [],
-    "props": [
-     {
-      "name": "mughal_flag",
-      "x": 0.5,
-      "y": 0.5,
-      "h": 0.3,
-      "anim": "pop"
-     }
-    ],
-    "big": {
-     "t": "1526 – 1857",
-     "y": 0.16
+    "type": "set3d",
+    "set": "map",
+    "cam": "truck_right",
+    "map": {
+     "view": [
+      58,
+      5,
+      100,
+      40
+     ],
+     "highlight": {
+      "IND": "#d9a72b",
+      "PAK": "#d9a72b",
+      "BGD": "#d9a72b",
+      "AFG": "#c99a35"
+     },
+     "labels": [
+      {
+       "lon": 78,
+       "lat": 22,
+       "t": "1526 – 1857",
+       "size": 70,
+       "color": "#ffffff",
+       "delay": 0.2
+      }
+     ]
     }
-   }
+   },
+   "year": [
+    1526,
+    1857
+   ]
   },
   {
    "id": "s14",
@@ -878,120 +1135,146 @@
     "type": "black",
     "t": "एक ग्यारह साल का लड़का..."
    },
-   "chapter": "Babur: Fergana se Panipat",
-   "tags": "[softly]"
+   "tags": "[softly]",
+   "chapter": "Babur: Fergana se Panipat"
   },
   {
    "id": "s15",
    "speaker": "N",
    "text": "फ़रग़ना घाटी. ज़्यादातर आज का उज़्बेकिस्तान. साल, चौदह सौ चौरानवे.",
    "scene": {
-    "type": "map",
-    "view": [
-     56,
-     22,
-     86,
-     46
-    ],
-    "cam": "drift",
-    "highlight": {
-     "UZB": "#3f8a6a",
-     "IND": "#8a6a3a"
-    },
-    "pins": [
-     {
-      "lon": 72.3,
-      "lat": 40.8,
-      "label": "FERGANA (ANDIJAN)",
-      "delay": 0.4
-     }
-    ],
-    "labels": [
-     {
-      "lon": 63,
-      "lat": 44.5,
-      "t": "AAJ KA UZBEKISTAN",
-      "size": 34,
-      "color": "#ffffff",
-      "delay": 1.0
-     }
-    ],
-    "caption": "1494"
-   }
+    "type": "set3d",
+    "set": "map",
+    "cam": "dolly_in",
+    "map": {
+     "view": [
+      56,
+      22,
+      86,
+      46
+     ],
+     "highlight": {
+      "UZB": "#3f8a6a",
+      "IND": "#8a6a3a"
+     },
+     "pins": [
+      {
+       "lon": 72.3,
+       "lat": 40.8,
+       "label": "FERGANA (ANDIJAN)",
+       "delay": 0.4
+      }
+     ],
+     "labels": [
+      {
+       "lon": 63,
+       "lat": 44.0,
+       "t": "AAJ KA UZBEKISTAN",
+       "size": 34,
+       "color": "#ffffff",
+       "delay": 1.0
+      }
+     ]
+    }
+   },
+   "year": 1494
   },
   {
    "id": "s16",
    "speaker": "N",
    "text": "एक दिन शासक उमर शेख़ मिर्ज़ा…",
    "scene": {
-    "type": "set",
-    "bg": "fort",
-    "cam": "crane_down",
-    "caption": "AKHSI QILA, 1494",
-    "chars": [
+    "type": "set3d",
+    "set": "cliff",
+    "cam": "orbit_right",
+    "actors": [
      {
       "who": "umar",
-      "x": 0.5,
-      "h": 0.46,
-      "expr": "shocked",
-      "pose": "up",
-      "shake": true
+      "x": -0.6,
+      "z": 5.0,
+      "expr": "happy",
+      "face": "right"
      }
     ],
-    "props": [
+    "objs": [
      {
-      "name": "warning",
-      "x": 0.76,
-      "y": 0.3,
-      "h": 0.14,
-      "anim": "pop"
+      "prop": "dovecote",
+      "x": 1.4,
+      "z": 6.3,
+      "y": 0.0,
+      "h": 2.0
      }
     ],
+    "caption": "AKHSI QILA · 1494",
     "names": [
      {
-      "t": "UMAR SHAIKH MIRZA",
+      "t": "UMAR SHAIKH MIRZA · FERGANA KE SHASAK",
       "x": 0.06,
       "y": 0.8,
       "at": 0.4
      }
-    ],
-    "source": "Baburnama (tr. A. S. Beveridge, 1922)",
-    "source_by": "Public domain"
+    ]
    },
    "sfx": [
     "boom"
-   ]
+   ],
+   "year": 1494
   },
   {
    "id": "s16b",
    "speaker": "N",
    "text": "अपने कबूतरख़ाने समेत, खाई में गिरकर मारे गए.",
    "scene": {
-    "type": "set",
-    "bg": "fort",
+    "type": "set3d",
+    "set": "cliff",
     "cam": "shake",
-    "zoom": 1.3,
-    "focus": [
-     0.5,
-     0.45
-    ],
-    "chars": [
+    "actors": [
      {
       "who": "umar",
-      "x": 0.5,
-      "h": 0.6,
+      "x": 1.1,
+      "z": 6.2,
       "expr": "shocked",
       "pose": "up",
-      "shake": true
+      "shake": true,
+      "face": "right"
      }
     ],
-    "props": [
+    "objs": [
+     {
+      "prop": "dovecote",
+      "x": 1.4,
+      "z": 6.3,
+      "h": 2.0,
+      "anim": "fall",
+      "delay": 0.3
+     },
+     {
+      "prop": "pigeon",
+      "x": 1.2,
+      "z": 6.3,
+      "y": 1.5,
+      "h": 0.4,
+      "anim": "rise",
+      "delay": 0.4
+     },
+     {
+      "prop": "pigeon",
+      "x": 2.0,
+      "z": 6.5,
+      "y": 1.8,
+      "h": 0.35,
+      "anim": "rise",
+      "delay": 0.6
+     }
+    ],
+    "stickers": [
      {
       "name": "warning",
-      "x": 0.78,
-      "y": 0.28,
+      "side": "top_right",
+      "anim": "pop",
       "h": 0.14,
-      "anim": "pop"
+      "at": 0.4,
+      "label": "KHAAI"
      }
     ],
     "source": "Baburnama (tr. A. S. Beveridge, 1922)",
@@ -999,78 +1282,89 @@
    },
    "sfx": [
     "boom"
-   ]
+   ],
+   "year": 1494
   },
   {
    "id": "s17",
    "speaker": "N",
    "text": "और उनका ग्यारह साल का बेटा बाबर, शासक बन गया.",
    "scene": {
-    "type": "set",
-    "bg": "palace_room",
-    "cam": "dolly_in",
-    "chars": [
+    "type": "set3d",
+    "set": "palace",
+    "cam": "crane_up",
+    "actors": [
      {
       "who": "babur_boy",
-      "x": 0.5,
-      "h": 0.36,
-      "expr": "worried",
-      "face": "right"
+      "x": 0,
+      "z": 5.4,
+      "h": 1.05,
+      "expr": "worried"
      },
      {
       "who": "sardar",
-      "x": 0.2,
-      "h": 0.5,
-      "expr": "scheming",
+      "x": -1.8,
+      "z": 4.4,
       "face": "right",
       "pose": "bow"
      },
      {
       "who": "sardar",
-      "x": 0.82,
-      "h": 0.5,
-      "expr": "smug",
-      "face": "left"
+      "x": 1.8,
+      "z": 4.4,
+      "face": "left",
+      "pose": "bow"
      }
     ],
-    "props": [
+    "objs": [
      {
-      "name": "crown",
-      "x": 0.5,
-      "y": 0.22,
-      "h": 0.1,
-      "anim": "drop"
+      "prop": "throne",
+      "x": 0,
+      "z": 6.0,
+      "h": 1.7
+     },
+     {
+      "prop": "crown",
+      "x": 0,
+      "z": 5.4,
+      "y": 1.3,
+      "h": 0.35,
+      "anim": "drop",
+      "delay": 1.0
      }
     ],
     "names": [
      {
       "t": "BABUR · 11 SAAL",
-      "x": 0.5,
-      "y": 0.84,
-      "at": 0.6,
+      "x": 0.06,
+      "y": 0.8,
+      "at": 0.5,
       "bar": "#c9a227"
      }
     ]
-   }
+   },
+   "year": 1494
   },
   {
    "id": "s18",
    "speaker": "N",
    "text": "बाबर की रगों में दो बड़े नाम थे.",
    "scene": {
-    "type": "set",
-    "bg": "palace_room",
-    "cam": "push_fast",
-    "zoom": 1.35,
-    "focus": [
-     0.5,
-     0.42
+    "type": "set3d",
+    "set": "palace",
+    "cam": "push",
+    "target": [
+     0,
+     0.8,
+     4.5
     ],
-    "chars": [
+    "dist": 3.2,
+    "actors": [
      {
       "who": "babur_boy",
-      "x": 0.5,
-      "h": 0.62,
+      "x": 0,
+      "z": 4.6,
+      "h": 1.05,
       "expr": "proud",
       "pose": "hips"
      }
@@ -1082,414 +1376,426 @@
       "r": 0.14,
       "at": 0.3
      }
-    ],
-    "stickers": [
-     {
-      "name": "crown",
-      "side": "top_left",
-      "anim": "pop",
-      "h": 0.12,
-      "at": 0.6,
-      "label": "2 BADE NAAM"
-     }
     ]
-   }
+   },
+   "year": 1494
   },
   {
    "id": "s18b",
    "speaker": "N",
    "text": "पिता की तरफ़ से — तैमूर.",
    "scene": {
-    "type": "set",
-    "bg": "palace_room",
+    "type": "set3d",
+    "set": "palace",
     "cam": "truck_left",
-    "chars": [
+    "actors": [
      {
       "who": "babur_boy",
-      "x": 0.68,
-      "h": 0.4,
+      "x": 0.9,
+      "z": 4.4,
+      "h": 1.05,
       "expr": "proud",
-      "pose": "hips",
       "face": "left"
-     }
-    ],
-    "props": [
+     },
      {
-      "name": "portrait",
-      "x": 0.28,
-      "y": 0.42,
-      "h": 0.32,
-      "anim": "pop",
-      "label": "TIMUR"
+      "who": "timur",
+      "x": -1.3,
+      "z": 6.0,
+      "h": 1.5,
+      "expr": "proud",
+      "dim": true,
+      "face": "right",
+      "label": "TIMUR · PITA KI TARAF"
      }
     ]
-   }
+   },
+   "year": 1494
   },
   {
    "id": "s19",
    "speaker": "N",
    "text": "और माँ की तरफ़ से — चंगेज़ ख़ान.",
    "scene": {
-    "type": "set",
-    "bg": "palace_room",
+    "type": "set3d",
+    "set": "palace",
     "cam": "truck_right",
-    "chars": [
+    "actors": [
      {
       "who": "babur_boy",
-      "x": 0.32,
-      "h": 0.4,
-      "expr": "proud",
-      "pose": "hips",
-      "face": "right"
-     }
-    ],
-    "props": [
+      "x": 0,
+      "z": 4.4,
+      "h": 1.05,
+      "expr": "proud"
+     },
      {
-      "name": "portrait",
-      "x": 0.72,
-      "y": 0.42,
-      "h": 0.32,
-      "anim": "pop",
-      "label": "CHANGEZ KHAN"
+      "who": "timur",
+      "x": -2.0,
+      "z": 6.0,
+      "h": 1.5,
+      "expr": "proud",
+      "dim": true,
+      "face": "right",
+      "label": "TIMUR"
+     },
+     {
+      "who": "changez",
+      "x": 2.0,
+      "z": 6.0,
+      "h": 1.5,
+      "expr": "smug",
+      "dim": true,
+      "face": "left",
+      "label": "CHANGEZ KHAN · MAA KI TARAF"
      }
     ],
     "source": "Babur — Encyclopaedia Britannica",
     "source_by": "britannica.com"
-   }
+   },
+   "year": 1494
   },
   {
    "id": "s20",
    "speaker": "N",
    "text": "लेकिन नाम बड़ा था, और राज्य बहुत छोटा.",
    "scene": {
-    "type": "map",
-    "view": [
-     56,
-     22,
-     86,
-     46
-    ],
-    "cam": "drift",
-    "highlight": {
-     "UZB": "#3f8a6a"
-    },
-    "pins": [
-     {
-      "lon": 72.3,
-      "lat": 40.8,
-      "label": "FERGANA",
-      "delay": 0.2
-     }
-    ],
-    "labels": [
-     {
-      "lon": 66,
-      "lat": 44.5,
-      "t": "CHHOTA SA RAJYA",
-      "size": 40,
-      "color": "#ffffff",
-      "delay": 0.8
-     }
-    ]
-   }
+    "type": "set3d",
+    "set": "map",
+    "cam": "dolly_out",
+    "map": {
+     "view": [
+      56,
+      22,
+      86,
+      46
+     ],
+     "highlight": {
+      "UZB": "#3f8a6a"
+     },
+     "pins": [
+      {
+       "lon": 72.3,
+       "lat": 40.8,
+       "label": "FERGANA",
+       "delay": 0.2
+      }
+     ],
+     "labels": [
+      {
+       "lon": 66,
+       "lat": 44.0,
+       "t": "CHHOTA SA RAJYA",
+       "size": 40,
+       "color": "#ffffff",
+       "delay": 0.8
+      }
+     ]
+    }
+   },
+   "year": 1494
   },
   {
    "id": "s20b",
    "speaker": "N",
    "text": "चारों तरफ़ रिश्तेदार ही दुश्मन थे.",
    "scene": {
-    "type": "set",
-    "bg": "war_tent",
+    "type": "set3d",
+    "set": "tent",
     "cam": "orbit_left",
-    "chars": [
+    "actors": [
      {
       "who": "babur_boy",
-      "x": 0.5,
-      "h": 0.4,
-      "expr": "worried",
-      "face": "right"
+      "x": 0,
+      "z": 4.4,
+      "h": 1.05,
+      "expr": "worried"
+     },
+     {
+      "who": "chacha",
+      "x": -1.8,
+      "z": 5.2,
+      "expr": "scheming",
+      "face": "right",
+      "pose": "cross",
+      "label": "CHACHA"
+     },
+     {
+      "who": "chacha",
+      "x": 1.8,
+      "z": 5.2,
+      "expr": "angry",
+      "face": "left",
+      "pose": "fist",
+      "label": "CHACHA"
      },
      {
       "who": "sardar",
-      "x": 0.15,
-      "h": 0.52,
-      "expr": "angry",
-      "face": "right",
-      "pose": "fist",
-      "dim": true
-     },
-     {
-      "who": "daulat",
-      "x": 0.85,
-      "h": 0.52,
-      "expr": "scheming",
+      "x": 0.9,
+      "z": 5.7,
+      "expr": "smug",
       "face": "left",
-      "dim": true
+      "label": "BHAI KE SAMARTHAK"
      }
     ],
-    "stickers": [
+    "objs": [
      {
-      "name": "sword",
-      "side": "top_left",
-      "anim": "pop",
-      "h": 0.14,
-      "at": 1.2
+      "prop": "sword",
+      "x": -1.2,
+      "z": 5.0,
+      "y": 1.0,
+      "h": 0.5
      },
      {
-      "name": "sword",
-      "side": "top_right",
-      "anim": "pop",
-      "h": 0.14,
-      "at": 1.5
+      "prop": "sword",
+      "x": 1.4,
+      "z": 5.0,
+      "y": 1.0,
+      "h": 0.5
      }
     ]
-   }
+   },
+   "year": 1495
   },
   {
    "id": "s21",
    "speaker": "N",
    "text": "बाबर का सपना था — समरकंद. तैमूर की राजधानी.",
    "scene": {
-    "type": "map",
-    "view": [
-     56,
-     22,
-     86,
-     46
+    "type": "set3d",
+    "set": "fort",
+    "cam": "dolly_in",
+    "target": [
+     0,
+     2.0,
+     9.0
     ],
-    "cam": "drift",
-    "highlight": {
-     "UZB": "#3f8a6a"
-    },
-    "routes": [
+    "dist": 14.0,
+    "height": 1.5,
+    "actors": [
      {
-      "from": [
-       72.3,
-       40.8
-      ],
-      "to": [
-       66.97,
-       39.65
-      ],
-      "delay": 0.4,
-      "time": 1.6,
-      "color": "#ffd166"
+      "who": "babur",
+      "x": -1.2,
+      "z": 2.0,
+      "h": 1.35,
+      "back": true,
+      "face": "right"
      }
     ],
-    "pins": [
+    "names": [
      {
-      "lon": 72.3,
-      "lat": 40.8,
-      "label": "FERGANA",
-      "delay": 0.1
-     },
-     {
-      "lon": 66.97,
-      "lat": 39.65,
-      "label": "SAMARKAND",
-      "delay": 1.8
+      "t": "SAMARKAND · TAIMUR KI RAJDHANI",
+      "x": 0.06,
+      "y": 0.8,
+      "at": 0.4
      }
     ]
    },
-   "tags": "[dreamy]"
+   "tags": "[dreamy]",
+   "year": 1496
   },
   {
    "id": "s22",
    "speaker": "N",
    "text": "चौदह सौ सत्तानवे में, सिर्फ़ चौदह साल की उम्र में…",
    "scene": {
-    "type": "set",
-    "bg": "village",
+    "type": "set3d",
+    "set": "plain",
     "cam": "truck_right",
-    "caption": "1497",
-    "chars": [
+    "target": [
+     0.5,
+     1.0,
+     6
+    ],
+    "objs": [
      {
-      "who": "babur",
-      "x": -0.05,
-      "to": 0.6,
-      "walk_time": 3.2,
-      "h": 0.44,
-      "expr": "proud",
-      "face": "right"
+      "prop": "horse_rider",
+      "x": -2.5,
+      "z": 5.2,
+      "h": 1.8,
+      "to": [
+       1.2,
+       5.2
+      ],
+      "move_time": 4.0,
+      "anim": "march"
      },
      {
-      "who": "soldier",
-      "x": -0.25,
-      "to": 0.4,
-      "walk_time": 3.2,
-      "h": 0.42,
-      "face": "right"
+      "prop": "army_block",
+      "x": -4.2,
+      "z": 7.0,
+      "h": 1.8,
+      "to": [
+       -0.6,
+       7.0
+      ],
+      "move_time": 4.0,
+      "anim": "march"
      },
      {
-      "who": "soldier",
-      "x": -0.4,
-      "to": 0.22,
-      "walk_time": 3.2,
-      "h": 0.42,
-      "face": "right"
+      "prop": "flag",
+      "x": -3.2,
+      "z": 6.0,
+      "h": 1.6,
+      "color": "#3f6d5a",
+      "to": [
+       0.4,
+       6.0
+      ],
+      "move_time": 4.0
      }
     ],
     "names": [
      {
-      "t": "SIRF 14 SAAL KI UMR",
+      "t": "1497 · SIRF 14 SAAL KI UMR",
       "x": 0.06,
-      "y": 0.82,
-      "at": 0.6
+      "y": 0.8,
+      "at": 0.4
      }
     ]
-   }
+   },
+   "year": 1497
   },
   {
    "id": "s22b",
    "speaker": "N",
    "text": "उसने समरकंद जीत भी लिया.",
    "scene": {
-    "type": "set",
-    "bg": "fort",
+    "type": "set3d",
+    "set": "fort",
     "cam": "crane_up",
-    "caption": "SAMARKAND, 1497",
-    "chars": [
+    "actors": [
      {
       "who": "babur",
-      "x": 0.5,
-      "h": 0.46,
+      "x": 0,
+      "z": 4.8,
       "expr": "laugh",
       "pose": "cheer",
       "jump": true
      },
      {
       "who": "soldier",
-      "x": 0.25,
-      "h": 0.44,
+      "x": -1.4,
+      "z": 5.0,
       "expr": "happy",
       "pose": "cheer"
      },
      {
       "who": "soldier",
-      "x": 0.75,
-      "h": 0.44,
+      "x": 1.4,
+      "z": 5.0,
       "expr": "happy",
       "pose": "cheer"
      }
     ],
-    "props": [
+    "objs": [
      {
-      "name": "flag",
-      "x": 0.5,
-      "y": 0.2,
-      "h": 0.2,
+      "prop": "flag",
+      "x": 0,
+      "z": 9.0,
+      "y": 4.4,
+      "h": 1.6,
       "color": "#3f6d5a",
       "anim": "pop"
      }
     ],
-    "names": [
-     {
-      "t": "SIRF 14 SAAL KI UMR",
-      "x": 0.5,
-      "y": 0.84,
-      "at": 0.8
-     }
-    ]
+    "caption": "SAMARKAND · 1497"
    },
    "sfx": [
     "crowd"
-   ]
+   ],
+   "year": 1497
   },
   {
    "id": "s23",
    "speaker": "N",
    "text": "लेकिन करीब सौ दिन में वो हाथ से निकल गया.",
    "scene": {
-    "type": "set",
-    "bg": "fort",
-    "cam": "shake",
+    "type": "set3d",
+    "set": "fort",
+    "cam": "dolly_in",
+    "actors": [
+     {
+      "who": "babur",
+      "x": 0.6,
+      "z": 4.6,
+      "expr": "shocked",
+      "pose": "head"
+     }
+    ],
     "days_left": {
      "x": 0.16,
      "y": 0.14,
      "w": 0.2,
      "n": 100,
      "title": "SAMARKAND"
-    },
-    "chars": [
-     {
-      "who": "babur",
-      "x": 0.62,
-      "h": 0.46,
-      "expr": "shocked",
-      "pose": "head"
-     }
-    ],
-    "stickers": [
-     {
-      "name": "arrow_down",
-      "side": "top_right",
-      "anim": "drop",
-      "h": 0.16,
-      "at": 1.0,
-      "label": "FERGANA BHI GAYA"
-     }
-    ]
+    }
    },
    "sfx": [
     "tension"
-   ]
+   ],
+   "year": 1497
   },
   {
    "id": "s23b",
    "speaker": "N",
    "text": "और पीछे से फ़रग़ना भी.",
    "scene": {
-    "type": "map",
-    "view": [
-     56,
-     22,
-     86,
-     46
-    ],
-    "cam": "drift",
-    "highlight": {
-     "UZB": "#c0322b"
-    },
-    "pins": [
-     {
-      "lon": 72.3,
-      "lat": 40.8,
-      "label": "FERGANA — HAATH SE GAYA",
-      "delay": 0.2
-     }
-    ],
-    "stickers": [
-     {
-      "name": "arrow_down",
-      "side": "top_right",
-      "anim": "drop",
-      "h": 0.16,
-      "at": 0.4
-     }
-    ]
+    "type": "set3d",
+    "set": "map",
+    "cam": "push",
+    "map": {
+     "view": [
+      56,
+      22,
+      86,
+      46
+     ],
+     "highlight": {
+      "UZB": "#c0322b"
+     },
+     "pins": [
+      {
+       "lon": 72.3,
+       "lat": 40.8,
+       "label": "FERGANA — HAATH SE GAYA",
+       "delay": 0.2
+      }
+     ],
+     "stickers": [
+      {
+       "name": "arrow_down",
+       "side": "top_right",
+       "anim": "drop",
+       "h": 0.16,
+       "at": 0.4
+      }
+     ]
+    }
    },
    "sfx": [
     "tension"
-   ]
+   ],
+   "year": 1498
   },
   {
    "id": "s24",
    "speaker": "BABUR",
    "text": "न समरकंद बचा, न अपना घर. अब मैं कहाँ जाऊँ?",
    "scene": {
-    "type": "set",
-    "bg": "village",
+    "type": "set3d",
+    "set": "plain",
     "cam": "dolly_in",
-    "zoom": 1.25,
-    "focus": [
-     0.4,
-     0.45
+    "target": [
+     -0.3,
+     1.0,
+     5
     ],
-    "chars": [
+    "dist": 3.6,
+    "mood": 0.75,
+    "actors": [
      {
       "who": "babur",
-      "x": 0.4,
-      "h": 0.6,
+      "x": -0.3,
+      "z": 5.0,
       "expr": "sad",
       "talk": true,
       "gesture": [
@@ -1501,9 +1807,8 @@
      },
      {
       "who": "nani",
-      "x": 0.86,
-      "h": 1.15,
-      "y": 0.42,
+      "x": 1.6,
+      "z": 4.0,
       "back": true,
       "face": "left"
      }
@@ -1512,9 +1817,9 @@
      "text": "NA SAMARKAND, NA [GHAR]|AB KAHAN JAUN?",
      "rect": [
       0.08,
-      0.06,
+      0.16,
       0.64,
-      0.22
+      0.32
      ],
      "at": 0.2,
      "time": 2.0
@@ -1522,33 +1827,36 @@
     "names": [
      {
       "t": "NAATYA ROOPANTARAN",
-      "x": 0.68,
-      "y": 0.89,
+      "x": 0.06,
+      "y": 0.1,
       "at": 0.2,
       "bar": "#555555"
      }
     ]
    },
-   "tags": "[sad] [sighs]"
+   "tags": "[sad] [sighs]",
+   "year": 1501
   },
   {
    "id": "s25",
    "speaker": "NANI",
    "text": "हार मान ली, तो ख़त्म हो जाओगे. चलते रहो, बेटा.",
    "scene": {
-    "type": "set",
-    "bg": "village",
+    "type": "set3d",
+    "set": "plain",
     "cam": "orbit_right",
-    "zoom": 1.25,
-    "focus": [
-     0.6,
-     0.45
+    "target": [
+     0.4,
+     1.0,
+     5
     ],
-    "chars": [
+    "dist": 3.6,
+    "mood": 0.75,
+    "actors": [
      {
       "who": "nani",
-      "x": 0.6,
-      "h": 0.55,
+      "x": 0.4,
+      "z": 5.0,
       "expr": "proud",
       "talk": true,
       "gesture": [
@@ -1560,9 +1868,8 @@
      },
      {
       "who": "babur",
-      "x": 0.12,
-      "h": 1.2,
-      "y": 0.42,
+      "x": -1.4,
+      "z": 4.0,
       "back": true,
       "face": "right"
      }
@@ -1571,47 +1878,67 @@
      {
       "t": "BABUR KI NAANI",
       "x": 0.06,
-      "y": 0.82,
+      "y": 0.8,
       "at": 0.3,
       "bar": "#a3233a"
      },
      {
       "t": "NAATYA ROOPANTARAN",
-      "x": 0.68,
-      "y": 0.89,
+      "x": 0.06,
+      "y": 0.1,
       "at": 0.2,
       "bar": "#555555"
      }
     ]
    },
-   "tags": "[firmly]"
+   "tags": "[firmly]",
+   "year": 1501
   },
   {
    "id": "s26",
    "speaker": "N",
    "text": "अगले कई साल, बाबर कभी जीतता, कभी हारता, बेघर भटकता रहा.",
    "scene": {
-    "type": "set",
-    "bg": "village",
+    "type": "set3d",
+    "set": "plain",
     "cam": "truck_right",
-    "chars": [
+    "target": [
+     1.0,
+     1.0,
+     6
+    ],
+    "actors": [
      {
       "who": "babur",
-      "x": -0.05,
-      "to": 0.75,
-      "walk_time": 3.5,
-      "h": 0.42,
+      "x": -2.5,
+      "z": 5.2,
       "expr": "sad",
+      "to": [
+       2.5,
+       5.2
+      ],
+      "walk_time": 4.5,
       "face": "right"
      },
      {
       "who": "soldier",
-      "x": -0.2,
-      "to": 0.55,
-      "walk_time": 3.5,
-      "h": 0.4,
+      "x": -3.6,
+      "z": 5.8,
       "expr": "worried",
+      "to": [
+       1.4,
+       5.8
+      ],
+      "walk_time": 4.5,
       "face": "right"
+     }
+    ],
+    "objs": [
+     {
+      "prop": "mughal_tent",
+      "x": 3.5,
+      "z": 9,
+      "h": 1.8
      }
     ],
     "month_cal": {
@@ -1623,342 +1950,372 @@
      "at": 0.2,
      "time": 2.4
     }
-   }
+   },
+   "year": [
+    1501,
+    1504
+   ]
   },
   {
    "id": "s27",
    "speaker": "N",
    "text": "फिर पंद्रह सौ चार में, क़िस्मत पलटी. उसने काबुल जीत लिया.",
    "scene": {
-    "type": "map",
-    "view": [
-     56,
-     22,
-     86,
-     46
-    ],
-    "cam": "drift",
-    "highlight": {
-     "AFG": "#3f8a6a"
-    },
-    "routes": [
-     {
-      "from": [
-       72.3,
-       40.8
-      ],
-      "via": [
-       [
-        68.8,
-        37.5
-       ]
-      ],
-      "to": [
-       69.2,
-       34.5
-      ],
-      "delay": 0.3,
-      "time": 1.8,
-      "color": "#ffd166"
-     }
-    ],
-    "pins": [
-     {
-      "lon": 69.2,
-      "lat": 34.5,
-      "label": "KABUL · 1504",
-      "delay": 2.0
-     }
-    ]
+    "type": "set3d",
+    "set": "map",
+    "cam": "orbit_left",
+    "map": {
+     "view": [
+      56,
+      22,
+      86,
+      46
+     ],
+     "highlight": {
+      "AFG": "#3f8a6a"
+     },
+     "routes": [
+      {
+       "from": [
+        72.3,
+        40.8
+       ],
+       "via": [
+        [
+         68.8,
+         37.5
+        ]
+       ],
+       "to": [
+        69.2,
+        34.5
+       ],
+       "delay": 0.3,
+       "time": 1.8,
+       "color": "#ffd166"
+      }
+     ],
+     "pins": [
+      {
+       "lon": 69.2,
+       "lat": 34.5,
+       "label": "KABUL · 1504",
+       "delay": 2.0
+      }
+     ]
+    }
    },
    "sfx": [
     "drum"
-   ]
+   ],
+   "year": 1504
   },
   {
    "id": "s28",
    "speaker": "N",
    "text": "लेकिन पहाड़ी काबुल छोटा था.",
    "scene": {
-    "type": "topdown",
-    "paper": {
-     "x": 0.5,
-     "y": 0.5,
-     "w": 0.22,
-     "draw": "map",
-     "at": 0.1,
-     "note": "KABUL"
-    },
-    "hands": [
+    "type": "set3d",
+    "set": "fort",
+    "cam": "crane_down",
+    "target": [
+     0,
+     1.6,
+     8
+    ],
+    "dist": 10,
+    "actors": [
      {
-      "from": "left",
-      "to": [
-       0.36,
-       0.48
-      ],
-      "item": "coin_bag",
-      "label": "KABUL",
-      "at": 0.3,
-      "release": 1.4,
-      "sleeve": "#3f6d5a"
-     },
+      "who": "babur",
+      "x": 0,
+      "z": 4.0,
+      "expr": "thinking",
+      "pose": "chin"
+     }
+    ],
+    "names": [
      {
-      "from": "right",
-      "to": [
-       0.66,
-       0.5
-      ],
-      "item": "cash",
-      "label": "FAUJ",
-      "at": 1.2,
-      "release": 2.4,
-      "sleeve": "#6a4a2a"
+      "t": "KABUL · PAHADI, CHHOTA",
+      "x": 0.06,
+      "y": 0.8,
+      "at": 0.4
      }
     ]
-   }
+   },
+   "year": 1504
   },
   {
    "id": "s28b",
    "speaker": "N",
    "text": "बाबर को, उससे कहीं बड़ा कुछ चाहिए था.",
    "scene": {
-    "type": "set",
-    "bg": "war_tent",
-    "cam": "dolly_in",
-    "zoom": 1.25,
-    "focus": [
-     0.45,
-     0.45
+    "type": "set3d",
+    "set": "tent",
+    "cam": "push",
+    "target": [
+     0,
+     1.2,
+     4.0
     ],
-    "chars": [
+    "dist": 3.4,
+    "actors": [
      {
       "who": "babur",
-      "x": 0.45,
-      "h": 0.6,
+      "x": 0,
+      "z": 4.0,
       "expr": "thinking",
-      "pose": "chin",
-      "face": "right"
+      "pose": "chin"
      }
     ],
     "bubble": {
      "from": [
-      0.52,
+      0.55,
       0.3
      ],
-     "x": 0.74,
+     "x": 0.75,
      "y": 0.18,
      "prop": "crown",
      "at": 0.3
     }
-   }
+   },
+   "year": 1504
   },
   {
    "id": "s29",
    "speaker": "N",
    "text": "इसलिए पंद्रह सौ उन्नीस से, उसकी नज़र गई पूरब की ओर.",
    "scene": {
-    "type": "set",
-    "bg": "fort",
-    "cam": "truck_right",
-    "caption": "KABUL, 1519",
-    "chars": [
+    "type": "set3d",
+    "set": "tent",
+    "cam": "dolly_in",
+    "actors": [
      {
       "who": "babur",
-      "x": 0.35,
-      "h": 0.48,
+      "x": 0,
+      "z": 5.4,
       "expr": "scheming",
       "pose": "point",
       "face": "right"
+     },
+     {
+      "who": "sardar",
+      "x": -1.8,
+      "z": 5.0,
+      "face": "right"
      }
     ],
+    "caption": "KABUL · 1519",
     "stickers": [
      {
       "name": "arrow_up",
       "side": "top_right",
       "anim": "pop",
-      "h": 0.16,
-      "at": 0.5,
+      "h": 0.14,
+      "at": 0.6,
       "label": "PURAB"
      }
     ]
-   }
+   },
+   "year": 1519
   },
   {
    "id": "s29b",
    "speaker": "N",
    "text": "सिंधु के पार. हिंदुस्तान.",
    "scene": {
-    "type": "map",
-    "view": [
-     58,
-     20,
-     86,
-     42
-    ],
-    "cam": "drift",
-    "highlight": {
-     "AFG": "#3f8a6a",
-     "IND": "#d9a72b",
-     "PAK": "#d9a72b"
-    },
-    "routes": [
-     {
-      "from": [
-       69.2,
-       34.5
-      ],
-      "via": [
-       [
-        72.0,
-        33.6
-       ]
-      ],
-      "to": [
-       77.2,
-       28.6
-      ],
-      "delay": 0.3,
-      "time": 2.2,
-      "color": "#ffd166"
-     }
-    ],
-    "labels": [
-     {
-      "lon": 71.8,
-      "lat": 30.0,
-      "t": "SINDHU",
-      "size": 30,
-      "color": "#9fd3ff",
-      "delay": 1.0
-     }
-    ],
-    "pins": [
-     {
-      "lon": 77.2,
-      "lat": 28.6,
-      "label": "HINDUSTAN",
-      "delay": 2.4
-     }
-    ]
-   }
+    "type": "set3d",
+    "set": "map",
+    "cam": "push",
+    "map": {
+     "view": [
+      58,
+      20,
+      86,
+      42
+     ],
+     "highlight": {
+      "AFG": "#3f8a6a",
+      "IND": "#d9a72b",
+      "PAK": "#d9a72b"
+     },
+     "routes": [
+      {
+       "from": [
+        69.2,
+        34.5
+       ],
+       "via": [
+        [
+         72.0,
+         33.6
+        ]
+       ],
+       "to": [
+        77.2,
+        28.6
+       ],
+       "delay": 0.2,
+       "time": 1.8,
+       "color": "#ffd166"
+      }
+     ],
+     "labels": [
+      {
+       "lon": 71.8,
+       "lat": 30.0,
+       "t": "SINDHU",
+       "size": 30,
+       "color": "#9fd3ff",
+       "delay": 0.6
+      }
+     ],
+     "pins": [
+      {
+       "lon": 77.2,
+       "lat": 28.6,
+       "label": "HINDUSTAN",
+       "delay": 1.8
+      }
+     ]
+    }
+   },
+   "year": 1519
   },
   {
    "id": "s30",
    "speaker": "N",
    "text": "वहाँ दिल्ली की गद्दी पर बैठे थे, सुल्तान इब्राहीम लोदी.",
    "scene": {
-    "type": "set",
-    "bg": "mughal_court",
+    "type": "set3d",
+    "set": "court",
     "cam": "dolly_in",
-    "chars": [
+    "actors": [
      {
       "who": "ibrahim",
-      "x": 0.5,
-      "h": 0.46,
-      "y": -0.06,
-      "expr": "smug",
-      "seated": true
+      "x": 0,
+      "z": 9.0,
+      "y": 0.6,
+      "h": 1.4,
+      "expr": "smug"
      },
      {
       "who": "sardar",
-      "x": 0.18,
-      "h": 0.5,
-      "expr": "worried",
+      "x": -2,
+      "z": 5.2,
       "face": "right",
       "pose": "bow"
      },
      {
       "who": "daulat",
-      "x": 0.82,
-      "h": 0.5,
-      "expr": "scheming",
-      "face": "left"
+      "x": 2.2,
+      "z": 5.6,
+      "face": "left",
+      "expr": "scheming"
+     }
+    ],
+    "objs": [
+     {
+      "prop": "throne",
+      "x": 0,
+      "z": 9.5,
+      "y": 0.6,
+      "h": 1.8
      }
     ],
     "names": [
      {
-      "t": "SULTAN IBRAHIM LODI",
+      "t": "SULTAN IBRAHIM LODI · DILLI",
       "x": 0.06,
-      "y": 0.82,
+      "y": 0.8,
       "at": 0.4,
       "bar": "#7a1f2b"
      }
     ]
-   }
+   },
+   "year": 1524
   },
   {
    "id": "s31",
    "speaker": "N",
    "text": "लेकिन उनके अपने कई अमीर, उनसे नाराज़ थे.",
    "scene": {
-    "type": "set",
-    "bg": "mughal_court",
+    "type": "set3d",
+    "set": "court",
     "cam": "orbit_left",
-    "zoom": 1.2,
-    "focus": [
-     0.7,
-     0.45
+    "target": [
+     0,
+     1.2,
+     5
     ],
-    "chars": [
+    "dist": 5.0,
+    "actors": [
      {
-      "who": "daulat",
-      "x": 0.7,
-      "h": 0.58,
+      "who": "sardar",
+      "x": -1.0,
+      "z": 5.0,
       "expr": "angry",
-      "face": "left",
+      "face": "right",
       "pose": "cross"
      },
      {
-      "who": "ibrahim",
-      "x": 0.14,
-      "h": 1.15,
-      "y": 0.42,
-      "back": true,
-      "face": "right"
+      "who": "daulat",
+      "x": 0.4,
+      "z": 5.3,
+      "expr": "angry",
+      "face": "left",
+      "pose": "fist"
+     },
+     {
+      "who": "chacha",
+      "x": 1.6,
+      "z": 5.0,
+      "expr": "scheming",
+      "face": "left"
      }
     ],
     "emph": [
      {
-      "x": 0.7,
+      "x": 0.5,
       "y": 0.3,
-      "r": 0.12,
-      "at": 0.5
+      "r": 0.14,
+      "at": 0.4
+     }
+    ],
+    "names": [
+     {
+      "t": "NARAAZ AMIR",
+      "x": 0.06,
+      "y": 0.8,
+      "at": 0.4
      }
     ]
-   }
+   },
+   "year": 1524
   },
   {
    "id": "s32",
    "speaker": "N",
    "text": "पंजाब के हाकिम दौलत ख़ान लोदी ने…",
    "scene": {
-    "type": "set",
-    "bg": "study_night",
+    "type": "set3d",
+    "set": "study",
     "cam": "dolly_in",
-    "chars": [
+    "actors": [
      {
       "who": "daulat",
-      "x": 0.35,
-      "h": 0.5,
+      "x": 0,
+      "z": 4.0,
       "expr": "scheming",
       "pose": "give",
       "hold": "letter",
-      "hold_size": 0.12,
-      "face": "right"
+      "hold_size": 0.16
      }
     ],
-    "popup": {
-     "name": "letter",
-     "x": 0.72,
-     "at": 0.8,
-     "h": 0.4,
-     "rot": 6
-    },
     "names": [
      {
-      "t": "DAULAT KHAN LODI · PUNJAB",
+      "t": "DAULAT KHAN LODI · PUNJAB KE HAKIM",
       "x": 0.06,
-      "y": 0.82,
+      "y": 0.8,
       "at": 0.4
      }
     ],
@@ -1967,105 +2324,121 @@
    },
    "sfx": [
     "page"
-   ]
+   ],
+   "year": 1524
   },
   {
    "id": "s32b",
    "speaker": "N",
    "text": "बाबर को हिंदुस्तान आने का न्योता भेजा.",
    "scene": {
-    "type": "map",
-    "view": [
-     58,
-     20,
-     86,
-     42
-    ],
-    "cam": "drift",
-    "highlight": {
-     "AFG": "#3f8a6a",
-     "IND": "#d9a72b",
-     "PAK": "#d9a72b"
-    },
-    "routes": [
-     {
-      "from": [
-       74.3,
-       31.5
-      ],
-      "to": [
-       69.2,
-       34.5
-      ],
-      "delay": 0.3,
-      "time": 1.6,
-      "color": "#ffd166"
-     }
-    ],
-    "pins": [
-     {
-      "lon": 74.3,
-      "lat": 31.5,
-      "label": "LAHORE",
-      "delay": 0.1
+    "type": "set3d",
+    "set": "map",
+    "cam": "orbit_right",
+    "map": {
+     "view": [
+      58,
+      20,
+      86,
+      42
+     ],
+     "highlight": {
+      "AFG": "#3f8a6a",
+      "IND": "#d9a72b",
+      "PAK": "#d9a72b"
      },
-     {
-      "lon": 69.2,
-      "lat": 34.5,
-      "label": "KABUL",
-      "delay": 1.8
-     }
-    ],
-    "labels": [
-     {
-      "lon": 72,
-      "lat": 35.6,
-      "t": "NYOTA",
-      "size": 44,
-      "color": "#ffffff",
-      "delay": 1.0
-     }
-    ]
+     "routes": [
+      {
+       "from": [
+        74.3,
+        31.5
+       ],
+       "to": [
+        69.2,
+        34.5
+       ],
+       "delay": 0.3,
+       "time": 1.6,
+       "color": "#ffd166"
+      }
+     ],
+     "pins": [
+      {
+       "lon": 74.3,
+       "lat": 31.5,
+       "label": "LAHORE",
+       "delay": 0.1
+      },
+      {
+       "lon": 69.2,
+       "lat": 34.5,
+       "label": "KABUL",
+       "delay": 1.8
+      }
+     ],
+     "labels": [
+      {
+       "lon": 72,
+       "lat": 35.6,
+       "t": "NYOTA",
+       "size": 44,
+       "color": "#ffffff",
+       "delay": 1.0
+      }
+     ]
+    }
    },
    "sfx": [
     "page"
-   ]
+   ],
+   "year": 1524
   },
   {
    "id": "s33",
    "speaker": "LODI",
    "text": "काबुल से कोई आएगा? और दिल्ली ले जाएगा?",
    "scene": {
-    "type": "set",
-    "bg": "mughal_court",
-    "cam": "punch",
-    "zoom": 1.25,
-    "focus": [
-     0.5,
-     0.45
+    "type": "set3d",
+    "set": "court",
+    "cam": "push",
+    "target": [
+     0,
+     1.5,
+     9.0
     ],
-    "chars": [
+    "dist": 4.0,
+    "actors": [
      {
       "who": "ibrahim",
-      "x": 0.5,
-      "h": 0.6,
+      "x": 0,
+      "z": 9.0,
+      "y": 0.6,
+      "h": 1.4,
       "expr": "laugh",
       "talk": true,
       "gesture": [
        "idle",
        "point",
        "cross"
-      ],
-      "seated": true
+      ]
+     }
+    ],
+    "objs": [
+     {
+      "prop": "throne",
+      "x": 0,
+      "z": 9.5,
+      "y": 0.6,
+      "h": 1.8
      }
     ],
     "board": {
      "text": "KABUL SE KOI AAYEGA?|AUR [DILLI] LE JAYEGA?",
      "rect": [
-      0.1,
-      0.06,
-      0.62,
-      0.22
+      0.08,
+      0.16,
+      0.6,
+      0.32
      ],
      "at": 0.2,
      "time": 2.0
@@ -2073,47 +2446,64 @@
     "names": [
      {
       "t": "NAATYA ROOPANTARAN",
-      "x": 0.68,
-      "y": 0.89,
+      "x": 0.06,
+      "y": 0.1,
       "at": 0.2,
       "bar": "#555555"
      }
     ]
    },
-   "tags": "[mocking] [laughs]"
+   "tags": "[mocking] [laughs]",
+   "year": 1524
   },
   {
    "id": "s33b",
    "speaker": "LODI",
    "text": "मज़ाक है!",
    "scene": {
-    "type": "set",
-    "bg": "palace_room",
-    "cam": "punch",
-    "chars": [
+    "type": "set3d",
+    "set": "palace",
+    "cam": "shake",
+    "target": [
+     0,
+     1.3,
+     4.5
+    ],
+    "dist": 2.4,
+    "actors": [
      {
       "who": "ibrahim",
-      "x": 0.42,
-      "h": 0.66,
+      "x": 0,
+      "z": 4.5,
+      "h": 1.4,
       "expr": "laugh",
       "talk": true,
-      "close": true,
-      "shake": true
+      "pose": "cross"
      }
     ],
     "board": {
      "text": "[MAZAAQ] HAI!",
      "rect": [
-      0.62,
-      0.08,
-      0.94,
-      0.2
+      0.6,
+      0.16,
+      0.92,
+      0.28
      ],
      "at": 0.05,
      "time": 0.8
-    }
+    },
+    "names": [
+     {
+      "t": "NAATYA ROOPANTARAN",
+      "x": 0.06,
+      "y": 0.1,
+      "at": 0.2,
+      "bar": "#555555"
+     }
+    ]
    },
-   "tags": "[laughs]"
+   "tags": "[laughs]",
+   "year": 1524
   },
   {
    "id": "s34",
@@ -2123,74 +2513,162 @@
     "type": "black",
     "t": "बाबर आया. लेकिन मेहमान बनकर नहीं."
    },
-   "chapter": "Panipat, 1526",
    "tags": "[dramatically]",
    "sfx": [
     "boom"
-   ]
+   ],
+   "chapter": "Panipat, 1526"
   },
   {
    "id": "s35",
    "speaker": "N",
    "text": "इक्कीस अप्रैल, पंद्रह सौ छब्बीस. पानीपत का मैदान.",
    "scene": {
-    "type": "set",
-    "bg": "battlefield",
-    "cam": "crane_down",
-    "caption": "PANIPAT · 21 APRIL 1526",
-    "props": [
+    "type": "set3d",
+    "set": "battlefield",
+    "cam": "fly",
+    "objs": [
      {
-      "name": "flag",
-      "x": 0.2,
-      "y": 0.5,
-      "h": 0.2,
+      "prop": "araba",
+      "x": -3.6,
+      "z": 6.0,
+      "h": 1.0
+     },
+     {
+      "prop": "araba",
+      "x": -1.6,
+      "z": 6.4,
+      "h": 1.0
+     },
+     {
+      "prop": "cannon",
+      "x": -2.6,
+      "z": 5.6,
+      "h": 0.7
+     },
+     {
+      "prop": "flag",
+      "x": -4.4,
+      "z": 7.5,
+      "h": 1.6,
       "color": "#3f6d5a"
      },
      {
-      "name": "flag",
-      "x": 0.8,
-      "y": 0.5,
-      "h": 0.2,
+      "prop": "army_block",
+      "x": -3.2,
+      "z": 8.5,
+      "h": 1.7,
+      "color": "#3f6d5a"
+     },
+     {
+      "prop": "war_elephant",
+      "x": 3.0,
+      "z": 11,
+      "h": 2.3,
+      "face": "left"
+     },
+     {
+      "prop": "war_elephant",
+      "x": 5.6,
+      "z": 12.5,
+      "h": 2.3,
+      "face": "left"
+     },
+     {
+      "prop": "war_elephant",
+      "x": 1.0,
+      "z": 13.5,
+      "h": 2.3,
+      "face": "left"
+     },
+     {
+      "prop": "army_block",
+      "x": 4.0,
+      "z": 15,
+      "h": 2.0,
+      "color": "#7a2a22"
+     },
+     {
+      "prop": "army_block",
+      "x": 7.0,
+      "z": 16,
+      "h": 2.0,
+      "color": "#7a2a22"
+     },
+     {
+      "prop": "flag",
+      "x": 6.0,
+      "z": 10.5,
+      "h": 1.6,
       "color": "#7a1f2b"
      }
     ],
+    "caption": "PANIPAT · 21 APRIL 1526",
     "source": "First Battle of Panipat — Wikipedia; Britannica",
     "source_by": "historical record"
    },
    "sfx": [
     "drum"
-   ]
+   ],
+   "chapter": "Panipat, 1526",
+   "year": 1526
   },
   {
    "id": "s36",
    "speaker": "N",
    "text": "एक तरफ़ बाबर. अनुमान है, करीब बारह हज़ार सैनिक.",
    "scene": {
-    "type": "set",
-    "bg": "battlefield",
+    "type": "set3d",
+    "set": "battlefield",
     "cam": "truck_left",
-    "chars": [
+    "target": [
+     -2.5,
+     1.0,
+     6
+    ],
+    "dist": 6.5,
+    "actors": [
      {
       "who": "babur",
-      "x": 0.3,
-      "h": 0.48,
+      "x": -2.0,
+      "z": 4.8,
       "expr": "thinking",
       "pose": "chin",
       "face": "right"
+     }
+    ],
+    "objs": [
+     {
+      "prop": "araba",
+      "x": -3.6,
+      "z": 6.0,
+      "h": 1.0
      },
      {
-      "who": "soldier",
-      "x": 0.12,
-      "h": 0.42,
-      "expr": "neutral",
-      "face": "right"
+      "prop": "araba",
+      "x": -1.6,
+      "z": 6.4,
+      "h": 1.0
      },
      {
-      "who": "soldier",
-      "x": 0.48,
-      "h": 0.42,
-      "expr": "neutral",
-      "face": "right"
+      "prop": "cannon",
+      "x": -2.6,
+      "z": 5.6,
+      "h": 0.7
+     },
+     {
+      "prop": "flag",
+      "x": -4.4,
+      "z": 7.5,
+      "h": 1.6,
+      "color": "#3f6d5a"
+     },
+     {
+      "prop": "army_block",
+      "x": -3.2,
+      "z": 8.5,
+      "h": 1.7,
+      "color": "#3f6d5a"
      }
     ],
     "big": {
@@ -2198,38 +2676,91 @@
      "count": 12000,
      "y": 0.16
     },
-    "source": "anumaan — historians",
+    "source": "anumaan — itihaskaar",
     "source_by": "First Battle of Panipat · Wikipedia"
-   }
+   },
+   "year": 1526
   },
   {
    "id": "s37",
    "speaker": "N",
    "text": "दूसरी तरफ़ इब्राहीम. बाबर के मुताबिक एक लाख सैनिक…",
    "scene": {
-    "type": "set",
-    "bg": "battlefield",
+    "type": "set3d",
+    "set": "battlefield",
     "cam": "truck_right",
-    "chars": [
+    "target": [
+     4.0,
+     1.2,
+     10
+    ],
+    "dist": 8.0,
+    "actors": [
      {
       "who": "ibrahim",
-      "x": 0.68,
-      "h": 0.48,
+      "x": 3.0,
+      "z": 8.2,
       "expr": "smug",
       "pose": "cross",
       "face": "left"
-     },
+     }
+    ],
+    "objs": [
      {
-      "who": "sardar",
-      "x": 0.5,
-      "h": 0.44,
+      "prop": "war_elephant",
+      "x": 3.0,
+      "z": 11,
+      "h": 2.3,
       "face": "left"
      },
      {
-      "who": "sardar",
-      "x": 0.86,
-      "h": 0.44,
+      "prop": "war_elephant",
+      "x": 5.6,
+      "z": 12.5,
+      "h": 2.3,
       "face": "left"
+     },
+     {
+      "prop": "war_elephant",
+      "x": 1.0,
+      "z": 13.5,
+      "h": 2.3,
+      "face": "left"
+     },
+     {
+      "prop": "army_block",
+      "x": 4.0,
+      "z": 15,
+      "h": 2.0,
+      "color": "#7a2a22"
+     },
+     {
+      "prop": "army_block",
+      "x": 7.0,
+      "z": 16,
+      "h": 2.0,
+      "color": "#7a2a22"
+     },
+     {
+      "prop": "flag",
+      "x": 6.0,
+      "z": 10.5,
+      "h": 1.6,
+      "color": "#7a1f2b"
+     },
+     {
+      "prop": "army_block",
+      "x": 1.5,
+      "z": 15.5,
+      "h": 2.0,
+      "color": "#7a2a22"
+     },
+     {
+      "prop": "army_block",
+      "x": 9.0,
+      "z": 15.5,
+      "h": 2.0,
+      "color": "#7a2a22"
      }
     ],
     "big": {
@@ -2239,56 +2770,108 @@
     },
     "source": "*Baburnama ke mutabik · itihaskaar 40–70 hazaar",
     "source_by": "Wikipedia · historyofwar.org"
-   }
+   },
+   "year": 1526
   },
   {
    "id": "s37b",
    "speaker": "N",
    "text": "और करीब एक हज़ार हाथी.",
    "scene": {
-    "type": "chart",
-    "bars": [
+    "type": "set3d",
+    "set": "battlefield",
+    "cam": "orbit_right",
+    "target": [
+     3.5,
+     1.2,
+     11
+    ],
+    "dist": 8.0,
+    "objs": [
      {
-      "label": "BABUR",
-      "value": 12,
-      "text": "~12,000",
-      "color": "#3f8a6a"
+      "prop": "war_elephant",
+      "x": 0.5,
+      "z": 9.5,
+      "h": 2.3,
+      "face": "left"
      },
      {
-      "label": "IBRAHIM",
-      "value": 100,
-      "text": "1,00,000*",
-      "color": "#c0322b"
+      "prop": "war_elephant",
+      "x": 3.0,
+      "z": 10.0,
+      "h": 2.3,
+      "face": "left"
      },
      {
-      "label": "HAATHI",
-      "value": 10,
-      "text": "~1,000",
-      "color": "#8a6a4a"
+      "prop": "war_elephant",
+      "x": 5.5,
+      "z": 10.5,
+      "h": 2.3,
+      "face": "left"
+     },
+     {
+      "prop": "war_elephant",
+      "x": 1.8,
+      "z": 12.5,
+      "h": 2.3,
+      "face": "left"
+     },
+     {
+      "prop": "war_elephant",
+      "x": 4.4,
+      "z": 13.0,
+      "h": 2.3,
+      "face": "left"
+     },
+     {
+      "prop": "war_elephant",
+      "x": 7.0,
+      "z": 13.5,
+      "h": 2.3,
+      "face": "left"
+     },
+     {
+      "prop": "war_elephant",
+      "x": 3.2,
+      "z": 15.5,
+      "h": 2.3,
+      "face": "left"
+     },
+     {
+      "prop": "war_elephant",
+      "x": 6.0,
+      "z": 16.0,
+      "h": 2.3,
+      "face": "left"
      }
     ],
-    "source": "*Baburnama ke mutabik · itihaskaar 40–70 hazaar maante hain",
-    "source_by": "historyofwar.org · Wikipedia"
-   }
+    "big": {
+     "t": "~1,000 HAATHI",
+     "y": 0.16,
+     "at": 0.4
+    }
+   },
+   "year": 1526
   },
   {
    "id": "s38",
    "speaker": "SOLDIER",
    "text": "हुज़ूर, वो तो हमसे कई गुना हैं!",
    "scene": {
-    "type": "set",
-    "bg": "war_tent",
+    "type": "set3d",
+    "set": "tent",
     "cam": "dolly_in",
-    "zoom": 1.2,
-    "focus": [
-     0.62,
-     0.45
+    "target": [
+     0.4,
+     1.0,
+     4.4
     ],
-    "chars": [
+    "dist": 3.6,
+    "actors": [
      {
       "who": "soldier",
-      "x": 0.62,
-      "h": 0.58,
+      "x": 0.4,
+      "z": 4.6,
       "expr": "shocked",
       "talk": true,
       "gesture": [
@@ -2300,9 +2883,8 @@
      },
      {
       "who": "babur",
-      "x": 0.12,
-      "h": 1.2,
-      "y": 0.42,
+      "x": -1.4,
+      "z": 3.4,
       "back": true,
       "face": "right"
      }
@@ -2319,33 +2901,35 @@
     "names": [
      {
       "t": "NAATYA ROOPANTARAN",
-      "x": 0.68,
-      "y": 0.89,
+      "x": 0.06,
+      "y": 0.1,
       "at": 0.2,
       "bar": "#555555"
      }
     ]
    },
-   "tags": "[panicked]"
+   "tags": "[panicked]",
+   "year": 1526
   },
   {
    "id": "s39",
    "speaker": "BABUR",
    "text": "गिनती मत करो. गाड़ियाँ बाँधो.",
    "scene": {
-    "type": "set",
-    "bg": "war_tent",
-    "cam": "push_fast",
-    "zoom": 1.3,
-    "focus": [
-     0.4,
-     0.42
+    "type": "set3d",
+    "set": "tent",
+    "cam": "push",
+    "target": [
+     -0.2,
+     1.1,
+     4.6
     ],
-    "chars": [
+    "dist": 3.0,
+    "actors": [
      {
       "who": "babur",
-      "x": 0.4,
-      "h": 0.62,
+      "x": -0.2,
+      "z": 4.6,
       "expr": "smug",
       "talk": true,
       "gesture": [
@@ -2358,10 +2942,10 @@
     "board": {
      "text": "GINTI MAT KARO.|[GAADIYAN] BAANDHO.",
      "rect": [
-      0.5,
-      0.08,
-      0.92,
-      0.24
+      0.52,
+      0.16,
+      0.94,
+      0.32
      ],
      "at": 0.1,
      "time": 1.6
@@ -2369,463 +2953,696 @@
     "names": [
      {
       "t": "NAATYA ROOPANTARAN",
-      "x": 0.68,
-      "y": 0.89,
+      "x": 0.06,
+      "y": 0.1,
       "at": 0.2,
       "bar": "#555555"
      }
     ]
    },
-   "tags": "[calm] [confident]"
+   "tags": "[calm] [confident]",
+   "year": 1526
   },
   {
    "id": "s40",
    "speaker": "N",
    "text": "करीब सात सौ गाड़ियों को रस्सियों से बाँधकर…",
    "scene": {
-    "type": "topdown",
-    "paper": {
-     "x": 0.5,
-     "y": 0.5,
-     "w": 0.34,
-     "draw": "square",
-     "at": 0.1,
-     "note": "ARABA"
-    },
-    "hands": [
+    "type": "set3d",
+    "set": "battlefield",
+    "cam": "truck_right",
+    "target": [
+     0,
+     1.0,
+     6
+    ],
+    "dist": 6.0,
+    "objs": [
      {
-      "from": "left",
-      "to": [
-       0.4,
-       0.52
-      ],
-      "item": "cannon",
-      "label": "TOPEIN",
-      "at": 0.6,
-      "release": 1.8,
-      "sleeve": "#3f6d5a"
+      "prop": "araba",
+      "x": -6,
+      "z": 6.0,
+      "h": 1.1
      },
      {
-      "from": "right",
-      "to": [
-       0.6,
-       0.5
-      ],
-      "item": "musket",
-      "label": "BANDOOK",
-      "at": 1.6,
-      "release": 2.8,
-      "sleeve": "#6a4a2a"
+      "prop": "araba",
+      "x": -4,
+      "z": 6.0,
+      "h": 1.1
+     },
+     {
+      "prop": "araba",
+      "x": -2,
+      "z": 6.0,
+      "h": 1.1
+     },
+     {
+      "prop": "araba",
+      "x": 0,
+      "z": 6.0,
+      "h": 1.1
+     },
+     {
+      "prop": "araba",
+      "x": 2,
+      "z": 6.0,
+      "h": 1.1
+     },
+     {
+      "prop": "araba",
+      "x": 4,
+      "z": 6.0,
+      "h": 1.1
+     },
+     {
+      "prop": "araba",
+      "x": 6,
+      "z": 6.0,
+      "h": 1.1
+     },
+     {
+      "prop": "rope",
+      "x": -1,
+      "z": 5.2,
+      "y": 0.5,
+      "h": 0.5
      }
     ],
+    "actors": [
+     {
+      "who": "soldier",
+      "x": -3.0,
+      "z": 4.6,
+      "pose": "hold",
+      "face": "right"
+     },
+     {
+      "who": "soldier",
+      "x": 1.2,
+      "z": 4.8,
+      "pose": "hold",
+      "face": "left"
+     }
+    ],
+    "big": {
+     "t": "~700 GAADIYAN",
+     "y": 0.16,
+     "at": 0.4
+    },
     "source": "Baburnama (tr. Beveridge, 1922)",
     "source_by": "Public domain"
    },
    "sfx": [
     "click"
-   ]
+   ],
+   "year": 1526
   },
   {
    "id": "s40b",
    "speaker": "N",
    "text": "एक दीवार बनाई गई. पीछे छिपी थीं तोपें और तोड़ेदार बंदूकें.",
    "scene": {
-    "type": "set",
-    "bg": "battlefield",
-    "cam": "truck_left",
-    "props": [
+    "type": "set3d",
+    "set": "battlefield",
+    "cam": "orbit_left",
+    "target": [
+     0,
+     0.8,
+     5.5
+    ],
+    "dist": 5.0,
+    "objs": [
      {
-      "name": "cannon",
-      "x": 0.3,
-      "y": 0.76,
-      "h": 0.2,
-      "anim": "slide"
+      "prop": "araba",
+      "x": -4,
+      "z": 7.0,
+      "h": 1.1
      },
      {
-      "name": "musket",
-      "x": 0.5,
-      "y": 0.74,
-      "h": 0.18,
-      "anim": "pop"
+      "prop": "araba",
+      "x": -2,
+      "z": 7.0,
+      "h": 1.1
      },
      {
-      "name": "cannon",
-      "x": 0.7,
-      "y": 0.77,
-      "h": 0.2,
-      "anim": "slide"
+      "prop": "araba",
+      "x": 0,
+      "z": 7.0,
+      "h": 1.1
+     },
+     {
+      "prop": "araba",
+      "x": 2,
+      "z": 7.0,
+      "h": 1.1
+     },
+     {
+      "prop": "araba",
+      "x": 4,
+      "z": 7.0,
+      "h": 1.1
+     },
+     {
+      "prop": "cannon",
+      "x": -2.2,
+      "z": 5.6,
+      "h": 0.8
+     },
+     {
+      "prop": "cannon",
+      "x": 1.6,
+      "z": 5.6,
+      "h": 0.8
+     },
+     {
+      "prop": "matchlock_man",
+      "x": -0.4,
+      "z": 5.2,
+      "h": 0.8
+     },
+     {
+      "prop": "matchlock_man",
+      "x": 3.0,
+      "z": 5.4,
+      "h": 0.8
+     }
+    ],
+    "names": [
+     {
+      "t": "TOPEIN + TODEDAAR BANDOOKEIN",
+      "x": 0.06,
+      "y": 0.8,
+      "at": 0.6
      }
     ]
    },
    "sfx": [
     "click"
-   ]
+   ],
+   "year": 1526
   },
   {
    "id": "s41",
    "speaker": "N",
    "text": "ये तरीक़ा उस्मानी तुर्कों से आया था.",
    "scene": {
-    "type": "set",
-    "bg": "battlefield",
-    "cam": "dolly_in",
-    "props": [
-     {
-      "name": "cannon",
-      "x": 0.3,
-      "y": 0.74,
-      "h": 0.2,
-      "anim": "slide"
+    "type": "set3d",
+    "set": "map",
+    "cam": "truck_right",
+    "map": {
+     "view": [
+      25,
+      25,
+      80,
+      48
+     ],
+     "highlight": {
+      "TUR": "#3a6a9a",
+      "AFG": "#3f8a6a"
      },
-     {
-      "name": "cannon",
-      "x": 0.55,
-      "y": 0.76,
-      "h": 0.2,
-      "anim": "slide"
-     }
-    ],
-    "stickers": [
-     {
-      "name": "warning",
-      "side": "top_right",
-      "anim": "pop",
-      "h": 0.14,
-      "at": 1.0,
-      "label": "USTAD ALI QULI"
-     }
-    ]
-   }
+     "routes": [
+      {
+       "from": [
+        32.9,
+        39.9
+       ],
+       "via": [
+        [
+         50,
+         36
+        ]
+       ],
+       "to": [
+        69.2,
+        34.5
+       ],
+       "delay": 0.3,
+       "time": 2.0,
+       "color": "#ffd166"
+      }
+     ],
+     "pins": [
+      {
+       "lon": 32.9,
+       "lat": 39.9,
+       "label": "USMANI TURK",
+       "delay": 0.1
+      },
+      {
+       "lon": 69.2,
+       "lat": 34.5,
+       "label": "BABUR",
+       "delay": 2.2
+      }
+     ]
+    }
+   },
+   "year": 1526
   },
   {
    "id": "s41b",
    "speaker": "N",
    "text": "तोपख़ाना संभाल रहे थे, उस्ताद अली क़ुली.",
    "scene": {
-    "type": "set",
-    "bg": "battlefield",
+    "type": "set3d",
+    "set": "battlefield",
     "cam": "dolly_in",
-    "zoom": 1.2,
-    "focus": [
-     0.45,
-     0.5
+    "target": [
+     0,
+     1.0,
+     5
     ],
-    "chars": [
+    "dist": 4.5,
+    "actors": [
      {
-      "who": "soldier",
-      "x": 0.4,
-      "h": 0.55,
+      "who": "ali_quli",
+      "x": -0.6,
+      "z": 5.0,
       "expr": "proud",
       "pose": "point",
       "face": "right"
      }
     ],
-    "props": [
+    "objs": [
      {
-      "name": "cannon",
-      "x": 0.68,
-      "y": 0.76,
-      "h": 0.22,
-      "anim": "slide"
+      "prop": "cannon",
+      "x": 1.0,
+      "z": 5.2,
+      "h": 0.9
      }
     ],
     "names": [
      {
       "t": "USTAD ALI QULI · TOPKHANA",
       "x": 0.06,
-      "y": 0.82,
+      "y": 0.8,
       "at": 0.3
      }
     ]
-   }
+   },
+   "year": 1526
   },
   {
    "id": "s42",
    "speaker": "N",
    "text": "जंग शुरू हुई. बाबर के घुड़सवार दोनों तरफ़ से घूमे…",
    "scene": {
-    "type": "set",
-    "bg": "battlefield",
-    "cam": "crane_up",
-    "chars": [
-     {
-      "who": "soldier",
-      "x": 0.5,
-      "h": 0.36,
-      "expr": "angry",
-      "pose": "fist",
-      "label": "IBRAHIM KI FAUJ"
-     }
+    "type": "set3d",
+    "set": "battlefield",
+    "cam": "top",
+    "target": [
+     1.0,
+     0,
+     11.5
     ],
-    "swoosh": [
+    "dist": 6.5,
+    "height": 11.0,
+    "objs": [
      {
-      "x": 0.5,
-      "y": 0.55,
-      "r": 0.32,
-      "a0": 200,
-      "a1": 330,
-      "color": "#3fbf7a",
-      "at": 0.4
+      "prop": "army_block",
+      "x": 0.0,
+      "z": 11.0,
+      "h": 2.0,
+      "color": "#7a2a22"
      },
      {
-      "x": 0.5,
-      "y": 0.55,
-      "r": 0.32,
-      "a0": 20,
-      "a1": 150,
-      "color": "#3fbf7a",
-      "at": 0.9
+      "prop": "army_block",
+      "x": 2.4,
+      "z": 11.5,
+      "h": 2.0,
+      "color": "#7a2a22"
+     },
+     {
+      "prop": "war_elephant",
+      "x": 1.2,
+      "z": 9.6,
+      "h": 2.2,
+      "face": "left"
+     },
+     {
+      "prop": "horse_rider",
+      "x": -4.5,
+      "z": 8.0,
+      "h": 1.6,
+      "to": [
+       -3.0,
+       13.5
+      ],
+      "move_time": 3.6,
+      "anim": "march"
+     },
+     {
+      "prop": "horse_rider",
+      "x": 6.5,
+      "z": 8.0,
+      "h": 1.6,
+      "face": "left",
+      "to": [
+       5.0,
+       13.5
+      ],
+      "move_time": 3.6,
+      "anim": "march"
      }
-    ],
-    "big": {
-     "t": "TULUGHMA",
-     "y": 0.14,
-     "at": 1.8
-    }
+    ]
    },
    "sfx": [
     "swoosh"
-   ]
+   ],
+   "year": 1526
   },
   {
    "id": "s42b",
    "speaker": "N",
    "text": "और दुश्मन के पीछे पहुँच गए. इसे कहते हैं — तुलुग़मा.",
    "scene": {
-    "type": "topdown",
-    "paper": {
-     "x": 0.5,
-     "y": 0.5,
-     "w": 0.3,
-     "draw": "square",
-     "at": -1,
-     "note": "IBRAHIM"
-    },
-    "hands": [
+    "type": "set3d",
+    "set": "battlefield",
+    "cam": "top",
+    "target": [
+     1.0,
+     0,
+     12
+    ],
+    "dist": 6.5,
+    "height": 11.0,
+    "yaw": 10,
+    "objs": [
      {
-      "from": "left",
-      "to": [
-       0.5,
-       0.25
-      ],
-      "item": "flag",
-      "label": "TULUGHMA",
-      "at": 0.2,
-      "release": 1.6,
-      "sleeve": "#3f6d5a"
+      "prop": "army_block",
+      "x": 0.0,
+      "z": 11.0,
+      "h": 2.0,
+      "color": "#7a2a22"
      },
      {
-      "from": "right",
+      "prop": "army_block",
+      "x": 2.4,
+      "z": 11.5,
+      "h": 2.0,
+      "color": "#7a2a22"
+     },
+     {
+      "prop": "war_elephant",
+      "x": 1.2,
+      "z": 9.6,
+      "h": 2.2,
+      "face": "left"
+     },
+     {
+      "prop": "horse_rider",
+      "x": -3.0,
+      "z": 13.5,
+      "h": 1.6,
       "to": [
-       0.5,
-       0.78
+       0.4,
+       14.2
       ],
-      "item": "flag",
-      "at": 0.6,
-      "release": 2.0,
-      "sleeve": "#3f6d5a"
+      "move_time": 2.5,
+      "anim": "march"
+     },
+     {
+      "prop": "horse_rider",
+      "x": 5.0,
+      "z": 13.5,
+      "h": 1.6,
+      "face": "left",
+      "to": [
+       2.2,
+       14.2
+      ],
+      "move_time": 2.5,
+      "anim": "march"
+     }
+    ],
+    "big": {
+     "t": "TULUGHMA",
+     "y": 0.16,
+     "at": 0.8
+    },
+    "swoosh": [
+     {
+      "x": 0.5,
+      "y": 0.55,
+      "r": 0.3,
+      "a0": 200,
+      "a1": 340,
+      "color": "#3fbf7a",
+      "at": 0.3
      }
     ]
    },
    "sfx": [
     "swoosh"
-   ]
+   ],
+   "year": 1526
   },
   {
    "id": "s43",
    "speaker": "N",
    "text": "फिर गरजीं तोपें.",
    "scene": {
-    "type": "set",
-    "bg": "battlefield",
+    "type": "set3d",
+    "set": "battlefield",
     "cam": "shake",
-    "props": [
+    "target": [
+     0,
+     0.8,
+     5
+    ],
+    "dist": 4.0,
+    "objs": [
      {
-      "name": "cannon",
-      "x": 0.3,
-      "y": 0.74,
-      "h": 0.22
+      "prop": "cannon_fire",
+      "x": -1.0,
+      "z": 5.0,
+      "h": 1.0
      },
      {
-      "name": "fire",
-      "x": 0.42,
-      "y": 0.62,
-      "h": 0.2,
-      "anim": "pop"
+      "prop": "cannon_fire",
+      "x": 1.4,
+      "z": 5.6,
+      "h": 1.0
      },
      {
-      "name": "cannon",
-      "x": 0.6,
-      "y": 0.76,
-      "h": 0.22
-     },
-     {
-      "name": "fire",
-      "x": 0.72,
-      "y": 0.64,
-      "h": 0.2,
-      "anim": "pop"
+      "prop": "smoke",
+      "x": 0,
+      "z": 7,
+      "h": 1.6,
+      "anim": "rise"
      }
     ]
    },
    "sfx": [
     "boom",
     "boom"
-   ]
+   ],
+   "year": 1526
   },
   {
    "id": "s44",
    "speaker": "N",
    "text": "धमाकों से हाथी बिदक गए…",
    "scene": {
-    "type": "set",
-    "bg": "battlefield",
-    "cam": "truck_right",
-    "chars": [
+    "type": "set3d",
+    "set": "battlefield",
+    "cam": "shake",
+    "target": [
+     1.5,
+     1.2,
+     9
+    ],
+    "dist": 6.0,
+    "objs": [
      {
-      "who": "soldier",
-      "x": 0.3,
-      "h": 0.42,
-      "expr": "shocked",
-      "pose": "head",
-      "shake": true,
-      "face": "left"
+      "prop": "elephant_panic",
+      "x": 0.5,
+      "z": 9.0,
+      "h": 2.3,
+      "face": "left",
+      "anim": "shake"
      },
      {
-      "who": "sardar",
-      "x": 0.6,
-      "h": 0.44,
-      "expr": "shocked",
-      "pose": "up",
-      "shake": true,
-      "face": "left"
-     }
-    ],
-    "stickers": [
+      "prop": "elephant_panic",
+      "x": 3.0,
+      "z": 10.0,
+      "h": 2.3,
+      "face": "left",
+      "anim": "shake"
+     },
      {
-      "name": "exclaim",
-      "side": "top",
-      "anim": "pop",
-      "h": 0.16,
-      "at": 0.4,
-      "label": "HAATHI BIDKE"
+      "prop": "smoke",
+      "x": -1.5,
+      "z": 7.5,
+      "h": 1.4
      }
-    ],
-    "source": "Panipat — panipat.gov.in",
-    "source_by": "Govt. of Haryana"
+    ]
    },
    "sfx": [
     "crowd"
-   ]
+   ],
+   "year": 1526
   },
   {
    "id": "s44b",
    "speaker": "N",
    "text": "और कहते हैं, अपनी ही फ़ौज को रौंदा.",
    "scene": {
-    "type": "set",
-    "bg": "battlefield",
-    "cam": "shake",
-    "chars": [
+    "type": "set3d",
+    "set": "battlefield",
+    "cam": "truck_right",
+    "target": [
+     2.0,
+     1.0,
+     10
+    ],
+    "dist": 7.0,
+    "objs": [
      {
-      "who": "sardar",
-      "x": 0.4,
-      "h": 0.46,
-      "expr": "shocked",
-      "pose": "up",
-      "shake": true,
-      "face": "right"
+      "prop": "war_elephant",
+      "x": 1.0,
+      "z": 9.0,
+      "h": 2.3,
+      "face": "right",
+      "to": [
+       3.0,
+       12.5
+      ],
+      "move_time": 3.0
      },
      {
-      "who": "soldier",
-      "x": 0.62,
-      "h": 0.42,
-      "expr": "shocked",
-      "pose": "head",
-      "shake": true,
-      "face": "left"
+      "prop": "army_block",
+      "x": 3.6,
+      "z": 13.5,
+      "h": 2.0,
+      "color": "#7a2a22",
+      "anim": "shake"
      }
     ],
-    "props": [
+    "actors": [
      {
-      "name": "fire",
-      "x": 0.82,
-      "y": 0.66,
-      "h": 0.2,
-      "anim": "pop"
+      "who": "lodi_soldier",
+      "x": 5.0,
+      "z": 11.5,
+      "expr": "shocked",
+      "pose": "up",
+      "face": "left",
+      "shake": true
+     }
+    ],
+    "names": [
+     {
+      "t": "PARAMPARA KE MUTABIK",
+      "x": 0.06,
+      "y": 0.8,
+      "at": 0.4
      }
     ]
    },
    "sfx": [
     "crowd"
-   ]
+   ],
+   "year": 1526
   },
   {
    "id": "s45",
    "speaker": "N",
    "text": "दोपहर तक जंग ख़त्म. इब्राहीम लोदी मैदान में मारे गए.",
    "scene": {
-    "type": "set",
-    "bg": "battlefield",
+    "type": "set3d",
+    "set": "battlefield",
     "cam": "crane_up",
-    "chars": [
+    "target": [
+     0,
+     1.0,
+     5.5
+    ],
+    "dist": 5.5,
+    "actors": [
      {
       "who": "babur",
-      "x": 0.5,
-      "h": 0.48,
+      "x": 0,
+      "z": 5.2,
       "expr": "proud",
       "pose": "fist"
+     }
+    ],
+    "objs": [
+     {
+      "prop": "smoke",
+      "x": -2,
+      "z": 8,
+      "h": 1.6
+     },
+     {
+      "prop": "smoke",
+      "x": 2.6,
+      "z": 9,
+      "h": 1.3
+     },
+     {
+      "prop": "sword",
+      "x": 1.6,
+      "z": 5.8,
+      "h": 0.5
      }
     ],
     "names": [
      {
       "t": "IBRAHIM LODI — MAIDAN ME MAARE GAYE",
-      "x": 0.5,
-      "y": 0.84,
-      "at": 1.4,
+      "x": 0.06,
+      "y": 0.8,
+      "at": 0.6,
       "bar": "#7a1f2b"
      }
     ],
     "source": "Ibrahim Lodi — Wikipedia",
     "source_by": "historical record"
-   }
+   },
+   "year": 1526
   },
   {
    "id": "s45b",
    "speaker": "N",
    "text": "दिल्ली सल्तनत के इकलौते सुल्तान, जो जंग में मारे गए.",
    "scene": {
-    "type": "set",
-    "bg": "mughal_court",
+    "type": "set3d",
+    "set": "court",
     "cam": "dolly_in",
-    "fg": [],
-    "props": [
+    "target": [
+     0,
+     1.4,
+     9.0
+    ],
+    "dist": 5.0,
+    "objs": [
      {
-      "name": "throne",
-      "x": 0.5,
-      "y": 0.66,
-      "h": 0.38
+      "prop": "throne",
+      "x": 0,
+      "z": 9.5,
+      "y": 0.6,
+      "h": 1.8
      },
      {
-      "name": "crown",
-      "x": 0.5,
-      "y": 0.8,
-      "h": 0.1,
+      "prop": "crown",
+      "x": 0,
+      "z": 9.0,
+      "y": 0.6,
+      "h": 0.4,
       "anim": "drop"
      }
     ],
     "names": [
      {
-      "t": "DELHI SALTANAT · 1206 – 1526",
+      "t": "DILLI SALTANAT · 1206 – 1526",
       "x": 0.06,
-      "y": 0.82,
+      "y": 0.8,
       "at": 0.5,
       "bar": "#7a1f2b"
      }
-    ],
-    "source": "Ibrahim Lodi — Wikipedia",
-    "source_by": "historical record"
-   }
+    ]
+   },
+   "year": 1526
   },
   {
    "id": "s46",
@@ -2837,7 +3654,7 @@
     "tone": "ink",
     "push": [
      1.0,
-     1.35
+     1.3
     ],
     "yaw": [
      6,
@@ -2848,12 +3665,13 @@
      0.5,
      0.5
     ],
-    "source": "Battle of Panipat (20 April 1526), Baburnama, 1598 copy",
+    "source": "Battle of Panipat, Baburnama, c. 1598 (Persian copy, Akbar's atelier)",
     "source_by": "Wikimedia Commons · Public domain"
    },
    "sfx": [
     "page"
-   ]
+   ],
+   "year": 1526
   },
   {
    "id": "s46b",
@@ -2883,97 +3701,136 @@
     ],
     "source": "Battle of Panipat, Baburnama, c. 1598 (Persian copy, Akbar's atelier)",
     "source_by": "Wikimedia Commons · Public domain"
-   }
+   },
+   "year": 1526
   },
   {
    "id": "s47",
    "speaker": "N",
    "text": "करीब बारह हज़ार सैनिकों ने, एक पूरी सल्तनत गिरा दी.",
    "scene": {
-    "type": "set",
-    "bg": "battlefield",
-    "cam": "crane_up",
-    "chars": [
+    "type": "set3d",
+    "set": "battlefield",
+    "cam": "orbit_right",
+    "target": [
+     0,
+     1.0,
+     6
+    ],
+    "dist": 6.5,
+    "actors": [
      {
       "who": "babur",
-      "x": 0.5,
-      "h": 0.5,
+      "x": 0,
+      "z": 5.4,
       "expr": "laugh",
       "pose": "cheer",
       "jump": true
      },
      {
       "who": "soldier",
-      "x": 0.26,
-      "h": 0.44,
+      "x": -1.5,
+      "z": 5.8,
       "expr": "happy",
       "pose": "cheer"
      },
      {
       "who": "soldier",
-      "x": 0.74,
-      "h": 0.44,
+      "x": 1.5,
+      "z": 5.8,
       "expr": "happy",
       "pose": "cheer"
+     }
+    ],
+    "objs": [
+     {
+      "prop": "flag",
+      "x": 0,
+      "z": 7.5,
+      "h": 1.8,
+      "color": "#3f6d5a"
+     },
+     {
+      "prop": "army_block",
+      "x": -3,
+      "z": 9,
+      "h": 1.8,
+      "color": "#3f6d5a"
      }
     ],
     "big": {
      "t": "~12,000 NE GIRAYI SALTANAT",
      "y": 0.16,
-     "at": 0.8
+     "at": 0.6
     }
-   }
+   },
+   "year": 1526
   },
   {
    "id": "s47b",
    "speaker": "N",
    "text": "और पैदा हुआ — मुग़ल साम्राज्य.",
    "scene": {
-    "type": "set",
-    "bg": "mughal_court",
-    "cam": "crane_up",
-    "chars": [
+    "type": "set3d",
+    "set": "court",
+    "cam": "fly",
+    "actors": [
      {
       "who": "babur",
-      "x": 0.5,
-      "h": 0.46,
-      "y": -0.06,
-      "expr": "proud",
-      "seated": true
+      "x": 0,
+      "z": 9.0,
+      "y": 0.6,
+      "h": 1.4,
+      "expr": "proud"
      },
      {
       "who": "soldier",
-      "x": 0.18,
-      "h": 0.48,
+      "x": -2.2,
+      "z": 6,
       "expr": "happy",
-      "pose": "cheer"
+      "pose": "cheer",
+      "face": "right"
      },
      {
       "who": "soldier",
-      "x": 0.82,
-      "h": 0.48,
+      "x": 2.2,
+      "z": 6,
       "expr": "happy",
-      "pose": "cheer"
+      "pose": "cheer",
+      "face": "left"
      }
     ],
-    "props": [
+    "objs": [
      {
-      "name": "mughal_flag",
-      "x": 0.5,
-      "y": 0.16,
-      "h": 0.18,
-      "anim": "pop"
+      "prop": "throne",
+      "x": 0,
+      "z": 9.5,
+      "y": 0.6,
+      "h": 1.8
+     },
+     {
+      "prop": "mughal_flag",
+      "x": -3.4,
+      "z": 8.8,
+      "h": 1.2
+     },
+     {
+      "prop": "mughal_flag",
+      "x": 3.4,
+      "z": 8.8,
+      "h": 1.2
      }
     ],
     "big": {
      "t": "MUGHAL SALTANAT · 1526",
-     "y": 0.86,
-     "at": 2.0
+     "y": 0.84,
+     "at": 0.8
     }
    },
    "sfx": [
     "crowd"
-   ]
+   ],
+   "year": 1526
   },
   {
    "id": "s48",
@@ -2981,7 +3838,7 @@
    "text": "लेकिन दिल्ली जीतना एक बात थी. उसे बचाना, दूसरी.",
    "scene": {
     "type": "black",
-    "t": "असली इम्तिहान अभी बाक़ी था..."
+    "t": "दिल्ली जीतना एक बात थी. उसे बचाना, दूसरी."
    },
    "tags": "[dramatically]",
    "sfx": [
@@ -2993,56 +3850,71 @@
    "speaker": "N",
    "text": "क्योंकि अगले ही साल, मेवाड़ के एक योद्धा से सामना हुआ…",
    "scene": {
-    "type": "set",
-    "bg": "fort",
-    "cam": "truck_left",
-    "caption": "MEWAR, 1527",
-    "chars": [
+    "type": "set3d",
+    "set": "fort",
+    "cam": "fly",
+    "target": [
+     0,
+     1.2,
+     6
+    ],
+    "actors": [
      {
       "who": "sanga",
-      "x": 0.5,
-      "h": 0.46,
+      "x": 0,
+      "z": 5.4,
       "expr": "angry",
       "pose": "fist",
       "dim": true
-     },
-     {
-      "who": "soldier",
-      "x": 0.22,
-      "h": 0.42,
-      "expr": "angry",
-      "dim": true
-     },
-     {
-      "who": "soldier",
-      "x": 0.78,
-      "h": 0.42,
-      "expr": "angry",
-      "dim": true
      }
-    ]
+    ],
+    "objs": [
+     {
+      "prop": "army_block",
+      "x": -2.6,
+      "z": 7.5,
+      "h": 1.8,
+      "color": "#c0322b"
+     },
+     {
+      "prop": "army_block",
+      "x": 2.6,
+      "z": 7.5,
+      "h": 1.8,
+      "color": "#c0322b"
+     },
+     {
+      "prop": "flag",
+      "x": 0,
+      "z": 8.4,
+      "h": 1.6,
+      "color": "#e0782f"
+     }
+    ],
+    "caption": "MEWAR · 1527"
    },
-   "tags": "[mysteriously]"
+   "tags": "[mysteriously]",
+   "year": 1527
   },
   {
    "id": "s49b",
    "speaker": "N",
    "text": "कहते हैं, जिसके शरीर पर अस्सी घाव थे.",
    "scene": {
-    "type": "set",
-    "bg": "fort",
-    "cam": "dolly_in",
-    "caption": "MEWAR, 1527",
-    "zoom": 1.3,
-    "focus": [
-     0.5,
-     0.42
+    "type": "set3d",
+    "set": "fort",
+    "cam": "push",
+    "target": [
+     0,
+     1.0,
+     5.4
     ],
-    "chars": [
+    "dist": 3.0,
+    "actors": [
      {
       "who": "sanga",
-      "x": 0.5,
-      "h": 0.62,
+      "x": 0,
+      "z": 5.4,
       "expr": "angry",
       "pose": "fist"
      }
@@ -3051,7 +3923,7 @@
      "t": "{n} GHAAV?",
      "count": 80,
      "y": 0.16,
-     "at": 1.2
+     "at": 1.0
     },
     "source": "parampara (James Tod, Annals of Rajasthan)",
     "source_by": "kehte hain"
@@ -3059,7 +3931,8 @@
    "tags": "[mysteriously]",
    "sfx": [
     "riser"
-   ]
+   ],
+   "year": 1527
   }
  ]
 }
