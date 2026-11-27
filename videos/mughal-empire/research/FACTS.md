@@ -18,7 +18,7 @@ Har line: fact · saal/number · source · safe Hindi wording. Estimates hamesha
 7. Maut 7 Nov 1862, Rangoon; bina nishaan ki kabr. https://indianculture.gov.in/stories/bahadur-shah-zafar
    Hindi: "उनकी क़ब्र दिल्ली से दो हज़ार किलोमीटर से भी ज़्यादा दूर, रंगून में बनी." (Delhi–Yangon ~2,300 km seedhi doori)
    "Do gaz zameen…" sher Zafar ka hai ya nahin — vivaadit. Quote mat karo.
-8. **Photo**: Bahadur Shah Zafar, May 1858, Robert & Harriet Tytler — British Library via Commons, Public domain.
+8. **Photo**: Bahadur Shah Zafar, May 1858, Robert Tytler & Charles Shepherd — British Library (https://searcharchives.bl.uk/catalog/040-003107314) via Commons, Public domain.
 
 ## Babur (1483–1530)
 9. Janm 14 Feb 1483, Andijan (Fergana). June 1494 me ~11 saal ki umr me Fergana ka shasak. https://en.wikipedia.org/wiki/Babur
@@ -60,7 +60,7 @@ Har line: fact · saal/number · source · safe Hindi wording. Estimates hamesha
 
 ## Bikhraav (1707–1857)
 37. 1707–1719: kai badshah, 1719 me akele ek saal me chaar. Sayyid bhai "kingmakers". https://en.wikipedia.org/wiki/Sayyid_brothers
-38. **Farrukhsiyar ka farman, 1717** — EIC ko Bengal me bina chungi vyapar, saalana 3,000 rupaye ke badle (Surman mission; William Hamilton surgeon). Kuch itihaskaar iski vyakhya ko vivaadit maante hain. https://en.banglapedia.org/index.php/Farrukh_Siyar%E2%80%99s_Farman
+38. **Farrukhsiyar ka farman, 1717** — EIC ko Bengal me bina chungi vyapar, saalana 3,000 rupaye ke badle (Surman mission; William Hamilton surgeon). Kuch itihaskaar iski vyakhya ko vivaadit maante hain. Company Bengal me 1650s se thi (Calcutta 1690); Shah Shuja ka 1651 ka nishan bhi Rs 3,000 saalana par vyapar deta tha — 1717 ka farman pushti + dastak ke saath bina chungi vyapar ka vistaar tha, 'darwaza kholna' nahin. https://en.banglapedia.org/index.php/Farrukh_Siyar%E2%80%99s_Farman
 39. **Nadir Shah, March 1739** — Karnal (24 Feb 1739) me jeet, Delhi me katleaam (anumaan 20–30 hazaar), loot ~70 crore rupaye (anumaan); Takht-e-Taus aur Koh-i-Noor Iran le gaye. https://en.wikipedia.org/wiki/Nader_Shah%27s_invasion_of_India ; https://www.dawn.com/news/440760
 40. Plassey 23 June 1757; Buxar 22 Oct 1764 (Shah Alam II bhi haare). https://en.wikipedia.org/wiki/Battle_of_Buxar
 41. **Allahabad ki sandhi, Aug 1765** — Shah Alam II ne Bengal-Bihar-Orissa ki Diwani EIC ko di; badle me saalana 26 lakh rupaye. https://en.wikipedia.org/wiki/Treaty_of_Allahabad
@@ -72,3 +72,12 @@ Har line: fact · saal/number · source · safe Hindi wording. Estimates hamesha
 45. Uttaradhikar ka koi tay niyam nahin → har peedhi me bhaaiyon ki jung. https://en.wikipedia.org/wiki/Mughal_Empire
 46. Jagirdari/mansabdari sankat — jagir kam, mansabdar zyada (Satish Chandra, *Parties and Politics at the Mughal Court*). https://en.wikipedia.org/wiki/Mansabdar
 47. Deccan me lambi jung ka kharch; Maratha, Sikh, Jat, Rajput, nawabon ka uthaan; videshi hamle; Company ka paisa aur fauj.
+
+## Fact-check additions
+48. Umar Shaikh Mirza II — Akhsi qila, June 1494, kabutarkhana khaai me gira. https://en.wikipedia.org/wiki/Umar_Shaikh_Mirza_II
+49. Lodi daur me Punjab ka 'hakim/governor' (subedar shabd Akbar ke suba system 1580 se). Rana Sanga 1509 se Mewar ke shasak; Khanwa 16 March 1527; '80 ghaav' parampara (Tod). https://en.wikipedia.org/wiki/Rana_Sanga
+50. Panipat painting: Baburnama ka Farsi anuvaad, Akbar ke daur me, ~1596-98, jung ke ~70 saal baad.
+51. Babur ke gird Timuri rishtedaar (chacha, bhai Jahangir Mirza) hi pratidwandi the; Andijan 1497 me bhai ke samarthak amiron ne cheena. https://www.britannica.com/biography/Babur
+52. Ibrahim Lodi apne amiron (nobles) me napasand the; Daulat Khan Lodi aur Alam Khan ne Babur ko bulaya. https://en.wikipedia.org/wiki/Ibrahim_Lodi
+53. Panipat: ~700 gaadiyan kachche chamde ki rassiyon se bandhi (Baburnama); tareeka Usmani (Ottoman); topkhana Ustad Ali Quli. https://en.wikipedia.org/wiki/First_Battle_of_Panipat
+54. Aisan Daulat Begum — Babur ki naani, unki pramukh salahkaar. https://en.wikipedia.org/wiki/Aisan_Daulat_Begum

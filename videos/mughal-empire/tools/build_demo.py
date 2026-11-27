@@ -12,7 +12,7 @@ story = {
  "title": "Duniya Ka Sabse Ameer Saltanat Kaise Mita? | Mughal Empire",
  "style": "toon", "res": "360", "fps": 30, "music": "epic", "music_volume": 0.1, "sfx_volume": 0.2,
  "pause": 0.1, "auto_transitions": True,
- "voice": {"engine": "elevenlabs", "voice": "hi-IN-MadhurNeural", "rate": "+6%", "pitch": "-6Hz"},
+ "voice": {"engine": "edge", "voice": "hi-IN-MadhurNeural", "rate": "+6%", "pitch": "-6Hz"},
  "speakers": {"N": EL("EppcM8bFS2tfl4Xu0tpj"), "BABUR": EL("n4jGuG5wrMvqWCjMtnMS"),
               "LODI": EL("7EvySNHBey9ISwbL5Bt5"), "SOLDIER": EL("7b9mYhmnp0y2qSH1FnBL"),
               "NANI": EL("MaJjkQJkKTqVB1XVQopL")},
@@ -32,6 +32,8 @@ story = {
  "sources": [], "beats": []}
 
 def B(i, scene, speaker="N", **kw):
+    if speaker != "N" and scene.get("type") == "set":
+        scene.setdefault("caption", "NAATYA ROOPANTARAN")
     b = {"id": i, "speaker": speaker, "text": T[i], "scene": scene}
     b.update(kw); story["beats"].append(b)
 
@@ -42,14 +44,14 @@ B("s01", {"type": "set", "bg": "mughal_court", "cam": "dolly_in", "fg": [],
           "props": [{"name": "throne", "x": 0.5, "y": 0.66, "h": 0.36, "anim": "pop"},
                     {"name": "chest", "x": 0.22, "y": 0.8, "h": 0.16, "anim": "drop"},
                     {"name": "gold_bars", "x": 0.78, "y": 0.82, "h": 0.12, "anim": "drop"}],
-          "big": {"t": "1/4 DUNIYA KI DAULAT", "y": 0.16}, "caption": "SAAL 1700",
+          "big": {"t": "1/4 DUNIYA KI DAULAT", "y": 0.16}, "names": [{"t": "MUGHAL HINDUSTAN", "x": 0.5, "y": 0.84, "at": 2.6, "bar": "#c9a227"}], "caption": "SAAL 1700",
           "stickers": [{"name": "coin", "anim": "rain", "h": 0.08, "at": 0.3}],
           "source": SRC_M, "source_by": "anumaan · India ≈ 24.4% world GDP"}, tags="[dramatically]", sfx=["cash"], chapter="Duniya ki 1/4 daulat")
 B("s02", {"type": "map", "view": INDIA_V, "cam": "drift", "highlight": {"IND": "#d9a72b", "PAK": "#d9a72b", "BGD": "#d9a72b", "AFG": "#c99a35"},
           "labels": [{"lon": 78, "lat": 22, "t": "MUGHAL HINDUSTAN", "size": 60, "color": "#ffffff", "delay": 0.3},
                      {"lon": 78, "lat": 17.5, "t": "~40 LAKH KM²  ·  10+ CRORE LOG", "size": 34, "color": "#ffe9a8", "delay": 1.4}],
           "source": "Mughal Empire (c. 1690–1700) — Wikipedia; World History Encyclopedia", "source_by": "estimates"})
-B("s03", {"type": "black", "t": "लेकिन सिर्फ़ डेढ़ सौ साल बाद..."}, tags="[softly]", sfx=["tension"])
+B("s03", {"type": "black", "t": "लेकिन करीब डेढ़ सौ साल बाद..."}, tags="[softly]", sfx=["tension"])
 B("s04", {"type": "set", "bg": "fort", "cam": "truck_right", "caption": "DELHI, OCT 1858",
           "chars": [{"who": "zafar", "x": 0.5, "h": 0.44, "expr": "sad", "pose": "idle", "face": "right", "seated": True},
                     {"who": "redcoat", "x": 0.16, "h": 0.5, "expr": "neutral", "face": "right"},
@@ -60,7 +62,7 @@ B("s05", {"type": "set", "bg": "fort", "cam": "dolly_in", "zoom": 1.3, "focus": 
           "names": [{"t": "2 BETE + 1 POTA — GOLI SE MAARE GAYE", "x": 0.06, "y": 0.8, "at": 1.0, "bar": "#7a1f2b"}],
           "source": "Bahadur Shah II — Wikipedia (Hodson, 22 Sep 1857)", "source_by": "historical record"}, tags="[sad]")
 B("s06", {"type": "realdoc", "img": D + "zafar_1858_tytler.jpg", "tone": "sepia", "push": [1.0, 1.25], "yaw": [-8, 4], "curl": 0.3,
-          "focus": [0.5, 0.45], "source": "Bahadur Shah Zafar, May 1858 — photo by Robert & Harriet Tytler",
+          "focus": [0.5, 0.45], "source": "Bahadur Shah Zafar, May 1858 — photo by Robert Tytler & Charles Shepherd",
           "source_by": "British Library via Wikimedia Commons · Public domain"}, sfx=["click"])
 B("s07", {"type": "map", "view": [66, 8, 102, 40], "cam": "drift", "highlight": {"IND": "#c0322b", "MMR": "#6a5a8a"},
           "routes": [{"from": [77.2, 28.6], "via": [[81.8, 25.4], [88.3, 22.5]], "to": [96.16, 16.8], "delay": 0.4, "time": 2.6, "mover": "ship", "color": "#ffd166"}],
@@ -136,7 +138,7 @@ B("s24", {"type": "set", "bg": "village", "cam": "dolly_in", "zoom": 1.25, "focu
 B("s25", {"type": "set", "bg": "village", "cam": "orbit_right", "zoom": 1.25, "focus": [0.6, 0.45],
           "chars": [{"who": "nani", "x": 0.6, "h": 0.55, "expr": "proud", "talk": True, "gesture": ["point", "idle", "fist"], "face": "left"},
                     {"who": "babur", "x": 0.12, "h": 1.2, "y": 0.42, "back": True, "face": "right"}],
-          "names": [{"t": "NAANI · AISAN DAULAT BEGUM", "x": 0.06, "y": 0.82, "at": 0.3, "bar": "#a3233a"}]}, speaker="NANI", tags="[firmly]")
+          "names": [{"t": "BABUR KI NAANI", "x": 0.06, "y": 0.82, "at": 0.3, "bar": "#a3233a"}]}, speaker="NANI", tags="[firmly]")
 B("s26", {"type": "set", "bg": "village", "cam": "truck_right",
           "chars": [{"who": "babur", "x": -0.05, "to": 0.75, "walk_time": 3.5, "h": 0.42, "expr": "sad", "face": "right"},
                     {"who": "soldier", "x": -0.2, "to": 0.55, "walk_time": 3.5, "h": 0.4, "expr": "worried", "face": "right"}],
@@ -145,8 +147,8 @@ B("s27", {"type": "map", "view": CA_V, "cam": "drift", "highlight": {"AFG": "#3f
           "routes": [{"from": [72.3, 40.8], "via": [[68.8, 37.5]], "to": [69.2, 34.5], "delay": 0.3, "time": 1.8, "color": "#ffd166"}],
           "pins": [{"lon": 69.2, "lat": 34.5, "label": "KABUL · 1504", "delay": 2.0}]}, sfx=["drum"])
 B("s28", {"type": "topdown", "paper": {"x": 0.5, "y": 0.5, "w": 0.22, "draw": "map", "at": 0.1, "note": "KABUL"},
-          "hands": [{"from": "left", "to": [0.36, 0.48], "item": "coin_bag", "label": "AAMDANI", "at": 0.3, "release": 1.4, "sleeve": "#3f6d5a"},
-                    {"from": "right", "to": [0.66, 0.5], "item": "cash", "label": "FAUJ KA KHARCH", "at": 1.2, "release": 2.4, "sleeve": "#6a4a2a"}]})
+          "hands": [{"from": "left", "to": [0.36, 0.48], "item": "coin_bag", "label": "KABUL", "at": 0.3, "release": 1.4, "sleeve": "#3f6d5a"},
+                    {"from": "right", "to": [0.66, 0.5], "item": "cash", "label": "FAUJ", "at": 1.2, "release": 2.4, "sleeve": "#6a4a2a"}]})
 B("s29", {"type": "map", "view": [58, 20, 86, 42], "cam": "drift", "highlight": {"AFG": "#3f8a6a", "IND": "#d9a72b", "PAK": "#d9a72b"},
           "routes": [{"from": [69.2, 34.5], "via": [[72.0, 33.6]], "to": [77.2, 28.6], "delay": 0.3, "time": 2.2, "color": "#ffd166"}],
           "labels": [{"lon": 71.8, "lat": 30.0, "t": "SINDHU", "size": 30, "color": "#9fd3ff", "delay": 1.0}],
@@ -194,7 +196,7 @@ B("s40", {"type": "topdown", "paper": {"x": 0.5, "y": 0.5, "w": 0.34, "draw": "s
           "source": "Baburnama (tr. Beveridge, 1922)", "source_by": "Public domain"}, sfx=["click"])
 B("s41", {"type": "set", "bg": "battlefield", "cam": "dolly_in",
           "props": [{"name": "cannon", "x": 0.3, "y": 0.74, "h": 0.2, "anim": "slide"}, {"name": "cannon", "x": 0.55, "y": 0.76, "h": 0.2, "anim": "slide"}],
-          "stickers": [{"name": "warning", "side": "top_right", "anim": "pop", "h": 0.14, "at": 1.0, "label": "LAGBHAG NAYA"}]})
+          "stickers": [{"name": "warning", "side": "top_right", "anim": "pop", "h": 0.14, "at": 1.0, "label": "USTAD ALI QULI"}]})
 B("s42", {"type": "set", "bg": "battlefield", "cam": "crane_up",
           "chars": [{"who": "soldier", "x": 0.5, "h": 0.36, "expr": "angry", "pose": "fist", "label": "IBRAHIM KI FAUJ"}],
           "swoosh": [{"x": 0.5, "y": 0.55, "r": 0.32, "a0": 200, "a1": 330, "color": "#3fbf7a", "at": 0.4},
@@ -222,7 +224,7 @@ B("s47", {"type": "set", "bg": "mughal_court", "cam": "crane_up",
           "props": [{"name": "mughal_flag", "x": 0.5, "y": 0.16, "h": 0.18, "anim": "pop"}],
           "big": {"t": "MUGHAL SALTANAT · 1526", "y": 0.86, "at": 2.0}}, sfx=["crowd"])
 B("s48", {"type": "black", "t": "असली इम्तिहान अभी बाक़ी था..."}, tags="[dramatically]", sfx=["tension"])
-B("s49", {"type": "set", "bg": "fort", "cam": "dolly_in", "caption": "RAJPUTANA, 1527",
+B("s49", {"type": "set", "bg": "fort", "cam": "dolly_in", "caption": "MEWAR, 1527",
           "chars": [{"who": {"preset": "maharaja", "hat_color": "#e0782f", "color": "#c0322b", "accent": "#e8c547"}, "x": 0.5, "h": 0.5, "expr": "angry", "pose": "fist", "dim": True}],
           "big": {"t": "{n} GHAAV?", "count": 80, "y": 0.16, "at": 1.2},
           "source": "parampara (James Tod, Annals of Rajasthan)", "source_by": "kehte hain"}, tags="[mysteriously]", sfx=["riser"])
