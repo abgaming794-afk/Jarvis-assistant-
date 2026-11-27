@@ -181,8 +181,9 @@ def draw_board(can, sc, t, u):
     lines = b["text"].split("|")
     import re
     dev = bool(re.search(r"[ऀ-ॿ]", b["text"]))
-    size = int(b.get("size", 46) * u)
-    f = _hand(size, dev)
+    size = int(b.get("size", 50) * u)
+    from toonshot import hand
+    f = _hand(size, dev) if dev else hand(size, "comic")
     lh = size * 1.3
     tmp = ImageDraw.Draw(can)
     tw = max(tmp.textlength(l.replace("[", "").replace("]", ""), font=f) for l in lines)
@@ -378,9 +379,9 @@ def draw_names(fr, names, t):
         k = clamp((t - at) / max(.3, .035 * len(text)))
         shown = text[: max(1, int(len(text) * k))]
         small = n.get("small", False)
-        f = hfont(text, int(n.get("size", 26 if small else 34) * u), "oswald")
+        f = hfont(text, int(n.get("size", 22 if small else 30) * u), "oswald")
         d = ImageDraw.Draw(fr)
-        full_w = d.textlength(text, font=f) + 52 * u
+        full_w = sum(d.textlength(c, font=f) for c in text) + f.size * .02 * len(text) + 52 * u
         bh = int((40 if small else 56) * u)
         x, y = n.get("x", .49) * W, (n.get("y", .78) + i * .065) * H
         if x + full_w > W - 12 * u:
@@ -390,7 +391,8 @@ def draw_names(fr, names, t):
         bd.rounded_rectangle([0, 0, box.width - 1, bh - 1], radius=int(8 * u), fill=(16, 13, 12, 215))
         bd.rectangle([0, 0, int(7 * u), bh], fill=hexc(n.get("bar", "#d6b260")))
         bd.line([(int(7 * u), bh - 2), (box.width, bh - 2)], fill=(214, 178, 96, 160), width=max(1, int(2 * u)))
-        bd.text((int(24 * u), bh / 2), shown, font=f, fill=(246, 238, 220, 255), anchor="lm")
+        from toonshot import tracked
+        tracked(bd, (int(24 * u), bh / 2), shown, f, (246, 238, 220, 255), .02, "lm")
         ka = ease_out(clamp((t - at) / .3))
         fr.alpha_composite(box, (int(x - (1 - ka) * 24 * u), int(y)))
 

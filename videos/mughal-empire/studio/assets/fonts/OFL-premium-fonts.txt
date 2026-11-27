@@ -1,1 +1,1 @@
-Cinzel, Playfair Display, Anton, Bebas Neue, Oswald, Rozha One, Tiro Devanagari Hindi, Mukta: SIL Open Font License 1.1 (Google Fonts, github.com/google/fonts)
+Inter, Cinzel, Playfair Display, Anton, Bebas Neue, Oswald, Rozha One, Tiro Devanagari Hindi, Mukta: SIL Open Font License 1.1 (Google Fonts, github.com/google/fonts)

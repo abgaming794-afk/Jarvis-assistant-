@@ -50,14 +50,9 @@ def font(size, weight="Black"):
 
 @functools.lru_cache(maxsize=16)
 def serif(size):
-    p = os.path.join(FONTS, "PlayfairDisplay-VF.ttf")
+    p = os.path.join(FONTS, "TypoGrotesk-Bold.otf")
     if os.path.exists(p):
-        f = ImageFont.truetype(p, max(6, int(size)))
-        try:
-            f.set_variation_by_name("Bold")
-        except Exception:
-            pass
-        return f
+        return ImageFont.truetype(p, max(6, int(size)))
     return font(size, "Bold")
 
 

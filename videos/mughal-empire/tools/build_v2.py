@@ -64,7 +64,7 @@ Y = {}
 # ------------------------------------------------------------- cold open
 SC["s01"] = S("court", "push", objs=[O("peacock_throne", 0, 9.3, y=0.6, h=1.9), O("chest", -2.4, 6.0, h=0.7), O("gold_bars", 2.4, 6.0, h=0.5),
               O("coins", -1.0, 4.8, h=0.4), O("chest", 3.4, 7.6, h=0.7), O("coins", 1.2, 4.6, h=0.4)],
-              big={"t": "1/4 DUNIYA KI DAULAT", "y": 0.16}, stickers=[{"name": "coin", "anim": "rain", "h": 0.07, "at": 0.3}])
+              big={"t": "1/4 DAULAT", "y": 0.16}, stickers=[{"name": "coin", "anim": "rain", "h": 0.07, "at": 0.3}])
 EXTRA["s01"] = {"sfx": ["cash"], "chapter": "Duniya ki 1/4 daulat"}
 SC["s01b"] = {"type": "chart", "bars": [{"label": "HINDUSTAN", "value": 24.4, "text": "24.4%", "color": "#d9a72b"},
                                         {"label": "CHINA", "value": 22.3, "text": "22.3%", "color": "#c0322b"},
@@ -78,7 +78,7 @@ SC["s02"]["source_by"] = "anumaan"
 Y.update(s01=1700, s01b=1700, s02=1700)
 SC["s03"] = {"type": "black", "t": "Lekin kareeb dedh sau saal baad..."}
 SC["s04"] = S("fort", "dolly_in", actors=[A("zafar", 0, 4.2, expr="sad", h=1.3), A("redcoat", -1.6, 4.6, face="right"), A("redcoat", 1.6, 4.6, face="left")],
-              caption="DELHI, 1858", names=[{"t": "BAHADUR SHAH ZAFAR · 82 SAAL", "x": 0.06, "y": 0.8, "at": 0.6, "bar": "#c9a227"}])
+              caption="DELHI, 1858", names=[{"t": "BAHADUR SHAH ZAFAR · 82 SAAL", "x": 0.04, "y": 0.72, "at": 0.6, "bar": "#c9a227"}])
 SC["s04b"] = S("plain", "truck_right", target=[1.0, 1.0, 5.5], objs=[O("bullock_cart", -1.6, 5.6, h=1.6, to=[2.6, 5.6], move_time=4.5)],
                actors=[A("zafar", -2.0, 5.55, y=0.45, h=0.95, expr="sad", to=[2.2, 5.55], walk_time=4.5),
                        A("redcoat", -3.4, 4.6, face="right", to=[0.8, 4.6], walk_time=4.5), A("redcoat", -0.4, 6.8, face="right", to=[3.8, 6.8], walk_time=4.5)],
@@ -90,7 +90,7 @@ SC["s05"] = S("palace", "truck_left", actors=[A("prince1", -1.4, 4.4, expr="worr
 SC["s05b"] = S("fort", "dolly_out", caption="DELHI · 22 SEP 1857",
                actors=[A("prince1", -1.2, 5.0, expr="sad", dim=True), A("prince2", 0, 5.2, expr="sad", dim=True), A("grandson", 1.2, 5.0, expr="sad", dim=True, h=1.15),
                        A("redcoat", -2.6, 3.6, face="right", pose="hold", hold="musket")],
-               names=[{"t": "HODSON NE GOLI MAARI", "x": 0.06, "y": 0.8, "at": 0.5, "bar": "#7a1f2b"}],
+               names=[{"t": "HODSON NE GOLI MAARI", "x": 0.04, "y": 0.72, "at": 0.5, "bar": "#7a1f2b"}],
                source="Bahadur Shah II — Wikipedia", source_by="aitihasik record")
 Y.update(s05=1857, s05b=1857)
 SC["s06"] = {"type": "realdoc", "img": D + "zafar_1858_tytler.jpg", "tone": "sepia", "push": [1.0, 1.25], "yaw": [-8, 4], "curl": 0.3,
@@ -104,7 +104,7 @@ SC["s07"] = M([66, 8, 102, 40], "orbit_right", highlight={"IND": "#c0322b", "MMR
               pins=[{"lon": 77.2, "lat": 28.6, "label": "DELHI", "delay": 0.1}, {"lon": 96.16, "lat": 16.8, "label": "RANGOON", "delay": 2.6}],
               labels=[{"lon": 87, "lat": 15.5, "t": "2,000+ KM DOOR", "size": 40, "color": "#ffffff", "delay": 1.2}])
 SC["s07b"] = S("cell", "dolly_in", objs=[O("grave", 0, 3.2, h=0.9)], caption="RANGOON · 7 NOV 1862",
-               names=[{"t": "BENISHAAN QABR", "x": 0.06, "y": 0.8, "at": 0.5}], source="Bahadur Shah Zafar — indianculture.gov.in", source_by="Bharat Sarkar")
+               names=[{"t": "BENISHAAN QABR", "x": 0.04, "y": 0.72, "at": 0.5}], source="Bahadur Shah Zafar — indianculture.gov.in", source_by="Bharat Sarkar")
 Y.update(s06=1858, s06b=1858, s07=1858, s07b=1862)
 SC["s08"] = {"type": "split", "left": S("court", "dolly_in", objs=[O("peacock_throne", 0, 9.3, y=0.6, h=1.9)], caption="1700"),
              "right": S("cell", "dolly_in", actors=[A("zafar", 0, 3.0, expr="sad")], caption="1858",
@@ -118,7 +118,7 @@ SC["s11"] = S("palace", "dolly_in", target=[0, 1.0, 4.0], dist=4.0, objs=[O("koh
               stickers=[{"name": "question", "side": "top_left", "anim": "pop", "h": 0.16, "at": 0.4}], emph=[{"x": 0.5, "y": 0.45, "r": 0.16, "at": 0.4}])
 SC["s11"]["_pedestal"] = True
 SC["s12"] = S("court", "dolly_in", actors=[A("sardar", -1.4, 6.5, expr="smug", face="right"), A("eic", 1.3, 6.3, face="left", expr="happy")],
-              objs=[O("farman", 0, 6.4, y=0.6, h=1.0, anim="pop")], big={"t": "FARMAN 1717 · ₹3,000 / SAAL", "y": 0.14, "at": 0.8},
+              objs=[O("farman", 0, 6.4, y=0.6, h=1.0, anim="pop")], big={"t": "₹3,000 / SAAL", "y": 0.14, "at": 0.8}, names=[{"t": "Farrukhsiyar ka farman, 1717", "x": 0.04, "y": 0.72, "at": 0.6}],
               source="Farrukh Siyar's Farman — Banglapedia", source_by="aitihasik record")
 SC["s12b"] = S("river", "truck_right", objs=[O("ship", 2.5, 11, h=2.4, anim="bob"), O("ship", 6.0, 13, h=2.2, anim="bob"), O("spice_sack", -1.2, 4.4, h=0.7, anim="drop"),
                                              O("spice_sack", -0.3, 4.6, h=0.7, anim="drop", color="#d9822b"), O("eic_flag", 2.4, 6, h=1.4)],
@@ -135,7 +135,7 @@ SC["s15"] = M(CA, "dolly_in", highlight={"UZB": "#3f8a6a", "IND": "#8a6a3a"}, pi
               labels=[{"lon": 63, "lat": 44.0, "t": "AAJ KA UZBEKISTAN", "size": 34, "color": "#ffffff", "delay": 1.0}])
 SC["s16"] = S("cliff", "orbit_right", actors=[A("umar", -0.6, 5.0, expr="happy", face="right")],
               objs=[O("dovecote", 1.4, 6.3, y=0.0, h=2.0)], caption="AKHSI QILA · 1494",
-              names=[{"t": "UMAR SHAIKH MIRZA · FERGANA KE SHASAK", "x": 0.06, "y": 0.8, "at": 0.4}])
+              names=[{"t": "UMAR SHAIKH MIRZA · FERGANA KE SHASAK", "x": 0.04, "y": 0.72, "at": 0.4}])
 SC["s16b"] = S("cliff", "shake", actors=[A("umar", 1.1, 6.2, expr="shocked", pose="up", shake=True, face="right")],
                objs=[O("dovecote", 1.4, 6.3, h=2.0, anim="fall", delay=0.3), O("pigeon", 1.2, 6.3, y=1.5, h=0.4, anim="rise", delay=0.4),
                      O("pigeon", 2.0, 6.5, y=1.8, h=0.35, anim="rise", delay=0.6)],
@@ -144,7 +144,7 @@ SC["s16b"] = S("cliff", "shake", actors=[A("umar", 1.1, 6.2, expr="shocked", pos
 SC["s17"] = S("palace", "crane_up", actors=[A("babur_boy", 0, 5.4, h=1.05, expr="worried"), A("sardar", -1.8, 4.4, face="right", pose="bow"),
                                            A("sardar", 1.8, 4.4, face="left", pose="bow")],
               objs=[O("throne", 0, 6.0, h=1.7), O("crown", 0, 5.4, y=1.3, h=0.35, anim="drop", delay=1.0)],
-              names=[{"t": "BABUR · 11 SAAL", "x": 0.06, "y": 0.8, "at": 0.5, "bar": "#c9a227"}])
+              names=[{"t": "BABUR · 11 SAAL", "x": 0.04, "y": 0.72, "at": 0.5, "bar": "#c9a227"}])
 SC["s18"] = S("palace", "push", target=[0, 0.8, 4.5], dist=3.2, actors=[A("babur_boy", 0, 4.6, h=1.05, expr="proud", pose="hips")],
               emph=[{"x": 0.5, "y": 0.3, "r": 0.14, "at": 0.3}])
 SC["s18b"] = S("palace", "truck_left", actors=[A("babur_boy", 0.9, 4.4, h=1.05, expr="proud", face="left"),
@@ -161,12 +161,12 @@ SC["s20b"] = S("tent", "orbit_left", actors=[A("babur_boy", 0, 4.4, h=1.05, expr
                                             A("sardar", 0.9, 5.7, expr="smug", face="left", label="BHAI KE SAMARTHAK")],
                objs=[O("sword", -1.2, 5.0, y=1.0, h=0.5), O("sword", 1.4, 5.0, y=1.0, h=0.5)])
 SC["s21"] = S("fort", "dolly_in", target=[0, 2.0, 9.0], dist=14.0, height=1.5,
-              actors=[A("babur", -1.2, 2.0, h=1.35, back=True, face="right")], names=[{"t": "SAMARKAND · TAIMUR KI RAJDHANI", "x": 0.06, "y": 0.8, "at": 0.4}])
+              actors=[A("babur", -1.2, 2.0, h=1.35, back=True, face="right")], names=[{"t": "SAMARKAND · TAIMUR KI RAJDHANI", "x": 0.04, "y": 0.72, "at": 0.4}])
 SC["s22"] = S("plain", "truck_right", target=[0.5, 1.0, 6],
               objs=[O("horse_rider", -2.5, 5.2, h=1.8, to=[1.2, 5.2], move_time=4.0, anim="march"),
                     O("army_block", -4.2, 7.0, h=1.8, to=[-0.6, 7.0], move_time=4.0, anim="march"),
                     O("flag", -3.2, 6.0, h=1.6, color="#3f6d5a", to=[0.4, 6.0], move_time=4.0)],
-              names=[{"t": "1497 · SIRF 14 SAAL KI UMR", "x": 0.06, "y": 0.8, "at": 0.4}])
+              names=[{"t": "1497 · SIRF 14 SAAL KI UMR", "x": 0.04, "y": 0.72, "at": 0.4}])
 SC["s22b"] = S("fort", "crane_up", actors=[A("babur", 0, 4.8, expr="laugh", pose="cheer", jump=True), A("soldier", -1.4, 5.0, expr="happy", pose="cheer"),
                                           A("soldier", 1.4, 5.0, expr="happy", pose="cheer")],
                objs=[O("flag", 0, 9.0, y=4.4, h=1.6, color="#3f6d5a", anim="pop")], caption="SAMARKAND · 1497")
@@ -177,10 +177,10 @@ SC["s23b"] = M(CA, "push", highlight={"UZB": "#c0322b"}, pins=[{"lon": 72.3, "la
 Y.update(s15=1494, s16=1494, s16b=1494, s17=1494, s18=1494, s18b=1494, s19=1494, s20=1494, s20b=1495, s21=1496, s22=1497, s22b=1497, s23=1497, s23b=1498)
 SC["s24"] = S("plain", "dolly_in", target=[-0.3, 1.0, 5], dist=3.6, mood=0.75,
               actors=[A("babur", -0.3, 5.0, expr="sad", talk=True, gesture=["shrug", "head", "shrug"], face="right"), A("nani", 1.6, 4.0, back=True, face="left")],
-              board={"text": "NA SAMARKAND, NA [GHAR]|AB KAHAN JAUN?", "rect": [0.08, 0.16, 0.64, 0.32], "at": 0.2, "time": 2.0}, names=[NAATYA])
+              board={"text": "NA SAMARKAND, NA [GHAR]|AB KAHAN JAUN?", "rect": [0.06, 0.13, 0.5, 0.3], "at": 0.2, "time": 2.0}, names=[NAATYA])
 SC["s25"] = S("plain", "orbit_right", target=[0.4, 1.0, 5], dist=3.6, mood=0.75,
               actors=[A("nani", 0.4, 5.0, expr="proud", talk=True, gesture=["point", "idle", "fist"], face="left"), A("babur", -1.4, 4.0, back=True, face="right")],
-              names=[{"t": "BABUR KI NAANI", "x": 0.06, "y": 0.8, "at": 0.3, "bar": "#a3233a"}, NAATYA])
+              names=[{"t": "BABUR KI NAANI", "x": 0.04, "y": 0.72, "at": 0.3, "bar": "#a3233a"}, NAATYA])
 SC["s26"] = S("plain", "truck_right", target=[1.0, 1.0, 6],
               actors=[A("babur", -2.5, 5.2, expr="sad", to=[2.5, 5.2], walk_time=4.5, face="right"),
                       A("soldier", -3.6, 5.8, expr="worried", to=[1.4, 5.8], walk_time=4.5, face="right")],
@@ -188,7 +188,7 @@ SC["s26"] = S("plain", "truck_right", target=[1.0, 1.0, 6],
 SC["s27"] = M(CA, "orbit_left", highlight={"AFG": "#3f8a6a"}, routes=[{"from": [72.3, 40.8], "via": [[68.8, 37.5]], "to": [69.2, 34.5], "delay": 0.3, "time": 1.8, "color": "#ffd166"}],
               pins=[{"lon": 69.2, "lat": 34.5, "label": "KABUL · 1504", "delay": 2.0}])
 SC["s28"] = S("fort", "crane_down", target=[0, 1.6, 8], dist=10, actors=[A("babur", 0, 4.0, expr="thinking", pose="chin")],
-              names=[{"t": "KABUL · PAHADI, CHHOTA", "x": 0.06, "y": 0.8, "at": 0.4}])
+              names=[{"t": "KABUL · PAHADI, CHHOTA", "x": 0.04, "y": 0.72, "at": 0.4}])
 SC["s28b"] = S("tent", "push", target=[0, 1.2, 4.0], dist=3.4, actors=[A("babur", 0, 4.0, expr="thinking", pose="chin")],
                bubble={"from": [0.55, 0.3], "x": 0.75, "y": 0.18, "prop": "crown", "at": 0.3})
 SC["s29"] = S("tent", "dolly_in", actors=[A("babur", 0, 5.4, expr="scheming", pose="point", face="right"), A("sardar", -1.8, 5.0, face="right")],
@@ -199,19 +199,19 @@ SC["s29b"] = M([58, 20, 86, 42], "push", highlight={"AFG": "#3f8a6a", "IND": "#d
 Y.update(s24=1501, s25=1501, s26=[1501, 1504], s27=1504, s28=1504, s28b=1504, s29=1519, s29b=1519)
 SC["s30"] = S("court", "dolly_in", actors=[A("ibrahim", 0, 9.0, y=0.6, h=1.4, expr="smug"), A("sardar", -2, 5.2, face="right", pose="bow"),
                                            A("daulat", 2.2, 5.6, face="left", expr="scheming")],
-              objs=[O("throne", 0, 9.5, y=0.6, h=1.8)], names=[{"t": "SULTAN IBRAHIM LODI · DILLI", "x": 0.06, "y": 0.8, "at": 0.4, "bar": "#7a1f2b"}])
+              objs=[O("throne", 0, 9.5, y=0.6, h=1.8)], names=[{"t": "SULTAN IBRAHIM LODI · DILLI", "x": 0.04, "y": 0.72, "at": 0.4, "bar": "#7a1f2b"}])
 SC["s31"] = S("court", "orbit_left", target=[0, 1.2, 5], dist=5.0, actors=[A("sardar", -1.0, 5.0, expr="angry", face="right", pose="cross"),
                                                                       A("daulat", 0.4, 5.3, expr="angry", face="left", pose="fist"),
                                                                       A("chacha", 1.6, 5.0, expr="scheming", face="left")],
-              emph=[{"x": 0.5, "y": 0.3, "r": 0.14, "at": 0.4}], names=[{"t": "NARAAZ AMIR", "x": 0.06, "y": 0.8, "at": 0.4}])
+              emph=[{"x": 0.5, "y": 0.3, "r": 0.14, "at": 0.4}], names=[{"t": "NARAAZ AMIR", "x": 0.04, "y": 0.72, "at": 0.4}])
 SC["s32"] = S("study", "dolly_in", actors=[A("daulat", 0, 4.0, expr="scheming", pose="give", hold="letter", hold_size=0.16)],
-              names=[{"t": "DAULAT KHAN LODI · PUNJAB KE HAKIM", "x": 0.06, "y": 0.8, "at": 0.4}], source="First Battle of Panipat — Wikipedia", source_by="aitihasik record")
+              names=[{"t": "DAULAT KHAN LODI · PUNJAB KE HAKIM", "x": 0.04, "y": 0.72, "at": 0.4}], source="First Battle of Panipat — Wikipedia", source_by="aitihasik record")
 SC["s32b"] = M([58, 20, 86, 42], "orbit_right", highlight={"AFG": "#3f8a6a", "IND": "#d9a72b", "PAK": "#d9a72b"},
                routes=[{"from": [74.3, 31.5], "to": [69.2, 34.5], "delay": 0.3, "time": 1.6, "color": "#ffd166"}],
                pins=[{"lon": 74.3, "lat": 31.5, "label": "LAHORE", "delay": 0.1}, {"lon": 69.2, "lat": 34.5, "label": "KABUL", "delay": 1.8}],
                labels=[{"lon": 72, "lat": 35.6, "t": "NYOTA", "size": 44, "color": "#ffffff", "delay": 1.0}])
 SC["s33"] = S("court", "push", target=[0, 1.5, 9.0], dist=4.0, actors=[A("ibrahim", 0, 9.0, y=0.6, h=1.4, expr="laugh", talk=True, gesture=["idle", "point", "cross"])],
-              objs=[O("throne", 0, 9.5, y=0.6, h=1.8)], board={"text": "KABUL SE KOI AAYEGA?|AUR [DILLI] LE JAYEGA?", "rect": [0.08, 0.16, 0.6, 0.32], "at": 0.2, "time": 2.0},
+              objs=[O("throne", 0, 9.5, y=0.6, h=1.8)], board={"text": "KABUL SE KOI AAYEGA?|AUR [DILLI] LE JAYEGA?", "rect": [0.06, 0.13, 0.5, 0.3], "at": 0.2, "time": 2.0},
               names=[NAATYA])
 SC["s33b"] = S("palace", "shake", target=[0, 1.3, 4.5], dist=2.4, actors=[A("ibrahim", 0, 4.5, h=1.4, expr="laugh", talk=True, pose="cross")],
                board={"text": "[MAZAAQ] HAI!", "rect": [0.6, 0.16, 0.92, 0.28], "at": 0.05, "time": 0.8}, names=[NAATYA])
@@ -234,7 +234,7 @@ SC["s37"] = S("battlefield", "truck_right", target=[4.0, 1.2, 10], dist=8.0,
               big={"t": "{n} SAINIK*", "count": 100000, "y": 0.16}, source="*Baburnama ke mutabik · itihaskaar 40–70 hazaar", source_by="Wikipedia · historyofwar.org")
 SC["s37b"] = S("battlefield", "orbit_right", target=[3.5, 1.2, 11], dist=8.0,
                objs=[O("war_elephant", x, z, h=2.3, face="left") for x, z in ((0.5, 9.5), (3.0, 10.0), (5.5, 10.5), (1.8, 12.5), (4.4, 13.0), (7.0, 13.5), (3.2, 15.5), (6.0, 16.0))],
-               big={"t": "~1,000 HAATHI", "y": 0.16, "at": 0.4})
+               big={"t": "1,000 HAATHI", "y": 0.16, "at": 0.4})
 SC["s38"] = S("tent", "dolly_in", target=[0.4, 1.0, 4.4], dist=3.6,
               actors=[A("soldier", 0.4, 4.6, expr="shocked", talk=True, gesture=["shrug", "point", "shrug"], face="left"), A("babur", -1.4, 3.4, back=True, face="right")],
               stickers=[{"name": "exclaim", "side": "top_right", "anim": "pop", "h": 0.14, "at": 0.3}], names=[NAATYA])
@@ -244,17 +244,17 @@ SC["s39"] = S("tent", "push", target=[-0.2, 1.1, 4.6], dist=3.0,
 SC["s40"] = S("battlefield", "truck_right", target=[0, 1.0, 6], dist=6.0,
               objs=[O("araba", x, 6.0, h=1.1) for x in (-6, -4, -2, 0, 2, 4, 6)] + [O("rope", -1, 5.2, y=0.5, h=0.5)],
               actors=[A("soldier", -3.0, 4.6, pose="hold", face="right"), A("soldier", 1.2, 4.8, pose="hold", face="left")],
-              big={"t": "~700 GAADIYAN", "y": 0.16, "at": 0.4}, source="Baburnama (tr. Beveridge, 1922)", source_by="Public domain · muft upyog")
+              big={"t": "700 GAADIYAN", "y": 0.16, "at": 0.4}, source="Baburnama (tr. Beveridge, 1922)", source_by="Public domain · muft upyog")
 SC["s40b"] = S("battlefield", "orbit_left", target=[0, 0.8, 5.5], dist=5.0,
                objs=[O("araba", x, 7.0, h=1.1) for x in (-4, -2, 0, 2, 4)] + [O("cannon", -2.2, 5.6, h=0.8), O("cannon", 1.6, 5.6, h=0.8),
                                                                                O("matchlock_man", -0.4, 5.2, h=0.8), O("matchlock_man", 3.0, 5.4, h=0.8)],
-               names=[{"t": "TOPEIN + TODEDAAR BANDOOKEIN", "x": 0.06, "y": 0.8, "at": 0.6}])
+               names=[{"t": "TOPEIN + TODEDAAR BANDOOKEIN", "x": 0.04, "y": 0.72, "at": 0.6}])
 SC["s41"] = M([25, 25, 80, 48], "truck_right", highlight={"TUR": "#3a6a9a", "AFG": "#3f8a6a"},
               routes=[{"from": [32.9, 39.9], "via": [[50, 36]], "to": [69.2, 34.5], "delay": 0.3, "time": 2.0, "color": "#ffd166"}],
               pins=[{"lon": 32.9, "lat": 39.9, "label": "USMANI TURK", "delay": 0.1}, {"lon": 69.2, "lat": 34.5, "label": "BABUR", "delay": 2.2}])
 SC["s41b"] = S("battlefield", "dolly_in", target=[0, 1.0, 5], dist=4.5,
                actors=[A("ali_quli", -0.6, 5.0, expr="proud", pose="point", face="right")], objs=[O("cannon", 1.0, 5.2, h=0.9)],
-               names=[{"t": "USTAD ALI QULI · TOPKHANA", "x": 0.06, "y": 0.8, "at": 0.3}])
+               names=[{"t": "USTAD ALI QULI · TOPKHANA", "x": 0.04, "y": 0.72, "at": 0.3}])
 ENEMY = [O("army_block", 0.0, 11.0, h=2.0, color="#7a2a22"), O("army_block", 2.4, 11.5, h=2.0, color="#7a2a22"), O("war_elephant", 1.2, 9.6, h=2.2, face="left")]
 SC["s42"] = S("battlefield", "top", target=[1.0, 0, 11.5], dist=6.5, height=11.0,
               objs=ENEMY + [O("horse_rider", -4.5, 8.0, h=1.6, to=[-3.0, 13.5], move_time=3.6, anim="march"),
@@ -272,23 +272,23 @@ SC["s44b"] = S("battlefield", "truck_right", target=[2.0, 1.0, 10], dist=7.0,
                objs=[O("war_elephant", 1.0, 9.0, h=2.3, face="right", to=[3.0, 12.5], move_time=3.0),
                      O("army_block", 3.6, 13.5, h=2.0, color="#7a2a22", anim="shake")],
                actors=[A("lodi_soldier", 5.0, 11.5, expr="shocked", pose="up", face="left", shake=True)],
-               names=[{"t": "PARAMPARA KE MUTABIK", "x": 0.06, "y": 0.8, "at": 0.4}])
+               names=[{"t": "PARAMPARA KE MUTABIK", "x": 0.04, "y": 0.72, "at": 0.4}])
 SC["s45"] = S("battlefield", "crane_up", target=[0, 1.0, 5.5], dist=5.5,
               actors=[A("babur", 0, 5.2, expr="proud", pose="fist")], objs=[O("smoke", -2, 8, h=1.6), O("smoke", 2.6, 9, h=1.3), O("sword", 1.6, 5.8, h=0.5)],
-              names=[{"t": "IBRAHIM LODI — MAIDAN ME MAARE GAYE", "x": 0.06, "y": 0.8, "at": 0.6, "bar": "#7a1f2b"}], source="Ibrahim Lodi — Wikipedia", source_by="aitihasik record")
+              names=[{"t": "IBRAHIM LODI — MAIDAN ME MAARE GAYE", "x": 0.04, "y": 0.72, "at": 0.6, "bar": "#7a1f2b"}], source="Ibrahim Lodi — Wikipedia", source_by="aitihasik record")
 SC["s45b"] = S("court", "dolly_in", target=[0, 1.4, 9.0], dist=5.0, objs=[O("throne", 0, 9.5, y=0.6, h=1.8), O("crown", 0, 9.0, y=0.6, h=0.4, anim="drop")],
-               names=[{"t": "DILLI SALTANAT · 1206 – 1526", "x": 0.06, "y": 0.8, "at": 0.5, "bar": "#7a1f2b"}])
+               names=[{"t": "DILLI SALTANAT · 1206 – 1526", "x": 0.04, "y": 0.72, "at": 0.5, "bar": "#7a1f2b"}])
 SC["s46"] = {"type": "realdoc", "img": D + "panipat_baburnama_1598.jpg", "tone": "ink", "push": [1.0, 1.3], "yaw": [6, -4], "curl": 0.25, "focus": [0.5, 0.5],
              "source": "Battle of Panipat, Baburnama, c. 1598 (Persian copy, Akbar's atelier)", "source_by": "Wikimedia Commons · Public domain (muft upyog)"}
 SC["s46b"] = {"type": "realdoc", "img": D + "panipat_baburnama_1598.jpg", "tone": "ink", "crop": [0.5, 0.15, 0.98, 0.85], "push": [1.15, 1.45], "yaw": [-6, 4],
               "focus": [0.5, 0.5], "source": "Battle of Panipat, Baburnama, c. 1598 (Persian copy, Akbar's atelier)", "source_by": "Wikimedia Commons · Public domain (muft upyog)"}
 SC["s47"] = S("battlefield", "orbit_right", target=[0, 1.0, 6], dist=6.5,
               actors=[A("babur", 0, 5.4, expr="laugh", pose="cheer", jump=True), A("soldier", -1.5, 5.8, expr="happy", pose="cheer"), A("soldier", 1.5, 5.8, expr="happy", pose="cheer")],
-              objs=[O("flag", 0, 7.5, h=1.8, color="#3f6d5a"), O("army_block", -3, 9, h=1.8, color="#3f6d5a")], big={"t": "~12,000 NE GIRAYI SALTANAT", "y": 0.16, "at": 0.6})
+              objs=[O("flag", 0, 7.5, h=1.8, color="#3f6d5a"), O("army_block", -3, 9, h=1.8, color="#3f6d5a")], big={"t": "12,000 KI JEET", "y": 0.16, "at": 0.6})
 SC["s47b"] = S("court", "fly", actors=[A("babur", 0, 9.0, y=0.6, h=1.4, expr="proud"), A("soldier", -2.2, 6, expr="happy", pose="cheer", face="right"),
                                        A("soldier", 2.2, 6, expr="happy", pose="cheer", face="left")],
                objs=[O("throne", 0, 9.5, y=0.6, h=1.8), O("mughal_flag", -3.4, 8.8, h=1.2), O("mughal_flag", 3.4, 8.8, h=1.2)],
-               big={"t": "MUGHAL SALTANAT · 1526", "y": 0.84, "at": 0.8})
+               big={"t": "MUGHAL SALTANAT", "y": 0.16, "at": 0.8})
 SC["s48"] = {"type": "black", "t": "Dilli jeetna ek baat thi. Use bachana, doosri."}
 SC["s49"] = S("fort", "fly", target=[0, 1.2, 6], actors=[A("sanga", 0, 5.4, expr="angry", pose="fist", dim=True)],
               objs=[O("army_block", -2.6, 7.5, h=1.8, color="#c0322b"), O("army_block", 2.6, 7.5, h=1.8, color="#c0322b"), O("flag", 0, 8.4, h=1.6, color="#e0782f")],
@@ -313,6 +313,67 @@ for b in story["beats"]:
     sc = b["scene"]
     if sc.pop("_pedestal", False):
         sc.setdefault("objs", []).insert(0, {"prop": "chest", "x": 0, "z": 4.45, "h": 0.75})
+
+# ------------------------------------------------------------- typography rules (reference: 6 font principles)
+PROPER = {"babur", "ibrahim", "lodi", "daulat", "khan", "zafar", "bahadur", "shah", "delhi", "dilli", "rangoon", "mirza",
+          "mughal", "khizr", "sultan", "abu", "bakr", "hodson", "fergana", "andijan", "uzbekistan", "samarkand", "timur",
+          "taimur", "changez", "kabul", "lahore", "punjab", "hindustan", "sindhu", "bengal", "panipat", "akhsi", "umar",
+          "shaikh", "mewar", "rana", "sanga", "ali", "quli", "ustad", "usmani", "turk", "aisan", "begum", "tulughma",
+          "farrukhsiyar", "saltanat", "sep", "oct", "nov", "april", "may"}
+SPECIAL = {"koh-i-noor": "Koh-i-Noor", "takht-e-taus": "Takht-e-Taus", "km²": "km²"}
+
+
+def smart_case(text):
+    """ALL-CAPS label -> sentence case with proper nouns capitalised; keeps [highlight] marks and | breaks."""
+    if not text or text != text.upper():
+        return text
+    out_lines = []
+    for line in text.split("|"):
+        words, res = line.split(" "), []
+        for i, w in enumerate(words):
+            core = w.strip("[](),.!?·:").lower()
+            lw = w.lower()
+            if core in SPECIAL:
+                lw = lw.replace(core, SPECIAL[core])
+            elif core in PROPER or i == 0 or (res and res[-1].endswith((".", "?", "!"))):
+                j = next((k for k, ch in enumerate(lw) if ch.isalpha()), None)
+                if j is not None:
+                    lw = lw[:j] + lw[j].upper() + lw[j + 1:]
+            res.append(lw)
+        out_lines.append(" ".join(res))
+    return "|".join(out_lines)
+
+
+CHAPTER = None
+for b in story["beats"]:
+    if b.get("chapter"):
+        CHAPTER = b["chapter"]
+    if CHAPTER:
+        b["chapter_tag"] = CHAPTER
+
+    def fix(sc):
+        for n in sc.get("names", []):
+            if n.get("t") != "NAATYA ROOPANTARAN":
+                n["t"] = smart_case(n["t"])
+            else:
+                n["t"] = "Naatya roopantaran"
+        if sc.get("caption"):
+            sc["caption"] = smart_case(sc["caption"])
+        if sc.get("board"):
+            sc["board"]["text"] = smart_case(sc["board"]["text"])
+        for a in sc.get("actors", []) + sc.get("objs", []):
+            if a.get("label"):
+                a["label"] = smart_case(a["label"])
+        for st in sc.get("stickers", []):
+            if st.get("label"):
+                st["label"] = smart_case(st["label"])
+        if sc.get("map"):
+            for pn in sc["map"].get("pins", []):
+                pn["label"] = smart_case(pn["label"])
+        for side in ("left", "right"):
+            if isinstance(sc.get(side), dict):
+                fix(sc[side])
+    fix(b["scene"])
 story["sources"] = json.load(open(P + "/story.json", encoding="utf-8")).get("sources", [])
 json.dump(story, open(P + "/story.json", "w", encoding="utf-8"), ensure_ascii=False, indent=1)
 missing = [k for k in old if k not in SC]

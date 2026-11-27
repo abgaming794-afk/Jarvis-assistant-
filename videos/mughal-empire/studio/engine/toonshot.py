@@ -21,9 +21,24 @@ OS = 1.10
 DEV = re.compile(r"[ऀ-ॿ]")
 
 
-PREMIUM = {"marker": ("Cinzel-VF.ttf", "Bold"), "caveat": ("PlayfairDisplay-VF.ttf", "Bold"),
-           "kalam": ("RozhaOne-Regular.ttf", None), "oswald": ("Oswald-VF.ttf", "SemiBold"),
-           "mukta": ("Mukta-Bold.ttf", None), "cinzel_black": ("Cinzel-VF.ttf", "Black")}
+PREMIUM = {"marker": ("Anton-Regular.ttf", None), "cinzel_black": ("Anton-Regular.ttf", None),
+           "caveat": ("PlayfairDisplay-VF.ttf", "Bold"), "oswald": ("Inter-VF.ttf", "SemiBold"),
+           "body": ("Inter-VF.ttf", "Regular"), "comic": ("Inter-VF.ttf", "Bold"),
+           "kalam": ("RozhaOne-Regular.ttf", None), "mukta": ("Mukta-Bold.ttf", None)}
+YELLOW = (255, 195, 31)
+
+
+def tracked(draw, xy, text, font, fill, track=0.08, anchor="lm"):
+    """Draw text with letter spacing (track = fraction of font size). Returns the width."""
+    sp = font.size * track
+    w = sum(draw.textlength(c, font=font) for c in text) + sp * max(0, len(text) - 1)
+    x, y = xy
+    if anchor[0] == "m":
+        x -= w / 2
+    for c in text:
+        draw.text((x, y), c, font=font, fill=fill, anchor="l" + anchor[1])
+        x += draw.textlength(c, font=font) + sp
+    return w
 
 
 @functools.lru_cache(maxsize=96)
@@ -56,29 +71,32 @@ GLASS = (16, 13, 12, 222)
 
 @functools.lru_cache(maxsize=256)
 def tag(text, size, bg="#f6f2e8", fg="#1b1717", pointer=True, kind="marker"):
-    """Premium label pill: dark glass, thin gold border, Oswald caps."""
-    f = hfont(text, size * .82, "oswald")
+    """Label pill: dark glass, thin gold border, Inter SemiBold, normal case."""
+    f = hfont(text, size * .74, "oswald")
     d = ImageDraw.Draw(Image.new("RGBA", (4, 4)))
-    b = d.textbbox((0, 0), text, font=f)
-    tw, th = b[2] - b[0], b[3] - b[1]
-    padx, pady = int(size * 0.42), int(size * 0.26)
+    sp = f.size * .02
+    tw = sum(d.textlength(c, font=f) for c in text) + sp * max(0, len(text) - 1)
+    b = d.textbbox((0, 0), "HG", font=f)
+    th = b[3] - b[1]
+    padx, pady = int(size * 0.46), int(size * 0.3)
     pw = int(size * 0.26) if pointer else 0
     lw = max(1, size // 18)
-    img = Image.new("RGBA", (tw + padx * 2 + 6, th + pady * 2 + pw + 6), (0, 0, 0, 0))
+    img = Image.new("RGBA", (int(tw) + padx * 2 + 6, th + pady * 2 + pw + 6), (0, 0, 0, 0))
     g = ImageDraw.Draw(img)
-    g.rounded_rectangle([3, 3, tw + padx * 2 + 3, th + pady * 2 + 3], radius=int(size * 0.3), fill=GLASS, outline=GOLD, width=lw)
+    g.rounded_rectangle([3, 3, int(tw) + padx * 2 + 3, th + pady * 2 + 3], radius=int(size * 0.3), fill=GLASS, outline=GOLD, width=lw)
     if pointer:
         cx = img.width / 2
         g.polygon([(cx - pw, th + pady * 2 + 3), (cx + pw, th + pady * 2 + 3), (cx, th + pady * 2 + pw + 4)], fill=GOLD)
-    g.text((3 + padx - b[0], 3 + pady - b[1]), text, font=f, fill=(246, 238, 220, 255))
+    tracked(g, (3 + padx, 3 + pady + th / 2), text, f, (246, 238, 220, 255), .02, "lm")
     return img
 
 
 @functools.lru_cache(maxsize=128)
 def big_text(text, size, color="#f1c232", kind="marker"):
     """Premium title: Cinzel Black with a gold gradient, dark outline and soft shadow."""
-    f = hfont(text, size, "cinzel_black")
-    stroke = max(2, size // 22)
+    text = text.upper()
+    f = hfont(text, size * 1.05, "cinzel_black")
+    stroke = max(2, size // 26)
     d = ImageDraw.Draw(Image.new("RGBA", (4, 4)))
     b = d.textbbox((0, 0), text, font=f, stroke_width=stroke)
     pad = stroke * 4 + size // 10
@@ -88,18 +106,14 @@ def big_text(text, size, color="#f1c232", kind="marker"):
     ImageDraw.Draw(sh).text((ox + size // 28, oy + size // 22), text, font=f, fill=(0, 0, 0, 170), stroke_width=stroke, stroke_fill=(0, 0, 0, 170))
     img = sh.filter(ImageFilter.GaussianBlur(max(1, size // 30)))
     ImageDraw.Draw(img).text((ox, oy), text, font=f, fill=(30, 20, 14, 255), stroke_width=stroke, stroke_fill=(30, 20, 14, 255))
-    mask = Image.new("L", (w, h), 0)
-    ImageDraw.Draw(mask).text((ox, oy), text, font=f, fill=255)
     c = hexc(color)
-    top, bot = (255, 241, 196), (c[0], c[1], c[2])
-    if (c[0] * .3 + c[1] * .59 + c[2] * .11) > 150:
-        bot = (201, 150, 40)
-    grad = Image.new("RGBA", (1, h))
-    for y in range(h):
-        k = y / max(1, h - 1)
-        grad.putpixel((0, y), tuple(int(top[i] + (bot[i] - top[i]) * k) for i in range(3)) + (255,))
-    grad = grad.resize((w, h))
-    img.paste(grad, (0, 0), mask)
+    dark = (c[0] * .3 + c[1] * .59 + c[2] * .11) < 110
+    if dark:   # dark text on light backgrounds (charts): no outline, no shadow
+        img = Image.new("RGBA", (w, h), (0, 0, 0, 0))
+        ImageDraw.Draw(img).text((ox, oy), text, font=f, fill=c[:3] + (255,))
+        return img
+    fill = YELLOW if color.lower() in ("#f1c232", "#ffc31f") else c[:3]
+    ImageDraw.Draw(img).text((ox, oy), text, font=f, fill=fill + (255,))
     return img
 
 
@@ -566,8 +580,8 @@ class ToonShot:
                 _paste(fr, spr, lerp(-spr.width, 60 * u, k), H - spr.height - 70 * u)
         cap = sc.get("caption")
         if cap:  # small hand-written note at top (date / place)
-            spr = tag(cap, int(40 * u), bg="#1c1f2a", fg="#ffffff", pointer=False)
-            _paste(fr, spr, 50 * u, 46 * u)
+            spr = tag(cap, int(38 * u), bg="#1c1f2a", fg="#ffffff", pointer=False)
+            _paste(fr, spr, 40 * u, H * .80)
 
     def _fg_items(self):
         if self.type != "set":
@@ -694,6 +708,9 @@ class ToonShot:
                 else:
                     pf = Image.new("RGBA", fr.size, (0, 0, 0, 255))
                 fr = motion.transition(tr, pf, fr, t / T, tuple(self.b.get("into", [.5, .5])))
+        if self.type != "black" and self.b.get("chapter_tag"):
+            ct = tag(self.b["chapter_tag"], int(30 * self.H / 1080), pointer=False)
+            _paste(fr, ct, 40 * self.H / 1080, 30 * self.H / 1080)
         if self.type != "black" and self.b.get("year") is not None:
             import timeline
             pv = getattr(self, "prev", None)

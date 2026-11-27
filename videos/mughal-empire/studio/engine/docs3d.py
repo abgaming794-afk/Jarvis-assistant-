@@ -123,34 +123,32 @@ def _curl(pg, k):
 
 
 def draw_source(fr, text, by="", t=1.0, at=.6):
-    """Premium documentary source credit (bottom-left)."""
+    """Source credit, top-right (secondary information): small Inter, gold label, soft top shade."""
     if not text or t < at:
         return
+    from toonshot import hand
     W, H = fr.size
     u = H / 1080
     k = ease_out(clamp((t - at) / .6))
-    lab = font(int(17 * u), "Bold")
-    f1 = serif(int(24 * u))
+    lab = hand(int(15 * u), "oswald")
+    f1 = hand(int(21 * u), "oswald")
+    f2 = hand(int(16 * u), "body")
     band = Image.new("L", (1, 256))
-    band.putdata([int(min(255, max(0, (i - 60) * 1.6))) for i in range(256)])
-    band = band.resize((W, int(260 * u)))
+    band.putdata([int(min(255, max(0, (196 - i) * 1.3))) for i in range(256)])
+    band = band.resize((W, int(170 * u)))
     dark = Image.new("RGBA", band.size, (8, 6, 6, 0))
-    dark.putalpha(band.point(lambda v: int(v * .82 * k)))
-    fr.alpha_composite(dark, (0, H - band.height))
+    dark.putalpha(band.point(lambda v: int(v * .55 * k)))
+    fr.alpha_composite(dark, (0, 0))
     lay = Image.new("RGBA", fr.size, (0, 0, 0, 0))
     d = ImageDraw.Draw(lay)
-    x = 64 * u + (1 - k) * -30 * u
-    y = H - 118 * u
-    shadow = (0, 0, 0, int(140 * k))
+    xr = W - 40 * u + (1 - k) * 30 * u
+    y = 30 * u
     gold = (214, 178, 96, int(255 * k))
     white = (244, 240, 230, int(255 * k))
-    d.text((x, y), "S R O T", font=lab, fill=gold)
-    d.line([(x, y + 28 * u), (x + 34 * u + 260 * u * k, y + 28 * u)], fill=gold, width=max(1, int(2 * u)))
-    words = text
-    d.text((x + 2 * u, y + 42 * u + 2 * u), words, font=f1, fill=shadow)
-    d.text((x, y + 42 * u), words, font=f1, fill=white)
+    d.text((xr, y), "Srot", font=lab, fill=gold, anchor="ra")
+    d.text((xr, y + 22 * u), text, font=f1, fill=white, anchor="ra")
     if by:
-        d.text((x, y + 76 * u), by, font=font(int(16 * u), "Bold"), fill=(200, 196, 186, int(220 * k)))
+        d.text((xr, y + 50 * u), by, font=f2, fill=(210, 204, 192, int(225 * k)), anchor="ra")
     fr.alpha_composite(lay)
 
 
