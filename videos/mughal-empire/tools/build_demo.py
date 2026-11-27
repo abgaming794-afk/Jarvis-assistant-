@@ -4,7 +4,7 @@ P = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 D = P + "/docs/"
 T = {}
 for line in open(P + "/SCRIPT.md", encoding="utf-8"):
-    m = re.match(r"- (s\d\d) (?:\[[^\]]*\])+ (.*)", line.strip())
+    m = re.match(r"- (s\d\db?) (?:\[[^\]]*\])+ (.*)", line.strip())
     if m: T[m.group(1)] = m.group(2).strip()
 
 EL = lambda v: {"elevenlabs": {"voice_id": v, "model": "eleven_v4"}}
@@ -26,6 +26,7 @@ story = {
    "zafar": {"preset": "mughal_emperor", "hair_color": "#ecebe6", "age": "old", "color": "#e6dfcc", "accent": "#8a7a5a", "jewel": False, "body": "thin", "hat_color": "#f2efe6"},
    "nani": {"preset": "farmer_woman", "skin": "light", "hat_color": "#e9e2d0", "color": "#5a3a5a", "age": "old"},
    "soldier": {"preset": "minister", "hat": "helmet", "hat_color": "#8a8a90", "color": "#6a4a2a", "facial": "mustache", "age": "young"},
+   "sanga": {"preset": "maharaja", "hat_color": "#e0782f", "color": "#c0322b", "accent": "#e8c547"},
    "redcoat": {"preset": "british_officer", "hat": "pith_helmet", "hat_color": "#e8e0c8", "hair": "short", "hair_color": "#8a6a4a"},
  },
  "description": "", "tags": [], "pinned_comment": "",
@@ -33,7 +34,7 @@ story = {
 
 def B(i, scene, speaker="N", **kw):
     if speaker != "N" and scene.get("type") == "set":
-        scene.setdefault("caption", "NAATYA ROOPANTARAN")
+        scene.setdefault("names", []).append({"t": "NAATYA ROOPANTARAN", "x": 0.68, "y": 0.89, "at": 0.2, "bar": "#555555"})
     b = {"id": i, "speaker": speaker, "text": T[i], "scene": scene}
     b.update(kw); story["beats"].append(b)
 
@@ -225,10 +226,58 @@ B("s47", {"type": "set", "bg": "mughal_court", "cam": "crane_up",
           "big": {"t": "MUGHAL SALTANAT · 1526", "y": 0.86, "at": 2.0}}, sfx=["crowd"])
 B("s48", {"type": "black", "t": "असली इम्तिहान अभी बाक़ी था..."}, tags="[dramatically]", sfx=["tension"])
 B("s49", {"type": "set", "bg": "fort", "cam": "dolly_in", "caption": "MEWAR, 1527",
-          "chars": [{"who": {"preset": "maharaja", "hat_color": "#e0782f", "color": "#c0322b", "accent": "#e8c547"}, "x": 0.5, "h": 0.5, "expr": "angry", "pose": "fist", "dim": True}],
+          "zoom": 1.3, "focus": [0.5, 0.42], "chars": [{"who": "sanga", "x": 0.5, "h": 0.62, "expr": "angry", "pose": "fist"}],
           "big": {"t": "{n} GHAAV?", "count": 80, "y": 0.16, "at": 1.2},
           "source": "parampara (James Tod, Annals of Rajasthan)", "source_by": "kehte hain"}, tags="[mysteriously]", sfx=["riser"])
 
+
+# ---------- split long beats: every scene <= ~5 s
+import sys; sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from splits import SPLITS
+A_SCENES = {
+ "s18": {"type": "set", "bg": "palace_room", "cam": "push_fast", "zoom": 1.35, "focus": [0.5, 0.42],
+         "chars": [{"who": "babur_boy", "x": 0.5, "h": 0.62, "expr": "proud", "pose": "hips"}],
+         "emph": [{"x": 0.5, "y": 0.3, "r": 0.14, "at": 0.3}],
+         "stickers": [{"name": "crown", "side": "top_left", "anim": "pop", "h": 0.12, "at": 0.6, "label": "2 BADE NAAM"}]},
+ "s20": {"type": "map", "view": CA_V, "cam": "drift", "highlight": {"UZB": "#3f8a6a"},
+         "pins": [{"lon": 72.3, "lat": 40.8, "label": "FERGANA", "delay": 0.2}],
+         "labels": [{"lon": 66, "lat": 44.5, "t": "CHHOTA SA RAJYA", "size": 40, "color": "#ffffff", "delay": 0.8}]},
+ "s22": {"type": "set", "bg": "village", "cam": "truck_right", "caption": "1497",
+         "chars": [{"who": "babur", "x": -0.05, "to": 0.6, "walk_time": 3.2, "h": 0.44, "expr": "proud", "face": "right"},
+                   {"who": "soldier", "x": -0.25, "to": 0.4, "walk_time": 3.2, "h": 0.42, "face": "right"},
+                   {"who": "soldier", "x": -0.4, "to": 0.22, "walk_time": 3.2, "h": 0.42, "face": "right"}],
+         "names": [{"t": "SIRF 14 SAAL KI UMR", "x": 0.06, "y": 0.82, "at": 0.6}]},
+ "s29": {"type": "set", "bg": "fort", "cam": "truck_right", "caption": "KABUL, 1519",
+         "chars": [{"who": "babur", "x": 0.35, "h": 0.48, "expr": "scheming", "pose": "point", "face": "right"}],
+         "stickers": [{"name": "arrow_up", "side": "top_right", "anim": "pop", "h": 0.16, "at": 0.5, "label": "PURAB"}]},
+ "s37": {"type": "set", "bg": "battlefield", "cam": "truck_right",
+         "chars": [{"who": "ibrahim", "x": 0.68, "h": 0.48, "expr": "smug", "pose": "cross", "face": "left"},
+                   {"who": "sardar", "x": 0.5, "h": 0.44, "face": "left"}, {"who": "sardar", "x": 0.86, "h": 0.44, "face": "left"}],
+         "big": {"t": "{n} SAINIK*", "count": 100000, "y": 0.16},
+         "source": "*Baburnama ke mutabik · itihaskaar 40–70 hazaar", "source_by": "Wikipedia · historyofwar.org"},
+ "s47": {"type": "set", "bg": "battlefield", "cam": "crane_up",
+         "chars": [{"who": "babur", "x": 0.5, "h": 0.5, "expr": "laugh", "pose": "cheer", "jump": True},
+                   {"who": "soldier", "x": 0.26, "h": 0.44, "expr": "happy", "pose": "cheer"}, {"who": "soldier", "x": 0.74, "h": 0.44, "expr": "happy", "pose": "cheer"}],
+         "big": {"t": "~12,000 NE GIRAYI SALTANAT", "y": 0.16, "at": 0.8}},
+ "s49": {"type": "set", "bg": "fort", "cam": "truck_left", "caption": "MEWAR, 1527",
+         "chars": [{"who": "sanga", "x": 0.5, "h": 0.46, "expr": "angry", "pose": "fist", "dim": True},
+                   {"who": "soldier", "x": 0.22, "h": 0.42, "expr": "angry", "dim": True}, {"who": "soldier", "x": 0.78, "h": 0.42, "expr": "angry", "dim": True}]},
+}
+out = []
+for b in story["beats"]:
+    sp = SPLITS.get(b["id"])
+    if not sp: out.append(b); continue
+    _, _, scB, extra = sp
+    nb = {"id": b["id"] + "b", "speaker": b["speaker"], "text": T[b["id"] + "b"]}
+    if isinstance(scB, dict):
+        nb["scene"] = scB
+    else:  # part B keeps the original scene, part A gets a new one
+        nb["scene"] = b["scene"]; b["scene"] = A_SCENES[b["id"]]
+        for k in ("sfx",): b.pop(k, None)
+    nb.update(extra)
+    if b.get("tags") and "tags" not in nb: nb["tags"] = b["tags"]
+    out += [b, nb]
+story["beats"] = out
 story["sources"] = [
  {"t": SRC_M, "url": "https://en.wikipedia.org/wiki/Economic_history_of_the_Indian_subcontinent"},
  {"t": "Mughal Empire — Wikipedia", "url": "https://en.wikipedia.org/wiki/Mughal_Empire"},
