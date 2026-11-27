@@ -144,7 +144,7 @@ def draw_source(fr, text, by="", t=1.0, at=.6):
     shadow = (0, 0, 0, int(140 * k))
     gold = (214, 178, 96, int(255 * k))
     white = (244, 240, 230, int(255 * k))
-    d.text((x, y), "S O U R C E", font=lab, fill=gold)
+    d.text((x, y), "S R O T", font=lab, fill=gold)
     d.line([(x, y + 28 * u), (x + 34 * u + 260 * u * k, y + 28 * u)], fill=gold, width=max(1, int(2 * u)))
     words = text
     d.text((x + 2 * u, y + 42 * u + 2 * u), words, font=f1, fill=shadow)

@@ -315,14 +315,14 @@
       "color": "#c0322b"
      },
      {
-      "label": "W. EUROPE",
+      "label": "EUROPE",
       "value": 22.5,
       "text": "22.5%",
       "color": "#3a5f8a"
      }
     ],
     "source": "Maddison, The World Economy: A Millennial Perspective (OECD, 2001) · saal 1700",
-    "source_by": "anumaan · duniya ki GDP mein hissa"
+    "source_by": "anumaan · duniya ki GDP mein hissa · Europe = Paschimi Europe"
    },
    "tags": "[dramatically]",
    "year": 1700
@@ -379,7 +379,7 @@
    "text": "लेकिन करीब डेढ़ सौ साल बाद…",
    "scene": {
     "type": "black",
-    "t": "लेकिन करीब डेढ़ सौ साल बाद..."
+    "t": "Lekin kareeb dedh sau saal baad..."
    },
    "tags": "[softly]",
    "sfx": [
@@ -584,7 +584,7 @@
      }
     ],
     "source": "Bahadur Shah II — Wikipedia",
-    "source_by": "historical record"
+    "source_by": "aitihasik record"
    },
    "tags": "[sad]",
    "sfx": [
@@ -614,7 +614,7 @@
      0.45
     ],
     "source": "Bahadur Shah Zafar, May 1858 — Robert Tytler & Charles Shepherd",
-    "source_by": "British Library via Wikimedia Commons · Public domain"
+    "source_by": "British Library, Wikimedia Commons ke zariye · Public domain"
    },
    "sfx": [
     "click"
@@ -648,7 +648,7 @@
      0.4
     ],
     "source": "Bahadur Shah Zafar, May 1858 — Robert Tytler & Charles Shepherd",
-    "source_by": "British Library via Wikimedia Commons · Public domain"
+    "source_by": "British Library, Wikimedia Commons ke zariye · Public domain"
    },
    "year": 1858
   },
@@ -752,7 +752,7 @@
      }
     ],
     "source": "Bahadur Shah Zafar — indianculture.gov.in",
-    "source_by": "Govt. of India"
+    "source_by": "Bharat Sarkar"
    },
    "tags": "[sad]",
    "year": 1862
@@ -852,7 +852,7 @@
    "text": "इसकी एक कमज़ोरी, पहले दिन से मौजूद थी.",
    "scene": {
     "type": "black",
-    "t": "एक कमज़ोरी... जो पहले दिन से मौजूद थी."
+    "t": "Ek kamzori... jo pehle din se maujood thi."
    },
    "tags": "[mysteriously]"
   },
@@ -987,7 +987,7 @@
      "at": 0.8
     },
     "source": "Farrukh Siyar's Farman — Banglapedia",
-    "source_by": "historical record"
+    "source_by": "aitihasik record"
    },
    "sfx": [
     "stamp"
@@ -1136,7 +1136,7 @@
    "text": "और ये शुरू होती है… एक ग्यारह साल के लड़के से.",
    "scene": {
     "type": "black",
-    "t": "एक ग्यारह साल का लड़का..."
+    "t": "Ek gyarah saal ka ladka..."
    },
    "tags": "[softly]",
    "chapter": "Babur: Fergana se Panipat"
@@ -1282,7 +1282,7 @@
      }
     ],
     "source": "Baburnama (tr. A. S. Beveridge, 1922)",
-    "source_by": "Public domain"
+    "source_by": "Public domain · muft upyog"
    },
    "sfx": [
     "boom"
@@ -1453,7 +1453,7 @@
      }
     ],
     "source": "Babur — Encyclopaedia Britannica",
-    "source_by": "britannica.com"
+    "source_by": "britannica.com (encyclopedia)"
    },
    "year": 1494
   },
@@ -2330,7 +2330,7 @@
      }
     ],
     "source": "First Battle of Panipat — Wikipedia",
-    "source_by": "historical record"
+    "source_by": "aitihasik record"
    },
    "sfx": [
     "page"
@@ -2524,7 +2524,7 @@
    "text": "बाबर आया. लेकिन मेहमान बनकर नहीं.",
    "scene": {
     "type": "black",
-    "t": "बाबर आया. लेकिन मेहमान बनकर नहीं."
+    "t": "Babur aaya. Lekin mehmaan bankar nahi."
    },
    "tags": "[dramatically]",
    "sfx": [
@@ -2618,7 +2618,7 @@
     ],
     "caption": "PANIPAT · 21 APRIL 1526",
     "source": "First Battle of Panipat — Wikipedia; Britannica",
-    "source_by": "historical record"
+    "source_by": "aitihasik record"
    },
    "sfx": [
     "drum"
@@ -3065,7 +3065,7 @@
      "at": 0.4
     },
     "source": "Baburnama (tr. Beveridge, 1922)",
-    "source_by": "Public domain"
+    "source_by": "Public domain · muft upyog"
    },
    "sfx": [
     "click"
@@ -3613,7 +3613,7 @@
      }
     ],
     "source": "Ibrahim Lodi — Wikipedia",
-    "source_by": "historical record"
+    "source_by": "aitihasik record"
    },
    "year": 1526
   },
@@ -3682,7 +3682,7 @@
      0.5
     ],
     "source": "Battle of Panipat, Baburnama, c. 1598 (Persian copy, Akbar's atelier)",
-    "source_by": "Wikimedia Commons · Public domain"
+    "source_by": "Wikimedia Commons · Public domain (muft upyog)"
    },
    "sfx": [
     "page"
@@ -3716,7 +3716,7 @@
      0.5
     ],
     "source": "Battle of Panipat, Baburnama, c. 1598 (Persian copy, Akbar's atelier)",
-    "source_by": "Wikimedia Commons · Public domain"
+    "source_by": "Wikimedia Commons · Public domain (muft upyog)"
    },
    "year": 1526
   },
@@ -3854,7 +3854,7 @@
    "text": "लेकिन दिल्ली जीतना एक बात थी. उसे बचाना, दूसरी.",
    "scene": {
     "type": "black",
-    "t": "दिल्ली जीतना एक बात थी. उसे बचाना, दूसरी."
+    "t": "Dilli jeetna ek baat thi. Use bachana, doosri."
    },
    "tags": "[dramatically]",
    "sfx": [
