@@ -21,9 +21,9 @@ OS = 1.10
 DEV = re.compile(r"[ऀ-ॿ]")
 
 
-PREMIUM = {"marker": ("Anton-Regular.ttf", None), "cinzel_black": ("Anton-Regular.ttf", None),
-           "caveat": ("PlayfairDisplay-VF.ttf", "Bold"), "oswald": ("Inter-VF.ttf", "SemiBold"),
-           "body": ("Inter-VF.ttf", "Regular"), "comic": ("Inter-VF.ttf", "Bold"),
+PREMIUM = {"marker": ("BebasNeue-Regular.ttf", None), "cinzel_black": ("BebasNeue-Regular.ttf", None),
+           "caveat": ("Poppins-SemiBold.ttf", None), "oswald": ("Poppins-SemiBold.ttf", None),
+           "body": ("Poppins-Regular.ttf", None), "comic": ("Poppins-SemiBold.ttf", None),
            "kalam": ("RozhaOne-Regular.ttf", None), "mukta": ("Mukta-Bold.ttf", None)}
 YELLOW = (255, 195, 31)
 
@@ -95,7 +95,7 @@ def tag(text, size, bg="#f6f2e8", fg="#1b1717", pointer=True, kind="marker"):
 def big_text(text, size, color="#f1c232", kind="marker"):
     """Premium title: Cinzel Black with a gold gradient, dark outline and soft shadow."""
     text = text.upper()
-    f = hfont(text, size * 1.05, "cinzel_black")
+    f = hfont(text, size * 1.22, "cinzel_black")
     stroke = max(2, size // 26)
     d = ImageDraw.Draw(Image.new("RGBA", (4, 4)))
     b = d.textbbox((0, 0), text, font=f, stroke_width=stroke)

@@ -50,7 +50,7 @@ def font(size, weight="Black"):
 
 @functools.lru_cache(maxsize=16)
 def serif(size):
-    p = os.path.join(FONTS, "TypoGrotesk-Bold.otf")
+    p = os.path.join(FONTS, "Poppins-SemiBold.ttf")
     if os.path.exists(p):
         return ImageFont.truetype(p, max(6, int(size)))
     return font(size, "Bold")
