@@ -331,7 +331,8 @@ def build(setname, sc):
         dflt.update(target=[0, 1.0, 4.0], dist=5.2, height=1.9, mood=0.85)
     elif setname == "map":
         env.append((0, [-30, 0, -10], [60, 0, 0], [0, 0, 50], "table_dark", 1.0, False))
-        env.append((0, [-12, 0.01, 0], [24, 0, 0], [0, 0, 12], "map_ground", 1.0, False))
+        pd = float(sc.get("map_pad", 1.0))
+        env.append((0, [-12 * pd, 0.01, 6 - 6 * pd], [24 * pd, 0, 0], [0, 0, 12 * pd], "map_ground", 1.0, False))
         dflt.update(target=[0, 0, 6.0], dist=9.5, height=13.0, fov=56)
     elif setname == "cliff":   # fort terrace on the edge of a ravine (Akhsi, 1494)
         env.append((0, [-60, 30, 60], [120, 0, 0], [0, -32, 0], "sky_day", 1.0, False))

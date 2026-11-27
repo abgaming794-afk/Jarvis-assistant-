@@ -613,9 +613,14 @@ class ToonShot:
             fr = Image.new("RGBA", (self.W, self.H), (20, 16, 14, 255))
             if self.sc.get("set") == "map":
                 if not hasattr(self, "_mapsub"):
-                    mb = dict(self.b); mb["scene"] = dict(self.sc.get("map", {}), type="map", cam="static")
+                    pd = float(self.sc.get("map_pad", 1.0))
+                    msc = dict(self.sc.get("map", {}), type="map", cam="static")
+                    v = msc.get("view", [60, 5, 100, 38])
+                    cx, cy, hw, hh = (v[0] + v[2]) / 2, (v[1] + v[3]) / 2, (v[2] - v[0]) / 2 * pd, (v[3] - v[1]) / 2 * pd
+                    msc["view"] = [cx - hw, cy - hh, cx + hw, cy + hh]   # bigger map so its edges never enter the frame
+                    mb = dict(self.b); mb["scene"] = msc
                     mb.pop("transition", None)
-                    self._mapsub = ToonShot(mb, self.story, 1600, 800, self.dur, self.env, self.fps)
+                    self._mapsub = ToonShot(mb, self.story, int(1600 * pd), int(800 * pd), self.dur, self.env, self.fps)
                 self.sc["_map_tex"] = self._mapsub.frame_core(t).convert("RGBA").transpose(Image.FLIP_TOP_BOTTOM)
             labels = set3d.render(fr, self.sc, self.story, t, self.dur, self.env, self.fps, self._spec)
             self.sc["_dur"] = self.dur

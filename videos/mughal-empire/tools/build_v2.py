@@ -56,7 +56,7 @@ def S(set_, cam, **k):
 
 def M(view, cam="dolly_in", **mk):
     """3D tilted map."""
-    return {"type": "set3d", "set": "map", "cam": cam, "map": dict(view=view, **mk)}
+    return {"type": "set3d", "set": "map", "cam": cam, "map_pad": 1.6, "map": dict(view=view, **mk)}
 
 
 SC, EXTRA = {}, {}
@@ -102,7 +102,7 @@ SC["s06b"] = {"type": "realdoc", "img": D + "zafar_1858_tytler.jpg", "tone": "se
 SC["s07"] = M([66, 8, 102, 40], "orbit_right", highlight={"IND": "#c0322b", "MMR": "#6a5a8a"},
               routes=[{"from": [77.2, 28.6], "via": [[81.8, 25.4], [88.3, 22.5]], "to": [96.16, 16.8], "delay": 0.3, "time": 2.4, "mover": "ship", "color": "#ffd166"}],
               pins=[{"lon": 77.2, "lat": 28.6, "label": "DELHI", "delay": 0.1}, {"lon": 96.16, "lat": 16.8, "label": "RANGOON", "delay": 2.6}],
-              labels=[{"lon": 87, "lat": 31.5, "t": "2,000+ KM DOOR", "size": 40, "color": "#ffffff", "delay": 1.2}])
+              labels=[{"lon": 87, "lat": 15.5, "t": "2,000+ KM DOOR", "size": 40, "color": "#ffffff", "delay": 1.2}])
 SC["s07b"] = S("cell", "dolly_in", objs=[O("grave", 0, 3.2, h=0.9)], caption="RANGOON · 7 NOV 1862",
                names=[{"t": "BENISHAAN QABR", "x": 0.06, "y": 0.8, "at": 0.5}], source="Bahadur Shah Zafar — indianculture.gov.in", source_by="Govt. of India")
 Y.update(s06=1858, s06b=1858, s07=1858, s07b=1862)
@@ -154,7 +154,7 @@ SC["s19"] = S("palace", "truck_right", actors=[A("babur_boy", 0, 4.4, h=1.05, ex
                                               A("changez", 2.0, 6.0, h=1.5, expr="smug", dim=True, face="left", label="CHANGEZ KHAN · MAA KI TARAF")],
               source="Babur — Encyclopaedia Britannica", source_by="britannica.com")
 SC["s20"] = M(CA, "dolly_out", highlight={"UZB": "#3f8a6a"}, pins=[{"lon": 72.3, "lat": 40.8, "label": "FERGANA", "delay": 0.2}],
-              labels=[{"lon": 66, "lat": 44.0, "t": "CHHOTA SA RAJYA", "size": 40, "color": "#ffffff", "delay": 0.8}])
+              labels=[{"lon": 64, "lat": 37.5, "t": "CHHOTA SA RAJYA", "size": 40, "color": "#ffffff", "delay": 0.8}])
 SC["s20b"] = S("tent", "orbit_left", actors=[A("babur_boy", 0, 4.4, h=1.05, expr="worried"),
                                             A("chacha", -1.8, 5.2, expr="scheming", face="right", pose="cross", label="CHACHA"),
                                             A("chacha", 1.8, 5.2, expr="angry", face="left", pose="fist", label="CHACHA"),
