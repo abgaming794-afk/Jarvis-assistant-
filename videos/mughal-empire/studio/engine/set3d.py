@@ -846,11 +846,9 @@ def draw_map_notes(fr, cam, m, t, u):
         p = cam.project((x, 0.05, z))
         if not p:
             continue
-        spr = toonshot.big_text(lb["t"], int(lb.get("size", 50) * u * 1.35), lb.get("color", "#ffffff"))
-        kk = ease_out(clamp((t - lb.get("delay", 0)) / .4))
-        if kk < 1:
-            al = spr.getchannel("A").point(lambda v, kk=kk: int(v * kk))
-            spr = spr.copy(); spr.putalpha(al)
+        import kinetic
+        spr = kinetic.kinetic(lb["t"], int(lb.get("size", 50) * u * 1.35), t - lb.get("delay", 0), lb.get("anim", "rise"),
+                              lb.get("from"), rule=lb.get("rule", lb.get("size", 50) >= 60))
         fr.alpha_composite(spr, (int(p[0] - spr.width / 2), int(p[1] - spr.height / 2)))
 
 

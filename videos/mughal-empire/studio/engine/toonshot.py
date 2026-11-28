@@ -577,8 +577,13 @@ class ToonShot:
                 if "count" in bg:
                     v = lerp(float(bg.get("from", 0)), float(bg["count"]), ease_out(clamp((t - st) / max(.5, self.dur * .5))))
                     txt = txt.replace("{n}", _indian(int(round(v))))
-                spr = big_text(txt, int(bg.get("size", 120) * u), bg.get("color", "#f1c232"))
-                _paste_center(fr, spr, W * bg.get("x", .5), H * bg.get("y", .2), back_out(clamp((t - st) / .35), 2.2))
+                if "count" in bg:   # counters keep their own rolling number
+                    spr = big_text(txt, int(bg.get("size", 120) * u), bg.get("color", "#f1c232"))
+                    _paste_center(fr, spr, W * bg.get("x", .5), H * bg.get("y", .2), ease_out(clamp((t - st) / .35)))
+                else:
+                    import kinetic
+                    spr = kinetic.kinetic(txt, int(bg.get("size", 120) * u), t - st, bg.get("anim", "rise"), bg.get("from"))
+                    _paste_center(fr, spr, W * bg.get("x", .5), H * bg.get("y", .2), 1.0)
         lt = sc.get("lower")
         if lt:
             k = ease_out(clamp((t - lt.get("at", .3)) / .35))

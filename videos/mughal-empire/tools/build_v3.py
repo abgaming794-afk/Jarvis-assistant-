@@ -58,7 +58,7 @@ def flags(delay0, step=0.12, h=1.8):
     return out
 
 
-NEW["s01"] = GM([5, -10, 140, 62], labels=[{"lon": 75, "lat": 36, "t": "1700", "size": 150, "delay": 0.1},
+NEW["s01"] = GM([5, -10, 140, 62], labels=[{"lon": 75, "lat": 36, "t": "1700", "size": 150, "delay": 0.1, "anim": "roll", "from": "1500"},
                                           {"lon": 75, "lat": 20, "t": "DUNIYA KI 1/4 DAULAT", "size": 60, "delay": 1.4}])
 NEW["s01"]["source"], NEW["s01"]["source_by"] = "Maddison, The World Economy: A Millennial Perspective (OECD, 2001)", "anumaan · India ≈ 24.4% world GDP, saal 1700"
 NEW["s01b"] = GM([58, 6, 98, 40], highlight=IND_HL, hl_from={}, hl_at=1.2,
