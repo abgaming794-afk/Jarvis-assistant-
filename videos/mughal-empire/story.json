@@ -2026,6 +2026,7 @@
    },
    "tags": "[sad]",
    "sfx": [
+    "boom",
     "boom"
    ],
    "year": 1862,
@@ -2041,8 +2042,8 @@
     "actors": [
      {
       "who": "zafar",
-      "x": 0.6,
-      "z": 3.4,
+      "x": 1.1,
+      "z": 3.6,
       "expr": "sad",
       "fade_in": true
      }
@@ -2050,17 +2051,9 @@
     "objs": [
      {
       "prop": "grave",
-      "x": -0.8,
-      "z": 3.0,
-      "h": 0.9,
-      "fade_in": true
-     },
-     {
-      "prop": "grave",
       "x": 0,
       "z": 3.2,
-      "h": 0.9,
-      "exit": true
+      "h": 0.9
      }
     ],
     "big": {
@@ -3952,6 +3945,7 @@
     "enter_tr": "door"
    },
    "sfx": [
+    "boom",
     "boom"
    ],
    "year": 1494,
@@ -5677,6 +5671,7 @@
    },
    "tags": "[sad] [sighs]",
    "sfx": [
+    "boom",
     "boom"
    ],
    "year": 1501,
@@ -6797,6 +6792,7 @@
     "enter_tr": "door"
    },
    "sfx": [
+    "boom",
     "boom"
    ],
    "year": 1524,
