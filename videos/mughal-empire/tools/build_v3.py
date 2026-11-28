@@ -137,7 +137,7 @@ SEQ.append(("study", ["s32", "s32b"]))
 # R court again
 s = sc_of("s33b"); s["set"] = "court"; s["target"] = [0, 1.5, 9.0]; s["dist"] = 2.6
 s["actors"] = [A("ibrahim", 0, 9.0, y=0.6, h=1.4, expr="laugh", talk=True, pose="cross")]; NEW["s33b"] = s
-NEW["s34"] = ov("black", "s33b", t="Babur aaya. Lekin mehmaan bankar nahi.")
+NEW["s34"] = ov("black", "s33b", t="Babur aaye. Lekin mehmaan bankar nahi.")
 SEQ.append(("court", ["s33", "s33b", "s34"]))
 # S Panipat
 for bid in ("s38", "s39"):

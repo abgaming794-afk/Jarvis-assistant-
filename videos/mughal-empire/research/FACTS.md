@@ -81,3 +81,30 @@ Har line: fact · saal/number · source · safe Hindi wording. Estimates hamesha
 52. Ibrahim Lodi apne amiron (nobles) me napasand the; Daulat Khan Lodi aur Alam Khan ne Babur ko bulaya. https://en.wikipedia.org/wiki/Ibrahim_Lodi
 53. Panipat: ~700 gaadiyan kachche chamde ki rassiyon se bandhi (Baburnama); tareeka Usmani (Ottoman); topkhana Ustad Ali Quli. https://en.wikipedia.org/wiki/First_Battle_of_Panipat
 54. Aisan Daulat Begum — Babur ki naani, unki pramukh salahkaar. https://en.wikipedia.org/wiki/Aisan_Daulat_Begum
+
+## Full-video additions (fact-check pass 2)
+55. Rana Sanga: ek aankh bhaiyon ki ladai me (1509 se pehle), haath aur langdahat Khatoli 1517 me; maut 30 Jan 1528, Kalpi, apne saradaron ke zehar ki baat kahi jaati hai · https://en.wikipedia.org/wiki/Rana_Sanga
+56. Chausa 26 June 1539; bhishti Nizam; gaddi par kitni der — aadha din / ek din / do din (alag alag riwayat) · https://en.wikipedia.org/wiki/Battle_of_Chausa
+57. Sher Shah: 178 grain chaandi ka rupiya; purani Uttarapath sadak ko nae sire se banwaya/badhaya; maut 22 May 1545, Kalinjar, barood dhamaka · https://en.wikipedia.org/wiki/Sher_Shah_Suri
+58. Humayun 24 Jan 1556 gire, 27 Jan maut; Lane-Poole: "tumbled out of life" · https://en.wikipedia.org/wiki/Humayun
+59. Kalanaur taajposhi 14 Feb 1556; Hemu ne Tughlaqabad (7 Oct 1556) jeet kar Delhi li · https://en.wikipedia.org/wiki/Hemu
+60. Bairam Khan ko March/April 1560 me hataya, Akbar 17 saal · https://en.wikipedia.org/wiki/Bairam_Khan
+61. Chittor 1568 katleaam (~30,000, Abul Fazl); Haldighati 18 June 1576 · https://en.wikipedia.org/wiki/Siege_of_Chittorgarh_(1567%E2%80%931568) ; https://en.wikipedia.org/wiki/Battle_of_Haldighati
+62. Ibadat Khana 1575 (1578 se gair-Muslim bhi); Todar Mal dahsala 1580 (10 saal ka ausat) · https://en.wikipedia.org/wiki/Ibadat_Khana ; https://en.wikipedia.org/wiki/Todar_Mal
+63. EIC charter 31 Dec 1600; Abul Fazl ki hatya 12 Aug 1602, Bir Singh Deo, Salim ke kehne par (Tuzuk me Jahangir ne maana) · https://en.wikipedia.org/wiki/East_India_Company ; https://en.wikipedia.org/wiki/Abul_Fazl
+64. Insaaf ki zanjeer: sona, 30 gaz, 60 ghantiyan (Tuzuk-i-Jahangiri); Guru Arjan Dev ji Lahore me shaheed, 30 May 1606 · https://en.wikipedia.org/wiki/Jahangir ; https://en.wikipedia.org/wiki/Guru_Arjan
+65. Nur Jahan: 25 May 1611 shaadi (khitaab Nur Mahal), 1616 se Nur Jahan; 6 goliyon me 4 sher · https://en.wikipedia.org/wiki/Nur_Jahan
+66. Bichitr, "Jahangir Preferring a Sufi Shaikh to Kings", c. 1615–18, Freer Gallery (James I kone me) · https://asia.si.edu/object/F1942.15a/
+67. Mumtaz Mahal 17 June 1631 Burhanpur, 14va bachcha; Kandahar 1649 haath se gaya, 1649/1652/1653 ki koshishen nakaam; Deccan akaal 1630–32 (anumaan 74 lakh tak) · https://en.wikipedia.org/wiki/Mumtaz_Mahal ; https://en.wikipedia.org/wiki/Deccan_famine_of_1630%E2%80%931632
+68. Samugarh 29 May 1658; Dara ko gande haathi par ghumaya (Bernier), 30 Aug 1659 sir kaata; Shuja 1660 Arakan · https://en.wikipedia.org/wiki/Battle_of_Samugarh ; https://en.wikipedia.org/wiki/Dara_Shikoh
+69. Shaista Khan par hamla 5 Apr 1663; Surat 1664; Agra se nikalna Aug 1666; Raigad rajyabhishek 6 June 1674 · https://en.wikipedia.org/wiki/Shivaji
+70. Guru Tegh Bahadur ji shaheed 11 Nov 1675, Chandni Chowk (Gurdwara Sis Ganj) · https://en.wikipedia.org/wiki/Guru_Tegh_Bahadur
+71. Golconda ghera Jan–Sep 1687, rishwat se darwaza; Sambhaji ko 11 Mar 1689 maut · https://en.wikipedia.org/wiki/Siege_of_Golconda ; https://en.wikipedia.org/wiki/Sambhaji
+72. Aurangzeb ki wasiyat: topiyan bech kar 4 rupaye 2 aane kafan ke liye; Khuldabad · https://en.wikipedia.org/wiki/Tomb_of_Aurangzeb
+73. Jajau June 1707; Bahadur Shah I janm 14 Oct 1643 (63 saal); Jahandar Shah 1712–13 (~11 mahine) · https://en.wikipedia.org/wiki/Battle_of_Jajau ; https://en.wikipedia.org/wiki/Jahandar_Shah
+74. Surman dal 1715 me Farrukhsiyar se mila; Hamilton ne Aug/Oct 1715 ilaaj kiya · https://en.wikipedia.org/wiki/William_Hamilton_(surgeon)
+75. Koh-i-Noor: Nadir → Durrani → Ranjit Singh → British 1849 → Queen Mother ka taj, Tower of London; naam wali kahani = kissa · https://en.wikipedia.org/wiki/Koh-i-Noor
+76. Panipat-III 14 Jan 1761; Bengal akaal 1770 (~1 crore, anumaan); Ghulam Qadir ne Aug 1788 Shah Alam II ko andha kiya · https://en.wikipedia.org/wiki/Great_Bengal_famine_of_1770 ; https://en.wikipedia.org/wiki/Ghulam_Qadir
+77. Zafar 28 Sep 1837 gaddi, 61 saal; Canning 1856: waaris 'badshah' nahin; 1835 Company ke sikkon se badshah ka naam hata · https://en.wikipedia.org/wiki/Bahadur_Shah_II ; https://en.wikipedia.org/wiki/Coinage_of_India
+78. Government of India Act 1858 → Crown raj · https://en.wikipedia.org/wiki/Government_of_India_Act_1858
+79. Zafar giraftari 20 Sep, shahzaade 22 Sep 1857 (Dalrymple, *The Last Mughal*).
