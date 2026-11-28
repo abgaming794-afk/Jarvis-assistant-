@@ -641,7 +641,7 @@ class ToonShot:
                 fg = motion.fg_layer(json.dumps(items, sort_keys=True), self.CW, self.CH)
                 fr.alpha_composite(motion.layer_view(fg, self.CW, self.CH, self.W, self.H, z, ox, oy, motion.LAYER_K["fg"], focus))
         elif self.type == "set3d":
-            sky = set3d.cloud_k(self.sc, t, self.dur) > 0
+            sky = set3d.tr_state(self.sc, t, self.dur)[0] == "clouds" and set3d.cloud_k(self.sc, t, self.dur) > 0
             fr = Image.new("RGBA", (self.W, self.H), (150, 190, 214, 255) if sky else (20, 16, 14, 255))
             if self.sc.get("set") == "map":
                 if not hasattr(self, "_mapsub"):
@@ -698,7 +698,7 @@ class ToonShot:
         if sc.get("source"):
             docs3d.draw_source(fr, sc["source"], sc.get("source_by", ""), t, sc.get("source_at", .6))
         if self.type == "set3d":
-            set3d.draw_clouds(fr, set3d.cloud_k(sc, t, self.dur), t, hash(self.b.get("id", "")) % 5)
+            set3d.apply_transition(fr, sc, t, self.dur)
         return fr
 
     def _overlay(self, fr, t):

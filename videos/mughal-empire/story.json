@@ -351,8 +351,7 @@
       0,
       52
      ]
-    ],
-    "enter_clouds": false
+    ]
    },
    "tags": "[dramatically]",
    "sfx": [
@@ -499,7 +498,7 @@
       52
      ]
     ],
-    "exit_clouds": true
+    "exit_tr": "zoom"
    },
    "tags": "[dramatically]",
    "year": 1700,
@@ -611,7 +610,7 @@
       50.0
      ]
     ],
-    "enter_clouds": true
+    "enter_tr": "zoom"
    },
    "sfx": [
     "whoosh"
@@ -727,7 +726,7 @@
       50.0
      ]
     ],
-    "exit_clouds": true
+    "exit_tr": "clouds"
    },
    "tags": "[softly]",
    "sfx": [
@@ -879,7 +878,7 @@
       52.0
      ]
     ],
-    "enter_clouds": true
+    "enter_tr": "clouds"
    },
    "tags": "[slowly]",
    "sfx": [
@@ -1792,7 +1791,7 @@
       52
      ]
     ],
-    "exit_clouds": true
+    "exit_tr": "whip"
    },
    "year": 1858,
    "chapter_tag": "Duniya ki 1/4 daulat"
@@ -1922,11 +1921,11 @@
       50.0
      ]
     ],
-    "enter_clouds": true,
-    "exit_clouds": true
+    "enter_tr": "whip",
+    "exit_tr": "door"
    },
    "sfx": [
-    "whoosh"
+    "swoosh"
    ],
    "year": 1858,
    "chapter_tag": "Duniya ki 1/4 daulat"
@@ -2023,11 +2022,11 @@
       52
      ]
     ],
-    "enter_clouds": true
+    "enter_tr": "door"
    },
    "tags": "[sad]",
    "sfx": [
-    "whoosh"
+    "boom"
    ],
    "year": 1862,
    "chapter_tag": "Duniya ki 1/4 daulat"
@@ -2141,7 +2140,7 @@
       52
      ]
     ],
-    "exit_clouds": true
+    "exit_tr": "wipe"
    },
    "tags": "[curious]",
    "chapter_tag": "Duniya ki 1/4 daulat"
@@ -2281,11 +2280,11 @@
       52.0
      ]
     ],
-    "enter_clouds": true
+    "enter_tr": "wipe"
    },
    "tags": "[mysteriously]",
    "sfx": [
-    "whoosh"
+    "swoosh"
    ],
    "chapter_tag": "Duniya ki 1/4 daulat"
   },
@@ -2893,7 +2892,7 @@
       52
      ]
     ],
-    "exit_clouds": true
+    "exit_tr": "whip"
    },
    "sfx": [
     "stamp"
@@ -3027,11 +3026,11 @@
       52
      ]
     ],
-    "enter_clouds": true,
-    "exit_clouds": true
+    "enter_tr": "whip",
+    "exit_tr": "zoom"
    },
    "sfx": [
-    "whoosh",
+    "swoosh",
     "cash"
    ],
    "chapter_tag": "Duniya ki 1/4 daulat"
@@ -3153,7 +3152,7 @@
       50.0
      ]
     ],
-    "enter_clouds": true
+    "enter_tr": "zoom"
    },
    "sfx": [
     "whoosh",
@@ -3535,7 +3534,7 @@
       50.0
      ]
     ],
-    "exit_clouds": true
+    "exit_tr": "clouds"
    },
    "year": 1494,
    "chapter_tag": "Babur: Fergana se Panipat"
@@ -3640,7 +3639,7 @@
       52
      ]
     ],
-    "enter_clouds": true
+    "enter_tr": "clouds"
    },
    "sfx": [
     "whoosh",
@@ -3790,7 +3789,7 @@
       52
      ]
     ],
-    "exit_clouds": true
+    "exit_tr": "door"
    },
    "sfx": [
     "boom"
@@ -3950,10 +3949,10 @@
       52.0
      ]
     ],
-    "enter_clouds": true
+    "enter_tr": "door"
    },
    "sfx": [
-    "whoosh"
+    "boom"
    ],
    "year": 1494,
    "chapter_tag": "Babur: Fergana se Panipat"
@@ -4602,7 +4601,7 @@
       52
      ]
     ],
-    "exit_clouds": true
+    "exit_tr": "wipe"
    },
    "year": 1494,
    "chapter_tag": "Babur: Fergana se Panipat"
@@ -4726,11 +4725,11 @@
       52
      ]
     ],
-    "enter_clouds": true,
-    "exit_clouds": true
+    "enter_tr": "wipe",
+    "exit_tr": "whip"
    },
    "sfx": [
-    "whoosh"
+    "swoosh"
    ],
    "year": 1495,
    "chapter_tag": "Babur: Fergana se Panipat"
@@ -4863,11 +4862,11 @@
       52.0
      ]
     ],
-    "enter_clouds": true
+    "enter_tr": "whip"
    },
    "tags": "[dreamy]",
    "sfx": [
-    "whoosh"
+    "swoosh"
    ],
    "year": 1496,
    "chapter_tag": "Babur: Fergana se Panipat"
@@ -5523,7 +5522,7 @@
       52
      ]
     ],
-    "exit_clouds": true
+    "exit_tr": "smoke"
    },
    "sfx": [
     "tension"
@@ -5674,11 +5673,11 @@
       52.0
      ]
     ],
-    "enter_clouds": true
+    "enter_tr": "smoke"
    },
    "tags": "[sad] [sighs]",
    "sfx": [
-    "whoosh"
+    "boom"
    ],
    "year": 1501,
    "chapter_tag": "Babur: Fergana se Panipat"
@@ -6189,7 +6188,7 @@
       52
      ]
     ],
-    "exit_clouds": true
+    "exit_tr": "wipe"
    },
    "sfx": [
     "drum"
@@ -6303,10 +6302,10 @@
       52.0
      ]
     ],
-    "enter_clouds": true
+    "enter_tr": "wipe"
    },
    "sfx": [
-    "whoosh"
+    "swoosh"
    ],
    "year": 1504,
    "chapter_tag": "Babur: Fergana se Panipat"
@@ -6550,7 +6549,7 @@
       52
      ]
     ],
-    "exit_clouds": true
+    "exit_tr": "zoom"
    },
    "year": 1519,
    "chapter_tag": "Babur: Fergana se Panipat"
@@ -6671,8 +6670,8 @@
       50.0
      ]
     ],
-    "enter_clouds": true,
-    "exit_clouds": true
+    "enter_tr": "zoom",
+    "exit_tr": "door"
    },
    "sfx": [
     "whoosh"
@@ -6795,10 +6794,10 @@
       52
      ]
     ],
-    "enter_clouds": true
+    "enter_tr": "door"
    },
    "sfx": [
-    "whoosh"
+    "boom"
    ],
    "year": 1524,
    "chapter_tag": "Babur: Fergana se Panipat"
@@ -6961,7 +6960,7 @@
       52
      ]
     ],
-    "exit_clouds": true
+    "exit_tr": "whip"
    },
    "year": 1524,
    "chapter_tag": "Babur: Fergana se Panipat"
@@ -7060,10 +7059,10 @@
       52
      ]
     ],
-    "enter_clouds": true
+    "enter_tr": "whip"
    },
    "sfx": [
-    "whoosh",
+    "swoosh",
     "page"
    ],
    "year": 1524,
@@ -7206,7 +7205,7 @@
       52
      ]
     ],
-    "exit_clouds": true
+    "exit_tr": "wipe"
    },
    "sfx": [
     "page"
@@ -7349,11 +7348,11 @@
       52.0
      ]
     ],
-    "enter_clouds": true
+    "enter_tr": "wipe"
    },
    "tags": "[mocking] [laughs]",
    "sfx": [
-    "whoosh"
+    "swoosh"
    ],
    "year": 1524,
    "chapter_tag": "Babur: Fergana se Panipat"
@@ -7600,7 +7599,7 @@
       52
      ]
     ],
-    "exit_clouds": true
+    "exit_tr": "smoke"
    },
    "tags": "[dramatically]",
    "sfx": [
@@ -7941,10 +7940,10 @@
       52.0
      ]
     ],
-    "enter_clouds": true
+    "enter_tr": "smoke"
    },
    "sfx": [
-    "whoosh",
+    "boom",
     "drum"
    ],
    "chapter": "Panipat, 1526",
@@ -14566,7 +14565,7 @@
       52
      ]
     ],
-    "exit_clouds": true
+    "exit_tr": "zoom"
    },
    "year": 1526,
    "chapter_tag": "Panipat, 1526"
@@ -14696,7 +14695,7 @@
       52
      ]
     ],
-    "enter_clouds": true
+    "enter_tr": "zoom"
    },
    "sfx": [
     "whoosh",
@@ -14829,7 +14828,7 @@
       52
      ]
     ],
-    "exit_clouds": true
+    "exit_tr": "whip"
    },
    "tags": "[dramatically]",
    "sfx": [
@@ -14949,11 +14948,11 @@
       52
      ]
     ],
-    "enter_clouds": true
+    "enter_tr": "whip"
    },
    "tags": "[mysteriously]",
    "sfx": [
-    "whoosh"
+    "swoosh"
    ],
    "year": 1527,
    "chapter_tag": "Panipat, 1526"
@@ -15079,8 +15078,7 @@
       0,
       52
      ]
-    ],
-    "exit_clouds": false
+    ]
    },
    "tags": "[mysteriously]",
    "sfx": [

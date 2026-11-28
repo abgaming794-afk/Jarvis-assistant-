@@ -54,7 +54,7 @@ m = sc_of("s07")["map"]; NEW["s07"] = GM([70, 10, 102, 34], highlight=m["highlig
                                        labels=[{"lon": 87, "lat": 15.0, "t": "2,000+ KM DOOR", "size": 40, "delay": 1.2}])
 SEQ.append(("map", ["s07"]))
 # E Rangoon cell
-NEW["s08"] = {"type": "set3d", "set": "cell", "actors": [A("zafar", 0.6, 3.4, expr="sad")], "objs": [O("grave", -0.8, 3.0, h=0.9)],
+NEW["s08"] = {"type": "set3d", "set": "cell", "actors": [A("zafar", 1.1, 3.6, expr="sad")], "objs": [O("grave", 0, 3.2, h=0.9)],
               "big": {"t": "KAISE?", "y": 0.16, "at": 0.6}, "target": [0, 0.9, 3.2], "dist": 4.2}
 SEQ.append(("cell", ["s07b", "s08"]))
 # F court: the big questions
@@ -209,11 +209,38 @@ for loc, ids in SEQ:
     for bid, sc in zip(ids, scenes):
         B[bid]["scene"] = sc
         B[bid].pop("transition", None)
-    # seamless location change: rise into clouds at the end, dive out of them at the start
-    B[ids[0]]["scene"]["enter_clouds"] = ids[0] != order[0]
-    B[ids[-1]]["scene"]["exit_clouds"] = ids[-1] != order[-1]
-    if ids[0] != order[0]:
-        B[ids[0]]["sfx"] = ["whoosh"] + [x for x in B[ids[0]].get("sfx", []) if x != "whoosh"]
+    # (transition kinds are assigned after all shots are built)
+
+# ------------------------------------------------------------------ seamless location changes: a different 3D move each time
+TR = ["zoom",    # court 1700 -> map            (push through the frame into the map)
+      "clouds",  # map -> Delhi fort             (dive down from the map)
+      "whip",    # Delhi fort -> map
+      "door",    # map -> Rangoon cell           (through the dark doorway)
+      "wipe",    # cell -> court                 (a pillar crosses the lens)
+      "whip",    # court -> Bengal river
+      "zoom",    # river -> map
+      "clouds",  # map -> Akhsi cliff            (dive down to Fergana)
+      "door",    # cliff -> Fergana palace
+      "wipe",    # palace -> tent
+      "whip",    # tent -> Samarkand fort
+      "smoke",   # Samarkand -> wandering plains (dust)
+      "wipe",    # plains -> Kabul fort
+      "zoom",    # Kabul fort -> map
+      "door",    # map -> Lodi's court
+      "whip",    # court -> Lahore study
+      "wipe",    # study -> court
+      "smoke",   # court -> Panipat (war dust)
+      "zoom",    # Panipat -> court (Mughal saltanat)
+      "whip"]    # court -> Mewar fort
+SFX = {"zoom": "whoosh", "clouds": "whoosh", "whip": "swoosh", "door": "boom", "wipe": "swoosh", "smoke": "boom"}
+assert len(TR) == len(SEQ) - 1, (len(TR), len(SEQ))
+for j in range(len(SEQ) - 1):
+    last, first = SEQ[j][1][-1], SEQ[j + 1][1][0]
+    B[last]["scene"]["exit_tr"] = TR[j]
+    B[first]["scene"]["enter_tr"] = TR[j]
+    B[first]["sfx"] = [SFX[TR[j]]] + [x for x in B[first].get("sfx", []) if x not in ("whoosh", "swoosh")]
+for b in story["beats"]:
+    b["scene"].pop("exit_clouds", None); b["scene"].pop("enter_clouds", None)
 
 story["auto_transitions"] = False
 story["music"] = "investigate"

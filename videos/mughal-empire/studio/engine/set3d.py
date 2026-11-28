@@ -455,15 +455,21 @@ def key_of(sc, dflt):
             sc.get("fov", dflt["fov"])]
 
 
+def tr_state(sc, t, dur):
+    """Location-change transition at this beat's edges -> (kind, k 0..1, side 'exit'|'enter')."""
+    T = min(sc.get("tr_time", 0.7), dur * 0.3)
+    ex = sc.get("exit_tr") or ("clouds" if sc.get("exit_clouds") else None)
+    en = sc.get("enter_tr") or ("clouds" if sc.get("enter_clouds") else None)
+    if ex and t > dur - T:
+        return ex, clamp((t - (dur - T)) / T), "exit"
+    if en and t < T:
+        return en, 1 - clamp(t / T), "enter"
+    return None, 0.0, None
+
+
 def cloud_k(sc, t, dur):
-    """0..1 cloud cover / rise amount for the seamless 'fly through clouds' location change."""
-    T = min(sc.get("cloud_time", 0.75), dur * 0.3)
-    k = 0.0
-    if sc.get("exit_clouds") and t > dur - T:
-        k = max(k, clamp((t - (dur - T)) / T))
-    if sc.get("enter_clouds") and t < T:
-        k = max(k, 1 - clamp(t / T))
-    return k
+    kind, k, _ = tr_state(sc, t, dur)
+    return k if kind in ("clouds", "smoke") else 0.0
 
 
 def _smoother(x):
@@ -533,10 +539,20 @@ def cam_pose(sc, dflt, t, dur):
             yaw += math.radians(22 * amt) * (k - 0.5)
         elif mv == "fly":
             h += 3.0 * amt * (1 - k); dist += 0.35 * dist * amt * (1 - k)
-    ck = cloud_k(sc, t, dur)
-    if ck > 0:   # rise into / dive out of the clouds
+    kind, ck, side = tr_state(sc, t, dur)
+    sgn = 1 if side == "exit" else -1
+    if kind == "clouds" and ck > 0:      # rise into / dive out of the clouds
         h += (ck ** 2) * max(7.0, h * 0.9)
         dist *= 1 + 0.4 * ck ** 2
+    elif kind in ("zoom", "door") and ck > 0:   # push hard into the frame centre / the doorway
+        dist *= 1 - 0.85 * ck ** 2
+        h += (tgt[1] + 0.4 - h) * 0.6 * ck ** 2 if kind == "door" else 0
+    elif kind == "whip" and ck > 0:      # fast pan, same direction across the cut
+        yaw += math.radians(50) * sgn * ck ** 2
+    elif kind == "smoke" and ck > 0:
+        dist *= 1 - 0.3 * ck ** 2
+    elif kind == "wipe" and ck > 0:
+        tgt = tgt + np.array([0.6 * sgn * ck, 0, 0])
     pos = tgt + np.array([math.sin(yaw) * -dist, h - tgt[1], math.cos(yaw) * -dist])
     pos = pos + np.array([0.025 * math.sin(t * 0.9), 0.015 * math.sin(t * 1.3), 0])
     return pos, tgt, fov
@@ -860,3 +876,81 @@ def draw_clouds(fr, k, t, seed=0):
         ox = int(-w2 / 2 + W / 2 + math.sin(t * sp + i) * W * .05)
         oy = int(-h2 / 2 + H / 2 + (t * 120 * sp) % 40)
         fr.alpha_composite(layer, (ox, oy))
+
+
+# ------------------------------------------------------------------ seamless transition effects (2D, after the 3D frame)
+def _radial_zoom(fr, k, n=5):
+    W, H = fr.size
+    acc = fr.copy()
+    for i in range(1, n + 1):
+        z = 1 + 0.06 * k * i
+        w2, h2 = int(W * z), int(H * z)
+        big = fr.resize((w2, h2), Image.BILINEAR).crop(((w2 - W) // 2, (h2 - H) // 2, (w2 - W) // 2 + W, (h2 - H) // 2 + H))
+        acc = Image.blend(acc, big, 1.0 / (i + 1))
+    return acc
+
+
+def _hsmear(fr, k):
+    W, H = fr.size
+    n = 1 + int(k * 40)
+    return fr.resize((max(4, W // n), H), Image.BILINEAR).resize((W, H), Image.BILINEAR)
+
+
+@functools.lru_cache(maxsize=4)
+def _pillar(W, H):
+    """Tall carved sandstone pillar silhouette (foreground wipe), a bit wider than the frame."""
+    w = int(W * 1.15)
+    im = Image.new("RGBA", (w, H), (0, 0, 0, 0))
+    d = ImageDraw.Draw(im)
+    d.rectangle([0, 0, w, H], fill=(58, 30, 22, 255))
+    for i in range(0, w, max(8, w // 14)):
+        d.line([(i, 0), (i, H)], fill=(74, 40, 28, 255), width=max(2, w // 60))
+    d.rectangle([0, 0, w, int(H * .08)], fill=(150, 110, 40, 255))
+    d.rectangle([0, int(H * .92), w, H], fill=(150, 110, 40, 255))
+    for edge in (0, w - max(6, w // 40)):
+        d.rectangle([edge, 0, edge + max(6, w // 40), H], fill=(201, 160, 60, 255))
+    grad = Image.new("L", (w, 1))
+    grad.putdata([int(200 - 120 * abs(x / w - .5) * 2) for x in range(w)])
+    shade_ = Image.new("RGBA", (w, H), (0, 0, 0, 0))
+    shade_.putalpha(grad.resize((w, H)).point(lambda v: 255 - v))
+    im.alpha_composite(shade_)
+    return im
+
+
+def apply_transition(fr, sc, t, dur):
+    """Seamless location change. At the cut instant (k = 1) the frame is fully covered, so no cut is visible."""
+    kind, k, side = tr_state(sc, t, dur)
+    if not kind or k <= 0:
+        return fr
+    W, H = fr.size
+    if kind == "clouds":
+        draw_clouds(fr, k, t, 1)
+    elif kind == "smoke":
+        draw_clouds(fr, k, t, 3)
+        tint = Image.new("RGBA", (W, H), (96, 78, 60, int(160 * k)))
+        fr.alpha_composite(tint)
+    elif kind == "zoom":
+        z = _radial_zoom(fr, k)
+        fr.paste(z, (0, 0))
+        fr.alpha_composite(Image.new("RGBA", (W, H), (255, 248, 236, int(255 * clamp((k - .55) / .45) ** 1.5))))
+    elif kind == "whip":
+        sm = _hsmear(fr, k)
+        fr.paste(sm, (0, 0))
+        fr.alpha_composite(Image.new("RGBA", (W, H), (30, 24, 20, int(255 * clamp((k - .7) / .3) ** 2))))
+    elif kind == "door":   # dark iris closing into the doorway / opening out of it
+        m = Image.new("L", (W, H), 255)
+        r = (1 - k) * math.hypot(W, H) * .6
+        ImageDraw.Draw(m).ellipse([W / 2 - r, H / 2 - r * .9, W / 2 + r, H / 2 + r * .9], fill=0)
+        m = m.filter(ImageFilter.GaussianBlur(W * .03))
+        blk = Image.new("RGBA", (W, H), (8, 6, 5, 255))
+        blk.putalpha(m)
+        fr.alpha_composite(blk)
+    elif kind == "wipe":   # a near-camera pillar crosses the lens
+        pil = _pillar(W, H)
+        if side == "exit":
+            x = int(W - k * (W + pil.width - W) - k * W * 0.0) if False else int(W * (1 - k) - (pil.width - W) * k)
+        else:
+            x = int(W * k - pil.width)
+        blur = pil.filter(ImageFilter.BoxBlur(max(1, int(W * .01 * (1 - abs(2 * k - 1) * 0)))))
+        fr.alpha_composite(blur, (x, 0)) if x >= 0 else fr.alpha_composite(blur.crop((-x, 0, blur.width, H)), (0, 0))
+    return fr
