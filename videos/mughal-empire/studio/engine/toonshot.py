@@ -165,6 +165,20 @@ def light_map(view, W, H, hl_json="{}"):
             if len(ring) > 2:
                 d.polygon(ring, fill=hexc(shade(col, 0.85)) if col else (44, 50, 58, 255),
                           outline=hexc(shade(col, 1.35)) if col else (92, 104, 118, 255), width=lw)
+    if hl:   # glowing edge on highlighted territory (Nitish-style)
+        gl = Image.new("RGBA", (W, H), (0, 0, 0, 0))
+        gd = ImageDraw.Draw(gl)
+        for f in _world():
+            iso, name = f["properties"].get("iso"), f["properties"].get("name")
+            if hl.get(iso) or hl.get(name):
+                for poly in polys(f["geometry"]):
+                    ring = [P(x, y) for x, y in poly[0]]
+                    if len(ring) > 2:
+                        gd.line(ring + [ring[0]], fill=(255, 214, 90, 230), width=max(2, lw * 5))
+        if hl.get("IND") or hl.get("India"):
+            draw_india(gd, P, (0, 0, 0, 0), (255, 214, 90, 230), max(2, lw * 5))
+        img.alpha_composite(gl.filter(ImageFilter.GaussianBlur(max(2, W / 500))))
+        d = ImageDraw.Draw(img)
     icol = hl.get("IND") or hl.get("India")
     draw_india(d, P, hexc(shade(icol, .85)) if icol else (44, 50, 58, 255), hexc(shade(icol, 1.35)) if icol else (92, 104, 118, 255), lw)
     arr = np.asarray(img.convert("RGB"), np.float32)

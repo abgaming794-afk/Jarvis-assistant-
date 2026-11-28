@@ -383,145 +383,28 @@
      "labels": [
       {
        "lon": 79,
-       "lat": 25,
+       "lat": 21.5,
        "t": "MUGHAL HINDUSTAN",
-       "size": 60,
+       "size": 64,
        "delay": 1.4
+      }
+     ],
+     "medallions": [
+      {
+       "lon": 77.2,
+       "lat": 28.6,
+       "img": "/home/user/Jarvis-assistant-/videos/mughal-empire/docs/aurangzeb_c1700.jpg",
+       "crop": [
+        0.47,
+        0.335,
+        0.3
+       ],
+       "label": "AURANGZEB|1658 – 1707",
+       "pin": "Dilli",
+       "delay": 1.3
       }
      ]
     },
-    "objs": [
-     {
-      "prop": "mughal_flag",
-      "x": -0.606,
-      "z": 30.213,
-      "y": 0.25,
-      "h": 1.8,
-      "anim": "pop",
-      "delay": 1.2,
-      "fade_in": true
-     },
-     {
-      "prop": "mughal_flag",
-      "x": 3.257,
-      "z": 27.762,
-      "y": 0.25,
-      "h": 1.8,
-      "anim": "pop",
-      "delay": 1.32,
-      "fade_in": true
-     },
-     {
-      "prop": "mughal_flag",
-      "x": 5.454,
-      "z": 25.392,
-      "y": 0.25,
-      "h": 1.8,
-      "anim": "pop",
-      "delay": 1.44,
-      "fade_in": true
-     },
-     {
-      "prop": "mughal_flag",
-      "x": 6.06,
-      "z": 24.249,
-      "y": 0.25,
-      "h": 1.8,
-      "anim": "pop",
-      "delay": 1.56,
-      "fade_in": true
-     },
-     {
-      "prop": "mughal_flag",
-      "x": 3.485,
-      "z": 23.595,
-      "y": 0.25,
-      "h": 1.8,
-      "anim": "pop",
-      "delay": 1.68,
-      "fade_in": true
-     },
-     {
-      "prop": "mughal_flag",
-      "x": 1.97,
-      "z": 20.817,
-      "y": 0.25,
-      "h": 1.8,
-      "anim": "pop",
-      "delay": 1.8,
-      "fade_in": true
-     },
-     {
-      "prop": "mughal_flag",
-      "x": 11.439,
-      "z": 22.941,
-      "y": 0.25,
-      "h": 1.8,
-      "anim": "pop",
-      "delay": 1.92,
-      "fade_in": true
-     },
-     {
-      "prop": "mughal_flag",
-      "x": 15.454,
-      "z": 21.471,
-      "y": 0.25,
-      "h": 1.8,
-      "anim": "pop",
-      "delay": 2.04,
-      "fade_in": true
-     },
-     {
-      "prop": "mughal_flag",
-      "x": 4.697,
-      "z": 19.428,
-      "y": 0.25,
-      "h": 1.8,
-      "anim": "pop",
-      "delay": 2.16,
-      "fade_in": true
-     },
-     {
-      "prop": "mughal_flag",
-      "x": 4.318,
-      "z": 15.751,
-      "y": 0.25,
-      "h": 1.8,
-      "anim": "pop",
-      "delay": 2.28,
-      "fade_in": true
-     },
-     {
-      "prop": "mughal_flag",
-      "x": 6.363,
-      "z": 16.242,
-      "y": 0.25,
-      "h": 1.8,
-      "anim": "pop",
-      "delay": 2.4,
-      "fade_in": true
-     },
-     {
-      "prop": "mughal_flag",
-      "x": 1.136,
-      "z": 26.7,
-      "y": 0.25,
-      "h": 1.8,
-      "anim": "pop",
-      "delay": 2.52,
-      "fade_in": true
-     },
-     {
-      "prop": "mughal_flag",
-      "x": 3.636,
-      "z": 29.886,
-      "y": 0.25,
-      "h": 1.8,
-      "anim": "pop",
-      "delay": 2.64,
-      "fade_in": true
-     }
-    ],
     "path": {
      "F": [
       [
@@ -637,125 +520,34 @@
      "labels": [
       {
        "lon": 79,
-       "lat": 25,
+       "lat": 21.5,
        "t": "MUGHAL HINDUSTAN",
-       "size": 60
+       "size": 64
       },
       {
        "lon": 79,
-       "lat": 20.0,
+       "lat": 19.0,
        "t": "~40 LAKH KM²  ·  10+ CRORE LOG",
        "size": 34,
        "delay": 0.6
       }
+     ],
+     "medallions": [
+      {
+       "lon": 77.2,
+       "lat": 28.6,
+       "img": "/home/user/Jarvis-assistant-/videos/mughal-empire/docs/aurangzeb_c1700.jpg",
+       "crop": [
+        0.47,
+        0.335,
+        0.3
+       ],
+       "label": "AURANGZEB|1658 – 1707",
+       "pin": "Dilli",
+       "delay": 0.0
+      }
      ]
     },
-    "objs": [
-     {
-      "prop": "mughal_flag",
-      "x": -0.606,
-      "z": 30.213,
-      "y": 0.25,
-      "h": 1.8,
-      "anim": "bob"
-     },
-     {
-      "prop": "mughal_flag",
-      "x": 3.257,
-      "z": 27.762,
-      "y": 0.25,
-      "h": 1.8,
-      "anim": "bob"
-     },
-     {
-      "prop": "mughal_flag",
-      "x": 5.454,
-      "z": 25.392,
-      "y": 0.25,
-      "h": 1.8,
-      "anim": "bob"
-     },
-     {
-      "prop": "mughal_flag",
-      "x": 6.06,
-      "z": 24.249,
-      "y": 0.25,
-      "h": 1.8,
-      "anim": "bob"
-     },
-     {
-      "prop": "mughal_flag",
-      "x": 3.485,
-      "z": 23.595,
-      "y": 0.25,
-      "h": 1.8,
-      "anim": "bob"
-     },
-     {
-      "prop": "mughal_flag",
-      "x": 1.97,
-      "z": 20.817,
-      "y": 0.25,
-      "h": 1.8,
-      "anim": "bob"
-     },
-     {
-      "prop": "mughal_flag",
-      "x": 11.439,
-      "z": 22.941,
-      "y": 0.25,
-      "h": 1.8,
-      "anim": "bob"
-     },
-     {
-      "prop": "mughal_flag",
-      "x": 15.454,
-      "z": 21.471,
-      "y": 0.25,
-      "h": 1.8,
-      "anim": "bob"
-     },
-     {
-      "prop": "mughal_flag",
-      "x": 4.697,
-      "z": 19.428,
-      "y": 0.25,
-      "h": 1.8,
-      "anim": "bob"
-     },
-     {
-      "prop": "mughal_flag",
-      "x": 4.318,
-      "z": 15.751,
-      "y": 0.25,
-      "h": 1.8,
-      "anim": "bob"
-     },
-     {
-      "prop": "mughal_flag",
-      "x": 6.363,
-      "z": 16.242,
-      "y": 0.25,
-      "h": 1.8,
-      "anim": "bob"
-     },
-     {
-      "prop": "mughal_flag",
-      "x": 1.136,
-      "z": 26.7,
-      "y": 0.25,
-      "h": 1.8,
-      "anim": "bob"
-     },
-     {
-      "prop": "mughal_flag",
-      "x": 3.636,
-      "z": 29.886,
-      "y": 0.25,
-      "h": 1.8,
-      "anim": "bob"
-     }
-    ],
     "source": "Mughal Empire (c. 1690–1700) — Wikipedia; World History Encyclopedia",
     "source_by": "anumaan",
     "path": {
@@ -872,112 +664,34 @@
      "labels": [
       {
        "lon": 79,
-       "lat": 25,
+       "lat": 21.5,
        "t": "MUGHAL HINDUSTAN",
-       "size": 60
+       "size": 64
       },
       {
        "lon": 79,
-       "lat": 20.0,
+       "lat": 19.0,
        "t": "~40 LAKH KM²  ·  10+ CRORE LOG",
        "size": 34,
        "delay": 0.6
       }
+     ],
+     "medallions": [
+      {
+       "lon": 77.2,
+       "lat": 28.6,
+       "img": "/home/user/Jarvis-assistant-/videos/mughal-empire/docs/aurangzeb_c1700.jpg",
+       "crop": [
+        0.47,
+        0.335,
+        0.3
+       ],
+       "label": "AURANGZEB|1658 – 1707",
+       "pin": "Dilli",
+       "delay": 0.0
+      }
      ]
     },
-    "objs": [
-     {
-      "prop": "mughal_flag",
-      "x": -0.606,
-      "z": 30.213,
-      "y": 0.25,
-      "h": 1.8
-     },
-     {
-      "prop": "mughal_flag",
-      "x": 3.257,
-      "z": 27.762,
-      "y": 0.25,
-      "h": 1.8
-     },
-     {
-      "prop": "mughal_flag",
-      "x": 5.454,
-      "z": 25.392,
-      "y": 0.25,
-      "h": 1.8
-     },
-     {
-      "prop": "mughal_flag",
-      "x": 6.06,
-      "z": 24.249,
-      "y": 0.25,
-      "h": 1.8
-     },
-     {
-      "prop": "mughal_flag",
-      "x": 3.485,
-      "z": 23.595,
-      "y": 0.25,
-      "h": 1.8
-     },
-     {
-      "prop": "mughal_flag",
-      "x": 1.97,
-      "z": 20.817,
-      "y": 0.25,
-      "h": 1.8
-     },
-     {
-      "prop": "mughal_flag",
-      "x": 11.439,
-      "z": 22.941,
-      "y": 0.25,
-      "h": 1.8
-     },
-     {
-      "prop": "mughal_flag",
-      "x": 15.454,
-      "z": 21.471,
-      "y": 0.25,
-      "h": 1.8
-     },
-     {
-      "prop": "mughal_flag",
-      "x": 4.697,
-      "z": 19.428,
-      "y": 0.25,
-      "h": 1.8
-     },
-     {
-      "prop": "mughal_flag",
-      "x": 4.318,
-      "z": 15.751,
-      "y": 0.25,
-      "h": 1.8
-     },
-     {
-      "prop": "mughal_flag",
-      "x": 6.363,
-      "z": 16.242,
-      "y": 0.25,
-      "h": 1.8
-     },
-     {
-      "prop": "mughal_flag",
-      "x": 1.136,
-      "z": 26.7,
-      "y": 0.25,
-      "h": 1.8
-     },
-     {
-      "prop": "mughal_flag",
-      "x": 3.636,
-      "z": 29.886,
-      "y": 0.25,
-      "h": 1.8
-     }
-    ],
     "overlay": {
      "type": "black",
      "t": "Lekin kareeb dedh sau saal baad..."
@@ -2186,12 +1900,23 @@
        "lat": 28.6,
        "label": "Delhi",
        "delay": 0.1
-      },
+      }
+     ],
+     "medallions": [
       {
        "lon": 96.16,
        "lat": 16.8,
-       "label": "Rangoon",
-       "delay": 2.6
+       "img": "/home/user/Jarvis-assistant-/videos/mughal-empire/docs/zafar_1858_tytler.jpg",
+       "crop": [
+        0.44,
+        0.4,
+        0.42
+       ],
+       "label": "BAHADUR SHAH|ZAFAR",
+       "pin": "Rangoon",
+       "side": "right",
+       "delay": 2.4,
+       "lift": 120
       }
      ],
      "labels": [
@@ -3752,12 +3477,19 @@
       "UZB": "#3f8a6a",
       "IND": "#8a6a3a"
      },
-     "pins": [
+     "medallions": [
       {
        "lon": 72.3,
        "lat": 40.8,
-       "label": "Fergana (Andijan)",
-       "delay": 0.4
+       "img": "/home/user/Jarvis-assistant-/videos/mughal-empire/docs/babur_portrait_1589.jpg",
+       "crop": [
+        0.49,
+        0.25,
+        0.38
+       ],
+       "label": "BABUR|JANM 1483",
+       "pin": "Fergana (Andijan)",
+       "delay": 0.8
       }
      ],
      "labels": [
@@ -6921,12 +6653,20 @@
        "delay": 0.6
       }
      ],
-     "pins": [
+     "medallions": [
       {
-       "lon": 77.2,
-       "lat": 28.6,
-       "label": "Hindustan",
-       "delay": 1.8
+       "lon": 69.2,
+       "lat": 34.5,
+       "img": "/home/user/Jarvis-assistant-/videos/mughal-empire/docs/babur_portrait_1589.jpg",
+       "crop": [
+        0.49,
+        0.25,
+        0.38
+       ],
+       "label": "BABUR",
+       "pin": "Kabul",
+       "delay": 0.1,
+       "lift": 110
       }
      ]
     },

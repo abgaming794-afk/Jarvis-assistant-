@@ -837,6 +837,8 @@ def draw_map_notes(fr, cam, m, t, u):
         tg = toonshot.tag(pn["label"], int(40 * u))
         if kk > .5:
             fr.alpha_composite(tg, (int(p[0] - tg.width / 2), int(p[1] - tg.height - 12 * u)))
+    for md in m.get("medallions", []):
+        _medallion(fr, cam, md, t, u)
     for lb in m.get("labels", []):
         if t < lb.get("delay", 0):
             continue
@@ -850,6 +852,79 @@ def draw_map_notes(fr, cam, m, t, u):
             al = spr.getchannel("A").point(lambda v, kk=kk: int(v * kk))
             spr = spr.copy(); spr.putalpha(al)
         fr.alpha_composite(spr, (int(p[0] - spr.width / 2), int(p[1] - spr.height / 2)))
+
+
+@functools.lru_cache(maxsize=16)
+def _medallion_face(img_path, crop, R):
+    """Circular cut of a real portrait (crop = [cx, cy, size] as fractions of the image width)."""
+    im = Image.open(img_path).convert("RGB")
+    cx, cy, sz = crop
+    s_ = sz * im.width
+    box = (int(cx * im.width - s_ / 2), int(cy * im.height - s_ / 2), int(cx * im.width + s_ / 2), int(cy * im.height + s_ / 2))
+    face = im.crop(box).resize((2 * R, 2 * R), Image.LANCZOS).convert("RGBA")
+    m = Image.new("L", (2 * R, 2 * R), 0)
+    ImageDraw.Draw(m).ellipse([0, 0, 2 * R - 1, 2 * R - 1], fill=255)
+    face.putalpha(m)
+    return face
+
+
+def _medallion(fr, cam, md, t, u):
+    """Floating portrait medallion over the map (red ring, pin tag, name), with a soft shadow on the ground."""
+    import toonshot
+    te = t - md.get("delay", 0.0)
+    if te < 0:
+        return
+    x, z = lonlat_world(md["lon"], md["lat"])
+    g = cam.project((x, 0.05, z))
+    if not g:
+        return
+    k = back_out(clamp(te / .45), 1.6)
+    R = int(md.get("r", 120) * u)
+    lift = md.get("lift", 170) * u
+    bob = math.sin(t * 1.7) * 6 * u
+    cx, cy = g[0], g[1] - lift * ease_out(clamp(te / .6)) + bob
+    W, H = fr.size
+    # ground shadow
+    sh = Image.new("RGBA", (int(R * 2.4), int(R * .7)), (0, 0, 0, 0))
+    ImageDraw.Draw(sh).ellipse([0, 0, sh.width - 1, sh.height - 1], fill=(0, 0, 0, int(110 * clamp(te / .4))))
+    sh = sh.filter(ImageFilter.GaussianBlur(R * .15))
+    fr.alpha_composite(sh, (int(g[0] - sh.width / 2), int(g[1] - sh.height / 2)))
+    if k <= 0.02:
+        return
+    Rk = max(4, int(R * k))
+    face = _medallion_face(md["img"], tuple(md.get("crop", (0.5, 0.35, 0.5))), R).resize((2 * Rk, 2 * Rk), Image.BILINEAR)
+    ring = Image.new("RGBA", (2 * Rk + int(16 * u), 2 * Rk + int(16 * u)), (0, 0, 0, 0))
+    rd = ImageDraw.Draw(ring)
+    o = int(8 * u)
+    rd.ellipse([o - int(6 * u), o - int(6 * u), o + 2 * Rk + int(6 * u), o + 2 * Rk + int(6 * u)], fill=(192, 40, 40, 255))
+    rd.ellipse([o - int(2 * u), o - int(2 * u), o + 2 * Rk + int(2 * u), o + 2 * Rk + int(2 * u)], fill=(247, 243, 234, 255))
+    ring.alpha_composite(face, (o, o))
+    dsh = Image.new("RGBA", ring.size, (0, 0, 0, 0))
+    ImageDraw.Draw(dsh).ellipse([0, 0, ring.width - 1, ring.height - 1], fill=(0, 0, 0, 120))
+    dsh = dsh.filter(ImageFilter.GaussianBlur(10 * u))
+    fr.alpha_composite(dsh, (int(cx - ring.width / 2 + 6 * u), int(cy - ring.height / 2 + 10 * u)))
+    fr.alpha_composite(ring, (int(cx - ring.width / 2), int(cy - ring.height / 2)))
+    kt = clamp((te - .3) / .35)
+    if kt <= 0:
+        return
+    if md.get("pin"):   # small red place tag under the circle
+        f = toonshot.hand(int(22 * u), "oswald")
+        d = ImageDraw.Draw(fr)
+        tw = d.textlength(md["pin"], font=f)
+        bx0, by0 = cx - tw / 2 - 12 * u, cy + Rk + 6 * u
+        d.rounded_rectangle([bx0, by0, bx0 + tw + 24 * u, by0 + 34 * u], radius=int(6 * u), fill=(192, 40, 40, int(255 * kt)))
+        d.text((cx, by0 + 17 * u), md["pin"], font=f, fill=toonshot.TEXT + (int(255 * kt),), anchor="mm")
+    if md.get("label"):  # big two-line name beside the circle
+        lines = md["label"].split("|")
+        side = md.get("side", "left")
+        y = cy - (len(lines) - 1) * 34 * u
+        for ln in lines:
+            spr = toonshot.big_text(ln, int(60 * u), "#ffffff")
+            if kt < 1:
+                spr = spr.copy(); spr.putalpha(spr.getchannel("A").point(lambda v, kt=kt: int(v * kt)))
+            xx = cx - Rk - 18 * u - spr.width if side == "left" else cx + Rk + 18 * u
+            fr.alpha_composite(spr, (int(xx), int(y - spr.height / 2)))
+            y += 68 * u
 
 
 @functools.lru_cache(maxsize=4)

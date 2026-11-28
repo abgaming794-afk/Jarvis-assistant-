@@ -38,6 +38,15 @@ MUGHAL_CITIES = [(69.2, 34.5), (74.3, 31.5), (77.2, 28.6), (78.0, 27.2), (74.6, 
                  (90.4, 23.8), (76.2, 21.3), (75.7, 16.8), (78.4, 17.4), (71.5, 30.2), (74.8, 34.1)]
 
 
+def AUR_MED(delay):
+    return {"lon": 77.2, "lat": 28.6, "img": P + "/docs/aurangzeb_c1700.jpg", "crop": [0.47, 0.335, 0.30],
+            "label": "AURANGZEB|1658 – 1707", "pin": "Dilli", "delay": delay}
+
+
+BABUR = P + "/docs/babur_portrait_1589.jpg"
+ZAFAR = P + "/docs/zafar_1858_tytler.jpg"
+
+
 def flags(delay0, step=0.12, h=1.8):
     out = []
     for i, (lon, lat) in enumerate(MUGHAL_CITIES):
@@ -52,12 +61,13 @@ def flags(delay0, step=0.12, h=1.8):
 NEW["s01"] = GM([5, -10, 140, 62], labels=[{"lon": 75, "lat": 36, "t": "1700", "size": 150, "delay": 0.1},
                                           {"lon": 75, "lat": 20, "t": "DUNIYA KI 1/4 DAULAT", "size": 60, "delay": 1.4}])
 NEW["s01"]["source"], NEW["s01"]["source_by"] = "Maddison, The World Economy: A Millennial Perspective (OECD, 2001)", "anumaan · India ≈ 24.4% world GDP, saal 1700"
-NEW["s01b"] = GM([58, 6, 98, 40], highlight=IND_HL, hl_from={}, hl_at=1.2, labels=[{"lon": 79, "lat": 25, "t": "MUGHAL HINDUSTAN", "size": 60, "delay": 1.4}])
-NEW["s01b"]["objs"] = flags(1.2)
+NEW["s01b"] = GM([58, 6, 98, 40], highlight=IND_HL, hl_from={}, hl_at=1.2,
+                 labels=[{"lon": 79, "lat": 21.5, "t": "MUGHAL HINDUSTAN", "size": 64, "delay": 1.4}],
+                 medallions=[AUR_MED(1.3)])
 NEW["s02"] = GM([60, 5, 100, 40], highlight=IND_HL,
-                labels=[{"lon": 79, "lat": 25, "t": "MUGHAL HINDUSTAN", "size": 60},
-                        {"lon": 79, "lat": 20.0, "t": "~40 LAKH KM²  ·  10+ CRORE LOG", "size": 34, "delay": 0.6}])
-NEW["s02"]["objs"] = flags(None)
+                labels=[{"lon": 79, "lat": 21.5, "t": "MUGHAL HINDUSTAN", "size": 64},
+                        {"lon": 79, "lat": 19.0, "t": "~40 LAKH KM²  ·  10+ CRORE LOG", "size": 34, "delay": 0.6}],
+                medallions=[AUR_MED(0.0)])
 NEW["s02"]["source"], NEW["s02"]["source_by"] = "Mughal Empire (c. 1690–1700) — Wikipedia; World History Encyclopedia", "anumaan"
 NEW["s03"] = ov("black", "s02", t="Lekin kareeb dedh sau saal baad...")
 SEQ.append(("map", ["s01", "s01b", "s02", "s03"]))
@@ -68,7 +78,9 @@ NEW["s06"] = ov("realdoc", "s05b", **{k: v for k, v in sc_of("s06").items() if k
 NEW["s06b"] = ov("realdoc", "s05b", **{k: v for k, v in sc_of("s06b").items() if k != "type"}, fade_in=False)
 SEQ.append(("fort", ["s04", "s04b", "s05", "s05b", "s06", "s06b"]))
 # D map Delhi -> Rangoon
-m = sc_of("s07")["map"]; NEW["s07"] = GM([70, 10, 102, 34], highlight=m["highlight"], routes=m["routes"], pins=m["pins"],
+m = sc_of("s07")["map"]; NEW["s07"] = GM([70, 10, 102, 34], highlight=m["highlight"], routes=m["routes"], pins=m["pins"][:1],
+                                       medallions=[{"lon": 96.16, "lat": 16.8, "img": ZAFAR, "crop": [0.44, 0.40, 0.42], "label": "BAHADUR SHAH|ZAFAR",
+                                                    "pin": "Rangoon", "side": "right", "delay": 2.4, "lift": 120}],
                                        labels=[{"lon": 87, "lat": 15.0, "t": "2,000+ KM DOOR", "size": 40, "delay": 1.2}])
 SEQ.append(("map", ["s07"]))
 # E Rangoon cell
@@ -89,7 +101,9 @@ SEQ.append(("river", ["s12b"]))
 NEW["s13"] = GM([58, 5, 100, 40], highlight=IND_HL, labels=[{"lon": 78, "lat": 22, "t": "331 SAAL", "size": 80, "delay": 0.3}])
 NEW["s13b"] = GM([62, 8, 96, 38], highlight=IND_HL, labels=[{"lon": 78, "lat": 22, "t": "1526 – 1857", "size": 70, "delay": 0.2}])
 NEW["s14"] = ov("black", "s13b", t="Ek gyarah saal ka ladka...")
-m = sc_of("s15")["map"]; NEW["s15"] = GM([62, 33, 80, 45], highlight={"UZB": "#3f8a6a", "IND": "#8a6a3a"}, pins=m["pins"],
+m = sc_of("s15")["map"]; NEW["s15"] = GM([62, 33, 80, 45], highlight={"UZB": "#3f8a6a", "IND": "#8a6a3a"},
+                                       medallions=[{"lon": 72.3, "lat": 40.8, "img": BABUR, "crop": [0.49, 0.25, 0.38], "label": "BABUR|JANM 1483",
+                                                    "pin": "Fergana (Andijan)", "delay": 0.8}],
                                        labels=[{"lon": 66, "lat": 43.5, "t": "AAJ KA UZBEKISTAN", "size": 34, "delay": 1.0}])
 SEQ.append(("map", ["s13", "s13b", "s14", "s15"]))
 # I Akhsi cliff
@@ -111,7 +125,9 @@ s = sc_of("s28b"); s["set"] = "fort"; NEW["s28b"] = s
 s = sc_of("s29"); s["set"] = "fort"; s.pop("target", None); NEW["s29"] = s
 SEQ.append(("fort", ["s28", "s28b", "s29"]))
 # O map Kabul -> Hindustan
-m = sc_of("s29b")["map"]; NEW["s29b"] = GM([62, 24, 82, 38], highlight=m["highlight"], routes=m["routes"], labels=m["labels"], pins=m["pins"])
+m = sc_of("s29b")["map"]; NEW["s29b"] = GM([62, 24, 82, 38], highlight=m["highlight"], routes=m["routes"], labels=m["labels"],
+                                         medallions=[{"lon": 69.2, "lat": 34.5, "img": BABUR, "crop": [0.49, 0.25, 0.38], "label": "BABUR",
+                                                      "pin": "Kabul", "delay": 0.1, "lift": 110}])
 SEQ.append(("map", ["s29b"]))
 # P Delhi court of Ibrahim Lodi
 SEQ.append(("court", ["s30", "s31"]))
