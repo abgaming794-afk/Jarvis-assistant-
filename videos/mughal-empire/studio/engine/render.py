@@ -13,7 +13,7 @@ from PIL import Image, ImageDraw
 from common import load_json, ffmpeg_bin, font
 
 ENGINE_VERSION = "2.1.0"
-RES = {"360": (640, 360), "480": (854, 480), "720": (1280, 720), "1080": (1920, 1080)}
+RES = {"360": (640, 360), "480": (854, 480), "720": (1280, 720), "1080": (1920, 1080), "1440": (2560, 1440)}
 
 
 def arg(name, default=None):
@@ -56,7 +56,7 @@ def render_beat(job):
     tmp = out + ".tmp.mp4"
     cmd = [ffmpeg_bin(), "-y", "-loglevel", "error", "-f", "rawvideo", "-pix_fmt", "rgb24", "-s", f"{W}x{H}",
            "-r", str(fps), "-i", "-", "-c:v", "libx264", "-preset", "veryfast" if H <= 720 else "medium",
-           "-crf", "20" if H <= 720 else "18", "-pix_fmt", "yuv420p", "-r", str(fps), tmp]
+           "-crf", "20" if H <= 720 else "18", "-pix_fmt", "yuv420p10le" if H >= 1440 else "yuv420p", "-r", str(fps), tmp]
     p = subprocess.Popen(cmd, stdin=subprocess.PIPE)
     for i in range(nframes):
         p.stdin.write(shot.frame(i / fps).tobytes())
