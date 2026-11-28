@@ -551,7 +551,7 @@ def cam_pose(sc, dflt, t, dur):
         yaw += math.radians(50) * sgn * ck ** 2
     elif kind == "smoke" and ck > 0:
         dist *= 1 - 0.3 * ck ** 2
-    elif kind == "wipe" and ck > 0:
+    elif kind and (kind.startswith("wipe") or kind == "doors") and ck > 0:
         tgt = tgt + np.array([0.6 * sgn * ck, 0, 0])
     pos = tgt + np.array([math.sin(yaw) * -dist, h - tgt[1], math.cos(yaw) * -dist])
     pos = pos + np.array([0.025 * math.sin(t * 0.9), 0.015 * math.sin(t * 1.3), 0])
@@ -610,7 +610,13 @@ def render(fr, sc, story, t, dur, env=None, fps=30, spec_fn=None):
     mood = sc.get("mood", dflt["mood"])
     for (_, O, E1, E2, tn, sk, _) in envq:
         if tn == "global_map":
-            tx = global_map_texture(json.dumps(sc.get("map", {}).get("highlight", {}), sort_keys=True))
+            mm = sc.get("map", {})
+            tx = global_map_texture(json.dumps(mm.get("highlight", {}), sort_keys=True))
+            if "hl_from" in mm:
+                kf = clamp((t - mm.get("hl_at", 0.0)) / 0.8)
+                if kf < 1:
+                    t0 = global_map_texture(json.dumps(mm["hl_from"], sort_keys=True))
+                    tx = Image.blend(t0, tx, kf)
             draw_quad(fr, cam, O, E1, E2, tx, sk * mood)
             continue
         if tn == "sea_far":
@@ -917,6 +923,70 @@ def _pillar(W, H):
     return im
 
 
+@functools.lru_cache(maxsize=8)
+def _wipe_sprite(kind, W, H):
+    """Foreground objects that pass right in front of the lens. Each one is opaque across the whole frame height."""
+    w = int(W * 1.25)
+    im = Image.new("RGBA", (w, H), (0, 0, 0, 0))
+    d = ImageDraw.Draw(im)
+    if kind == "wipe_curtain":   # red velvet drape with gold fringe
+        d.rectangle([0, 0, w, H], fill=(120, 20, 30, 255))
+        n = 14
+        for i in range(n):
+            x0 = i * w / n
+            d.rectangle([x0, 0, x0 + w / n * .45, H], fill=(150, 30, 40, 255))
+            d.line([(x0, 0), (x0, H)], fill=(80, 10, 18, 255), width=max(2, w // 120))
+        d.rectangle([0, int(H * .93), w, H], fill=(201, 160, 60, 255))
+        for x in range(0, w, max(6, w // 80)):
+            d.line([(x, int(H * .93)), (x + 3, H)], fill=(150, 110, 40, 255), width=2)
+        d.rectangle([0, 0, w, int(H * .05)], fill=(201, 160, 60, 255))
+    elif kind == "wipe_flag":    # Mughal green banner with the golden sun, waving
+        pts_top = [(x, int(H * .02 + math.sin(x / w * 6.28 * 1.5) * H * .02)) for x in range(0, w + 1, max(4, w // 60))]
+        pts_bot = [(x, int(H * .98 + math.sin(x / w * 6.28 * 1.5 + 1) * H * .02)) for x in range(w, -1, -max(4, w // 60))]
+        d.rectangle([0, 0, w, H], fill=(36, 110, 70, 255))
+        d.polygon(pts_top + pts_bot, fill=(46, 130, 84, 255))
+        cx, cy, r = w / 2, H / 2, H * .22
+        for a_ in range(0, 360, 20):
+            ra = math.radians(a_)
+            d.line([(cx + math.cos(ra) * r * 1.1, cy + math.sin(ra) * r * 1.1), (cx + math.cos(ra) * r * 1.6, cy + math.sin(ra) * r * 1.6)],
+                   fill=(241, 194, 50, 255), width=max(3, int(H * .015)))
+        d.ellipse([cx - r, cy - r, cx + r, cy + r], fill=(241, 194, 50, 255), outline=(150, 110, 40, 255), width=max(2, int(H * .008)))
+        for i in range(0, w, max(10, w // 18)):   # cloth folds
+            d.line([(i, 0), (i + w // 40, H)], fill=(30, 95, 60, 120), width=max(2, w // 90))
+    elif kind == "wipe_elephant":  # a war elephant walks right past the lens (dark dust behind it covers the edges)
+        d.rectangle([0, 0, w, H], fill=(70, 58, 46, 255))
+        el = props.make("war_elephant", int(H * 1.9), "#9a2a2a")
+        im.alpha_composite(el.resize((int(el.width * 1.0), el.height)), (int((w - el.width) / 2), int(-H * .45)))
+    elif kind == "wipe_army":      # a line of soldiers marching close to the camera
+        d.rectangle([0, 0, w, H], fill=(64, 52, 40, 255))
+        blk = props.make("army_block", int(H * 1.3), "#3f6d5a")
+        x = -blk.width // 4
+        while x < w:
+            im.alpha_composite(blk, (x, int(-H * .12)))
+            x += int(blk.width * .7)
+    return im
+
+
+@functools.lru_cache(maxsize=4)
+def _door_panels(W, H):
+    """Two carved wooden fort doors with iron studs (left and right half, slightly overlapping)."""
+    out = []
+    for side in (0, 1):
+        w = int(W * .54)
+        im = Image.new("RGBA", (w, H), (92, 52, 28, 255))
+        d = ImageDraw.Draw(im)
+        for i in range(0, w, max(8, w // 9)):
+            d.line([(i, 0), (i, H)], fill=(66, 36, 20, 255), width=max(2, w // 70))
+        for y in (int(H * .18), int(H * .5), int(H * .82)):
+            d.rectangle([0, y - H * .03, w, y + H * .03], fill=(40, 40, 44, 255))
+            for x in range(int(w * .06), w, max(10, w // 10)):
+                d.ellipse([x - H * .012, y - H * .012, x + H * .012, y + H * .012], fill=(170, 170, 176, 255))
+        edge = w - max(6, w // 30) if side == 0 else 0
+        d.rectangle([edge, 0, edge + max(6, w // 30), H], fill=(201, 160, 60, 255))
+        out.append(im)
+    return tuple(out)
+
+
 def apply_transition(fr, sc, t, dur):
     """Seamless location change. At the cut instant (k = 1) the frame is fully covered, so no cut is visible."""
     kind, k, side = tr_state(sc, t, dur)
@@ -945,6 +1015,20 @@ def apply_transition(fr, sc, t, dur):
         blk = Image.new("RGBA", (W, H), (8, 6, 5, 255))
         blk.putalpha(m)
         fr.alpha_composite(blk)
+    elif kind in ("wipe_curtain", "wipe_flag", "wipe_elephant", "wipe_army"):
+        spr = _wipe_sprite(kind, W, H)
+        travel = W + spr.width
+        # exit: comes in from the right; at k = 1 it is centred and covers the frame; enter: leaves to the left
+        cx = W / 2 + (1 - k) * travel / 2 if side == "exit" else W / 2 - (1 - k) * travel / 2
+        x = int(cx - spr.width / 2)
+        wob = 0
+        blur = spr.filter(ImageFilter.BoxBlur(max(1, int(W * .006))))
+        _paste_sub(fr, blur, x, wob, blur.width, blur.height)
+    elif kind == "doors":   # two heavy fort doors close on the lens, then open on the new place
+        L, R = _door_panels(W, H)
+        off = (1 - k) * W / 2
+        _paste_sub(fr, L, -off - W * .02, 0, L.width, L.height)
+        _paste_sub(fr, R, W / 2 + off - W * .02, 0, R.width, R.height)
     elif kind == "wipe":   # a near-camera pillar crosses the lens
         pil = _pillar(W, H)
         if side == "exit":

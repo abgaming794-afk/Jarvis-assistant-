@@ -234,122 +234,118 @@
    "text": "सत्रह सौ में, दुनिया की करीब एक-चौथाई दौलत…",
    "scene": {
     "type": "set3d",
-    "set": "court",
-    "objs": [
-     {
-      "prop": "peacock_throne",
-      "x": 0,
-      "z": 9.3,
-      "y": 0.6,
-      "h": 1.9
-     },
-     {
-      "prop": "chest",
-      "x": -2.4,
-      "z": 6.0,
-      "h": 0.7
-     },
-     {
-      "prop": "gold_bars",
-      "x": 2.4,
-      "z": 6.0,
-      "h": 0.5
-     },
-     {
-      "prop": "coins",
-      "x": -1.0,
-      "z": 4.8,
-      "h": 0.4
-     },
-     {
-      "prop": "chest",
-      "x": 3.4,
-      "z": 7.6,
-      "h": 0.7
-     },
-     {
-      "prop": "coins",
-      "x": 1.2,
-      "z": 4.6,
-      "h": 0.4
-     }
+    "set": "map",
+    "global_map": true,
+    "view": [
+     5,
+     -10,
+     140,
+     62
     ],
-    "big": {
-     "t": "1/4 DAULAT",
-     "y": 0.16
+    "map": {
+     "labels": [
+      {
+       "lon": 75,
+       "lat": 36,
+       "t": "1700",
+       "size": 150,
+       "delay": 0.1
+      },
+      {
+       "lon": 75,
+       "lat": 20,
+       "t": "DUNIYA KI 1/4 DAULAT",
+       "size": 60,
+       "delay": 1.4
+      }
+     ]
     },
-    "stickers": [
-     {
-      "name": "coin",
-      "anim": "rain",
-      "h": 0.07,
-      "at": 0.3
-     }
-    ],
+    "source": "Maddison, The World Economy: A Millennial Perspective (OECD, 2001)",
+    "source_by": "anumaan · India ≈ 24.4% world GDP, saal 1700",
     "path": {
      "F": [
       [
-       0,
-       1.2,
-       6.0,
-       7.0,
-       2.0,
-       0,
-       52
+       1.893862950896652,
+       0.0,
+       35.54038710646941,
+       54.194100920874796,
+       86.72869097401133,
+       0.0,
+       50.0
       ],
       [
-       0,
-       1.2,
-       6.0,
-       6.58,
-       2.0,
-       0,
-       52
+       6.0603614428693,
+       0.0,
+       24.45325566188635,
+       16.0575113839629,
+       25.697389918225575,
+       0.0,
+       50.0
+      ],
+      [
+       7.575451803586619,
+       0.0,
+       24.04473626380396,
+       16.0575113839629,
+       25.697389918225575,
+       0.0,
+       50.0
+      ],
+      [
+       7.575451803586619,
+       0.0,
+       24.04473626380396,
+       16.0575113839629,
+       25.697389918225575,
+       0.0,
+       50.0
       ]
      ],
      "S": [
       0.0,
       3.927,
-      7.008
+      7.008,
+      11.370000000000001,
+      13.516000000000002
      ],
      "i": 0
     },
     "keys": [
      [
-      0,
-      1.2,
-      6.0,
-      8.26,
-      2.1,
-      0,
-      52
-     ],
-     [
-      0,
-      1.2,
-      6.0,
-      8.26,
-      2.1,
-      0,
-      52
-     ],
-     [
+      1.893862950896652,
       0.0,
-      1.2,
-      6.0,
-      6.706,
-      2.0,
+      35.54038710646941,
+      63.949039086632254,
+      91.0651255227119,
       0.0,
-      52.0
+      50.0
      ],
      [
-      0,
-      1.2,
-      6.0,
-      5.7904,
-      2.0,
-      0,
-      52
+      1.893862950896652,
+      0.0,
+      35.54038710646941,
+      63.949039086632254,
+      91.0651255227119,
+      0.0,
+      50.0
+     ],
+     [
+      4.810411895277506,
+      0.0,
+      27.77939509526127,
+      27.49848824503647,
+      44.006780234961305,
+      0.0,
+      50.0
+     ],
+     [
+      7.120924695371423,
+      0.0,
+      24.167292083228677,
+      16.0575113839629,
+      25.697389918225575,
+      0.0,
+      50.0
      ]
     ]
    },
@@ -367,138 +363,251 @@
    "text": "अनुमान के मुताबिक… मुग़ल हिंदुस्तान में बनती थी.",
    "scene": {
     "type": "set3d",
-    "set": "court",
+    "set": "map",
+    "global_map": true,
+    "view": [
+     58,
+     6,
+     98,
+     40
+    ],
+    "map": {
+     "highlight": {
+      "IND": "#d9a72b",
+      "PAK": "#d9a72b",
+      "BGD": "#d9a72b",
+      "AFG": "#c99a35"
+     },
+     "hl_from": {},
+     "hl_at": 1.2,
+     "labels": [
+      {
+       "lon": 79,
+       "lat": 25,
+       "t": "MUGHAL HINDUSTAN",
+       "size": 60,
+       "delay": 1.4
+      }
+     ]
+    },
     "objs": [
      {
-      "prop": "peacock_throne",
-      "x": 0,
-      "z": 9.3,
-      "y": 0.6,
-      "h": 1.9
+      "prop": "mughal_flag",
+      "x": -0.606,
+      "z": 30.213,
+      "y": 0.25,
+      "h": 1.8,
+      "anim": "pop",
+      "delay": 1.2,
+      "fade_in": true
      },
      {
-      "prop": "chest",
-      "x": -2.4,
-      "z": 6.0,
-      "h": 0.7
+      "prop": "mughal_flag",
+      "x": 3.257,
+      "z": 27.762,
+      "y": 0.25,
+      "h": 1.8,
+      "anim": "pop",
+      "delay": 1.32,
+      "fade_in": true
      },
      {
-      "prop": "gold_bars",
-      "x": 2.4,
-      "z": 6.0,
-      "h": 0.5
+      "prop": "mughal_flag",
+      "x": 5.454,
+      "z": 25.392,
+      "y": 0.25,
+      "h": 1.8,
+      "anim": "pop",
+      "delay": 1.44,
+      "fade_in": true
      },
      {
-      "prop": "coins",
-      "x": -1.0,
-      "z": 4.8,
-      "h": 0.4
+      "prop": "mughal_flag",
+      "x": 6.06,
+      "z": 24.249,
+      "y": 0.25,
+      "h": 1.8,
+      "anim": "pop",
+      "delay": 1.56,
+      "fade_in": true
      },
      {
-      "prop": "chest",
-      "x": 3.4,
-      "z": 7.6,
-      "h": 0.7
+      "prop": "mughal_flag",
+      "x": 3.485,
+      "z": 23.595,
+      "y": 0.25,
+      "h": 1.8,
+      "anim": "pop",
+      "delay": 1.68,
+      "fade_in": true
      },
      {
-      "prop": "coins",
-      "x": 1.2,
-      "z": 4.6,
-      "h": 0.4
+      "prop": "mughal_flag",
+      "x": 1.97,
+      "z": 20.817,
+      "y": 0.25,
+      "h": 1.8,
+      "anim": "pop",
+      "delay": 1.8,
+      "fade_in": true
+     },
+     {
+      "prop": "mughal_flag",
+      "x": 11.439,
+      "z": 22.941,
+      "y": 0.25,
+      "h": 1.8,
+      "anim": "pop",
+      "delay": 1.92,
+      "fade_in": true
+     },
+     {
+      "prop": "mughal_flag",
+      "x": 15.454,
+      "z": 21.471,
+      "y": 0.25,
+      "h": 1.8,
+      "anim": "pop",
+      "delay": 2.04,
+      "fade_in": true
+     },
+     {
+      "prop": "mughal_flag",
+      "x": 4.697,
+      "z": 19.428,
+      "y": 0.25,
+      "h": 1.8,
+      "anim": "pop",
+      "delay": 2.16,
+      "fade_in": true
+     },
+     {
+      "prop": "mughal_flag",
+      "x": 4.318,
+      "z": 15.751,
+      "y": 0.25,
+      "h": 1.8,
+      "anim": "pop",
+      "delay": 2.28,
+      "fade_in": true
+     },
+     {
+      "prop": "mughal_flag",
+      "x": 6.363,
+      "z": 16.242,
+      "y": 0.25,
+      "h": 1.8,
+      "anim": "pop",
+      "delay": 2.4,
+      "fade_in": true
+     },
+     {
+      "prop": "mughal_flag",
+      "x": 1.136,
+      "z": 26.7,
+      "y": 0.25,
+      "h": 1.8,
+      "anim": "pop",
+      "delay": 2.52,
+      "fade_in": true
+     },
+     {
+      "prop": "mughal_flag",
+      "x": 3.636,
+      "z": 29.886,
+      "y": 0.25,
+      "h": 1.8,
+      "anim": "pop",
+      "delay": 2.64,
+      "fade_in": true
      }
     ],
-    "overlay": {
-     "type": "chart",
-     "bars": [
-      {
-       "label": "HINDUSTAN",
-       "value": 24.4,
-       "text": "24.4%",
-       "color": "#d9a72b"
-      },
-      {
-       "label": "CHINA",
-       "value": 22.3,
-       "text": "22.3%",
-       "color": "#c0322b"
-      },
-      {
-       "label": "EUROPE",
-       "value": 22.5,
-       "text": "22.5%",
-       "color": "#3a5f8a"
-      }
-     ],
-     "source": "Maddison, The World Economy: A Millennial Perspective (OECD, 2001) · saal 1700",
-     "source_by": "anumaan · duniya ki GDP mein hissa · Europe = Paschimi Europe"
-    },
     "path": {
      "F": [
       [
-       0,
-       1.2,
-       6.0,
-       7.0,
-       2.0,
-       0,
-       52
+       1.893862950896652,
+       0.0,
+       35.54038710646941,
+       54.194100920874796,
+       86.72869097401133,
+       0.0,
+       50.0
       ],
       [
-       0,
-       1.2,
-       6.0,
-       6.58,
-       2.0,
-       0,
-       52
+       6.0603614428693,
+       0.0,
+       24.45325566188635,
+       16.0575113839629,
+       25.697389918225575,
+       0.0,
+       50.0
+      ],
+      [
+       7.575451803586619,
+       0.0,
+       24.04473626380396,
+       16.0575113839629,
+       25.697389918225575,
+       0.0,
+       50.0
+      ],
+      [
+       7.575451803586619,
+       0.0,
+       24.04473626380396,
+       16.0575113839629,
+       25.697389918225575,
+       0.0,
+       50.0
       ]
      ],
      "S": [
       0.0,
       3.927,
-      7.008
+      7.008,
+      11.370000000000001,
+      13.516000000000002
      ],
      "i": 1
     },
     "keys": [
      [
-      0,
-      1.2,
-      6.0,
-      8.26,
-      2.1,
-      0,
-      52
-     ],
-     [
+      1.893862950896652,
       0.0,
-      1.2,
-      6.0,
-      6.706,
-      2.0,
+      35.54038710646941,
+      63.949039086632254,
+      91.0651255227119,
       0.0,
-      52.0
+      50.0
      ],
      [
-      0,
-      1.2,
-      6.0,
-      5.7904,
-      2.0,
-      0,
-      52
+      4.810411895277506,
+      0.0,
+      27.77939509526127,
+      27.49848824503647,
+      44.006780234961305,
+      0.0,
+      50.0
      ],
      [
-      0,
-      1.2,
-      6.0,
-      5.7904,
-      2.0,
-      0,
-      52
+      7.120924695371423,
+      0.0,
+      24.167292083228677,
+      16.0575113839629,
+      25.697389918225575,
+      0.0,
+      50.0
+     ],
+     [
+      7.575451803586619,
+      0.0,
+      24.04473626380396,
+      16.0575113839629,
+      25.697389918225575,
+      0.0,
+      50.0
      ]
-    ],
-    "exit_tr": "zoom"
+    ]
    },
    "tags": "[dramatically]",
    "year": 1700,
@@ -527,25 +636,148 @@
      },
      "labels": [
       {
-       "lon": 78,
+       "lon": 79,
        "lat": 25,
        "t": "MUGHAL HINDUSTAN",
-       "size": 60,
-       "delay": 0.3
+       "size": 60
       },
       {
        "lon": 79,
        "lat": 20.0,
        "t": "~40 LAKH KM²  ·  10+ CRORE LOG",
        "size": 34,
-       "delay": 1.2
+       "delay": 0.6
       }
      ]
     },
+    "objs": [
+     {
+      "prop": "mughal_flag",
+      "x": -0.606,
+      "z": 30.213,
+      "y": 0.25,
+      "h": 1.8,
+      "anim": "bob"
+     },
+     {
+      "prop": "mughal_flag",
+      "x": 3.257,
+      "z": 27.762,
+      "y": 0.25,
+      "h": 1.8,
+      "anim": "bob"
+     },
+     {
+      "prop": "mughal_flag",
+      "x": 5.454,
+      "z": 25.392,
+      "y": 0.25,
+      "h": 1.8,
+      "anim": "bob"
+     },
+     {
+      "prop": "mughal_flag",
+      "x": 6.06,
+      "z": 24.249,
+      "y": 0.25,
+      "h": 1.8,
+      "anim": "bob"
+     },
+     {
+      "prop": "mughal_flag",
+      "x": 3.485,
+      "z": 23.595,
+      "y": 0.25,
+      "h": 1.8,
+      "anim": "bob"
+     },
+     {
+      "prop": "mughal_flag",
+      "x": 1.97,
+      "z": 20.817,
+      "y": 0.25,
+      "h": 1.8,
+      "anim": "bob"
+     },
+     {
+      "prop": "mughal_flag",
+      "x": 11.439,
+      "z": 22.941,
+      "y": 0.25,
+      "h": 1.8,
+      "anim": "bob"
+     },
+     {
+      "prop": "mughal_flag",
+      "x": 15.454,
+      "z": 21.471,
+      "y": 0.25,
+      "h": 1.8,
+      "anim": "bob"
+     },
+     {
+      "prop": "mughal_flag",
+      "x": 4.697,
+      "z": 19.428,
+      "y": 0.25,
+      "h": 1.8,
+      "anim": "bob"
+     },
+     {
+      "prop": "mughal_flag",
+      "x": 4.318,
+      "z": 15.751,
+      "y": 0.25,
+      "h": 1.8,
+      "anim": "bob"
+     },
+     {
+      "prop": "mughal_flag",
+      "x": 6.363,
+      "z": 16.242,
+      "y": 0.25,
+      "h": 1.8,
+      "anim": "bob"
+     },
+     {
+      "prop": "mughal_flag",
+      "x": 1.136,
+      "z": 26.7,
+      "y": 0.25,
+      "h": 1.8,
+      "anim": "bob"
+     },
+     {
+      "prop": "mughal_flag",
+      "x": 3.636,
+      "z": 29.886,
+      "y": 0.25,
+      "h": 1.8,
+      "anim": "bob"
+     }
+    ],
     "source": "Mughal Empire (c. 1690–1700) — Wikipedia; World History Encyclopedia",
     "source_by": "anumaan",
     "path": {
      "F": [
+      [
+       1.893862950896652,
+       0.0,
+       35.54038710646941,
+       54.194100920874796,
+       86.72869097401133,
+       0.0,
+       50.0
+      ],
+      [
+       6.0603614428693,
+       0.0,
+       24.45325566188635,
+       16.0575113839629,
+       25.697389918225575,
+       0.0,
+       50.0
+      ],
       [
        7.575451803586619,
        0.0,
@@ -567,27 +799,29 @@
      ],
      "S": [
       0.0,
-      4.362,
-      6.508
+      3.927,
+      7.008,
+      11.370000000000001,
+      13.516000000000002
      ],
-     "i": 0
+     "i": 2
     },
     "keys": [
      [
-      7.575451803586619,
+      4.810411895277506,
       0.0,
-      24.04473626380396,
-      18.947863433076222,
-      26.982259414136855,
+      27.77939509526127,
+      27.49848824503647,
+      44.006780234961305,
       0.0,
       50.0
      ],
      [
-      7.575451803586619,
+      7.120924695371423,
       0.0,
-      24.04473626380396,
-      18.947863433076222,
-      26.982259414136855,
+      24.167292083228677,
+      16.0575113839629,
+      25.697389918225575,
       0.0,
       50.0
      ],
@@ -609,12 +843,8 @@
       0.0,
       50.0
      ]
-    ],
-    "enter_tr": "zoom"
+    ]
    },
-   "sfx": [
-    "whoosh"
-   ],
    "year": 1700,
    "chapter_tag": "Duniya ki 1/4 daulat"
   },
@@ -641,27 +871,137 @@
      },
      "labels": [
       {
-       "lon": 78,
+       "lon": 79,
        "lat": 25,
        "t": "MUGHAL HINDUSTAN",
-       "size": 60,
-       "delay": 0.3
+       "size": 60
       },
       {
        "lon": 79,
        "lat": 20.0,
        "t": "~40 LAKH KM²  ·  10+ CRORE LOG",
        "size": 34,
-       "delay": 1.2
+       "delay": 0.6
       }
      ]
     },
+    "objs": [
+     {
+      "prop": "mughal_flag",
+      "x": -0.606,
+      "z": 30.213,
+      "y": 0.25,
+      "h": 1.8
+     },
+     {
+      "prop": "mughal_flag",
+      "x": 3.257,
+      "z": 27.762,
+      "y": 0.25,
+      "h": 1.8
+     },
+     {
+      "prop": "mughal_flag",
+      "x": 5.454,
+      "z": 25.392,
+      "y": 0.25,
+      "h": 1.8
+     },
+     {
+      "prop": "mughal_flag",
+      "x": 6.06,
+      "z": 24.249,
+      "y": 0.25,
+      "h": 1.8
+     },
+     {
+      "prop": "mughal_flag",
+      "x": 3.485,
+      "z": 23.595,
+      "y": 0.25,
+      "h": 1.8
+     },
+     {
+      "prop": "mughal_flag",
+      "x": 1.97,
+      "z": 20.817,
+      "y": 0.25,
+      "h": 1.8
+     },
+     {
+      "prop": "mughal_flag",
+      "x": 11.439,
+      "z": 22.941,
+      "y": 0.25,
+      "h": 1.8
+     },
+     {
+      "prop": "mughal_flag",
+      "x": 15.454,
+      "z": 21.471,
+      "y": 0.25,
+      "h": 1.8
+     },
+     {
+      "prop": "mughal_flag",
+      "x": 4.697,
+      "z": 19.428,
+      "y": 0.25,
+      "h": 1.8
+     },
+     {
+      "prop": "mughal_flag",
+      "x": 4.318,
+      "z": 15.751,
+      "y": 0.25,
+      "h": 1.8
+     },
+     {
+      "prop": "mughal_flag",
+      "x": 6.363,
+      "z": 16.242,
+      "y": 0.25,
+      "h": 1.8
+     },
+     {
+      "prop": "mughal_flag",
+      "x": 1.136,
+      "z": 26.7,
+      "y": 0.25,
+      "h": 1.8
+     },
+     {
+      "prop": "mughal_flag",
+      "x": 3.636,
+      "z": 29.886,
+      "y": 0.25,
+      "h": 1.8
+     }
+    ],
     "overlay": {
      "type": "black",
      "t": "Lekin kareeb dedh sau saal baad..."
     },
     "path": {
      "F": [
+      [
+       1.893862950896652,
+       0.0,
+       35.54038710646941,
+       54.194100920874796,
+       86.72869097401133,
+       0.0,
+       50.0
+      ],
+      [
+       6.0603614428693,
+       0.0,
+       24.45325566188635,
+       16.0575113839629,
+       25.697389918225575,
+       0.0,
+       50.0
+      ],
       [
        7.575451803586619,
        0.0,
@@ -683,18 +1023,20 @@
      ],
      "S": [
       0.0,
-      4.362,
-      6.508
+      3.927,
+      7.008,
+      11.370000000000001,
+      13.516000000000002
      ],
-     "i": 1
+     "i": 3
     },
     "keys": [
      [
-      7.575451803586619,
+      7.120924695371423,
       0.0,
-      24.04473626380396,
-      18.947863433076222,
-      26.982259414136855,
+      24.167292083228677,
+      16.0575113839629,
+      25.697389918225575,
       0.0,
       50.0
      ],
@@ -726,7 +1068,7 @@
       50.0
      ]
     ],
-    "exit_tr": "clouds"
+    "exit_tr": "doors"
    },
    "tags": "[softly]",
    "sfx": [
@@ -878,12 +1220,9 @@
       52.0
      ]
     ],
-    "enter_tr": "clouds"
+    "enter_tr": "doors"
    },
    "tags": "[slowly]",
-   "sfx": [
-    "whoosh"
-   ],
    "year": 1858,
    "chapter_tag": "Duniya ki 1/4 daulat"
   },
@@ -1791,7 +2130,7 @@
       52
      ]
     ],
-    "exit_tr": "whip"
+    "exit_tr": "wipe_flag"
    },
    "year": 1858,
    "chapter_tag": "Duniya ki 1/4 daulat"
@@ -1921,12 +2260,9 @@
       50.0
      ]
     ],
-    "enter_tr": "whip",
-    "exit_tr": "door"
+    "enter_tr": "wipe_flag",
+    "exit_tr": "wipe"
    },
-   "sfx": [
-    "swoosh"
-   ],
    "year": 1858,
    "chapter_tag": "Duniya ki 1/4 daulat"
   },
@@ -2022,10 +2358,11 @@
       52
      ]
     ],
-    "enter_tr": "door"
+    "enter_tr": "wipe"
    },
    "tags": "[sad]",
    "sfx": [
+    "boom",
     "boom",
     "boom"
    ],
@@ -2133,7 +2470,7 @@
       52
      ]
     ],
-    "exit_tr": "wipe"
+    "exit_tr": "wipe_curtain"
    },
    "tags": "[curious]",
    "chapter_tag": "Duniya ki 1/4 daulat"
@@ -2273,12 +2610,9 @@
       52.0
      ]
     ],
-    "enter_tr": "wipe"
+    "enter_tr": "wipe_curtain"
    },
    "tags": "[mysteriously]",
-   "sfx": [
-    "swoosh"
-   ],
    "chapter_tag": "Duniya ki 1/4 daulat"
   },
   {
@@ -2553,9 +2887,6 @@
      ]
     ]
    },
-   "sfx": [
-    "whoosh"
-   ],
    "chapter_tag": "Duniya ki 1/4 daulat"
   },
   {
@@ -2885,7 +3216,7 @@
       52
      ]
     ],
-    "exit_tr": "whip"
+    "exit_tr": "wipe"
    },
    "sfx": [
     "stamp"
@@ -3019,11 +3350,10 @@
       52
      ]
     ],
-    "enter_tr": "whip",
-    "exit_tr": "zoom"
+    "enter_tr": "wipe",
+    "exit_tr": "wipe_flag"
    },
    "sfx": [
-    "swoosh",
     "cash"
    ],
    "chapter_tag": "Duniya ki 1/4 daulat"
@@ -3145,10 +3475,9 @@
       50.0
      ]
     ],
-    "enter_tr": "zoom"
+    "enter_tr": "wipe_flag"
    },
    "sfx": [
-    "whoosh",
     "drum"
    ],
    "year": 1526,
@@ -3635,7 +3964,6 @@
     "enter_tr": "clouds"
    },
    "sfx": [
-    "whoosh",
     "boom"
    ],
    "year": 1494,
@@ -3782,7 +4110,7 @@
       52
      ]
     ],
-    "exit_tr": "door"
+    "exit_tr": "wipe_curtain"
    },
    "sfx": [
     "boom"
@@ -3942,9 +4270,10 @@
       52.0
      ]
     ],
-    "enter_tr": "door"
+    "enter_tr": "wipe_curtain"
    },
    "sfx": [
+    "boom",
     "boom",
     "boom"
    ],
@@ -4720,11 +5049,8 @@
      ]
     ],
     "enter_tr": "wipe",
-    "exit_tr": "whip"
+    "exit_tr": "wipe_army"
    },
-   "sfx": [
-    "swoosh"
-   ],
    "year": 1495,
    "chapter_tag": "Babur: Fergana se Panipat"
   },
@@ -4856,12 +5182,9 @@
       52.0
      ]
     ],
-    "enter_tr": "whip"
+    "enter_tr": "wipe_army"
    },
    "tags": "[dreamy]",
-   "sfx": [
-    "swoosh"
-   ],
    "year": 1496,
    "chapter_tag": "Babur: Fergana se Panipat"
   },
@@ -5516,7 +5839,7 @@
       52
      ]
     ],
-    "exit_tr": "smoke"
+    "exit_tr": "doors"
    },
    "sfx": [
     "tension"
@@ -5667,10 +5990,11 @@
       52.0
      ]
     ],
-    "enter_tr": "smoke"
+    "enter_tr": "doors"
    },
    "tags": "[sad] [sighs]",
    "sfx": [
+    "boom",
     "boom",
     "boom"
    ],
@@ -6183,7 +6507,7 @@
       52
      ]
     ],
-    "exit_tr": "wipe"
+    "exit_tr": "wipe_army"
    },
    "sfx": [
     "drum"
@@ -6297,11 +6621,8 @@
       52.0
      ]
     ],
-    "enter_tr": "wipe"
+    "enter_tr": "wipe_army"
    },
-   "sfx": [
-    "swoosh"
-   ],
    "year": 1504,
    "chapter_tag": "Babur: Fergana se Panipat"
   },
@@ -6544,7 +6865,7 @@
       52
      ]
     ],
-    "exit_tr": "zoom"
+    "exit_tr": "wipe_flag"
    },
    "year": 1519,
    "chapter_tag": "Babur: Fergana se Panipat"
@@ -6665,12 +6986,9 @@
       50.0
      ]
     ],
-    "enter_tr": "zoom",
-    "exit_tr": "door"
+    "enter_tr": "wipe_flag",
+    "exit_tr": "wipe_curtain"
    },
-   "sfx": [
-    "whoosh"
-   ],
    "year": 1519,
    "chapter_tag": "Babur: Fergana se Panipat"
   },
@@ -6789,9 +7107,10 @@
       52
      ]
     ],
-    "enter_tr": "door"
+    "enter_tr": "wipe_curtain"
    },
    "sfx": [
+    "boom",
     "boom",
     "boom"
    ],
@@ -6956,7 +7275,7 @@
       52
      ]
     ],
-    "exit_tr": "whip"
+    "exit_tr": "wipe"
    },
    "year": 1524,
    "chapter_tag": "Babur: Fergana se Panipat"
@@ -7055,10 +7374,9 @@
       52
      ]
     ],
-    "enter_tr": "whip"
+    "enter_tr": "wipe"
    },
    "sfx": [
-    "swoosh",
     "page"
    ],
    "year": 1524,
@@ -7201,7 +7519,7 @@
       52
      ]
     ],
-    "exit_tr": "wipe"
+    "exit_tr": "wipe_curtain"
    },
    "sfx": [
     "page"
@@ -7344,12 +7662,9 @@
       52.0
      ]
     ],
-    "enter_tr": "wipe"
+    "enter_tr": "wipe_curtain"
    },
    "tags": "[mocking] [laughs]",
-   "sfx": [
-    "swoosh"
-   ],
    "year": 1524,
    "chapter_tag": "Babur: Fergana se Panipat"
   },
@@ -7595,7 +7910,7 @@
       52
      ]
     ],
-    "exit_tr": "smoke"
+    "exit_tr": "wipe_elephant"
    },
    "tags": "[dramatically]",
    "sfx": [
@@ -7936,10 +8251,9 @@
       52.0
      ]
     ],
-    "enter_tr": "smoke"
+    "enter_tr": "wipe_elephant"
    },
    "sfx": [
-    "boom",
     "drum"
    ],
    "chapter": "Panipat, 1526",
@@ -11636,9 +11950,6 @@
      ]
     ]
    },
-   "sfx": [
-    "swoosh"
-   ],
    "year": 1526,
    "chapter_tag": "Panipat, 1526"
   },
@@ -11987,9 +12298,6 @@
      ]
     ]
    },
-   "sfx": [
-    "swoosh"
-   ],
    "year": 1526,
    "chapter_tag": "Panipat, 1526"
   },
@@ -14561,7 +14869,7 @@
       52
      ]
     ],
-    "exit_tr": "zoom"
+    "exit_tr": "wipe_flag"
    },
    "year": 1526,
    "chapter_tag": "Panipat, 1526"
@@ -14691,10 +14999,9 @@
       52
      ]
     ],
-    "enter_tr": "zoom"
+    "enter_tr": "wipe_flag"
    },
    "sfx": [
-    "whoosh",
     "crowd"
    ],
    "year": 1526,
@@ -14824,7 +15131,7 @@
       52
      ]
     ],
-    "exit_tr": "whip"
+    "exit_tr": "doors"
    },
    "tags": "[dramatically]",
    "sfx": [
@@ -14944,12 +15251,9 @@
       52
      ]
     ],
-    "enter_tr": "whip"
+    "enter_tr": "doors"
    },
    "tags": "[mysteriously]",
-   "sfx": [
-    "swoosh"
-   ],
    "year": 1527,
    "chapter_tag": "Panipat, 1526"
   },
@@ -15083,5 +15387,6 @@
    "year": 1527,
    "chapter_tag": "Panipat, 1526"
   }
- ]
+ ],
+ "auto_sfx": false
 }

@@ -33,16 +33,34 @@ def minimap(bid):
 SEQ = []          # list of (location name, [beat ids])
 NEW = {}          # beat id -> replacement scene (or overlay spec)
 
-# A court 1700
-NEW["s01b"] = ov("chart", "s01", **{k: v for k, v in sc_of("s01b").items() if k != "type"})
-SEQ.append(("court", ["s01", "s01b"]))
-# B map
+# A+B opening on the 3D world map: 1700 -> flags of the Mughals rise over their territory
+MUGHAL_CITIES = [(69.2, 34.5), (74.3, 31.5), (77.2, 28.6), (78.0, 27.2), (74.6, 26.4), (72.6, 23.0), (85.1, 25.6),
+                 (90.4, 23.8), (76.2, 21.3), (75.7, 16.8), (78.4, 17.4), (71.5, 30.2), (74.8, 34.1)]
+
+
+def flags(delay0, step=0.12, h=1.8):
+    out = []
+    for i, (lon, lat) in enumerate(MUGHAL_CITIES):
+        x, z = set3d.lonlat_world(lon, lat)
+        f = O("mughal_flag", round(x, 3), round(z, 3), y=0.25, h=h, anim="bob")
+        if delay0 is not None:
+            f.update(delay=round(delay0 + i * step, 2), anim="pop")
+        out.append(f)
+    return out
+
+
+NEW["s01"] = GM([5, -10, 140, 62], labels=[{"lon": 75, "lat": 36, "t": "1700", "size": 150, "delay": 0.1},
+                                          {"lon": 75, "lat": 20, "t": "DUNIYA KI 1/4 DAULAT", "size": 60, "delay": 1.4}])
+NEW["s01"]["source"], NEW["s01"]["source_by"] = "Maddison, The World Economy: A Millennial Perspective (OECD, 2001)", "anumaan · India ≈ 24.4% world GDP, saal 1700"
+NEW["s01b"] = GM([58, 6, 98, 40], highlight=IND_HL, hl_from={}, hl_at=1.2, labels=[{"lon": 79, "lat": 25, "t": "MUGHAL HINDUSTAN", "size": 60, "delay": 1.4}])
+NEW["s01b"]["objs"] = flags(1.2)
 NEW["s02"] = GM([60, 5, 100, 40], highlight=IND_HL,
-                labels=[{"lon": 78, "lat": 25, "t": "MUGHAL HINDUSTAN", "size": 60, "delay": 0.3},
-                        {"lon": 79, "lat": 20.0, "t": "~40 LAKH KM²  ·  10+ CRORE LOG", "size": 34, "delay": 1.2}])
+                labels=[{"lon": 79, "lat": 25, "t": "MUGHAL HINDUSTAN", "size": 60},
+                        {"lon": 79, "lat": 20.0, "t": "~40 LAKH KM²  ·  10+ CRORE LOG", "size": 34, "delay": 0.6}])
+NEW["s02"]["objs"] = flags(None)
 NEW["s02"]["source"], NEW["s02"]["source_by"] = "Mughal Empire (c. 1690–1700) — Wikipedia; World History Encyclopedia", "anumaan"
 NEW["s03"] = ov("black", "s02", t="Lekin kareeb dedh sau saal baad...")
-SEQ.append(("map", ["s02", "s03"]))
+SEQ.append(("map", ["s01", "s01b", "s02", "s03"]))
 # C Delhi fort 1857-58
 s = sc_of("s04b"); s["set"] = "fort"; s["target"] = [0.5, 1.0, 5.0]; NEW["s04b"] = s
 s = sc_of("s05"); s["set"] = "fort"; s.pop("target", None); NEW["s05"] = s
@@ -212,35 +230,36 @@ for loc, ids in SEQ:
     # (transition kinds are assigned after all shots are built)
 
 # ------------------------------------------------------------------ seamless location changes: a different 3D move each time
-TR = ["zoom",    # court 1700 -> map            (push through the frame into the map)
-      "clouds",  # map -> Delhi fort             (dive down from the map)
-      "whip",    # Delhi fort -> map
-      "door",    # map -> Rangoon cell           (through the dark doorway)
-      "wipe",    # cell -> court                 (a pillar crosses the lens)
-      "whip",    # court -> Bengal river
-      "zoom",    # river -> map
-      "clouds",  # map -> Akhsi cliff            (dive down to Fergana)
-      "door",    # cliff -> Fergana palace
-      "wipe",    # palace -> tent
-      "whip",    # tent -> Samarkand fort
-      "smoke",   # Samarkand -> wandering plains (dust)
-      "wipe",    # plains -> Kabul fort
-      "zoom",    # Kabul fort -> map
-      "door",    # map -> Lodi's court
-      "whip",    # court -> Lahore study
-      "wipe",    # study -> court
-      "smoke",   # court -> Panipat (war dust)
-      "zoom",    # Panipat -> court (Mughal saltanat)
-      "whip"]    # court -> Mewar fort
-SFX = {"zoom": "whoosh", "clouds": "whoosh", "whip": "swoosh", "door": "boom", "wipe": "swoosh", "smoke": "boom"}
+TR = ["doors",          # map -> Delhi fort         (the fort gates open on 1858)
+      "wipe_flag",      # Delhi fort -> map
+      "wipe",           # map -> Rangoon cell       (stone pillar)
+      "wipe_curtain",   # cell -> court
+      "wipe",           # court -> Bengal river
+      "wipe_flag",      # river -> map
+      "clouds",         # map -> Akhsi cliff        (the only cloud dive)
+      "wipe_curtain",   # cliff -> Fergana palace
+      "wipe",           # palace -> tent
+      "wipe_army",      # tent -> Samarkand         (his army marches past)
+      "doors",          # Samarkand -> plains       (the gates shut on him)
+      "wipe_army",      # plains -> Kabul
+      "wipe_flag",      # Kabul -> map
+      "wipe_curtain",   # map -> Lodi's court
+      "wipe",           # court -> Lahore study
+      "wipe_curtain",   # study -> court
+      "wipe_elephant",  # court -> Panipat          (a war elephant walks past)
+      "wipe_flag",      # Panipat -> court          (the Mughal banner)
+      "doors"]          # court -> Mewar fort
 assert len(TR) == len(SEQ) - 1, (len(TR), len(SEQ))
 for j in range(len(SEQ) - 1):
     last, first = SEQ[j][1][-1], SEQ[j + 1][1][0]
     B[last]["scene"]["exit_tr"] = TR[j]
     B[first]["scene"]["enter_tr"] = TR[j]
-    B[first]["sfx"] = [SFX[TR[j]]] + [x for x in B[first].get("sfx", []) if x not in ("whoosh", "swoosh")]
 for b in story["beats"]:
     b["scene"].pop("exit_clouds", None); b["scene"].pop("enter_clouds", None)
+    b["sfx"] = [x for x in b.get("sfx", []) if x not in ("whoosh", "swoosh")]   # no transition SFX
+    if not b["sfx"]:
+        b.pop("sfx")
+story["auto_sfx"] = False
 
 story["auto_transitions"] = False
 story["music"] = "investigate"
