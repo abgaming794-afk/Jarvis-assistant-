@@ -1,5 +1,6 @@
 """Year timeline ruler (bottom right). A beat sets "year": 1526 or "year": [1526, 1857] (animates across the beat).
 Between beats the ruler scrolls from the previous beat's year to this one, so time jumps read on screen."""
+import palette
 import math
 from PIL import Image, ImageDraw
 from common import font, clamp, ease_in_out
@@ -58,7 +59,7 @@ def draw(fr, beat, t, dur, prev_beat=None):
     # centre marker
     cx = bw / 2
     d.polygon([(cx - bh * .16, base + bh * .32), (cx + bh * .16, base + bh * .32), (cx, base + bh * .06)],
-              fill=(241, 194, 50, 255))
+              fill=palette.acc())
     fr.alpha_composite(band, (x0, y0))
     # current year pill above the band
     yr = int(round(cur))
@@ -68,7 +69,7 @@ def draw(fr, beat, t, dur, prev_beat=None):
     pw, ph = int(tw + 26 * u), int(40 * u)
     pill = Image.new("RGBA", (pw, ph), (0, 0, 0, 0))
     pd = ImageDraw.Draw(pill)
-    pd.rounded_rectangle([0, 0, pw - 1, ph - 1], radius=int(ph * .45), fill=(16, 13, 12, 230), outline=(214, 178, 96, 255),
+    pd.rounded_rectangle([0, 0, pw - 1, ph - 1], radius=int(ph * .45), fill=(16, 13, 12, 230), outline=palette.acc(),
                          width=max(1, int(2 * u)))
     pd.text((pw / 2, ph / 2), txt, font=f_big, fill=(247, 243, 234, 255), anchor="mm")
     fr.alpha_composite(pill, (int(x0 + cx - pw / 2), int(y0 - ph * .78)))

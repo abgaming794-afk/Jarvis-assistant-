@@ -7,7 +7,8 @@ import functools, math
 from PIL import Image, ImageDraw, ImageFilter, ImageChops
 from common import clamp, ease_out, ease_in_out
 
-GOLD = (214, 178, 96, 255)
+import palette
+GOLD = palette.acc()
 
 
 @functools.lru_cache(maxsize=512)

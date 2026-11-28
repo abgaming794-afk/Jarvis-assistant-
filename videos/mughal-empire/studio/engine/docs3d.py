@@ -14,6 +14,7 @@ scene {"type": "realdoc",
        "bg": "desk_top"}
 Also: draw_source(fr, text, by, t) — the premium source credit used by any scene that sets "source".
 """
+import palette
 import math, functools, os
 import numpy as np
 from PIL import Image, ImageDraw, ImageFilter, ImageOps, ImageChops
@@ -143,7 +144,7 @@ def draw_source(fr, text, by="", t=1.0, at=.6):
     d = ImageDraw.Draw(lay)
     xr = W - 40 * u + (1 - k) * 30 * u
     y = 30 * u
-    gold = (214, 178, 96, int(255 * k))
+    gold = palette.acc(255 * k)
     white = (244, 240, 230, int(255 * k))
     d.text((xr, y), "Srot", font=lab, fill=white, anchor="ra")
     d.text((xr, y + 22 * u), text, font=f1, fill=white, anchor="ra")

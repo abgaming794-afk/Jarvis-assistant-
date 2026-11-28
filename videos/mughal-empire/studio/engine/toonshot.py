@@ -66,7 +66,8 @@ def hfont(text, size, kind="caveat"):
     return hand(size, kind)
 
 
-GOLD = (214, 178, 96, 255)
+import palette
+GOLD = palette.acc()
 GLASS = (16, 13, 12, 222)
 
 
@@ -174,9 +175,9 @@ def light_map(view, W, H, hl_json="{}"):
                 for poly in polys(f["geometry"]):
                     ring = [P(x, y) for x, y in poly[0]]
                     if len(ring) > 2:
-                        gd.line(ring + [ring[0]], fill=(255, 214, 90, 230), width=max(2, lw * 5))
+                        gd.line(ring + [ring[0]], fill=palette.glow(), width=max(2, lw * 5))
         if hl.get("IND") or hl.get("India"):
-            draw_india(gd, P, (0, 0, 0, 0), (255, 214, 90, 230), max(2, lw * 5))
+            draw_india(gd, P, (0, 0, 0, 0), palette.glow(), max(2, lw * 5))
         img.alpha_composite(gl.filter(ImageFilter.GaussianBlur(max(2, W / 500))))
         d = ImageDraw.Draw(img)
     icol = hl.get("IND") or hl.get("India")
@@ -782,7 +783,7 @@ class ToonShot:
         fr.alpha_composite(shadow, (x0 - 30, y0 - 30))
         card.putalpha(m)
         fr.alpha_composite(card, (x0, y0))
-        ImageDraw.Draw(fr).rounded_rectangle([x0, y0, x0 + cw, y0 + ch], radius=int(22 * u), outline=(214, 178, 96, int(255 * k)), width=max(1, int(3 * u)))
+        ImageDraw.Draw(fr).rounded_rectangle([x0, y0, x0 + cw, y0 + ch], radius=int(22 * u), outline=palette.acc(255 * k), width=max(1, int(3 * u)))
 
     def frame(self, t):
         fr = self.frame_core(t)

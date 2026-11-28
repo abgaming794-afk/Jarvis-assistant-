@@ -884,7 +884,7 @@ def _medallion(fr, cam, md, t, u):
     W, H = fr.size
     # ground shadow
     sh = Image.new("RGBA", (int(R * 2.4), int(R * .7)), (0, 0, 0, 0))
-    ImageDraw.Draw(sh).ellipse([0, 0, sh.width - 1, sh.height - 1], fill=(0, 0, 0, int(110 * clamp(te / .4))))
+    ImageDraw.Draw(sh).ellipse([0, 0, sh.width - 1, sh.height - 1], fill=(0, 0, 0, int(55 * clamp(te / .4))))
     sh = sh.filter(ImageFilter.GaussianBlur(R * .15))
     fr.alpha_composite(sh, (int(g[0] - sh.width / 2), int(g[1] - sh.height / 2)))
     if k <= 0.02:
