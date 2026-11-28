@@ -585,6 +585,20 @@ class ToonShot:
                     import kinetic
                     spr = kinetic.kinetic(txt, int(bg.get("size", 120) * u), t - st, bg.get("anim", "rise"), bg.get("from"))
                     _paste_center(fr, spr, W * bg.get("x", .5), H * bg.get("y", .2), 1.0)
+        cc = sc.get("chapter_card")
+        if cc:   # chapter opener over the running scene: small CHAPTER n + big kinetic title, then fades away
+            import kinetic
+            te = t - cc.get("at", .15)
+            kf = clamp(te / .3) * (1 - clamp((te - cc.get("hold", 2.4)) / .5))
+            if te > 0 and kf > 0:
+                sh = Image.new("RGBA", (W, H), (0, 0, 0, 0))
+                ImageDraw.Draw(sh).ellipse([W * .1, H * .12, W * .9, H * .62], fill=(6, 6, 10, int(150 * kf)))
+                fr.alpha_composite(sh.filter(ImageFilter.GaussianBlur(W / 18)))
+                for txt, size, y, d0, rule in ((f"CHAPTER {cc['n']}", 44, .27, 0.0, False), (cc["t"], 118, .39, .25, True)):
+                    spr = kinetic.kinetic(txt, int(size * u), te - d0, "rise", rule=rule)
+                    if kf < 1:
+                        spr.putalpha(spr.getchannel("A").point(lambda v, kf=kf: int(v * kf)))
+                    _paste_center(fr, spr, W * .5, H * y, 1.0)
         lt = sc.get("lower")
         if lt:
             k = ease_out(clamp((t - lt.get("at", .3)) / .35))
@@ -741,11 +755,26 @@ class ToonShot:
             f = hfont(text, size, "caveat")
             n = len(text)
             kk = clamp(t / max(.4, min(self.dur * .55, .05 * n)))
-            shown = text[: int(round(n * kk))]
             d = ImageDraw.Draw(fr)
             x0 = W * .08
-            d.text((x0, H * .5), shown, font=f, fill=TEXT + (int(255 * k),), anchor="lm")
-            d.line([(x0, H * .5 + size * .85), (x0 + W * .12 * clamp(t / .6), H * .5 + size * .85)], fill=GOLD, width=max(2, int(3 * u)))
+            words, lines, cur = text.split(" "), [], ""
+            for w_ in words:          # wrap the FULL text first so lines don't jump while typing
+                tr_ = (cur + " " + w_).strip()
+                if d.textlength(tr_, font=f) > W * .84 and cur:
+                    lines.append(cur); cur = w_
+                else:
+                    cur = tr_
+            lines.append(cur)
+            lh = size * 1.3
+            y0 = H * .5 - lh * (len(lines) - 1) / 2
+            left = int(round(n * kk))
+            for i, l in enumerate(lines):
+                if left <= 0:
+                    break
+                d.text((x0, y0 + i * lh), l[:left], font=f, fill=TEXT + (int(255 * k),), anchor="lm")
+                left -= len(l) + 1
+            yl = y0 + lh * (len(lines) - 1) + size * .85
+            d.line([(x0, yl), (x0 + W * .12 * clamp(t / .6), yl)], fill=GOLD, width=max(2, int(3 * u)))
             return
         if not hasattr(self, "_ovsub"):
             ob = dict(self.b); osc = dict(ov); osc.pop("fade_in", None); osc.pop("fade_out", None)

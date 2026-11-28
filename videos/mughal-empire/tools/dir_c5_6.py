@@ -1,0 +1,265 @@
+"""Direction: chapter 5 (Shah Jahan) and chapter 6 (Aurangzeb)."""
+from dirlib import *
+
+MUG = "#3f6d5a"; MAR = "#e0782f"
+SJ = POR + "shahjahan_horse.jpg"; SJ_CROP = [0.5, 0.3, 0.12]
+DARA = POR + "dara.jpg"; DARA_CROP = [0.5, 0.22, 0.25]
+AUR = D + "aurangzeb_c1700.jpg"; AUR_CROP = [0.47, 0.335, 0.30]
+SHIV = POR + "shivaji.jpg"; SHIV_CROP = [0.5, 0.12, 0.2]
+FULL_HL = {"IND": "#d9a72b", "PAK": "#d9a72b", "BGD": "#d9a72b", "AFG": "#c99a35"}
+
+SHOTS5 = [
+    ("palace", [
+        S("palace", actors=[A("shahjahan", 0, 5.0, expr="scheming", pose="cross")], names=NM("Khurram"), _y=1628,
+          chapter_card={"n": 5, "t": "SHAH JAHAN"}),
+        S("palace", mood=0.6, actors=[A("prince1", -1.8, 5.4, expr="sad", dim=True, exit=True), A("prince2", 0, 5.6, expr="sad", dim=True, exit=True),
+                                      A("grandson", 1.8, 5.4, h=1.15, expr="sad", dim=True, exit=True)],
+          names=NM("Bhai Shahryar · bhatije · chachere bhai", bar="#7a1f2b")),
+    ]),
+    ("court", [
+        S("court", actors=[A("shahjahan", 0, 9.0, y=0.6, h=1.4, expr="proud")], objs=[O("throne", 0, 9.5, y=0.6, h=1.8), O("crown", 0, 9.0, y=2.0, h=0.35, anim="drop")],
+          big=BIG("SHAH JAHAN", 0.5), _y=1628),
+        S("court", objs=[O("chest", -2.4, 6.0, h=0.8), O("gold_bars", 2.4, 6.0, h=0.5), O("coins", -1.0, 4.8, h=0.4), O("coins", 1.2, 4.6, h=0.4),
+                         O("peacock_throne", 0, 9.3, y=0.6, h=1.6)], names=NM("Sabse chamakdaar daur"),
+          stickers=[{"name": "coin", "anim": "rain", "h": 0.06, "at": 0.3}]),
+        OV_BLACK("Lekin shuru me hi, ek bada dukh aaya."),
+    ]),
+    ("palace", [
+        S("palace", mood=0.7, actors=[A("mumtaz", 0, 5.0, expr="sad")], caption="Burhanpur · 1631", _y=1631),
+        S("palace", mood=0.55, actors=[A("mumtaz", 0, 5.0, expr="sad", dim=True, exit=True), A("shahjahan", 1.6, 5.4, expr="sad", pose="head", face="left")],
+          names=NM("Mumtaz Mahal · 14ve bachche ke janm par", bar="#7a1f2b")),
+        S("palace", actors=[A("shahjahan", 0, 5.0, expr="sad", pose="give")], objs=[O("scroll", 1.0, 5.4, y=0.8, h=0.6)], names=NM("Uski yaad me ek maqbara")),
+    ]),
+    ("river", [
+        S("river", objs=[O("taj_mahal", 0, 12, h=5.0)], caption="Agra · Yamuna kinara", _y=1632),
+        S("river", target=[0, 2.4, 11], dist=8.0, objs=[O("taj_mahal", 0, 12, h=5.0)], actors=[A("farmer", -2.0, 6.0, pose="hold", hold="rope"),
+                                                                                         A("farmer", 2.2, 6.4, pose="hold", hold="rope")],
+          big=BIG("~20 SAAL", 0.3, anim="roll", frm="00"), names=NM("Hazaaron kaarigar")),
+        S("river", target=[0, 2.6, 12], dist=10.0, objs=[O("taj_mahal", 0, 12, h=5.0)], big=BIG("~3 CRORE ₹", 0.3),
+          source="Taj Mahal — Wikipedia", source_by="anumaan · us zamaane ke rupaye"),
+    ]),
+    ("court", [
+        S("court", target=[0, 1.6, 8.5], dist=5.0, objs=[O("peacock_throne", 0, 9.3, y=0.6, h=2.1)], big=BIG("TAKHT-E-TAUS", 0.4), _y=1635),
+        S("court", target=[0, 1.8, 9.0], dist=3.2, objs=[O("peacock_throne", 0, 9.3, y=0.6, h=2.1)], names=NM("Sona · heere · maanik · panne · moti"),
+          emph=[{"x": 0.5, "y": 0.42, "r": 0.18, "at": 0.3}]),
+        S("court", target=[0, 1.6, 8.5], dist=4.6, objs=[O("peacock_throne", 0, 9.3, y=0.6, h=2.1)], big=BIG("~7 SAAL", 0.3, anim="roll", frm="0")),
+        S("court", target=[0, 1.4, 7.6], dist=5.6, objs=[O("peacock_throne", -1.2, 9.3, y=0.6, h=1.8), O("kohinoor", 1.6, 7.0, y=0.6, h=0.8)],
+          stickers=[{"name": "question", "side": "top_right", "anim": "pop", "pulse": True, "h": 0.15, "at": 0.3}], big=BIG("EK HI AADMI", 1.2, size=96)),
+    ]),
+    ("fort", [
+        S("fort", objs=[O("red_fort", 0, 9.6, h=4.0)], caption="Shahjahanabad, Dilli · 1639–48", _y=1639),
+        S("fort", target=[0, 2.0, 9.0], dist=7.0, objs=[O("red_fort", 0, 9.6, h=4.0)], big=BIG("LAL QILA", 0.3)),
+        S("fort", mood=0.7, target=[0, 2.0, 9.0], dist=9.0, objs=[O("red_fort", 0, 9.6, h=4.0)], names=NM("Bahar chamak · andar daraarein")),
+    ]),
+    ("map", [
+        GM([64, 12, 84, 28], highlight={"IND": "#8a6a3a"}, pins=[PIN("ahmedabad", "Gujarat", 0.2), PIN("burhanpur", "Deccan", 0.5)],
+           labels=[LBL((75, 20), "AKAAL · 1630–32", 46, 0.6, dlat=0)], _y=1631),
+        GM([64, 12, 84, 28], highlight={"IND": "#7a1f2b"}, labels=[LBL((75, 20), "LAAKHON MAUTEIN", 50, 0.3, dlat=0)],
+           source="Deccan famine of 1630–32 — Wikipedia", source_by="anumaan"),
+        GM([56, 24, 80, 42], highlight={"AFG": "#c99a35", "UZB": "#6a2a2a"}, routes=[ROUTE("kabul", "balkh", time=1.4, color="#c0322b")],
+           pins=[PIN("balkh", "Balkh · 1646–47", 1.4)], labels=[LBL("balkh", "MEHENGI · BEKAAR", 36, 1.8, dlat=-2.4)], _y=1647),
+        GM([52, 24, 76, 38], highlight={"IRN": "#6a5a8a", "AFG": "#6a5a8a"}, hl_from={"IRN": "#6a5a8a", "AFG": "#c99a35"}, hl_at=0.3,
+           pins=[PIN("kandahar", "Kandahar · 1649", 0.2)], labels=[LBL("kandahar", "3 KOSHISHEIN · NAAKAAM", 34, 0.8, dlat=-2.4)], _y=1653),
+    ]),
+    ("palace", [
+        OV_BLACK("Aur phir aaya — 1657.", _y=1657),
+        S("palace", mood=0.7, actors=[A("shahjahan_old", 0, 5.0, expr="sad", pose="head")], big=BIG("BADSHAH MAR GAYE?", 0.6, size=90), _y=1657),
+    ]),
+    ("map", [
+        GM(IND_VIEW, highlight=FULL_HL, pins=[PIN("dhaka", "Shuja · Bengal", 0.2), PIN("ahmedabad", "Murad · Gujarat", 0.4),
+                                             PIN("burhanpur", "Aurangzeb · Deccan", 0.6), PIN("delhi", "Dara · darbar", 0.8)], _y=1657),
+    ]),
+    ("palace", [
+        S("palace", target=[0, 1.1, 5.0], dist=3.8, actors=[A("dara", 0, 5.0, expr="proud"), A("shahjahan_old", -1.8, 5.6, expr="happy", face="right")],
+          names=NM("Dara Shikoh · sabse bada · laadla")),
+        S("study", actors=[A("dara", 0, 4.6, expr="happy", pose="type")], objs=[O("book_stack", 1.4, 5.2, y=0.8, h=0.7)],
+          names=NM("Upanishadon ka Farsi anuvaad · Sirr-i-Akbar")),
+    ]),
+    ("map", [
+        GM(IND_VIEW, highlight=FULL_HL, pins=[PIN("dhaka", "Shuja", 0.1), PIN("ahmedabad", "Murad", 0.3)]),
+        GM(IND_VIEW, highlight=FULL_HL, pins=[PIN("burhanpur", "Aurangzeb · sabse anubhavi", 0.1)],
+           medallions=[MED("burhanpur", AUR, AUR_CROP, "AURANGZEB", None, 0.3, side="right")]),
+        GM(IND_VIEW, highlight=FULL_HL, routes=[ROUTE("dhaka", "agra", time=1.8, color="#c0322b"), ROUTE("ahmedabad", "agra", time=1.6, color="#c0322b"),
+                                               ROUTE("burhanpur", "agra", time=1.4, color="#c0322b")], labels=[LBL("agra", "GADDI KI JUNG", 46, 1.2, dlat=-2.4)]),
+    ]),
+    ("palace", [
+        S("palace", target=[-0.4, 1.1, 4.8], dist=3.4, actors=[A("dara", -0.4, 4.8, expr="angry", talk=True, gesture=["point", "fist"], face="right")],
+          board={"text": "Abba huzoor zinda hain! Tum sab [baaghi] ho!", "rect": [0.52, 0.14, 0.94, 0.3], "at": 0.1, "time": 1.4}, names=[NAATYA]),
+        S("palace", target=[0.4, 1.1, 4.8], dist=3.4, actors=[A("aurangzeb", 0.4, 4.8, expr="smug", talk=True, gesture=["cross", "point"], face="left")],
+          board={"text": "Zinda hain, to [gaddi] khaali kyun dikh rahi hai?", "rect": [0.06, 0.14, 0.48, 0.3], "at": 0.1, "time": 1.6}, names=[NAATYA]),
+    ]),
+    ("battlefield", [
+        S("battlefield", objs=[O("war_elephant", -2.0, 9.0, h=2.4, color="#2f5d8a"), O("army_block", -4.0, 10.0, h=2.0, color="#2f5d8a"),
+                               O("army_block", 3.6, 10.0, h=2.0, color=MUG), O("flag", 3.0, 9.0, h=1.6, color=MUG)],
+          caption="Samugarh, Agra ke paas · 29 May 1658", _y=1658),
+        S("battlefield", target=[-2.0, 1.5, 9.0], dist=7.0, objs=[O("war_elephant", -2.0, 9.0, h=2.4, color="#2f5d8a")],
+          actors=[A("dara", -2.0, 9.0, y=2.0, h=0.8, expr="proud", pose="point")], names=NM("Dara haathi par · jung baraabar")),
+        S("battlefield", target=[-2.0, 1.4, 9.0], dist=5.0, objs=[O("elephant_empty", -2.0, 9.0, h=2.4, color="#2f5d8a"),
+                                                                O("horse_rider", -1.0, 8.4, h=1.6, color="#2f5d8a", to=[-4.0, 7.6], move_time=2.4)],
+          names=NM("Haathi se utar kar ghode par")),
+        S("battlefield", target=[-2.0, 1.2, 9.0], dist=6.0, objs=[O("elephant_empty", -2.0, 9.0, h=2.4, color="#2f5d8a")],
+          big=BIG("HAUDA KHAALI", 0.3), stickers=[{"name": "exclaim", "side": "top_right", "anim": "pop", "h": 0.13, "at": 0.6}]),
+        S("battlefield", target=[0, 1.0, 9.0], dist=8.0, objs=[O("army_block", -4.0, 10.0, h=2.0, color="#2f5d8a", to=[-9.0, 12.0], move_time=2.6),
+                                                             O("flag", 3.0, 9.0, h=1.6, color=MUG), O("smoke", -2.0, 9.0, h=1.6)],
+          actors=[A("aurangzeb", 2.0, 7.0, expr="smug", pose="fist", face="left")], names=NM("Bhagdad · Aurangzeb ki jeet")),
+    ]),
+    ("fort", [
+        S("fort", objs=[O("red_fort", 0, 9.6, h=4.0, color="#b5553a"), O("army_block", -3.6, 7.0, h=1.6, color=MUG), O("army_block", 3.6, 7.0, h=1.6, color=MUG)],
+          caption="Agra Qila · June 1658", _y=1658),
+        S("fort", target=[0, 0.6, 8.0], dist=5.0, objs=[O("red_fort", 0, 9.6, h=4.0), O("water_skin", 0, 7.6, h=0.6, color="#3a6a9a")],
+          big=BIG("PAANI BAND", 0.3), stickers=[{"name": "warning", "side": "top_right", "anim": "pop", "h": 0.13, "at": 0.4}]),
+        S("fort", target=[0, 1.0, 5.0], dist=4.0, actors=[A("shahjahan_old", 0, 5.0, expr="sad", pose="up")], names=NM("Shah Jahan ne hathiyaar daal diye")),
+        S("cell", actors=[A("shahjahan_old", 0, 3.4, expr="sad", pose="head")], big=BIG("BETE KA QAIDI", 0.4), _y=1658),
+    ]),
+    ("palace", [
+        S("palace", mood=0.7, actors=[A("murad", 0, 5.0, expr="shocked", pose="up")], objs=[O("chain", 0, 5.0, y=0.6, h=0.6)],
+          names=NM("Murad · dhokhe se qaid · baad me maut ki saza", bar="#7a1f2b"), _y=1661),
+    ]),
+    ("plain", [
+        S("plain", mood=0.75, objs=[O("elephant_empty", -2.5, 6.0, h=2.0, color="#6a6a5a", to=[2.5, 6.0], move_time=4.0)],
+          actors=[A("dara", -2.5, 6.0, y=1.5, h=0.8, expr="sad", to=[2.5, 6.0], walk_time=4.0)], caption="Dilli · August 1659", _y=1659),
+        S("plain", mood=0.5, actors=[A("dara", 0, 5.4, expr="sad", dim=True, exit=True)], names=NM("Dara ka sir kaata gaya · 30 August 1659", bar="#7a1f2b")),
+    ]),
+    ("map", [
+        GM([84, 16, 98, 28], highlight={"BGD": "#d9a72b", "MMR": "#6a5a8a"}, routes=[ROUTE("dhaka", "arakan", time=1.6, color="#c0322b")],
+           pins=[PIN("arakan", "Arakan · Shuja · laapata", 1.6)], _y=1660),
+    ]),
+    ("cell", [
+        S("cell", actors=[A("shahjahan_old", 0, 3.4, expr="sad", pose="head")], big=BIG("~8 SAAL QAID", 0.3), _y=1666),
+        S("cell", target=[0, 1.2, 4.0], dist=4.0, actors=[A("shahjahan_old", -1.0, 3.4, expr="sad", back=True, face="right")],
+          objs=[O("taj_mahal", 1.4, 4.4, y=0.6, h=1.6)], names=NM("Khidki se Taj Mahal")),
+        OV_BLACK("Aur unhein qaid karne wala beta? Wo banane wala tha — sabse bada Mughal naqsha."),
+    ]),
+]
+
+SHOTS6 = [
+    ("court", [
+        S("court", actors=[A("aurangzeb", 0, 9.0, y=0.6, h=1.4, expr="proud")], objs=[O("throne", 0, 9.5, y=0.6, h=1.8)], big=BIG("ALAMGIR", 0.6),
+          chapter_card={"n": 6, "t": "AURANGZEB"}, _y=1658),
+        S("court", target=[0, 1.4, 8.6], dist=5.0, actors=[A("aurangzeb", 0, 9.0, y=0.6, h=1.4, expr="smug")], objs=[O("throne", 0, 9.5, y=0.6, h=1.8)],
+          big=BIG("49 SAAL", 0.3, anim="roll", frm="00")),
+    ]),
+    ("study", [
+        S("study", actors=[A("aurangzeb", 0, 4.6, expr="neutral")], names=NM("Saadgi"), _y=1670),
+        S("study", target=[0, 1.0, 4.8], dist=3.4, actors=[A("aurangzeb", 0, 4.6, expr="thinking", pose="type")], objs=[O("caps", 0.9, 5.2, y=0.8, h=0.5)],
+          names=NM("Kehte hain · topiyan seete the")),
+        OV_BLACK("Par unka raaj — bade vivaadon se bhara raha."),
+    ]),
+    ("court", [
+        S("court", target=[0, 1.0, 6.4], dist=4.0, objs=[O("farman", 0, 6.4, y=0.6, h=1.0, anim="pop")], big=BIG("JIZYA WAPAS", 0.3), names=NM("1679"), _y=1679),
+    ]),
+    ("map", [
+        GM([74, 22, 88, 31], highlight={"IND": "#8a6a3a"}, pins=[PIN("kashi", "Kashi Vishwanath · 1669", 0.2), PIN("mathura", "Mathura Keshavdev · 1670", 0.6)],
+           source="Aurangzeb — Wikipedia; itihaaskaar", source_by="aadesh par tode gaye", _y=1670),
+        GM([74, 22, 88, 31], highlight={"IND": "#8a6a3a"}, labels=[LBL((81, 26.5), "KUCHH MANDIRON KO ZAMEEN-DAAN BHI", 30, 0.3, dlat=0)]),
+        OV_BLACK("Itihaaskaar aaj bhi, dono pehluon par bahas karte hain."),
+        GM(IND_VIEW, highlight=FULL_HL, labels=[LBL((76, 17), "SABSE BADA SIRDARD: DECCAN", 40, 0.3, dlat=0)], _y=1670),
+        GM([68, 12, 84, 24], highlight={"IND": "#d9a72b"}, pins=[PIN("raigad", "Shivaji", 0.2)],
+           medallions=[MED("raigad", SHIV, SHIV_CROP, "SHIVAJI|1630 – 1680", "Raigad", 0.4, side="right")]),
+    ]),
+    ("palace", [
+        S("palace", mood=0.45, actors=[A("shaista", 0.6, 5.2, expr="neutral")], caption="Pune · raat · April 1663", _y=1663),
+        S("palace", mood=0.5, actors=[A("shivaji", -2.0, 4.6, expr="angry", pose="point", to=[-0.4, 5.0], walk_time=1.2, face="right"),
+                                      A("shaista", 0.8, 5.2, expr="shocked", pose="up", face="left")], objs=[O("sword", -1.0, 5.0, y=1.0, h=0.5)],
+          names=NM("Shivaji · Shaista Khan ke mahal me")),
+        S("palace", mood=0.55, actors=[A("shaista", 0.8, 5.2, expr="shocked", pose="head", to=[3.6, 6.0], walk_time=1.4)], big=BIG("UNGLIYAN KATI", 0.5)),
+    ]),
+    ("map", [
+        GM([66, 14, 80, 26], highlight={"IND": "#d9a72b"}, routes=[ROUTE("raigad", "surat", time=1.6, color=MAR)], pins=[PIN("surat", "Surat · 1664", 1.6)],
+           labels=[LBL("surat", "SABSE AMEER BANDARGAAH", 30, 1.8, dlat=-2.2)], _y=1664),
+        GM([66, 14, 84, 30], highlight={"IND": "#d9a72b"}, routes=[ROUTE("raigad", "agra", time=2.0, color=MAR)], pins=[PIN("agra", "Agra darbar · 1666", 2.0)], _y=1666),
+    ]),
+    ("palace", [
+        S("palace", mood=0.75, actors=[A("shivaji", 0, 5.0, expr="angry", pose="cross"), A("soldier", -1.8, 5.4, face="right"), A("soldier", 1.8, 5.4, face="left")],
+          names=NM("Nazarband"), _y=1666),
+        S("palace", target=[0, 0.8, 5.4], dist=4.0, objs=[O("basket", -1.2, 5.4, h=0.9), O("basket", 0.4, 5.6, h=0.9, to=[3.6, 6.2], move_time=2.6),
+                                                        O("basket", 1.6, 5.4, h=0.9)], names=NM("Kehte hain · mithai ki tokariyon me")),
+    ]),
+    ("fort", [
+        S("fort", actors=[A("shivaji", 0, 5.0, expr="proud", pose="up")], objs=[O("flag", -2.0, 7.0, h=1.6, color=MAR), O("crown", 0, 5.0, y=1.9, h=0.35, anim="drop")],
+          caption="Raigad · 6 June 1674", big=BIG("CHHATRAPATI", 0.6), _y=1674),
+    ]),
+    ("map", [
+        GM(NORTH_VIEW, highlight=NORTH_HL, labels=[LBL("delhi", "UTTAR ME BHI AAG", 40, 0.3, dlat=-2.4)], _y=1675),
+        GM(view_around("delhi", 10, 6.5), highlight=NORTH_HL, pins=[PIN("chandni", "Chandni Chowk · 1675", 0.2)],
+           labels=[LBL("delhi", "GURU TEGH BAHADUR JI", 40, 0.4, dlat=-1.4)]),
+        GM(view_around("delhi", 10, 6.5), highlight=NORTH_HL, pins=[PIN("chandni", "Gurudwara Sis Ganj", 0.2)],
+           labels=[LBL("delhi", "SHAHEEDI", 60, 0.3, dlat=-1.4)], source="Guru Tegh Bahadur — Wikipedia", source_by="11 November 1675"),
+        GM([68, 20, 82, 30], highlight=NORTH_HL, pins=[PIN("jodhpur", "Marwar · Rathore", 0.2)], _y=1679),
+    ]),
+    ("palace", [
+        S("palace", actors=[A("prince_akbar", 0, 5.0, expr="angry", pose="fist")], names=NM("Shahzada Akbar · baghawat · 1681"), _y=1681),
+        S("palace", actors=[A("prince_akbar", -1.0, 5.0, expr="worried", face="right"), A("sambhaji", 1.0, 5.2, expr="proud", face="left")],
+          names=NM("Deccan · Sambhaji ke paas")),
+        S("palace", target=[0, 1.2, 5.0], dist=3.4, actors=[A("aurangzeb", 0, 5.0, expr="angry", talk=True, gesture=["point", "fist"])],
+          board={"text": "Deccan, ab main [khud] jaaunga.", "rect": [0.52, 0.14, 0.94, 0.28], "at": 0.1, "time": 1.2}, names=[NAATYA]),
+    ]),
+    ("map", [
+        GM([66, 12, 84, 32], highlight=FULL_HL, routes=[ROUTE("delhi", "burhanpur", via=["agra"], time=2.0, color="#ffffff")],
+           pins=[PIN("burhanpur", "1681", 2.0)], _y=1681),
+        GM([66, 12, 84, 32], highlight=FULL_HL, labels=[LBL("delhi", "KABHI WAPAS NAHI", 40, 0.4, dlat=-2.4)]),
+        GM([66, 12, 84, 26], highlight=FULL_HL, labels=[LBL((76, 18), "SHURU ME JEET", 40, 0.3, dlat=0)], _y=1686),
+        GM([66, 12, 84, 26], highlight={"IND": "#d9a72b"}, hl_from={"IND": "#8a6a3a"}, hl_at=0.3,
+           pins=[PIN("bijapur", "Bijapur · 1686", 0.2), PIN("golconda", "Golconda · 1687", 1.0)], _y=1687),
+    ]),
+    ("fort", [
+        S("fort", objs=[O("army_block", -3.0, 7.0, h=1.8, color=MUG), O("cannon_fire", -1.0, 5.6, h=0.8)],
+          actors=[A("sardar", 1.6, 7.6, expr="scheming", pose="give", hold="coin_bag")], big=BIG("8 MAHINE", 0.3, anim="roll", frm="0"),
+          caption="Golconda · 1687", names=NM("Aakhir me · rishwat se darwaaza khula", at=1.6), _y=1687),
+        S("fort", mood=0.6, actors=[A("sambhaji", 0, 5.0, expr="sad", dim=True)], objs=[O("chain", 0, 5.0, y=0.6, h=0.6)],
+          names=NM("Sambhaji · 1689 · berahmi se maut", bar="#7a1f2b"), _y=1689),
+    ]),
+    ("map", [
+        GM([58, 4, 100, 40], highlight=FULL_HL, hl_from={"IND": "#d9a72b", "PAK": "#d9a72b"}, hl_at=0.4,
+           medallions=[MED("delhi", AUR, AUR_CROP, "AURANGZEB|1658 – 1707", "Dilli", 0.4)], big=BIG("SABSE BADA NAQSHA", 0.8, y=0.12, size=80), _y=1690),
+        GM([58, 4, 100, 40], highlight=FULL_HL, labels=[LBL((79, 21.5), "1700", 110, 0.1, dlat=0, anim="roll", **{"from": "1690"})]),
+        GM([58, 4, 100, 40], highlight=FULL_HL, labels=[LBL((79, 21.5), "ULTI GINTI", 70, 0.3, dlat=0)]),
+        GM([66, 12, 84, 26], highlight={"IND": "#d9a72b"}, pins=[PIN("raigad", "Rajaram", 0.2), PIN("pune", "Tarabai", 0.8)], _y=1700),
+    ]),
+    ("fort", [
+        S("fort", objs=[O("flag", -2.0, 9.0, y=4.4, h=1.4, color=MAR, anim="pop"), O("flag", 2.0, 9.0, y=4.4, h=1.4, color=MUG, anim="fall")],
+          names=NM("Ek qila khote · doosra le lete"), _y=1700),
+        S("plain", objs=[O("horse_rider", -5.0, 7.0, h=1.6, color=MAR, to=[3.0, 6.0], move_time=2.6, anim="march"),
+                         O("bullock_cart", 1.0, 6.0, h=1.4, anim="fall", delay=1.4), O("smoke", 1.4, 6.6, h=1.2)],
+          names=NM("Chhape · ghere · rasad par hamle")),
+        S("plain", objs=[O("mughal_tent", x, z, h=1.6, color=c) for x, z, c in ((-6, 9, "#c0322b"), (-3, 11, "#c9a56a"), (0, 9.5, "#c0322b"), (3, 11, "#c9a56a"), (6, 9, "#c0322b"))],
+          names=NM("Badshah ka camp · chalta-phirta shehar")),
+        S("plain", objs=[O("war_elephant", -3.0, 8.0, h=2.0, to=[2.0, 8.0], move_time=4.0), O("horse_rider", -5.0, 6.6, h=1.5, to=[0.0, 6.6], move_time=4.0),
+                         O("army_block", -1.0, 10, h=1.8, color=MUG, to=[4.0, 10], move_time=4.0)], names=NM("Laakhon log · haathi · ghode")),
+        S("plain", target=[0, 1.0, 6.0], dist=6.0, objs=[O("mughal_tent", 0, 8.0, h=1.8)], big=BIG("~26 SAAL", 0.3, anim="roll", frm="00"), _y=1707),
+        S("court", objs=[O("chest", 0, 6.0, h=0.9, anim="bob")], big=BIG("KHAZANA KHAALI", 0.4), names=NM("Deccan ki jung ka kharch")),
+    ]),
+    ("court", [
+        S("court", actors=[A("sardar", x, 6.0 + (i % 2) * 0.6, expr="worried") for i, x in enumerate((-3, -1.8, -0.6, 0.6, 1.8, 3))],
+          big=BIG("MANSABDAR ZYADA", 0.4, size=92)),
+        S("court", actors=[A("aurangzeb", 0, 9.0, y=0.6, h=1.4, expr="neutral", pose="give"), A("sardar", -1.8, 6.0, expr="happy", pose="bow", face="right")],
+          objs=[O("throne", 0, 9.5, y=0.6, h=1.8)], names=NM("Har sardar ko mansab")),
+        S("village", objs=[O("grave", 0, 6.0, h=0.4)], actors=[A("farmer", -1.0, 5.4, expr="sad")], big=BIG("ACHHI JAGIR KAM", 0.4, size=92)),
+        S("court", target=[0, 1.2, 6.0], dist=6.0, actors=[A("sardar", -1.4, 6.0, expr="angry", pose="fist"), A("sardar", 1.4, 6.0, expr="angry", pose="cross")],
+          big=BIG("JAGIRDARI SANKAT", 0.3, size=96)),
+        S("village", actors=[A("sardar", -1.6, 5.4, expr="angry"), A("farmer", 0.4, 5.6, expr="sad", pose="head")], objs=[O("coins", 1.4, 5.6, h=0.4)],
+          names=NM("Afsar naaraz · kisaan par bojh · Dilli se doori")),
+    ]),
+    ("tent", [
+        S("tent", mood=0.7, actors=[A("aurangzeb_old", 0, 5.0, expr="sad", pose="type")], objs=[O("letter", 0.8, 5.4, y=0.8, h=0.4)], names=NM("Bete ko khat"), _y=1707),
+        S("tent", mood=0.7, target=[0, 1.0, 5.0], dist=3.4, actors=[A("aurangzeb_old", 0, 5.0, expr="sad")], objs=[O("letter", 0.8, 5.4, y=0.8, h=0.5)],
+          names=NM("Bataaya jaata hai")),
+        S("tent", mood=0.65, target=[0, 1.2, 5.0], dist=3.0, actors=[A("aurangzeb_old", 0, 5.0, expr="sad", talk=True, gesture=["idle", "head"])],
+          board={"text": "Main akela aaya tha. Aur [ajnabi] ki tarah ja raha hoon.", "rect": [0.52, 0.14, 0.95, 0.3], "at": 0.1, "time": 2.0},
+          names=[NAATYA]),
+    ]),
+    ("map", [
+        GM([66, 14, 82, 26], highlight=FULL_HL, pins=[PIN("ahmednagar", "Ahmednagar · 3 March 1707", 0.2)], _y=1707),
+        GM([66, 14, 82, 26], highlight=FULL_HL, medallions=[MED("ahmednagar", AUR, AUR_CROP, "AURANGZEB|1618 – 1707", None, 0.2)],
+           labels=[LBL("ahmednagar", "88 SAAL", 60, 0.6, dlat=-3.4)]),
+    ]),
+    ("cell", [
+        S("plain", objs=[O("grave", 0, 5.0, h=0.7)], caption="Khuldabad · kachchi qabr", _y=1707),
+        S("plain", target=[0, 0.6, 5.0], dist=3.4, objs=[O("grave", 0, 5.0, h=0.7), O("caps", 1.0, 5.2, h=0.4)], names=NM("Wasiyat: kafan topiyon ki kamaai se"),
+          source="Tomb of Aurangzeb — Wikipedia", source_by="~4 rupaye 2 aane"),
+    ]),
+    ("map", [
+        GM([58, 4, 100, 40], highlight=FULL_HL, big=BIG("SABSE BADA NAQSHA", 0.3, y=0.12, size=80), _y=1707),
+        GM([58, 4, 100, 40], highlight=FULL_HL, labels=[LBL((79, 21.5), "THAAMNE WAALA KOI NAHI", 50, 0.3, dlat=0)]),
+    ]),
+]

@@ -29,7 +29,16 @@ if sys.argv[1] == "search":
     for x in info([h["title"] for h in d["query"]["search"]]) if d["query"]["search"] else []:
         print(x["lic"], "|", x["w"], "x", x["h"], "|", x["title"], "|", x["date"])
 else:
-    x = info([sys.argv[2]], int(sys.argv[4]) if len(sys.argv) > 4 else 1600)[0]
+    x = info([sys.argv[2]], int(sys.argv[4]) if len(sys.argv) > 4 else 1280)[0]
+    import time
     r = urllib.request.Request(x["url"], headers=UA)
-    open(sys.argv[3], "wb").write(urllib.request.urlopen(r, timeout=60).read())
+    for k in range(6):
+        try:
+            data = urllib.request.urlopen(r, timeout=60).read(); break
+        except urllib.error.HTTPError as e:
+            if e.code != 429: raise
+            time.sleep(20 * (k + 1))
+    else:
+        raise SystemExit("download rate limited")
+    open(sys.argv[3], "wb").write(data)
     print("saved", sys.argv[3], x["lic"], x["artist"])

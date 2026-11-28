@@ -300,6 +300,8 @@ Y.update(s49=1527, s49b=1527)
 
 # ------------------------------------------------------------- assemble
 for bid, b in old.items():
+    if bid not in SC:      # beats added by build_full.py are rebuilt there
+        continue
     nb = {"id": bid, "speaker": b["speaker"], "text": T.get(bid, b["text"]), "scene": SC[bid]}
     for k in ("tags", "sfx", "chapter"):
         if k in b:
@@ -394,5 +396,5 @@ for b in story["beats"]:
     fix(b["scene"])
 story["sources"] = json.load(open(P + "/story.json", encoding="utf-8")).get("sources", [])
 json.dump(story, open(P + "/story.json", "w", encoding="utf-8"), ensure_ascii=False, indent=1)
-missing = [k for k in old if k not in SC]
+missing = [k for k in old if k not in SC and re.match(r"s\d\db?$", k)]
 print(len(story["beats"]), "beats; missing scenes:", missing)

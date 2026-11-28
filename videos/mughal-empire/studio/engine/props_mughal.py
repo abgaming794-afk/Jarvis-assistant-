@@ -6,7 +6,7 @@ GOLD, GOLD_D = "#f1c232", "#c9961a"
 __all__ = ["war_elephant", "elephant_panic", "horse_rider", "bullock_cart", "araba", "cannon_fire", "dovecote",
            "peacock_throne", "kohinoor", "farman", "grave", "army_block", "mughal_tent", "pigeon", "smoke",
            "matchlock_man", "rope", "taj_mahal", "tomb_dome", "red_fort", "water_skin", "chain_bells",
-           "book_stack", "arrow", "caps", "basket", "musk_pod", "elephant_empty"]
+           "book_stack", "arrow", "caps", "basket", "musk_pod", "elephant_empty", "goblets", "hourglass", "musket_lady", "tiger"]
 
 
 def _elephant(p, col, cap, rear=False):
@@ -366,3 +366,37 @@ def elephant_empty(p, c):
     _elephant(p, "#8a8a90", c or "#7a1f2b")
     p.rrect(70, 48, 130, 80, 8, GOLD)
     p.rrect(78, 54, 122, 76, 6, "#3a2a22")
+
+
+def goblets(p, c):
+    """Gold and silver wine cups (Babur breaks them before Khanwa)."""
+    for x, col in ((56, GOLD), (100, "#d9dde2"), (144, GOLD)):
+        p.chord(x, 96, 26, 30, 0, 180, col)
+        p.rrect(x - 4, 124, x + 4, 160, 2, shade(col, 0.85))
+        p.ell(x, 166, 22, 7, shade(col, 0.85))
+
+
+def hourglass(p, c):
+    p.rrect(46, 16, 154, 30, 4, "#7a4a2a"); p.rrect(46, 170, 154, 184, 4, "#7a4a2a")
+    p.poly([(60, 30), (140, 30), (104, 100), (140, 170), (60, 170), (96, 100)], "#d9eef5")
+    p.poly([(84, 150), (116, 150), (126, 170), (74, 170)], "#e0b060", ol=False)
+    p.poly([(76, 40), (124, 40), (102, 84), (98, 84)], "#e0b060", ol=False)
+
+
+def musket_lady(p, c):
+    """Nur Jahan's musket and the hunting howdah (four tigers, six shots)."""
+    p.line([(20, 150), (186, 60)], "#5a3a20", 9)
+    p.line([(110, 104), (190, 58)], "#7a7f88", 5)
+    p.ell(40, 140, 18, 10, "#5a3a20")
+
+
+def tiger(p, c):
+    col = "#e08a2e"
+    for x in (52, 76, 128, 150):
+        p.capsule((x, 140), (x, 182), 14, col)
+    p.ell(100, 124, 70, 34, col)
+    p.ell(164, 104, 26, 24, col)
+    for x in range(56, 150, 18):
+        p.line([(x, 96), (x + 6, 120)], "#2a1a10", 4)
+    p.ell(172, 98, 3, 3, "#1a1410", ol=False)
+    p.line([(30, 120), (12, 96)], col, 6)
