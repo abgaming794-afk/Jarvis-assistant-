@@ -5,7 +5,8 @@ from common import shade
 GOLD, GOLD_D = "#f1c232", "#c9961a"
 __all__ = ["war_elephant", "elephant_panic", "horse_rider", "bullock_cart", "araba", "cannon_fire", "dovecote",
            "peacock_throne", "kohinoor", "farman", "grave", "army_block", "mughal_tent", "pigeon", "smoke",
-           "matchlock_man", "rope"]
+           "matchlock_man", "rope", "taj_mahal", "tomb_dome", "red_fort", "water_skin", "chain_bells",
+           "book_stack", "arrow", "caps", "basket", "musk_pod", "elephant_empty"]
 
 
 def _elephant(p, col, cap, rear=False):
@@ -234,3 +235,134 @@ def matchlock_man(p, c):
 def rope(p, c):
     for k in range(6):
         p.arc(30 + k * 28, 100, 16, 10, 0, 360, "#d9b77a", 6)
+
+
+MARBLE, MARBLE_D, SAND, SAND_D = "#f4efe6", "#d8cfc0", "#b5553a", "#8a3f2a"
+
+
+def _dome(p, x, y, r, col, fin=True):
+    p.chord(x, y, r, r * 1.15, 180, 360, col)
+    p.rrect(x - r * 0.9, y - 4, x + r * 0.9, y + 8, 3, shade(col, 0.9))
+    if fin:
+        p.line([(x, y - r * 1.15), (x, y - r * 1.15 - 14)], GOLD_D, 3)
+        p.ell(x, y - r * 1.15 - 16, 3, 3, GOLD, ol=False)
+
+
+def taj_mahal(p, c):
+    """Taj Mahal: plinth, main dome, four minarets."""
+    p.rrect(10, 160, 190, 186, 2, MARBLE_D)
+    for x in (22, 178):
+        p.rrect(x - 6, 70, x + 6, 160, 3, MARBLE)
+        _dome(p, x, 70, 8, MARBLE)
+    p.rrect(46, 96, 154, 160, 2, MARBLE)
+    p.chord(100, 160, 18, 40, 180, 360, "#3a3a44")          # iwan arch
+    for x in (62, 138):
+        p.chord(x, 140, 8, 16, 180, 360, "#5a5a64")
+    p.rrect(84, 84, 116, 98, 2, MARBLE)
+    _dome(p, 100, 86, 32, MARBLE)
+    for x in (64, 136):
+        _dome(p, x, 96, 10, MARBLE)
+
+
+def tomb_dome(p, c):
+    """Humayun's tomb: red sandstone platform with arches, white marble dome."""
+    p.rrect(8, 140, 192, 188, 2, SAND)
+    for x in range(22, 190, 28):
+        p.chord(x, 186, 9, 22, 180, 360, "#3a1a14")
+    p.rrect(40, 92, 160, 140, 2, SAND)
+    for x in (62, 100, 138):
+        p.chord(x, 140, 10, 28, 180, 360, "#3a1a14")
+    p.rrect(30, 88, 170, 96, 2, MARBLE)
+    _dome(p, 100, 88, 38, MARBLE)
+    for x in (48, 152):
+        p.rrect(x - 8, 70, x + 8, 92, 2, SAND)
+        _dome(p, x, 70, 9, MARBLE)
+
+
+def red_fort(p, c):
+    """Lal Qila gate: red walls, gate arch, chhatris on top."""
+    p.rrect(4, 96, 196, 188, 2, SAND)
+    for x in range(4, 196, 16):
+        p.rrect(x, 88, x + 9, 98, 1, SAND_D)
+    p.rrect(64, 54, 136, 188, 2, shade(SAND, 1.05))
+    p.chord(100, 188, 20, 50, 180, 360, "#2a1410")
+    for x in (64, 136):
+        p.rrect(x - 12, 40, x + 12, 70, 2, SAND)
+        _dome(p, x, 40, 12, MARBLE)
+    _dome(p, 100, 54, 10, MARBLE)
+    for x in (82, 118):
+        p.ell(x, 46, 5, 4, MARBLE)
+
+
+def water_skin(p, c):
+    """Mashk: inflated leather water bag (Chausa, 1539)."""
+    col = c or "#8a5a32"
+    p.ell(100, 112, 70, 50, col)
+    p.ell(82, 100, 26, 16, shade(col, 1.2), ol=False)
+    p.capsule((160, 96), (186, 70), 16, col)
+    p.line([(40, 92), (30, 64), (60, 60)], "#5a3a20", 5)
+
+
+def chain_bells(p, c):
+    """Zanjeer-e-Adl: golden chain with bells."""
+    for k in range(9):
+        x = 14 + k * 21
+        p.arc(x, 40 + 8 * (k % 2), 11, 7, 0, 360, GOLD_D, 5)
+    for k in range(1, 9, 2):
+        x = 14 + k * 21
+        p.line([(x, 52), (x, 78)], GOLD_D, 3)
+        p.chord(x, 98, 14, 20, 180, 360, GOLD)
+        p.ell(x, 100, 4, 4, "#5a3a20", ol=False)
+
+
+def book_stack(p, c):
+    """Stack of manuscripts (Akbar's library, Ain-i-Akbari)."""
+    cols = ["#7a1f2b", "#2f5d4a", "#8a6a2a", "#3a4a7a", "#6a2a5a"]
+    for k, col in enumerate(cols):
+        y = 176 - k * 26
+        x0 = 30 + (k % 2) * 10
+        p.rrect(x0, y - 22, x0 + 130, y, 3, col)
+        p.line([(x0 + 6, y - 11), (x0 + 124, y - 11)], GOLD, 2)
+
+
+def arrow(p, c):
+    p.line([(20, 180), (176, 24)], "#6a4a2a", 6)
+    p.poly([(176, 24), (154, 30), (170, 46)], "#c9cdd2")
+    for d in (0, 12):
+        p.poly([(20 + d, 180 - d), (14 + d, 160 - d), (30 + d, 170 - d)], "#e8e0d0", w=2)
+
+
+def caps(p, c):
+    """Sewn white prayer caps (Aurangzeb)."""
+    for x, y in ((64, 150), (136, 150), (100, 112)):
+        p.chord(x, y, 34, 30, 180, 360, "#f4efe6")
+        for k in range(3):
+            p.arc(x, y - 4, 26 - k * 8, 20 - k * 6, 200, 340, "#c9c2b0", 2)
+        p.rrect(x - 34, y - 2, x + 34, y + 6, 3, "#e8e0d0")
+
+
+def basket(p, c):
+    """Big sweets basket (Shivaji's escape from Agra, 1666)."""
+    col = c or "#c09050"
+    p.chord(100, 110, 80, 72, 0, 180, col)
+    for k in range(5):
+        p.line([(28 + k * 36, 112), (40 + k * 30, 176)], shade(col, 0.75), 3)
+    p.rrect(18, 102, 182, 116, 6, shade(col, 0.85))
+    for x in (60, 92, 124, 150):
+        p.ell(x, 96, 14, 12, "#f1c232")
+
+
+def musk_pod(p, c):
+    """Kasturi (musk pod) on an open palm-sized cloth."""
+    p.ell(100, 150, 80, 24, "#efe6cf")
+    p.ell(100, 128, 34, 26, "#6a4a32")
+    p.ell(90, 120, 10, 7, "#8a6a4a", ol=False)
+    for x, y in ((50, 90), (150, 84), (100, 70)):
+        p.arc(x, y, 14, 8, 200, 340, "#d9c49a", 3)
+
+
+def elephant_empty(p, c):
+    """War elephant with an EMPTY howdah (Samugarh, 1658)."""
+    _elephant(p, "#8a8a90", c or "#7a1f2b")
+    p.rrect(70, 48, 130, 80, 8, GOLD)
+    p.rrect(78, 54, 122, 76, 6, "#3a2a22")

@@ -91,6 +91,6 @@ Target: 30 min (~4,900 words, ~450 beats). DEMO = Part 0 + Chapter 1 first half 
 - s47b [PAYOFF-mini] और पैदा हुआ — मुग़ल साम्राज्य.
 - s48 [LOOP+] लेकिन दिल्ली जीतना एक बात थी. उसे बचाना, दूसरी.
 - s49 [FOMO] क्योंकि अगले ही साल, मेवाड़ के एक योद्धा से सामना हुआ…
-- s49b [FOMO] कहते हैं, जिसके शरीर पर अस्सी घाव थे.
+- s49b [FOMO] कहते हैं, जिनके शरीर पर अस्सी घाव थे.
 
 Notes: s24, s25, s33, s38, s39 are dramatised dialogue (not real quotes). s25 = Babur ki naani Aisan Daulat Begum (asli salahkaar), line dramatised.

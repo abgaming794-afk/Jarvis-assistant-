@@ -205,6 +205,13 @@ def tex(name):
             x, y = rnd.integers(0, 512, 2)
             d.line([(x, y), (x + rnd.integers(-4, 5), y - rnd.integers(6, 14))], fill=hexc("#5e7e36"), width=3)
         return im
+    if name == "sand":
+        im, d = _canvas(512, 512, "#d9b27a")
+        rnd = np.random.default_rng(9)
+        for k in range(14):
+            y = k * 38 + int(rnd.integers(0, 12))
+            d.arc([-60, y - 20, 572, y + 40], 200, 340, fill=hexc("#c49a62"), width=4)
+        return im
     if name == "battle_ground":
         im, d = _canvas(512, 512, "#8a7448")
         rnd = np.random.default_rng(7)
@@ -352,14 +359,14 @@ def build(setname, sc):
         env.append((0, [-40, -0.05, 8], [80, 0, 0], [0, 0, 40], "water", 1.0, False))
         env.append((0, [-40, 0, -6], [80, 0, 0], [0, 0, 14], "dirt_big", 1.0, False))
         dflt.update(target=[0, 1.0, 6], dist=6.5, height=1.8)
-    elif setname in ("fort", "village", "battlefield", "plain"):
-        sky = "sky_dusk" if setname == "battlefield" else "sky_day"
+    elif setname in ("fort", "village", "battlefield", "plain", "desert"):
+        sky = "sky_dusk" if setname in ("battlefield", "desert") else "sky_day"
         env.append((0, [-60, 30, 60], [120, 0, 0], [0, -32, 0], sky, 1.0, False))
         if setname != "map":
             env.append((0, [-50, 6, 50], [100, 0, 0], [0, -6.2, 0], "hills_far", 1.0, False))
             env.append((0, [-40, 4, 34], [80, 0, 0], [0, -4.2, 0], "hills_near", 1.0, False))
         ground = {"fort": "dirt_big", "village": "grass_big", "battlefield": "battle_big", "plain": "grass_big",
-                  "map": "map_ground"}[setname]
+                  "desert": "sand_big", "map": "map_ground"}[setname]
         env.append((0, [-40, 0, -6], [80, 0, 0], [0, 0, 40], ground, 1.0, False))
         if setname == "fort":
             env.append((0, [-12, 4.4, 9], [24, 0, 0], [0, -4.4, 0], "fort_wall", 1.0, False))
@@ -389,8 +396,8 @@ def surface(name, map_json=None, W=None, H=None):
             for y in range(0, 2048, 512):
                 im.paste(t, (x, y))
         return im
-    if name in ("dirt_big", "grass_big", "battle_big"):
-        t = tex({"dirt_big": "dirt", "grass_big": "grass", "battle_big": "battle_ground"}[name])
+    if name in ("dirt_big", "grass_big", "battle_big", "sand_big"):
+        t = tex({"dirt_big": "dirt", "grass_big": "grass", "battle_big": "battle_ground", "sand_big": "sand"}[name])
         im = Image.new("RGBA", (2048, 1024))
         for x in range(0, 2048, 512):
             for y in range(0, 1024, 512):
